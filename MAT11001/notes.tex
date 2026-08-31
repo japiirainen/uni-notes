@@ -1,0 +1,74 @@
+% !TeX program = pdflatex
+\documentclass[12pt,a4paper]{article}
+
+\input{../preamble.tex}
+
+\title{Introduction to University Mathematics}
+\author{Joona Piirainen}
+\date{Autumn 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  Notes for the University of Helsinki course MAT11001, taught in Finnish
+  from 31 August to 17 October 2026.
+\end{abstract}
+
+\tableofcontents
+
+\section{Course information}
+
+The official course information is available on the
+\href{https://studies.helsinki.fi/kurssit/toteutus/hy-opt-cur-2627-8d4269d2-7e32-4dce-bcdb-b7fa10fecac6}{University
+of Helsinki course page}.
+
+\section{Lecture notes}
+
+\subsection{31 August 2026}
+
+Hello, World!
+
+\begin{definition}
+  An integer \(p>1\) is a \emph{prime number} if its only positive divisors
+  are \(1\) and \(p\).
+\end{definition}
+
+\begin{lemma}\label{lem:prime-divisor}
+  Every integer greater than \(1\) has a prime divisor.
+\end{lemma}
+
+\begin{proof}
+  We use strong induction. Let \(n>1\), and suppose the claim holds for every
+  integer strictly between \(1\) and \(n\). If \(n\) is prime, then it divides
+  itself. Otherwise, \(n=ab\) for some integers \(1<a<n\) and \(1<b<n\). By
+  the induction hypothesis, \(a\) has a prime divisor, which then also divides
+  \(n\).
+\end{proof}
+
+\begin{theorem}\label{thm:infinitely-many-primes}
+  There are infinitely many prime numbers.
+\end{theorem}
+
+\begin{proof}
+  Suppose instead that \(p_1,\dots,p_k\) are all the prime numbers, and set
+  \[
+    N=p_1p_2\cdots p_k+1.
+  \]
+  By \cref{lem:prime-divisor}, some prime \(q\) divides \(N\). Our assumption
+  gives \(q=p_i\) for some \(i\), so \(q\) divides both \(p_1\cdots p_k\) and
+  \(N\). It must therefore divide their difference \(1\), which is impossible.
+\end{proof}
+
+\begin{corollary}
+  For every positive integer \(n\), there is a prime number greater than
+  \(n\).
+\end{corollary}
+
+\begin{proof}
+  Otherwise, all prime numbers would belong to the finite set
+  \(\{2,\dots,n\}\), contradicting \cref{thm:infinitely-many-primes}.
+\end{proof}
+
+\end{document}
