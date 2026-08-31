@@ -36,7 +36,8 @@ Tehtävänannot ovat
   \begin{align*}
     1^3 + 2^3 + \cdots + n^3 + (n + 1)^3
     &= (1^3 + 2^3 + \cdots + n^3) + (n + 1)^3 \\
-    &= \left(\frac{n(n + 1)}{2}\right)^2 + (n + 1)^3 \\
+    &\overset{\text{I.O.}}{=} \left(\frac{n(n + 1)}{2}\right)^2
+    + (n + 1)^3 \\
     &= (n + 1)^2\left(\frac{n^2}{4}\right) + (n + 1)(n + 1)^2 \\
     &= (n + 1)^2\left(\frac{n^2}{4} + n + 1\right) \\
     &= \frac{(n + 1)^2(n^2 + 4n + 4)}{4} \\
@@ -61,7 +62,7 @@ Tehtävänannot ovat
   \[
     6 \mid \left((n + 1)^3 - (n + 1)\right),
   \]
-  eli, että \((n + 1)^3 - (n + 1)\) on kuudella jaollinen. Laskemalla saadaan
+  eli, että \((n + 1)^3 - (n + 1)\) on kuudella jaollinen. Sieventämällä saadaan
   \begin{align}
     (n + 1)^3 - (n + 1) &= n^3 + 3n^2 + 3n + 1 - (n + 1) \notag \\
     &= n^3 + 3n^2 + 2n \notag \\
@@ -70,8 +71,8 @@ Tehtävänannot ovat
   \end{align}
   Induktio-oletuksen perusteella \(6 \mid (n^3 - n)\). Lisäksi joko \(n\) tai
   \(n + 1\) on parillinen, joten \(2 \mid n(n + 1)\). On siis olemassa
-  \(k,m \in \mathbb{Z}\), joille on voimassa \(6k = n^3 - n\), \(2m =
-  n(n + 1)\).
+  \(k,m \in \mathbb{Z}\), joille on voimassa
+  \(6k \overset{\text{I.O.}}{=} n^3 - n\), \(2m = n(n + 1)\).
   Näistä jälkimmäisestä seuraa \(3n(n + 1) = 3(2m) = 6m\), joten \(6
   \mid 3n(n + 1)\).
   Näin ollen yhtälön \eqref{eq:exercise-2-induction-step} oikean puolen
@@ -89,5 +90,42 @@ Tehtävänannot ovat
   \end{align}
   Siis lause pätee myös luvulla \(n + 1\), joten induktioperiaatteen
   nojalla se pätee kaikilla luonnollisilla luvuilla.
+\end{solution}
+
+\begin{exercise}
+  Osoita induktiolla, että
+  \[
+    1 \cdot 1! + 2 \cdot 2! + 3 \cdot 3! + \dots + n \cdot n! = (n + 1)! - 1
+  \]
+  kaikilla \(n \in \mathbb{N}, n \geq 1\).
+\end{exercise}
+
+\begin{solution}
+  Osoitetaan ensin, että lause on tosi, kun \(n = 1\). On voimassa
+  \(1 \cdot 1! = 1 = 2! - 1 = (1 + 1)! - 1\).
+
+  Olkoon \(n \geq 1\) mielivaltainen ja oletetaan, että
+  \[
+    1 \cdot 1! + 2 \cdot 2! + \cdots + n \cdot n! = (n + 1)! - 1.
+  \]
+  Osoitetaan
+  \[
+    1 \cdot 1! + 2 \cdot 2! + \cdots + n \cdot n!
+    + (n + 1)(n + 1)! = (n + 2)! - 1.
+  \]
+  Sieventämällä saadaan
+  \begin{align*}
+    &\phantom{{}={}} 1 \cdot 1! + 2 \cdot 2! + \cdots + n \cdot n!
+    + (n + 1)(n + 1)! \\
+    &= \left(1 \cdot 1! + 2 \cdot 2! + \cdots + n \cdot n!\right)
+    + (n + 1)(n + 1)! \\
+    &\overset{\text{I.O.}}{=} (n + 1)! - 1 + (n + 1)(n + 1)! \\
+    &= 1 \cdot (n + 1)! + (n + 1)!(n + 1) - 1 \\
+    &= \left(1 + (n + 1)\right)(n + 1)! - 1 \\
+    &= (n + 2)(n + 1)! - 1 \\
+    &= (n + 2)! - 1.
+  \end{align*}
+  Siis lause pätee myös luvulla \(n + 1\), joten induktioperiaatteen
+  nojalla se pätee kaikilla \(n \in \mathbb{N}, n \geq 1\).
 \end{solution}
 \end{document}
