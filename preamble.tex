@@ -2,7 +2,34 @@
 
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[english]{babel}
+\providecommand{\notelanguage}{english}
+\usepackage[finnish,english]{babel}
+\AtBeginDocument{\expandafter\selectlanguage\expandafter{\notelanguage}}
+
+\newcommand{\notesfinnishlanguage}{finnish}
+\ifx\notelanguage\notesfinnishlanguage
+  \newcommand{\notestheoremname}{Lause}
+  \newcommand{\noteslemmaname}{Lemma}
+  \newcommand{\notespropositionname}{Propositio}
+  \newcommand{\notescorollaryname}{Seurauslause}
+  \newcommand{\notesdefinitionname}{Määritelmä}
+  \newcommand{\notesexamplename}{Esimerkki}
+  \newcommand{\notesproblemname}{Tehtävä}
+  \newcommand{\notesexercisename}{Tehtävä}
+  \newcommand{\notesremarkname}{Huomautus}
+  \newcommand{\notessolutionname}{Ratkaisu}
+\else
+  \newcommand{\notestheoremname}{Theorem}
+  \newcommand{\noteslemmaname}{Lemma}
+  \newcommand{\notespropositionname}{Proposition}
+  \newcommand{\notescorollaryname}{Corollary}
+  \newcommand{\notesdefinitionname}{Definition}
+  \newcommand{\notesexamplename}{Example}
+  \newcommand{\notesproblemname}{Problem}
+  \newcommand{\notesexercisename}{Exercise}
+  \newcommand{\notesremarkname}{Remark}
+  \newcommand{\notessolutionname}{Solution}
+\fi
 
 \usepackage[a4paper,margin=30mm]{geometry}
 \usepackage{microtype}
@@ -21,32 +48,37 @@
 \setlist{itemsep=0.25em,topsep=0.5em}
 
 \theoremstyle{plain}
-\newtheorem{theorem}{Theorem}[section]
+\newtheorem{theorem}{\notestheoremname}[section]
 \newaliascnt{lemma}{theorem}
-\newtheorem{lemma}[lemma]{Lemma}
+\newtheorem{lemma}[lemma]{\noteslemmaname}
 \aliascntresetthe{lemma}
 \newaliascnt{proposition}{theorem}
-\newtheorem{proposition}[proposition]{Proposition}
+\newtheorem{proposition}[proposition]{\notespropositionname}
 \aliascntresetthe{proposition}
 \newaliascnt{corollary}{theorem}
-\newtheorem{corollary}[corollary]{Corollary}
+\newtheorem{corollary}[corollary]{\notescorollaryname}
 \aliascntresetthe{corollary}
 
 \theoremstyle{definition}
 \newaliascnt{definition}{theorem}
-\newtheorem{definition}[definition]{Definition}
+\newtheorem{definition}[definition]{\notesdefinitionname}
 \aliascntresetthe{definition}
 \newaliascnt{example}{theorem}
-\newtheorem{example}[example]{Example}
+\newtheorem{example}[example]{\notesexamplename}
 \aliascntresetthe{example}
 \newaliascnt{problem}{theorem}
-\newtheorem{problem}[problem]{Problem}
+\newtheorem{problem}[problem]{\notesproblemname}
 \aliascntresetthe{problem}
+\newtheorem{exercise}{\notesexercisename}
 
 \theoremstyle{remark}
 \newaliascnt{remark}{theorem}
-\newtheorem{remark}[remark]{Remark}
+\newtheorem{remark}[remark]{\notesremarkname}
 \aliascntresetthe{remark}
+
+\newenvironment{solution}
+  {\begin{proof}[\notessolutionname]}
+  {\end{proof}}
 
 \usepackage[nameinlink,noabbrev]{cleveref}
 
@@ -57,7 +89,20 @@
 \crefname{definition}{definition}{definitions}
 \crefname{example}{example}{examples}
 \crefname{problem}{problem}{problems}
+\crefname{exercise}{exercise}{exercises}
 \crefname{remark}{remark}{remarks}
+
+\ifx\notelanguage\notesfinnishlanguage
+  \crefname{theorem}{lause}{lauseet}
+  \crefname{lemma}{lemma}{lemmat}
+  \crefname{proposition}{propositio}{propositiot}
+  \crefname{corollary}{seurauslause}{seurauslauseet}
+  \crefname{definition}{määritelmä}{määritelmät}
+  \crefname{example}{esimerkki}{esimerkit}
+  \crefname{problem}{tehtävä}{tehtävät}
+  \crefname{exercise}{tehtävä}{tehtävät}
+  \crefname{remark}{huomautus}{huomautukset}
+\fi
 
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\rank}{rank}

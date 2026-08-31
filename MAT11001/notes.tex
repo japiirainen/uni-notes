@@ -26,49 +26,67 @@ of Helsinki course page}.
 
 \section{Lecture notes}
 
-\subsection{31 August 2026}
+\subsection{31.08.2026}
 
-Hello, World!
+The first lecture was mostly spent going over the course structure and other
+general admin topics. We did go over some preliminary definitions and examples,
+which will follow.
 
 \begin{definition}
-  An integer \(p>1\) is a \emph{prime number} if its only positive divisors
-  are \(1\) and \(p\).
+  An integer \(p > 1\) is \emph{prime} if its only positive divisors are
+  \(1\) and \(p\).
 \end{definition}
 
-\begin{lemma}\label{lem:prime-divisor}
-  Every integer greater than \(1\) has a prime divisor.
-\end{lemma}
+\begin{definition}
+  The following basic sets of numbers will be used throughout:
+  \begin{align*}
+    \mathbb{N} &= \{0, 1, 2, \ldots\} \\
+    \mathbb{Z} &= \{\ldots, -2, -1, 0, 1, 2, \ldots\} \\
+    \mathbb{Z}^{+} &= \mathbb{N} \setminus \{0\} \\
+    \mathbb{Q} &= \left\{\frac{p}{q} : p,q \in \mathbb{Z},\ q \neq 0\right\} \\
+    \mathbb{R} &= \text{the set of real numbers} \\
+    \mathbb{C} &= \left\{a+bi : a,b \in \mathbb{R}\right\}, \quad i^2=-1 \\
+    \mathbb{P} &= \left\{p \in \mathbb{Z} : p \text{ is prime}\right\}
+  \end{align*}
+\end{definition}
 
-\begin{proof}
-  We use strong induction. Let \(n>1\), and suppose the claim holds for every
-  integer strictly between \(1\) and \(n\). If \(n\) is prime, then it divides
-  itself. Otherwise, \(n=ab\) for some integers \(1<a<n\) and \(1<b<n\). By
-  the induction hypothesis, \(a\) has a prime divisor, which then also divides
-  \(n\).
-\end{proof}
+We use the following principle without proof.
 
-\begin{theorem}\label{thm:infinitely-many-primes}
-  There are infinitely many prime numbers.
+\begin{theorem}[Principle of mathematical induction]
+  Let \(P(n)\) be a statement for each \(n \in \mathbb{N}\). Suppose that
+  \begin{enumerate}
+    \item \(P(0)\) is true, and
+    \item for every \(n \in \mathbb{N}\), \(P(n)\) implies \(P(n+1)\).
+  \end{enumerate}
+  Then \(P(n)\) is true for every \(n \in \mathbb{N}\).
 \end{theorem}
 
 \begin{proof}
-  Suppose instead that \(p_1,\dots,p_k\) are all the prime numbers, and set
+  Omitted.
+\end{proof}
+
+\begin{example}
+  We prove by induction that
   \[
-    N=p_1p_2\cdots p_k+1.
+    \sum_{k=1}^{n} k = \frac{n(n+1)}{2}
   \]
-  By \cref{lem:prime-divisor}, some prime \(q\) divides \(N\). Our assumption
-  gives \(q=p_i\) for some \(i\), so \(q\) divides both \(p_1\cdots p_k\) and
-  \(N\). It must therefore divide their difference \(1\), which is impossible.
-\end{proof}
+  for every integer \(n \geq 1\).
 
-\begin{corollary}
-  For every positive integer \(n\), there is a prime number greater than
-  \(n\).
-\end{corollary}
+  For \(n=1\), the identity holds because
+  \[
+    \sum_{k=1}^{1} k = 1 = \frac{1(1+1)}{2}.
+  \]
+  Now suppose that the identity holds for some integer \(n \geq 1\). Then
+  \begin{align*}
+    \sum_{k=1}^{n+1} k
+    &= \sum_{k=1}^{n} k + (n+1) \\
+    &= \frac{n(n+1)}{2} + (n+1) \\
+    &= \frac{(n+1)(n+2)}{2}.
+  \end{align*}
+  Thus the identity also holds for \(n+1\), and hence for every integer
+  \(n \geq 1\). \qed
+\end{example}
 
-\begin{proof}
-  Otherwise, all prime numbers would belong to the finite set
-  \(\{2,\dots,n\}\), contradicting \cref{thm:infinitely-many-primes}.
-\end{proof}
+\subsection{03.09.2026}
 
 \end{document}

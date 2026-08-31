@@ -66,3 +66,15 @@ For example, `MAT11001/exercise-01.tex` builds with:
 ```sh
 make COURSE=MAT11001 DOCUMENT=exercise-01
 ```
+
+Documents are in English by default. To use Finnish headings, theorem names,
+cross-references, and hyphenation, select the language before loading the shared
+preamble:
+
+```tex
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+```
+
+Exercise solution documents can use the `exercise` and `solution`
+environments. See `MAT11001/exercise-01.tex` for the first Finnish example.
