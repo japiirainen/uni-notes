@@ -1,0 +1,93 @@
+% !TeX program = pdflatex
+\documentclass[12pt,a4paper]{article}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Harjoituksen 1 ratkaisut}
+\author{Joona Piirainen}
+\date{Syksy 2026}
+
+\begin{document}
+
+\maketitle
+
+\noindent
+Tehtävänannot ovat
+\href{https://moodle.helsinki.fi/pluginfile.php/6978847/mod_resource/content/5/harj1.pdf}{Moodle-järjestelmässä}.
+
+\section*{Ratkaisut}
+
+\begin{exercise}
+  Osoita induktiolla, että
+  \[
+    1^3 + 2^3 + 3^3 + \dots + n^3 =\left(\frac{n(n + 1)}{2}\right)^2
+  \]
+  kaikilla \(n \in \mathbb{N}\), \(n \geq 1\).
+\end{exercise}
+
+\begin{solution}
+  Osoitetaan lause todeksi induktiolla. Osoitetaan ensiksi, että lause
+  pitää paikkaansa, kun \(n = 1\). Saamme
+  \[
+    1^3 = \left(\frac{1(1 + 1)}{2}\right)^2 = 1.
+  \]
+  Oletetaan, että lause on tosi jollain kokonaisluvulla \(n \geq 1\). Sitten
+  \begin{align*}
+    1^3 + 2^3 + \cdots + n^3 + (n + 1)^3
+    &= (1^3 + 2^3 + \cdots + n^3) + (n + 1)^3 \\
+    &= \left(\frac{n(n + 1)}{2}\right)^2 + (n + 1)^3 \\
+    &= (n + 1)^2\left(\frac{n^2}{4}\right) + (n + 1)(n + 1)^2 \\
+    &= (n + 1)^2\left(\frac{n^2}{4} + n + 1\right) \\
+    &= \frac{(n + 1)^2(n^2 + 4n + 4)}{4} \\
+    &= \frac{(n + 1)^2(n + 2)^2}{4} \\
+    &= \left(\frac{(n + 1)((n + 1) + 1)}{2}\right)^2
+  \end{align*}
+  Siis lause pätee myös luvulla \(n + 1\), joten induktioperiaatteen nojalla
+  se pätee kaikilla kokonaisluvuilla \(n \geq 1\).
+\end{solution}
+
+\begin{exercise}
+  Osoita induktiolla, että jos \(n \in \mathbb{N}\), niin \(n^3 - n\)
+  on jaollinen kuudella.
+\end{exercise}
+\begin{solution}
+  Osoitetaan lause todeksi induktiolla. Osoitetaan ensin, että lause pitää
+  paikkaansa, kun \(n = 0\). Saamme \(0^3 - 0 = 0 = 6\cdot0\), joten tapaus
+  \(n = 0\) on osoitettu.
+
+  Olkoon \(n \geq 0\) mielivaltainen ja oletetaan, että \(6 \mid (n^3 - n)\).
+  Osoitetaan
+  \[
+    6 \mid \left((n + 1)^3 - (n + 1)\right),
+  \]
+  eli, että \((n + 1)^3 - (n + 1)\) on kuudella jaollinen. Laskemalla saadaan
+  \begin{align}
+    (n + 1)^3 - (n + 1) &= n^3 + 3n^2 + 3n + 1 - (n + 1) \notag \\
+    &= n^3 + 3n^2 + 2n \notag \\
+    &= (n^3 - n) + (3n^2 + 3n) \notag \\
+    &= (n^3 - n) + 3n(n + 1). \label{eq:exercise-2-induction-step}
+  \end{align}
+  Induktio-oletuksen perusteella \(6 \mid (n^3 - n)\). Lisäksi joko \(n\) tai
+  \(n + 1\) on parillinen, joten \(2 \mid n(n + 1)\). On siis olemassa
+  \(k,m \in \mathbb{Z}\), joille on voimassa \(6k = n^3 - n\), \(2m =
+  n(n + 1)\).
+  Näistä jälkimmäisestä seuraa \(3n(n + 1) = 3(2m) = 6m\), joten \(6
+  \mid 3n(n + 1)\).
+  Näin ollen yhtälön \eqref{eq:exercise-2-induction-step} oikean puolen
+  molemmat termit ovat kuudella jaollisia, koska
+  laskemalla yhtälöt \(6k = n^3 - n\) ja \(6m = 3n(n + 1)\) yhteen
+  saadaan
+  \[
+    n^3 - n + 3n(n + 1) = 6k + 6m = 6(k + m),
+  \]
+  joten
+  \begin{align}
+    6 & \mid n^3 - n + 3n(n + 1) \\
+    \implies
+    6 & \mid \left((n + 1)^3 - (n + 1)\right).
+  \end{align}
+  Siis lause pätee myös luvulla \(n + 1\), joten induktioperiaatteen
+  nojalla se pätee kaikilla luonnollisilla luvuilla.
+\end{solution}
+\end{document}
