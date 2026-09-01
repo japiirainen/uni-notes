@@ -237,4 +237,62 @@ Kootaan ratkaisuissa käytettyjä määritelmiä ja merkintöjä.
 \end{enumerate}
 \end{enumerate}
 \end{solution}
+
+\begin{exercise}
+Määritellään lukujono \(\left(z_n\right)\) rekursiivisesti
+\begin{align*}
+z_0 &= 1, \qquad z_1 = 2, \\
+z_{n+1} &= z_n + 2z_{n-1}, \qquad n \geq 1.
+\end{align*}
+
+\begin{enumerate}[label=\alph*), nosep]
+\item Määritä ensin lukujonon 8 ensimmäistä lukua. Esitä sitten
+\(\left(z_n\right)\)
+pelkän \(n\):n avulla eli ratkaise rekursiivinen yhtälö lukujonon
+ensimmäisten lukujen perusteella päättelemällä.
+\item Todista kohdassa (a) päättelemäsi rekursiivisen yhtälön ratkaisu
+\(z_n\) oikeaksi induktiolla.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Määritetään lukujonon 8 ensimmäistä lukua käyttämällä lukujonon
+rekursiivista määritelmää ja laskemalla
+\begin{align*}
+z_0 &= 1 \\
+z_1 &= 2 \\
+z_2 &= z_1 + 2z_0 = 2 + 2\cdot 1 = 4 \\
+z_3 &= z_2 + 2z_1 = 4 + 2\cdot 2 = 8 \\
+z_4 &= z_3 + 2z_2 = 8 + 2\cdot 4 = 16 \\
+z_5 &= z_4 + 2z_3 = 16 + 2\cdot 8 = 32 \\
+z_6 &= z_5 + 2z_4 = 32 + 2\cdot 16 = 64 \\
+z_7 &= z_6 + 2z_5 = 64 + 2\cdot 32 = 128
+\end{align*}
+Lukujono alkaa siis luvuilla \(1, 2, 4, 8, 16, 32, 64, 128\). Luonteva
+konjektuuri lukujonon yleiselle luvulle \(z_n\) on
+\[z_n = 2^n.\]
+\item Käytetään toista induktioperiaatetta. Käsitellään ensin perustapaukset
+\(n = 0\) ja \(n = 1\). Sieventämällä luvun \(2\) potenssit saadaan
+\(z_0 = 1 = 2^0\) ja
+\(z_1 = 2 = 2^1\).
+
+Olkoon \(n \in \NN, n \geq 1\) mielivaltainen. Oletetaan, että
+\[z_k = 2^k, \qquad \text{kaikilla} \qquad 0 \leq k \leq n.\]
+Erityisesti
+\[z_n = 2^n \qquad \text{ja} \qquad z_{n-1} = 2^{n-1}.\]
+Halutaan osoittaa \(z_{n+1} = 2^{n+1}\). Lukujonon määritelmän mukaan
+\begin{align*}
+z_{n+1} &= z_n + 2z_{n-1} \\
+&\overset{\text{I.O.}}{=} 2^n + 2\cdot 2^{n-1} \\
+&= 2^n + 2^n \\
+&= 2\cdot 2^n \\
+&= 2^{n+1}.
+\end{align*}
+On todistettu, että lause pätee myös luvulla \(n + 1\), joten
+induktioperiaatteen
+nojalla se pätee kaikilla \(n \in \NN\).
+\end{enumerate}
+\end{solution}
 \end{document}
