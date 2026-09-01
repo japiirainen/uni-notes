@@ -44,7 +44,11 @@ Kootaan ratkaisuissa käytettyjä määritelmiä ja merkintöjä.
   \[
     1^3 = \left(\frac{1(1 + 1)}{2}\right)^2 = 1.
   \]
-  Oletetaan, että lause on tosi jollain kokonaisluvulla \(n \geq 1\). Sitten
+  Olkoon \(n \in \NN, n \geq 1\) mielivaltainen, ja oletetaan
+  induktio-oletuksena, että
+  \[
+    1^3 + 2^3 + 3^3 + \dots + n^3 =\left(\frac{n(n + 1)}{2}\right)^2.
+  \] Sitten
   \begin{align*}
     1^3 + 2^3 + \cdots + n^3 + (n + 1)^3
     &= (1^3 + 2^3 + \cdots + n^3) + (n + 1)^3 \\
@@ -57,7 +61,7 @@ Kootaan ratkaisuissa käytettyjä määritelmiä ja merkintöjä.
     &= \left(\frac{(n + 1)((n + 1) + 1)}{2}\right)^2
   \end{align*}
   Siis lause pätee myös luvulla \(n + 1\), joten induktioperiaatteen nojalla
-  se pätee kaikilla kokonaisluvuilla \(n \geq 1\).
+  se pätee kaikilla \(n \in \NN, n \geq 1\).
 \end{solution}
 
 \begin{exercise}
