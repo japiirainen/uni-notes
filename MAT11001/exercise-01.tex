@@ -13,10 +13,22 @@
 \maketitle
 
 \noindent
-Tehtävänannot ovat
-\href{https://moodle.helsinki.fi/pluginfile.php/6978847/mod_resource/content/5/harj1.pdf}{Moodle-järjestelmässä}.
 
-\section*{Ratkaisut}
+\tableofcontents
+
+\section{Perusmääritelmiä ja merkintöjä}
+
+Kootaan ratkaisuissa käytettyjä määritelmiä ja merkintöjä.
+
+\begin{definition}\label{def:divisibility}
+  Olkoon \(p, q \in \ZZ\). Sanotaan, että \(p\) \emph{jakaa} luvun \(q\),
+  tai että \(q\) on \emph{jaollinen} luvulla \(p\),
+  jos on olemassa \(k \in \ZZ\), jolle \(q = kp\).
+  Tällöin merkitään \(p \mid q\). Muussa tapauksessa merkitään
+  \(p \nmid q\).
+\end{definition}
+
+\section{Ratkaisut}
 
 \begin{exercise}
   Osoita induktiolla, että
@@ -54,8 +66,8 @@ Tehtävänannot ovat
 \end{exercise}
 \begin{solution}
   Osoitetaan lause todeksi induktiolla. Osoitetaan ensin, että lause pitää
-  paikkaansa, kun \(n = 0\). Saamme \(0^3 - 0 = 0 = 6\cdot0\), joten tapaus
-  \(n = 0\) on osoitettu.
+  paikkaansa, kun \(n = 0\). Saamme \(0^3 - 0 = 0 = 6\cdot0\), joten
+  jaollisuuden määritelmän~\ref{def:divisibility} perusteella \(6 \mid 0\).
 
   Olkoon \(n \geq 0\) mielivaltainen ja oletetaan, että \(6 \mid (n^3 - n)\).
   Osoitetaan
@@ -70,7 +82,8 @@ Tehtävänannot ovat
     &= (n^3 - n) + 3n(n + 1). \label{eq:exercise-2-induction-step}
   \end{align}
   Induktio-oletuksen perusteella \(6 \mid (n^3 - n)\). Lisäksi joko \(n\) tai
-  \(n + 1\) on parillinen, joten \(2 \mid n(n + 1)\). On siis olemassa
+  \(n + 1\) on parillinen, joten \(2 \mid n(n + 1)\). Jaollisuuden
+  määritelmän~\ref{def:divisibility} perusteella on siis olemassa
   \(k,m \in \mathbb{Z}\), joille on voimassa
   \(6k \overset{\text{I.O.}}{=} n^3 - n\), \(2m = n(n + 1)\).
   Näistä jälkimmäisestä seuraa \(3n(n + 1) = 3(2m) = 6m\), joten \(6
@@ -82,7 +95,7 @@ Tehtävänannot ovat
   \[
     n^3 - n + 3n(n + 1) = 6k + 6m = 6(k + m),
   \]
-  joten
+  joten jaollisuuden määritelmän~\ref{def:divisibility} perusteella
   \begin{align}
     6 & \mid n^3 - n + 3n(n + 1) \\
     \implies
@@ -170,5 +183,58 @@ Tehtävänannot ovat
   samanvärinen. Ryhmien leikkauksessa on \(k - 1 \geq 1\) koiraa, joten niillä
   on yhteinen koira ja siten sama väri. Ainoa puuttuva induktioaskel on siis
   \(P(1) \implies P(2)\).
+\end{solution}
+
+\begin{exercise}
+  Tutkitaan kolmea väitettä, kun \(n \in \NN\).
+  \begin{enumerate}[label=(\arabic*), nosep]
+    \item \(n\) on jaollinen neljällä, jos \(n\) on jaollinen kahdella.
+    \item \(n\) on jaollinen kahdella, jos \(n\) on jaollinen neljällä.
+    \item \(n\) on jaollinen neljällä, jos ja vain jos \(n\) on
+      jaollinen kahdella.
+  \end{enumerate}
+  Erittele kunkin väitteen oletus ja johtopäätös. Tutki väitteiden
+  paikkaansapitävyyttä.
+  Käytä jaollisuuden määritelmää (\ref{def:divisibility})
+  todistuksissasi ja vastaesimerkeissäsi.
+\end{exercise}
+
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\arabic*), nosep]
+    \item Symboleilla merkittynä väite on \(2 \mid n \implies 4 \mid n\).
+    \begin{enumerate}[label=\alph*), nosep]
+      \item \textbf{Oletus:} \(n\) on jaollinen kahdella, eli \(2 \mid n\).
+      \item \textbf{Johtopäätös:} \(n\) on jaollinen neljällä, eli \(4 \mid n\).
+      \item \textbf{Vastaesimerkki:} Olkoon \(n = 2\) Koska \(2 = 1\cdot 2\) ja
+        \(1 \in \ZZ\), jaollisuuden määritelmän (\ref{def:divisibility})
+        perusteella \(2 \mid 2\). Jos \(4 \mid 2\), olisi olemassa
+        \(k \in \ZZ\), jolle \(2 = 4k\). Tästä seuraisi kuitenkin
+        \(k = \frac{1}{2} \notin \ZZ\), mikä on ristiriita. Siis \(4 \nmid 2\),
+        joten väite \emph{ei} ole paikkaansapitävä.
+    \end{enumerate}
+  \item Symboleilla merkittynä väite on \(4 \mid n \implies 2 \mid n\).
+  \begin{enumerate}[label=\alph*), nosep]
+    \item \textbf{Oletus:} \(n\) on jaollinen neljällä, eli \(4 \mid n\).
+    \item \textbf{Johtopäätös:} \(n\) on jaollinen kahdella, eli \(2 \mid n\).
+    \item \textbf{Todistus:} Koska \(4 \mid n\), on luku \(k \in \ZZ\), jolla
+      \(n = 4k\). Tämä voidaan kirjoittaa myös muodossa \(n = 2(2k)\),
+      ja \(2k \in \ZZ\), joten \(2 \mid n\). Väite on osoitettu
+      paikkaansapitäväksi.
+  \end{enumerate}
+\item Symboleilla merkittynä väite on \(4 \mid n \iff 2 \mid n\).
+  Tämä voidaan kirjoittaa myös pidempään, mutta ehkäpä hieman selkeämpään
+  muotoon \[(4 \mid n \implies 2 \mid n) \wedge (2 \mid n \implies 4 \mid n).\]
+\begin{enumerate}[label=\alph*), nosep]
+  \item \textbf{Oletus:} Ensimmäisessä suunnassa oletus on \(4 \mid n\) ja
+    käänteisessä suunnassa \(2 \mid n\).
+  \item \textbf{Johtopäätös:} Ensimmäisessä suunnassa johtopäätös on
+    \(2 \mid n\) ja käänteisessä suunnassa \(4 \mid n\).
+  \item \textbf{Vastaesimerkki:} Ensimmäinen suunta on tosi kohdan
+    (2) perusteella. Käänteinen suunta on epätosi kohdan (1) vastaesimerkin
+    \(n = 2\) perusteella. Koska toinen suunnista on epätosi, alkuperäinen
+    väite \emph{ei} ole paikkaansapitävä.
+\end{enumerate}
+\end{enumerate}
 \end{solution}
 \end{document}

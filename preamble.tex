@@ -8,27 +8,27 @@
 
 \newcommand{\notesfinnishlanguage}{finnish}
 \ifx\notelanguage\notesfinnishlanguage
-  \newcommand{\notestheoremname}{Lause}
-  \newcommand{\noteslemmaname}{Lemma}
-  \newcommand{\notespropositionname}{Propositio}
-  \newcommand{\notescorollaryname}{Seurauslause}
-  \newcommand{\notesdefinitionname}{Määritelmä}
-  \newcommand{\notesexamplename}{Esimerkki}
-  \newcommand{\notesproblemname}{Tehtävä}
-  \newcommand{\notesexercisename}{Tehtävä}
-  \newcommand{\notesremarkname}{Huomautus}
-  \newcommand{\notessolutionname}{Ratkaisu}
+\newcommand{\notestheoremname}{Lause}
+\newcommand{\noteslemmaname}{Lemma}
+\newcommand{\notespropositionname}{Propositio}
+\newcommand{\notescorollaryname}{Seurauslause}
+\newcommand{\notesdefinitionname}{Määritelmä}
+\newcommand{\notesexamplename}{Esimerkki}
+\newcommand{\notesproblemname}{Tehtävä}
+\newcommand{\notesexercisename}{Tehtävä}
+\newcommand{\notesremarkname}{Huomautus}
+\newcommand{\notessolutionname}{Ratkaisu}
 \else
-  \newcommand{\notestheoremname}{Theorem}
-  \newcommand{\noteslemmaname}{Lemma}
-  \newcommand{\notespropositionname}{Proposition}
-  \newcommand{\notescorollaryname}{Corollary}
-  \newcommand{\notesdefinitionname}{Definition}
-  \newcommand{\notesexamplename}{Example}
-  \newcommand{\notesproblemname}{Problem}
-  \newcommand{\notesexercisename}{Exercise}
-  \newcommand{\notesremarkname}{Remark}
-  \newcommand{\notessolutionname}{Solution}
+\newcommand{\notestheoremname}{Theorem}
+\newcommand{\noteslemmaname}{Lemma}
+\newcommand{\notespropositionname}{Proposition}
+\newcommand{\notescorollaryname}{Corollary}
+\newcommand{\notesdefinitionname}{Definition}
+\newcommand{\notesexamplename}{Example}
+\newcommand{\notesproblemname}{Problem}
+\newcommand{\notesexercisename}{Exercise}
+\newcommand{\notesremarkname}{Remark}
+\newcommand{\notessolutionname}{Solution}
 \fi
 
 \usepackage[a4paper,margin=30mm]{geometry}
@@ -77,8 +77,10 @@
 \aliascntresetthe{remark}
 
 \newenvironment{solution}
-  {\begin{proof}[\notessolutionname]}
-  {\end{proof}}
+{
+\begin{proof}[\notessolutionname]}
+  {
+\end{proof}}
 
 \usepackage[nameinlink,noabbrev]{cleveref}
 
@@ -93,16 +95,22 @@
 \crefname{remark}{remark}{remarks}
 
 \ifx\notelanguage\notesfinnishlanguage
-  \crefname{theorem}{lause}{lauseet}
-  \crefname{lemma}{lemma}{lemmat}
-  \crefname{proposition}{propositio}{propositiot}
-  \crefname{corollary}{seurauslause}{seurauslauseet}
-  \crefname{definition}{määritelmä}{määritelmät}
-  \crefname{example}{esimerkki}{esimerkit}
-  \crefname{problem}{tehtävä}{tehtävät}
-  \crefname{exercise}{tehtävä}{tehtävät}
-  \crefname{remark}{huomautus}{huomautukset}
+\crefname{theorem}{lause}{lauseet}
+\crefname{lemma}{lemma}{lemmat}
+\crefname{proposition}{propositio}{propositiot}
+\crefname{corollary}{seurauslause}{seurauslauseet}
+\crefname{definition}{määritelmä}{määritelmät}
+\crefname{example}{esimerkki}{esimerkit}
+\crefname{problem}{tehtävä}{tehtävät}
+\crefname{exercise}{tehtävä}{tehtävät}
+\crefname{remark}{huomautus}{huomautukset}
 \fi
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
 
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\rank}{rank}
