@@ -128,4 +128,47 @@ Tehtävänannot ovat
   Siis lause pätee myös luvulla \(n + 1\), joten induktioperiaatteen
   nojalla se pätee kaikilla \(n \in \mathbb{N}, n \geq 1\).
 \end{solution}
+
+\begin{exercise}
+  Me ``todistamme'', että kaikki koirat ovat samanvärisiä induktion avulla.
+  Tarkastellaan ensin yhtä koiraa. Se on selvästi samanvärinen itsensä kanssa,
+  joten ryhmässä, jossa on yksi koira, pätee että kaikki koirat ovat
+  samanvärisiä. Teemme induktio-oletuksen, että \(n = k\) koiraa on
+  samanvärisiä. Todistetaan, että silloin myös \(k + 1\) koiraa on
+  samanvärisiä. Tarkastellaan ryhmää, jossa on \(k + 1\) koiraa. Tästä
+  ryhmästä voidaan poistaa yksi koira, jolloin jäljelle jää \(k\) koiraa.
+  Induktio-oletuksen mukaan nämä \(k\) koiraa ovat samanvärisiä. Palautetaan
+  poistettu koira alkuperäiseen ryhmään ja poistetaan siitä jokin toinen
+  koira. Jälleen jäljelle jää \(k\) koiraa ja niiden täytyy olla
+  samanvärisiä. Mutta nyt myös ryhmästä poistetut koirat täytyy olla
+  samanvärisiä näiden kanssa, ja siten kaikkien \(k + 1\) koiran täytyy olla
+  samanvärisiä. Tästä seuraa, että kaikkien koirien täytyy olla samanvärisiä.
+  Missä on virhe?
+\end{exercise}
+
+\begin{solution}
+  Merkitään väitettä symboleilla \(P(k)\): jokaisessa \(k\) koiran ryhmässä
+  kaikki koirat ovat samanvärisiä. Perustapaus \(P(1)\) on tosi. Väitetty
+  induktioaskel ei kuitenkaan päde tapauksessa \(k = 1\). Kun kahden koiran
+  ryhmästä poistetaan vuorotellen toinen koira, saadaan kaksi yhden koiran
+  ryhmää, joiden leikkaus on tyhjä. Ryhmissä ei siis ole yhteistä koiraa,
+  jonka avulla koirien voitaisiin päätellä olevan samanvärisiä. Näin ollen
+  johtopäätöstä \(P(1) \implies P(2)\) ei voida tehdä.
+
+  Todistuksen oikeellisuus vaatisi induktioaskeleen pitävyyden kaikilla
+  \(k \in \mathbb{N}, k \geq 1\), eli tulisi olla voimassa
+  \begin{equation}\label{eq:exercise-4-induction-step}
+    P(k) \implies P(k + 1)
+    \qquad \text{kaikilla } k \in \mathbb{N},\ k \geq 1.
+  \end{equation}
+  Edellä on kuitenkin perusteltu, että \eqref{eq:exercise-4-induction-step} ei
+  ole voimassa kun \(k = 1\).
+
+  Todetaan vielä, että induktioaskel pätee, kun \(k \geq 2\).
+  Poistamalla \(k + 1\) koiran ryhmästä vuorotellen kaksi eri koiraa saadaan
+  kaksi \(k\) koiran ryhmää. Induktio-oletuksen mukaan kumpikin ryhmä on
+  samanvärinen. Ryhmien leikkauksessa on \(k - 1 \geq 1\) koiraa, joten niillä
+  on yhteinen koira ja siten sama väri. Ainoa puuttuva induktioaskel on siis
+  \(P(1) \implies P(2)\).
+\end{solution}
 \end{document}
