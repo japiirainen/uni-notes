@@ -168,4 +168,31 @@ Sieventämällä saadaan
 On osoitettu, että kun \(\abs{x - 2} < 2^{-4444}\), niin
 \(\abs{x^2 - 4} < 2^{-4441}\) on tosi.
 \end{solution}
+
+\begin{exercise}
+Oletetaan, että \(\abs{x - 7} < 5^{-42}\) ja \(\abs{35 - y} < 2^{-42}\).
+Mitä voidaan sanoa lukujen \(x + y\) ja \(42\) etäisyydestä?
+\end{exercise}
+
+\begin{solution}
+Merkitään ensin lukujen \(x + y\) ja \(42\) etäisyys itseisarvon avulla.
+\[d = \abs{(x + y) - 42}.\]
+Kirjoitetaan \(d\) sellaiseen muotoon, että annettuja oletuksia on helppo
+käyttää.
+\[d = \abs{(x + y) - (35 + 7)} = \abs{(x - 7) + (y - 35)}.\]
+Kolmioepäyhtälön perusteella saadaan yläraja
+\[d \leq \abs{x - 7} + \abs{y - 35}.\]
+
+\begin{lemma}\label{lem:abs-sub-comm}
+Kaikilla \(x,y \in \RR\) on voimassa \(\abs{x - y} = \abs{y - x}\).
+\end{lemma}
+\begin{proof}
+\[\abs{x - y} = \abs{-(y - x)} = \abs{y - x}.\]
+\end{proof}
+Lemman \ref{lem:abs-sub-comm} mukaan \(\abs{y - 35} = \abs{35 - y}\).
+Täten
+\[d \leq \abs{x - 7} + \abs{35 - y} < 5^{-42} + 2^{-42}.\]
+Siis lukujen \(x + y\) ja \(42\) etäisyys on pienempi kuin \(5^{-42}
++ 2^{-42}\).
+\end{solution}
 \end{document}
