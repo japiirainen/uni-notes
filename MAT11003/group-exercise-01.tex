@@ -1,0 +1,99 @@
+% !TeX program = pdflatex
+\documentclass[12pt,a4paper]{article}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\usepackage{tikz}
+
+\title{Ryhmätyö 1 ratkaisut}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\noindent
+
+\section{Ratkaisut}
+
+\begin{exercise}
+  \leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+  \item Mitkä luvut toteuttavat epäyhtälön \(\abs{2x - 4} < 7\)? Piirrä
+    kuva tilanteesta. Kirjoita vastaus muodossa ``\(x \in (a, b)\)`` ja
+    muodossa ``\(c < x < d\)``.
+  \item Miten vastaus muuttuu, jos epäyhtälössä \(\abs{2x - 4} < 7\) merkki
+    \(<\) korvataan merkillä \(\leq\)?
+  \item Voiko epäyhtälöä muokata niin, että vastaukseksi saadaan
+    väli \((a, b]\) tai \([a, b)\)?
+  \item Onko olemassa toista epäyhtälöä, joka antaa saman välin kuin
+    tapauksessa (a)?
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Sieventämällä ja itseisarvon määritelmää hyödyntäen saadaan
+  \[-7 < 2x - 4 < 7 \iff -\frac{3}{2} < x < \frac{11}{2},\]
+  eli \(x \in \left(-\frac{3}{2}, \frac{11}{2}\right)\).
+  \begin{center}
+    \begin{tikzpicture}[x=1.2cm]
+      \draw[<->] (-3, 0) -- (7, 0) node[right] {$x$};
+      \draw[very thick] (-1.5, 0) -- (5.5, 0);
+      \draw[fill=white, thick] (-1.5, 0) circle (2.5pt);
+      \draw[fill=white, thick] (5.5, 0) circle (2.5pt);
+      \draw (-1.5, 0.12) -- (-1.5, -0.12)
+      node[below=4pt] {$-\frac{3}{2}$};
+      \draw (2, 0.12) -- (2, -0.12)
+      node[below=4pt] {$2$};
+      \draw (5.5, 0.12) -- (5.5, -0.12)
+      node[below=4pt] {$\frac{11}{2}$};
+    \end{tikzpicture}
+  \end{center}
+\item Vaihtamalla epäyhtälön merkiksi \(\leq\), saadaan luvulle \(x\) ehdot
+  \[x \in \left[-\frac{3}{2}, \frac{11}{2}\right] \iff -\frac{3}{2} \leq x \leq
+  \frac{11}{2}.\]
+  \begin{center}
+    \begin{tikzpicture}[x=1.2cm]
+      \draw[<->] (-3, 0) -- (7, 0) node[right] {$x$};
+      \draw[very thick] (-1.5, 0) -- (5.5, 0);
+      \draw[fill=white, thick] (-1.5, 0) circle (2.5pt);
+      \fill (-1.5, 0) circle (2.5pt);
+      \draw[fill=white, thick] (5.5, 0) circle (2.5pt);
+      \fill (5.5, 0) circle (2.5pt);
+      \draw (-1.5, 0.12) -- (-1.5, -0.12)
+      node[below=4pt] {$-\frac{3}{2}$};
+      \draw (2, 0.12) -- (2, -0.12)
+      node[below=4pt] {$2$};
+      \draw (5.5, 0.12) -- (5.5, -0.12)
+      node[below=4pt] {$\frac{11}{2}$};
+    \end{tikzpicture}
+  \end{center}
+\item Kyllä. Puoliavoin väli saadaan käyttämällä eri päätepisteissä eri
+  epäyhtälömerkkejä. Esimerkiksi
+  \[-7 < 2x - 4 \leq 7\]
+  antaa
+  \[x \in \left(-\frac{3}{2}, \frac{11}{2}\right].\]
+  Vastaavasti
+  \[-7 \leq 2x - 4 < 7\]
+  antaa
+  \[x \in \left[-\frac{3}{2}, \frac{11}{2}\right).\]
+  Pelkkä muoto \(\abs{2x - 4} < 7\) tai \(\abs{2x - 4} \leq 7\) ei voi antaa
+  puoliavointa väliä, koska itseisarvo käsittelee molempia rajoja symmetrisesti.
+\item Kyllä, esimerkiksi epäyhtälö
+  \[\abs{x - 2} < \frac{7}{2}.\]
+  Tämän voi nähdä ekuivalensseista
+  \begin{align*}
+    \abs{x - 2} < \frac{7}{2} &\iff 2\abs{x - 2} < 7 \\
+    &\iff \abs{2x - 4} < 7.
+  \end{align*}
+  Joten epäyhtälöilla \(\abs{2x - 4} < 7\) ja \(\abs{x - 2} < \frac{7}{2}\)
+  on identtinen ratkaisujoukko, eli luvut \(x \in \left(-\frac{3}{2},
+    \frac{11}{2}\right).
+\end{enumerate}
+\end{solution}
+
+\end{document}
