@@ -147,4 +147,25 @@ on muotoa \(0 \leq 0\), joten tämä kyseinen tapaus ei tuota lisäehtoja.
 Täten, esimerkiksi luvun \(m\) arvot \[m = 8, \quad m = 9, \quad m = 10\]
 toteuttavat alkuperäisen epäyhtälön kaikilla \(x,y \in [-4, 3]\).
 \end{solution}
+
+\begin{exercise}
+Oletetaan, että \(\abs{x - 2} < 2^{-4444}\). Pitääkö paikkaansa, että
+\(\abs{x^2 - 4} < 2^{-4441}\)?
+\end{exercise}
+
+\begin{solution}
+Kirjoitetaan epäyhtälö \(\abs{x^2 - 4} < 2^{-4441}\) muotoon
+\[\abs{x - 2}\abs{x + 2} < 2^{-4441}.\]
+Etsitään termille \(\abs{x + 2}\) sopiva yläraja, jotta voidaan käyttää
+annettua oletusta ratkaisuun. Huomataan että
+\[\abs{x + 2} = \abs{(x - 2) + 4} \leq \abs{x - 2} + 4 < 2^{-4444}
++ 4 < 5 < 8 = 2^3.\]
+Löydetyllä ylärajalla saadaan arvioutua lauseketta \(\abs{x^2 - 4}\)
+ylhäältä päin
+\[\abs{x^2 - 4}\ = \abs{x - 2}\abs{x + 2} < 2^{-4444} \cdot 2^3.\]
+Sieventämällä saadaan
+\[\abs{x^2 - 4} < 2^{-4444 + 3} = 2^{-4441}.\]
+On osoitettu, että kun \(\abs{x - 2} < 2^{-4444}\), niin
+\(\abs{x^2 - 4} < 2^{-4441}\) on tosi.
+\end{solution}
 \end{document}
