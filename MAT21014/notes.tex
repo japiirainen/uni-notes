@@ -28,4 +28,86 @@ of Helsinki course page}.
 
 \subsection{03.09.2026}
 
+\begin{definition}
+  The set of \emph{propositional formulas} is defined inductively as follows:
+  \begin{enumerate}
+    \item Every propositional symbol \(p_n\), where \(n \in \NN\), is a
+      propositional formula.
+    \item If \(A\) and \(B\) are propositional formulas, then
+      \[
+        \neg A, \qquad
+        (A \land B), \qquad
+        (A \lor B), \qquad
+        (A \rightarrow B), \qquad
+        (A \leftrightarrow B)
+      \]
+      are propositional formulas.
+    \item No other strings are propositional formulas.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Immediate subformulas]
+  The immediate subformulas of a propositional formula are defined by its
+  outermost connective:
+  \begin{enumerate}
+    \item A propositional symbol \(p_n\) has no immediate subformulas.
+    \item The only immediate subformula of \(\neg A\) is \(A\).
+    \item The immediate subformulas of \((A \mathbin{\circ} B)\) are \(A\)
+      and \(B\), where
+      \[
+        \circ \in \{\land, \lor, \rightarrow, \leftrightarrow\}.
+      \]
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Subformulas]
+  A formula \(B\) is a \emph{subformula} of a formula \(A\) if \(B=A\), or
+  if there are formulas
+  \[
+    A=A_0,A_1,\ldots,A_k=B
+  \]
+  such that \(k \geq 1\) and \(A_{i+1}\) is an immediate subformula of
+  \(A_i\) for every \(0 \leq i<k\).
+\end{definition}
+
+\begin{theorem}[Structural induction]
+  Let \(P(A)\) be a statement about propositional formulas. Suppose that
+  \begin{enumerate}
+    \item \(P(p_n)\) holds for every \(n \in \NN\);
+    \item if \(P(A)\) holds, then \(P(\neg A)\) holds; and
+    \item if \(P(A)\) and \(P(B)\) hold, then
+      \(P((A \mathbin{\circ} B))\) holds for every
+      \[
+        \circ \in \{\land, \lor, \rightarrow, \leftrightarrow\}.
+      \]
+  \end{enumerate}
+  Then \(P(A)\) holds for every propositional formula \(A\).
+\end{theorem}
+
+\begin{example}[Structural induction]
+  For a formula \(A\), let \(v(A)\) be the number of occurrences of
+  propositional symbols in \(A\), and let \(b(A)\) be the number of
+  occurrences of binary connectives in \(A\). We prove that
+  \[
+    v(A)=b(A)+1
+  \]
+  for every propositional formula \(A\).
+
+  If \(A=p_n\), then \(v(A)=1\) and \(b(A)=0\), so the claim holds. Suppose
+  next that the claim holds for a formula \(A\). Negation introduces neither
+  a propositional symbol nor a binary connective, and hence
+  \[
+    v(\neg A)=v(A)=b(A)+1=b(\neg A)+1.
+  \]
+  Finally, suppose that the claim holds for formulas \(A\) and \(B\), and let
+  \(\circ\) be any binary connective. Then
+  \begin{align*}
+    v((A \mathbin{\circ} B))
+      &=v(A)+v(B) \\
+      &=(b(A)+1)+(b(B)+1) \\
+      &=b((A \mathbin{\circ} B))+1.
+  \end{align*}
+  The result follows by structural induction. \qed
+\end{example}
+
 \end{document}
