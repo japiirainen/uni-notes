@@ -14,8 +14,6 @@
 
 \noindent
 
-\section{Ratkaisut}
-
 \begin{exercise}
   \leavevmode\par
 \begin{enumerate}[label=\alph*), nosep]
@@ -40,9 +38,9 @@
   Sama tieto voidaan ilmaista välinä muodossa \(x \in \left(\frac{5}{4},
   \frac{7}{4}\right)\). Geometrinen tulkinta on kenties helpointa tehdä, jos
   muokkaamme alkuperäisen itseisarvoepäyhtälön muotoon
-  \(\abs{x - \frac{6}{4}} < \frac{1}{4}\). Epäyhtälön toteuttaa siis ne luvut
-  \(x\), joiden etäisyys luvusta \(\frac{6}{4}\) on pienempi kuin
-  \(\frac{1}{4}\). Luku \(\frac{6}{4}\) on välin
+  \(\abs{x - \frac{6}{4}} < \frac{1}{4}\). Epäyhtälön toteuttavat siis ne luvut
+  \(x\), joiden etäisyys luvusta \(\frac{6}{4} = \frac{3}{2}\) on pienempi kuin
+  \(\frac{1}{4}\). Luku \(\frac{3}{2}\) on välin
   \(\left(\frac{5}{4}, \frac{7}{4}\right)\) \emph{keskipiste}.
 \end{enumerate}
 \end{solution}
@@ -134,8 +132,8 @@ Saadaan sieventämällä
 Kun \(x \neq y\), alkuperäinen epäyhtälö on yhtäpitävä epäyhtälön
 \[\abs{x + y} \leq m,\]
 kanssa, sillä \(\abs{x - y} > 0\). Koska \(x,y \in [-4,
-3]\), funktio (\(x, y) \mapsto x + y\)
-Saa arvoja väliltä \([-8, 6]\), joten funktio
+3]\), funktio \((x, y) \mapsto x + y\)
+saa arvoja väliltä \([-8, 6]\), joten funktio
 \((x, y) \mapsto \abs{x + y}\) saa arvoja väliltä \([0, 8]\). Arvo \(8\)
 saadaan kuitenkin jos ja vain jos \(x = y = -4\), joten oletuksella
 \(x \neq y\) funktio \((x, y) \mapsto \abs{x + y}\) saa arvoja puoliavoimelta
@@ -157,12 +155,12 @@ Oletetaan, että \(\abs{x - 2} < 2^{-4444}\). Pitääkö paikkaansa, että
 Kirjoitetaan epäyhtälö \(\abs{x^2 - 4} < 2^{-4441}\) muotoon
 \[\abs{x - 2}\abs{x + 2} < 2^{-4441}.\]
 Etsitään termille \(\abs{x + 2}\) sopiva yläraja, jotta voidaan käyttää
-annettua oletusta ratkaisuun. Huomataan että
+annettua oletusta ratkaisuun. Huomataan, että
 \[\abs{x + 2} = \abs{(x - 2) + 4} \leq \abs{x - 2} + 4 < 2^{-4444}
 + 4 < 5 < 8 = 2^3.\]
-Löydetyllä ylärajalla saadaan arvioutua lauseketta \(\abs{x^2 - 4}\)
+Löydetyllä ylärajalla saadaan arvioitua lauseketta \(\abs{x^2 - 4}\)
 ylhäältä päin
-\[\abs{x^2 - 4}\ = \abs{x - 2}\abs{x + 2} < 2^{-4444} \cdot 2^3.\]
+\[\abs{x^2 - 4} = \abs{x - 2}\abs{x + 2} < 2^{-4444} \cdot 2^3.\]
 Sieventämällä saadaan
 \[\abs{x^2 - 4} < 2^{-4444 + 3} = 2^{-4441}.\]
 On osoitettu, että kun \(\abs{x - 2} < 2^{-4444}\), niin
@@ -203,7 +201,7 @@ takaa, että \(3x + 2y < 10\), kun \(\abs{y - 1} < \delta\).
 
 \begin{solution}
 Valitaan \(\delta = 1\). Tällöin
-\[\abs{y - 1} < \delta = 1.\]
+\[\abs{y - 1} < \delta = 1\]
 merkitsee, että \(y \in (0, 2)\). Koska lisäksi \(x \in (0, 2)\), saadaan
 \[3x + 2y < 3 \cdot 2 + 2 \cdot 2 = 10.\]
 Siis \(\delta = 1\) takaa, että \(3x + 2y < 10\), kun \(\abs{y - 1} < \delta\).
