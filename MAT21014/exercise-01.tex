@@ -192,6 +192,16 @@ alilauseet?
 \end{exercise}
 
 \begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Pääkonnektiivi on \(\rightarrow\). Välittömät alilauseet ovat täten
+\(\neg p_0\) ja \(p_1\).
+\item Pääkonnektiivi on \(\rightarrow\). Välittömät alilauseet ovat täten
+\(\neg \neg(p_0 \rightarrow p_1)\) ja \((p_1 \land (p_0 \lor \neg p_1))\).
+\item Pääkonnektiivi on \(\land\). Välittömät alilauseet ovat täten
+\((\neg(p_0 \rightarrow p_1) \rightarrow p_1)\) ja
+\((p_2 \lor (p_1 \rightarrow p_2))\).
+\end{enumerate}
 \end{solution}
 
 \begin{exercise}
@@ -202,6 +212,136 @@ alilauseet?
 \end{exercise}
 
 \begin{solution}
+Alilauseet ovat \(p_0\), \(p_1\), \(p_2\), \(p_3\), \(\neg p_1\),
+\((p_0 \land \neg p_1)\), \((p_2 \land p_3)\), \((p_1 \rightarrow
+(p_2 \land p_3))\), \(\neg(p_1 \rightarrow (p_2 \land p_3))\),
+sekä \((((p_0 \land \neg p_1) \rightarrow p_2) \leftrightarrow \neg(p_1
+\rightarrow (p_2 \land p_3)))\).
 \end{solution}
+
+\begin{exercise}
+Onko olemassa propositiolausetta, jolla on tasan
+\begin{enumerate}[label=\alph*), nosep]
+\item 0
+\item 1
+\item 2
+\item 3
+\end{enumerate}
+alilausetta? Anna esimerkki, tai perustele, miksei sellaista ole.
+\end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item ``Pienin'' mahdollinen propositiolause koostuu yhdestä
+propositiosymbolista, jolla on yksi alilause, kyseinen propositiosymboli
+itse. Ei siis ole olemassa propositiolausetta, jolla on \(0\) alilausetta.
+\item Propositiolauseella \(p_n\), jossa \(n \in \NN\) on yksi alilausetta,
+nimittäin \(p_n\).
+\item Olkoon \(p_n\), missä \(n \in \NN\) propositiosymboli. Propositiolauseella
+\(\neg p_n\) on \(2\) alilausetta, nimittäin \(p_n\) ja \(\neg p_n\).
+\item Olkoon \(p_0\) ja \(p_1\) propositiosymboleita. Propositiolauseessa
+\((p_0 \rightarrow p_1)\) on \(3\) alilausetta, nimittäin
+\(p_0\), \(p_1\), ja \((p_0 \rightarrow p_1)\).
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+Onko olemassa propositiolausetta, jolla on tasan
+\begin{enumerate}[label=\alph*), nosep]
+\item 0
+\item 1
+\item 2
+\item 3
+\end{enumerate}
+välitöntä alilausetta? Anna esimerkki, tai perustele, miksei sellaista ole.
+\end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Propositiosymbolilla \(p_n\), missä \(n \in \mathbb{N}\), ei ole
+yhtään välitöntä alilausetta. Siis on olemassa propositiolause, jolla on
+täsmälleen \(0\) välitöntä alilausetta.
+
+\item Olkoon \(A\) propositiolause. Tällöin propositiolauseella
+\[
+\neg A
+\]
+on täsmälleen yksi välitön alilause, nimittäin \(A\).
+
+\item Esimerkiksi propositiolauseella
+\[
+(p_0 \to p_1)
+\]
+on täsmälleen kaksi välitöntä alilausetta, nimittäin \(p_0\) ja \(p_1\).
+
+\item Ei ole olemassa propositiolausetta, jolla olisi täsmälleen kolme
+välitöntä alilausetta. Propositiolause on määritelmän mukaan joko
+propositiosymboli, muotoa \(\neg A\) oleva propositiolause tai muotoa
+\[
+(A \mathbin{\circ} B)
+\]
+oleva propositiolause, missä \(\circ\) on binäärikonnektiivi. Näillä on
+vastaavasti \(0\), \(1\) tai \(2\) välitöntä alilausetta. Siten
+propositiolauseella ei voi olla täsmälleen \(3\) välitöntä alilausetta.
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+Todista induktiolla, että propositiolauseella, jossa on \(n\) konnektiivia,
+on korkeintaan \(2n + 1\) alilausetta.
+\end{exercise}
+
+\begin{solution}
+Todistetaan väite induktiolla rakenteen suhteen. Merkitään \(\sigma(A)\):lla
+\(A\):n alilauseiden lukumäärää ja \(\lambda(A)\):lla \(A\):ssa esiintyvien
+konnektiivien lukumäärää. Jos \(A\) on propositiosymboli, niin
+\(\lambda(A) = 0\). Tässä tapauksessa, \(\sigma(A) = 1\), joten
+\(\sigma(A) = 1 \leq 2\lambda(A) + 1 = 2\cdot 0 + 1\). Induktioaskel:
+\begin{enumerate}[label=\alph*), nosep]
+\item Jos \(A = \neg B\) ja
+\[\sigma(B) \leq 2\lambda(B) + 1,\]
+niin
+\[
+\begin{aligned}
+\sigma(A) &= \sigma(B) + 1 \\
+&\leq 2\lambda(B) + 2 \\
+&= 2(\lambda(A) - 1) + 2 \\
+&= 2\lambda(A) \\
+&\leq 2\lambda(A) + 1.
+\end{aligned}
+\]
+\item Olkoon \(\circ \in \left\{\land, \lor, \rightarrow,
+\leftrightarrow \right\}\).
+Jos \(C = (A \circ B)\) ja
+\[\sigma(A) \leq 2\lambda(A) + 1,\]
+sekä
+\[\sigma(B) \leq 2\lambda(B) + 1.\]
+Tällöin
+\[
+\begin{aligned}
+\sigma(C) &\leq \sigma(A) + \sigma(B) + 1 \\
+&\leq (2\lambda(A) + 1) + (2\lambda(B) + 1) + 1 \\
+&= 2\lambda(A) + 2\lambda(B) + 3 \\
+&= 2(\lambda(A) + \lambda(B)) + 3 \\
+&= 2\lambda(C) + 1.
+\end{aligned}
+\]
+sillä \(\lambda(C) = \lambda(A) + \lambda(B) + 1\).
+\end{enumerate}
+Näin väite pätee propositiosymboleille sekä säilyy muodostaessa
+uusia propositiolauseita negaation ja binäärikonnektiivien avulla.
+Rakenteellisen induktioperiaatteen nojalla
+\[\sigma(A) \leq 2\lambda(A) + 1\]
+pätee kaikille propositiolauseilla \(A\).
+\end{solution}
+
+\begin{exercise}[Haastetehtävä]
+Osoita, että kaikilla propositiolauseilla \(A\) pätee:
+
+Propositiolauseen \(A\) alimerkkijono on \(A\):n alilause, jos ja vain jos
+se on itsessään propositiolause.
+\end{exercise}
 
 \end{document}
