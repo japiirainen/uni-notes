@@ -1,10 +1,15 @@
 COURSE ?= MAT11003
 DOCUMENT ?= notes
 SOURCE := $(COURSE)/$(DOCUMENT).tex
+SOURCES := $(wildcard */*.tex)
+PDFS := $(SOURCES:.tex=.pdf)
 
 .PHONY: all pdf watch clean
 
-all: pdf
+all: $(PDFS)
+
+%.pdf: %.tex preamble.tex
+	latexmk -cd -pdf -synctex=1 -interaction=nonstopmode -file-line-error -halt-on-error "$<"
 
 pdf:
 	@test -f "$(SOURCE)" || { echo "Missing source: $(SOURCE)" >&2; exit 1; }

@@ -5,13 +5,13 @@ courses.
 
 ## Building
 
-For example, to build the `MAT11001` notes:
+To build every PDF in the project:
 
 ```sh
 make
 ```
 
-The course and document can be selected explicitly:
+To build one PDF, select the course and document explicitly:
 
 ```sh
 make COURSE=MAT11001 DOCUMENT=notes
