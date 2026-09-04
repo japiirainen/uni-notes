@@ -27,6 +27,9 @@
 \end{exercise}
 
 \begin{solution}
+  ``Jos sataa ja \emph{ei} tuule, niin \emph{ei} ole kylmä.``, tai mahdollisesti
+  hieman tyylikkäämmin: ``Jos sataa \emph{eikä} tuule, niin \emph{ei}
+  ole kylmä.``
 \end{solution}
 
 \begin{exercise}
@@ -39,21 +42,46 @@
 \end{exercise}
 
 \begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item \(((p_2 \land \neg p_0) \rightarrow p_1).\)
+\item \((\neg p_0 \rightarrow (\neg p_2 \lor p_1)).\)
+\end{enumerate}
 \end{solution}
 
 \begin{exercise}
-Tarkastellaan lausetta ``Jos Niilo Syö valtavasti aina, kun Unicafessa
+Tarkastellaan lausetta ``Jos Niilo syö valtavasti aina, kun Unicafessa
 on linssibolognesea, niin joko Niilo on kova syömään tai linssibolognese on
-hänen lempiruokansa.``
+hänen lempiruokaansa.``
 \begin{enumerate}[label=\alph*), nosep]
 \item Mitkä ovat lauseen sisältämät atomilauseet?
 \item Formalisoi lause propositiolauseella. (Huomaa, että joudut korvaamaan
-    luonnollisen kielen vivahteikkaampia ilmaisuja propositiologiikan
-  konnektiiveilla.)
+  luonnollisen kielen vivahteikkaampia ilmaisuja propositiologiikan
+konnektiiveilla.)
 \end{enumerate}
 \end{exercise}
 
 \begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item ``Niilo syö valtavasti'', ``Unicafessa on linssibolognesea'',
+``Niilo on kova syömään'', ``linssibolognese on hänen lempiruokaansa''.
+
+\item Merkitään propositiosymboleilla \(p_0,p_1,p_2,p_3\) kohdassa (a)
+löytyneet atomilauseet. Olkoon
+\[
+\begin{aligned}
+  p_0 &= \text{``Niilo syö valtavasti''},\\
+  p_1 &= \text{``Unicafessa on linssibolognesea''},\\
+  p_2 &= \text{``Niilo on kova syömään''},\\
+  p_3 &= \text{``linssibolognese on hänen lempiruokaansa''}.
+\end{aligned}
+\]
+Tällöin lauseen formaali muoto on
+\[
+(p_1 \to p_0) \to (p_2 \lor p_3).
+\]
+\end{enumerate}
 \end{solution}
 
 \begin{exercise}
@@ -63,6 +91,30 @@ Keksi luonnollisen kielen lause, jonka formalisointi on muotoa
 \end{exercise}
 
 \begin{solution}
+Olkoon
+\[
+\begin{aligned}
+p_0 &= \text{``Nalle menee ulos''}, \\
+p_1 &= \text{``Nalle ottaa sateenvarjon''}, \\
+p_2 &= \text{``Nalle ottaa sadetakin''}.
+\end{aligned}
+\]
+``Rakennetaan'' pitkähkö lause \emph{sisältä ulos}:
+\[
+\begin{aligned}
+(p_1 \lor p_2) &= \text{``Nalle ottaa sateenvarjon tai sadetakin''}, \\
+(p_0 \rightarrow (p_1 \lor p_2)) &= \text{``Jos Nalle menee ulos, hän
+ottaa sateenvarjon tai sadetakin''}, \\
+\neg p_2 &= \dots \text{``ja Nalle ei ota sadetakkia.''}, \\
+(p_0 \rightarrow p_1) &= \text{``Jos Nalle menee ulos, niin hän ottaa
+sateenvarjon.''}
+\end{aligned}
+\]
+Täten, yksi mahdollinen luonnollisen kielen lause on:
+
+``Jos pätee, että jos Nalle menee ulos, hän ottaa sateenvarjon tai
+sadetakin, ja Nalle ei ota sadetakkia, niin jos Nalle menee ulos,
+hän ottaa sateenvarjon.''
 \end{solution}
 
 \begin{exercise}
@@ -80,6 +132,51 @@ Mitkä seuraavista merkkijonoista ovat propositiolauseita? Perustele.
 \end{exercise}
 
 \begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Rakennetaan merkkijono propositiolauseen määritelmän mukaisesti. Ensiksi,
+\(A = p_0\) on propositiolause, sillä se on propositiosymboli.
+Propositiolauseen määritelmän mukaan, merkkijonot
+\(B = (A \land A)\) ja \(C = \neg A\) ovat propositiolauseita. Jälleen,
+propositiolauseen määritelmän nojalla, merkkijon \((B \land C)\) on
+propositiolause. Koska
+\[(B \land C) = ((p_0 \land p_0) \land \neg p_0),\]
+niin \(((p_0 \land p_0) \land \neg p_0)\) on propositiolause.
+\item Merkkijono \(p_0 \rightarrow p_1 \rightarrow p_2\) ei ole propositiolause.
+Propositiolauseen määritelmän mukaan, jos \(A\) ja \(B\) ovat
+propositiolauseita, implikaation avulla muodostettu propositiolause on muotoa
+\((A \rightarrow B)\). Merkkijonossa \(p_0 \rightarrow p_1 \rightarrow p_2\)
+implikaatioiden ympäriltä puuttuivat määritelmän edellyttävät sulkeet, joten
+sitä ei voida muodostaa propositiolauseen määritelmän mukaisesti.
+\item \(p_{32110}\) on propositiosymboli, joten propositiolauseen määritelmän
+mukaan, se on propositiolause.
+\item Merkkijono \((p_0) \lor (\neg p_0)\) ei ole propositiolause, sillä
+propositiolauseen määritelmän mukaan disjunktio on muotoa \((A \lor B)\),
+jossa \(A\) ja \(B\) ovat propositiolauseita. Annettu merkkijono ei ole
+tätä muotoa. Lisäksi osamerkkijonoa \((p_0)\) ei voida muodostaa
+propositiolauseen mukaisesti.
+\item Merkkijono \((\neg(\neg p_{222}))\) ei ole propositiolause.
+Propositiolauseen määritelmän mukaan sulkeita käytetään\emph{vain}
+binäärisillä konnektiiveilla muodostetuissa lauseissa, jotka ovat muotoa
+\[(A \land B), (A \lor B), (A \rightarrow B), (A \leftrightarrow B),\]
+missä \(A\) ja \(B\) on propositiolauseita. Merkkijono \((\neg(\neg p_{222}))\)
+ei ole mitään näistä muodoista, joten se ei ole propositiolause.
+\item \())p_1\land \rightarrow p_0\) ei ole propositiolause, sillä
+propositiolauseen määritelmän mukaan mikään propositiolause ei ola
+oikealla sululla \()\).
+\item Olkoon \(A = p_0\), \(B = \neg A\), \(C = \neg B\). Propositiolauseen
+määritelmän mukaan \(A,B,C\) ovat propositiolauseita. Määritelmän mukaan myös
+\(D = (A \rightarrow C)\) on propositiolause. Nyt \(E = p_5\) on
+propositiolause, sillä \(p_5\) on propositiosymboli, joten myös
+\[(E \rightarrow D) = (p_5 \rightarrow (p_0 \rightarrow \neg \neg p_0))\]
+on propositiolause.
+\item \((p_0 \neg \land p_2)\) ei ole propositiolause. Propositiolauseen
+määritelmässä negaatio esiintyy aina muodossa \(\neg A\), missä \(A\)
+on propositiolause. Propositiolause ei voi alkaa konnektiivilla \(\land\),
+joten merkkijono \(\neg \land\) ei voi esiintyä propositiolauseen
+alimerkkijonona. Koska \((p_0 \neg \land p_2)\) sisältää tämän
+alimerkkijonon, se ei ole propositiolause.
+\end{enumerate}
 \end{solution}
 
 \begin{exercise}
