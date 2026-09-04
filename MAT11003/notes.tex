@@ -28,6 +28,8 @@ of Helsinki course page}.
 
 \subsection{01.09.2026}
 
+\subsubsection{The absolute value function}
+
 \begin{definition}\label{def:abs}
   For any real number \(x \in \RR\), the \emph{absolute value} (or
   \emph{modulus}) of \(x\), denoted by \(\abs{x}\), is defined by
@@ -100,4 +102,181 @@ on the real line.
   \]
   which is equivalent to the reverse triangle inequality.
 \end{proof}
+
+\subsection{03.09.2026}
+
+\subsubsection{More on absolute values}
+
+\begin{theorem}
+  We have
+  \[
+    \abs{xy} = \abs{x}\abs{y}
+  \]
+  for all \(x, y \in \RR\).
+\end{theorem}
+
+\begin{proof}
+  We prove by splitting into four cases. Firstly, if \(x,y \geq 0\), we have
+  \(xy \geq 0\), so \(\abs{xy} = xy\). But in this case also both
+  \(\abs{x} = x\) and \(\abs{y} = y\), so \(\abs{xy} = xy = \abs{x}\abs{y}\).
+  Secondly, if \(x, y < 0\), we have \(xy > 0\),
+  \(\abs{xy} = xy = (-x)(-y) = \abs{x}\abs{y}\). Now suppose
+  \(x < 0\) and \(y \geq 0\). Then \(xy\leq 0\), and hence
+  \(\abs{xy}=-xy=(-x)y=\abs{x}\abs{y}\). The
+  case \(x \geq 0\), \(y < 0\) follows from commutativity of multiplication
+  of real numbers.
+\end{proof}
+
+\begin{example}
+  Let \(x \in (1, 3)\) and \(y \in (4, 8)\). Find an upper bound for
+  \[\abs{x + y - 8}.\] Kolmioepäyhtälön nojalla saadaan
+  \[
+    \begin{aligned}
+      \abs{x + y - 8} &= \abs{(x - 2) + (y - 6)} \\
+      &\leq \abs{x - 2} + \abs{y - 6} \\
+      &< 1 + 2 \\
+      &= 3.
+    \end{aligned}
+  \]
+  Thus we have found that \(3\) is an upper bound for
+  \(\abs{x + y - 8}\).
+\end{example}
+
+\begin{example}
+  Let \(x \in (2, 6)\) and \(y \in (2, 8)\). Find an upper boud for
+  \[\abs{xy - 20}.\]
+  We have \(\abs{x - 4} < 2\) and \(\abs{y - 5} < 3\). We have
+  \[
+    \begin{aligned}
+      \abs{xy - 20} &= \abs{xy - 4y + 4y - 20} \\
+      &\leq \abs{xy - 4y} + \abs{4y - 20} \\
+      &= \abs{y}\abs{x - 4} + 4\abs{y - 5} \\
+      &\leq 8 \cdot 2 + 4 \cdot 3 \\
+      &= 28.
+    \end{aligned}
+  \]
+  It follows that \(28\) is an upper bound for \(\abs{xy - 20}\).
+\end{example}
+
+\begin{example}
+  Find a positive real number \(m\) such that
+  \[\abs{x^2 - 16} \leq m\abs{x - 4},\]
+  where \(x \in (0, 10)\).
+
+  When \(x = 4\), we get \(0 \leq 0\), which holds with every \(m \in \RR\).
+  Now suppose \(x \neq 4\). We simplify the inequality and obtain
+  \[\abs{x + 4} \leq m.\]
+  Since \(x \in (0, 10)\), \(\abs{x + 4} \in (4, 14)\). We have thus obtained
+  \[\abs{x + 4} \le 14,\]
+  so we can choose \(m = 14\).
+\end{example}
+
+\subsubsection{Field and ordering properties of \texorpdfstring{\(\RR\)}{R}}
+
+\begin{definition}
+  \((F, +, \cdot)\) is a field if and only if
+  \begin{enumerate}
+    \item The algebraic structure \((F, +)\) is an \emph{abelian group}.
+    \item The algebraic structure \((F^{*}, \cdot)\) is an
+      \emph{abelian group}, where \(F^{*} = F \setminus \{0_F\}\).
+    \item The operation \(\cdot\) distributes over \(+\).
+  \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+  \(\RR\) is a field.
+\end{theorem}
+
+\begin{proof}
+  Consider the usual addition and multiplication on \(\RR\).
+
+  First, \((\RR,+)\) is an abelian group. Addition is closed, associative,
+  and commutative; \(0\) is an additive identity; and every \(x\in\RR\) has
+  the additive inverse \(-x\).
+
+  Next, \((\RR\setminus\{0\},\cdot)\) is an abelian group. Multiplication is
+  associative and commutative, and \(1\) is its identity element. If
+  \(x\neq 0\), then \(x^{-1}=1/x\) is a nonzero real number satisfying
+  \[
+    x\cdot x^{-1}=1.
+  \]
+  The product of two nonzero real numbers is nonzero, so multiplication is
+  closed on \(\RR\setminus\{0\}\).
+
+  Finally, multiplication distributes over addition:
+  \[
+    x(y+z)=xy+xz
+  \]
+  for all \(x,y,z\in\RR\). Therefore \((\RR,+,\cdot)\) is a field.
+\end{proof}
+
+\begin{definition}[Ordered field]
+  An \emph{ordered field} is a field \((F,+,\cdot)\) equipped with a relation
+  \(<\) such that, for all \(x,y,z\in F\),
+  \begin{enumerate}
+    \item exactly one of \(x<y\), \(x=y\), or \(x>y\) holds;
+    \item if \(x<y\) and \(y<z\), then \(x<z\);
+    \item if \(x<y\), then \(x+z<y+z\); and
+    \item if \(0_F<x\) and \(0_F<y\), then \(0_F<xy\).
+  \end{enumerate}
+  Here \(x>y\) means \(y<x\). The first two conditions state that \(<\) is a
+  strict total order, while the last two state that the order is compatible
+  with the field operations.
+\end{definition}
+
+\begin{theorem}
+  The field \((\RR,+,\cdot)\), equipped with the usual order \(<\), is an
+  ordered field.
+\end{theorem}
+
+\begin{proof}
+  We have already shown that \((\RR,+,\cdot)\) is a field. The usual strict
+  order on \(\RR\) satisfies trichotomy and transitivity, so it satisfies the
+  first two ordering axioms.
+
+  Suppose that \(x<y\). Then \(0<y-x\), and for every \(z\in\RR\),
+  \[
+    (y+z)-(x+z)=y-x>0.
+  \]
+  Hence \(x+z<y+z\). Furthermore, if \(0<x\) and \(0<y\), then the usual
+  sign rule for multiplication gives \(0<xy\). Thus the order
+  is compatible with addition and multiplication, and \(\RR\) is an ordered
+  field.
+\end{proof}
+
+\begin{theorem}[Uniqueness of additive identity]
+  The identity element \(0_F\) of the abelian group \((F, +)\) is unique.
+\end{theorem}
+\begin{proof}
+  Suppose that \(0_F\) and \(0'_F\) are both additive identity elements of
+  \((F,+)\). Since \(0_F\) is an additive identity,
+  \[
+    0_F+0'_F=0'_F.
+  \]
+  Since \(0'_F\) is also an additive identity,
+  \[
+    0_F+0'_F=0_F.
+  \]
+  Therefore \(0_F=0'_F\).
+\end{proof}
+
+\begin{theorem}[Cancellation law]
+  Let \(x,y,z \in \RR\). If \(x+y=x+z\), then \(y=z\).
+\end{theorem}
+
+\begin{proof}
+  Using the additive identity, additive inverse, associativity, and the
+  assumption \(x+y=x+z\), we obtain
+  \begin{align*}
+    y
+    &=0+y \\
+    &=((-x)+x)+y \\
+    &=(-x)+(x+y) \\
+    &=(-x)+(x+z) \\
+    &=((-x)+x)+z \\
+    &=0+z \\
+    &=z.
+  \end{align*}
+\end{proof}
+
 \end{document}
