@@ -1,4 +1,4 @@
-COURSE ?= MAT11001
+COURSE ?= MAT11003
 DOCUMENT ?= notes
 SOURCE := $(COURSE)/$(DOCUMENT).tex
 
@@ -16,4 +16,5 @@ watch:
 
 clean:
 	@test -f "$(SOURCE)" || { echo "Missing source: $(SOURCE)" >&2; exit 1; }
-	latexmk -cd -c "$(SOURCE)"
+	latexmk -norc -cd -c "$(SOURCE)"
+	rm -rf "$(COURSE)/.latex-build"

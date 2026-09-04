@@ -1,4 +1,5 @@
 .direnv/
+.latex-build/
 result
 
 # LaTeX auxiliary files. Final PDFs are intentionally tracked.

@@ -19,7 +19,9 @@ make COURSE=MAT11001 DOCUMENT=notes
 
 Use `make watch COURSE=MAT11001 DOCUMENT=notes` for continuous compilation and
 `make clean COURSE=MAT11001 DOCUMENT=notes` to remove auxiliary files. Cleaning
-preserves the final PDF because PDFs are kept under version control.
+preserves the final PDF because PDFs are kept under version control. Builds use
+isolated temporary directories so readers only see the output of a completed
+compilation.
 
 Without an active development shell, run a command through Nix directly:
 
