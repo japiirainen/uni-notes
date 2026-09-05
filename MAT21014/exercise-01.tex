@@ -337,11 +337,121 @@ Rakenteellisen induktioperiaatteen nojalla
 pätee kaikille propositiolauseilla \(A\).
 \end{solution}
 
+\begin{lemma}\label{lem:subformula}
+Jokainen propositiolauseessa \(A\) esiintyvä propositiosymboli,
+negaatiomerkki \(\neg\) tai vasen sulkumerkki \((\) on jonkin
+\(A\):n alilauseen ensimmäinen merkki.
+\end{lemma}
+
+\begin{proof}
+Todistetaan väite induktiolla rakenteen suhteen. Jos \(A\) on propositiosymboli,
+\(A = p_n\), niin ainoa väitteessä tarkasteltava merkki on \(p_n\), joka
+on \(A\):n ensimmäinen merkki. Koska \(A\) on itsensä alilause, väite pätee.
+
+Oletetaan sitten, että väite pätee propositiolauseella \(B\).
+Jos \(A = \neg B\), niin ensimmäinen merkki \(\neg\) aloittaa alilauseen \(A\).
+Lisäksi jokainen \(B\):ssä esiintyvä propositiosymboli, negaatiomerkki tai
+vasen sulkumerkki aloittaa induktio-oletuksen nojalla jonkin \(B\):n alilauseen.
+Jokainen \(B\):n alilause on \(A\):n alilause, joten väite pätee \(A\):lle.
+
+Oletetaan lopuksi, että väite pätee propositiolauseilla \(B\) ja \(C\).
+Jos
+\[
+A = (B \circ C), \qquad
+\circ \in \{\land, \lor, \rightarrow, \leftrightarrow\},
+\]
+niin ensimmäinen merkki \((\) aloittaa alilauseen \(A\). Muut väitteessä
+tarkasteltavat merkit esiintyvät joko \(B\):ssä tai \(C\):ssä.
+Induktio-oletuksen nojalla ne aloittavat jonkin \(B\):n tai \(C\):n alilauseen
+ja siten jonkin \(A\):n alilauseen.
+
+Rakenteellisen induktioperiaatteen nojalla väite pätee kaikilla
+propositiolauseilla \(A\).
+\end{proof}
+
+\begin{lemma}\label{lem:start-seg}
+Jos \(B\) ja \(C\) ovat propositiolauseita, ja \(B\) on \(C\):n alusegmentti,
+niin \(B = C\).
+\end{lemma}
+
+\begin{proof}
+Olkoon \(B\) ja \(C\) propositiolauseita, ja \(B\) \(C\):n alkusegmentti,
+eli \(C = BZ\), jollain merkkijonolla \(Z\). Merkitään tyhjää
+merkkijonoa symbolilla \(\epsilon\). On näytettävä \(Z = \epsilon\).
+Edetään induktiolla rakenteen suhteen. Ensiksi, jos \(C = p_n\) niin
+\(C\):n ainoa merkki on \(p_n\), joten \(C = B = p_n\), eli \(Z = \epsilon\).
+
+Oletetaan sitten, että väite pätee propositiolauseella \(A\). Jos
+\(C = \neg A\), niin \(B\) on oltava muotoa \(B = \neg B^{'}\).
+Koska \(B\) on \(C\):n alkusegmentti, \(B^{'}\) on \(A\):n alkusegmentti.
+Induktio-oletuksen nojalla \(A = B^{'}\), joten \(B = C\).
+
+Oletetaan lopuksi, että väite pätee propositiolauseilla \(D\) ja \(E\). Olkoon
+\[
+C = (D \circ E), \qquad
+\circ \in \{\land, \lor, \rightarrow, \leftrightarrow\}.
+\]
+Määritellään seuraavat funktiot merkkijonolle \(Y\)
+\[
+\begin{aligned}
+O(Y) &= \text{``\(Y\) \textbf{oikeiden} sulkumerkkien lukumäärä''}, \\
+V(Y) &= \text{``\(Y\) \textbf{vasenten} sulkumerkkien lukumäärä''}.
+\end{aligned}
+\]
+\begin{lemma}\label{lem:helper}
+Jos \(Y\) on propositiolauseen \(A\) alkusegmentti, niin
+\(V(Y) \geq O(Y)\).
+\end{lemma}
+\begin{proof}
+Olkoon \(Y\) propositiolauseen \(A\) alkusegmentti. Jokainen \(Y\):ssä
+esiintyvä oikea sulkumerkki \()\) päättää jonkun binäärisen alilauseen
+\[B \circ C,\]
+joten sitä vastaava vasen sulkumerkki \((\) esiintyy ennen sitä ja kuuluu
+siten myös \(Y\):hyn. Eri oikeita sulkumerkkejä vastaavat eri vasemmat
+sulkumerkit. Näin ollen \(Y\):ssä on vähintään yhtä monta vasenta
+sulkumerkkiä kuin oikeaa sulkumerkkiä, eli
+\[V(Y) \geq  O(Y).\]
+\end{proof}
+Oletetaan vastoin väitettä, että \(B \neq C\). Tällöin \(B\) on
+\(C\):n aito alkusegmentti. Koska \(C=(D\circ E)\), \(B\) sisältää
+\(C\):n ensimmäisen vasemman sulkumerkin, mutta ei sitä vastaavaa
+viimeistä oikeaa sulkumerkkiä. Lemman (\ref{lem:helper}) nojalla muut \(B\):ssä
+esiintyvät sulkumerkit eivät voi tuottaa oikeiden sulkumerkkien
+ylijäämää. Siis
+\[
+V(B)>O(B).
+\]
+Toisaalta \(B\) on propositiolause, joten
+\[
+V(B)=O(B),
+\]
+mikä on ristiriita. Siis \(B=C\).
+
+Väite seuraa rakenteellisesta induktioperiaatteesta.
+\end{proof}
+
 \begin{exercise}[Haastetehtävä]
 Osoita, että kaikilla propositiolauseilla \(A\) pätee:
 
 Propositiolauseen \(A\) alimerkkijono on \(A\):n alilause, jos ja vain jos
 se on itsessään propositiolause.
 \end{exercise}
+
+\begin{solution}
+Olkoon \(X\) propositiolauseen \(A\) alimerkkijono.
+
+\((\Longrightarrow)\) Olkoon \(X\) on \(A\):n alilause. Halutaan osoittaa,
+että \(X\) on itsessään propositiolause. Alilauseen (rekursiivisen) määritelmän
+mukaan, jokainen \(A\):n alilause on itsessään propositiolause, joten
+\(X\) on propositiolause.
+
+\((\Longleftarrow)\) Olkoon \(X\) on propositiolause. Halutaan osoittaa,
+että \(X\) on \(A\):n alilause. Tiedetään Lemman (\ref{lem:subformula}) nojalla,
+että kohdassa, josta \(X\) alkaa merkkijonossa \(A\), alkaa jokin \(A\):n
+alilause \(B\). Koska \(X\) ja \(B\) alkavat samasta kohdasta,
+jompikumpi on oltava toisen alkusegmentti. Koska sekä \(X\) että \(B\) ovat
+propositiolauseita, Lemman (\ref{lem:start-seg}) nojalla, \(X = B\).
+Siis \(X\) on \(A\):n alilause.
+\end{solution}
 
 \end{document}
