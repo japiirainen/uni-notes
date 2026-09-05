@@ -1,4 +1,4 @@
-COURSE ?= MAT11003
+COURSE ?= analysis-1
 DOCUMENT ?= notes
 SOURCE := $(COURSE)/$(DOCUMENT).tex
 SOURCES := $(wildcard */*.tex)

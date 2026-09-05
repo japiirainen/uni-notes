@@ -14,11 +14,11 @@ make
 To build one PDF, select the course and document explicitly:
 
 ```sh
-make COURSE=MAT11001 DOCUMENT=notes
+make COURSE=jym DOCUMENT=notes
 ```
 
-Use `make watch COURSE=MAT11001 DOCUMENT=notes` for continuous compilation and
-`make clean COURSE=MAT11001 DOCUMENT=notes` to remove auxiliary files. Cleaning
+Use `make watch COURSE=jym DOCUMENT=notes` for continuous compilation and
+`make clean COURSE=jym DOCUMENT=notes` to remove auxiliary files. Cleaning
 preserves the final PDF because PDFs are kept under version control. Builds use
 isolated temporary directories so readers only see the output of a completed
 compilation.
