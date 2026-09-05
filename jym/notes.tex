@@ -13,7 +13,7 @@
 
 \begin{abstract}
   Notes for the University of Helsinki course MAT11001, taught in Finnish
-  from 31.07.2026--17.10.2026.
+  from 31.08.2026--17.10.2026.
 \end{abstract}
 
 \tableofcontents
@@ -31,6 +31,8 @@ of Helsinki course page}.
 The first lecture was mostly spent going over the course structure and other
 general admin topics. We did go over some preliminary definitions and examples,
 which will follow.
+
+\subsubsection{Notational conventions}
 
 \begin{definition}
   An integer \(p > 1\) is \emph{prime} if its only positive divisors are
@@ -50,15 +52,19 @@ which will follow.
   \end{align*}
 \end{definition}
 
-We use the following principle without proof.
+\subsubsection{Principle of mathematical induction}
 
-\begin{theorem}[Principle of mathematical induction]
-  Let \(P(n)\) be a statement for each \(n \in \mathbb{N}\). Suppose that
+Here we state the fundamental principle of mathematical induction without proof,
+and use it freely thereafter.
+
+\begin{theorem}[Principle of mathematical induction]\label{thm:induction}
+  Let \(n_0 \in \mathbb{N}\), and let \(P(n)\) be a statement for each
+  \(n \in \mathbb{N}\) with \(n \geq n_0\). Suppose that
   \begin{enumerate}
-    \item \(P(0)\) is true, and
-    \item for every \(n \in \mathbb{N}\), \(P(n)\) implies \(P(n+1)\).
+    \item \(P(n_0)\) is true, and
+    \item for every \(n \geq n_0\), \(P(n)\) implies \(P(n+1)\).
   \end{enumerate}
-  Then \(P(n)\) is true for every \(n \in \mathbb{N}\).
+  Then \(P(n)\) is true for every \(n \geq n_0\).
 \end{theorem}
 
 \begin{proof}
@@ -88,5 +94,114 @@ We use the following principle without proof.
 \end{example}
 
 \subsection{03.09.2026}
+
+\subsubsection{Divisibility of integers}
+
+We start by defining the precise meaning of \emph{even} and \emph{odd} numbers.
+
+\begin{definition}
+  A number \(m \in \ZZ\) is \emph{even} if there exists \(k \in \ZZ\) such that
+  \[
+    m = 2k.
+  \]
+  On the other hand, \(m\) is \emph{odd} if there exists a \(k \in \ZZ\) such
+  that
+  \[
+    m = 2k + 1.
+  \]
+\end{definition}
+
+\begin{definition}[Divisibility]
+  A number \(a \in \ZZ\) is said to be \emph{divisible} by a number
+  \(b \in \ZZ, b \neq 0\), if there exists a \(k \in \ZZ\) such that
+  \[
+    a = kb.
+  \]
+  In this case we also say that \(b\) \emph{divides} \(a\), and write
+  \[
+    b \mid a.
+  \]
+  If \(b\) does \emph{not} divide \(a\), we write
+  \[
+    b \nmid a.
+  \]
+\end{definition}
+
+\begin{definition}
+  For \(n \in \ZZ \setminus \{0\}\), we denote the set of integers that are
+  divisible by \(n\) by
+  \[
+    n\ZZ = \left\{z \in \ZZ : z = nk, \quad k \in \ZZ\right\}.
+  \]
+\end{definition}
+
+\subsubsection{Strong induction}
+
+In some proofs it is useful to assume all preceding cases rather than only the
+immediately preceding case. This gives an equivalent form of the principle of
+induction, called \emph{strong induction}.
+
+\begin{theorem}[Strong induction]\label{thm:strong-induction}
+  Let \(n_0 \in \NN\), and let \(P(n)\) be a statement for each
+  \(n \in \NN\) with \(n \geq n_0\). Suppose that
+  \begin{enumerate}
+    \item \(P(n_0)\) is true, and
+    \item for every \(n \geq n_0\), if \(P(k)\) is true for every \(k\) with
+      \(n_0 \leq k \leq n\), then \(P(n + 1)\) is true.
+  \end{enumerate}
+  Then \(P(n)\) is true for every \(n \geq n_0\).
+\end{theorem}
+
+\begin{proof}
+  Omitted.
+\end{proof}
+
+As an example where strong induction is natural, let us prove that all natural
+numbers \(n \geq 2\) can be written as a product of \emph{prime} numbers.
+
+\begin{theorem}
+  Every natural number \(n \geq 2\) can be written as a product of
+  prime numbers.
+\end{theorem}
+
+\begin{proof}
+  When \(n = 2\), we have \(n \in \PP\), so the result holds trivially.
+  Now suppose \(n \geq 2\) and the statement holds for all
+  \(2 \leq k \leq n\). If \(n + 1 \in \PP\), the result holds trivially, so
+  suppose \(n + 1 \notin \PP\). Then we have
+  \[
+    n + 1 = ab,
+  \]
+  for some \(2 \leq a,b \leq n\). By the induction hypothesis, \(a\) and
+  \(b\) can be written as products of primes, so
+  \[
+    \begin{aligned}
+      a &= p_1p_2\cdots p_i, \quad p_1,\ldots,p_i \in \PP, \\
+      b &= q_1q_2\cdots q_j, \quad q_1,\ldots,q_j \in \PP.
+    \end{aligned}
+  \]
+  Thus we have
+  \[
+    n + 1 = ab = p_1p_2\cdots p_iq_1q_2\cdots q_j.
+  \]
+  The result follows from Theorem \ref{thm:strong-induction}.
+\end{proof}
+
+\subsubsection{Sequences}
+
+\begin{definition}
+  A sequence of real numbers is a function \(z\colon \NN \rightarrow \RR\),
+  whose terms are denoted by \(z_n = z(n)\). We write the sequence as
+  \[
+    (z_n)_{n \in \NN} = (z_0,z_1,z_2,\ldots).
+  \]
+\end{definition}
+
+\begin{definition}
+  A sequence of real numbers may also be specified recursively. First, for
+  some \(k \in \ZZ^+\), we define the initial terms
+  \(z_0,\ldots,z_{k-1}\). For each \(n \geq k\), we then define \(z_n\) in
+  terms of earlier terms \(z_0,\ldots,z_{n-1}\).
+\end{definition}
 
 \end{document}
