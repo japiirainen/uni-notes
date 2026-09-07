@@ -23,41 +23,54 @@
 \noindent
 
 \begin{exercise}
-\end{exercise}
-Kirjoita käyttäen matemaattista notaatiota (joukko-opillisia ja loogisia
-merkkejä)
+  Kirjoita käyttäen matemaattista notaatiota (joukko-opillisia ja loogisia
+  merkkejä)
 \begin{enumerate}[label=\alph*), nosep]
-\item luku \(\sqrt{2}\) ei kuulu rationaalilukuihin,
-\item lukujen \(-7\), \(0\), \(51\) ja miljoona muodostama joukko on
-  kokonaislukujen osajoukko,
-\item joukko \(C\) on joukkojen \(A\) ja \(B\) leikkauksen komplementin
-  aito osajoukko,
-\item niiden reaalilukujen \(x\) joukko, joiden neliö on suurempi kuin
-  \(1,2\) ja pienempi kuin \(3,6\),
-\item lukujen \(a\) ja \(b\) irrationaalisuudesta ei seuraa summan
-  \(a + b\) irrationaalisuus,
-\item joukkojen \(A\) ja \(B\) yhdiste sisältää joukkojen \(C\) ja \(D\)
-  leukkauksen,
-\item jokaista nollasta poikkeavaa kokonaislukua \(x\) kohti on olemassa
-  sellainen luku \(y\), että \(xy = 2\),
-\item \(\RR\):n suljetun välin kolmesta viiteen ja avoimen välin neljästä
-  kuuteen joukkoerotus on suljettu väli kolmesta neljään.
+  \item luku \(\sqrt{2}\) ei kuulu rationaalilukuihin,
+  \item lukujen \(-7\), \(0\), \(51\) ja miljoona muodostama joukko on
+    kokonaislukujen osajoukko,
+  \item joukko \(C\) on joukkojen \(A\) ja \(B\) leikkauksen komplementin
+    aito osajoukko,
+  \item niiden reaalilukujen \(x\) joukko, joiden neliö on suurempi kuin
+    \(1{,}2\) ja pienempi kuin \(3{,}6\),
+  \item lukujen \(a\) ja \(b\) irrationaalisuudesta ei seuraa summan
+    \(a + b\) irrationaalisuus,
+  \item joukkojen \(A\) ja \(B\) yhdiste sisältää joukkojen \(C\) ja \(D\)
+    leukkauksen,
+  \item jokaista nollasta poikkeavaa kokonaislukua \(x\) kohti on olemassa
+    sellainen luku \(y\), että \(xy = 2\),
+  \item \(\RR\):n suljetun välin kolmesta viiteen ja avoimen välin neljästä
+    kuuteen joukkoerotus on suljettu väli kolmesta neljään.
 \end{enumerate}
+\end{exercise}
 
 \begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item \(\sqrt{2} \notin \QQ\)
+\item \(\set{-7, 0, 51, 10^6} \subseteq \ZZ\)
+\item \(C \subset \complement{(A \cap B)}\)
+\item \(\set{x \in \RR \colon 1{,}2 < x^2 < 3{,}6}\)
+\item \(\bigl((a \in \RR \setminus \QQ) \land (b \in \RR \setminus \QQ)\bigr)
+  \nRightarrow a + b \in \RR \setminus \QQ\)
+\item \(C \cap D \subseteq A \cup B\)
+\item \(\forall x \in \ZZ \setminus \set{0} \; \exists y \in \RR
+  \colon xy = 2\)
+\item \([3, 5] \setminus \left]4, 6\right[ = [3, 4]\)
+\end{enumerate}
 \end{solution}
 
 \begin{exercise}
-Olkoon \(X = \left\{a, b, c, d, e\right\}\) perusjoukko sekä
-\(A = \left\{a, b, c\right\}\) ja \(B = \left\{b, c, d\right\}\).
+Olkoon \(X = \set{a, b, c, d, e}\) perusjoukko sekä
+\(A = \set{a, b, c}\) ja \(B = \set{b, c, d}\).
 Määritä
 \begin{enumerate}[label=\alph*), nosep]
 \item \(A \cup B\) ja \(A \cap B\),
 \item \(\overline{A}\) ja \(\overline{B}\),
 \item \(A\):n ja \(B\):n \emph{symmetrinen erotus} \(A \Delta B = (A
-  \setminus B) \cup (B \setminus A)\),
-\item \(B\):n \emph{potenssijoukko} \(\mathcal{P}(B) = \left\{C : C
-  \subseteq B\right\}\).
+\setminus B) \cup (B \setminus A)\),
+\item \(B\):n \emph{potenssijoukko} \(\powerset{B} = \set{C : C
+\subseteq B}\).
 \end{enumerate}
 Havainnollista joukkoja Vennin diagrammeilla.
 \end{exercise}
