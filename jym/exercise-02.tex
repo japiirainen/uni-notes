@@ -230,7 +230,8 @@ Olemme osoittaneet \(C \subseteq A\) ja \(A \subseteq C\), joten
 \(A = C = A \cap (A \cup B)\).
 \end{enumerate}
 
-\begin{figure}[ht]
+\begin{center}
+\begin{minipage}{\textwidth}
 \centering
 \begin{tikzpicture}[scale=0.9, every node/.style={font=\small}]
 % First absorption law
@@ -257,9 +258,10 @@ Olemme osoittaneet \(C \subseteq A\) ja \(A \subseteq C\), joten
 \node[below] at (1.8,0) {$A \cap (A \cup B) = A$};
 \end{scope}
 \end{tikzpicture}
-\caption{Absorbiolakien visualisoinnit Vennin diagrammeina. Molemmissa
+\captionof{figure}{Absorbiolakien visualisoinnit Vennin diagrammeina. Molemmissa
 tapauksissa tulokseksi jää joukko \(A\).}
-\end{figure}
+\end{minipage}
+\end{center}
 \end{solution}
 
 \begin{exercise}
@@ -274,6 +276,49 @@ Määritä joukot
 \end{exercise}
 
 \begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Olkoon \(n \in \NN\). Kun \(1 \leq a < b \leq n\),
+niin \(\frac{1}{b} < \frac{1}{a}\), joten \(A_b \subset A_a\). Siis
+\[
+A_n \subset A_{n - 1} \subset \cdots \subset A_2 \subset A_1.
+\]
+Koska \(A_1 = ]0, 1[\), saadaan
+\[
+\bigcup_{k=1}^n A_k = \left]0, 1\right[.
+\]
+
+\item Olkoon \(n \in \NN\). Jälleen, kun \(1 \leq a < b \leq n\),
+niin \(\frac{1}{b} < \frac{1}{a}\), joten \(A_b \subset A_a\). Siis
+\[
+A_n \subset A_{n - 1} \subset \cdots \subset A_2 \subset A_1.
+\]
+Koska \(A_n = ]0, \frac{1}{n}[\), saadaan
+\[
+\bigcap_{k=1}^n A_k = \left]0, \frac{1}{n}\right[.
+\]
+
+\item Koska \(A_k \subseteq A_1\) kaikilla \(k \geq 1\), niin
+\[
+\bigcup_{k=1}^{\infty} A_k \subseteq A_1.
+\]
+Toisaalta, \(A_1\) on yksi yhdisteen joukoista, niin
+\[
+A_1 \subseteq \bigcup_{k=1}^{\infty} A_k.
+\]
+Siis
+\[
+\bigcup_{k=1}^{\infty} A_k = \left]0, 1\right[.
+\]
+
+\item Olkoon \(x > 0\). Valitaan \(n_0 \in \NN\) niin suuri, että
+\(n_0 > \frac{1}{x}\). Tällöin \(\frac{1}{k} < n_0\). Joten
+\(x \notin A_{n_0}\). Siis mikään \(x \in \RR\) ei kuulu jokaiseen
+joukkoon \(A_k\), joten
+\[
+\bigcap_{k = 1}^{\infty} A_k = \emptyset.
+\]
+\end{enumerate}
 \end{solution}
 
 \begin{exercise}
