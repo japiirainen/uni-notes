@@ -28,6 +28,8 @@ of Helsinki course page}.
 
 \subsection{03.09.2026}
 
+\subsubsection{Propositional formulas}
+
 \begin{definition}
   The set of \emph{propositional formulas} is defined inductively as follows:
   \begin{enumerate}
@@ -45,6 +47,8 @@ of Helsinki course page}.
     \item No other strings are propositional formulas.
   \end{enumerate}
 \end{definition}
+
+\subsubsection{Subformulas}
 
 \begin{definition}[Immediate subformulas]
   The immediate subformulas of a propositional formula are defined by its
@@ -69,6 +73,8 @@ of Helsinki course page}.
   such that \(k \geq 1\) and \(A_{i+1}\) is an immediate subformula of
   \(A_i\) for every \(0 \leq i<k\).
 \end{definition}
+
+\subsubsection{Structural induction}
 
 \begin{theorem}[Structural induction]
   Let \(P(A)\) be a statement about propositional formulas. Suppose that
@@ -103,11 +109,291 @@ of Helsinki course page}.
   \(\circ\) be any binary connective. Then
   \begin{align*}
     v((A \mathbin{\circ} B))
-      &=v(A)+v(B) \\
-      &=(b(A)+1)+(b(B)+1) \\
-      &=b((A \mathbin{\circ} B))+1.
+    &=v(A)+v(B) \\
+    &=(b(A)+1)+(b(B)+1) \\
+    &=b((A \mathbin{\circ} B))+1.
   \end{align*}
   The result follows by structural induction. \qed
+\end{example}
+
+\subsection{07.09.2026}
+
+\subsubsection{Structural induction}
+
+\begin{example}[Matching parentheses]
+  For a propositional formula \(A\), let \(l(A)\) and \(r(A)\) denote the
+  numbers of occurrences of left and right parentheses in \(A\), respectively.
+  We prove by structural induction that
+  \[
+    l(A)=r(A)
+  \]
+  for every propositional formula \(A\).
+
+  If \(A=p_n\), then \(l(A)=0=r(A)\). Suppose next that the claim holds for
+  a formula \(A\). Negation introduces no parentheses, so
+  \[
+    l(\neg A)=l(A)=r(A)=r(\neg A).
+  \]
+  Finally, suppose that the claim holds for formulas \(A\) and \(B\), and let
+  \(\circ\) be any binary connective. The formula \((A \mathbin{\circ} B)\)
+  introduces one left and one right parenthesis. Hence
+  \begin{align*}
+    l((A \mathbin{\circ} B))
+    &=l(A)+l(B)+1 \\
+    &=r(A)+r(B)+1 \\
+    &=r((A \mathbin{\circ} B)).
+  \end{align*}
+  The result follows by structural induction. \qed
+\end{example}
+
+\subsubsection{Closures}
+
+\begin{definition}[Closure]
+  Let \(X\) be a set, let \(B \subseteq X\), and, for \(1 \leq i \leq k\), let
+  \[
+    f_i\colon X^{n_i} \longrightarrow X
+  \]
+  be a function. A subset \(Y \subseteq X\) is \emph{closed under \(f_i\)} if
+  \[
+    f_i(y_1,\ldots,y_{n_i}) \in Y
+  \]
+  whenever \(y_1,\ldots,y_{n_i} \in Y\). The \emph{closure of \(B\) under
+  \(f_1,\ldots,f_k\)}, denoted by
+  \[
+    \operatorname{cl}(B;f_1,\ldots,f_k),
+  \]
+  is the smallest subset of \(X\) that contains \(B\) and is closed under
+  every \(f_i\).
+\end{definition}
+
+Equivalently, the closure can be written as the intersection
+\[
+  \operatorname{cl}(B;f_1,\ldots,f_k)
+  =\bigcap\{Y \subseteq X : B \subseteq Y
+  \text{ and \(Y\) is closed under every \(f_i\)}\}.
+\]
+
+\begin{example}
+  Let \(X=\ZZ\), \(B=\{1\}\), and define functions \(f,g\colon\ZZ\to\ZZ\) by
+  \[
+    f(x)=x+1
+    \qquad\text{and}\qquad
+    g(x)=-x.
+  \]
+  Then
+  \[
+    \operatorname{cl}(\{1\};f,g)=\ZZ.
+  \]
+  Indeed, every subset of \(\ZZ\) that contains \(1\) and is closed under
+  \(g\) must also contain \(-1\). Closure under \(f\) then gives \(0\), and
+  repeated applications of \(f\) give every positive integer. Applying \(g\)
+  to these integers gives every negative integer. Thus any such closed set is
+  all of \(\ZZ\), while \(\ZZ\) itself clearly contains \(1\) and is closed
+  under both functions.
+\end{example}
+
+\begin{corollary}[Induction on a closure]
+  Set
+  \[
+    C=\operatorname{cl}(B;f_1,\ldots,f_k).
+  \]
+  To prove that every element of \(C\) satisfies a property \(P\), it suffices
+  to prove that
+  \begin{enumerate}
+    \item every element of \(B\) satisfies \(P\); and
+    \item for each \(i\), if \(x_1,\ldots,x_{n_i}\) satisfy \(P\), then
+      \(f_i(x_1,\ldots,x_{n_i})\) also satisfies \(P\).
+  \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+  Let \(Y\) be the set of all elements of
+  \(\operatorname{cl}(B;f_1,\ldots,f_k)\) that satisfy \(P\). The two
+  assumptions imply that \(B \subseteq Y\) and that \(Y\) is closed under
+  every \(f_i\). Since the closure is the smallest such set,
+  \[
+    \operatorname{cl}(B;f_1,\ldots,f_k) \subseteq Y.
+  \]
+  Hence every element of the closure satisfies \(P\).
+\end{proof}
+
+Let \(\Sigma\) be the alphabet of propositional logic, let \(\Sigma^*\) be the
+set of all finite strings over \(\Sigma\), and let
+\[
+  V=\{p_n:n\in\NN\}
+\]
+be the set of propositional symbols. The logical connectives determine the
+following functions on strings:
+\[
+  f_{\neg}(A)=\neg A
+\]
+and
+\[
+  f_{\circ}(A,B)=(A \mathbin{\circ} B),
+  \qquad
+  \circ\in\{\land,\lor,\rightarrow,\leftrightarrow\}.
+\]
+The set of propositional formulas is precisely
+\[
+  \operatorname{cl}
+  (V;f_{\neg},f_{\land},f_{\lor},f_{\rightarrow},f_{\leftrightarrow}).
+\]
+In particular, if \(S \subseteq \Sigma^*\) contains every propositional symbol
+and is closed under all functions associated with the logical connectives,
+then \(S\) contains every propositional formula.
+
+\subsubsection{Semantics of propositional logic}
+
+\begin{definition}[Truth assignment]
+  A \emph{truth assignment} is a function
+  \[
+    v\colon V\longrightarrow\{0,1\},
+  \]
+  where \(V\) is the set of propositional symbols. The values \(0\) and \(1\)
+  represent \textbf{false} and \textbf{true}, respectively.
+\end{definition}
+
+The truth values of the logical connectives are defined as follows.
+
+\begin{definition}[Negation]
+  The negation \(\neg A\) is true exactly when \(A\) is false.
+  \[
+    \begin{array}{c|c}
+      A & \neg A \\
+      \hline
+      0 & 1 \\
+      1 & 0
+    \end{array}
+  \]
+\end{definition}
+
+\begin{definition}[Conjunction]
+  The conjunction \((A\land B)\) is true exactly when both \(A\) and \(B\) are
+  true.
+  \[
+    \begin{array}{cc|c}
+      A & B & (A\land B) \\
+      \hline
+      0 & 0 & 0 \\
+      0 & 1 & 0 \\
+      1 & 0 & 0 \\
+      1 & 1 & 1
+    \end{array}
+  \]
+\end{definition}
+
+\begin{definition}[Disjunction]
+  The disjunction \((A\lor B)\) is true exactly when at least one of \(A\) and
+  \(B\) is true.
+  \[
+    \begin{array}{cc|c}
+      A & B & (A\lor B) \\
+      \hline
+      0 & 0 & 0 \\
+      0 & 1 & 1 \\
+      1 & 0 & 1 \\
+      1 & 1 & 1
+    \end{array}
+  \]
+\end{definition}
+
+\begin{definition}[Implication]
+  The implication \((A\rightarrow B)\) is false exactly when \(A\) is true and
+  \(B\) is false. It is important to note that implication is \textbf{not}
+  symmetric.
+  \[
+    \begin{array}{cc|c}
+      A & B & (A\rightarrow B) \\
+      \hline
+      0 & 0 & 1 \\
+      0 & 1 & 1 \\
+      1 & 0 & 0 \\
+      1 & 1 & 1
+    \end{array}
+  \]
+\end{definition}
+
+\begin{definition}[Equivalence]
+  The equivalence \((A\leftrightarrow B)\) is true exactly when \(A\) and \(B\)
+  have the same truth value.
+  \[
+    \begin{array}{cc|c}
+      A & B & (A\leftrightarrow B) \\
+      \hline
+      0 & 0 & 1 \\
+      0 & 1 & 0 \\
+      1 & 0 & 0 \\
+      1 & 1 & 1
+    \end{array}
+  \]
+\end{definition}
+
+\begin{definition}[Truth value]
+  Let \(A\) be a propositional formula and let \(v\) be a truth assignment.
+  The \emph{truth value} \(v(A)\) of \(A\) is defined by the following rules:
+  \begin{enumerate}
+    \item If \(A\) is a propositional symbol \(p_n\), then \(v(A)\) is already
+      defined.
+    \item If \(A=\neg B\) and \(v(B)\) is defined, then
+      \[
+        v(A)=
+        \begin{cases}
+          0, & \text{if }v(B)=1, \\
+          1, & \text{if }v(B)=0.
+        \end{cases}
+      \]
+      Another way to write this is \(v(A) = 1 - v(B)\).
+    \item If \(A=(B\land C)\) and \(v(B)\) and \(v(C)\) are defined, then
+      \(v(A)=1\) exactly when \(v(B)=v(C)=1\), and \(v(A)=0\) otherwise.
+      Another way to write this is \(v(A)v(B)\).
+    \item If \(A=(B\lor C)\) and \(v(B)\) and \(v(C)\) are defined, then
+      \(v(A)=1\) when at least one of \(v(B)=1\) and \(v(C)=1\) holds, and
+      \(v(A)=0\) when \(v(B)=v(C)=0\).
+    \item If \(A=(B\rightarrow C)\) and \(v(B)\) and \(v(C)\) are defined,
+      then \(v(A)=0\) when \(v(B)=1\) and \(v(C)=0\), and \(v(A)=1\) in all
+      other cases.
+    \item If \(A=(B\leftrightarrow C)\) and \(v(B)\) and \(v(C)\) are
+      defined, then \(v(A)=1\) iff \(v(B)=v(C)\).
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}[Classification of propositional formulas]
+  A propositional formula \(A\) is
+  \begin{enumerate}
+    \item a \emph{tautology} if \(v(A)=1\) for every truth assignment \(v\);
+    \item a \emph{contradiction} if \(v(A)=0\) for every truth assignment
+      \(v\);
+    \item \emph{contingent} if there are truth assignments \(v\) and \(w\)
+      such that \(v(A)=1\) and \(w(A)=0\);
+    \item \emph{satisfiable} if \(v(A)=1\) for at least one truth assignment
+      \(v\); and
+    \item \emph{falsifiable} if \(v(A)=0\) for at least one truth assignment
+      \(v\).
+  \end{enumerate}
+\end{definition}
+
+\begin{example}[De Morgan's laws]
+  Consider the formulas
+  \[
+    (\neg(A\land B)\leftrightarrow(\neg A\lor\neg B))
+    \qquad\text{and}\qquad
+    (\neg(A\lor B)\leftrightarrow(\neg A\land\neg B)).
+  \]
+  Their truth values can be compared using the following table:
+  \[
+    \begin{array}{cc|cc|cc}
+      A & B & \neg(A\land B) & (\neg A\lor\neg B)
+      & \neg(A\lor B) & (\neg A\land\neg B) \\
+      \hline
+      0 & 0 & 1 & 1 & 1 & 1 \\
+      0 & 1 & 1 & 1 & 0 & 0 \\
+      1 & 0 & 1 & 1 & 0 & 0 \\
+      1 & 1 & 0 & 0 & 0 & 0
+    \end{array}
+  \]
+  The two sides of each equivalence have the same truth value under every
+  truth assignment. Consequently, both equivalences are tautologies. These
+  equivalences are known as \emph{De Morgan's laws}.
 \end{example}
 
 \end{document}
