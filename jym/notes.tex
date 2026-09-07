@@ -280,10 +280,16 @@ This lecture was mostly spent going through basic mathematical notation.
 \begin{definition}
   A \emph{set} is a collection of distinct objects, called its
   \emph{elements}. If an object \(x\) is an element of a set \(A\), we write
-  \(x \in A\); otherwise, we write \(x \notin A\). A set is determined entirely
-  by its elements: two sets are equal exactly when they have the same elements.
-  Thus the order in which the elements are listed, and any repetition among
-  them, do not affect the set.
+  \(x \in A\); otherwise, we write \(x \notin A\). The order in which the
+  elements are listed, and any repetition among them, do not affect the set.
+\end{definition}
+
+\begin{definition}
+  Two sets \(A\) and \(B\) are \emph{equal}, written \(A = B\), if they have
+  exactly the same elements. Equivalently,
+  \[
+    A = B \iff \forall x \colon (x \in A \iff x \in B).
+  \]
 \end{definition}
 
 \begin{definition}
@@ -318,6 +324,10 @@ This lecture was mostly spent going through basic mathematical notation.
   subset of \(B\), we write \(A \nsubseteq B\); this means that some element of
   \(A\) is not an element of \(B\). If \(A \subseteq B\) and \(A \neq B\), then
   \(A\) is a \emph{proper subset} of \(B\), written \(A \subset B\).
+  Two sets are equal exactly when both containments hold:
+  \[
+    A = B \iff A \subseteq B \land B \subseteq A.
+  \]
 \end{definition}
 
 \begin{definition}
