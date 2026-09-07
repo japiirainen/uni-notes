@@ -3,6 +3,8 @@
 
 \input{../preamble.tex}
 
+\usepackage{tikz}
+
 \title{Introduction to University Mathematics}
 \author{Joona Piirainen}
 \date{Autumn 2026}
@@ -203,5 +205,226 @@ numbers \(n \geq 2\) can be written as a product of \emph{prime} numbers.
   \(z_0,\ldots,z_{k-1}\). For each \(n \geq k\), we then define \(z_n\) in
   terms of earlier terms \(z_0,\ldots,z_{n-1}\).
 \end{definition}
+
+\subsection{07.09.2026}
+
+\subsubsection{Logical connectives}
+
+We begin with basic mathematical notation.
+
+\begin{definition}
+  Let \(p\) and \(q\) be propositions. We define the following logical
+  connectives:
+  \begin{enumerate}
+    \item The \emph{conjunction} \(p \land q\), read ``\(p\) and \(q\)'', is
+      true exactly when both \(p\) and \(q\) are true.
+    \item The \emph{disjunction} \(p \lor q\), read ``\(p\) or \(q\)'', is
+      true exactly when at least one of \(p\) and \(q\) is true.
+    \item The \emph{implication} \(p \implies q\), read ``\(p\) implies
+      \(q\)'', is false exactly when \(p\) is true and \(q\) is false.
+    \item The \emph{equivalence} \(p \iff q\), read ``\(p\) if and only if
+      \(q\)'', is true exactly when \(p\) and \(q\) have the same truth value.
+    \item The \emph{negation} \(\neg p\), read ``not \(p\)'', is true exactly
+      when \(p\) is false.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  Let \(p\) and \(q\) be propositions.
+  \begin{enumerate}
+    \item The \emph{negated implication} \(p \nRightarrow q\), read ``\(p\)
+      does not imply \(q\)'', is true exactly when \(p\) is true and \(q\) is
+      false.
+    \item The \emph{negated equivalence} \(p \nLeftrightarrow q\), read
+      ``\(p\) is not equivalent to \(q\)'', is true exactly when \(p\) and
+      \(q\) have different truth values.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  Let \(X\) be a set. A \emph{predicate} \(P(x)\) on \(X\) is a statement
+  containing a variable \(x\) whose truth value depends on the chosen value of
+  \(x \in X\). For each \(a \in X\), substituting \(a\) for \(x\) gives the
+  proposition \(P(a)\), which is either true or false. For example,
+  \(P(x) \coloneqq x > 0\) is a predicate on \(\RR\); \(P(2)\) is true, whereas
+  \(P(-1)\) is false.
+\end{definition}
+
+\begin{definition}
+  Let \(P(x)\) be a predicate on a set \(X\).
+  \begin{enumerate}
+    \item The \emph{universal quantification}
+      \(\forall x \in X \colon P(x)\), read ``for every \(x \in X\),
+      \(P(x)\)'', is true exactly when \(P(a)\) is true for every \(a \in X\).
+    \item The \emph{existential quantification}
+      \(\exists x \in X \colon P(x)\), read ``there exists an \(x \in X\) such
+      that \(P(x)\)'', is true exactly when \(P(a)\) is true for at least one
+      \(a \in X\).
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  The \emph{negated existential quantification}
+  \(\nexists x \in X \colon P(x)\), read ``there does not exist an \(x \in X\)
+  such that \(P(x)\)'', is true exactly when \(P(a)\) is false for every
+  \(a \in X\). Equivalently,
+  \[
+    \nexists x \in X \colon P(x)
+    \quad \iff \quad
+    \forall x \in X \colon \neg P(x).
+  \]
+\end{definition}
+
+\subsubsection{Basic set theory}
+
+\begin{definition}
+  A \emph{set} is a collection of distinct objects, called its
+  \emph{elements}. If an object \(x\) is an element of a set \(A\), we write
+  \(x \in A\); otherwise, we write \(x \notin A\). A set is determined entirely
+  by its elements: two sets are equal exactly when they have the same elements.
+  Thus the order in which the elements are listed, and any repetition among
+  them, do not affect the set.
+\end{definition}
+
+\begin{definition}
+  The \emph{empty set} is the set containing no elements. It is denoted by
+  \(\emptyset\).
+\end{definition}
+
+\begin{definition}
+  Let \(A\) and \(B\) be are sets. \(A\) and \(B\) are said to be
+  \emph{disjoint}, if \(A \cap B = \emptyset\).
+\end{definition}
+
+\begin{definition}
+  A \emph{singleton} set is a set consisting of exactly \textbf{one} element.
+\end{definition}
+
+\begin{definition}
+  Let \(P(x)\) be a predicate on a set \(X\). The \emph{set-builder notation}
+  \[
+    A \coloneqq \set{x \in X \colon P(x)}
+  \]
+  defines \(A\) to be the set of precisely those elements \(x \in X\) for which
+  \(P(x)\) is true. Equivalently, for every \(a \in X\),
+  \[
+    a \in A \iff P(a).
+  \]
+\end{definition}
+
+\begin{definition}
+  A set \(A\) is a \emph{subset} of a set \(B\) if every element of \(A\) is
+  also an element of \(B\). We then write \(A \subseteq B\). If \(A\) is not a
+  subset of \(B\), we write \(A \nsubseteq B\); this means that some element of
+  \(A\) is not an element of \(B\). If \(A \subseteq B\) and \(A \neq B\), then
+  \(A\) is a \emph{proper subset} of \(B\), written \(A \subset B\).
+\end{definition}
+
+\begin{definition}
+  Let \(A\) and \(B\) be subsets of a set \(X\).
+  \begin{enumerate}
+    \item The \emph{union} of \(A\) and \(B\) is
+      \[
+        A \cup B \coloneqq
+        \set{x \in X \colon x \in A \lor x \in B}.
+      \]
+    \item The \emph{intersection} of \(A\) and \(B\) is
+      \[
+        A \cap B \coloneqq
+        \set{x \in X \colon x \in A \land x \in B}.
+      \]
+    \item The \emph{difference} of \(A\) and \(B\) is
+      \[
+        A \setminus B \coloneqq
+        \set{x \in X \colon x \in A \land x \notin B}.
+      \]
+    \item The \emph{complement} of \(A\) in \(X\) is
+      \[
+        \complement{A} \coloneqq X \setminus A
+        = \set{x \in X \colon x \notin A}.
+      \]
+    \item The \emph{symmetric difference} of \(A\) and \(B\) is
+      \[
+        A \mathbin{\Delta} B \coloneqq
+        (A \setminus B) \cup (B \setminus A).
+      \]
+  \end{enumerate}
+\end{definition}
+
+\begin{center}
+  \begin{tikzpicture}[scale=0.9, every node/.style={font=\small}]
+    % Union
+    \begin{scope}
+      \fill[blue!25] (1.4,1.2) circle (0.85);
+      \fill[blue!25] (2.2,1.2) circle (0.85);
+      \draw (0,0) rectangle (3.6,2.4);
+      \draw (1.4,1.2) circle (0.85);
+      \draw (2.2,1.2) circle (0.85);
+      \node at (0.2,2.18) {$X$};
+      \node at (1.05,1.2) {$A$};
+      \node at (2.55,1.2) {$B$};
+      \node[below] at (1.8,0) {$A \cup B$};
+    \end{scope}
+
+    % Intersection
+    \begin{scope}[xshift=5cm]
+      \begin{scope}
+        \clip (1.4,1.2) circle (0.85);
+        \fill[blue!25] (2.2,1.2) circle (0.85);
+      \end{scope}
+      \draw (0,0) rectangle (3.6,2.4);
+      \draw (1.4,1.2) circle (0.85);
+      \draw (2.2,1.2) circle (0.85);
+      \node at (0.2,2.18) {$X$};
+      \node at (1.05,1.2) {$A$};
+      \node at (2.55,1.2) {$B$};
+      \node[below] at (1.8,0) {$A \cap B$};
+    \end{scope}
+
+    % Difference
+    \begin{scope}[yshift=-3.4cm]
+      \begin{scope}
+        \clip (1.4,1.2) circle (0.85);
+        \fill[blue!25] (0,0) rectangle (3.6,2.4);
+        \fill[white] (2.2,1.2) circle (0.85);
+      \end{scope}
+      \draw (0,0) rectangle (3.6,2.4);
+      \draw (1.4,1.2) circle (0.85);
+      \draw (2.2,1.2) circle (0.85);
+      \node at (0.2,2.18) {$X$};
+      \node at (1.05,1.2) {$A$};
+      \node at (2.55,1.2) {$B$};
+      \node[below] at (1.8,0) {$A \setminus B$};
+    \end{scope}
+
+    % Complement
+    \begin{scope}[xshift=5cm,yshift=-3.4cm]
+      \fill[blue!25] (0,0) rectangle (3.6,2.4);
+      \fill[white] (1.8,1.2) circle (0.85);
+      \draw (0,0) rectangle (3.6,2.4);
+      \draw (1.8,1.2) circle (0.85);
+      \node at (0.2,2.18) {$X$};
+      \node at (1.8,1.2) {$A$};
+      \node[below] at (1.8,0) {$\complement{A}$};
+    \end{scope}
+
+    % Symmetric difference
+    \begin{scope}[xshift=2.5cm,yshift=-6.8cm]
+      \fill[blue!25] (1.4,1.2) circle (0.85);
+      \fill[blue!25] (2.2,1.2) circle (0.85);
+      \begin{scope}
+        \clip (1.4,1.2) circle (0.85);
+        \fill[white] (2.2,1.2) circle (0.85);
+      \end{scope}
+      \draw (0,0) rectangle (3.6,2.4);
+      \draw (1.4,1.2) circle (0.85);
+      \draw (2.2,1.2) circle (0.85);
+      \node at (0.2,2.18) {$X$};
+      \node at (1.05,1.2) {$A$};
+      \node at (2.55,1.2) {$B$};
+      \node[below] at (1.8,0) {$A \mathbin{\Delta} B$};
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
 
 \end{document}
