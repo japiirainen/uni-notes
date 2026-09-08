@@ -86,39 +86,290 @@ Laskemalla lauseen totuusarvo, saadaan
 \end{solution}
 
 \begin{exercise}
+Onko lause
+\begin{enumerate}[label=\alph*), nosep]
+\item \(((p_0 \land p_1) \rightarrow (p_1 \rightarrow (p_2 \lor p_0)))\)
+\item \((((p_0 \rightarrow (p_0 \rightarrow p_1)) \leftrightarrow (p_0
+\rightarrow p_1))\)
+\end{enumerate}
+tautologia, kontingenssi vai ristiriita. Perustele.
 \end{exercise}
 
 \begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Ratkaistaan tehtävä totuustaulun avulla. Saadaan seuraava totuustaulu:
+\[
+\begin{array}{ccc|ccccccccc}
+p_0 & p_1 & p_2
+& (p_0 & \land & p_1)
+& \boldsymbol{\to}
+& (p_1 & \to & (p_2 & \lor & p_0)) \\
+\hline
+0 & 0 & 0
+& 0 & 0 & 0
+& \mathbf{1}
+& 0 & 1 & 0 & 0 & 0 \\
+
+0 & 0 & 1
+& 0 & 0 & 0
+& \mathbf{1}
+& 0 & 1 & 1 & 1 & 0 \\
+
+0 & 1 & 0
+& 0 & 0 & 1
+& \mathbf{1}
+& 1 & 0 & 0 & 0 & 0 \\
+
+0 & 1 & 1
+& 0 & 0 & 1
+& \mathbf{1}
+& 1 & 1 & 1 & 1 & 0 \\
+
+1 & 0 & 0
+& 1 & 0 & 0
+& \mathbf{1}
+& 0 & 1 & 0 & 1 & 1 \\
+
+1 & 0 & 1
+& 1 & 0 & 0
+& \mathbf{1}
+& 0 & 1 & 1 & 1 & 1 \\
+
+1 & 1 & 0
+& 1 & 1 & 1
+& \mathbf{1}
+& 1 & 1 & 0 & 1 & 1 \\
+
+1 & 1 & 1
+& 1 & 1 & 1
+& \mathbf{1}
+& 1 & 1 & 1 & 1 & 1
+\end{array}
+\]
+Nähdään että propositiolause on aina tosi, eli \emph{tautologia}.
+
+\item Ratkaistaan tehtävä totuustaulun avulla. Saadaan seuraava totuustaulu:
+\[
+\begin{array}{cc|ccccccccc}
+p_0 & p_1
+& (p_0 & \to & (p_0 & \to & p_1))
+& \boldsymbol{\leftrightarrow}
+& (p_0 & \to & p_1) \\
+\hline
+0 & 0
+& 0 & 1 & 0 & 1 & 0
+& \mathbf{1}
+& 0 & 1 & 0 \\
+
+0 & 1
+& 0 & 1 & 0 & 1 & 1
+& \mathbf{1}
+& 0 & 1 & 1 \\
+
+1 & 0
+& 1 & 0 & 1 & 0 & 0
+& \mathbf{1}
+& 1 & 0 & 0 \\
+
+1 & 1
+& 1 & 1 & 1 & 1 & 1
+& \mathbf{1}
+& 1 & 1 & 1
+\end{array}
+\]
+Nähdään että propositiolause on aina tosi, eli \emph{tautologia}.
+\end{enumerate}
 \end{solution}
 
 \begin{exercise}
+Ovatko seuraavat lauseet loogisesti ekvivalentteja?
+\begin{enumerate}[label=\alph*), nosep]
+\item \((p_0 \rightarrow \neg p_1)\) ja \(\neg(p_1 \rightarrow p_0)\)
+\item \((p_0 \lor p_1)\) ja \(((p_0 \rightarrow p_1) \rightarrow p_1)\)
+\end{enumerate}
 \end{exercise}
 
 \begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Olkoon \(v(p_0) = v(p_1) = 0\) totuusjakauma. Laskemalla
+propositiolauseille totuusjakaumat saadaan
+\[
+v(p_0 \rightarrow \neg p_1) = v(0 \rightarrow \neg 0) = v(0 \rightarrow 1) = 1,
+\]
+ja
+\[
+v(\neg(p_1 \rightarrow p_0)) = v(\neg(0 \rightarrow 0)) = v(\neg 1) = 0.
+\]
+Olemme löytäneet totuusjakauman \(v\), jolla propositiolauseiden totuusarvot
+eriävät. Propositiolauseet eivät täten ole ekvivalentteja.
+
+\item Piirretään propositiolauseiden totuustaulut. Saadaan
+\[
+\begin{array}{cc|ccc}
+p_0 & p_1 & p_0 & \boldsymbol{\lor} & p_1 \\
+\hline
+0 & 0 & 0 & \mathbf{0} & 0 \\
+0 & 1 & 0 & \mathbf{1} & 1 \\
+1 & 0 & 1 & \mathbf{1} & 0 \\
+1 & 1 & 1 & \mathbf{1} & 1
+\end{array}
+\]
+ja
+\[
+\begin{array}{cc|ccccc}
+p_0 & p_1 & (p_0 & \rightarrow & p_1) & \boldsymbol{\rightarrow} & p_1 \\
+\hline
+0 & 0 & 0 & 1 & 0 & \mathbf{0} & 0 \\
+0 & 1 & 0 & 1 & 1 & \mathbf{1} & 1 \\
+1 & 0 & 1 & 0 & 0 & \mathbf{1} & 0 \\
+1 & 1 & 1 & 1 & 1 & \mathbf{1} & 1
+\end{array}
+\]
+Totuustaulukoista lukemalla näemme propositiolauseiden totuusarvojen
+oleman sama kaikilla mahdollisilla totuusjakaumilla, joten propositiolauseet
+ovat \emph{ekvivalentteja}.
+\end{enumerate}
 \end{solution}
 
 \begin{exercise}
+Anna totuusjakauma, joka osoittaa allaolevan väitteen todeksi, tai todista,
+että sellaista ei ole olemassa:
+\begin{enumerate}[label=\alph*), nosep]
+\item Propositiolause \((((p_0 \rightarrow \neg p_1) \land p_1)
+\rightarrow p_0)\) on toteutuva.
+
+\item Propositiolause \((\neg p_0 \rightarrow p_1) \lor \neg(p_0
+\land \neg p_1)\) on kumoutuva.
+\end{enumerate}
 \end{exercise}
 
 \begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Olkoon \(v(p_0) = v(p_1) = 0\) totuusjakauma. Laskemalla
+propositiolauseen totuusarvo kyseisellä totuusjakaumalla saadaan
+\[
+\begin{aligned}
+v(((p_0 \rightarrow \neg p_1) \land p_1)\rightarrow p_0)
+&= v(((0 \rightarrow \neg 0) \land 0) \rightarrow 0) \\
+&= v(((0 \rightarrow 1) \land 0) \rightarrow 0) \\
+&= v((0 \land 0) \rightarrow 0) \\
+&= v(0 \rightarrow 0) \\
+&= 1.
+\end{aligned}
+\]
+Propositiolause on täten \emph{toteutuva}.
+
+\item Osoitetaan, ettei propositiolause ole \emph{kumoutuva}. Piirretään
+propositiolauseelle totuustaulu:
+\[
+\begin{array}{cc|cccccccccc}
+p_0 & p_1 & (\neg & p_0 \rightarrow & p_1) & \boldsymbol{\lor} & \neg
+& (p_0 & \land & \neg & p_1) \\
+\hline
+0 & 0 & 1 & 0 & 0 & 0 & \mathbf{1} & 1 & 0 & 0 & 1 & 0 \\
+0 & 1 & 1 & 0 & 1 & 1 & \mathbf{1} & 1 & 0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 1 & 1 & 0 & \mathbf{1} & 0 & 1 & 1 & 1 & 0 \\
+1 & 1 & 0 & 1 & 1 & 1 & \mathbf{1} & 1 & 1 & 0 & 0 & 1
+\end{array}
+\]
+Totuustaulusta nähdään, että propositiolause on tosi kaikilla totuusjakaumilla,
+eli se ei ole \emph{kumoutuva}.
+\end{enumerate}
 \end{solution}
 
 \begin{exercise}
+Keksi kaksi propositiolausetta, joissa kummassakin esiintyy vähintään kaksi
+eri propositiosymbolia ja jotka eivät ole loogisesti ekvivalentit, mutta
+joista toinen on toisen looginen seuraus.
 \end{exercise}
 
 \begin{solution}
+\leavevmode\par
+\begin{enumerate}
+\item Osoitetaan että propositiolauseet \((p_0 \leftrightarrow p_1)\) ja
+\((p_0 \rightarrow p_1)\) täyttävät tehtävän vaatimukset. Ekvivalenssi on
+tosi \emph{joss} \(v(p_0) = v(p_1)\). Näyssä tapauksissa myös implikaatio
+on tosi. Toisaalta, kun \(v(p_0) = 0\) ja \(v(p_1) = 1\), ekvivalenssi
+on epätosi, mutta implikaatio on tosi. Täten implikaatio on ekvivalenssin
+looginen seuraus, mutta ekvivalenssi ja implikaatio eivät ole loogisesti
+ekvivalentit.
+
+\item Osoitetaan että propositiolauseet \((p_0 \land p_1)\) ja
+\((p_0 \lor p_1)\) täyttävät tehtävän vaatimukset. Konjunktio on tosi
+ainoastaan kun sekä \(p_0\) että \(p_1\) ovat tosia. Tässä tapauksessa
+myös disjunktio on tosi. Toisin sanoen disjunktio on konjunktion looginen
+seuraus. Toisaalta, \(v(1 \land 0) = 0\), mutta
+\(v(1 \lor 0) = 1\). Täten disjunktio ja konjunktio eivät ole loogisesti
+ekvivalentit.
+\end{enumerate}
 \end{solution}
 
 \begin{exercise}
+Oletetaan, että \(A\) ja \(B\) ovat propositiolauseita ja
+\((A \rightarrow B) \implies (A \leftrightarrow B)\).
+Näytä, että \(B \implies A\).
 \end{exercise}
 
 \begin{solution}
+Oletuksen mukaan \(v(A \leftrightarrow B) = 1\) aina, kun
+\(v(A \rightarrow B) = 1\). Mutta \(v(A \leftrightarrow B) = 1\) \emph{joss}
+\(v(A) = v(B)\). Tästä voidaan päätellä, että
+\[
+v(A \rightarrow B) = 1 \implies v(A) = v(B).
+\]
+Olkoon \(v\) mielivaltainen totuusjakauma, jolla \(v(B) = 1\). Nyt
+automaattisesti
+\[
+v(A \rightarrow B) = 1,
+\]
+koska implikaatio on epätosi joss \(v(A)\) on tosi ja \(v(B)\) epätosi.
+Nyt oletuksen mukaan,
+\[
+v(A \leftrightarrow B) = 1,
+\]
+eli
+\[
+v(A) = v(B),
+\]
+eli \(v(A) = 1\). On siis osoitettu \(v(A) = 1\) aina, kun \(v(B) = 1\),
+eli \(B \implies A\).
 \end{solution}
 
 \begin{exercise}
+Olkoon \(v\) totuusjakauma, jolla \(v(p_i) = 1\) kaikilla \(i \in \NN\).
+Olkoon \(A\) propositiolause, jossa ei esiinny negaatiota. Osoita, että
+\(v(A) = 1\).
 \end{exercise}
 
 \begin{solution}
+Todistetaan väite induktiolla rakenteen suhteen. Koska \(A\):ssa ei
+esiinny negaatiota, riittää käsitellä propositiosymbolit ja
+binäärikonnektiivit. Ensiksi, kun \(A = p_n\)
+jollain \(n \in \NN\), saadaan \(v(A) = v(p_n) = 1\). Olkoon \(B\) ja \(C\)
+propositiolauseita, jotka eivät sisällä negaatiota. Olkoon
+\[
+A = (B \circ C), \quad \circ \in \set{\land, \lor, \rightarrow,
+\leftrightarrow}.
+\]
+Oletetaan induktio-oletuksena, että \(v(B) = v(C) = 1\).
+Osoitetaan \(v(A) = 1\). Nyt
+\[
+v(B) = v(C) = 1 \implies v(B \circ C) = 1, \quad \text{kaikilla} \quad
+\circ \in \set{\land, \lor, \rightarrow, \leftrightarrow},
+\]
+koska
+\[
+1 \land 1 = 1, \quad 1 \lor 1 = 1, \quad 1 \rightarrow 1 = 1, \quad 1
+\leftrightarrow 1 = 1.
+\]
+Täten \(v(A) = 1\).
+
+On osoitettu, että väite pitää paikkaansa propositiosymboleilla ja
+säilyy totena kun rakennetaan suurempia lauseita binäärikonnektiivien avulla.
+Näin ollen väite seuraa induktiosta rakenteen suhteen.
 \end{solution}
 
 \begin{exercise}
