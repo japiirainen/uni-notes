@@ -391,9 +391,33 @@ f_A(0, 1) &= 0.
 \end{solution}
 
 \begin{exercise}
+Muodosta luvun 4 menetelmällä lause \(A\), jonka totuustaulu on
+\[
+\begin{array}{ccc|c}
+p_0 & p_1 & p_2 & A \\
+\hline
+0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 1 \\
+0 & 1 & 0 & 1 \\
+0 & 1 & 1 & 0 \\
+1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 0 & 0 \\
+1 & 1 & 1 & 1
+\end{array}
+\]
 \end{exercise}
 
 \begin{solution}
+Luvun 4 Lemman (4.4) menetelmällä saadaan lause
+\[
+\begin{aligned}
+A &= (\neg p_0 \land \neg p_1 \land p_2) \\
+&\lor (\neg p_0 \land p_1 \land \neg p_2) \\
+&\lor (p_0 \land \neg p_1 \land p_2) \\
+&\lor (p_0 \land p_1 \land p_2).
+\end{aligned}
+\]
 \end{solution}
 
 \begin{exercise}[Haastetehtävä]
