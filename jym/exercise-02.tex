@@ -330,6 +330,40 @@ implikaationa ja todista se vastatodistuksen avulla.
 \end{exercise}
 
 \begin{solution}
+Kirjoitetaan ensin implikaatio määritelmän mukaan predikaattilogiikan
+kielellä. Saadaan
+\[
+\begin{aligned}
+\forall x \in X \colon \bigl(x \in A \cup (B \cap C) &\implies x \in (A
+\cup B) \cap (A \cup C)\bigr) \\
+\iff \forall x \in X \colon \bigl(x \in A \lor (x \in B \land x \in C)
+&\implies ((x \in A) \lor (x \in B)) \land ((x \in A) \lor (x \in C))\bigr).
+\end{aligned}
+\]
+Todistetaan nyt väite vastatodistuksella. Olkoon \(x \in X\) mielivaltainen.
+Tehdään vastaoletus: oletetaan, että
+\[
+x \in A \cup (B \cap C) \quad \text{\emph{ja}} \quad x \notin (A \cup
+B) \cap (A \cup C).
+\]
+Koska \(x \in A \cup (B \cap C)\), \(x \in A\) tai \(x \in B \cap C\).
+
+Ensimmäisesta tapauksesta seuraa \(x \in A \cup B\) sekä
+\(x \in A \cup C\), joten \(x \in (A \cup B) \cap (A \cup C)\), mikä
+on ristiriidassa vastaoletuksen kanssa.
+
+Toisessa tapauksessa, \(x \in B \cap C\), joten \(x \in B\) sekä \(x \in C\).
+Näistä seuraa \(x \in A \cup B\) sekä \(x \in A \cup C\), joten
+\(x \in (A \cup B) \cap (A \cup C)\), mikä on ristiriidassa vastaoletuksen
+kanssa.
+
+Molemmissa tapauksissa päädytään ristiriitaan vastaoletuksen kanssa. Siispä
+vastaoletuksen on oltava väärä, joten
+\[
+x \in A \cup (B \cap C) \implies x \in (A \cup B) \cap (A \cup C).
+\]
+Koska \(x \in X\) oli mielivaltainen,
+\[A \cup (B \cap C) \subseteq (A \cup B) \cap (A \cup C).\]
 \end{solution}
 
 \begin{exercise}
@@ -339,11 +373,73 @@ leikkauksen suhteen:
 (A \cap B) \times C = (A \times C) \cap (B \times C).
 \]
 Havainnollista tulosta joukoilla \(A = \set{1, 2, 3}\), \(B = \set{2, 3, 4}\)
-ja \(C = \set{1, 2}\) määrittämällä ensin joukko \(A \cap (B \times C)\)
+ja \(C = \set{1, 2}\) määrittämällä ensin joukko \((A \cap B) \times C\)
 ja sitten joukko \((A \times C) \cap (B \times C)\).
 \end{exercise}
 
 \begin{solution}
+Asetetaan
+\[
+\begin{aligned}
+D &= (A \cap B) \times C \\
+&= \set{(x, y) \colon x \in A \cap B, y \in C}, \\
+E &= (A \times C) \cap (B \times C) \\
+&= \set{(x, y) \colon x \in A, y \in C} \cap \set{(x, y) \colon x \in
+B, y \in C}.
+\end{aligned}
+\]
+Ensiksi, olkoon \((x, y) \in D\) mielivaltainen. Sitten
+\[
+\begin{aligned}
+(x, y) \in D &\implies x \in (A \cap B) \land y \in C \\
+&\implies (x \in A \land x \in B) \land y \in C \\
+&\implies (x, y) \in (A \times C) \land (x, y) \in (B \times C) \\
+&\implies (x, y) \in (A \times C) \cap (B \times C) \\
+&= E,
+\end{aligned}
+\]
+joten \(D \subseteq E\).
+
+Toiseksi, olkoon \((x, y) \in E\) mielivaltainen. Sitten
+\[
+\begin{aligned}
+(x, y) \in E &\implies (x, y) \in (A \times C) \land (x, y) \in (B \times C) \\
+&\implies (x \in A, y \in C) \land (x \in B, y \in C) \\
+&\implies (x \in A \land x \in B) \land y \in C \\
+&\implies x \in (A \cap B) \land y \in C \\
+&\implies (x, y) \in (A \cap B) \times C \\
+&= D,
+\end{aligned}
+\]
+joten \(E \subseteq D\).
+
+Olemme osoittaneet \(E \subseteq D\) sekä \(D \subseteq E\), joten
+\[
+(A \times C) \cap (B \times C) = E = D = (A \cap B) \times C.
+\]
+Havainnollistetaan vielä tulosta tehtävänannon joukoilla \(A\), \(B\) ja \(C\).
+Saadaan
+\[
+\begin{aligned}
+(A \cap B) \times C &= \set{(x, y) \colon x \in (\set{1,2,3} \cap
+\set{2,3,4}), y \in \set{1, 2}} \\
+&= \set{(x, y) \colon x \in \set{2,3}, y \in \set{1, 2}} \\
+&= \set{(2, 1), (2, 2), (3, 1), (3, 2)},
+\end{aligned}
+\]
+sekä
+\[
+\begin{aligned}
+(A \times C) \cap (B \times C) &= \set{(x, y) \colon x \in
+\set{1,2,3}, y \in \set{1,2}} \\
+&\cap \set{(x, y) \colon x \in \set{2,3,4}, y \in \set{1,2}} \\
+&= \set{(2,1),(2,2),(3,1),(3,2),(4,1),(4,2)} \cap \set{(2, 1), (2,
+2), (3, 1), (3, 2)} \\
+&= \set{(2,1),(2,2),(3,1),(3,2)}.
+\end{aligned}
+\]
+Joukkojen alkiot ovat siis identtiset molemmissa tapauksissa, mikä
+havainnollistaa todistettua yhtälöä.
 \end{solution}
 
 \end{document}
