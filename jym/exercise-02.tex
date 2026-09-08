@@ -87,108 +87,151 @@ Havainnollista joukkoja Vennin diagrammeilla.
 \set{b, c}, \set{b, d}, \set{c, d}, \set{b, c, d}}\)
 \end{enumerate}
 
-\begin{figure}[ht]
+\begin{center}
+\begin{minipage}{\textwidth}
 \centering
 \begin{tikzpicture}[scale=0.9, every node/.style={font=\small}]
 % Union
 \begin{scope}
-\fill[blue!25] (1.4,1.2) circle (0.85);
-\fill[blue!25] (2.2,1.2) circle (0.85);
-\draw (0,0) rectangle (3.6,2.7);
-\draw (1.4,1.2) circle (0.85);
-\draw (2.2,1.2) circle (0.85);
-\node at (0.2,2.48) {$X$};
-\node at (1.4,2.4) {$A$};
-\node at (2.2,2.4) {$B$};
-\node at (1.0,1.2) {$a$};
-\node at (1.8,1.45) {$b$};
-\node at (1.8,0.95) {$c$};
-\node at (2.6,1.2) {$d$};
-\node at (3.25,0.3) {$e$};
-\node[below] at (1.8,0) {$A \cup B$};
+  \fill[blue!25] (1.4,1.2) circle (0.85);
+  \fill[blue!25] (2.2,1.2) circle (0.85);
+  \draw (0,0) rectangle (3.6,2.7);
+  \draw (1.4,1.2) circle (0.85);
+  \draw (2.2,1.2) circle (0.85);
+  \node at (0.2,2.48) {$X$};
+  \node at (1.4,2.4) {$A$};
+  \node at (2.2,2.4) {$B$};
+  \node at (1.0,1.2) {$a$};
+  \node at (1.8,1.45) {$b$};
+  \node at (1.8,0.95) {$c$};
+  \node at (2.6,1.2) {$d$};
+  \node at (3.25,0.3) {$e$};
+  \node[below] at (1.8,0) {$A \cup B$};
 \end{scope}
 
 % Intersection
 \begin{scope}[xshift=5cm]
-\begin{scope}
-  \clip (1.4,1.2) circle (0.85);
-  \fill[blue!25] (2.2,1.2) circle (0.85);
-\end{scope}
-\draw (0,0) rectangle (3.6,2.7);
-\draw (1.4,1.2) circle (0.85);
-\draw (2.2,1.2) circle (0.85);
-\node at (0.2,2.48) {$X$};
-\node at (1.4,2.4) {$A$};
-\node at (2.2,2.4) {$B$};
-\node at (1.0,1.2) {$a$};
-\node at (1.8,1.45) {$b$};
-\node at (1.8,0.95) {$c$};
-\node at (2.6,1.2) {$d$};
-\node at (3.25,0.3) {$e$};
-\node[below] at (1.8,0) {$A \cap B$};
+  \begin{scope}
+    \clip (1.4,1.2) circle (0.85);
+    \fill[blue!25] (2.2,1.2) circle (0.85);
+  \end{scope}
+  \draw (0,0) rectangle (3.6,2.7);
+  \draw (1.4,1.2) circle (0.85);
+  \draw (2.2,1.2) circle (0.85);
+  \node at (0.2,2.48) {$X$};
+  \node at (1.4,2.4) {$A$};
+  \node at (2.2,2.4) {$B$};
+  \node at (1.0,1.2) {$a$};
+  \node at (1.8,1.45) {$b$};
+  \node at (1.8,0.95) {$c$};
+  \node at (2.6,1.2) {$d$};
+  \node at (3.25,0.3) {$e$};
+  \node[below] at (1.8,0) {$A \cap B$};
 \end{scope}
 
 % Complement of A
 \begin{scope}[yshift=-3.4cm]
-\fill[blue!25] (0,0) rectangle (3.6,2.7);
-\fill[white] (1.4,1.2) circle (0.85);
-\draw (0,0) rectangle (3.6,2.7);
-\draw (1.4,1.2) circle (0.85);
-\draw (2.2,1.2) circle (0.85);
-\node at (0.2,2.48) {$X$};
-\node at (1.4,2.4) {$A$};
-\node at (2.2,2.4) {$B$};
-\node at (1.0,1.2) {$a$};
-\node at (1.8,1.45) {$b$};
-\node at (1.8,0.95) {$c$};
-\node at (2.6,1.2) {$d$};
-\node at (3.25,0.3) {$e$};
-\node[below] at (1.8,0) {$\complement{A}$};
+  \fill[blue!25] (0,0) rectangle (3.6,2.7);
+  \fill[white] (1.4,1.2) circle (0.85);
+  \draw (0,0) rectangle (3.6,2.7);
+  \draw (1.4,1.2) circle (0.85);
+  \draw (2.2,1.2) circle (0.85);
+  \node at (0.2,2.48) {$X$};
+  \node at (1.4,2.4) {$A$};
+  \node at (2.2,2.4) {$B$};
+  \node at (1.0,1.2) {$a$};
+  \node at (1.8,1.45) {$b$};
+  \node at (1.8,0.95) {$c$};
+  \node at (2.6,1.2) {$d$};
+  \node at (3.25,0.3) {$e$};
+  \node[below] at (1.8,0) {$\complement{A}$};
 \end{scope}
 
 % Complement of B
 \begin{scope}[xshift=5cm,yshift=-3.4cm]
-\fill[blue!25] (0,0) rectangle (3.6,2.7);
-\fill[white] (2.2,1.2) circle (0.85);
-\draw (0,0) rectangle (3.6,2.7);
-\draw (1.4,1.2) circle (0.85);
-\draw (2.2,1.2) circle (0.85);
-\node at (0.2,2.48) {$X$};
-\node at (1.4,2.4) {$A$};
-\node at (2.2,2.4) {$B$};
-\node at (1.0,1.2) {$a$};
-\node at (1.8,1.45) {$b$};
-\node at (1.8,0.95) {$c$};
-\node at (2.6,1.2) {$d$};
-\node at (3.25,0.3) {$e$};
-\node[below] at (1.8,0) {$\complement{B}$};
+  \fill[blue!25] (0,0) rectangle (3.6,2.7);
+  \fill[white] (2.2,1.2) circle (0.85);
+  \draw (0,0) rectangle (3.6,2.7);
+  \draw (1.4,1.2) circle (0.85);
+  \draw (2.2,1.2) circle (0.85);
+  \node at (0.2,2.48) {$X$};
+  \node at (1.4,2.4) {$A$};
+  \node at (2.2,2.4) {$B$};
+  \node at (1.0,1.2) {$a$};
+  \node at (1.8,1.45) {$b$};
+  \node at (1.8,0.95) {$c$};
+  \node at (2.6,1.2) {$d$};
+  \node at (3.25,0.3) {$e$};
+  \node[below] at (1.8,0) {$\complement{B}$};
 \end{scope}
 
 % Symmetric difference
 \begin{scope}[xshift=2.5cm,yshift=-6.8cm]
-\fill[blue!25] (1.4,1.2) circle (0.85);
-\fill[blue!25] (2.2,1.2) circle (0.85);
-\begin{scope}
-  \clip (1.4,1.2) circle (0.85);
-  \fill[white] (2.2,1.2) circle (0.85);
-\end{scope}
-\draw (0,0) rectangle (3.6,2.7);
-\draw (1.4,1.2) circle (0.85);
-\draw (2.2,1.2) circle (0.85);
-\node at (0.2,2.48) {$X$};
-\node at (1.4,2.4) {$A$};
-\node at (2.2,2.4) {$B$};
-\node at (1.0,1.2) {$a$};
-\node at (1.8,1.45) {$b$};
-\node at (1.8,0.95) {$c$};
-\node at (2.6,1.2) {$d$};
-\node at (3.25,0.3) {$e$};
-\node[below] at (1.8,0) {$A \mathbin{\Delta} B$};
+  \fill[blue!25] (1.4,1.2) circle (0.85);
+  \fill[blue!25] (2.2,1.2) circle (0.85);
+  \begin{scope}
+    \clip (1.4,1.2) circle (0.85);
+    \fill[white] (2.2,1.2) circle (0.85);
+  \end{scope}
+  \draw (0,0) rectangle (3.6,2.7);
+  \draw (1.4,1.2) circle (0.85);
+  \draw (2.2,1.2) circle (0.85);
+  \node at (0.2,2.48) {$X$};
+  \node at (1.4,2.4) {$A$};
+  \node at (2.2,2.4) {$B$};
+  \node at (1.0,1.2) {$a$};
+  \node at (1.8,1.45) {$b$};
+  \node at (1.8,0.95) {$c$};
+  \node at (2.6,1.2) {$d$};
+  \node at (3.25,0.3) {$e$};
+  \node[below] at (1.8,0) {$A \mathbin{\Delta} B$};
 \end{scope}
 \end{tikzpicture}
-\caption{Kohtien (a)--(c) joukkojen visualisoinnit Vennin diagrammeina.
-Potenssijoukon \(\powerset{B}\) visualisointi ei onnistu Vennin diagrammilla.}
-\end{figure}
+\captionof{figure}{Kohtien (a)--(c) joukkojen visualisoinnit Vennin
+diagrammeina.}
+\end{minipage}
+\end{center}
+
+Kohdassa (d) valitaan perusjoukoksi \(\powerset{B}\). Piirretään sen sisään
+kolme joukkoa, joista ensimmäiseen kuuluvat \(b\):n sisältävät osajoukot,
+toiseen \(c\):n sisältävät osajoukot ja kolmanteen \(d\):n sisältävät
+osajoukot. Tällöin Vennin diagrammin kahdeksan aluetta vastaavat täsmälleen
+joukon \(B\) kahdeksaa osajoukkoa.
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{tikzpicture}[scale=1.05, every node/.style={font=\normalsize}]
+\draw (0,0) rectangle (10,8);
+\filldraw[fill=blue!30, fill opacity=0.35, draw=blue!60!black, thick]
+(4,4.8) circle (2.4);
+\filldraw[fill=red!30, fill opacity=0.35, draw=red!60!black, thick]
+(6,4.8) circle (2.4);
+\filldraw[fill=green!30, fill opacity=0.35, draw=green!50!black, thick]
+(5,3) circle (2.4);
+
+\node[anchor=north west] at (0.2,7.8) {$\powerset{B}$};
+\draw[blue!60!black, very thick] (2.3,7.6) -- (2.8,7.6);
+\node[anchor=west] at (2.9,7.6) {$b \in C$};
+\draw[red!60!black, very thick] (4.8,7.6) -- (5.3,7.6);
+\node[anchor=west] at (5.4,7.6) {$c \in C$};
+\draw[green!50!black, very thick] (7.3,7.6) -- (7.8,7.6);
+\node[anchor=west] at (7.9,7.6) {$d \in C$};
+
+\node at (1,1) {$\emptyset$};
+\node at (2.6,4.75) {$\set{b}$};
+\node at (7.4,4.75) {$\set{c}$};
+\node at (5,1.45) {$\set{d}$};
+\node at (5,6.15) {$\set{b,c}$};
+\node at (3.55,3) {$\set{b,d}$};
+\node at (6.45,3) {$\set{c,d}$};
+\node at (5,4.25) {$\set{b,c,d}$};
+\end{tikzpicture}
+\captionof{figure}{Potenssijoukon \(\powerset{B}\) Vennin diagrammi.
+Ympyrät kuvaavat
+ehtoja \(b \in C\), \(c \in C\) ja \(d \in C\), missä \(C \subseteq B\).}
+\end{minipage}
+\end{center}
 \end{solution}
 
 \begin{exercise}
