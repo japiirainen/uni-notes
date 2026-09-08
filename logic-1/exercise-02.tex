@@ -1,0 +1,142 @@
+% !TeX program = pdflatex
+\documentclass[12pt,a4paper]{article}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Harjoituksen 2 ratkaisut}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\noindent
+
+\begin{exercise}
+  Oletataan, että \(v(p_0) = 1\), \(v(p_1) = 0\) ja \(v(p_2) = 1\). Määritä
+\begin{enumerate}[label=\alph*), nosep]
+  \item \(v((p_0 \lor \neg p_1) \rightarrow (p_1 \land p_2))\),
+  \item \(v((p_0 \leftrightarrow \neg p_1) \land \neg p_2)\).
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Totuusarvon määritelmän mukaan,
+  \[
+    \begin{aligned}
+      v((p_0 \lor \neg p_1) \rightarrow (p_1 \land p_2)) &= v((1 \lor
+      \neg 0) \leftarrow (0 \land 1)) \\
+      &= v((1 \lor 1) \leftarrow 0) \\
+      &= v(1 \leftrightarrow 0) \\
+      &= 0.
+    \end{aligned}
+  \]
+
+\item Totuusarvon määritelmän mukaan,
+  \[
+    \begin{aligned}
+      v((p_0 \leftrightarrow \neg p_1) \land \neg p_2) &= v((1
+      \leftrightarrow \neg 0) \land \neg 1) \\
+      &= v((1 \leftrightarrow 1) \land 0) \\
+      &= v(1 \land 0) \\
+      &= 0.
+    \end{aligned}
+  \]
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+Anna esimerkki totuusjakaumasta, jolla lause
+\begin{enumerate}[label=\alph*), nosep]
+\item \(((p_0 \rightarrow p_1) \land \neg(p_1 \rightarrow p_0))\)
+\item \(((p_0 \land p_1) \leftrightarrow (p_0 \lor p_1))\)
+\end{enumerate}
+on tosi.
+\end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Olkoon \(v\) totuusjakauma, jolla \(v(p_0) = 0\) ja \(v(p_1) = 1\).
+Laskemalla lauseen totuusarvo, saadaan
+\[
+\begin{aligned}
+  v((p_0 \rightarrow p_1) \land \neg(p_1 \rightarrow p_0)) &=
+  v((0 \rightarrow 1) \land \neg(1 \rightarrow 0)) \\
+  &= v(1 \land 1) \\
+  &= 1.
+\end{aligned}
+\]
+
+\item Olkoon \(v\) totuusjakauma, jolla \(v(p_0) = v(p_1) = 0\).
+Laskemalla lauseen totuusarvo, saadaan
+\[
+\begin{aligned}
+  v((p_0 \land p_1) \leftrightarrow (p_0 \lor p_1)) &=
+  v((0 \land 0) \leftrightarrow (0 \lor 0)) \\
+  &= v(0 \leftrightarrow 0) \\
+  &= 1.
+\end{aligned}
+\]
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\begin{exercise}
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\begin{exercise}
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\begin{exercise}
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\begin{exercise}
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\begin{exercise}
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\begin{exercise}
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\begin{exercise}
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\begin{exercise}[Haastetehtävä]
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\end{document}
