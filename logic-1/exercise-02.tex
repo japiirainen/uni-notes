@@ -373,9 +373,21 @@ Näin ollen väite seuraa induktiosta rakenteen suhteen.
 \end{solution}
 
 \begin{exercise}
+Mikä on totuusfunktio \(f_A\), kun
+\[
+A = ((p_0 \land \neg p_1) \lor \neg \neg(p_1 \rightarrow p_0))?
+\]
 \end{exercise}
 
 \begin{solution}
+Propositiolauseen \(A\) totuusfunktio \(f_A \colon \set{0, 1}^2
+\rightarrow \set{0, 1}\) on
+\[
+\begin{aligned}
+f_A(0, 0) &= f_A(1, 0) = f_A(1, 1) = 1 \\
+f_A(0, 1) &= 0.
+\end{aligned}
+\]
 \end{solution}
 
 \begin{exercise}
