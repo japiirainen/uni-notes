@@ -1,0 +1,69 @@
+% !TeX program = pdflatex
+\documentclass[12pt,a4paper]{article}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\usepackage{tikz}
+
+\title{Ryhmätyö 2 ratkaisut}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\noindent
+
+\begin{exercise}
+  \textbf{Määritelmä.} Lukujono $(x_n)$ on \emph{ylhäältä rajoitettu}, jos on
+  olemassa reaaliluku $M$, jolle $x_n \leq M$ kaikilla $n$.
+\begin{enumerate}[label=\alph*), nosep]
+  \item Määrittele vastaava käsite \emph{alhaalta rajoitettu}.
+  \item Anna esimerkki lukujonosta, joka on ylhäältä rajoitettu mutta ei ole
+    alhaalta rajoitettu.
+  \item Anna esimerkki lukujonosta, joka ei ole ylhäältä eikä alhaalta
+    rajoitettu.
+  \item Lukujono on \emph{rajoitettu}, jos se on ylhäältä ja alhaalta
+    rajoitettu. Onko tämä ekvivalentti kirjan antaman määritelmän kanssa
+    (ennen Lausetta 2.2.7)?
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item \textbf{Määritelmä.} Lukujono \((x_n)\) on \emph{alhaalta rajoutettu},
+  jos on olemassa reaaliluku \(M\), jolle \(M \leq x_n\) kaikilla \(n \in \NN\).
+\item Olkoon \((x_n)\) lukujono, \(x_n = -n, n \in \NN\). On voimassa
+  \(0 \geq x_n\) kaikilla \(n \in \NN\), eli \((x_n)\) on ylhäältä
+  rajoitettu.
+
+  Oletetaan, että \(M \in \RR\) on jonon \((x_n)\) alaraja, eli
+  \(M \leq x_n\) kaikilla \(n \in \NN\).
+  Valitaan \(n \in \NN\) siten, että \(n > -M\). Sitten
+  \(x_n = -n < M\). Tämä on ristiriita oletuksen
+  \(M \leq x_n\) kaikilla \(n \in \NN\) kanssa. Jonolla \((x_n)\) ei
+  siis ole alarajaa.
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+Matroskin ja Musti ovat lukeneet Fedja-sedän matikanvihkoa. Molemmat ovat
+kopioineet omaan vihkoonsa lukujonon suppenemisen määritelmän. Kopioitaessa
+määritelmä on kuitenkin muuttunut. Tutki ovatko Matroskinin ja Mustin
+määritelmät ekvivalentteja alkuperäisen määritelmän kanssa.
+
+\textbf{Matroskin:} Lukujono $(x_n)$ suppenee kohti lukua $a$, jos on
+olemassa sellainen luku $\lambda$, että kaikilla $m$ pätee
+$\abs{x_n-a}<\lambda$ kun $n>m$.
+
+\textbf{Musti:} Lukujono $(x_n)$ suppenee kohti lukua $a$, jos jokaisella
+$\xi>0$ on sellainen $\mu$, että $\abs{x_n-a}<7\xi$ kun $n>\mu/8$.
+\end{exercise}
+
+\begin{solution}
+\end{solution}
+
+\end{document}
