@@ -1,0 +1,226 @@
+% !TeX program = pdflatex
+\documentclass[12pt,a4paper]{article}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+\usepackage{tikz}
+
+\title{Harjoituksen 2 ratkaisut}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\noindent
+
+\begin{exercise}
+  Olkoon \((x_n)\) lukujono, \(x_n = \frac{2n - 4}{n + 2}\). Osoita suoraan
+  määritelmästä, että \(\lim_{n \to \infty} x_n = 2\).
+\end{exercise}
+
+\begin{solution}
+  Olkoon \(\epsilon > 0\). Valitaan \(N \in \NN\) jolla \(N >
+  \frac{8}{\epsilon}\). Kun \(n > N\), niin
+  \[
+    \abs{x_n - 2} = \frac{8}{n + 2} < \frac{8}{n} < \frac{8}{N} < \epsilon.
+  \]
+  Täten \(\lim_{n \to \infty} x_n = 2\).
+\end{solution}
+
+\begin{exercise}
+  Olkoon \((x_n)\) lukujono, \(x_n = \frac{4n}{n - 3}\). Osoita suoraan
+  määritelmästä, että \(\lim_{n \to \infty} x_n = 4\).
+\end{exercise}
+
+\begin{solution}
+  Olkoon \(\epsilon > 0\). Valitaan \(N \in \NN\) jolla \(N >
+  \maxset{6, \frac{24}{\epsilon}}\). Kun \(n > N\), niin
+  \[
+    \abs{x_n - 4} = \frac{12}{n - 3} \leq \frac{24}{n} < \frac{24}{N}
+    < \epsilon.
+  \]
+  Täten \(\lim_{n \to \infty} x_n = 4\).
+\end{solution}
+
+\begin{exercise}
+  Olkoon \((y_n)\) lukujono, \(y_n = (-1)^{n + 1}n\). Tutki määritelmän
+  avulla suppenevatko jono \((y_n)\) ja alijono \((y_{2n})\).
+\end{exercise}
+
+\begin{solution}
+  Tehdään vastaoletus: Oletetaan, että \(\lim_{n \to \infty} y_n = a\).
+  On olemassa \(N \in \NN\) siten, että kaikilla \(n > N\) pätee
+  \[
+    \abs{y_n - a} < 1.
+  \]
+  Valitaan parillinen \(n \in \NN\) niin suuri, että \(n > \maxset{N,
+  \abs{a} + 1}\).
+  Koska \(n\) on parillinen, \(y_n = -n\), joten kolmioepäyhtälön nojalla,
+  \[
+    \abs{y_n - a} = \abs{-n - a} \geq n - \abs{a} > 1.
+  \]
+  Koska \(n > N\), oletuksen nojalla pitäisi olla \(\abs{y_{n} - a}\) < 1.
+  Olemme saaneet ristiriidan, joten \((y_n)\) ei suppene.
+
+  Tutkitaan seuraavaksi alijonoa \((y_{2n})\). Tehdään jälleen vastaoletus:
+  Oletetaan, että \(\lim_{n \to \infty} y_{2n} = a\). On olemassa
+  \(N \in \NN\) siten, että kaikilla \(n > N\) pätee
+  \[
+    \abs{y_{2n} - a} < 1.
+  \]
+  Valitaan \(n \in \NN\) niin suuri, että \(n > N + \abs{a} + 1\).
+  Koska \(y_{2n} = -2n\), kolmioepäyhtälön nojalla
+  \[
+    \abs{y_{2n} - a} = \abs{-2n - a} \geq 2n - \abs{a} > 1.
+  \]
+  Koska \(n > N\), oletuksen nojalla pitäisi olla \(\abs{y_{2n} - a} < 1\).
+  Olemme saaneet ristiriidan, joten \((y_{2n})\) ei suppene.
+\end{solution}
+
+\begin{exercise}
+  Olkoon \((x_n)\) lukujono, joka suppenee kohti reaalilukua \(a\). Olkoon
+  \(m \in \RR\), jolle \(x_n < m\) kaikilla \(n \in \NN\). Piirrä
+  kuva tilanteesta. Osoita, että \(a \leq m\). Onko välttämättä
+  \(a < m\)?
+\end{exercise}
+
+\begin{solution}
+  Kuvassa vasemmalla raja-arvo on aidosti ylärajaa pienempi. Oikealla
+  lukujonon termit lähestyvät ylärajaa alhaalta, joten raja-arvo voi myös olla
+  yhtä suuri kuin yläraja.
+  \begin{center}
+    \begin{tikzpicture}[x=0.75cm,y=1.15cm, every node/.style={font=\small}]
+      \begin{scope}
+        \draw[->] (0,0) -- (6.8,0) node[right] {$n$};
+        \draw[->] (0,0) -- (0,4.1);
+        \draw[dashed] (0,3.45) -- (6.4,3.45) node[right] {$m$};
+        \draw[dotted] (0,2.2) -- (6.4,2.2) node[right] {$a$};
+        \foreach \x/\y in {1/0.9,2/2.8,3/1.65,4/2.5,5/1.95,6/2.32}
+        \fill (\x,\y) circle (1.7pt);
+        \node at (3.2,-0.55) {$a<m$};
+      \end{scope}
+
+      \begin{scope}[xshift=8.2cm]
+        \draw[->] (0,0) -- (6.8,0) node[right] {$n$};
+        \draw[->] (0,0) -- (0,4.1);
+        \draw[dashed] (0,3.45) -- (6.4,3.45) node[right] {$a=m$};
+        \foreach \x/\y in {1/1.1,2/2.05,3/2.55,4/2.85,5/3.05,6/3.18}
+        \fill (\x,\y) circle (1.7pt);
+        \node at (3.2,-0.55) {$a=m$};
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
+
+  Tehdään vastaoletus: Oletetaan \(a > m\). Olkoon \(\epsilon =
+  \frac{a - m}{2} > 0\). Koska \((x_n)\) suppenee, on olemassa \(N \in \NN\),
+  jolla
+  \[
+    \abs{x_n - a} < \epsilon,
+  \]
+  kun \(n > N\). Saadaan
+  \[
+    x_n > a - \epsilon = \frac{2a - (a - m)}{2} = \frac{a + m}{2} > m.
+  \]
+  Tämä on ristiriidassa oletuksen \(x_n < m\). On siis oltava
+  \(a \leq m\).
+
+  Osoitetaan vielä että \(a < m\) \emph{ei} pidä välttämättä paikkaansa.
+  Olkoon \((x_n)\) lukujono, \(x_n = m - \frac{1}{n}\). Tällöin
+  \(x_n < m\) kaikilla \(n \in \NN\). Näytetään
+  \[
+    \lim_{n \to \infty} x_n = m.
+  \]
+  Olkoon \(\epsilon > 0\). Valitaan \(N \in \NN\) siten, että
+  \(N > \frac{1}{\epsilon}\). Kun \(n > N\), niin
+  \[
+    \abs{x_n - m} = \frac{1}{n} <
+    \frac{1}{\bigl(\frac{1}{\epsilon}\bigr)} = \epsilon.
+  \]
+  Täten \(a = \lim_{n \to \infty} x_n = m\).
+\end{solution}
+
+\begin{theorem}\label{thm:convergent-sequences-are-bounded}
+  Kaikki suppenevat lukujonot on rajoitettuja.
+\end{theorem}
+
+\begin{proof}
+  Olkoon \((x_n)\) lukujono joka suppenee kohti reaalilukua \(a\). On
+  olemassa \(N \in \NN\), jolle
+  \[
+    \abs{x_n - a} < 1,
+  \]
+  kun \(n > N\). Tästä saadaan yläraja
+  \[
+    \abs{x_n} < \abs{a} + 1,
+  \]
+  kun \(n > N\). Valitaan
+  \[
+    M = \maxset{\abs{x_0}, \cdots, \abs{x_N}, \abs{a} + 1}.
+  \]
+  Nyt epäyhtälö \(\abs{x_n} \leq M\) on voimassa kaikilla \(n \in \NN\),
+  eli \((x_n)\) on rajoutettu.
+\end{proof}
+
+\begin{exercise}
+  Olkoon \((x_n)\) lukujono, joka suppenee kohti reaalilukua \(a\), ja
+  olkoon \((y_n)\) lukujono, joka suppenee kohti reaalilukua \(b\).
+  Osoita, että lukujono \((x_ny_n)\) suppenee kohti lukua \(ab\).
+\end{exercise}
+
+\begin{solution}
+  Olkoon \(\epsilon > 0\). Koska \((y_n)\) suppenee, on Lauseen
+  \ref{thm:convergent-sequences-are-bounded} nojalla olemassa luku
+  \(M > 0\), jolla \(\abs{y_n} < M\) kaikilla \(n \in \NN\). Valitaan
+  \(N_1 \in \NN\) siten, että kun \(n > N_1\), niin
+  \[
+    \abs{x_n - a} < \frac{\epsilon}{2M}.
+  \]
+  Valitaan \(N_2 \in \NN\) siten, että kun \(n > N_2\), niin
+  \[
+    \abs{y_n - b} < \frac{\epsilon}{2(\abs{a} + 1)}.
+  \]
+  Valitaan \(N = \maxset{N_1, N_2}\). Kolmioepäyhtälön nojalla,
+  kun \(n > N\), saadaan
+  \[
+    \begin{aligned}
+      \abs{x_ny_n - ab} &\leq \abs{x_ny_n - ay_n} + \abs{ay_n - ab} \\
+      &= \abs{y_n}\abs{x_n - a} + \abs{a}\abs{y_n - b} \\
+      &< M\frac{\epsilon}{2M} + \abs{a}\frac{\epsilon}{2(\abs{a} + 1)} \\
+      &< \frac{\epsilon}{2} + \frac{\epsilon}{2} \\
+      &= \epsilon.
+    \end{aligned}
+  \]
+  Täten \(\lim_{n \to \infty} x_ny_n = ab\).
+\end{solution}
+
+\begin{exercise}[Suppiloperiaate eli kuristusperiaate]
+  Olkoon \((x_n)\), \((y_n)\) ja \((z_n)\) sellaisia lukujonoja, että
+  \(x_n \leq y_n \leq z_n\) kaikilla \(n \in \NN\). Oletetaan, että
+  lukujonot \((x_n)\) ja \((z_n)\) suppenevat ja
+  \(\lim_{n \to \infty} x_n = a = \lim_{n \to \infty} z_n\).
+  Osoita, että lukujono \((y_n)\) suppenee ja \(\lim_{n \to \infty} y_n = a\).
+\end{exercise}
+
+\begin{solution}
+  Olkoon \(\epsilon > 0\). On olemassa \(N_1 \in \NN\), jolla
+  \[
+    \abs{x_n - a} < \epsilon \quad \text{kun} \quad n > N_1,
+  \]
+  sekä \(N_2 \in \NN\), jolla
+  \[
+    \abs{z_n - a} < \epsilon \quad \text{kun} \quad n > N_2.
+  \]
+  Valitaan \(N \in \NN\) siten, että \(N = \maxset{N_1, N_2}\). Kun
+  \(n > N\), saadaan
+  \[
+    a - \epsilon < x_n \leq y_n \leq z_n < a + \epsilon,
+  \]
+  eli
+  \[
+    \abs{y_n - a} < \epsilon.
+  \]
+  Täten \(\lim_{n \to \infty} y_n = a\).
+\end{solution}
+\end{document}
