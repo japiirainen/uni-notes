@@ -46,6 +46,45 @@
   \(x_n = -n < M\). Tämä on ristiriita oletuksen
   \(M \leq x_n\) kaikilla \(n \in \NN\) kanssa. Jonolla \((x_n)\) ei
   siis ole alarajaa.
+\item Olkoon \((x_n)\) lukujono, \(x_n = (-1)^{n + 1}n\). Olkoon \(M > 0\).
+  Valitaan \(k \in \NN\) siten, että \(2k - 1 > M\). Sitten
+  \[
+    x_{2k - 1} = (-1)^{2k} (2k - 1) = (2k - 1) > M,
+  \]
+  sekä
+  \[
+    x_{2k} = (-1)^{2k + 1} 2k = -2k < -M.
+  \]
+  Täten, jokaisella \(M > 0\), jono \((x_n)\) sisältää lukua \(M\) suuremman
+  jäsenen, sekä lukua \(-M\) pienemmän jäsenen. \((x_n)\) ei siis ole
+  ylhäältä, eikä alhaalta rajoutettu.
+\item Kirjan määritelmä on seuraava:
+
+  \textbf{Määritelmä:} Lukujono \((x_n)\) on rajoutettu, jos sen kaikki jäsenet
+  kuuluvat jollekin rajoutetulle välille.
+
+  Näytetään, että määritelmät ovat ekvivalentteja.
+
+  \((\Rightarrow)\): Oletetaan, että \((x_n)\) on rajoutettu kirjan määritelmän
+  mukaan. Tällöin on olemassa \(m, M \in \RR\), \(m < M\), siten, että
+  kaikki jonon jäsenet kuuluvat välille, joka sisältyy väliin \([m, M]\).
+  Siis
+  \[
+    m \leq x_n \leq M, \quad \text{kaikilla} \quad n \in \NN,
+  \]
+  joten \(m\) on jonon \((x_n)\) alaraja, ja \(M\) yläraja. \((x_n)\) on siis
+  alhaalta ja ylhäältä rajoitettu.
+
+  \((\Leftarrow)\): Oletetaan, että \((x_n)\) on ylhäältä ja alhaalta
+  rajoutettu. On siis olemassa luku \(m \in \RR\), jolla \(m \leq x_n\) kaikilla
+  \(n \in \NN\), ja \(M \in \RR\), jolla \(x_n \leq M\) kaikilla \(n \in \NN\).
+  Toisin sanoen,
+  \[
+    m \leq x_n \leq M, \quad \text{kaikilla} \quad n \in \NN,
+  \]
+  eli \(x_n \in [m, M]\) kaikilla \(n \in \NN\). \((x_n)\) on siis rajoutettu.
+
+  On todistettu, että määritelmät ovat ekvivalentteja.
 \end{enumerate}
 \end{solution}
 
@@ -64,6 +103,47 @@ $\xi>0$ on sellainen $\mu$, että $\abs{x_n-a}<7\xi$ kun $n>\mu/8$.
 \end{exercise}
 
 \begin{solution}
+Käsitellään ensiksi \emph{Matroskin} määritelmää. Olkoon \((x_n)\) lukujono,
+\(x_n = (-1)^{n + 1}\). Matroskin määritelmän perusteella, \((x_n)\) suppenee
+kohti lukua \(a = 0\). Huomataan, että \(\abs{x_n - a} = 1\) kaikilla
+\(n \in \NN\), joten kun valitaan \(\lambda = 2\), niin
+\[
+\abs{x_n - 0} = 1 < \lambda = 2
+\]
+kaikilla \(n \in \NN\).
+
+Näytetään vielä, että \((x_n)\) ei suppene kohti lukua \(a = 0\). Olkoon
+\(\epsilon = \frac{1}{2}\). Saadaan
+\[
+\abs{x_n - 0} = 1 > \frac{1}{2} = \epsilon
+\]
+kaikilla \(n \in \NN\), joten \((x_n)\) ei suppene kohti lukua \(0\).
+Siis Matroskinin määritelmä ei ole ekvivalentti alkuperäisen määritelmän kanssa.
+
+Käsitellään seuraavaksi \emph{Mustin} määritelmää.
+
+\((\Rightarrow)\): Olkoon \((x_n)\) lukujono joka suppenee kohti lukua \(a\)
+kirjan määritelmän mukaisesti. Olkoon \(\xi > 0\). Valitaan \(\epsilon = 7\xi\).
+Tällöin on olemassa \(N \in \NN\), jolle
+\[
+\abs{x_n - a} < 7\xi,
+\]
+kun \(n > N\). Valitaan \(\mu = 8N\). Tällöin \(n > \frac{\mu}{8}\) merkitsee,
+että \(n > N\), joten \(\abs{x_n - a} < 7\xi\). Täten, \((x_n)\) suppenee
+kohti lukua \(a\) Mustin määritelmän nojalla.
+
+\((\Leftarrow)\): Olkoon \((x_n)\) lukujono joka suppenee kohti lukua \(a\)
+Mustin määritelmän mukaisesti. Olkoon \(\epsilon > 0\). Valitaan
+\(\xi = \frac{\epsilon}{7} > 0\). On olemassa \(\mu\), jolle
+\[
+\abs{x_n - a} < 7\xi = \epsilon,
+\]
+kun \(n > \frac{\mu}{8}\). Valitaan \(N \in \NN\) siten, että
+\(N \geq \frac{\mu}{8}\). Tällöin \(n > N \implies n > \frac{\mu}{8}\), joten
+\(\abs{x_n - a} < \epsilon\), eli \((x_n)\) suppenee kohti lukua \(a\) kirjan
+määritelmän mukaisesti.
+
+Mustin määritelmä on siis ekvivalentti kirjan määritelmän kanssa.
 \end{solution}
 
 \end{document}
