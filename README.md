@@ -23,6 +23,12 @@ preserves the final PDF because PDFs are kept under version control. Builds use
 isolated temporary directories so readers only see the output of a completed
 compilation.
 
+Exercise documents include the course slug in their filenames. For example:
+
+```sh
+make COURSE=analysis-1 DOCUMENT=analysis-1-exercise-01
+```
+
 Without an active development shell, run a command through Nix directly:
 
 ```sh
