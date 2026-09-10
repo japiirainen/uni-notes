@@ -373,38 +373,43 @@ implikaationa ja todista se vastatodistuksen avulla.
 \end{exercise}
 
 \begin{solution}
-Kirjoitetaan ensin implikaatio määritelmän mukaan predikaattilogiikan
-kielellä. Saadaan
+Inkluusion määritelmän mukaan väite on kaikilla \(x \in X\) pätevä implikaatio
 \[
 \begin{aligned}
-\forall x \in X \colon \bigl(x \in A \cup (B \cap C) &\implies x \in (A
-\cup B) \cap (A \cup C)\bigr) \\
-\iff \forall x \in X \colon \bigl(x \in A \lor (x \in B \land x \in C)
-&\implies ((x \in A) \lor (x \in B)) \land ((x \in A) \lor (x \in C))\bigr).
+x \in A \cup (B \cap C)
+&\implies x \in (A \cup B) \cap (A \cup C).
 \end{aligned}
 \]
-Todistetaan nyt väite vastatodistuksella. Olkoon \(x \in X\) mielivaltainen.
-Tehdään vastaoletus: oletetaan, että
+Joukko-operaatiot avaamalla sama implikaatio voidaan kirjoittaa
+predikaattilogiikan kielellä muodossa
 \[
-x \in A \cup (B \cap C) \quad \text{\emph{ja}} \quad x \notin (A \cup
-B) \cap (A \cup C).
+\begin{aligned}
+&x \in A \lor (x \in B \land x \in C) \\
+&\qquad\implies
+\bigl((x \in A \lor x \in B) \land (x \in A \lor x \in C)\bigr).
+\end{aligned}
 \]
-Koska \(x \in A \cup (B \cap C)\), \(x \in A\) tai \(x \in B \cap C\).
-
-Ensimmäisesta tapauksesta seuraa \(x \in A \cup B\) sekä
-\(x \in A \cup C\), joten \(x \in (A \cup B) \cap (A \cup C)\), mikä
-on ristiriidassa vastaoletuksen kanssa.
-
-Toisessa tapauksessa, \(x \in B \cap C\), joten \(x \in B\) sekä \(x \in C\).
-Näistä seuraa \(x \in A \cup B\) sekä \(x \in A \cup C\), joten
-\(x \in (A \cup B) \cap (A \cup C)\), mikä on ristiriidassa vastaoletuksen
-kanssa.
-
-Molemmissa tapauksissa päädytään ristiriitaan vastaoletuksen kanssa. Siispä
-vastaoletuksen on oltava väärä, joten
+Todistetaan nyt väite vastatodistuksella eli osoittamalla implikaation
+kontrapositiivinen muoto. Olkoon \(x \in X\) mielivaltainen ja oletetaan, että
 \[
-x \in A \cup (B \cap C) \implies x \in (A \cup B) \cap (A \cup C).
+x \notin (A \cup B) \cap (A \cup C).
 \]
+Tällöin \(x \notin A \cup B\) tai \(x \notin A \cup C\). Ensimmäisessä
+tapauksessa \(x \notin A\) ja \(x \notin B\), joten
+\(x \notin B \cap C\). Toisessa tapauksessa \(x \notin A\) ja
+\(x \notin C\), joten myös tällöin \(x \notin B \cap C\). Kummassakin
+tapauksessa siis
+\[
+x \notin A \cup (B \cap C).
+\]
+Näin on osoitettu kontrapositiivinen implikaatio
+\[
+\begin{aligned}
+x \notin (A \cup B) \cap (A \cup C)
+&\implies x \notin A \cup (B \cap C),
+\end{aligned}
+\]
+joten alkuperäinen implikaatio pätee.
 Koska \(x \in X\) oli mielivaltainen,
 \[A \cup (B \cap C) \subseteq (A \cup B) \cap (A \cup C).\]
 \end{solution}
