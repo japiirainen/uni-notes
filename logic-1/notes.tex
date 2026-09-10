@@ -396,4 +396,193 @@ The truth values of the logical connectives are defined as follows.
   equivalences are known as \emph{De Morgan's laws}.
 \end{example}
 
+\subsection{10.09.2026}
+
+\subsubsection{Logical implication and equivalence}
+
+\begin{definition}[Logical implication]
+  A formula \(A\) \emph{logically implies} a formula \(B\), written
+  \[
+    A \Rightarrow B,
+  \]
+  if, for every truth assignment \(v\), \(v(A)=1\) implies \(v(B)=1\).
+  Equivalently, \(A \Rightarrow B\) exactly when \((A\rightarrow B)\) is a
+  tautology.
+\end{definition}
+
+\begin{definition}[Logical equivalence]
+  Formulas \(A\) and \(B\) are \emph{logically equivalent}, written
+  \[
+    A \Leftrightarrow B,
+  \]
+  if \(v(A)=v(B)\) for every truth assignment \(v\). Equivalently,
+  \(A \Leftrightarrow B\) exactly when \((A\leftrightarrow B)\) is a
+  tautology.
+\end{definition}
+
+The symbols \(\Rightarrow\) and \(\Leftrightarrow\) are used in the
+metalanguage to state relations between formulas; unlike \(\rightarrow\) and
+\(\leftrightarrow\), they are not connectives used to construct propositional
+formulas.
+
+\begin{definition}[Literal]
+  A \emph{literal} is either a propositional symbol \(p_n\) or its negation
+  \(\neg p_n\). The former is a \emph{positive literal}, and the latter is a
+  \emph{negative literal}.
+\end{definition}
+
+\begin{definition}[Disjunctive normal form]
+  A formula is in \emph{disjunctive normal form} (DNF) if it is a disjunction
+  of conjunctions of literals. In other words, it has the form
+  \[
+    \bigvee_{i=1}^m\left(\bigwedge_{j=1}^{k_i}L_{ij}\right),
+  \]
+  where \(m\geq 1\), each \(k_i\geq 1\), and every \(L_{ij}\) is a literal.
+\end{definition}
+
+\begin{definition}[Conjunctive normal form]
+  A formula is in \emph{conjunctive normal form} (CNF) if it is a conjunction
+  of disjunctions of literals. In other words, it has the form
+  \[
+    \bigwedge_{i=1}^m\left(\bigvee_{j=1}^{k_i}L_{ij}\right),
+  \]
+  where \(m\geq 1\), each \(k_i\geq 1\), and every \(L_{ij}\) is a literal.
+\end{definition}
+
+For a literal \(L\), let \(\overline L\) denote its \emph{complementary
+literal}, defined by
+\[
+  \overline{p_n}=\neg p_n
+  \qquad\text{and}\qquad
+  \overline{\neg p_n}=p_n.
+\]
+De Morgan's laws show that DNF and CNF are dual: negating a DNF formula gives
+an equivalent CNF formula, and negating a CNF formula gives an equivalent DNF
+formula. More precisely,
+\[
+  \neg\bigvee_{i=1}^m\left(\bigwedge_{j=1}^{k_i}L_{ij}\right)
+  \Leftrightarrow
+  \bigwedge_{i=1}^m\left(\bigvee_{j=1}^{k_i}\overline{L_{ij}}\right),
+\]
+and the analogous equivalence holds with \(\land\) and \(\lor\) interchanged.
+
+\begin{definition}[Boolean function]
+  An \(n\)-ary \emph{truth function} is a
+  function
+  \[
+    f\colon\{0,1\}^n\longrightarrow\{0,1\}.
+  \]
+  A propositional formula \(A\) whose propositional symbols are among
+  \(p_1,\ldots,p_n\) determines the truth function
+  \[
+    f_A(x_1,\ldots,x_n)=v(A),
+  \]
+  where \(v(p_i)=x_i\) for every \(1\leq i\leq n\).
+\end{definition}
+
+\begin{theorem}[Normal form theorem]
+  Let \(f\) be an \(n\)-ary truth function, where \(n\geq 1\). Then there are
+  formulas \(A_D\) in DNF and \(A_C\) in CNF, containing only the
+  propositional symbols \(p_1,\ldots,p_n\), such that
+  \[
+    f_{A_D}=f_{A_C}=f.
+  \]
+  Consequently, every propositional formula is logically equivalent to a
+  formula in DNF and to a formula in CNF.
+\end{theorem}
+
+\begin{proof}
+  We construct the formulas directly from the truth table of \(f\).
+
+  To construct \(A_D\), consider each row
+  \(a=(a_1,\ldots,a_n)\in\{0,1\}^n\) on which \(f(a)=1\), and define the
+  formula
+  \[
+    M_a=L_1^a\land\cdots\land L_n^a,
+    \qquad
+    L_i^a=
+    \begin{cases}
+      p_i, & \text{if }a_i=1,\\
+      \neg p_i, & \text{if }a_i=0.
+    \end{cases}
+  \]
+  Thus \(M_a\) is true under a truth assignment \(v\) exactly when
+  \((v(p_1),\ldots,v(p_n))=a\).
+
+  If there is at least one such row, let
+  \[
+    A_D=\bigvee_{\substack{a\in\{0,1\}^n\\f(a)=1}}M_a.
+  \]
+  Under an assignment corresponding to \(b\in\{0,1\}^n\), the formula \(A_D\)
+  is true exactly when the disjunction contains \(M_b\), which happens exactly
+  when \(f(b)=1\). If \(f\) is constantly false, take
+  \(A_D=(p_1\land\neg p_1)\). Thus \(f_{A_D}=f\).
+
+  Dually, to construct \(A_C\), consider each row \(a\) on which \(f(a)=0\)
+  and define
+  \[
+    C_a=K_1^a\lor\cdots\lor K_n^a,
+    \qquad
+    K_i^a=
+    \begin{cases}
+      p_i, & \text{if }a_i=0,\\
+      \neg p_i, & \text{if }a_i=1.
+    \end{cases}
+  \]
+  The clause \(C_a\) is false exactly on the row \(a\). If there is at least
+  one such row, let
+  \[
+    A_C=\bigwedge_{\substack{a\in\{0,1\}^n\\f(a)=0}}C_a.
+  \]
+  This conjunction is true on a row \(b\) exactly when \(f(b)=1\). If \(f\)
+  is constantly true, take \(A_C=(p_1\lor\neg p_1)\). Thus
+  \(f_{A_C}=f\).
+
+  All finite conjunctions and disjunctions above may be given any fixed binary
+  parenthesization. Finally, for any propositional formula, list its distinct
+  propositional symbols as \(q_1,\ldots,q_n\) and apply the same construction
+  with \(q_i\) in place of \(p_i\). This gives logically equivalent formulas
+  in DNF and CNF.
+\end{proof}
+
+\begin{example}[Constructing normal forms from a truth function]
+  Consider the binary truth function whose truth table is
+  \[
+    \begin{array}{cc|c}
+      x_1 & x_2 & f(x_1,x_2)\\
+      \hline
+      0 & 0 & 0\\
+      0 & 1 & 1\\
+      1 & 0 & 1\\
+      1 & 1 & 0
+    \end{array}
+  \]
+  The rows where \(f=1\) are \((0,1)\) and \((1,0)\). Replace a \(1\) in a
+  row by \(p_i\), replace a \(0\) by \(\neg p_i\), and join the literals in
+  each row with \(\land\). This gives the formulas
+  \[
+    M_{(0,1)}=(\neg p_1\land p_2)
+    \qquad\text{and}\qquad
+    M_{(1,0)}=(p_1\land\neg p_2).
+  \]
+  Finally, join the formulas for the selected rows with \(\lor\):
+  \[
+    A=((\neg p_1\land p_2)\lor(p_1\land\neg p_2)).
+  \]
+  This is a DNF formula with \(f_A=f\).
+
+  To construct a CNF formula, use instead the rows \((0,0)\) and \((1,1)\),
+  where \(f=0\). The clauses that are false on exactly these rows are
+  \[
+    C_{(0,0)}=(p_1\lor p_2)
+    \qquad\text{and}\qquad
+    C_{(1,1)}=(\neg p_1\lor\neg p_2).
+  \]
+  Their conjunction
+  \[
+    B=((p_1\lor p_2)\land(\neg p_1\lor\neg p_2))
+  \]
+  is in CNF and satisfies \(f_B=f\). Thus \(A\Leftrightarrow B\).
+\end{example}
+
 \end{document}
