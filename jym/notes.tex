@@ -437,4 +437,122 @@ This lecture was mostly spent going through basic mathematical notation.
   \end{tikzpicture}
 \end{center}
 
+\subsection{10.09.2026}
+
+\subsubsection{Power sets}
+
+\begin{definition}
+  The \emph{power set} of a set \(A\), denoted by \(\powerset{A}\), is the set
+  of all subsets of \(A\):
+  \[
+    \powerset{A} \coloneqq \set{B : B \subseteq A}.
+  \]
+  In particular, \(\emptyset \in \powerset{A}\) and
+  \(A \in \powerset{A}\).
+\end{definition}
+
+\begin{definition}
+  Let \(A\) and \(B\) be sets. Their \emph{Cartesian product} is the set of all
+  ordered pairs whose first component belongs to \(A\) and whose second
+  component belongs to \(B\):
+  \[
+    A \times B \coloneqq \set{(a,b) : a \in A \land b \in B}.
+  \]
+  More generally, for sets \(A_1,\ldots,A_n\), their Cartesian product is
+  \[
+    A_1 \times \cdots \times A_n
+      \coloneqq
+      \set{(a_1,\ldots,a_n) : a_i \in A_i
+        \text{ for every } i \in \set{1,\ldots,n}}.
+  \]
+  If all the factors are the same set \(A\), one commonly writes
+  \[
+    A^n \coloneqq \underbrace{A \times \cdots \times A}_{n\text{ factors}}.
+  \]
+\end{definition}
+
+\begin{definition}
+  Let \(I\) be a countably infinite \emph{index set}. A family of subsets of a
+  set \(X\), indexed by \(I\), is denoted by \((A_i)_{i \in I}\). Its
+  \emph{union} and \emph{intersection} are defined by
+  \begin{align*}
+    \bigcup_{i \in I} A_i
+    &\coloneqq \set{x \in X \colon \exists i \in I,\ x \in A_i}, \\
+    \bigcap_{i \in I} A_i
+    &\coloneqq \set{x \in X \colon \forall i \in I,\ x \in A_i}.
+  \end{align*}
+  Thus, an element belongs to the union if it belongs to at least one of the
+  sets, and it belongs to the intersection if it belongs to every one of them.
+
+  If the family itself is denoted by
+  \(\mathcal{A} = \set{A_i : i \in I}\), one also writes
+  \(\bigcup \mathcal{A}\) and \(\bigcap \mathcal{A}\).
+
+  A common index set is \(I = \mathbb{N}\). Since \(0 \in \mathbb{N}\) by
+  our convention, one writes
+  \begin{align*}
+    \bigcup_{n=0}^{\infty} A_n
+    &= \bigcup_{n \in \mathbb{N}} A_n, &
+    \bigcap_{n=0}^{\infty} A_n
+    &= \bigcap_{n \in \mathbb{N}} A_n.
+  \end{align*}
+  For a family indexed by the positive integers, the corresponding notation is
+  \(\bigcup_{n=1}^{\infty} A_n\) and
+  \(\bigcap_{n=1}^{\infty} A_n\). When the index range is clear from context,
+  these are also abbreviated as \(\bigcup_n A_n\) and \(\bigcap_n A_n\).
+\end{definition}
+
+\subsubsection{Laws of set algebra}
+
+Let \(A\), \(B\), and \(C\) be subsets of a universal set \(X\). The union
+and intersection operations are \emph{commutative}:
+\begin{align*}
+  A \cup B &= B \cup A, &
+  A \cap B &= B \cap A.
+\end{align*}
+They are also \emph{associative}:
+\begin{align*}
+  (A \cup B) \cup C &= A \cup (B \cup C), &
+  (A \cap B) \cap C &= A \cap (B \cap C).
+\end{align*}
+The \emph{distributive laws} are
+\begin{align*}
+  A \cap (B \cup C) &= (A \cap B) \cup (A \cap C), \\
+  A \cup (B \cap C) &= (A \cup B) \cap (A \cup C).
+\end{align*}
+The \emph{De Morgan laws} relate complements to unions and intersections:
+\begin{align*}
+  \complement{(A \cup B)} &= \complement{A} \cap \complement{B}, \\
+  \complement{(A \cap B)} &= \complement{A} \cup \complement{B}.
+\end{align*}
+Finally, set difference can be expressed using intersection and complement:
+\[
+  A \setminus B = A \cap \complement{B}.
+\]
+Equivalently, replacing \(B\) by \(C\) gives
+\[
+  A \setminus C = A \cap \complement{C}.
+\]
+
+\begin{theorem}
+  Let \(A\) and \(B\) be subsets of a universal set \(X\). Then
+  \[
+    A \subseteq B \iff \complement{B} \subseteq \complement{A}.
+  \]
+\end{theorem}
+
+\begin{proof}
+  Suppose first that \(A \subseteq B\), and let
+  \(x \in \complement{B}\). Then \(x \notin B\). Since every element of
+  \(A\) belongs to \(B\), it follows that \(x \notin A\), and hence
+  \(x \in \complement{A}\). Therefore
+  \(\complement{B} \subseteq \complement{A}\).
+
+  Conversely, suppose that
+  \(\complement{B} \subseteq \complement{A}\), and let \(x \in A\). If
+  \(x \notin B\), then \(x \in \complement{B}\), so the assumed inclusion
+  would imply that \(x \in \complement{A}\), contradicting \(x \in A\).
+  Thus \(x \in B\), and therefore \(A \subseteq B\).
+\end{proof}
+
 \end{document}
