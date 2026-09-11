@@ -416,4 +416,326 @@ Let us now tackle a simple divergence proof.
   Thus \(x_n \to 1\) as \(n \to \infty\).
 \end{example}
 
+\subsection{10.09.2026}
+
+\subsubsection{Uniqueness of limits}
+
+\begin{theorem}[Uniqueness of limits]
+  A convergent sequence of real numbers has a unique limit. That is, if
+  \(x_n \to a\) and \(x_n \to b\) as \(n \to \infty\), then \(a=b\).
+\end{theorem}
+
+\begin{proof}
+  Suppose for contradiction that \(a\neq b\), and set
+  \[
+    \epsilon=\frac{\abs{a-b}}{2}>0.
+  \]
+  Since \(x_n\to a\) and \(x_n\to b\), there exist \(N_a,N_b\in\NN\) such
+  that
+  \[
+    n>N_a \implies \abs{x_n-a}<\epsilon
+  \]
+  and
+  \[
+    n>N_b \implies \abs{x_n-b}<\epsilon.
+  \]
+  Choose \(n>\maxset{N_a,N_b}\). By the triangle inequality,
+  \[
+    \abs{a-b}
+    \leq \abs{a-x_n}+\abs{x_n-b}
+    < 2\epsilon
+    =\abs{a-b},
+  \]
+  which is impossible. Therefore \(a=b\).
+\end{proof}
+
+\begin{theorem}[Convergent sequences are bounded]
+  Every convergent sequence of real numbers is bounded.
+\end{theorem}
+
+\begin{proof}
+  Suppose that \(x_n\to a\). Taking \(\epsilon=1\), there exists
+  \(N\in\NN\) such that
+  \[
+    n>N \implies \abs{x_n-a}<1.
+  \]
+  By the triangle inequality, for every \(n>N\),
+  \[
+    \abs{x_n}
+    \leq \abs{x_n-a}+\abs{a}
+    <1+\abs{a}.
+  \]
+  Let
+  \[
+    M=\maxset{\abs{x_0},\abs{x_1},\ldots,\abs{x_N},1+\abs{a}}.
+  \]
+  Then \(\abs{x_n}\leq M\) for every \(n\in\NN\), so \((x_n)\) is
+  bounded.
+\end{proof}
+
+\subsubsection{Algebra of limits}
+
+\begin{theorem}[Algebraic limit laws]
+  Suppose that \(x_n\to a\) and \(y_n\to b\), and let \(c\in\RR\). Then
+  \begin{enumerate}
+    \item \(x_n\pm y_n\to a\pm b\).
+    \item \(cx_n\to ca\).
+    \item \(x_ny_n\to ab\).
+    \item If \(b\neq0\), then \(y_n\neq0\) for all sufficiently large
+      \(n\), and
+      \[
+        \frac{x_n}{y_n}\to\frac{a}{b}.
+      \]
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{enumerate}
+    \item
+      Let \(\epsilon>0\). Since \(x_n\to a\) and \(y_n\to b\), there exist
+      \(N_x,N_y\in\NN\) such that
+      \[
+        n>N_x\implies\abs{x_n-a}<\frac{\epsilon}{2}
+      \]
+      and
+      \[
+        n>N_y\implies\abs{y_n-b}<\frac{\epsilon}{2}.
+      \]
+      Thus, for \(n>\maxset{N_x,N_y}\),
+      \[
+        \abs{(x_n+y_n)-(a+b)}
+        \leq\abs{x_n-a}+\abs{y_n-b}
+        <\epsilon.
+      \]
+      Hence \(x_n+y_n\to a+b\). Replacing \(y_n\) and \(b\) by \(-y_n\)
+      and \(-b\) gives \(x_n-y_n\to a-b\).
+
+    \item
+      If \(c=0\), then \(cx_n=ca=0\) for every \(n\). If \(c\neq0\), choose
+      \(N\in\NN\) such that
+      \[
+        n>N\implies\abs{x_n-a}<\frac{\epsilon}{\abs{c}}.
+      \]
+      Then, for every \(n>N\),
+      \[
+        \abs{cx_n-ca}=\abs{c}\abs{x_n-a}<\epsilon.
+      \]
+      Therefore \(cx_n\to ca\).
+
+    \item
+      Since \((y_n)\) converges, it is bounded. Choose \(M>0\) such that
+      \(\abs{y_n}\leq M\) for every \(n\). There exist \(N_1,N_2\in\NN\)
+      such that
+      \[
+        n>N_1\implies\abs{x_n-a}<\frac{\epsilon}{2M}
+      \]
+      and
+      \[
+        n>N_2\implies\abs{y_n-b}<\frac{\epsilon}{2(\abs{a}+1)}.
+      \]
+      For \(n>\maxset{N_1,N_2}\),
+      \begin{align*}
+        \abs{x_ny_n-ab}
+        &\leq\abs{x_ny_n-ay_n}+\abs{ay_n-ab} \\
+        &=\abs{y_n}\abs{x_n-a}+\abs{a}\abs{y_n-b} \\
+        &<M\frac{\epsilon}{2M}
+        +\abs{a}\frac{\epsilon}{2(\abs{a}+1)} \\
+        &<\epsilon.
+      \end{align*}
+      Therefore \(x_ny_n\to ab\).
+
+    \item
+      Suppose that \(b\neq0\). Since \(y_n\to b\), there exists
+      \(N_0\in\NN\) such that
+      \[
+        n>N_0\implies\abs{y_n-b}<\frac{\abs{b}}{2}.
+      \]
+      The reverse triangle inequality then gives
+      \[
+        \abs{y_n}\geq\abs{b}-\abs{y_n-b}>\frac{\abs{b}}{2}>0
+      \]
+      for every \(n>N_0\). In particular, \(y_n\neq0\) eventually. Choose
+      \(N_1\in\NN\) such that
+      \[
+        n>N_1\implies
+        \abs{y_n-b}<\frac{\epsilon\abs{b}^2}{2}.
+      \]
+      For \(n>\maxset{N_0,N_1}\),
+      \[
+        \abs*{\frac{1}{y_n}-\frac{1}{b}}
+        =\frac{\abs{y_n-b}}{\abs{y_n}\abs{b}}
+        <\frac{2}{\abs{b}^2}\abs{y_n-b}
+        <\epsilon.
+      \]
+      Hence \(1/y_n\to1/b\); the finitely many terms with \(n\leq N_0\) may be
+      defined arbitrarily because they do not affect the limit. Applying the
+      product law to \((x_n)\) and \((1/y_n)\) yields
+      \[
+        \frac{x_n}{y_n}\to\frac{a}{b}.
+      \]
+  \end{enumerate}
+\end{proof}
+
+\subsubsection{Limits and order}
+
+\begin{theorem}
+  Suppose that \(x_n\to x\). Then
+  \begin{enumerate}
+    \item if \(x_n\leq M\) for every \(n\in\NN\), then \(x\leq M\);
+    \item if \(x_n\geq m\) for every \(n\in\NN\), then \(x\geq m\).
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{enumerate}
+    \item
+      Suppose for contradiction that \(x>M\), and set
+      \[
+        \epsilon=\frac{x-M}{2}>0.
+      \]
+      Since \(x_n\to x\), there exists \(N\in\NN\) such that, for every
+      \(n>N\),
+      \[
+        \abs{x_n-x}<\epsilon.
+      \]
+      It follows that
+      \[
+        x_n>x-\epsilon
+        =x-\frac{x-M}{2}
+        =\frac{x+M}{2}
+        >M,
+      \]
+      contradicting \(x_n\leq M\). Therefore \(x\leq M\).
+
+    \item
+      Suppose for contradiction that \(x<m\), and set
+      \[
+        \epsilon=\frac{m-x}{2}>0.
+      \]
+      Since \(x_n\to x\), there exists \(N\in\NN\) such that, for every
+      \(n>N\),
+      \[
+        \abs{x_n-x}<\epsilon.
+      \]
+      It follows that
+      \[
+        x_n<x+\epsilon
+        =x+\frac{m-x}{2}
+        =\frac{x+m}{2}
+        <m,
+      \]
+      contradicting \(x_n\geq m\). Therefore \(x\geq m\).
+  \end{enumerate}
+\end{proof}
+
+\begin{theorem}[Squeeze theorem]
+  Suppose that
+  \[
+    x_n\leq y_n\leq z_n
+  \]
+  for every \(n\in\NN\). If \(x_n\to a\) and \(z_n\to a\), then
+  \(y_n\to a\).
+\end{theorem}
+
+\begin{proof}
+  Let \(\epsilon>0\). Since \(x_n\to a\), there exists \(N_x\in\NN\) such
+  that
+  \[
+    n>N_x\implies a-\epsilon<x_n<a+\epsilon.
+  \]
+  Similarly, since \(z_n\to a\), there exists \(N_z\in\NN\) such that
+  \[
+    n>N_z\implies a-\epsilon<z_n<a+\epsilon.
+  \]
+  Therefore, for every \(n>\maxset{N_x,N_z}\),
+  \[
+    a-\epsilon<x_n\leq y_n\leq z_n<a+\epsilon.
+  \]
+  Hence \(\abs{y_n-a}<\epsilon\), so \(y_n\to a\).
+\end{proof}
+
+The inequalities in the squeeze theorem need only hold for all sufficiently
+large \(n\), since changing finitely many terms does not affect convergence.
+
+\begin{example}
+  Consider the oscillating sequence
+  \[
+    x_n=\frac{(-1)^n}{n}, \qquad n\geq1.
+  \]
+  Its sign alternates, but
+  \[
+    -\frac{1}{n}\leq\frac{(-1)^n}{n}\leq\frac{1}{n}.
+  \]
+  Both bounding sequences converge to \(0\). Indeed, given \(\epsilon>0\),
+  choosing \(N>1/\epsilon\) gives \(1/n<\epsilon\) whenever \(n>N\).
+  The squeeze theorem therefore gives
+  \[
+    \lim_{n\to\infty}\frac{(-1)^n}{n}=0.
+  \]
+  Notice that the squeeze theorem lets us prove convergence without trying
+  to handle even and odd indices separately.
+\end{example}
+
+\begin{example}
+  Consider
+  \[
+    x_n=\sqrt{n^2+n}-n, \qquad n\geq1.
+  \]
+  Rationalising the expression gives
+  \[
+    x_n=\frac{n}{\sqrt{n^2+n}+n}.
+  \]
+  Since
+  \[
+    n<\sqrt{n^2+n}<n+1,
+  \]
+  we obtain
+  \[
+    \frac{n}{2n+1}<x_n<\frac{1}{2}.
+  \]
+  By the algebraic limit laws,
+  \[
+    \lim_{n\to\infty}\frac{n}{2n+1}
+    =\lim_{n\to\infty}\frac{1}{2+1/n}
+    =\frac{1}{2}.
+  \]
+  The upper bound is the constant sequence \(1/2\), so both bounds converge
+  to \(1/2\). Hence the squeeze theorem yields
+  \[
+    \lim_{n\to\infty}\left(\sqrt{n^2+n}-n\right)=\frac{1}{2}.
+  \]
+\end{example}
+
+\subsubsection{Subsequences}
+
+\begin{definition}
+  Let \((x_n)\) be a sequence, and let \((n_k)\) be a strictly increasing
+  sequence of natural numbers:
+  \[
+    n_0<n_1<n_2<\cdots.
+  \]
+  The sequence \((x_{n_k})\), obtained by selecting the terms of \((x_n)\)
+  whose indices are \(n_0,n_1,n_2,\ldots\), is called a \emph{subsequence}
+  of \((x_n)\).
+\end{definition}
+
+\begin{theorem}
+  If \(x_n\to x\), then every subsequence of \((x_n)\) converges to \(x\).
+\end{theorem}
+
+\begin{proof}
+  Let \((x_{n_k})\) be a subsequence of \((x_n)\), and let \(\epsilon>0\).
+  Since \(x_n\to x\), there exists \(N\in\NN\) such that
+  \[
+    n>N\implies\abs{x_n-x}<\epsilon.
+  \]
+  Because \((n_k)\) is strictly increasing, \(n_k\geq k\) for every
+  \(k\in\NN\). Thus, whenever \(k>N\), we also have \(n_k>N\), and hence
+  \[
+    \abs{x_{n_k}-x}<\epsilon.
+  \]
+  Therefore \(x_{n_k}\to x\). Since the subsequence was arbitrary, every
+  subsequence of \((x_n)\) converges to the same limit \(x\).
+\end{proof}
+
 \end{document}
