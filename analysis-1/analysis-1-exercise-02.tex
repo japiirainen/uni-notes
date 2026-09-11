@@ -139,28 +139,6 @@
   Täten \(a = \lim_{n \to \infty} x_n = m\).
 \end{solution}
 
-\begin{theorem}\label{thm:convergent-sequences-are-bounded}
-  Kaikki suppenevat lukujonot on rajoitettuja.
-\end{theorem}
-
-\begin{proof}
-  Olkoon \((x_n)\) lukujono joka suppenee kohti reaalilukua \(a\). On
-  olemassa \(N \in \NN\), jolle
-  \[
-    \abs{x_n - a} < 1,
-  \]
-  kun \(n > N\). Tästä saadaan yläraja
-  \[
-    \abs{x_n} < \abs{a} + 1,
-  \]
-  kun \(n > N\). Valitaan
-  \[
-    M = \maxset{\abs{x_0}, \cdots, \abs{x_N}, \abs{a} + 1}.
-  \]
-  Nyt epäyhtälö \(\abs{x_n} \leq M\) on voimassa kaikilla \(n \in \NN\),
-  eli \((x_n)\) on rajoutettu.
-\end{proof}
-
 \begin{exercise}
   Olkoon \((x_n)\) lukujono, joka suppenee kohti reaalilukua \(a\), ja
   olkoon \((y_n)\) lukujono, joka suppenee kohti reaalilukua \(b\).
@@ -168,10 +146,9 @@
 \end{exercise}
 
 \begin{solution}
-  Olkoon \(\epsilon > 0\). Koska \((y_n)\) suppenee, on Lauseen
-  \ref{thm:convergent-sequences-are-bounded} nojalla olemassa luku
-  \(M > 0\), jolla \(\abs{y_n} < M\) kaikilla \(n \in \NN\). Valitaan
-  \(N_1 \in \NN\) siten, että kun \(n > N_1\), niin
+  Olkoon \(\epsilon > 0\). Lukujono \((y_n)\) suppenee, joten se on rajoitettu.
+  Täten on olemassa \(M > 0\), jolla \(\abs{y_n} \leq M\) kaikilla
+  \(n \in \NN\). Valitaan \(N_1 \in \NN\) siten, että kun \(n > N_1\), niin
   \[
     \abs{x_n - a} < \frac{\epsilon}{2M}.
   \]
