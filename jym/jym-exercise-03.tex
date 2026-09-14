@@ -189,7 +189,7 @@ Osoitetaan, että \(\sim\) on ekvivalenssirelaatio osoittamalla, että
 \(\sim\) on refleksiivinen, symmetrinen ja transitiivinen.
 \begin{enumerate}
 \item Olkoon \(x \in \ZZ \setminus \set{0}\). Nyt
-\(\frac{x}{x} = 1 = \frac{x}{x}\), joten \(x \sim x\). \(\sim\) on
+\(\frac{x}{x} = 1 = \frac{x}{x}\), joten \(x \sim x\). Relaatio \(\sim\) on
 siis refleksiivinen.
 \item Olkoot \(x,y \in \ZZ \setminus \set{0}\). Koska \(x \sim y \iff
 \frac{x}{y} = \frac{y}{x} \iff x^2 = y^2\ \iff
@@ -200,7 +200,7 @@ symmetrinen.
 \(\frac{x}{y} = \frac{y}{x} \implies x^2 = y^2\). Koska
 \(y \sim z\), niin \(\frac{y}{z} = \frac{z}{y} \implies y^2 = z^2\).
 Saadaan \(x^2 = z^2\), eli \(\frac{x}{z} = \frac{z}{x}\), joten
-\(x \sim z\). \(\sim\) on siis transitiivinen.
+\(x \sim z\). Relaatio \(\sim\) on siis transitiivinen.
 \end{enumerate}
 On osoitettu, että \(\sim\) on refleksiivinen, symmetrinen ja transitiivinen.
 Täten \(\sim\) on ekvivalenssirelaatio.
@@ -209,8 +209,29 @@ Täten \(\sim\) on ekvivalenssirelaatio.
 \begin{exercise}
 Jatkoa edelliseen tehtävään 4. Määritä kaikki ekvivalenssiluokat
 \((\ZZ \setminus \set{0})/{\sim}\). Mikä on luvun \(3\) ekvivalenssiluokka
-\(3/{\sim}\)?
+\([3]_{\sim}\)?
 \end{exercise}
+
+\begin{solution}
+Olkoon \(x \in \ZZ \setminus \set{0}\). Luvun \(x\) ekvivalenssiluokka on
+\[
+[x]_{\sim} = \set{y \in \ZZ \setminus \set{0} \colon x \sim y}.
+\]
+Koska \(x \sim y \iff x^2 = y^2 \iff y = \pm x\), saadaan
+\[
+[x]_{\sim} = \set{-x, x}.
+\]
+Kaikki ekvivalenssiluokat ovat siis
+\[
+(\ZZ \setminus \set{0})/{\sim}
+= \set{\set{-n, n} \colon n \in \ZZ_{+}},
+\]
+Missä \(\ZZ_{+} = \set{1, 2, 3, \cdots}\) on positiivisten kokonaislukujen
+joukko. Erityisesti, luvun \(3\) ekvivalenssiluokka on
+\[
+[3]_{\sim} = \set{-3, 3}.
+\]
+\end{solution}
 
 \begin{exercise}
 Määritellään joukossa \([0, 4] \times \RR\) relaatio
