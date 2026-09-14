@@ -38,7 +38,7 @@
   \item joukkojen \(A\) ja \(B\) yhdiste sisältää joukkojen \(C\) ja \(D\)
     leikkauksen,
   \item jokaista nollasta poikkeavaa kokonaislukua \(x\) kohti on olemassa
-    sellainen luku reaaliluku \(y\), että \(xy = 2\),
+    sellainen reaaliluku \(y\), että \(xy = 2\),
   \item \(\RR\):n suljetun välin kolmesta viiteen ja avoimen välin neljästä
     kuuteen joukkoerotus on suljettu väli kolmesta neljään.
 \end{enumerate}
@@ -233,12 +233,12 @@ ehtoja \(b \in C\), \(c \in C\) ja \(d \in C\), missä \(C \subseteq B\).}
 \end{solution}
 
 \begin{exercise}
-Olkoon \(A\) ja \(B\) joukkoja. Todista \emph{absorpiolait}
+Olkoot \(A\) ja \(B\) joukkoja. Todista \emph{absorptiolait}
 \begin{enumerate}[label=\alph*), nosep]
 \item \(A \cup (A \cap B) = A\),
 \item \(A \cap (A \cup B) = A\).
 \end{enumerate}
-Havainnollista tuloksia Vennin diagrameilla.
+Havainnollista tuloksia Vennin diagrammeilla.
 \end{exercise}
 
 \begin{solution}
@@ -247,7 +247,7 @@ Havainnollista tuloksia Vennin diagrameilla.
 \item Olkoon \(C = A \cup (A \cap B)\). Näytetään ensin \(C \subseteq A\).
 Olkoon \(x \in C\). Joukon yhdisteen määritelmän mukaan joko \(x \in
 A\) \emph{tai} \(x \in A \cap B\).
-Ensimäisessä tapauksessa \(x \in A\), ja toisessa tapauksessa
+Ensimmäisessä tapauksessa \(x \in A\), ja toisessa tapauksessa
 \(x \in A \cap B \subseteq A\), joten myös \(x \in A\). Siis \(C \subseteq A\).
 
 Näytetään seuraavaksi \(A \subseteq C\). Olkoon \(x \in A\).
@@ -299,8 +299,8 @@ Olemme osoittaneet \(C \subseteq A\) ja \(A \subseteq C\), joten
 \node[below] at (1.8,0) {$A \cap (A \cup B) = A$};
 \end{scope}
 \end{tikzpicture}
-\captionof{figure}{Absorpiolakien visualisoinnit Vennin
-diagrammmeina. Molemmissa
+\captionof{figure}{Absorptiolakien visualisoinnit Vennin
+diagrammeina. Molemmissa
 tapauksissa tulokseksi jää joukko \(A\).}
 \end{minipage}
 \end{center}
@@ -320,7 +320,7 @@ Määritä joukot
 \begin{solution}
 \leavevmode\par
 \begin{enumerate}[label=\alph*), nosep]
-\item Olkoon \(n \in \NN\). Kun \(1 \leq a < b \leq n\),
+\item Olkoon \(n \in \NN \setminus{\set{0}}\). Kun \(1 \leq a < b \leq n\),
 niin \(\frac{1}{b} < \frac{1}{a}\), joten \(A_b \subset A_a\). Siis
 \[
 A_n \subset A_{n - 1} \subset \cdots \subset A_2 \subset A_1.
@@ -330,7 +330,8 @@ Koska \(A_1 = ]0, 1[\), saadaan
 \bigcup_{k=1}^n A_k = \left]0, 1\right[.
 \]
 
-\item Olkoon \(n \in \NN\). Jälleen, kun \(1 \leq a < b \leq n\),
+\item Olkoon \(n \in \NN \setminus{\set{0}}\). Jälleen, kun \(1 \leq
+a < b \leq n\),
 niin \(\frac{1}{b} < \frac{1}{a}\), joten \(A_b \subset A_a\). Siis
 \[
 A_n \subset A_{n - 1} \subset \cdots \subset A_2 \subset A_1.
