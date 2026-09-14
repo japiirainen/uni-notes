@@ -184,6 +184,28 @@ x \sim y \iff \frac{x}{y} = \frac{y}{x}.
 Osoita, että \(\sim\) on ekvivalenssirelaatio.
 \end{exercise}
 
+\begin{solution}
+Osoitetaan, että \(\sim\) on ekvivalenssirelaatio osoittamalla, että
+\(\sim\) on refleksiivinen, symmetrinen ja transitiivinen.
+\begin{enumerate}
+\item Olkoon \(x \in \ZZ \setminus \set{0}\). Nyt
+\(\frac{x}{x} = 1 = \frac{x}{x}\), joten \(x \sim x\). \(\sim\) on
+siis refleksiivinen.
+\item Olkoot \(x,y \in \ZZ \setminus \set{0}\). Koska \(x \sim y \iff
+\frac{x}{y} = \frac{y}{x} \iff x^2 = y^2\ \iff
+y^2 = x^2 \iff \frac{y}{x} = \frac{x}{y} \iff y \sim x\), on \(\sim\)
+symmetrinen.
+\item Olkoot \(x,y,z \in \ZZ \setminus \set{0}\). Oletetaan, että
+\(x \sim y\) ja \(y \sim z\). Koska \(x \sim y\), niin
+\(\frac{x}{y} = \frac{y}{x} \implies x^2 = y^2\). Koska
+\(y \sim z\), niin \(\frac{y}{z} = \frac{z}{y} \implies y^2 = z^2\).
+Saadaan \(x^2 = z^2\), eli \(\frac{x}{z} = \frac{z}{x}\), joten
+\(x \sim z\). \(\sim\) on siis transitiivinen.
+\end{enumerate}
+On osoitettu, että \(\sim\) on refleksiivinen, symmetrinen ja transitiivinen.
+Täten \(\sim\) on ekvivalenssirelaatio.
+\end{solution}
+
 \begin{exercise}
 Jatkoa edelliseen tehtävään 4. Määritä kaikki ekvivalenssiluokat
 \((\ZZ \setminus \set{0})/{\sim}\). Mikä on luvun \(3\) ekvivalenssiluokka
