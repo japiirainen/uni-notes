@@ -1,0 +1,76 @@
+% !TeX program = pdflatex
+\documentclass[12pt,a4paper]{article}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Johdatus yliopistomatematiikkaan\\Harjoituksen 3 ratkaisut}
+\date{}
+\author{}
+
+\begin{document}
+
+\exerciseheading{Johdatus yliopistomatematiikkaan}{Harjoituksen 3 ratkaisut}
+
+\begin{exercise}
+  Olkoon \(A = \set{-2, -1, 0, 1, 2}\). Ilmaise joukon \(A\) relaatio
+  \(xRy \iff xy \geq 0\) luettelemalla sen alkiot eli kaikki siihen kuuluvat
+  järjestetyt parit. Piirrä relaatiosta nuolikuvio. Määritä myös yhdistetty
+  relaatio \(R^2 = R \circ R\).
+\end{exercise}
+
+\begin{exercise}
+  Jatkoa edelliseen tehtävään 1. Onko relaatio \(R\)
+\begin{enumerate}[label=\alph*), nosep]
+  \item refleksiivinen,
+  \item irrefleksiivinen,
+  \item symmetrinen,
+  \item antisymmetrinen,
+  \item asymmetrinen,
+  \item transitiivinen,
+  \item vertailullinen,
+  \item ekvivalenssirelaatio?
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Olkoot \(R\) ja \(S\) joukkojen \(A\) ja \(B\) välisiä relaatioita, toisin
+sanoen \(R, S \subset A \times B\). Osoita, että
+\begin{enumerate}[label=\alph*), nosep]
+\item \((R^{-1})^{-1} = R\),
+\item \((R \cap S)^{-1} = R^{-1} \cap S^{-1}\).
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Määritellään nollasta eroavien kokonaislukujen joukossa
+\(\ZZ \setminus \set{0}\) relaatio
+\[
+x \sim y \iff \frac{x}{y} = \frac{y}{x}.
+\]
+Osoita, että \(\sim\) on ekvivalenssirelaatio.
+\end{exercise}
+
+\begin{exercise}
+Jatkoa edelliseen tehtävään 4. Määritä kaikki ekvivalenssiluokat
+\((\ZZ \setminus \set{0})/{\sim}\). Mikä on luvun \(3\) ekvivalenssiluokka
+\(3/{\sim}\)?
+\end{exercise}
+
+\begin{exercise}
+Määritellään joukossa \([0, 4] \times \RR\) relaatio
+\(xRy \iff y = \sqrt{x}\). Osoita, että \(R\) on kuvaus.
+
+Huomaa, että merkintä \([a, b]\) tarkoittaa suljettua väliä
+\(\set{x \in \RR : a \leq x \leq b}\), kun \(a, b \in \RR\), \(a < b\).
+Käytetään nyt relaatiolle \(R\) tavallista funktiomerkintää
+\(f : [0, 4] \to \RR\), \(f(x) = \sqrt{x}\).
+\begin{enumerate}[label=\alph*), nosep]
+\item Piirrä kuvauksen \(f\) kuvaaja.
+\item Mitkä ovat kuvauksen \(f\) lähtö-, maali- ja arvojoukko?
+\item Mikä on joukon \([1, 3]\) kuva? Entä mikä on joukon \([1, 3]\) alkukuva?
+\item Onko kuvauksen \(f : [0, 4] \to \RR\) käänteisrelaatio \(f^{-1}\) kuvaus?
+\end{enumerate}
+\end{exercise}
+
+\end{document}
