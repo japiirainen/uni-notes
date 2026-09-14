@@ -557,4 +557,81 @@ Equivalently, replacing \(B\) by \(C\) gives
 
 \subsection{14.09.2026}
 
+\subsubsection{Proof by counterexample}
+
+To disprove a universal claim, it is enough to find a single case in which the
+claim fails. Such a case is called a \emph{counterexample}.
+
+\begin{example}
+  Consider the claim that
+  \[
+    (a+b)^2 = a^2+b^2
+  \]
+  for all real numbers \(a\) and \(b\). Let \(a=b=1\). Then
+  \[
+    (a+b)^2 = (1+1)^2 = 4,
+    \qquad
+    a^2+b^2 = 1^2+1^2 = 2.
+  \]
+  Since \(4 \neq 2\), this is a counterexample, and therefore the claim is
+  false.
+\end{example}
+
+\subsubsection{Proof by contradiction}
+
+In a proof by contradiction, we assume that the claim is false and show that
+this assumption leads to a contradiction.
+
+\begin{example}
+  Suppose that \(A \subseteq B\) and \(A \nsubseteq C\). We prove by
+  contradiction that \(B \nsubseteq C\).
+
+  Assume, to the contrary, that \(B \subseteq C\). Since
+  \(A \nsubseteq C\), there exists an element \(x \in A\) such that
+  \(x \notin C\). But \(A \subseteq B\) implies that \(x \in B\), and
+  \(B \subseteq C\) then implies that \(x \in C\). This contradicts
+  \(x \notin C\). Therefore \(B \nsubseteq C\).
+\end{example}
+
+\subsubsection{Relations}
+
+\begin{definition}
+  A \emph{relation} from a set \(A\) to a set \(B\) is a subset
+  \[
+    R \subseteq A \times B.
+  \]
+  If \((a,b) \in R\), we say that \(a\) is related to \(b\) and write
+  \(aRb\). A relation on \(A\) is a relation from \(A\) to itself, that is, a
+  subset of \(A \times A\).
+\end{definition}
+
+\begin{definition}
+  Let \(R \subseteq A \times B\) be a relation. The \emph{inverse relation}
+  of \(R\) is
+  \[
+    R^{-1} = \{(b,a) \in B \times A : (a,b) \in R\}.
+  \]
+  Equivalently, \(bR^{-1}a\) if and only if \(aRb\).
+\end{definition}
+
+\begin{definition}
+  Let \(R\) be a relation on a set \(A\). The relation \(R\) is
+  \begin{enumerate}
+    \item \emph{reflexive} if \(xRx\) for every \(x \in A\);
+    \item \emph{irreflexive} if \((x,x) \notin R\) for every \(x \in A\);
+    \item \emph{symmetric} if, for all \(x,y \in A\),
+      \(xRy\) implies \(yRx\);
+    \item \emph{antisymmetric} if, for all \(x,y \in A\),
+      \(xRy\) and \(yRx\) imply \(x=y\);
+    \item \emph{asymmetric} if, for all \(x,y \in A\),
+      \(xRy\) implies \((y,x) \notin R\);
+    \item \emph{transitive} if, for all \(x,y,z \in A\),
+      \(xRy\) and \(yRz\) imply \(xRz\); and
+    \item \emph{total} if, for all \(x,y \in A\), either \(xRy\) or
+      \(yRx\).
+  \end{enumerate}
+  A relation is an \emph{equivalence relation} if it is reflexive, symmetric,
+  and transitive.
+\end{definition}
+
 \end{document}
