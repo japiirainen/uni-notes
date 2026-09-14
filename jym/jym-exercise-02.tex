@@ -36,9 +36,9 @@
   \item lukujen \(a\) ja \(b\) irrationaalisuudesta ei seuraa summan
     \(a + b\) irrationaalisuus,
   \item joukkojen \(A\) ja \(B\) yhdiste sisältää joukkojen \(C\) ja \(D\)
-    leukkauksen,
+    leikkauksen,
   \item jokaista nollasta poikkeavaa kokonaislukua \(x\) kohti on olemassa
-    sellainen luku \(y\), että \(xy = 2\),
+    sellainen luku reaaliluku \(y\), että \(xy = 2\),
   \item \(\RR\):n suljetun välin kolmesta viiteen ja avoimen välin neljästä
     kuuteen joukkoerotus on suljettu väli kolmesta neljään.
 \end{enumerate}
@@ -61,7 +61,7 @@
 \end{solution}
 
 \begin{exercise}
-Olkoon \(X = \set{a, b, c, d, e}\) perusjoukko sekä
+Olkoot \(X = \set{a, b, c, d, e}\) perusjoukko sekä
 \(A = \set{a, b, c}\) ja \(B = \set{b, c, d}\).
 Määritä
 \begin{enumerate}[label=\alph*), nosep]
@@ -233,7 +233,7 @@ ehtoja \(b \in C\), \(c \in C\) ja \(d \in C\), missä \(C \subseteq B\).}
 \end{solution}
 
 \begin{exercise}
-Olkoon \(A\) ja \(B\) joukkoja. Todista \emph{absorbiolait}
+Olkoon \(A\) ja \(B\) joukkoja. Todista \emph{absorpiolait}
 \begin{enumerate}[label=\alph*), nosep]
 \item \(A \cup (A \cap B) = A\),
 \item \(A \cap (A \cup B) = A\).
@@ -299,14 +299,15 @@ Olemme osoittaneet \(C \subseteq A\) ja \(A \subseteq C\), joten
 \node[below] at (1.8,0) {$A \cap (A \cup B) = A$};
 \end{scope}
 \end{tikzpicture}
-\captionof{figure}{Absorbiolakien visualisoinnit Vennin diagrammeina. Molemmissa
+\captionof{figure}{Absorpiolakien visualisoinnit Vennin
+diagrammmeina. Molemmissa
 tapauksissa tulokseksi jää joukko \(A\).}
 \end{minipage}
 \end{center}
 \end{solution}
 
 \begin{exercise}
-Olkoon \(A_k = \left]0, \frac{1}{k}\right[, k \in \NN \setminus \set{0}\).
+Olkoot \(A_k = \left]0, \frac{1}{k}\right[, k \in \NN \setminus \set{0}\).
 Määritä joukot
 \begin{tasks}(4)
 \task \(\displaystyle \bigcup_{k=1}^n A_k\),
@@ -352,10 +353,11 @@ Siis
 \bigcup_{k=1}^{\infty} A_k = \left]0, 1\right[.
 \]
 
-\item Olkoon \(x > 0\). Valitaan \(n_0 \in \NN\) niin suuri, että
-\(n_0 > \frac{1}{x}\). Tällöin \(\frac{1}{k} < n_0\). Joten
-\(x \notin A_{n_0}\). Siis mikään \(x \in \RR\) ei kuulu jokaiseen
-joukkoon \(A_k\), joten
+\item Jos \(x \leq 0\), niin \(x \notin A_1\). Jos \(x > 0\),
+valitaan \(n_0 \in \NN\) niin, että
+\(n_0 > \frac{1}{x}\). Tällöin \(\frac{1}{n_0} < x\). Tällöin
+\(x \notin\left]0, \frac{1}{n_0}\right[ = A_{n_0}\).
+Siis mikään \(x \in \RR\) ei kuulu jokaiseen joukkoon \(A_k\), joten
 \[
 \bigcap_{k = 1}^{\infty} A_k = \emptyset.
 \]
@@ -371,20 +373,21 @@ implikaationa ja todista se vastatodistuksen avulla.
 \end{exercise}
 
 \begin{solution}
+Olkoon \(X\) perusjoukko, jolla \(A, B, C \subseteq X\).
 Inkluusion määritelmän mukaan väite on kaikilla \(x \in X\) pätevä implikaatio
 \[
 \begin{aligned}
-x \in A \cup (B \cap C)
-&\implies x \in (A \cup B) \cap (A \cup C).
+\forall x \in X \colon \bigl(x \in A \cup (B \cap C)
+&\implies x \in (A \cup B) \cap (A \cup C)\bigr).
 \end{aligned}
 \]
 Joukko-operaatiot avaamalla sama implikaatio voidaan kirjoittaa
 predikaattilogiikan kielellä muodossa
 \[
 \begin{aligned}
-&x \in A \lor (x \in B \land x \in C) \\
+&\forall x \in X \colon \bigl(x \in A \lor (x \in B \land x \in C) \\
 &\qquad\implies
-\bigl((x \in A \lor x \in B) \land (x \in A \lor x \in C)\bigr).
+\left((x \in A \lor x \in B) \land (x \in A \lor x \in C)\right)\bigr).
 \end{aligned}
 \]
 Todistetaan nyt väite vastatodistuksella eli osoittamalla implikaation
@@ -413,7 +416,7 @@ Koska \(x \in X\) oli mielivaltainen,
 \end{solution}
 
 \begin{exercise}
-Olkoon \(A\), \(B\) ja \(C\) joukkoja. Todista karteesisen tulon osittelulaki
+Olkoot \(A\), \(B\) ja \(C\) joukkoja. Todista karteesisen tulon osittelulaki
 leikkauksen suhteen:
 \[
 (A \cap B) \times C = (A \times C) \cap (B \times C).
@@ -428,10 +431,10 @@ Asetetaan
 \[
 \begin{aligned}
 D &= (A \cap B) \times C \\
-&= \set{(x, y) \colon x \in A \cap B, y \in C}, \\
+&= \set{(x, y) \colon x \in A \cap B \land y \in C}, \\
 E &= (A \times C) \cap (B \times C) \\
-&= \set{(x, y) \colon x \in A, y \in C} \cap \set{(x, y) \colon x \in
-B, y \in C}.
+&= \set{(x, y) \colon x \in A \land y \in C} \cap \set{(x, y) \colon x \in
+B \land y \in C}.
 \end{aligned}
 \]
 Ensiksi, olkoon \((x, y) \in D\) mielivaltainen. Sitten
@@ -450,7 +453,7 @@ Toiseksi, olkoon \((x, y) \in E\) mielivaltainen. Sitten
 \[
 \begin{aligned}
 (x, y) \in E &\implies (x, y) \in (A \times C) \land (x, y) \in (B \times C) \\
-&\implies (x \in A, y \in C) \land (x \in B, y \in C) \\
+&\implies (x \in A \land y \in C) \land (x \in B \land y \in C) \\
 &\implies (x \in A \land x \in B) \land y \in C \\
 &\implies x \in (A \cap B) \land y \in C \\
 &\implies (x, y) \in (A \cap B) \times C \\
@@ -479,8 +482,8 @@ sekä
 (A \times C) \cap (B \times C) &= \set{(x, y) \colon x \in
 \set{1,2,3}, y \in \set{1,2}} \\
 &\cap \set{(x, y) \colon x \in \set{2,3,4}, y \in \set{1,2}} \\
-&= \set{(2,1),(2,2),(3,1),(3,2),(4,1),(4,2)} \cap \set{(2, 1), (2,
-2), (3, 1), (3, 2)} \\
+&= \set{(1,1),(1,2),(2,1),(2,2),(3,1),(3,2)} \\ &\cap \set{(2, 1), (2,
+2), (3, 1), (3, 2), (4, 1), (4, 2)} \\
 &= \set{(2,1),(2,2),(3,1),(3,2)}.
 \end{aligned}
 \]
