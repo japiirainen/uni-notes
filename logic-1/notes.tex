@@ -585,4 +585,70 @@ and the analogous equivalence holds with \(\land\) and \(\lor\) interchanged.
   is in CNF and satisfies \(f_B=f\). Thus \(A\Leftrightarrow B\).
 \end{example}
 
+\subsection{14.09.2026}
+
+\subsubsection{Universal sets of connectives}
+
+\begin{definition}[Universal set of connectives]
+  A set \(C\) of logical connectives is \emph{universal}, or
+  \emph{functionally complete}, if, for every \(n\geq 1\) and every truth
+  function
+  \[
+    f\colon\{0,1\}^n\longrightarrow\{0,1\},
+  \]
+  there is a formula \(A\), containing only the propositional symbols
+  \(p_1,\ldots,p_n\) and connectives from \(C\), such that \(f_A=f\).
+\end{definition}
+
+\begin{theorem}
+  The set \(\{\neg,\land\}\) is universal.
+\end{theorem}
+
+\begin{proof}
+  Let \(f\colon\{0,1\}^n\to\{0,1\}\) be a truth function. The DNF
+  construction gives a DNF formula \(A\) such that \(f_A=f\). We prove by
+  structural induction that every formula built from literals using
+  \(\land\) and \(\lor\) is logically equivalent to a formula containing only
+  \(\neg\) and \(\land\).
+
+  A literal is either \(p_i\) or \(\neg p_i\), so the claim holds in the base
+  case. Suppose that the induction hypothesis gives formulas \(B^*\) and
+  \(C^*\), containing only \(\neg\) and \(\land\), such that
+  \(B^*\Leftrightarrow B\) and \(C^*\Leftrightarrow C\). Then
+  \[
+    (B\land C)\Leftrightarrow(B^*\land C^*)
+  \]
+  and, by De Morgan's law,
+  \[
+    (B\lor C)\Leftrightarrow\neg(\neg B^*\land\neg C^*).
+  \]
+  Both formulas on the right use only \(\neg\) and \(\land\). Structural
+  induction therefore gives a formula \(A^*\), containing only these
+  connectives, such that \(A^*\Leftrightarrow A\). Hence
+  \(f_{A^*}=f_A=f\), so \(\{\neg,\land\}\) is universal.
+\end{proof}
+
+\begin{theorem}
+  The set \(\{\land,\lor\}\) is not universal.
+\end{theorem}
+
+\begin{proof}
+  We prove by structural induction that every formula \(A\) containing only
+  \(\land\) and \(\lor\) is false under the truth assignment \(v\) for which
+  \(v(p_i)=0\) for every propositional symbol \(p_i\).
+
+  If \(A=p_i\), then \(v(A)=0\). Suppose that the claim holds for formulas
+  \(B\) and \(C\). Then
+  \[
+    v(B\land C)=0
+    \qquad\text{and}\qquad
+    v(B\lor C)=0,
+  \]
+  so the claim also holds for formulas formed using either allowed connective.
+  It therefore holds for every formula containing only \(\land\) and \(\lor\).
+
+  The unary truth function \(f(x)=1-x\) has value \(f(0)=1\), so no such
+  formula can represent it. Hence \(\{\land,\lor\}\) is not universal.
+\end{proof}
+
 \end{document}
