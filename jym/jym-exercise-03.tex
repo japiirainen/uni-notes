@@ -3,6 +3,8 @@
 
 \newcommand{\notelanguage}{finnish}
 \input{../preamble.tex}
+\usepackage{tikz}
+\DeclareMathOperator{\sign}{sign}
 
 \title{Johdatus yliopistomatematiikkaan\\Harjoituksen 3 ratkaisut}
 \date{}
@@ -19,6 +21,84 @@
   relaatio \(R^2 = R \circ R\).
 \end{exercise}
 
+\begin{solution}
+  Määritellään merkkifunktio
+  \[
+    \sign(x) =
+    \begin{cases}
+      -1, & x < 0, \\
+      0,  & x = 0, \\
+      1,  & x > 0.
+    \end{cases}
+  \]
+  Saadaan relaatiolle \(xRy\) ehto
+  \[
+    xRy \iff x = 0 \lor y = 0 \lor \sign(x) = \sign(y).
+  \]
+  Joten
+  \[
+    \begin{aligned}
+      R = \bigl\{&
+        (-2, -2), (-2, -1), (-2, 0), \\
+        &(-1, -2), (-1, -1), (-1, 0), \\
+        &(0, -2), (0, -1), (0, 0), (0, 1), (0, 2), \\
+        &(1, 0), (1, 1), (1, 2), \\
+        &(2, 0), (2, 1), (2, 2)
+      \bigr\}.
+    \end{aligned}
+  \]
+  Relaation nuolikuvio on
+  \begin{center}
+    \begin{tikzpicture}[
+        >=stealth,
+        element/.style={draw, circle, fill=white, minimum size=8mm,
+        inner sep=0pt},
+        relation/.style={->, thin}
+      ]
+      \draw (-2.8, 0) ellipse (1.0 and 3.0);
+      \draw (2.8, 0) ellipse (1.0 and 3.0);
+      \node at (-2.8, 3.35) {$A$};
+      \node at (2.8, 3.35) {$A$};
+
+      \node[element] (left-minus-two) at (-2.8, 2) {$-2$};
+      \node[element] (left-minus-one) at (-2.8, 1) {$-1$};
+      \node[element] (left-zero) at (-2.8, 0) {$0$};
+      \node[element] (left-one) at (-2.8, -1) {$1$};
+      \node[element] (left-two) at (-2.8, -2) {$2$};
+      \node[element] (right-minus-two) at (2.8, 2) {$-2$};
+      \node[element] (right-minus-one) at (2.8, 1) {$-1$};
+      \node[element] (right-zero) at (2.8, 0) {$0$};
+      \node[element] (right-one) at (2.8, -1) {$1$};
+      \node[element] (right-two) at (2.8, -2) {$2$};
+
+      \draw[relation] (left-minus-two) -- (right-minus-two);
+      \draw[relation] (left-minus-two) -- (right-minus-one);
+      \draw[relation] (left-minus-two) -- (right-zero);
+      \draw[relation] (left-minus-one) -- (right-minus-two);
+      \draw[relation] (left-minus-one) -- (right-minus-one);
+      \draw[relation] (left-minus-one) -- (right-zero);
+      \draw[relation] (left-zero) -- (right-minus-two);
+      \draw[relation] (left-zero) -- (right-minus-one);
+      \draw[relation] (left-zero) -- (right-zero);
+      \draw[relation] (left-zero) -- (right-one);
+      \draw[relation] (left-zero) -- (right-two);
+      \draw[relation] (left-one) -- (right-zero);
+      \draw[relation] (left-one) -- (right-one);
+      \draw[relation] (left-one) -- (right-two);
+      \draw[relation] (left-two) -- (right-zero);
+      \draw[relation] (left-two) -- (right-one);
+      \draw[relation] (left-two) -- (right-two);
+    \end{tikzpicture}
+  \end{center}
+  Määritetään seuraavaksi relaatio \(R^2 = R \circ R\). Määritelmän mukaan
+  \[
+    R^2 = \set{(x, z) \in A^2 \colon \exists y \in A \colon (x, y) \in
+    R \land (y, z) \in R}.
+  \]
+  Nyt, koska \(xR0\) ja \(0Rz\) kaikilla \(x,z \in A\), saadaan \(R^2
+  = A \times A = A^2\).
+\end{solution}
+
 \begin{exercise}
   Jatkoa edelliseen tehtävään 1. Onko relaatio \(R\)
 \begin{enumerate}[label=\alph*), nosep]
@@ -33,6 +113,28 @@
 \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item On voimassa \(xRx\), sillä \(xx = x^2 \geq 0\) kaikilla \(x \in \ZZ\).
+  \(R\) on siis \emph{refleksiivinen}.
+\item \(R\) ei ole \emph{irrefleksiivinen}, sillä esimerkiksi \((0, 0) \in R\).
+\item Näytetään \(xRy \implies yRx\) \emph{kaikilla} \(x,y \in A\).
+  Koska \(xy = yx\) kaikilla \(x, y \in \ZZ\), saadaan
+  \(xy \geq 0 \implies yx \geq 0\), eli \(R\) on \emph{symmetrinen}.
+\item \((1, 0) \in R\) ja \((0, 1) \in R\), mutta \(0 \neq 1\). \(R\)
+  ei siis ole \emph{antisymmetrinen}.
+\item \((1, 0) \in R\) ja \((0, 1) \in R\), joten \(R\) ei ole
+  \emph{asymmetrinen}.
+\item \((-1, 0) \in R\) ja \((0, 1) \in R\), mutta \((-1, 1) \notin R\),
+  sillä \((-1)1 = -1 < 0\). \(R\) ei siis ole \emph{transitiivinen}.
+\item \((-1, 1) \notin R\) ja \((1, -1) \notin R\), joten \(R\) ei ole
+  \emph{vertailullinen}.
+\item \(R\) ei ole \emph{transitiivinen}, joten se ei ole
+  \emph{ekvivalenssirelaatio}.
+\end{enumerate}
+\end{solution}
+
 \begin{exercise}
 Olkoot \(R\) ja \(S\) joukkojen \(A\) ja \(B\) välisiä relaatioita, toisin
 sanoen \(R, S \subset A \times B\). Osoita, että
@@ -41,6 +143,37 @@ sanoen \(R, S \subset A \times B\). Osoita, että
 \item \((R \cap S)^{-1} = R^{-1} \cap S^{-1}\).
 \end{enumerate}
 \end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Olkoon \((a, b) \in A \times B\) mielivaltainen. Käänteisrelaation
+määritelmän nojalla
+\[
+\begin{aligned}
+  (a, b) \in (R^{-1})^{-1} &\iff (b, a) \in R^{-1} \\
+  &\iff (a, b) \in R.
+\end{aligned}
+\]
+Koska kaikki ketjun vaiheet ovat ekvivalensseja, ketju pätee molempiin
+suuntiin. Joukoilla \((R^{-1})^{-1}\) ja \(R\) on siis täsmälleen samat
+alkiot, joten \((R^{-1})^{-1} = R\).
+
+\item Olkoon \((a, b) \in B \times A\) mielivaltainen. Käänteisrelaation ja
+joukon leikkauksen määritelmän nojalla
+\[
+\begin{aligned}
+  (a, b) \in (R \cap S)^{-1} &\iff (b, a) \in (R \cap S) \\
+  &\iff (b, a) \in R \land (b, a) \in S \\
+  &\iff (a, b) \in R^{-1} \land (a, b) \in S^{-1} \\
+  &\iff (a, b) \in R^{-1} \cap S^{-1}.
+\end{aligned}
+\]
+Koska kaikki ketjun vaiheet ovat ekvivalensseja, ketju pätee molempiin suuntiin.
+Joukoilla \((R \cap S)^{-1}\) ja \(R^{-1} \cap S^{-1}\) on siis täsmälleen
+samat alkiot, joten \((R \cap S)^{-1} = R^{-1} \cap S^{-1}\).
+\end{enumerate}
+\end{solution}
 
 \begin{exercise}
 Määritellään nollasta eroavien kokonaislukujen joukossa
