@@ -1,0 +1,202 @@
+% !TeX program = pdflatex
+\documentclass[12pt,a4paper]{article}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Johdatus logiikkaan I\\Harjoituksen 3 ratkaisut}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Johdatus logiikkaan I}{Harjoituksen 3 ratkaisut}
+
+\begin{exercise}
+  Mitkä seuraavista lauseista ovat disjunktiivisessa
+  normaalimuodossa? Perustele.
+\begin{enumerate}[label=\alph*), nosep]
+  \item \((p_0 \land \neg p_0) \lor (\neg p_3 \land p_1)\)
+  \item \((p_0 \land p_0) \lor p_0\)
+  \item \(\neg p_1 \land p_2 \land p_3\)
+  \item \(\neg\neg p_0 \lor p_1 \lor p_2\)
+  \item \((p_0 \land \neg p_1 \land p_2) \lor \neg(p_1 \lor p_2)\)
+  \item \((p_0 \lor \neg p_1) \land (p_1 \lor p_2)\)
+  \item \(\neg p_1 \rightarrow (p_0 \land \neg p_1)\)
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item \(A = (p_0 \land \neg p_0)\) ja \(B = (\neg p_3 \land p_1)\) ovat
+  literaalien konjunktioita, joten \(A \lor B\) on DNF.
+\item \(A = (p_0 \land p_0)\) ja \(B = p_0\) ovat literaalien konjunktioita,
+  joten \(A \lor B\) on DNF.
+\item \(\neg p_1 \land p_2 \land p_3\) on literaalien konjunktio, joten se
+  on DNF yhden disjunktin tapauksena.
+\item \(\neg \neg p_0\) ei ole literaali, joten lause ei ole DNF.
+\item Disjunkti \(\neg(p_1 \lor p_2)\) ei ole literaalien konjunktio, joten
+  lause ei ole DNF.
+\item Lause ei ole DNF, sillä se on disjunktioiden konjunktio eikä
+  literaalien konjunktioiden disjunktio.
+\item Pääkonnektiivi on \(\to\), joten lause ei ole DNF.
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+Mitkä edellisen tehtävän lauseista ovat konjunktiivisessa normaalimuodossa?
+\end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Lause ei ole CNF, sillä disjunktion sisällä esiintyy konjunktioita,
+joten se ei ole literaalien disjunktio.
+\item Lause ei ole CNF, sillä disjunktion sisällä esiintyy konjunktio,
+joten se ei ole literaalien disjunktio.
+\item Lause on CNF, sillä se on yhden literaalin disjunktioiden konjunktio.
+\item \(\neg \neg p_0\) ei ole literaali, joten lause ei ole CNF.
+\item Lause ei ole CNF, sillä disjunktion jäsenet eivät ole literaaleja.
+\item Pääkonnektiivi on \(\land\), ja konjunktit \(A = (p_0 \lor \neg p_1)\)
+ja \(B = (p_1 \lor p_2)\) ovat literaalien disjunktioita, joten lause
+on CNF.
+\item Pääkonnektiivi on \(\to\), joten lause ei ole CNF.
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+Anna esimerkki propositiolauseesta, jossa esiintyy vähintään kahta eri
+propositiosymbolia ja joka on
+\begin{enumerate}[label=\alph*), nosep]
+\item sekä disjunktiivisessa että konjunktiivisessa normaalimuodossa,
+\item disjunktiivisessa, muttei konjunktiivisessa normaalimuodossa,
+\item konjunktiivisessa, muttei disjunktiivisessa normaalimuodossa,
+\item ei disjunktiivisessa eikä konjunktiivisessa normaalimuodossa.
+\end{enumerate}
+Pyri keksimään muita esimerkkejä kuin tehtävässä 1 esiintyviä.
+\end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item \(p_0 \lor p_1\) on sekä DNF että CNF.
+\item \((p_0 \land p_1) \lor (p_2 \land p_3)\) on DNF, muttei CNF.
+\item \((p_0 \lor p_1) \land (p_2 \lor p_3)\) on CNF, muttei DNF.
+\item \(p_0 \leftrightarrow p_1\) ei ole DNF eikä CNF, sillä pääkonnektiivi
+on \(\leftrightarrow\).
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+Etsi disjunktiivisessa normaalimuodossa oleva lause, joka on loogisesti
+ekvivalentti lauseen
+\[
+(p_1 \leftrightarrow (p_0 \rightarrow \neg p_2))
+\land (p_0 \lor (\neg p_2 \land \neg p_1))
+\]
+kanssa.
+\end{exercise}
+
+\begin{solution}
+Muodostamalla lauseen totuustaulu ja soveltamalla DNF-konstruktiota
+saadaan seuraava ekvivalentti DNF-muotoinen lause:
+\[
+A = (p_0 \land \neg p_1 \land p_2) \lor (p_0 \land p_1 \land \neg p_2).
+\]
+\end{solution}
+
+\begin{exercise}
+Etsi disjunktiivisessa normaalimuodossa oleva lause, joka on loogisesti
+ekvivalentti lauseen
+\[
+(p_1 \land (p_0 \rightarrow p_2))
+\leftrightarrow (p_2 \rightarrow (p_1 \rightarrow p_2))
+\]
+kanssa.
+\end{exercise}
+
+\begin{solution}
+Muodostamalla lauseen totuustaulu ja soveltamalla DNF-konstruktiota
+saadaan seuraava ekvivalentti DNF-muotoinen lause:
+\[
+A = (\neg p_0 \land p_1 \land \neg p_2) \lor (\neg p_0 \land p_1 \land p_2)
+\lor (p_0 \land p_1 \land p_2).
+\]
+\end{solution}
+
+\begin{exercise}
+Etsi konjunktiivisessa normaalimuodossa oleva lause, joka on loogiesti
+ekvivalentti lauseen
+\[
+\neg(p_0 \leftrightarrow p_1) \rightarrow (p_2 \land \neg p_1)
+\]
+kanssa.
+\end{exercise}
+
+\begin{solution}
+Olkoon \(A = \neg(p_0 \leftrightarrow p_1) \rightarrow
+(p_2 \land \neg p_1)\) alkuperäinen lause.
+Muodostamalla lauseen \(A\) totuustaulu ja soveltamalla DNF-konstruktiota
+totuustaulun 0-riveihin saadaan seuraava lauseen \(\neg A\) kanssa
+ekvivalentti DNF-muotoinen lause:
+\[
+\neg A \iff (\neg p_0 \land p_1 \land \neg p_2) \lor (\neg p_0 \land
+p_1 \land p_2)
+\lor (p_0 \land \neg p_1 \land \neg p_2).
+\]
+Negatoimalla saatu lause ja soveltamalla De Morganin kaavoja sekä
+kaksoisnegaation lakia saadaan seuraava CNF-muotoinen lause:
+\[
+\neg \neg A \iff A \iff (p_0 \lor \neg p_1 \lor p_2) \land (p_0 \lor
+\neg p_1 \lor \neg p_2)
+\land (\neg p_0 \lor p_1 \lor p_2).
+\]
+\end{solution}
+
+\begin{exercise}
+Kuinka pitkä propositiolause saadaan, kun kurssin menetelmällä etsitään
+annetulle propositiolauseelle \(A\) ekvivalentti DNF-muotoinen lause? Tässä
+tehtävässä kuuluu miettiä myös, miten \(A\):n ja DNF-muotoisen lauseen
+pituutta on mielekästä mitata. Vastaus ei välttämättä ole yksikäsitteinen.
+Keskustelkaa laskuharjoitustilaisuudesta esitettyjen vastausten hyvistä ja
+huonoista puolista. Löytyykö yhteinen mielipide parhaasta vastauksesta?
+\end{exercise}
+
+\begin{exercise}
+\textbf{Peircen nuoli} on seuraava konnektiivi:
+\[
+\begin{array}{cc|c}
+A & B & A \mathbin{\downarrow} B \\
+\hline
+1 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{array}
+\]
+Osoita, että \(\{\downarrow\}\) on täydellinen konnektiivijoukko.
+\end{exercise}
+
+\begin{exercise}
+Osoita, että \(\{\rightarrow\}\) ei ole täydellinen konnektiivijoukko.
+(Vihje: Eräästä viime viikon tehtävästä on apua.)
+\end{exercise}
+
+\begin{exercise}
+Voiko päättelyjärjestelmä olla
+\begin{enumerate}[label=\alph*), nosep]
+\item ehyt muttei täydellinen?
+\item täydellinen muttei kumoustäydellinen?
+\item kumoustäydellinen muttei täydellinen?
+\item kumoustäydellinen muttei ehyt?
+\end{enumerate}
+Perustele. Keksitkö sopivia esimerkkejä?
+\end{exercise}
+
+\begin{exercise}[Haastetehtävä]
+Osoita, että Shefferin viiva ja Peircen nuoli ovat ainoat kaksipaikkaiset
+konnektiivit, jotka yksinään ovat täydellisiä.
+\end{exercise}
+
+\end{document}
