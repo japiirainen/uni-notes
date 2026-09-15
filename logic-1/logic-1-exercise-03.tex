@@ -163,6 +163,45 @@ Keskustelkaa laskuharjoitustilaisuudesta esitettyjen vastausten hyvistä ja
 huonoista puolista. Löytyykö yhteinen mielipide parhaasta vastauksesta?
 \end{exercise}
 
+\begin{solution}
+Olkoon \(n\) lauseessa \(A\) esiintyvien eri propositiosymbolien lukumäärä
+ja \(t\) lauseen \(A\) totuustaulun tosien rivien lukumäärä.
+Oletetaan ensin, että \(t \geq 1\).
+DNF-konstruktiolla saadussa lauseessa on \(t\) disjunktia
+ja jokaisessa näistä on \(n\) literaalia. Täten DNF-muotoisessa lauseessa
+on \(nt\) literaalien esiintymää, \(t(n - 1)\) konjunktiomerkkiä
+(\(\land\)) ja \(t - 1\) disjunktiomerkkiä (\(\lor\)).
+Jos lasketaan jokainen literaali yhdeksi yksiköksi eikä oteta sulkeita
+huomioon, saadaan pituudeksi
+\[
+nt + t(n - 1) + (t - 1) = 2nt - 1.
+\]
+Koska \(t \leq 2^n\), saadaan yläraja \(\mathcal{O}(n2^n)\). Negaatioiden
+ja sulkeiden laskeminen erikseen muuttaisi tätä tarkkaa tulosta,
+mutta asymptoottinen
+yläraja pysyy ennallaan.
+
+Jos \(t=0\), lause on aina epätosi, ja sen DNF-muodoksi voidaan valita
+\(p_0\land\neg p_0\). Tällöin pituus on vakio.
+
+Olkoon \(m\) lauseen \(A\) pituus laskettuna propositiosymbolien ja
+konnektiivien esiintymien määränä. Koska \(n \leq m\), saadaan asymptoottinen
+yläraja \(\mathcal{O}(m2^m)\).
+
+DNF-konstruktio voi tuottaa eksponentiaalisesti pidemmän lauseen
+alkuperäiseen verrattuna. Esimerkiksi lauseen
+\[
+A_n=(p_1\lor\neg p_1)\land\cdots\land(p_n\lor\neg p_n)
+\]
+pituus on verrannollinen lukuun \(n\), mutta kaikki sen totuustaulun
+\(2^n\) riviä ovat tosia. Siksi konstruktio tuottaa \(2^n\) disjunktia,
+joissa jokaisessa on \(n\) literaalia. Edellä käytetyllä laskutavalla
+saadun DNF-lauseen pituus on siis \(2n2^n-1\).
+Tämä koskee konstruktion tuottamaa lausetta: lyhyempi ekvivalentti
+DNF-lause voi olla olemassa. Tässä esimerkissä sellainen on
+\(p_1\lor\neg p_1\).
+\end{solution}
+
 \begin{exercise}
 \textbf{Peircen nuoli} on seuraava konnektiivi:
 \[
