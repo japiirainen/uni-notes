@@ -738,4 +738,148 @@ large \(n\), since changing finitely many terms does not affect convergence.
   subsequence of \((x_n)\) converges to the same limit \(x\).
 \end{proof}
 
+\subsection{15.09.2026}
+
+\subsubsection{Upper and lower bounds}
+
+\begin{definition}
+  Let \(\varnothing\neq E\subseteq\RR\). A number \(s\in\RR\) is an
+  \emph{upper bound} of \(E\) if
+  \[
+    x\leq s \qquad\text{for every }x\in E.
+  \]
+  If such a number exists, \(E\) is \emph{bounded above}.
+\end{definition}
+
+\begin{definition}
+  Let \(\varnothing\neq E\subseteq\RR\). A number \(p\in\RR\) is a
+  \emph{lower bound} of \(E\) if
+  \[
+    p\leq x \qquad\text{for every }x\in E.
+  \]
+  If such a number exists, \(E\) is \emph{bounded below}.
+\end{definition}
+
+\begin{definition}
+  Let \(\varnothing\neq E\subseteq\RR\) be bounded above. An upper bound
+  \(s\) of \(E\) is the \emph{least upper bound}, or \emph{supremum}, of
+  \(E\) if \(s\leq u\) for every upper bound \(u\) of \(E\). We write
+  \[
+    s=\sup E.
+  \]
+\end{definition}
+
+\begin{definition}
+  Let \(\varnothing\neq E\subseteq\RR\) be bounded below. A lower bound
+  \(p\) of \(E\) is the \emph{greatest lower bound}, or \emph{infimum}, of
+  \(E\) if \(p\geq\ell\) for every lower bound \(\ell\) of \(E\). We write
+  \[
+    p=\inf E.
+  \]
+\end{definition}
+
+If \(E\) is not bounded above, we write \(\sup E=+\infty\). Similarly,
+if \(E\) is not bounded below, we write \(\inf E=-\infty\).
+
+\subsubsection{The completeness axiom}
+
+\paragraph{Completeness axiom.}
+Every nonempty subset of \(\RR\) that is bounded above has a supremum
+in \(\RR\).
+
+\begin{corollary}
+  Every nonempty subset \(E\subseteq\RR\) that is bounded below has an
+  infimum in \(\RR\).
+\end{corollary}
+
+\begin{proof}
+  Let \(c\) be a lower bound of \(E\), and define
+  \[
+    F=\set{-x:x\in E}.
+  \]
+  Since \(c\leq x\) for every \(x\in E\), we have \(-x\leq-c\).
+  Thus \(F\) is bounded above. It is also nonempty, so the completeness
+  axiom gives \(\sup F\in\RR\). For every \(x\in E\),
+  \[
+    -x\leq\sup F\leq-c,
+    \qquad\text{hence}\qquad
+    x\geq-\sup F\geq c.
+  \]
+  Therefore \(-\sup F\) is a lower bound of \(E\). Since the argument
+  applies to every lower bound \(c\) of \(E\), it is the greatest lower
+  bound. Consequently,
+  \[
+    \inf E=-\sup F\in\RR.
+  \]
+\end{proof}
+
+\subsubsection{Maximum and properties of the supremum}
+
+\begin{definition}
+  A number \(s\) is the \emph{greatest element}, or \emph{maximum}, of
+  a set \(E\) if \(s\in E\) and \(x\leq s\) for every \(x\in E\).
+  We write \(s=\max E\).
+\end{definition}
+
+\begin{theorem}
+  Let \(\varnothing\neq E\subseteq\RR\) be bounded above. If
+  \(s=\max E\), then \(s=\sup E\).
+\end{theorem}
+
+\begin{proof}
+  Since \(x\leq s\) for every \(x\in E\), the number \(s\) is an upper
+  bound of \(E\). Hence \(\sup E\leq s\). On the other hand, \(s\in E\),
+  so \(s\leq\sup E\). Thus \(s=\sup E\).
+\end{proof}
+
+\begin{theorem}
+  The supremum of a nonempty subset of \(\RR\) that is bounded above
+  is unique.
+\end{theorem}
+
+\begin{proof}
+  Suppose that \(s\) and \(s'\) are both least upper bounds of \(E\).
+  Since \(s'\) is an upper bound and \(s\) is a least upper bound,
+  \(s\leq s'\). Similarly, since \(s\) is an upper bound and \(s'\) is a
+  least upper bound, \(s'\leq s\). Therefore \(s=s'\).
+\end{proof}
+
+\begin{theorem}
+  Let \(\varnothing\neq E\subseteq\RR\) be bounded above. For every
+  \(\epsilon>0\), there exists \(x\in E\) such that
+  \[
+    \sup E-\epsilon<x\leq\sup E.
+  \]
+\end{theorem}
+
+\begin{proof}
+  Since \(\sup E\) is an upper bound, \(x\leq\sup E\) for every
+  \(x\in E\). Suppose, for a contradiction, that for some
+  \(\epsilon>0\),
+  \[
+    x\leq\sup E-\epsilon \qquad\text{for every }x\in E.
+  \]
+  Then \(\sup E-\epsilon\) is an upper bound of \(E\), but
+  \(\sup E-\epsilon<\sup E\). This contradicts the fact that \(\sup E\)
+  is the least upper bound. Hence the claimed element \(x\) exists.
+\end{proof}
+
+\subsubsection{Monotone sequences}
+
+\begin{definition}
+  A real sequence \((x_n)\) is
+  \begin{itemize}
+    \item \emph{increasing} (nondecreasing) if \(x_n\leq x_{n+1}\) for
+      every \(n\in\NN\);
+    \item \emph{decreasing} (nonincreasing) if \(x_{n+1}\leq x_n\) for
+      every \(n\in\NN\);
+    \item \emph{strictly increasing} if \(x_n<x_{n+1}\) for every
+      \(n\in\NN\);
+    \item \emph{strictly decreasing} if \(x_{n+1}<x_n\) for every
+      \(n\in\NN\).
+  \end{itemize}
+  A sequence is \emph{monotone} if it is increasing or decreasing, and
+  \emph{strictly monotone} if it is strictly increasing or strictly decreasing.
+\end{definition}
+
 \end{document}
