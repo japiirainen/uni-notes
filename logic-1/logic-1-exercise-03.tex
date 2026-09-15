@@ -217,10 +217,75 @@ A & B & A \mathbin{\downarrow} B \\
 Osoita, että \(\{\downarrow\}\) on täydellinen konnektiivijoukko.
 \end{exercise}
 
+\begin{solution}
+Konnektiivijoukko \(\set{\neg, \land}\) on täydellinen. Riittää siis osoittaa,
+että pystymme esittämään konnektiivit \(\neg\) ja \(\land\) Peircen
+nuolen avulla.
+
+Olkoon \(f\) mielivaltainen totuusfunktio. Koska \(\set{\neg, \land}\) on
+täydellinen konnektiivijoukko, on olemassa propositiolause \(A\), jolle
+\(f_A=f\) ja joka sisältää ainoastaan
+propositiosymboleita \(p_0, \cdots, p_n\) ja konnektiiveja \(\neg\)
+ja \(\land\).
+
+Osoitetaan induktiolla \(A\):n rakenteen suhteen, että on olemassa
+sen kanssa ekvivalentti propositiolause \(A^{'}\), joka sisältää ainoastaan
+propositiosymboleita \(p_0, \cdots, p_n\) ja konnektiivia \(\downarrow\).
+
+Jos \(A = p_i, 0 \leq i \leq n\), niin valitaan \(A^{'} = p_i\).
+
+Jos \(A = \neg B\), induktio-oletuksen nojalla on olemassa propositiolause
+\(B^{'}\), jolle \(B^{'} \iff B\) ja joka sisältää vain
+propositiosymboleita \(p_0, \cdots, p_n\) ja
+konnektiivia \(\downarrow\). Sitten
+\[
+A = \neg B \iff \neg B^{'} \iff B^{'} \downarrow B^{'}.
+\]
+Valitaan \(A^{'} = B^{'} \downarrow B^{'}\).
+
+Jos \(A = B \land C\), induktio-oletuksen nojalla on olemassa propositiolauseet
+\(B^{'}\) ja \(C^{'}\), joille \(B^{'} \iff B\) ja \(C^{'} \iff C\) ja
+jotka sisältävät vain propositiosymboleita \(p_0, \cdots, p_n\) ja
+konnektiivia \(\downarrow\). Sitten
+\[
+\begin{aligned}
+A = B \land C &\iff B^{'} \land C^{'} \\
+&\iff \neg (\neg B^{'} \lor \neg C^{'}) \\
+&\iff (B^{'} \downarrow B^{'}) \downarrow (C^{'} \downarrow C^{'}).
+\end{aligned}
+\]
+Valitaan \(A^{'} = (B^{'} \downarrow B^{'}) \downarrow (C^{'}
+\downarrow C^{'})\).
+
+Koska \(f_{A^{'}} = f_{A} = f\), \(A^{'}\) määrittelee funktion \(f\)
+Peircen nuolen avulla. Siis \(\set{\downarrow}\) on täydellinen
+konnektiivijoukko.
+\end{solution}
+
 \begin{exercise}
 Osoita, että \(\{\rightarrow\}\) ei ole täydellinen konnektiivijoukko.
 (Vihje: Eräästä viime viikon tehtävästä on apua.)
 \end{exercise}
+
+\begin{solution}
+Osoitetaan, että konnektiivilla \(\to\) ei voida esittää negaatiota,
+eli funktiota \(f \colon \set{0, 1} \to \set{0, 1}\), jolla
+\(f(x) = 1 - x\). Olkoon \(A\) propositiolause, joka
+sisältää vain propositiosymbolin \(p_0\) ja konnektiivia \(\to\).
+Olkoon \(v\) totuusjakauma, jolla \(v(p_0) = 1\).
+Osoitetaan induktiolla \(A\):n rakenteen suhteen, että \(v(A)=1\).
+
+Jos \(A\) on propositiosymboli, niin \(A=p_0\) ja siten \(v(A) = 1\).
+
+Jos \(A = (B \to C)\), niin induktio-oletuksen nojalla
+\(v(B) = v(C) = 1\). Implikaation totuusmääritelmän mukaan tällöin
+\(v(A) = 1\).
+
+Siis kaikki propositiosymbolista \(p_0\) sekä konnektiivista \(\to\)
+muodostetut propositiolauseet \(A\) toteuttavat \(v(A) = 1\).
+Koska \(f(1)=0\), mikään tällainen lause ei esitä funktiota \(f\).
+Siis \(\set{\to}\) ei ole täydellinen konnektiivijoukko.
+\end{solution}
 
 \begin{exercise}
 Voiko päättelyjärjestelmä olla
