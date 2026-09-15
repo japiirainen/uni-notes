@@ -298,9 +298,42 @@ Voiko päättelyjärjestelmä olla
 Perustele. Keksitkö sopivia esimerkkejä?
 \end{exercise}
 
-\begin{exercise}[Haastetehtävä]
-Osoita, että Shefferin viiva ja Peircen nuoli ovat ainoat kaksipaikkaiset
-konnektiivit, jotka yksinään ovat täydellisiä.
-\end{exercise}
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Olkoon \(\mathcal{S}\) päättelyjärjestelmä, joka sisältää vain konjunktion
+eliminointisäännöt
+\[
+\frac{A \land B}{A}
+\qquad
+\frac{A \land B}{B}.
+\]
+Järjestelmä \(\mathcal{S}\) on ehyt, sillä jos \(v(A \land B) = 1\), niin
+\(v(A) = v(B) = 1\). Siten kumpikin päättelysääntö säilyttää totuuden.
+Koska jokainen päättelyn askel säilyttää totuuden, kaikki johdetut
+lauseet ovat oletusten loogisia seurauksia. Järjestelmä \(\mathcal{S}\)
+ei ole täydellinen. Nimittäin \((p_0 \lor p_1)\) on oletuksen \(p_0\)
+looginen seuraus, mutta sitä ei voida johtaa järjestelmässä \(\mathcal{S}\).
+Oletukseen \(p_0\) ei voida soveltaa kumpaakaan eliminointisääntöä,
+joten siitä ei voida johtaa uusia lauseita.
+\item Ei voi. Oletetaan, että päättelyjärjestelmä on täydellinen.
+Jokaisen ristiriitaisen oletusjoukon looginen seuraus on ristiriita,
+sillä mikään totuusjakauma ei toteuta oletuksia. Täydellisyyden nojalla
+oletuksista voidaan siis johtaa ristiriita. Näin ollen järjestelmä on
+kumoustäydellinen.
+\item Voi. Olkoon \(\mathcal{S}\) päättelyjärjestelmä, jonka ainoa sääntö
+sallii ristiriidan johtamisen ilman oletuksia. Järjestelmä on kumoustäydellinen,
+sillä ristiriita voidaan johtaa jokaisesta ristiriitaisesta oletusjoukosta.
+\(\mathcal{S}\) ei kuitenkaan ole täydellinen, sillä esimerkiksi oletuksesta
+\(p_0\) ei voida johtaa johtopäätöstä \(p_0 \lor p_1\), vaikka se on
+oletuksen looginen seuraus. Ainoa päättelysääntö tuottaa vain ristiriidan,
+joten sillä ei voida johtaa lausetta \(p_0 \lor p_1\).
+\item Kohdan (c) järjestelmä on kumoustäydellinen, muttei ehyt, sillä
+järjestelmällä voidaan johtaa ristiriita myös toteutuvasta oletusjoukosta.
+Esimerkiksi oletuksesta \(p_0 \land p_1\) voidaan johtaa ristiriita, vaikka
+ristiriita ei ole tämän oletuksen looginen seuraus: oletus on tosi, kun
+molemmat propositiosymbolit \(p_0\) ja \(p_1\) saavat totuusarvon \(1\).
+\end{enumerate}
+\end{solution}
 
 \end{document}
