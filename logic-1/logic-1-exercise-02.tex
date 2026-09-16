@@ -1,5 +1,5 @@
 % !TeX program = pdflatex
-\documentclass[12pt,a4paper]{article}
+\documentclass[11pt,a4paper]{amsart}
 
 \newcommand{\notelanguage}{finnish}
 \input{../preamble.tex}
@@ -27,9 +27,9 @@
   \[
     \begin{aligned}
       v((p_0 \lor \neg p_1) \rightarrow (p_1 \land p_2)) &= v((1 \lor
-      \neg 0) \leftarrow (0 \land 1)) \\
-      &= v((1 \lor 1) \leftarrow 0) \\
-      &= v(1 \leftrightarrow 0) \\
+      \neg 0) \rightarrow (0 \land 1)) \\
+      &= v((1 \lor 1) \rightarrow 0) \\
+      &= v(1 \rightarrow 0) \\
       &= 0.
     \end{aligned}
   \]
@@ -253,7 +253,7 @@ propositiolauseen totuusarvo kyseisellä totuusjakaumalla saadaan
 v(((p_0 \rightarrow \neg p_1) \land p_1)\rightarrow p_0)
 &= v(((0 \rightarrow \neg 0) \land 0) \rightarrow 0) \\
 &= v(((0 \rightarrow 1) \land 0) \rightarrow 0) \\
-&= v((0 \land 0) \rightarrow 0) \\
+&= v((1 \land 0) \rightarrow 0) \\
 &= v(0 \rightarrow 0) \\
 &= 1.
 \end{aligned}
@@ -264,7 +264,7 @@ Propositiolause on täten \emph{toteutuva}.
 propositiolauseelle totuustaulu:
 \[
 \begin{array}{cc|cccccccccc}
-p_0 & p_1 & (\neg & p_0 \rightarrow & p_1) & \boldsymbol{\lor} & \neg
+p_0 & p_1 & (\neg & p_0 & \rightarrow & p_1) & \boldsymbol{\lor} & \neg
 & (p_0 & \land & \neg & p_1) \\
 \hline
 0 & 0 & 1 & 0 & 0 & 0 & \mathbf{1} & 1 & 0 & 0 & 1 & 0 \\
