@@ -13,6 +13,8 @@
 
 \exerciseheading{Analyysi I}{Harjoituksen 3 ratkaisut}
 
+Tässä harjoituksessa merkitään \(\NNone = \{1,2,3,\ldots\}\).
+
 \begin{exercise}
   Olkoon \((x_n)\) lukujono, jolle \(x_n = \frac{3n}{n + 37}\). Osoita suoraan
   määritelmästä, että lukujono suppenee kohti lukua \(3\). Osoita lisäksi,
@@ -20,6 +22,23 @@
 \end{exercise}
 
 \begin{solution}
+  Olkoon \(\epsilon > 0\). Valitaan \(N \in \NNone\) siten, että \(N >
+  \frac{111}{\epsilon}\). Tällöin
+  \[
+    \abs{x_n - 3} = \frac{111}{n + 37} < \frac{111}{n} < \frac{111}{N}
+    < \epsilon,
+  \]
+  kun \(n > N\). Täten \(\lim_{n \to \infty} x_n = 3\). Osoitetaan vielä,
+  että \((x_n)\) on kasvava. Huomataan, että
+  \[
+    \frac{x_{n + 1}}{x_n} = \frac{\left(\frac{3(n + 1)}{(n + 1) +
+    37}\right)}{\left(\frac{3n}{n + 37}\right)} = \frac{3n^2 + 114n +
+    111}{3n^2 + 114n} = 1 + \frac{37}{n(n + 38)} > 1.
+  \]
+  Koska \(x_n > 0\) ja osamäärä \(\frac{x_{n + 1}}{x_n}\) on suurempi
+  kuin \(1\),
+  on voimassa \(x_n < x_{n + 1}\) kaikilla \(n \in \NNone\). Täten
+  lukujono \((x_n)\) on aidosti kasvava ja siten myös kasvava.
 \end{solution}
 
 \begin{exercise}
@@ -35,6 +54,32 @@
 \end{exercise}
 
 \begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Olkoon \(x = \lim_{n \to \infty} x_n\) ja \((z_n)\) lukujono, jolle
+  \(z_n = \frac{1}{\sqrt{n}}\). Olkoon \(\epsilon > 0\). Valitaan \(N
+  \in \NNone\)
+  siten, että \(N > \frac{1}{\epsilon^2}\). Tällöin
+  \[
+    \abs{z_n - 0} = \frac{1}{\sqrt{n}} < \epsilon,
+  \]
+  kun \(n > N\), eli \(\lim_{n \to \infty} z_n = 0\). Lauseen (2.2.8) nojalla
+  \[
+    \lim_{n \to \infty} y_n = \lim_{n \to \infty} z_nx_n = \lim_{n
+    \to \infty} z_n \cdot \lim_{n \to \infty} x_n = 0\cdot x = 0.
+  \]
+  Lukujono \((y_n)\) siis suppenee (kohti lukua \(0\)).
+
+\item Koska \((x_n)\) on rajoitettu, on olemassa \(M \in \RR\), jolla
+  \(\abs{x_n} \leq M\) kaikilla \(n \in \NNone\). Osoitetaan, että
+  \(\lim_{n \to \infty} y_n = 0\). Olkoon \(\epsilon > 0\). Valitaan
+  \(N \in \NNone\) siten, että \(N > \frac{M^2}{\epsilon^2}\). Tällöin
+  \[
+    \abs{y_n - 0} = \abs*{\frac{1}{\sqrt{n}}x_n} \leq
+    M\frac{1}{\sqrt{n}} < \epsilon,
+  \]
+  kun \(n > N\). Lukujono \((y_n)\) suppenee siis kohti lukua \(0\).
+\end{enumerate}
 \end{solution}
 
 \begin{exercise}
@@ -46,6 +91,36 @@ Anna esimerkki lukujonosta, joka
 \end{exercise}
 
 \begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Olkoon \((x_n)\) lukujono, jolle
+\[
+x_1 = 2, \quad x_n = n, \quad n \geq 2.
+\]
+Huomataan, että \(x_1 = x_2\) ja \(x_n < x_{n + 1}\), kun \(n \geq 2\).
+On siis voimassa \(x_n \leq x_{n + 1}\) kaikilla \(n \in \NNone\), eli
+lukujono on kasvava, mutta ei aidosti kasvava. Olkoon \(M \in \RR\).
+Valitaan \(N \in \NNone\) siten, että \(N > \maxset{2, M}\). Tällöin
+\[
+x_n = n > N > M
+\]
+kaikilla \(n > N\), joten lukujono kasvaa rajatta. Lemman 2.3.8 nojalla
+lukujono \((x_n)\) hajaantuu.
+\item Olkoon \((x_n)\) lukujono, jolle \(x_n = 1 + \frac{1}{n} =
+\frac{n + 1}{n}\). Osoitetaan, että \(\lim_{n \to \infty} x_n = 1\).
+Olkoon \(\epsilon > 0\). Valitaan \(N \in \NNone\) siten, että
+\(N > \frac{1}{\epsilon}\). Tällöin
+\[
+\abs{x_n - 1} = \abs*{(1 + \frac{1}{n}) - 1} = \frac{1}{n} <
+\frac{1}{N} < \epsilon,
+\]
+kun \(n > N\). Täten \(\lim_{n \to \infty} x_n = 1\). Osoitetaan vielä, että
+\((x_n)\) on aidosti vähenevä. Huomataan, että
+\[
+x_{n + 1} = 1 + \frac{1}{n + 1} < 1 + \frac{1}{n} = x_n.
+\]
+Lukujono \((x_n)\) on siis aidosti vähenevä.
+\end{enumerate}
 \end{solution}
 
 \begin{exercise}
@@ -55,6 +130,13 @@ että \(\inf E \leq x < \inf E + \epsilon\).
 \end{exercise}
 
 \begin{solution}
+Koska \(\inf E\) on joukon \(E\) alaraja, \(\inf E \leq x\) kaikilla
+\(x \in E\).
+Tehdään vastaoletus, että \(\inf{E} + \epsilon \leq x\) jollain
+\(\epsilon > 0\) ja kaikilla \(x \in E\). Tällöin \(\inf{E} + \epsilon\)
+on joukon \(E\) alaraja sekä \(\inf{E} + \epsilon > \inf{E}\).
+Tämä on ristiriidassa sen kanssa, että \(\inf{E}\) on joukon \(E\) suurin
+alaraja. Täten alkuperäisen väitteen on oltava tosi.
 \end{solution}
 
 \begin{exercise}
@@ -65,6 +147,29 @@ samojen joukkojen infimumeja.
 \end{exercise}
 
 \begin{solution}
+Olkoon \((x_n)\) rajoitettu lukujono ja \(A_k = \inf{\set{x_n \colon
+n \geq k}}\). Koska \((x_n)\) on rajoitettu, niin \(A_k \in \RR\) kaikilla
+\(k \in \NNone\). Lukujono \((A_k)\) on kasvava ja rajoitettu, joten se
+suppenee. Olkoon \(a = \lim_{k \to \infty} A_k\).
+
+Valitaan osajono lukujonosta \((x_n)\). Tehtävän (4) mukaan lukujonosta
+\((x_n)\) voidaan valita jäsen \(x_{n_{1}}\) siten, että
+\[
+x_{n_{1}} \leq A_1 + 1.
+\]
+Edetään induktiivisesti: oletetaan, että luvut \(x_{n_{1}}, \cdots, x_{n_{k}}\)
+on valittu. Valitaan lukujonosta \((x_n)\) jäsen \(x_{n_{k + 1}}\),
+jolle \(n_{k + 1} \geq n_{k} + 1\) ja
+\[
+x_{n_{k + 1}} \leq A_{n_k + 1} + \frac{1}{k + 1}.
+\]
+Koska \(n_k + 1 \to \infty\), kun \(k \to \infty\), ja \(A_k \to a\),
+myös \(A_{n_k + 1} \to a\). Näin osajonolle \((x_{n_{k}})\) pätee
+\[
+A_{n_k + 1} \leq x_{n_{k + 1}} \leq A_{n_k + 1} + \frac{1}{k + 1}.
+\]
+Koska \(A_{n_k + 1} \to a\) ja \(\frac{1}{k + 1} \to 0\) kun \(k \to \infty\),
+suppiloperiaatteen nojalla \(x_{n_{k}} \to a\).
 \end{solution}
 
 \begin{exercise}
@@ -74,10 +179,18 @@ lukujono \((x_n)\) asettamalla, että
 \[
 x_n = \frac{12\sin(\frac{3\pi n}{8})^4}{n(2 + \sin(\frac{\pi n}{2}))}
 \]
-kaikilla \(n \in \NN\). Osoita suoraan määritelmästä, että lukujono \((x_n)\)
+kaikilla \(n \in \NNone\). Osoita suoraan määritelmästä, että lukujono \((x_n)\)
 suppenee kohti lukua \(0\).
 \end{exercise}
 
 \begin{solution}
+Olkoon \(\epsilon > 0\). Koska \(\abs{\sin(x)} \leq 1\) kaikilla \(x \in \RR\),
+on myös \(\abs{\sin(x)^4} \leq 1\) kaikilla \(x \in \RR\). Täten
+\(\abs{12\sin(x)^4} \leq 12\) ja \(\abs{n(2 + \sin(x))} \geq n\).
+Valitaan \(N \in \NNone\) siten, että \(N > \frac{12}{\epsilon}\). Tällöin
+\[
+\abs{x_n - 0} \leq \frac{12}{n} < \frac{12}{N} < \epsilon,
+\]
+kun \(n > N\). Täten \(\lim_{n \to \infty} x_n = 0\).
 \end{solution}
 \end{document}
