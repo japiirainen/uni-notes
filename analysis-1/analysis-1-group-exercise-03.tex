@@ -1,0 +1,131 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\usepackage{tikz}
+
+\title{Analyysi I\\Ryhmätyö 3 ratkaisut}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Analyysi I}{Ryhmätyö 3 ratkaisut}
+
+\begin{exercise}
+  \leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+  \item Määritä seuraavien joukkojen supremum ja infimum:
+    \begin{itemize}[nosep]
+      \item \([1,7]\) ja \((1,7)\).
+      \item \(\left\{\frac{2}{n + 1} \colon n = 1,2,3,\ldots\right\}\).
+      \item \(\left\{\frac{3n}{n - 2} \colon n = 3,4,5,\ldots\right\}\).
+    \end{itemize}
+  \item Onko edellisissä joukoissa suurinta tai pienintä alkiota?
+  \item Selitä omin sanoin, miten seuraavat käsitteet eroavat toisistaan:
+    supremum, yläraja, suurin alkio. Esitä käsitteet myös graafisesti
+    tehtävän (a) viimeiselle joukolle.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+Merkitään \(A = \set{\frac{2}{n + 1}\colon n \in \NNone}\) ja
+\(B = \set{\frac{3n}{n - 2} \colon n = 3,4,5,\cdots}\).
+\begin{enumerate}[label=\alph*), nosep]
+\item
+  \begin{itemize}[nosep]
+    \item Joukon \([1, 7]\) suurin alkio on \(7\), joten \(\sup{[1, 7]} = 7\).
+      Joukon \([1, 7]\) pienin alkio on \(1\), joten \(\inf{[1, 7]} = 1\).
+      Joukossa \((1, 7)\) ei ole pienintä, eikä suurinta alkiota, mutta joukko
+      sisältää lukuja mielivaltaisen lähellä lukuja \(1\) ja \(7\). Täten,
+      \(\sup{(1, 7)} = 7\) ja \(\inf{(1, 7)} = 1\).
+    \item Lukujono \((x_n)\), jossa \(x_n = \frac{2}{n + 1}\) on vähenevä ja
+      suppenee kohti lukua \(0\). Täten
+      \(\inf{A} = 0\). Koska \((x_n)\) on
+      vähenevä ja \(x_1 = 1\), on jonon arvojoukon \(A\) suurin alkio \(1\),
+      joka on tällöin myös \(\sup{A} = 1\).
+    \item Lukujono \((x_n)\), jossa \(x_n = \frac{3n}{n - 2}\) on vähenevä ja
+      suppenee kohti lukua \(3\). Täten \(\inf{B} = 3\). Koska \((x_n)\)
+      on vähenevä ja \(x_3 = 9\), on jonon arvojoukon suurin alkio \(9\),
+      eli \(\sup{B} = 9\).
+  \end{itemize}
+\item Joukolla \([1, 7]\) on suurin ja pienin alkio. Joukolla \((1, 7)\) ei ole
+  suurinta, eikä pienintä alkiota. Oletetaan, että \(k\) on joukon
+  \((1, 7)\) suurin alkio. Luku \(k + \frac{7 - k}{2}\) on kuitenkin lukua \(k\)
+  suurempi, mutta kuitenkin pienempi kuin \(7\). Tämä on ristiriita.
+  Todistus sille, ettei joukolla ole pienintä alkiota on samanlainen.
+  Joukolla \(A\) on suurin alkio \(\max{A} = 1\), mutta ei pienintä alkiota.
+  Joukolla \(B\) on suurin alkio \(\max{B} = 9\), mutta ei pienintä alkiota.
+  Kummankin joukon jokaista alkiota pienempi alkio saadaan
+  seuraavalla indeksillä:
+  \begin{gather*}
+    \frac{2}{n+2}<\frac{2}{n+1}\quad(n\ge1),\\[0.5em]
+    \frac{3(n+1)}{n-1}=3+\frac{6}{n-1}
+    <3+\frac{6}{n-2}=\frac{3n}{n-2}\quad(n\ge3).
+  \end{gather*}
+  Siksi mikään alkio ei voi olla joukkonsa pienin.
+\item Yläraja on luku, jota yksikään joukon alkio ei ylitä.
+  Supremum on pienin yläraja. Suurin alkio on joukkoon kuuluva yläraja,
+  joten se on myös supremum. Supremumin ei kuitenkaan tarvitse kuulua joukkoon.
+  Joukolle \(B\) pätee \(\sup B=\max B=9\), ja sen ylärajat ovat \([9,\infty)\).
+  \begin{center}
+    \begin{tikzpicture}[x=1.15cm,y=1cm]
+      \draw[->] (2.6,0) -- (10.5,0);
+      \foreach \x in {3,4,5,6,7,8,9,10} {
+        \draw (\x,0.06) -- (\x,-0.06) node[below] {\small \x};
+      }
+      \foreach \n in {3,...,18} {
+        \fill ({3+6/(\n-2)},0) circle (1.6pt);
+      }
+      \node[above] at (3.2,0) {\(\cdots\)};
+      \draw[fill=white] (3,0) circle (2pt);
+      \node[above] at (6,0.05) {\small Joukon \(B\) alkioita};
+      \draw[thick,->] (9,0.8) -- (10.5,0.8);
+      \fill (9,0.8) circle (2pt);
+      \draw[dashed] (9,0.1) -- (9,0.7);
+      \node[above] at (9.7,0.8) {\small Ylärajat};
+      \node[below] at (9,-0.5) {\(\sup B=\max B=9\)};
+    \end{tikzpicture}
+  \end{center}
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+Olkoot joukot \(B_n \subset (-\frac{2}{n}, \frac{3}{n})\) kaikilla
+\(n \in \NNone\).
+\begin{enumerate}[label=\alph*), nosep]
+\item Onko lukujono \((\sup B_n)\) välttämättä kasvava tai vähenevä?
+\item Osoita, että lukujono \((\sup B_n - \inf B_n)\) suppenee kohti nollaa.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+Oletetaan, että \(B_n \neq \varnothing\) kaikilla \(n \in \NNone\).
+\begin{enumerate}[label=\alph*), nosep]
+\item Ei. Olkoon \(B_1 = (0, 1)\), \(B_2 = \left(0, \frac{3}{2}\right)\) ja
+\(B_n = \left(0, \frac{1}{n}\right)\) kun \(n \geq 3\). Tällöin
+\(B_n \subset \left(-\frac{2}{n}, \frac{3}{n}\right)\) kaikilla \(n
+\in \NNone\), mutta \(\sup{B_1} = 1 < \sup{B_2} = \frac{3}{2}\) ja
+\(\sup{B_n} > \sup{B_{n + 1}}\) kaikilla \(n \geq 3\). Täten
+\((\sup{B_n})\) ei ole kasvava, eikä vähenevä.
+\item Olkoon \((x_n)\) lukujono, jolle \(x_n = \sup{B_n} - \inf{B_n}\). Koska
+\(\sup{\left(-\frac{2}{n}, \frac{3}{n}\right)} = \frac{3}{n}\) ja
+\(B_n \subset \left(-\frac{2}{n}, \frac{3}{n}\right)\), on oltava
+\(\sup{B_n} \leq \frac{3}{n}\). Samalla päättelyllä saadaan
+\(-\frac{2}{n} \leq \inf{B_n}\). Tiedetään myös \(\inf{B_n} \leq \sup{B_n}\).
+Täten, edellisten arvioiden nojalla
+\[
+\abs{x_n} = \sup{B_n} - \inf{B_n} \leq \frac{3}{n} + \frac{2}{n} = \frac{5}{n}.
+\]
+Olkoon \(\epsilon > 0\). Valitaan \(N \in \NNone\) siten, että
+\(N > \frac{5}{\epsilon}\). Tällöin,
+\[
+\abs{x_n} \leq \frac{5}{n} < \epsilon,
+\]
+kun \(n > N\), eli \(x_n \to 0\).
+\end{enumerate}
+\end{solution}
+
+\end{document}
