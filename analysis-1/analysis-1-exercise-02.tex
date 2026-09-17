@@ -34,12 +34,14 @@
 
 \begin{solution}
   Olkoon \(\epsilon > 0\). Valitaan \(N \in \NN\) jolla \(N >
-  \maxset{6, \frac{24}{\epsilon}}\). Kun \(n > N\), niin
+  \maxset{6, \frac{24}{\epsilon}}\). Kun \(n > N\), niin \(n > 6\),
+  joten \(n - 3 > n/2\) ja siten
+  \(\frac{12}{n - 3} < \frac{24}{n}\). Täten
   \[
-    \abs{x_n - 4} = \frac{12}{n - 3} \leq \frac{24}{n} < \frac{24}{N}
-    < \epsilon.
+    \abs{x_n - 4} = \frac{12}{n - 3} < \frac{24}{n} < \frac{24}{N}
+    < \epsilon,
   \]
-  Täten \(\lim_{n \to \infty} x_n = 4\).
+  eli \(\lim_{n \to \infty} x_n = 4\).
 
   \smallskip
   \noindent\textit{Huomautus.} Tehtävän kaava ei ole määritelty, kun
@@ -54,13 +56,15 @@
 
 \begin{solution}
   Tehdään vastaoletus: Oletetaan, että \(\lim_{n \to \infty} y_n = a\).
-  On olemassa \(N \in \NN\) siten, että kaikilla \(n > N\) pätee
+  Valitaan \(\epsilon = 1\). Suppenemisen määritelmän nojalla on olemassa
+  \(N \in \NN\) siten, että kaikilla \(n > N\) pätee
   \[
     \abs{y_n - a} < 1.
   \]
   Valitaan parillinen \(n \in \NN\) niin suuri, että \(n > \maxset{N,
   \abs{a} + 1}\).
-  Koska \(n\) on parillinen, \(y_n = -n\), joten kolmioepäyhtälön nojalla,
+  Koska \(n\) on parillinen, \(y_n = -n\), joten käänteisen
+  kolmioepäyhtälön nojalla
   \[
     \abs{y_n - a} = \abs{-n - a} \geq n - \abs{a} > 1.
   \]
@@ -68,13 +72,14 @@
   Olemme saaneet ristiriidan, joten \((y_n)\) ei suppene.
 
   Tutkitaan seuraavaksi alijonoa \((y_{2n})\). Tehdään jälleen vastaoletus:
-  Oletetaan, että \(\lim_{n \to \infty} y_{2n} = a\). On olemassa
+  Oletetaan, että \(\lim_{n \to \infty} y_{2n} = a\). Valitaan
+  \(\epsilon = 1\). Suppenemisen määritelmän nojalla on olemassa
   \(N \in \NN\) siten, että kaikilla \(n > N\) pätee
   \[
     \abs{y_{2n} - a} < 1.
   \]
   Valitaan \(n \in \NN\) niin suuri, että \(n > N + \abs{a} + 1\).
-  Koska \(y_{2n} = -2n\), kolmioepäyhtälön nojalla
+  Koska \(y_{2n} = -2n\), käänteisen kolmioepäyhtälön nojalla
   \[
     \abs{y_{2n} - a} = \abs{-2n - a} \geq 2n - \abs{a} > 1.
   \]
@@ -138,8 +143,7 @@
   Olkoon \(\epsilon > 0\). Valitaan \(N \in \NN\) siten, että
   \(N > \frac{1}{\epsilon}\). Kun \(n > N\), niin
   \[
-    \abs{x_n - m} = \frac{1}{n} <
-    \frac{1}{\bigl(\frac{1}{\epsilon}\bigr)} = \epsilon.
+    \abs{x_n - m} = \frac{1}{n} < \frac{1}{N} < \epsilon.
   \]
   Täten \(a = \lim_{n \to \infty} x_n = m\).
 \end{solution}
@@ -161,6 +165,8 @@
   \[
     \abs{y_n - b} < \frac{\epsilon}{2(\abs{a} + 1)}.
   \]
+  Nimittäjässä käytetään lukua \(\abs{a} + 1\), jotta se on positiivinen
+  myös silloin, kun \(a = 0\). Lisäksi \(\frac{\abs{a}}{\abs{a} + 1} < 1\).
   Valitaan \(N = \maxset{N_1, N_2}\). Kolmioepäyhtälön nojalla,
   kun \(n > N\), saadaan
   \[
