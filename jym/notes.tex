@@ -634,4 +634,197 @@ this assumption leads to a contradiction.
   and transitive.
 \end{definition}
 
+\subsection{17.09.2026}
+
+\subsubsection{Properties of inverse relations}
+
+\begin{theorem}
+  Let \(R,S \subseteq A \times B\) be relations. Then
+  \begin{enumerate}[label=(\alph*)]
+    \item \((R^{-1})^{-1} = R\);
+    \item \((R \cup S)^{-1} = R^{-1} \cup S^{-1}\);
+    \item \((R \cap S)^{-1} = R^{-1} \cap S^{-1}\);
+    \item \((R \setminus S)^{-1} = R^{-1} \setminus S^{-1}\).
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  For (a), let \((a,b) \in A \times B\). By the definition of the inverse
+  relation,
+  \[
+    (a,b) \in (R^{-1})^{-1}
+    \iff (b,a) \in R^{-1}
+    \iff (a,b) \in R.
+  \]
+  For the remaining identities, let \((b,a) \in B \times A\). Then
+  \begin{align*}
+    (b,a) \in (R \cup S)^{-1}
+    &\iff (a,b) \in R \cup S \\
+    &\iff (a,b) \in R \lor (a,b) \in S \\
+    &\iff (b,a) \in R^{-1} \lor (b,a) \in S^{-1} \\
+    &\iff (b,a) \in R^{-1} \cup S^{-1},
+  \end{align*}
+  which proves (b). Similarly,
+  \begin{align*}
+    (b,a) \in (R \cap S)^{-1}
+    &\iff (a,b) \in R \land (a,b) \in S \\
+    &\iff (b,a) \in R^{-1} \land (b,a) \in S^{-1} \\
+    &\iff (b,a) \in R^{-1} \cap S^{-1},
+  \end{align*}
+  proving (c). Finally,
+  \begin{align*}
+    (b,a) \in (R \setminus S)^{-1}
+    &\iff (a,b) \in R \land (a,b) \notin S \\
+    &\iff (b,a) \in R^{-1} \land (b,a) \notin S^{-1} \\
+    &\iff (b,a) \in R^{-1} \setminus S^{-1},
+  \end{align*}
+  which proves (d). In each case, the two sets have exactly the same elements.
+\end{proof}
+
+\begin{remark}
+  In (d), the handwritten notes have an extra inverse on \(S\) inside the
+  parentheses. The corrected identity is stated above. If the expression
+  \((R \setminus S^{-1})^{-1}\) is used literally, its value is
+  \(R^{-1} \setminus S\).
+\end{remark}
+
+\subsubsection{Composition of relations}
+
+\begin{definition}
+  Let \(R \subseteq X \times Y\) and \(S \subseteq Y \times Z\).
+  Their \emph{composite relation} is the relation from \(X\) to \(Z\)
+  defined by
+  \[
+    S \circ R \coloneqq
+    \set{(x,z) \in X \times Z :
+    \exists y \in Y,\ (x,y) \in R \land (y,z) \in S}.
+  \]
+  Equivalently,
+  \[
+    x(S \circ R)z
+    \iff \exists y \in Y : xRy \land ySz.
+  \]
+  Thus \(S \circ R\) means that we first follow \(R\), then \(S\).
+\end{definition}
+
+\begin{theorem}[Associativity of composition]
+  Let \(R \subseteq X \times Y\), \(S \subseteq Y \times Z\), and
+  \(T \subseteq Z \times U\). Then
+  \[
+    T \circ (S \circ R) = (T \circ S) \circ R.
+  \]
+\end{theorem}
+
+\begin{proof}
+  Let \((x,u) \in X \times U\). If
+  \((x,u) \in T \circ (S \circ R)\), there is a \(z \in Z\) such that
+  \(x(S \circ R)z\) and \(zTu\). The first relation supplies a
+  \(y \in Y\) with \(xRy\) and \(ySz\). Since \(ySz\) and \(zTu\),
+  we have \(y(T \circ S)u\), and hence
+  \((x,u) \in (T \circ S) \circ R\).
+
+  Conversely, if \((x,u) \in (T \circ S) \circ R\), there is a
+  \(y \in Y\) such that \(xRy\) and \(y(T \circ S)u\). Choose
+  \(z \in Z\) with \(ySz\) and \(zTu\). Then \(x(S \circ R)z\),
+  so \((x,u) \in T \circ (S \circ R)\). Both inclusions hold, proving
+  the equality.
+\end{proof}
+
+\subsubsection{Equivalence relations and equivalence classes}
+
+Recall that a relation \(\sim\) on a set \(X\) is an
+\emph{equivalence relation} if it is reflexive, symmetric, and transitive.
+
+\begin{problem}[Lecture exercise]
+  Let \(A = \set{2,3,4,5,6}\), and define a relation \(R\) on \(A\) by
+  \[
+    xRy \iff x \text{ and } y \text{ have a common prime factor}.
+  \]
+  Is \(R\) an equivalence relation?
+\end{problem}
+
+\begin{solution}
+  The relation is reflexive: each \(x \in A\) has a prime factor, and that
+  prime divides both occurrences of \(x\). More explicitly, \(2\) divides
+  \(2,4,6\), \(3\) divides \(3\), and \(5\) divides \(5\).
+
+  It is also symmetric. If \(xRy\), some prime \(p\) divides both \(x\)
+  and \(y\). The same prime divides both \(y\) and \(x\), so \(yRx\).
+
+  However, it is not transitive. We have \(4R6\), since \(2\) divides
+  both \(4\) and \(6\), and \(6R3\), since \(3\) divides both \(6\)
+  and \(3\). But \(4\) and \(3\) have no common prime factor: their
+  only prime factors are \(2\) and \(3\), respectively. Thus
+  \((4,3) \notin R\). Consequently, \(R\) is not an equivalence relation.
+\end{solution}
+
+\begin{definition}
+  Let \(\sim\) be an equivalence relation on a set \(X\), and let
+  \(a \in X\). The \emph{equivalence class} of \(a\) is
+  \[
+    [a]_{\sim} \coloneqq \set{x \in X : x \sim a}.
+  \]
+  The element \(a\) is called a \emph{representative} of this class.
+  The set of all equivalence classes is the \emph{quotient set}
+  \[
+    X/{\sim} \coloneqq \set{[a]_{\sim} : a \in X}.
+  \]
+\end{definition}
+
+The following consequence explains why equivalence classes divide a set into
+separate parts; it supplements the definitions in the lecture.
+
+\begin{proposition}
+  Let \(\sim\) be an equivalence relation on \(X\). For every \(a,b \in X\),
+  \begin{enumerate}[label=(\alph*)]
+    \item \(a \in [a]_{\sim}\);
+    \item \(a \sim b\) if and only if \([a]_{\sim} = [b]_{\sim}\);
+    \item the classes \([a]_{\sim}\) and \([b]_{\sim}\) are either equal
+      or disjoint.
+  \end{enumerate}
+  Therefore the equivalence classes form a \emph{partition} of \(X\):
+  they are nonempty, their union is \(X\), and distinct classes are disjoint.
+\end{proposition}
+
+\begin{proof}
+  Reflexivity gives \(a \sim a\), proving (a).
+
+  For (b), suppose \(a \sim b\). If \(x \in [a]_{\sim}\), then
+  \(x \sim a\), so transitivity gives \(x \sim b\). Hence
+  \([a]_{\sim} \subseteq [b]_{\sim}\). Symmetry gives \(b \sim a\),
+  and the same argument gives the reverse inclusion. Conversely, if the
+  classes are equal, then (a) gives \(a \in [a]_{\sim} = [b]_{\sim}\),
+  which means \(a \sim b\).
+
+  For (c), if the classes intersect, choose an element \(c\) in their
+  intersection. Then \(c \sim a\) and \(c \sim b\). By symmetry,
+  \(a \sim c\), so transitivity gives \(a \sim b\). Part (b) now gives
+  equality of the classes. Thus distinct classes must be disjoint.
+  Finally, every class is a subset of \(X\), and (a) shows that each
+  element of \(X\) belongs to a nonempty class. Their union is therefore
+  all of \(X\), proving the partition claim.
+\end{proof}
+
+\subsubsection{Functions}
+
+\begin{definition}
+  Let \(X\) and \(Y\) be nonempty sets. A \emph{function} (or
+  \emph{mapping}) \(f\) from \(X\) to \(Y\) assigns to each element
+  \(x \in X\) exactly one element \(y \in Y\). We write
+  \[
+    f\colon X \longrightarrow Y,
+    \qquad y = f(x).
+  \]
+  The set \(X\) is the \emph{domain}, and \(Y\) is the \emph{codomain}.
+\end{definition}
+
+In terms of relations, the graph of \(f\) is
+\[
+  G_f = \set{(x,f(x)) : x \in X} \subseteq X \times Y.
+\]
+A relation \(F \subseteq X \times Y\) is the graph of a function precisely
+when, for every \(x \in X\), there exists exactly one \(y \in Y\) such
+that \((x,y) \in F\). Existence ensures that the function is defined at
+every input, and uniqueness ensures that its value is unambiguous.
+
 \end{document}
