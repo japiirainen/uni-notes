@@ -882,4 +882,206 @@ in \(\RR\).
   \emph{strictly monotone} if it is strictly increasing or strictly decreasing.
 \end{definition}
 
+\subsection{17.09.2026}
+
+\subsubsection{Monotone convergence}
+
+\begin{theorem}[Monotone convergence theorem]\label{thm:monotone-convergence}
+  Let \((x_n)\) be an increasing sequence of real numbers. If there is
+  \(M\in\RR\) such that \(x_n\leq M\) for every \(n\in\NN\), then
+  \((x_n)\) converges, and
+  \[
+    \lim_{n\to\infty}x_n=\sup\set{x_n:n\in\NN}\leq M.
+  \]
+\end{theorem}
+
+\begin{proof}
+  The set \(E=\set{x_n:n\in\NN}\) is nonempty and bounded above by
+  \(M\). By completeness, \(s=\sup E\) exists in \(\RR\), and
+  \(s\leq M\). Let \(\epsilon>0\). By the approximation property of
+  the supremum, there is an index \(N\in\NN\) such that
+  \[
+    s-\epsilon<x_N\leq s.
+  \]
+  Since \((x_n)\) is increasing, for every \(n>N\),
+  \[
+    s-\epsilon<x_N\leq x_n\leq s.
+  \]
+  Hence \(\abs{x_n-s}=s-x_n<\epsilon\), proving \(x_n\to s\).
+\end{proof}
+
+\begin{corollary}[Decreasing case]\label{cor:decreasing-convergence}
+  Let \((x_n)\) be a decreasing sequence of real numbers. If there is
+  \(m\in\RR\) such that \(m\leq x_n\) for every \(n\in\NN\), then
+  \((x_n)\) converges, and
+  \[
+    \lim_{n\to\infty}x_n=\inf\set{x_n:n\in\NN}\geq m.
+  \]
+  Consequently, every bounded monotone real sequence converges.
+\end{corollary}
+
+\begin{proof}
+  The sequence \((-x_n)\) is increasing and bounded above by \(-m\).
+  By \cref{thm:monotone-convergence},
+  \[
+    -x_n\longrightarrow\sup\set{-x_n:n\in\NN}.
+  \]
+  Multiplying by \(-1\) and using the relation between infima and
+  suprema gives
+  \[
+    x_n\longrightarrow-\sup\set{-x_n:n\in\NN}
+    =\inf\set{x_n:n\in\NN}\geq m.
+  \]
+  A bounded monotone sequence satisfies the hypotheses of either the
+  increasing or the decreasing case, so it converges.
+\end{proof}
+
+\subsubsection{Examples of decreasing sequences}
+
+In the following two examples the indices start at \(n=1\).
+
+\begin{example}
+  Let
+  \[
+    x_1=3,\qquad x_n=\frac{n}{n-1}\quad(n\geq2).
+  \]
+  Show that \((x_n)\) is strictly decreasing and find its limit.
+\end{example}
+
+\begin{solution}
+  First, \(x_2=2<3=x_1\). For \(n\geq2\), all terms are positive and
+  \[
+    \frac{x_{n+1}}{x_n}
+    =\frac{(n+1)(n-1)}{n^2}
+    =1-\frac{1}{n^2}<1.
+  \]
+  Thus \(x_{n+1}<x_n\) for every \(n\geq1\). Also \(x_1>1\), and
+  \[
+    x_n=1+\frac{1}{n-1}>1\qquad(n\geq2).
+  \]
+  Hence the sequence is bounded below and converges by
+  \cref{cor:decreasing-convergence}. We identify its limit in two ways.
+
+  \paragraph{Method 1: the squeeze theorem.}
+  For \(n\geq2\), we have \(n-1\geq n/2\), so
+  \[
+    1<x_n=1+\frac{1}{n-1}\leq1+\frac{2}{n}.
+  \]
+  Both bounding sequences tend to \(1\), so \(x_n\to1\).
+
+  \paragraph{Method 2: the infimum.}
+  The number \(1\) is a lower bound of \(E=\set{x_n:n\geq1}\).
+  If \(a>1\), choose an integer \(n>1+1/(a-1)\). Then
+  \[
+    x_n<a
+    \iff \frac{1}{n-1}<a-1
+    \iff n>1+\frac{1}{a-1}.
+  \]
+  Thus no \(a>1\) is a lower bound of \(E\). Therefore \(\inf E=1\),
+  and the decreasing case of the monotone convergence theorem yields
+  \(\lim_{n\to\infty}x_n=1\).
+\end{solution}
+
+\begin{example}
+  Let
+  \[
+    x_n=\frac{(n+1)^2}{n^2+1},\qquad n\geq1.
+  \]
+  Show that \((x_n)\) is decreasing and determine its limit.
+\end{example}
+
+\begin{solution}
+  Since every term is positive, we can compare successive terms using
+  their ratio:
+  \begin{align*}
+    \frac{x_{n+1}}{x_n}
+    &=\frac{(n+2)^2(n^2+1)}{((n+1)^2+1)(n+1)^2}\\
+    &=\frac{n^4+4n^3+5n^2+4n+4}
+    {n^4+4n^3+7n^2+6n+2}.
+  \end{align*}
+  The denominator exceeds the numerator by
+  \[
+    2n^2+2n-2=2(n^2+n-1)>0\qquad(n\geq1).
+  \]
+  Therefore \(x_{n+1}/x_n<1\), so the sequence is strictly decreasing.
+  Moreover,
+  \[
+    x_n=1+\frac{2n}{n^2+1}>1,
+  \]
+  so it is bounded below and converges to
+  \(\inf\set{x_n:n\geq1}\).
+
+  We now show that this infimum is \(1\). It is already a lower bound.
+  Given \(a>1\), choose an integer \(n>\maxset{1,2/(a-1)}\). Then
+  \[
+    x_n=1+\frac{2n}{n^2+1}<1+\frac{2}{n}<a.
+  \]
+  Hence \(a\) is not a lower bound, and consequently
+  \[
+    \lim_{n\to\infty}x_n=\inf\set{x_n:n\geq1}=1.
+  \]
+  Alternatively, \(1<x_n<1+2/n\) gives the same limit directly by the
+  squeeze theorem.
+\end{solution}
+
+\begin{remark}
+  The restriction \(n\geq1\) matters for monotonicity in the second
+  example. If we also define \(x_0\) by the same formula, then
+  \(x_0=1<x_1=2\), so the full sequence is not decreasing. Its tail
+  starting at \(n=1\) is strictly decreasing, and its limit is still \(1\).
+\end{remark}
+
+\subsubsection{The Bolzano--Weierstrass theorem}
+
+\begin{theorem}[Bolzano--Weierstrass]
+  Every bounded sequence of real numbers has a convergent subsequence.
+\end{theorem}
+
+\begin{proof}
+  Let \((x_n)\) be bounded. Choose \(m,M\in\RR\) such that
+  \(m\leq x_n\leq M\) for every \(n\in\NN\), and define the
+  \emph{tail suprema}
+  \[
+    a_k=\sup\set{x_n:n\geq k},\qquad k\in\NN.
+  \]
+  Each tail is nonempty and bounded, so completeness ensures that
+  \(a_k\) exists and \(m\leq a_k\leq M\). Since
+  \[
+    \set{x_n:n\geq k+1}\subseteq\set{x_n:n\geq k},
+  \]
+  the number \(a_k\) is an upper bound of the smaller tail as well.
+  Therefore \(a_{k+1}\leq a_k\). The sequence \((a_k)\) is decreasing
+  and bounded below, so \cref{cor:decreasing-convergence} gives a limit
+  \[
+    a=\lim_{k\to\infty}a_k\in\RR.
+  \]
+
+  We construct a subsequence \((x_{n_j})_{j\geq1}\) recursively.
+  By the approximation property of the supremum, choose \(n_1\geq1\)
+  such that
+  \[
+    a_1-1<x_{n_1}\leq a_1.
+  \]
+  Once \(n_j\) has been chosen, apply the same property to the tail
+  starting at \(n_j+1\). There is an index \(n_{j+1}\geq n_j+1\)
+  such that
+  \[
+    a_{n_j+1}-\frac{1}{j+1}<x_{n_{j+1}}\leq a_{n_j+1}.
+  \]
+  Thus the indices are strictly increasing, as required for a subsequence.
+
+  To verify convergence, observe that
+  \(a_{n_{j+1}}\leq a_{n_j+1}\) and
+  \(x_{n_{j+1}}\leq a_{n_{j+1}}\). Consequently, for every \(j\geq1\),
+  \[
+    a_{n_j}-\frac{1}{j}<x_{n_j}\leq a_{n_j}.
+  \]
+  For \(j=1\), the lower inequality follows from
+  \(a_{n_1}\leq a_1\); for later indices it follows from the recursive
+  choice above. Since \((a_{n_j})\) is a subsequence of the convergent
+  sequence \((a_k)\), it tends to \(a\). Also \(1/j\to0\), so both
+  bounding sequences tend to \(a\). The squeeze theorem now yields
+  \(x_{n_j}\to a\), proving the claim.
+\end{proof}
+
 \end{document}
