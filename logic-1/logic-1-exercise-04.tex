@@ -1,0 +1,139 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Johdatus logiikkaan I\\Harjoituksen 4 ratkaisut}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Johdatus logiikkaan I}{Harjoituksen 4 ratkaisut}
+
+\begin{exercise}
+  Muunna seuraavat lauseet klausuulimuotoon:
+\begin{enumerate}[label=\alph*), nosep]
+  \item \((p_0 \lor p_1) \land (p_2 \rightarrow \neg p_0)\)
+  \item \(\neg(p_0 \rightarrow p_2) \land \neg(p_1 \leftrightarrow p_2)\)
+  \item \((p_0 \lor p_1) \rightarrow (p_2 \lor p_3)\)
+  \item \((p_0 \land p_1) \rightarrow (p_2 \land p_3)\)
+  \item \((\neg p_1 \land p_0) \lor (\neg p_2 \land p_0)\)
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Minkä klausuulin resoluutiosääntö tuottaa seuraavista klausuulipareista?
+\begin{enumerate}[label=\alph*), nosep]
+\item \(\{\neg p_0, p_1, p_2\}\) ja \(\{p_0, p_1, p_3\}\)
+\item \(\{p_1, \neg p_1, \neg p_2\}\) ja \(\{\neg p_1, p_3, \neg p_4\}\)
+\item \(\{p_0, \neg p_1, \neg p_2\}\) ja \(\{\neg p_0, p_1, p_3\}\)
+\item \(\{\neg p_0, p_1, p_2\}\) ja \(\{p_2, \neg p_3, p_4\}\)
+\end{enumerate}
+Onko vastaus aina yksikäsitteinen?
+\end{exercise}
+
+\begin{exercise}
+Päättele resoluutiolla \(\emptyset\) seuraavista klausuulijoukoista:
+\begin{enumerate}[label=\alph*), nosep]
+\item \(\{\{\neg p_0\}, \{\neg p_1\}, \{p_0, p_2\}, \{p_1, \neg p_2\}\}\)
+\item \(\{\{\neg p_0, \neg p_1\}, \{p_0, p_2\}, \{p_0, \neg p_2\},
+\{\neg p_0, p_1\}\}\)
+\item \(\{\{p_1, p_2, \neg p_3\}, \{\neg p_2\}, \{\neg p_1, p_2\},
+\{p_1, p_3\}\}\)
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Osoita resoluution avulla, että \((p_0 \lor p_2) \rightarrow (p_1 \lor p_3)\)
+on oletusten \((p_0 \rightarrow p_1)\) ja \((p_2 \rightarrow p_3)\)
+looginen seuraus.
+\end{exercise}
+
+\begin{exercise}
+Osoita resoluution avulla, että joukko
+\[
+\{\neg p_0 \rightarrow p_1, p_1 \rightarrow p_0,
+p_0 \rightarrow (p_2 \land p_3), \neg p_0 \lor \neg p_2 \lor \neg p_3\}
+\]
+ei ole toteutuva. Perustuuko resoluution toimivuus todistusmenetelmänä tässä
+sen eheyteen, kumoustäydellisyyteen tai molempiin? (Eli mitä eheys ja
+kumoustäydellisyys tässä antavat?)
+\end{exercise}
+
+\begin{exercise}
+Tarkastellaan seuraavaa ”resoluutiotodistusta”, joka on osoittavinaan, että
+\(p_2\) olisi oletusten \(p_0 \rightarrow (p_1 \lor p_2)\) ja
+\(p_1 \rightarrow p_0\) looginen seuraus.
+\begin{enumerate}[label=\arabic*., nosep]
+\item \(\{\neg p_0, p_1, p_2\}\)
+\item \(\{\neg p_1, p_0\}\)
+\item \(\{p_2\}\)
+\item \(\{\neg p_2\}\)
+\item \(\emptyset\)
+\end{enumerate}
+Miten tiedämme jo ennen todistukseen perehtymistä, että siinä on oltava
+virhe? Mitä ”resoluutiotodistuksessa” on tehty, ja missä on tapahtunut virhe?
+\end{exercise}
+
+\begin{exercise}
+Lemman 6.7 todistuksessa klausuulijoukko \(C\) jaetaan neljään osaan.
+Miten käy, jos jokin osa on tyhjä? Osoita, että kumoustäydellisyys pätee
+näissäkin tapauksissa.
+\end{exercise}
+
+\begin{exercise}
+Propositiologiikan resoluutio pysähtyy aina, eli jossain vaiheessa ei saada
+pääteltyä uusia klausuuleja. Etsi yläraja resoluution pituudelle, jos
+oletukset koostuvat \(m\) klausuulista, joissa kussakin esiintyy korkeintaan
+\(n\) literaalia. Huomaa: mikä tahansa yläraja (perusteluineen) kelpaa,
+ei tarvitse etsiä optimaalista ylärajaa.
+\end{exercise}
+
+\begin{exercise}
+Lemma 6.7 antaa suoraviivaisen menetelmän tuottaa \(\emptyset\)
+ristiriitaisesta klausuulijoukosta. Kuinka pitkä resoluutiotodistuksesta
+tulee, jos sovellat lemman menetelmää klausuulijoukkoon
+\[
+% Pilkut on säilytetty alkuperäisen tehtävänannon mukaisina.
+\{\{\neg p_0, p_2\}, \{\neg p_1, p_2\}, \{\neg p_2, p_3\},
+\{p_0, p_1, \neg p_3\}, \{p_1, p_2, p_3,\}\{\neg p_2, \neg p_3\}\}
+\]
+Huomaa, että valittu propositiosymboleiden käsittelyjärjestys vaikuttaa
+vastaukseen. Kuinka lyhyen resoluutiotodistuksen keksit, jos et noudata
+lemman menetelmää suoraan, vaan optimoit valintoja?
+\end{exercise}
+
+\begin{exercise}
+Resoluutiosäännön voi määritellä kahdessa muodossa:
+\[
+\frac{C_1 \cup \{p_i\} \text{ ja } C_2 \cup \{\neg p_i\}}{C_1 \cup C_2}
+\qquad\text{tai}\qquad
+\frac{C_1 \mathbin{\dot\cup} \{p_i\} \text{ ja }
+C_2 \mathbin{\dot\cup} \{\neg p_i\}}{C_1 \cup C_2}
+\]
+Vasemmanpuoleisessa määritelmässä sallitaan mielivaltaiset yhdisteet,
+eli myös esim. sellaiset, jossa \(p_i \in C_1\). Oikeanpuoleisessa
+tarkastellaan \emph{erillisiä yhdisteitä}, eli esim.
+\(C_1 \cap \{p_i\} = \emptyset\). Miten määritelmän muuttaminen
+vaikuttaa resoluution käyttöön?
+\end{exercise}
+
+\medskip
+\noindent\emph{Seuraavasta haastetehtävästä ei saa harjoituspisteitä.
+Se on tarkoitettu puhtaasti viihteeksi, mutta saattaa opettaa jotakin
+propositiologiikasta ja resoluutiosta.}
+
+\medskip
+\noindent\textbf{Haastetehtävä.}
+Kartanonherra on murhattu. Epäiltyinä ovat kokki, tallirenki ja hovimestari.
+Kokki sanoo: ”Olen syytön, mutta herra riiteli tallirengin kanssa
+edellisiltana”. Tallirenki sanoo: ”Olen syytön, olin matkoilla koko viikon.”
+Hovimestari sanoo: ”Olen syytön, mutta sekä kokki että tallirenki kävivät
+herran puheilla samana päivänä.” Syyttömät puhuvat totta, mutta syyllinen
+saattaa valehdella. Muotoile faktat propositiologiikan avulla ja ratkaise
+murhamysteeri resoluution avulla (olettaen, että tasan yksi epäillyistä
+on syyllinen).
+
+\end{document}
