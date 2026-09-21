@@ -827,4 +827,128 @@ when, for every \(x \in X\), there exists exactly one \(y \in Y\) such
 that \((x,y) \in F\). Existence ensures that the function is defined at
 every input, and uniqueness ensures that its value is unambiguous.
 
+\subsection{21.09.2026}
+
+\subsubsection{Inverse functions, images, and preimages}
+
+The inverse relation of a function \(f\colon X \to Y\) is a relation from
+\(Y\) to \(X\), but it is not generally a function. If this inverse
+relation is a function from \(Y\) to \(X\), it is called the
+\emph{inverse function} of \(f\), denoted by \(f^{-1}\).
+
+\begin{definition}
+  Let \(f\colon X \to Y\) be a function. The \emph{image} of a subset
+  \(A \subseteq X\) is
+  \[
+    f(A) \coloneqq \set{f(x) : x \in A}.
+  \]
+  The \emph{preimage} of a subset \(B \subseteq Y\) is
+  \[
+    f^{-1}(B) \coloneqq \set{x \in X : f(x) \in B}.
+  \]
+\end{definition}
+
+\begin{remark}
+  The preimage \(f^{-1}(B)\) is defined for every function \(f\), even
+  when \(f\) has no inverse function.
+\end{remark}
+
+\subsubsection{Images and preimages of unions and intersections}
+
+\begin{theorem}
+  Let \(f\colon X \to Y\). For all \(A,B \subseteq X\),
+  \begin{enumerate}[label=(\roman*)]
+    \item \(f(A \cup B) = f(A) \cup f(B)\);
+    \item \(f(A \cap B) \subseteq f(A) \cap f(B)\).
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+  Let \(f\colon X \to Y\). For all \(A,B \subseteq Y\),
+  \begin{enumerate}[label=(\roman*)]
+    \item \(f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)\);
+    \item \(f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B)\).
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  Let \(A,B \subseteq Y\) and \(x \in X\). For (i),
+  \begin{align*}
+    x \in f^{-1}(A \cup B)
+    &\iff f(x) \in A \lor f(x) \in B \\
+    &\iff x \in f^{-1}(A) \lor x \in f^{-1}(B) \\
+    &\iff x \in f^{-1}(A) \cup f^{-1}(B).
+  \end{align*}
+  Similarly, for (ii),
+  \begin{align*}
+    x \in f^{-1}(A \cap B)
+    &\iff f(x) \in A \land f(x) \in B \\
+    &\iff x \in f^{-1}(A) \land x \in f^{-1}(B) \\
+    &\iff x \in f^{-1}(A) \cap f^{-1}(B).
+  \end{align*}
+  Thus both identities hold.
+\end{proof}
+
+\subsubsection{Injective, surjective, and bijective functions}
+
+\begin{definition}
+  A function \(f\colon X \to Y\) is \emph{injective} if distinct inputs
+  have distinct images: for all \(x_1,x_2 \in X\),
+  \[
+    x_1 \neq x_2 \implies f(x_1) \neq f(x_2).
+  \]
+\end{definition}
+
+\begin{definition}
+  A function \(f\colon X \to Y\) is \emph{surjective} if, for every
+  \(y \in Y\), there exists \(x \in X\) such that \(f(x)=y\).
+  Equivalently, \(f(X)=Y\).
+\end{definition}
+
+\begin{definition}
+  A function \(f\colon X \to Y\) is \emph{bijective} if it is both
+  injective and surjective.
+\end{definition}
+
+\begin{theorem}
+  A function \(f\colon X \to Y\) has an inverse function
+  \(f^{-1}\colon Y \to X\) if and only if \(f\) is bijective.
+\end{theorem}
+
+\subsubsection{Lecture exercise: the floor function}
+
+\begin{problem}[Lecture exercise]
+  Let
+  \[
+    f(x) = \lfloor x \rfloor
+    = \max\set{n \in \ZZ : n \leq x}.
+  \]
+  Determine whether \(f\) is injective, surjective, or bijective for each
+  of the following choices of domain and codomain:
+  \begin{enumerate}[label=(\alph*)]
+    \item \(f\colon \RR \to \ZZ\);
+    \item \(f\colon \ZZ \to \RR\);
+    \item \(f\colon \ZZ \to \ZZ\);
+    \item \(f\colon \RR \to \RR\).
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}[label=(\alph*)]
+    \item The function is not injective, since
+      \(f(1)=f(1.5)=1\), although \(1 \neq 1.5\). It is surjective:
+      for every \(y \in \ZZ\), any \(x \in [y,y+1)\) satisfies
+      \(f(x)=y\). Therefore it is not bijective.
+    \item For every \(x \in \ZZ\), we have \(f(x)=x\), so the function
+      is injective. It is not surjective, since \(1/2 \in \RR\) is not
+      the image of any integer. Therefore it is not bijective.
+    \item Here \(f(x)=x\) for all \(x \in \ZZ\), so \(f\) is the
+      identity function on \(\ZZ\). It is both injective and
+      surjective, and hence bijective.
+    \item The function is neither injective nor surjective:
+      \(f(1)=f(1.5)\), and \(1/2\) is not in its image.
+      Consequently, it is not bijective. \qedhere
+  \end{enumerate}
+\end{solution}
+
 \end{document}
