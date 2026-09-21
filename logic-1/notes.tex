@@ -651,4 +651,277 @@ and the analogous equivalence holds with \(\land\) and \(\lor\) interchanged.
   formula can represent it. Hence \(\{\land,\lor\}\) is not universal.
 \end{proof}
 
+\subsection{21.09.2026}
+
+\subsubsection{Clauses and clause sets}
+
+\begin{definition}[Clause]
+  A \emph{clause} is a finite set of literals. It represents the disjunction
+  of its members. For a truth assignment \(v\), define
+  \[
+    v(C)=1 \quad\text{if and only if}\quad
+    v(q)=1\text{ for some }q\in C,
+  \]
+  and set \(v(C)=0\) otherwise. In particular, the \emph{empty clause}
+  \(\emptyset\) is false under every truth assignment.
+\end{definition}
+
+\begin{definition}[Clause set]
+  A \emph{clause set} \(\mathcal C\) is a set of clauses. Define
+  \[
+    v(\mathcal C)=1 \quad\text{if and only if}\quad
+    v(C)=1\text{ for every }C\in\mathcal C,
+  \]
+  and set \(v(\mathcal C)=0\) otherwise. Thus a finite clause set represents
+  the conjunction of its clauses. It is \emph{satisfiable} if some truth
+  assignment makes it true, and \emph{unsatisfiable} otherwise.
+\end{definition}
+
+\begin{remark}
+  The empty clause and the empty clause set have different meanings:
+  the empty clause is always false, whereas the empty clause set is always
+  true (the condition on all its members holds vacuously). In particular,
+  \(\{\emptyset\}\) is an unsatisfiable clause set.
+  A clause containing both \(p_i\) and \(\neg p_i\) is always true.
+\end{remark}
+
+\begin{example}[Encoding CNF as a clause set]
+  Since \((p_0\rightarrow p_1)\Leftrightarrow(\neg p_0\lor p_1)\), the formula
+  \[
+    p_0\land(p_0\rightarrow p_1)
+  \]
+  is represented by \(\mathcal C=\{\{p_0\},\{\neg p_0,p_1\}\}\).
+  The literals within a clause are joined by disjunction, and the clauses
+  within a clause set are joined by conjunction. Order and repetitions do
+  not matter in these set representations.
+\end{example}
+
+\subsubsection{The resolution rule and resolution proofs}
+
+\begin{definition}[Resolution rule]
+  The \emph{resolution rule} is
+  \[
+    \frac{C_1\cup\{p_i\}\qquad C_2\cup\{\neg p_i\}}{C_1\cup C_2}.
+  \]
+  The conclusion is called a \emph{resolvent}, and \(p_i\) is the
+  \emph{pivot}. In the usual application to clauses \(D,E\) with
+  \(p_i\in D\) and \(\neg p_i\in E\), take
+  \(C_1=D\setminus\{p_i\}\) and \(C_2=E\setminus\{\neg p_i\}\).
+  Only the selected complementary pair is removed.
+\end{definition}
+
+\begin{example}[Resolution steps]
+  Modus ponens is the resolution step
+  \[
+    \frac{\{p_0\}\qquad\{\neg p_0,p_1\}}{\{p_1\}}.
+  \]
+  From the same two clauses one may obtain different resolvents by choosing
+  different pivots. For example,
+  \[
+    \frac{\{p_0,p_1\}\qquad\{\neg p_0,\neg p_1\}}
+    {\{p_0,\neg p_0\}}
+    \qquad\text{or}\qquad
+    \frac{\{p_0,p_1\}\qquad\{\neg p_0,\neg p_1\}}
+    {\{p_1,\neg p_1\}}.
+  \]
+  Both conclusions are tautological clauses. Removing both complementary
+  pairs at once to obtain \(\emptyset\) would be invalid: the premises are
+  simultaneously true when \(v(p_0)=1\) and \(v(p_1)=0\).
+\end{example}
+
+\begin{definition}[Resolution proof]
+  A \emph{resolution proof} of a clause \(C\) from a clause set
+  \(\mathcal C\) is a finite sequence \(C_0,\ldots,C_m\), where \(m\geq0\),
+  such that \(C_m=C\) and, for every \(i\leq m\), either
+  \begin{enumerate}
+    \item \(C_i\in\mathcal C\), or
+    \item \(C_i\) follows by resolution from \(C_k,C_l\) for some \(k,l<i\).
+  \end{enumerate}
+  We write \(\mathcal C\vdash_R C\) if such a proof exists.
+  A proof of \(\emptyset\) is called a \emph{resolution refutation}.
+\end{definition}
+
+\subsubsection{Soundness of resolution}
+
+\begin{lemma}[Soundness of the resolution rule]
+  If \(v(C_1\cup\{p_i\})=v(C_2\cup\{\neg p_i\})=1\), then
+  \(v(C_1\cup C_2)=1\).
+\end{lemma}
+
+\begin{proof}
+  If \(v(p_i)=1\), then \(v(\neg p_i)=0\). Since the second premise is
+  true, some literal of \(C_2\) must be true. Hence \(v(C_1\cup C_2)=1\).
+  If \(v(p_i)=0\), truth of the first premise similarly implies that some
+  literal of \(C_1\) is true, so again \(v(C_1\cup C_2)=1\).
+\end{proof}
+
+\begin{theorem}[Soundness]
+  If \(\mathcal C\vdash_R C\), then every truth assignment satisfying
+  \(\mathcal C\) satisfies \(C\). Thus every resolution conclusion is a
+  logical consequence of its assumptions.
+\end{theorem}
+
+\begin{proof}
+  Let \(C_0,\ldots,C_m=C\) be a resolution proof from \(\mathcal C\), and
+  let \(v(\mathcal C)=1\). We prove \(v(C_i)=1\) by strong induction on \(i\).
+  For \(i=0\), there are no earlier lines, so \(C_0\in\mathcal C\) and
+  \(v(C_0)=1\). Suppose \(i>0\) and \(v(C_j)=1\) for every \(j<i\).
+  If \(C_i\in\mathcal C\), it is true by assumption. Otherwise it is a
+  resolvent of \(C_k,C_l\) with \(k,l<i\). Both premises are true by the
+  induction hypothesis, and the soundness lemma gives \(v(C_i)=1\).
+  In particular, \(v(C_m)=v(C)=1\).
+\end{proof}
+
+\begin{remark}[Completeness versus refutation completeness]
+  Resolution does not derive every logical consequence: from
+  \(\{\{p_0\}\}\) one cannot derive \(\{p_0,p_1\}\), although
+  \(p_0\Rightarrow(p_0\lor p_1)\). Indeed, the only available clause is
+  \(\{p_0\}\), and no resolution step is possible without a complementary
+  literal. Resolution is nevertheless \emph{refutation complete}: an
+  unsatisfiable clause set admits a derivation of the empty clause.
+\end{remark}
+
+\subsubsection{Proving an implication by refutation}
+
+To prove \(A\Rightarrow B\), it suffices to show that \(A\land\neg B\)
+is unsatisfiable: a truth assignment falsifying the implication would make
+both \(A\) and \(\neg B\) true. Convert \(A\land\neg B\) into CNF,
+encode it as a clause set, and derive \(\emptyset\).
+
+\begin{example}
+  We prove
+  \[
+    (p_0\land(p_0\rightarrow p_1))\Rightarrow(p_1\lor p_2).
+  \]
+  Negating the conclusion gives
+  \(\neg(p_1\lor p_2)\Leftrightarrow(\neg p_1\land\neg p_2)\).
+  Hence the premises together with the negated conclusion give
+  \[
+    \mathcal C=
+    \bigl\{\{p_0\},\{\neg p_0,p_1\},\{\neg p_1\},\{\neg p_2\}\bigr\}.
+  \]
+  A resolution refutation is
+  \[
+    \begin{array}{rll}
+      0.&\{p_0\}&\text{assumption},\\
+      1.&\{\neg p_0,p_1\}&\text{assumption},\\
+      2.&\{\neg p_1\}&\text{assumption},\\
+      3.&\{\neg p_2\}&\text{assumption},\\
+      4.&\{p_1\}&\text{resolution of lines 0 and 1},\\
+      5.&\emptyset&\text{resolution of lines 4 and 2}.
+    \end{array}
+  \]
+  Thus \(\mathcal C\vdash_R\emptyset\), so soundness implies that
+  \(\mathcal C\) is unsatisfiable and proves the implication. Line 3 need
+  not be used: the premises already imply \(p_1\).
+\end{example}
+
+\subsubsection{Refutation completeness}
+
+\begin{theorem}[Finite refutation completeness]
+  If \(\mathcal C\) is a finite unsatisfiable clause set, then
+  \(\mathcal C\vdash_R\emptyset\).
+\end{theorem}
+
+\begin{proof}
+  We use strong induction on the number \(n\) of distinct propositional
+  symbols occurring in \(\mathcal C\). This number is finite because both
+  \(\mathcal C\) and each of its clauses are finite.
+
+  If \(n=0\), the only possible clause is \(\emptyset\).
+  Since the empty clause set is satisfiable, unsatisfiability forces
+  \(\emptyset\in\mathcal C\). The one-line proof \((\emptyset)\) suffices.
+
+  Suppose \(n>0\) and the result holds for fewer than \(n\) symbols.
+  Choose a symbol \(p_i\) occurring in \(\mathcal C\), and partition the
+  clause set as in the book:
+  \[
+    \begin{aligned}
+      \mathcal C_{00}&=\{C\in\mathcal C:p_i\notin C,\ \neg p_i\notin C\},\\
+      \mathcal C_{01}&=\{C\in\mathcal C:p_i\notin C,\ \neg p_i\in C\},\\
+      \mathcal C_{10}&=\{C\in\mathcal C:p_i\in C,\ \neg p_i\notin C\},\\
+      \mathcal C_{11}&=\{C\in\mathcal C:p_i\in C,\ \neg p_i\in C\}.
+    \end{aligned}
+  \]
+  Every clause in \(\mathcal C_{11}\) is tautological. Form all resolvents
+  between the negative and positive parts on the pivot \(p_i\):
+  \[
+    \mathcal C_{01}\times_R\mathcal C_{10}
+    =\bigl\{(C_1\setminus\{\neg p_i\})\cup(C_2\setminus\{p_i\}):
+    C_1\in\mathcal C_{01},\ C_2\in\mathcal C_{10}\bigr\}.
+  \]
+  Define
+  \[
+    \mathcal C'=\mathcal C_{00}\cup
+    (\mathcal C_{01}\times_R\mathcal C_{10}).
+  \]
+  No clause of \(\mathcal C'\) contains \(p_i\) or \(\neg p_i\), so
+  \(\mathcal C'\) contains at most \(n-1\) distinct symbols.
+
+  \emph{Claim: \(\mathcal C'\) is unsatisfiable.}
+  Suppose instead that \(v(\mathcal C')=1\). We show that changing only
+  the value of \(p_i\), if necessary, gives a satisfying assignment for
+  \(\mathcal C\). There are two cases.
+  \begin{enumerate}
+    \item Suppose \(v(C\setminus\{\neg p_i\})=1\) for every
+      \(C\in\mathcal C_{01}\). Define \(w(p_i)=1\) and
+      \(w(p_j)=v(p_j)\) for \(j\ne i\). Each clause of
+      \(\mathcal C_{01}\) remains true because its part not involving
+      \(p_i\) is true. Each clause of \(\mathcal C_{10}\) is true because
+      it contains \(p_i\).
+    \item Otherwise, choose \(C_1\in\mathcal C_{01}\) such that
+      \(v(C_1\setminus\{\neg p_i\})=0\). For every
+      \(C_2\in\mathcal C_{10}\), the resolvent
+      \[
+        (C_1\setminus\{\neg p_i\})\cup(C_2\setminus\{p_i\})
+      \]
+      belongs to \(\mathcal C'\) and is true under \(v\). Its first part
+      is false, so \(v(C_2\setminus\{p_i\})=1\).
+      Define \(w(p_i)=0\) and \(w(p_j)=v(p_j)\) for \(j\ne i\).
+      Every clause of \(\mathcal C_{01}\) is true because it contains
+      \(\neg p_i\); every clause of \(\mathcal C_{10}\) is true because
+      its remaining part is true.
+  \end{enumerate}
+  In both cases, the clauses of \(\mathcal C_{00}\) remain true because
+  their truth values do not depend on \(p_i\), and all clauses of
+  \(\mathcal C_{11}\) are true under every assignment. Thus
+  \(w(\mathcal C)=1\), contradicting the unsatisfiability of \(\mathcal C\).
+  This proves the claim.
+
+  By the induction hypothesis, \(\mathcal C'\vdash_R\emptyset\).
+  To obtain a proof from \(\mathcal C\), first list the clauses of
+  \(\mathcal C\) as assumptions and derive all clauses in
+  \(\mathcal C_{01}\times_R\mathcal C_{10}\) by resolution. Every assumption
+  used in the refutation from \(\mathcal C'\) is now available: it is either
+  in \(\mathcal C_{00}\subseteq\mathcal C\) or among these resolvents.
+  Reproduce the resolution steps of that refutation, referring to the
+  already available lines whenever it uses an assumption. This yields a
+  finite resolution proof of \(\emptyset\) from \(\mathcal C\).
+\end{proof}
+
+\begin{remark}[Scope of the proof]
+  The course book states Lemma 6.7 for arbitrary clause sets, but the
+  induction above proves the finite case treated in the lecture. The
+  general case follows using propositional compactness: every unsatisfiable
+  clause set has a finite unsatisfiable subset, whose refutation is also a
+  refutation from the original set. Compactness is an additional result;
+  it is not proved by this induction.
+\end{remark}
+
+\begin{corollary}[Refutation criterion]
+  For a finite clause set \(\mathcal C\),
+  \[
+    \mathcal C\text{ is unsatisfiable}
+    \quad\Longleftrightarrow\quad
+    \mathcal C\vdash_R\emptyset.
+  \]
+\end{corollary}
+
+\begin{proof}
+  The forward direction is refutation completeness. Conversely, if
+  \(\mathcal C\vdash_R\emptyset\), soundness says that any assignment
+  satisfying \(\mathcal C\) must satisfy \(\emptyset\). Since the empty
+  clause is always false, no such assignment exists.
+\end{proof}
+
 \end{document}
