@@ -1,0 +1,211 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\tikzset{
+  mapping/.style={x=1cm, y=0.6cm, baseline=(current bounding box.north)},
+  set outline/.style={draw=black!35, fill=black!2, line width=0.5pt},
+  element/.style={circle, fill=black, inner sep=0pt, outer sep=0pt,
+  minimum size=2.6pt},
+  map arrow/.style={-{Stealth[length=1.8mm, width=1.2mm]},
+  draw=blue!45!black, line width=0.65pt}
+}
+\DeclareMathOperator{\sign}{sign}
+
+\title{Johdatus yliopistomatematiikkaan\\Harjoituksen 4 ratkaisut}
+\date{}
+\author{}
+
+\begin{document}
+
+\exerciseheading{Johdatus yliopistomatematiikkaan}{Harjoituksen 4 ratkaisut}
+
+\begin{exercise}
+  Olkoot \(f \colon X \to Y\) ja \(B \subseteq Y\). Osoita, että
+  \[
+    f(f^{-1}(B)) \subseteq B.
+  \]
+  Anna esimerkki kuvauksesta \(f\) ja joukosta \(B\), jotka osoittavat,
+  että tuloksessa osajoukko voi olla aito.
+\end{exercise}
+
+\begin{solution}
+  Olkoon \(y \in f(f^{-1}(B))\). Funktion kuvan määritelmän mukaan on olemassa
+  \(x \in f^{-1}(B)\) siten, että \(y = f(x)\). Funktion alkukuvan
+  määritelmän mukaan \(f(x) \in B\), joten \(y = f(x) \in B\).
+  Koska \(y\) oli joukon \(f(f^{-1}(B))\)
+  mielivaltainen alkio, on voimassa
+  \[
+    f(f^{-1}(B)) \subseteq B.
+  \]
+  Olkoon \(f \colon \set{1, 2} \to \set{1, 2}\), \(f(1) = f(2) = 1\).
+  Valitaan \(B = \set{2}\). Tällöin
+  \[
+    f(f^{-1}(B)) = f(\emptyset) = \emptyset \subsetneq B,
+  \]
+  joten osajoukko voi olla aito.
+\end{solution}
+
+\begin{exercise}
+  Olkoot \(X = \set{a, b, c, d}\) ja \(Y = \set{1, 2, 3}\). Keksi kuvaus
+  \(X \to Y\) tai \(Y \to X\) tai \(X \to X\) tai \(Y \to Y\), joka
+\begin{enumerate}[label=\alph*), nosep]
+  \item on injektio, mutta ei ole surjektio,
+  \item on surjektio, mutta ei ole injektio,
+  \item ei ole surjektio eikä injektio,
+  \item on bijektio.
+\end{enumerate}
+Anna vastauksesi nuolikuvioina. Vastauksia ei tarvitse perustella.
+\end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{center}
+  \begin{tabular}{@{}c@{\hspace{1.4cm}}c@{}}
+    \begin{tikzpicture}[mapping]
+      \path[use as bounding box] (-0.55, -3.6) rectangle (2.95, 2.1);
+      \draw[set outline] (0, -1) ellipse [x radius=0.43cm, y radius=0.9cm];
+      \draw[set outline] (2.4, -1.5) ellipse [x radius=0.43cm, y radius=1.2cm];
+    \node at (1.2, 1.8) {a) \(f \colon Y \to X\)};
+    \node at (0, 0.8) {\(Y\)};
+    \node at (2.4, 0.8) {\(X\)};
+    \foreach \i in {1,2,3}
+    \node[element, label={[label distance=3pt, inner sep=0pt]left:\(\i\)}]
+    (s\i) at (0.14, 1-\i) {};
+    \foreach \i/\v in {1/a,2/b,3/c,4/d}
+    \node[element, label={[label distance=3pt, inner sep=0pt]right:\(\v\)}]
+    (t\i) at (2.26, 1-\i) {};
+    \foreach \i in {1,2,3}
+    \draw[map arrow] (s\i) -- (t\i);
+  \end{tikzpicture}
+  &
+  \begin{tikzpicture}[mapping]
+    \path[use as bounding box] (-0.55, -3.6) rectangle (2.95, 2.1);
+    \draw[set outline] (0, -1.5) ellipse [x radius=0.43cm, y radius=1.2cm];
+    \draw[set outline] (2.4, -1) ellipse [x radius=0.43cm, y radius=0.9cm];
+  \node at (1.2, 1.8) {b) \(g \colon X \to Y\)};
+  \node at (0, 0.8) {\(X\)};
+  \node at (2.4, 0.8) {\(Y\)};
+  \foreach \i/\v in {1/a,2/b,3/c,4/d}
+  \node[element, label={[label distance=3pt, inner sep=0pt]left:\(\v\)}]
+  (s\i) at (0.14, 1-\i) {};
+  \foreach \i in {1,2,3}
+  \node[element, label={[label distance=3pt, inner sep=0pt]right:\(\i\)}]
+  (t\i) at (2.26, 1-\i) {};
+  \foreach \i in {1,2,3}
+  \draw[map arrow] (s\i) -- (t\i);
+  \draw[map arrow] (s4) -- (t3);
+\end{tikzpicture}
+\\[0.5em]
+\begin{tikzpicture}[mapping]
+  \path[use as bounding box] (-0.55, -3.6) rectangle (2.95, 2.1);
+  \draw[set outline] (0, -1) ellipse [x radius=0.43cm, y radius=0.9cm];
+  \draw[set outline] (2.4, -1) ellipse [x radius=0.43cm, y radius=0.9cm];
+\node at (1.2, 1.8) {c) \(h \colon Y \to Y\)};
+\node at (0, 0.8) {\(Y\)};
+\node at (2.4, 0.8) {\(Y\)};
+\foreach \i in {1,2,3} {
+  \node[element, label={[label distance=3pt, inner sep=0pt]left:\(\i\)}]
+  (s\i) at (0.14, 1-\i) {};
+  \node[element, label={[label distance=3pt, inner sep=0pt]right:\(\i\)}]
+  (t\i) at (2.26, 1-\i) {};
+}
+\foreach \i in {1,2,3}
+\draw[map arrow] (s\i) -- (t1);
+\end{tikzpicture}
+&
+\begin{tikzpicture}[mapping]
+\path[use as bounding box] (-0.55, -3.6) rectangle (2.95, 2.1);
+\draw[set outline] (0, -1) ellipse [x radius=0.43cm, y radius=0.9cm];
+\draw[set outline] (2.4, -1) ellipse [x radius=0.43cm, y radius=0.9cm];
+\node at (1.2, 1.8) {d) \(k \colon Y \to Y\)};
+\node at (0, 0.8) {\(Y\)};
+\node at (2.4, 0.8) {\(Y\)};
+\foreach \i in {1,2,3} {
+\node[element, label={[label distance=3pt, inner sep=0pt]left:\(\i\)}]
+(s\i) at (0.14, 1-\i) {};
+\node[element, label={[label distance=3pt, inner sep=0pt]right:\(\i\)}]
+(t\i) at (2.26, 1-\i) {};
+\draw[map arrow] (s\i) -- (t\i);
+}
+\end{tikzpicture}
+\end{tabular}
+\end{center}
+\end{solution}
+
+\newpage
+\begin{exercise}
+Tutki, ovatko seuraavat kuvaukset injektioita, surjektioita ja/tai
+bijektioita:
+\begin{enumerate}[label=\alph*), nosep]
+\item \(f \colon \NN \to \NN\), \(f(x) = 3x\),
+\item \(g \colon \ZZ \to \NN\), \(g(x) = \abs{x}\),
+\item \(h \colon \RR \to \RR\), \(h(x) = -x + 1\),
+\end{enumerate}
+Huomioi erityisesti kuvausten lähtö- ja maalijoukot!
+\end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Olkoot \(x_1, x_2 \in \NN\) ja oletetaan, että \(f(x_1) = f(x_2)\).
+Tällöin
+\[
+f(x_1) = f(x_2) \implies 3x_1 = 3x_2 \implies x_1 = x_2,
+\]
+joten \(f\) on injektio. Kuvaus \(f\) ei ole surjektio, sillä
+\(2 \in \NN\), mutta yhtälöstä \(f(x) = 2\) seuraa
+\(x = \frac{2}{3} \notin \NN\). Täten \(f\) ei ole bijektio.
+\item Kuvaus \(g\) ei ole injektio, sillä \(-1, 1 \in \ZZ\) ja
+\(-1 \neq 1\), mutta
+\[
+g(-1) = \abs{-1} = 1 = \abs{1} = g(1).
+\]
+Olkoon \(y \in \NN\) mielivaltainen. Valitaan \(x = y \in \ZZ\).
+Koska \(y \geq 0\), saadaan
+\[
+g(x) = \abs{y} = y,
+\]
+joten \(g\) on surjektio. Koska \(g\) ei ole injektio, se ei ole bijektio.
+\item Olkoot \(x_1, x_2 \in \RR\) ja oletetaan, että \(h(x_1) = h(x_2)\).
+Tällöin
+\[
+h(x_1) = h(x_2) \implies -x_1 + 1 = -x_2 + 1 \implies x_1 = x_2,
+\]
+joten \(h\) on injektio. Olkoon \(y \in \RR\) mielivaltainen.
+Valitaan \(x = 1-y \in \RR\). Tällöin
+\[
+h(x) = -(1-y) + 1 = y,
+\]
+joten \(h\) on surjektio. Täten \(h\) on bijektio.
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+Olkoot \(f, g \colon \RR \to \RR\), \(f(x) = x + 2\) ja
+\(g(x) = \abs{x - 1}\).
+\begin{enumerate}[label=\alph*), nosep]
+\item Määritä funkion \(f\) käänteisfunktio
+\(f^{-1} \colon \RR \to \RR\), jos se on olemassa.
+\item Määritä funkion \(g\) käänteisfunktio
+\(g^{-1} \colon \RR \to \RR\), jos se on olemassa.
+\item Määritä yhdistetyt funktiot \(f \circ g\) ja \(g \circ f\).
+Onko \(f \circ g = g \circ f\)?
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Todista suljettujen reaalilukuvälien yhtä mahtavuus osoittamalla, että
+suljetut välit \([0, a]\) ja \([0, b]\) ovat yhtä mahtavia, kun
+\(a, b > 0\). \emph{Vihje:} Tutki kuvausta
+\(f \colon [0, a] \to [0, b]\), \(f(x) = bx/a\).
+\end{exercise}
+
+\begin{exercise}
+Onko kahden numeroituvan joukon karteesinen tulo numeroituva? Perustele.
+\end{exercise}
+
+\end{document}
