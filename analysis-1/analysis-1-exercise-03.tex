@@ -149,8 +149,12 @@ samojen joukkojen infimumeja.
 \begin{solution}
 Olkoon \((x_n)\) rajoitettu lukujono ja \(A_k = \inf{\set{x_n \colon
 n \geq k}}\). Koska \((x_n)\) on rajoitettu, niin \(A_k \in \RR\) kaikilla
-\(k \in \NNone\). Lukujono \((A_k)\) on kasvava ja rajoitettu, joten se
-suppenee. Olkoon \(a = \lim_{k \to \infty} A_k\).
+\(k \in \NNone\). Koska
+\(\set{x_n \colon n \geq k + 1} \subseteq \set{x_n \colon n \geq k}\),
+pätee \(A_k \leq A_{k + 1}\). Jos \(m \leq x_n \leq M\) kaikilla
+\(n \in \NNone\), niin myös \(m \leq A_k \leq M\) kaikilla
+\(k \in \NNone\). Lukujono \((A_k)\) on siis kasvava ja rajoitettu,
+joten se suppenee. Olkoon \(a = \lim_{k \to \infty} A_k\).
 
 Valitaan osajono lukujonosta \((x_n)\). Tehtävän (4) mukaan lukujonosta
 \((x_n)\) voidaan valita jäsen \(x_{n_{1}}\) siten, että
