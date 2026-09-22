@@ -23,6 +23,92 @@
 \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+Muunnetaan lauseet ensin ekvivalenttiin konjunktiiviseen normaalimuotoon.
+Jokainen disjunktio kirjoitetaan literaalien joukkona ja konjunktio
+näiden klausuulien joukkona.
+\begin{enumerate}[label=\alph*)]
+\item Poistetaan implikaatio:
+  \[
+    (p_0 \lor p_1) \land (p_2 \to \neg p_0)
+    \iff (p_0 \lor p_1) \land (\neg p_2 \lor \neg p_0).
+  \]
+  Klausuulimuoto on
+  \[
+    \big\{\{p_0,p_1\},\{\neg p_2,\neg p_0\}\big\}.
+  \]
+
+\item Implikaation negaatio saadaan De Morganin kaavalla:
+  \[
+    \neg(p_0 \to p_2)
+    \iff \neg(\neg p_0 \lor p_2)
+    \iff p_0 \land \neg p_2.
+  \]
+  Ekvivalenssin negaatiolle saadaan vastaavasti
+  \[
+    \begin{aligned}
+      \neg(p_1 \leftrightarrow p_2)
+      &\iff \neg\big[(\neg p_1 \lor p_2)\land(\neg p_2 \lor p_1)\big] \\
+      &\iff \neg(\neg p_1 \lor p_2)\lor\neg(\neg p_2 \lor p_1) \\
+      &\iff (p_1\land\neg p_2)\lor(p_2\land\neg p_1) \\
+      &\iff (p_1\lor p_2)\land(p_1\lor\neg p_1) \\
+      &\qquad\land(\neg p_2\lor p_2)\land(\neg p_2\lor\neg p_1) \\
+      &\iff (p_1\lor p_2)\land(\neg p_1\lor\neg p_2).
+    \end{aligned}
+  \]
+  Viimeisessä vaiheessa poistettiin kaksi tautologista konjunktia.
+  Yhdistämällä saadaan CNF
+  \[
+    p_0\land\neg p_2\land(p_1\lor p_2)\land(\neg p_1\lor\neg p_2),
+  \]
+  joten klausuulimuoto on
+  \[
+    \big\{\{p_0\},\{\neg p_2\},\{p_1,p_2\},\{\neg p_1,\neg p_2\}\big\}.
+  \]
+
+\item Poistetaan implikaatio ja sovelletaan De Morganin kaavaa sekä
+  distributiivisuutta:
+  \[
+    \begin{aligned}
+      (p_0\lor p_1)\to(p_2\lor p_3)
+      &\iff \neg(p_0\lor p_1)\lor(p_2\lor p_3) \\
+      &\iff (\neg p_0\land\neg p_1)\lor(p_2\lor p_3) \\
+      &\iff (\neg p_0\lor p_2\lor p_3)
+      \land(\neg p_1\lor p_2\lor p_3).
+    \end{aligned}
+  \]
+  Klausuulimuoto on
+  \[
+    \big\{\{\neg p_0,p_2,p_3\},\{\neg p_1,p_2,p_3\}\big\}.
+  \]
+
+\item Vastaavasti
+  \[
+    \begin{aligned}
+      (p_0\land p_1)\to(p_2\land p_3)
+      &\iff \neg(p_0\land p_1)\lor(p_2\land p_3) \\
+      &\iff (\neg p_0\lor\neg p_1)\lor(p_2\land p_3) \\
+      &\iff (\neg p_0\lor\neg p_1\lor p_2)
+      \land(\neg p_0\lor\neg p_1\lor p_3).
+    \end{aligned}
+  \]
+  Klausuulimuoto on
+  \[
+    \big\{\{\neg p_0,\neg p_1,p_2\},\{\neg p_0,\neg p_1,p_3\}\big\}.
+  \]
+
+\item Otetaan yhteinen konjunkti \(p_0\) distributiivisuudella ulos:
+  \[
+    (\neg p_1\land p_0)\lor(\neg p_2\land p_0)
+    \iff (\neg p_1\lor\neg p_2)\land p_0.
+  \]
+  Klausuulimuoto on
+  \[
+    \big\{\{\neg p_1,\neg p_2\},\{p_0\}\big\}.
+  \]
+\end{enumerate}
+\end{solution}
+
 \begin{exercise}
 Minkä klausuulin resoluutiosääntö tuottaa seuraavista klausuulipareista?
 \begin{enumerate}[label=\alph*), nosep]
@@ -33,6 +119,48 @@ Minkä klausuulin resoluutiosääntö tuottaa seuraavista klausuulipareista?
 \end{enumerate}
 Onko vastaus aina yksikäsitteinen?
 \end{exercise}
+
+\begin{solution}
+Valitaan klausuuleista vastakkaiset literaalit \(p_i\) ja \(\neg p_i\),
+poistetaan valittu literaali kummastakin klausuulista ja otetaan jäljelle
+jäävien joukkojen yhdiste. Kerralla poistetaan vain yksi vastakkainen pari.
+\begin{enumerate}[label=\alph*)]
+\item Resolvoidaan propositiosymbolin \(p_0\) suhteen:
+\[
+\{p_1,p_2\}\cup\{p_1,p_3\}=\{p_1,p_2,p_3\}.
+\]
+Joukossa sama literaali esiintyy vain kerran.
+
+\item Poistetaan \(p_1\) ensimmäisestä klausuulista ja \(\neg p_1\)
+toisesta klausuulista:
+\[
+\{\neg p_1,\neg p_2\}\cup\{p_3,\neg p_4\}
+=\{\neg p_1,\neg p_2,p_3,\neg p_4\}.
+\]
+Ensimmäisen klausuulin literaali \(\neg p_1\) jää mukaan.
+
+\item Voidaan resolvoida joko \(p_0\):n tai \(p_1\):n suhteen.
+Propositiosymbolin \(p_0\) suhteen saadaan
+\[
+\{\neg p_1,\neg p_2\}\cup\{p_1,p_3\}
+=\{\neg p_1,\neg p_2,p_1,p_3\}.
+\]
+Propositiosymbolin \(p_1\) suhteen saadaan
+\[
+\{p_0,\neg p_2\}\cup\{\neg p_0,p_3\}
+=\{p_0,\neg p_2,\neg p_0,p_3\}.
+\]
+Molemmat tulokset ovat tautologisia klausuuleja, mutta kelvollisia
+resoluutiosäännön tuloksia. Molempia vastakkaisia pareja ei saa poistaa
+samalla askeleella.
+
+\item Resoluutiosääntöä ei voi soveltaa näihin kahteen klausuuliin,
+sillä niissä ei ole vastakkaista literaaliparia. Yhteinen literaali
+\(p_2\) ei riitä: toisessa klausuulissa pitäisi esiintyä \(\neg p_2\).
+\end{enumerate}
+Vastaus ei siis aina ole yksikäsitteinen: kohdassa (c) eri
+propositiosymbolin valinta antaa eri klausuulin.
+\end{solution}
 
 \begin{exercise}
 Päättele resoluutiolla \(\emptyset\) seuraavista klausuulijoukoista:
@@ -45,11 +173,82 @@ Päättele resoluutiolla \(\emptyset\) seuraavista klausuulijoukoista:
 \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+Osoitetaan klausuulijoukot ristiriitaisiksi resoluutiolla:
+\begin{enumerate}[label=\alph*)]
+\item
+\begin{enumerate}[label=\arabic*., nosep]
+\item \(\{\neg p_0\}\)
+\item \(\{\neg p_1\}\)
+\item \(\{p_0,p_2\}\)
+\item \(\{p_1,\neg p_2\}\)
+\item \(\{p_2\}\) (rivit 1 ja 3)
+\item \(\{\neg p_2\}\) (rivit 2 ja 4)
+\item \(\emptyset\) (rivit 5 ja 6)
+\end{enumerate}
+
+\item
+\begin{enumerate}[label=\arabic*., nosep]
+\item \(\{\neg p_0,\neg p_1\}\)
+\item \(\{p_0,p_2\}\)
+\item \(\{p_0,\neg p_2\}\)
+\item \(\{\neg p_0,p_1\}\)
+\item \(\{p_0\}\) (rivit 2 ja 3)
+\item \(\{\neg p_0\}\) (rivit 1 ja 4)
+\item \(\emptyset\) (rivit 5 ja 6)
+\end{enumerate}
+
+\item
+\begin{enumerate}[label=\arabic*., nosep]
+\item \(\{p_1,p_2,\neg p_3\}\)
+\item \(\{\neg p_2\}\)
+\item \(\{\neg p_1,p_2\}\)
+\item \(\{p_1,p_3\}\)
+\item \(\{p_1,\neg p_3\}\) (rivit 1 ja 2)
+\item \(\{\neg p_1\}\) (rivit 2 ja 3)
+\item \(\{p_1\}\) (rivit 4 ja 5)
+\item \(\emptyset\) (rivit 6 ja 7)
+\end{enumerate}
+\end{enumerate}
+\end{solution}
+
 \begin{exercise}
 Osoita resoluution avulla, että \((p_0 \lor p_2) \rightarrow (p_1 \lor p_3)\)
 on oletusten \((p_0 \rightarrow p_1)\) ja \((p_2 \rightarrow p_3)\)
 looginen seuraus.
 \end{exercise}
+
+\begin{solution}
+Muunnetaan oletukset klausuulimuotoon:
+\[
+p_0\to p_1\iff\neg p_0\lor p_1,
+\qquad
+p_2\to p_3\iff\neg p_2\lor p_3.
+\]
+Lisätään johtopäätöksen negaatio, jolle saadaan
+\[
+\begin{aligned}
+\neg\big[(p_0\lor p_2)\to(p_1\lor p_3)\big]
+&\iff (p_0\lor p_2)\land\neg(p_1\lor p_3)\\
+&\iff (p_0\lor p_2)\land\neg p_1\land\neg p_3.
+\end{aligned}
+\]
+Osoitetaan näin saatu klausuulijoukko ristiriitaiseksi resoluutiolla:
+\begin{enumerate}[label=\arabic*., nosep]
+\item \(\{\neg p_0,p_1\}\)
+\item \(\{\neg p_2,p_3\}\)
+\item \(\{p_0,p_2\}\)
+\item \(\{\neg p_1\}\)
+\item \(\{\neg p_3\}\)
+\item \(\{\neg p_0\}\) (rivit 1 ja 4)
+\item \(\{p_2\}\) (rivit 3 ja 6)
+\item \(\{p_3\}\) (rivit 2 ja 7)
+\item \(\emptyset\) (rivit 5 ja 8)
+\end{enumerate}
+Oletukset yhdessä johtopäätöksen negaation kanssa ovat siis ristiriitaiset.
+Näin ollen \((p_0\lor p_2)\to(p_1\lor p_3)\) on annettujen oletusten
+looginen seuraus.
+\end{solution}
 
 \begin{exercise}
 Osoita resoluution avulla, että joukko
@@ -61,6 +260,45 @@ ei ole toteutuva. Perustuuko resoluution toimivuus todistusmenetelmänä tässä
 sen eheyteen, kumoustäydellisyyteen tai molempiin? (Eli mitä eheys ja
 kumoustäydellisyys tässä antavat?)
 \end{exercise}
+
+\begin{solution}
+Muunnetaan implikaatiot konjunktiiviseen normaalimuotoon:
+\[
+\begin{aligned}
+\neg p_0\to p_1 &\iff p_0\lor p_1,\\
+p_1\to p_0 &\iff \neg p_1\lor p_0,\\
+p_0\to(p_2\land p_3)
+&\iff \neg p_0\lor(p_2\land p_3)\\
+&\iff (\neg p_0\lor p_2)\land(\neg p_0\lor p_3).
+\end{aligned}
+\]
+Viimeinen oletus on jo literaalien disjunktio. Osoitetaan saatu
+klausuulijoukko ristiriitaiseksi resoluutiolla:
+\begin{enumerate}[label=\arabic*., nosep]
+\item \(\{p_0,p_1\}\)
+\item \(\{\neg p_1,p_0\}\)
+\item \(\{\neg p_0,p_2\}\)
+\item \(\{\neg p_0,p_3\}\)
+\item \(\{\neg p_0,\neg p_2,\neg p_3\}\)
+\item \(\{p_0\}\) (rivit 1 ja 2)
+\item \(\{p_2\}\) (rivit 3 ja 6)
+\item \(\{p_3\}\) (rivit 4 ja 6)
+\item \(\{\neg p_2,\neg p_3\}\) (rivit 5 ja 6)
+\item \(\{\neg p_3\}\) (rivit 7 ja 9)
+\item \(\emptyset\) (rivit 8 ja 10)
+\end{enumerate}
+Resoluution \emph{eheyden} nojalla johdettu tyhjä klausuuli on oletusten
+looginen seuraus. Koska tyhjä klausuuli on aina epätosi, mikään
+totuusjakauma ei voi toteuttaa kaikkia oletuksia. Alkuperäinen joukko
+ei siis ole toteutuva.
+
+\emph{Kumoustäydellisyys} puolestaan takaa, että jokaisesta
+ristiriitaisesta klausuulijoukosta voidaan johtaa tyhjä klausuuli
+resoluutiolla. Se takaa siis tällaisen todistuksen olemassaolon, kun
+joukko on ristiriitainen. Yllä löydetystä todistuksesta tehtävä päätelmä
+joukon toteutumattomuudesta perustuu eheyteen; kumoustäydellisyyttä ei
+tarvita tämän yksittäisen todistuksen johtopäätöksen perustelemiseen.
+\end{solution}
 
 \begin{exercise}
 Tarkastellaan seuraavaa ”resoluutiotodistusta”, joka on osoittavinaan, että
@@ -77,11 +315,67 @@ Miten tiedämme jo ennen todistukseen perehtymistä, että siinä on oltava
 virhe? Mitä ”resoluutiotodistuksessa” on tehty, ja missä on tapahtunut virhe?
 \end{exercise}
 
+\begin{solution}
+Valitaan totuusjakauma \(v\), jolla
+\[
+v(p_0)=1,\qquad v(p_1)=1,\qquad v(p_2)=0.
+\]
+Tällöin molemmat oletukset \(p_0\to(p_1\lor p_2)\) ja
+\(p_1\to p_0\) ovat tosia, mutta väitetty johtopäätös \(p_2\) on
+epätosi. Siis \(p_2\) ei ole oletusten looginen seuraus. Resoluution
+eheyden perusteella esitetyssä todistuksessa on oltava virhe.
+
+Riveillä 1 ja 2 oletukset on muunnettu oikein klausuulimuotoon.
+Virhe tapahtuu rivillä 3: molemmat vastakkaiset literaaliparit
+\(p_0,\neg p_0\) ja \(p_1,\neg p_1\) on poistettu samalla askeleella.
+Resoluutiosäännöllä poistetaan vain yksi vastakkainen pari kerrallaan.
+Resoluutiolla \(p_0\):n suhteen saataisiin
+\[
+\{p_1,p_2\}\cup\{\neg p_1\}=\{p_1,\neg p_1,p_2\},
+\]
+ja resoluutiolla \(p_1\):n suhteen saataisiin
+\[
+\{\neg p_0,p_2\}\cup\{p_0\}=\{\neg p_0,p_0,p_2\}.
+\]
+Kummassakaan tapauksessa tulos ei ole \(\{p_2\}\). Saadut klausuulit
+ovat tautologisia, eikä niiden sisällä olevaa vastakkaista literaaliparia
+voi poistaa.
+
+Rivillä 4 on lisätty väitetyn johtopäätöksen negaatio, kuten
+resoluutiomenetelmässä kuuluukin. Rivin 5 resoluutio riveistä 3 ja 4
+olisi kelvollinen, jos rivi 3 olisi johdettu oikein. Todistuksen virhe
+on siis nimenomaan rivin 3 johtamisessa.
+\end{solution}
+
 \begin{exercise}
 Lemman 6.7 todistuksessa klausuulijoukko \(C\) jaetaan neljään osaan.
 Miten käy, jos jokin osa on tyhjä? Osoita, että kumoustäydellisyys pätee
 näissäkin tapauksissa.
 \end{exercise}
+
+\begin{solution}
+Olkoon \(C\) ristiriitainen ja käytetään lemman merkintöjä
+\[
+C'=C_{00}\cup(C_{01}\times_R C_{10}).
+\]
+Jos \(C_{11}=\emptyset\), todistus ei muutu, sillä tämän osan klausuulit
+ovat tautologisia. Jos \(C_{00}=\emptyset\), lemman todistus
+\(C'\):n ristiriitaisuudesta toimii sellaisenaan: ehto, että totuusjakauma
+toteuttaa kaikki \(C_{00}\):n klausuulit, pätee tyhjälle joukolle aina.
+
+Jos \(C_{01}=\emptyset\), niin \(C'=C_{00}\). Jos \(C_{00}\) olisi
+toteutuva, sitä toteuttava totuusjakauma voitaisiin laajentaa asettamalla
+\(p_i=1\). Tällöin myös kaikki \(C_{10}\):n ja \(C_{11}\):n klausuulit
+olisivat tosia, joten \(C\) olisi toteutuva, vastoin oletusta.
+Siis \(C'\) on ristiriitainen. Jos \(C_{10}=\emptyset\), sama perustelu
+toimii asettamalla \(p_i=0\).
+
+Nämä perustelut kattavat myös usean osan samanaikaisen tyhjyyden.
+Joukossa \(C'\) esiintyy vähemmän propositiosymboleja kuin joukossa
+\(C\), joten induktio-oletuksella \(C'\vdash_R\emptyset\).
+Koska \(C'\):n klausuulit ovat joko \(C\):n klausuuleja tai niistä
+resoluutiolla johdettuja, myös \(C\vdash_R\emptyset\).
+\end{solution}
 
 \begin{exercise}
 Propositiologiikan resoluutio pysähtyy aina, eli jossain vaiheessa ei saada
@@ -91,19 +385,108 @@ oletukset koostuvat \(m\) klausuulista, joissa kussakin esiintyy korkeintaan
 ei tarvitse etsiä optimaalista ylärajaa.
 \end{exercise}
 
+\begin{solution}
+Olkoon \(L\) kaikkien oletusklausuuleissa esiintyvien literaalien joukko.
+Koska oletuksia on \(m\) ja kussakin on korkeintaan \(n\) literaalia,
+niin \(|L|\le mn\). Resoluutio ei tuota uusia literaaleja: resolventti
+muodostetaan poistamalla vastakkaiset literaalit ja ottamalla jäljelle
+jäävien joukkojen yhdiste. Siksi jokainen johdettu klausuuli on
+joukon \(L\) osajoukko.
+
+Mahdollisia klausuuleja on siis korkeintaan
+\[
+|\mathcal{P}(L)|=2^{|L|}\le 2^{mn},
+\]
+missä myös tyhjä klausuuli on mukana. Kun jokaisella askeleella lisätään
+aidosti uusi klausuuli, askelia voi näin ollen olla korkeintaan
+\(2^{mn}\). Jos myös alkuperäiset \(m\) oletusriviä lasketaan mukaan,
+resoluutiotodistuksen pituudelle kelpaa yläraja \(m+2^{mn}\).
+
+Tässä samoja klausuuleja ei johdeta uudelleen: jos toistoja sallittaisiin,
+todistusta voisi pitkittää mielivaltaisesti. Pysähtyminen tarkoittaa,
+että lopulta uusia klausuuleja ei enää saada.
+\end{solution}
+
 \begin{exercise}
 Lemma 6.7 antaa suoraviivaisen menetelmän tuottaa \(\emptyset\)
 ristiriitaisesta klausuulijoukosta. Kuinka pitkä resoluutiotodistuksesta
 tulee, jos sovellat lemman menetelmää klausuulijoukkoon
 \[
-% Pilkut on säilytetty alkuperäisen tehtävänannon mukaisina.
 \{\{\neg p_0, p_2\}, \{\neg p_1, p_2\}, \{\neg p_2, p_3\},
-\{p_0, p_1, \neg p_3\}, \{p_1, p_2, p_3,\}\{\neg p_2, \neg p_3\}\}
+\{p_0, p_1, \neg p_3\}, \{p_1, p_2, p_3\}, \{\neg p_2, \neg p_3\}\}
 \]
 Huomaa, että valittu propositiosymboleiden käsittelyjärjestys vaikuttaa
 vastaukseen. Kuinka lyhyen resoluutiotodistuksen keksit, jos et noudata
 lemman menetelmää suoraan, vaan optimoit valintoja?
 \end{exercise}
+
+\begin{solution}
+Numeroidaan alkuperäiset klausuulit annetussa järjestyksessä riveiksi
+1--6. Käytetään lemman menetelmässä käsittelyjärjestystä
+\(p_0,p_1,p_2,p_3\). Kussakin vaiheessa muodostetaan kaikki valitun
+symbolin suhteen saadut resolventit ja säilytetään klausuulit, joissa
+symbolia ei esiinny kummallakaan merkillä.
+
+Symbolin \(p_0\) eliminointi tuottaa riveistä 1 ja 4 klausuulin
+\(\{p_1,p_2,\neg p_3\}\). Uusi klausuulijoukko on siis
+\[
+C^{(1)}=\bigl\{
+\{\neg p_1,p_2\},\{\neg p_2,p_3\},\{p_1,p_2,p_3\},
+\{\neg p_2,\neg p_3\},\{p_1,p_2,\neg p_3\}
+\bigr\}.
+\]
+Seuraavaksi \(\{\neg p_1,p_2\}\) resolvoidaan kummankin
+\(p_1\):n sisältävän klausuulin kanssa. Saadaan
+\[
+C^{(2)}=\bigl\{
+\{\neg p_2,p_3\},\{\neg p_2,\neg p_3\},
+\{p_2,p_3\},\{p_2,\neg p_3\}
+\bigr\}.
+\]
+Symbolin \(p_2\) suhteen on neljä klausuuliparia. Niistä saadaan
+kolme eri resolventtia, sillä kaksi paria antaa saman tautologisen
+klausuulin:
+\[
+C^{(3)}=\bigl\{\{p_3\},\{p_3,\neg p_3\},\{\neg p_3\}\bigr\}.
+\]
+Viimeisessä vaiheessa tautologinen klausuuli kuuluu osaan \(C_{11}\)
+ja jätetään pois. Klausuuleista \(\{p_3\}\) ja \(\{\neg p_3\}\)
+saadaan \(\emptyset\).
+
+Koko resoluutiotodistus on seuraava; sama klausuuli kirjoitetaan vain
+kerran:
+\begin{enumerate}[label=\arabic*., nosep]
+\item \(\{\neg p_0,p_2\}\)
+\item \(\{\neg p_1,p_2\}\)
+\item \(\{\neg p_2,p_3\}\)
+\item \(\{p_0,p_1,\neg p_3\}\)
+\item \(\{p_1,p_2,p_3\}\)
+\item \(\{\neg p_2,\neg p_3\}\)
+\item \(\{p_1,p_2,\neg p_3\}\) (rivit 1 ja 4, symboli \(p_0\))
+\item \(\{p_2,p_3\}\) (rivit 2 ja 5, symboli \(p_1\))
+\item \(\{p_2,\neg p_3\}\) (rivit 2 ja 7, symboli \(p_1\))
+\item \(\{p_3\}\) (rivit 3 ja 8, symboli \(p_2\))
+\item \(\{p_3,\neg p_3\}\) (rivit 6 ja 8, myös rivit 3 ja 9,
+symboli \(p_2\))
+\item \(\{\neg p_3\}\) (rivit 6 ja 9, symboli \(p_2\))
+\item \(\emptyset\) (rivit 10 ja 12, symboli \(p_3\))
+\end{enumerate}
+Näin saadaan \(7\) resoluutioaskelta eli \(13\) riviä oletukset mukaan
+lukien. Jos myös saman tautologisen klausuulin toinen johtaminen
+kirjoitetaan erikseen, saadaan \(8\) askelta eli \(14\) riviä.
+
+Lyhyempi todistus saadaan käyttämällä samoja oletusrivejä 1--6 ja
+valitsemalla jatko seuraavasti:
+\begin{enumerate}[label=\arabic*., start=7, nosep]
+\item \(\{p_1,p_2,\neg p_3\}\) (rivit 1 ja 4, symboli \(p_0\))
+\item \(\{p_1,p_2\}\) (rivit 5 ja 7, symboli \(p_3\))
+\item \(\{p_2\}\) (rivit 2 ja 8, symboli \(p_1\))
+\item \(\{\neg p_2\}\) (rivit 3 ja 6, symboli \(p_3\))
+\item \(\emptyset\) (rivit 9 ja 10, symboli \(p_2\))
+\end{enumerate}
+Tässä on vain \(5\) resoluutioaskelta eli \(11\) riviä oletukset mukaan
+lukien.
+\end{solution}
 
 \begin{exercise}
 Resoluutiosäännön voi määritellä kahdessa muodossa:
@@ -120,20 +503,29 @@ tarkastellaan \emph{erillisiä yhdisteitä}, eli esim.
 vaikuttaa resoluution käyttöön?
 \end{exercise}
 
-\medskip
-\noindent\emph{Seuraavasta haastetehtävästä ei saa harjoituspisteitä.
-Se on tarkoitettu puhtaasti viihteeksi, mutta saattaa opettaa jotakin
-propositiologiikasta ja resoluutiosta.}
+\begin{solution}
+Erillisten yhdisteiden määritelmässä valittu literaali on poistettava
+kummastakin lähtöklausuulista. Tavallisten yhdisteiden määritelmässä
+sen voi myös jättää joukkoon \(C_1\) tai \(C_2\), jolloin se jää mukaan
+lopputulokseen.
 
-\medskip
-\noindent\textbf{Haastetehtävä.}
-Kartanonherra on murhattu. Epäiltyinä ovat kokki, tallirenki ja hovimestari.
-Kokki sanoo: ”Olen syytön, mutta herra riiteli tallirengin kanssa
-edellisiltana”. Tallirenki sanoo: ”Olen syytön, olin matkoilla koko viikon.”
-Hovimestari sanoo: ”Olen syytön, mutta sekä kokki että tallirenki kävivät
-herran puheilla samana päivänä.” Syyttömät puhuvat totta, mutta syyllinen
-saattaa valehdella. Muotoile faktat propositiologiikan avulla ja ratkaise
-murhamysteeri resoluution avulla (olettaen, että tasan yksi epäillyistä
-on syyllinen).
+Esimerkiksi klausuuleista \(\{p_0\}\) ja \(\{\neg p_0,p_1\}\)
+saadaan erillisten yhdisteiden säännöllä vain \(\{p_1\}\).
+Tavallisten yhdisteiden säännöllä mahdolliset tulokset ovat
+\[
+\{p_1\},\quad \{p_0,p_1\},\quad \{\neg p_0,p_1\},\quad
+\{p_0,\neg p_0,p_1\}.
+\]
+Esimerkiksi tulos \(\{p_0,p_1\}\) saadaan valitsemalla
+\(C_1=\{p_0\}\) ja \(C_2=\{p_1\}\), sillä
+\(\{p_0\}\cup\{p_0\}=\{p_0\}\).
+
+Tavallisten yhdisteiden sääntö antaa siis enemmän valinnanvaraa,
+mutta ylimääräiset tulokset ovat tavallisen resolventin heikennyksiä.
+Käytännössä resoluutiota voi edelleen käyttää kuten ennenkin:
+poistetaan valittu vastakkainen literaalipari ja yhdistetään jäljelle
+jäävät literaalit. Erillisten yhdisteiden määritelmä tekee tämän
+poistamisen pakolliseksi.
+\end{solution}
 
 \end{document}
