@@ -1084,4 +1084,103 @@ In the following two examples the indices start at \(n=1\).
   \(x_{n_j}\to a\), proving the claim.
 \end{proof}
 
+\subsection{22.09.2026}
+
+\subsubsection{Bernoulli's inequality}
+
+\begin{theorem}[Bernoulli's inequality]\label{thm:bernoulli}
+  For every \(x\in\RR\) with \(x>-1\) and every \(n\in\NN\),
+  \[
+    (1+x)^n\geq1+nx.
+  \]
+\end{theorem}
+
+\begin{proof}
+  Fix \(x>-1\). The cases \(n=0\) and \(n=1\) are equalities.
+  Suppose that \((1+x)^n\geq1+nx\) for some \(n\geq1\).
+  Since \(1+x>0\), multiplication preserves the inequality, and
+  \begin{align*}
+    (1+x)^{n+1}
+    &=(1+x)(1+x)^n\\
+    &\geq(1+x)(1+nx)\\
+    &=1+(n+1)x+nx^2\\
+    &\geq1+(n+1)x.
+  \end{align*}
+  The result follows by induction. If \(x\neq0\), then \(nx^2>0\)
+  in the induction step, so the inequality is strict for \(n\geq2\).
+\end{proof}
+
+\subsubsection{A sequence defining the number \texorpdfstring{\(e\)}{e}}
+
+Consider the sequence
+\[
+  x_n=\left(1+\frac{1}{n}\right)^n,\qquad n\geq1.
+\]
+
+\begin{lemma}
+  The sequence \((x_n)\) is strictly increasing.
+\end{lemma}
+
+\begin{proof}
+  All terms are positive. For \(n\geq1\),
+  \begin{align*}
+    \frac{x_{n+1}}{x_n}
+    &=\frac{\left(1+\frac{1}{n+1}\right)^{n+1}}
+    {\left(1+\frac{1}{n}\right)^n}\\
+    &=\left(\frac{1+\frac{1}{n+1}}{1+\frac{1}{n}}\right)^{n+1}
+    \left(1+\frac{1}{n}\right)\\
+    &=\left(\frac{n(n+2)}{(n+1)^2}\right)^{n+1}
+    \frac{n+1}{n}\\
+    &=\left(1-\frac{1}{(n+1)^2}\right)^{n+1}\frac{n+1}{n}\\
+    &>\left(1-\frac{n+1}{(n+1)^2}\right)\frac{n+1}{n}
+    =1.
+  \end{align*}
+  The strict inequality follows from \cref{thm:bernoulli}, since
+  \(-1<-1/(n+1)^2<0\) and \(n+1\geq2\).
+  Hence \(x_{n+1}>x_n\).
+\end{proof}
+
+\begin{lemma}
+  The sequence \((x_n)\) is bounded above.
+\end{lemma}
+
+\begin{proof}
+  We use the auxiliary sequence
+  \[
+    y_n=\left(1-\frac{1}{n}\right)^n,\qquad n\geq2.
+  \]
+  This sequence is positive and strictly increasing. Indeed, by
+  \cref{thm:bernoulli}, for \(n\geq2\),
+  \begin{align*}
+    \frac{y_{n+1}}{y_n}
+    &=\left(\frac{n^2}{n^2-1}\right)^n\frac{n}{n+1}\\
+    &=\left(1+\frac{1}{n^2-1}\right)^n\frac{n}{n+1}\\
+    &\geq\left(1+\frac{n}{n^2-1}\right)\frac{n}{n+1}\\
+    &=1+\frac{1}{(n+1)(n^2-1)}>1.
+  \end{align*}
+  Consequently, \((1/y_n)\) is decreasing. Also, for \(n\geq2\),
+  \[
+    \left(1+\frac{1}{n}\right)\left(1-\frac{1}{n}\right)
+    =1-\frac{1}{n^2}<1.
+  \]
+  Dividing by \(1-1/n>0\) and raising to the power \(n\) gives
+  \[
+    x_n<\left(1-\frac{1}{n}\right)^{-n}
+    =\frac{1}{y_n}\leq\frac{1}{y_2}
+    =\left(1-\frac{1}{2}\right)^{-2}=4.
+  \]
+  Finally, \(x_1=2<4\), so the bound holds for every \(n\geq1\).
+\end{proof}
+
+By \cref{thm:monotone-convergence}, the increasing, bounded sequence
+\((x_n)\) converges to a real number.
+
+\begin{definition}
+  The limit
+  \[
+    e=\lim_{n\to\infty}\left(1+\frac{1}{n}\right)^n
+  \]
+  is called \emph{Euler's number} (\emph{Neperin luku} in Finnish).
+\end{definition}
+
 \end{document}
