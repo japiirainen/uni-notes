@@ -188,14 +188,52 @@ joten \(h\) on surjektio. Täten \(h\) on bijektio.
 Olkoot \(f, g \colon \RR \to \RR\), \(f(x) = x + 2\) ja
 \(g(x) = \abs{x - 1}\).
 \begin{enumerate}[label=\alph*), nosep]
-\item Määritä funkion \(f\) käänteisfunktio
+\item Määritä funktion \(f\) käänteisfunktio
 \(f^{-1} \colon \RR \to \RR\), jos se on olemassa.
-\item Määritä funkion \(g\) käänteisfunktio
+\item Määritä funktion \(g\) käänteisfunktio
 \(g^{-1} \colon \RR \to \RR\), jos se on olemassa.
 \item Määritä yhdistetyt funktiot \(f \circ g\) ja \(g \circ f\).
 Onko \(f \circ g = g \circ f\)?
 \end{enumerate}
 \end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item \(f\) on injektio: olkoot \(x_1, x_2 \in \RR\). Tällöin
+\[
+f(x_1) = f(x_2) \implies x_1 + 2 = x_2 + 2 \implies x_1 = x_2.
+\]
+\(f\) on surjektio: olkoon \(y \in \RR\). Kun \(x = y - 2\), saadaan
+\[
+f(x) = (y - 2) + 2 = y,
+\]
+joten jokaista \(y \in \RR\) kohti on olemassa \(x \in \RR\), jolla
+\(y = f(x)\). Täten \(f\) on bijektio ja sen käänteisfunktio on
+\[
+f^{-1}(x) = x - 2.
+\]
+Käänteisfunktiolle pätee
+\[
+\begin{aligned}
+(f^{-1} \circ f)(x) &= (x + 2) - 2 = x, \\
+(f \circ f^{-1})(x) &= (x - 2) + 2 = x.
+\end{aligned}
+\]
+\item Huomataan, että \(g(-1) = g(3) = 2\), mutta \(-1 \neq 3\). \(g\) ei siis
+ole injektio, eikä täten myöskään bijektio. Käänteisfunktiota ei siis ole
+olemassa.
+\item Yhdistetyt funktiot ovat
+\[
+\begin{aligned}
+h(x) = (f \circ g)(x) &= \abs{x - 1} + 2, \\
+k(x) = (g \circ f)(x) &= \abs{x + 1}.
+\end{aligned}
+\]
+Huomataan, että \(h(-1) = 4\), \(k(-1) = 0\), joten \(h \neq k\).
+Siis \(f \circ g \neq g \circ f\).\qedhere
+\end{enumerate}
+\end{solution}
 
 \begin{exercise}
 Todista suljettujen reaalilukuvälien yhtä mahtavuus osoittamalla, että
@@ -204,8 +242,107 @@ suljetut välit \([0, a]\) ja \([0, b]\) ovat yhtä mahtavia, kun
 \(f \colon [0, a] \to [0, b]\), \(f(x) = bx/a\).
 \end{exercise}
 
+\begin{solution}
+Osoitetaan väite todeksi konstruoimalla bijektio välien
+\([0, a]\) ja \([0, b]\) välille. Olkoon
+\[
+f \colon [0, a] \to [0, b], \qquad f(x) = \frac{b}{a}x.
+\]
+Kun \(x \in [0, a]\), niin \(0 \leq x \leq a\). Koska \(a, b > 0\), saadaan
+\[
+0 \leq \frac{b}{a}x \leq b.
+\]
+Siis \(f(x) \in [0, b]\), joten kuvaus on hyvin määritelty.
+
+Osoitetaan, että \(f\) on bijektio. Olkoon \(y \in [0, b]\). Tällöin
+\[
+\begin{aligned}
+0 &\leq y \leq b \\
+0 &\leq ay \leq ab \\
+0 &\leq \frac{a}{b}y \leq a,
+\end{aligned}
+\]
+eli \(\frac{a}{b}y \in [0, a]\). Lisäksi \(f(\frac{a}{b}y) = y\). Jokaiselle
+\(y \in [0, b]\) on siis olemassa \(x = \frac{a}{b}y \in [0, a]\), jolla
+\(f(x) = y\). \(f\) on siis surjektio. Olkoot \(x_1, x_2 \in [0, a]\) siten,
+että \(f(x_1) = f(x_2)\). Tällöin
+\[
+f(x_1) = f(x_2) \implies \frac{b}{a}x_1 = \frac{b}{a}x_2 \implies x_1 = x_2,
+\]
+eli \(f\) on injektio. On näytetty, että \(f\) on surjektio ja injektio, joten
+\(f\) on bijektio. Tämä tarkoittaa sitä, että \(f\):n käänteisfunktio
+on olemassa.
+Käänteisfunktio on
+\[
+f^{-1}(x) = \frac{a}{b}x.
+\]
+Olemme löytäneet bijektion joukkojen \([0, a]\) ja \([0, b]\) välille, joten
+joukot ovat yhtä mahtavia.
+\end{solution}
+
 \begin{exercise}
 Onko kahden numeroituvan joukon karteesinen tulo numeroituva? Perustele.
 \end{exercise}
+
+\begin{solution}
+Olkoot \(A\) ja \(B\) numeroituvia joukkoja ja \(C = A \times B\). Joukon
+\(C\) alkiot ovat muotoa \((a, b)\), missä \(a \in A\) ja \(b \in
+B\). Kiinnitetään \(a \in A\). Olkoon
+\[
+E_a = \set{(a, b) \colon b \in B}.
+\]
+Huomataan, että kuvaus
+\[
+f_a \colon B \to E_a, \qquad b \mapsto (a, b),
+\]
+on bijektio joukkojen
+\(B\) ja \(E_a\) välillä. Täten \(E_a\) on numeroituva. Toisaalta, koska
+\(A\) on numeroituva, joukkoja \(E_a\) on numeroituva määrä. Lisäksi, jos
+\[
+S = \bigcup_{a \in A} E_a,
+\]
+niin \(S = C\). Osoitetaan, että \(S\) on numeroituva.
+
+Kirjoitetaan \(A = \{a_1, a_2, \ldots\}\) ja
+\(B = \{b_1, b_2, \ldots\}\), missä kukin alkio esiintyy täsmälleen kerran.
+Merkitään \(x_{ij} = (a_i, b_j)\), kun \(i, j \geq 1\). Tällöin
+\(E_{a_i} = \{x_{i1}, x_{i2}, \ldots\}\), ja joukot voidaan järjestää riveiksi:
+\begin{samepage}
+\begin{center}
+\begin{tikzpicture}[
+x=1.35cm, y=0.6cm,
+diagonal/.style={-{Stealth[length=1.6mm, width=1.1mm]},
+draw=black, line width=0.5pt}
+]
+\foreach \n in {1,...,4}
+\draw[diagonal] (0.65, 0.65-\n) -- (\n+0.4, 0.4);
+\foreach \i in {1,...,4} {
+\node[anchor=east] at (0.35, 1-\i) {\(E_{a_{\i}}:\)};
+\foreach \j in {1,...,4}
+\node[fill=white, inner sep=1pt] at (\j, 1-\i) {\(x_{\i\j}\)};
+\node at (4.7, 1-\i) {\(\cdots\)};
+}
+\draw[densely dotted, line width=0.6pt]
+(0.8, -3.65) -- (4.95, -3.65);
+\end{tikzpicture}
+\end{center}
+Luetellaan alkiot diagonaaleittain indeksisumman \(i+j\) kasvaessa.
+Kukin diagonaali luetaan alhaalta vasemmalta ylös oikealle:
+\[
+x_{11},\quad
+x_{21},\ x_{12},\quad
+x_{31},\ x_{22},\ x_{13},\quad
+x_{41},\ x_{32},\ x_{23},\ x_{14},\quad \ldots
+\]
+\end{samepage}
+Koska joukot \(A\) ja \(B\) on lueteltu ilman toistoja, yhtälöstä
+\(x_{ij} = x_{k\ell}\) seuraa \(i = k\) ja \(j = \ell\).
+Jokainen \(x_{ij}\) esiintyy täsmälleen kerran, diagonaalilla \(i+j\).
+Ennen sitä on vain äärellisen monta diagonaalia, joista jokainen on
+äärellinen. Näin jokainen joukon \(S\) alkio tulee luetelluksi äärellisen
+monen askeleen jälkeen. Saatu jono luettelee siis joukon \(S = A \times B\)
+kaikki alkiot ilman toistoja, joten \(A \times B\) on numeroituva.
+
+\end{solution}
 
 \end{document}
