@@ -13,4 +13,59 @@
 
 \exerciseheading{Analyysi I}{Harjoituksen 4 ratkaisut}
 
+\begin{exercise}
+  Olkoon \(x \in \RR\). Määritellään jono \((x_n)\) asettamalla, että
+  \[
+    x_n = \left(1 + \frac{x}{n}\right)^n.
+  \]
+  Osoita, että jono \((x_n)\) on kasvava kun \(n > \abs{x}\).
+\end{exercise}
+
+\begin{exercise}
+  \leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+  \item Osoita, että lukujonon \(\left(\left(1 - \frac{1}{n}\right)^n\right)\)
+    raja-arvo on \(\frac{1}{e}\).
+  \item Muodosta edellisten kohtien perusteella yläraja Neperin luvulle.
+  \item Valitse \(n = 50, 500, 5000\), ja arvioi Neperin lukua ala- ja
+    ylärajojen avulla.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Määritellään lukujono \((z_n)\) asettamalla
+\(z_n = (-1)^n\left(2 + \frac{3}{n}\right)\). Osoita, että lukujono
+hajaantuu. Sisältääkö lukujono suppenevan osajonon?
+\end{exercise}
+
+\begin{exercise}
+Olkoon \((z_k)\) vähenevä, alhaalta rajoitettu lukujono. Osoita, että
+\((z_k)\) suppenee, ja että
+\(\lim_{k \to \infty} z_k = \inf\{z_k : k \in \NN\}\).
+\end{exercise}
+
+\begin{exercise}
+Tässä tehtävässä osoitetaan, että jokaisella lukujonolla on monotoninen
+osajono. Täydennä seuraava todistus loppuun: Olkoon \((x_n)\) lukujono.
+Sanomme, että \(x_n\) on lukujonon huippu, jos \(x_n \geq x_m\) kaikilla
+\(m \geq n\). Jos huippuja on ääretön määrä \(x_{n_k}\), missä
+\(n_k < n_{k+1}\) kun \(k \in \NN\), niin ne muodostavat laskevan
+lukujonon. Jos lukujonon \((x_n)\) huippuja on äärellinen määrä, niin
+viimeisen huipun jälkeen olevista alkioista löydämme kasvavan lukujonon.
+\end{exercise}
+
+\begin{exercise}
+Olkoon \((x_n)\) lukujono, joka toteuttaa ehdon
+\(\abs{x_n - x_{n+1}} < 5 \cdot 2^{-n}\) kaikilla \(n \in \NN\).
+Osoita Cauchyn yleisen suppenemisehdon avulla, että lukujono \((x_n)\)
+suppenee.
+
+Tehtävässä saa käyttää tietoa
+\[
+  1 + x + \ldots + x^n = \frac{1 - x^{n+1}}{1 - x},
+\]
+kun \(n \in \NN\) ja \(x \in \RR\), \(x \neq 1\)
+(kurssikirjan Lemma 1.4.10).
+\end{exercise}
+
 \end{document}
