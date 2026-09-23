@@ -99,8 +99,25 @@ kanssa.
 \end{exercise}
 
 \begin{solution}
-Muodostamalla lauseen totuustaulu ja soveltamalla DNF-konstruktiota
-saadaan seuraava ekvivalentti DNF-muotoinen lause:
+Merkitään \(B = p_1 \leftrightarrow (p_0 \rightarrow \neg p_2)\) ja
+\(C = p_0 \lor (\neg p_2 \land \neg p_1)\). Alkuperäisen lauseen
+\(B \land C\) totuustaulu on
+\[
+\begin{array}{ccc|cc|c}
+p_0 & p_1 & p_2 & B & C & B \land C \\
+\hline
+0 & 0 & 0 & 0 & 1 & \mathbf{0} \\
+0 & 0 & 1 & 0 & 0 & \mathbf{0} \\
+0 & 1 & 0 & 1 & 0 & \mathbf{0} \\
+0 & 1 & 1 & 1 & 0 & \mathbf{0} \\
+1 & 0 & 0 & 0 & 1 & \mathbf{0} \\
+1 & 0 & 1 & 1 & 1 & \mathbf{1} \\
+1 & 1 & 0 & 1 & 1 & \mathbf{1} \\
+1 & 1 & 1 & 0 & 1 & \mathbf{0}
+\end{array}
+\]
+Soveltamalla DNF-konstruktiota totuustaulun 1-riveihin saadaan seuraava
+ekvivalentti DNF-muotoinen lause:
 \[
 A = (p_0 \land \neg p_1 \land p_2) \lor (p_0 \land p_1 \land \neg p_2).
 \]
@@ -117,8 +134,25 @@ kanssa.
 \end{exercise}
 
 \begin{solution}
-Muodostamalla lauseen totuustaulu ja soveltamalla DNF-konstruktiota
-saadaan seuraava ekvivalentti DNF-muotoinen lause:
+Merkitään \(B = p_1 \land (p_0 \rightarrow p_2)\) ja
+\(C = p_2 \rightarrow (p_1 \rightarrow p_2)\). Alkuperäisen lauseen
+\(B \leftrightarrow C\) totuustaulu on
+\[
+\begin{array}{ccc|cc|c}
+p_0 & p_1 & p_2 & B & C & B \leftrightarrow C \\
+\hline
+0 & 0 & 0 & 0 & 1 & \mathbf{0} \\
+0 & 0 & 1 & 0 & 1 & \mathbf{0} \\
+0 & 1 & 0 & 1 & 1 & \mathbf{1} \\
+0 & 1 & 1 & 1 & 1 & \mathbf{1} \\
+1 & 0 & 0 & 0 & 1 & \mathbf{0} \\
+1 & 0 & 1 & 0 & 1 & \mathbf{0} \\
+1 & 1 & 0 & 0 & 1 & \mathbf{0} \\
+1 & 1 & 1 & 1 & 1 & \mathbf{1}
+\end{array}
+\]
+Soveltamalla DNF-konstruktiota totuustaulun 1-riveihin saadaan seuraava
+ekvivalentti DNF-muotoinen lause:
 \[
 A = (\neg p_0 \land p_1 \land \neg p_2) \lor (\neg p_0 \land p_1 \land p_2)
 \lor (p_0 \land p_1 \land p_2).
@@ -137,7 +171,23 @@ kanssa.
 \begin{solution}
 Olkoon \(A = \neg(p_0 \leftrightarrow p_1) \rightarrow
 (p_2 \land \neg p_1)\) alkuperäinen lause.
-Muodostamalla lauseen \(A\) totuustaulu ja soveltamalla DNF-konstruktiota
+Lauseen \(A\) totuustaulu on
+\[
+\begin{array}{ccc|cc|c}
+p_0 & p_1 & p_2 & \neg(p_0 \leftrightarrow p_1)
+& p_2 \land \neg p_1 & A \\
+\hline
+0 & 0 & 0 & 0 & 0 & \mathbf{1} \\
+0 & 0 & 1 & 0 & 1 & \mathbf{1} \\
+0 & 1 & 0 & 1 & 0 & \mathbf{0} \\
+0 & 1 & 1 & 1 & 0 & \mathbf{0} \\
+1 & 0 & 0 & 1 & 0 & \mathbf{0} \\
+1 & 0 & 1 & 1 & 1 & \mathbf{1} \\
+1 & 1 & 0 & 0 & 0 & \mathbf{1} \\
+1 & 1 & 1 & 0 & 0 & \mathbf{1}
+\end{array}
+\]
+Soveltamalla DNF-konstruktiota
 totuustaulun 0-riveihin saadaan seuraava lauseen \(\neg A\) kanssa
 ekvivalentti DNF-muotoinen lause:
 \[
@@ -241,6 +291,16 @@ konnektiivia \(\downarrow\). Sitten
 \[
 A = \neg B \iff \neg B^{'} \iff B^{'} \downarrow B^{'}.
 \]
+Ekvivalenssi \(\neg B^{'} \iff B^{'} \downarrow B^{'}\) voidaan
+varmistaa totuustaulusta:
+\[
+\begin{array}{c|cc}
+B^{'} & \neg B^{'} & B^{'} \downarrow B^{'} \\
+\hline
+0 & \mathbf{1} & \mathbf{1} \\
+1 & \mathbf{0} & \mathbf{0}
+\end{array}
+\]
 Valitaan \(A^{'} = B^{'} \downarrow B^{'}\).
 
 Jos \(A = B \land C\), induktio-oletuksen nojalla on olemassa propositiolauseet
@@ -254,6 +314,23 @@ A = B \land C &\iff B^{'} \land C^{'} \\
 &\iff (B^{'} \downarrow B^{'}) \downarrow (C^{'} \downarrow C^{'}).
 \end{aligned}
 \]
+Ekvivalenssi \(B^{'} \land C^{'} \iff
+(B^{'} \downarrow B^{'}) \downarrow (C^{'} \downarrow C^{'})\)
+voidaan varmistaa totuustaulusta:
+\[
+\begin{array}{cc|cc|cc}
+B^{'} & C^{'} & B^{'} \downarrow B^{'} & C^{'} \downarrow C^{'}
+& B^{'} \land C^{'}
+& (B^{'} \downarrow B^{'}) \downarrow (C^{'} \downarrow C^{'}) \\
+\hline
+0 & 0 & 1 & 1 & \mathbf{0} & \mathbf{0} \\
+0 & 1 & 1 & 0 & \mathbf{0} & \mathbf{0} \\
+1 & 0 & 0 & 1 & \mathbf{0} & \mathbf{0} \\
+1 & 1 & 0 & 0 & \mathbf{1} & \mathbf{1}
+\end{array}
+\]
+Totuustaulujen kaksi viimeistä saraketta ovat samat, joten ekvivalenssit
+pätevät kaikilla totuusjakaumilla.
 Valitaan \(A^{'} = (B^{'} \downarrow B^{'}) \downarrow (C^{'}
 \downarrow C^{'})\).
 
