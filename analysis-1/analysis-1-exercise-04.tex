@@ -21,6 +21,47 @@
   Osoita, että jono \((x_n)\) on kasvava kun \(n > \abs{x}\).
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(n \in \NN\) ja \(n > \abs{x}\). Tällöin \(n + x > 0\), joten
+  \(x_n > 0\). Riittää siis osoittaa, että \(\frac{x_{n+1}}{x_n} \geq 1\).
+  Laskemalla saadaan
+  \[
+    \begin{aligned}
+      \frac{x_{n+1}}{x_n} &= \frac{\left(1 + \frac{x}{n + 1}\right)^{n + 1}}
+      {\left(1 + \frac{x}{n}\right)^n} \\
+      &= \left(\frac{1 + \frac{x}{n + 1}}{1 + \frac{x}{n}}\right)^{n
+      + 1}\left(1 + \frac{x}{n}\right) \\
+      &= \left(\frac{n^2 + nx + n}{n^2 + nx + n + x}\right)^{n +
+      1}\left(\frac{n + x}{n}\right) \\
+      &= \left(1 - \frac{x}{n^2 + nx + n + x}\right)^{n +
+      1}\left(\frac{n + x}{n}\right).
+    \end{aligned}
+  \]
+  Asetetaan \(t = -\frac{x}{(n + 1)(n + x)}\). Koska \(n > \abs{x}\),
+  saadaan
+  \[
+    1 + t = \frac{n(n + 1 + x)}{(n + 1)(n + x)} > 0,
+  \]
+  joten \(t > -1\) ja Bernoullin epäyhtälöä voidaan soveltaa.
+  Lisäksi \(\frac{n + x}{n} > 0\), joten tällä luvulla kertominen säilyttää
+  epäyhtälön suunnan. Näin saadaan arvio
+  \[
+    \begin{aligned}
+      \frac{x_{n+1}}{x_n} &=
+      \left(1 - \frac{x}{n^2 + nx + n + x}\right)^{n +
+      1}\left(\frac{n + x}{n}\right) \\
+      &\geq \left(1 - \frac{(n + 1)x}{n^2 + nx + n +
+      x}\right)\left(\frac{n + x}{n}\right) \\
+      &= \left(\frac{n^2 + n}{n^2 + nx + n + x}\right)\left(\frac{n +
+      x}{n}\right) \\
+      &= 1.
+    \end{aligned}
+  \]
+  Olemme osoittaneet, että \(x_{n + 1} \geq x_{n}\) kaikilla \(n \in \NN\),
+  joille \(n > \abs{x}\), eli lukujono \((x_n)\) on kasvava tällä
+  indeksialueella.
+\end{solution}
+
 \begin{exercise}
   \leavevmode\par
 \begin{enumerate}[label=\alph*), nosep]
@@ -32,17 +73,145 @@
 \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Kun \(n \geq 2\), niin
+  \[
+    1 - \frac{1}{n} = \frac{n - 1}{n} = \left(1 + \frac{1}{n - 1}\right)^{-1}.
+  \]
+  Näin ollen
+  \[
+    \left(1 - \frac{1}{n}\right)^n = \frac{1}{
+      \left(1 + \frac{1}{n - 1}\right)^{n - 1}\left(1 + \frac{1}{n - 1}\right)
+    }.
+  \]
+  Koska
+  \[
+    \left(1 + \frac{1}{n}\right)^n \to e, \quad \text{kun} \quad n \to \infty,
+  \]
+  ja \(n - 1 \to \infty\), kun \(n \to \infty\), myös
+  \[
+    \left(1 + \frac{1}{n - 1}\right)^{n - 1} \to e, \quad \text{kun}
+    \quad n \to \infty.
+  \]
+  Osoitetaan vielä, että \(1 + \frac{1}{n - 1} \to 1\), kun \(n \to \infty\).
+  Olkoon \(\epsilon > 0\). Valitaan \(N \in \NN\) siten, että
+  \(N > \max\{2, \frac{2}{\epsilon}\}\). Tällöin kaikilla \(n > N\) pätee
+  \[
+    \abs*{1 + \frac{1}{n - 1} - 1} = \frac{1}{n - 1} \leq \frac{2}{n}
+    < \epsilon.
+  \]
+  Lisäksi vakiojono \(1\) suppenee kohti lukua \(1\).
+  Koska \(e > 0\), nimittäjän raja-arvo \(e \cdot 1 = e\) on nollasta
+  poikkeava. Tulon ja osamäärän raja-arvosääntöjen (lause 2.2.8) nojalla
+  saadaan siis
+  \[
+    \left(1 - \frac{1}{n}\right)^n = \frac{1}{
+      \left(1 + \frac{1}{n - 1}\right)^{n - 1}\left(1 + \frac{1}{n - 1}\right)
+    } \to \frac{1}{e},
+  \]
+  kun \(n \to \infty\).
+\item Tehtävän 1 mukaan lukujono
+  \[
+    \left(\left(1 - \frac{1}{n}\right)^n\right)
+  \]
+  on kasvava, kun \(n \geq 2\). Koska jonon termit ovat positiivisia,
+  käänteislukujen muodostama jono
+  \[
+    \left(\left(1 - \frac{1}{n}\right)^{-n}\right)
+  \]
+on vähenevä. Kohdan a) mukaan
+\[
+  \lim_{n \to \infty} \left(1 - \frac{1}{n}\right)^n =
+  \frac{1}{e},
+\]
+joten käänteisluvun raja-arvosäännön nojalla
+\[
+  \lim_{n \to \infty} \left(1 - \frac{1}{n}\right)^{-n} = e.
+\]
+Vähenevän ja suppenevan jonon jokainen termi on vähintään jonon
+raja-arvon suuruinen. Näin saadaan yläraja
+\[
+  e \leq \left(1 - \frac{1}{n}\right)^{-n},
+\]
+kun \(n \geq 2\).
+\item Tehtävän 1 ja tunnetun raja-arvon
+\(\left(1 + \frac{1}{n}\right)^n \to e\) perusteella saadaan alaraja.
+Yhdistämällä se kohdan b) ylärajaan saadaan
+\[
+\left(1 + \frac{1}{n}\right)^n \leq e
+\leq \left(1 - \frac{1}{n}\right)^{-n}, \qquad n \geq 2.
+\]
+Lasketaan rajat arvoilla \(n = 50, 500, 5000\). Pyöristetään alarajat
+alaspäin ja ylärajat ylöspäin kuuden desimaalin tarkkuuteen, jotta
+epäyhtälöt säilyvät voimassa. Näin saadaan
+\[
+\begin{aligned}
+  n = 50:   &\qquad 2{,}691588 \leq e \leq 2{,}745973, \\
+  n = 500:  &\qquad 2{,}715568 \leq e \leq 2{,}721006, \\
+  n = 5000: &\qquad 2{,}718010 \leq e \leq 2{,}718554.
+\end{aligned}
+\]
+\end{enumerate}
+\end{solution}
+
 \begin{exercise}
 Määritellään lukujono \((z_n)\) asettamalla
 \(z_n = (-1)^n\left(2 + \frac{3}{n}\right)\). Osoita, että lukujono
 hajaantuu. Sisältääkö lukujono suppenevan osajonon?
 \end{exercise}
 
+\begin{solution}
+Olkoot \((x_n)\) ja \((y_n)\) lukujonon \((z_n)\) seuraavat osajonot:
+\[
+\begin{aligned}
+x_n &= z_{2n} = 2 + \frac{3}{2n}, \\
+y_n &= z_{2n + 1} = -2 - \frac{3}{2n + 1}.
+\end{aligned}
+\]
+Olkoon \(\epsilon > 0\). Valitaan \(N \in \NN\) siten, että
+\(N > \frac{3}{\epsilon}\). Tällöin kaikilla \(n > N\) pätee
+\[
+\abs{x_n - 2} = \frac{3}{2n} \leq \frac{3}{n} < \epsilon
+\]
+sekä
+\[
+\abs{y_n + 2} = \frac{3}{2n + 1} \leq \frac{3}{n} < \epsilon.
+\]
+Täten \(x_n \to 2\) ja \(y_n \to -2\), kun \(n \to \infty\).
+Jos lukujono \((z_n)\) suppenisi, sen kaikki osajonot suppenisivat samaan
+raja-arvoon. Koska \(2 \neq -2\), lukujono \((z_n)\) hajaantuu.
+Se sisältää kuitenkin suppenevat osajonot \((x_n)\) ja \((y_n)\).
+\end{solution}
+
 \begin{exercise}
 Olkoon \((z_k)\) vähenevä, alhaalta rajoitettu lukujono. Osoita, että
 \((z_k)\) suppenee, ja että
 \(\lim_{k \to \infty} z_k = \inf\{z_k : k \in \NN\}\).
 \end{exercise}
+
+\begin{solution}
+Olkoon \((z_n)\) vähenevä ja alhaalta rajoitettu lukujono. Koska sen arvojen
+joukko on epätyhjä ja alhaalta rajoitettu, on olemassa
+\[
+p = \inf{\set{z_n \colon n \in \NN}} \in \RR.
+\]
+Olkoon \(\epsilon > 0\). Lauseen 1.2.8 nojalla on olemassa \(N \in \NN\),
+jolle pätee
+\[
+p \leq z_N < p + \epsilon.
+\]
+Koska \((z_n)\) on vähenevä,
+\[
+p \leq z_n \leq z_N < p + \epsilon,
+\]
+kun \(n > N\). Toisin sanoen
+\[
+\abs{z_n - p} = z_n - p < \epsilon,
+\]
+kun \(n > N\). Täten \(\lim_{n \to \infty} z_n = p\).
+\end{solution}
 
 \begin{exercise}
 Tässä tehtävässä osoitetaan, että jokaisella lukujonolla on monotoninen
@@ -62,7 +231,7 @@ suppenee.
 
 Tehtävässä saa käyttää tietoa
 \[
-  1 + x + \ldots + x^n = \frac{1 - x^{n+1}}{1 - x},
+1 + x + \ldots + x^n = \frac{1 - x^{n+1}}{1 - x},
 \]
 kun \(n \in \NN\) ja \(x \in \RR\), \(x \neq 1\)
 (kurssikirjan Lemma 1.4.10).
