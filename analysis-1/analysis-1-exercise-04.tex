@@ -223,6 +223,40 @@ lukujonon. Jos lukujonon \((x_n)\) huippuja on äärellinen määrä, niin
 viimeisen huipun jälkeen olevista alkioista löydämme kasvavan lukujonon.
 \end{exercise}
 
+\begin{solution}
+Olkoon
+\[
+H = \set{m \in \NN \colon x_m \geq x_n \text{ kaikilla } n \geq m}.
+\]
+Joukko \(H\) koostuu siis jonon \((x_n)\) huippukohtien indekseistä.
+Jaetaan todistus kahteen tapaukseen.
+\begin{enumerate}
+\item Oletetaan, että \(H\) on ääretön. Luetellaan sen alkiot kasvavassa
+järjestyksessä \(m_1 < m_2 < m_3 < \cdots\) ja tarkastellaan osajonoa
+\((x_{m_k})\). Koska \(m_k \in H\), huippukohdan määritelmän mukaan
+\(x_j \leq x_{m_k}\) kaikilla \(j \geq m_k\). Erityisesti
+\(m_{k+1} > m_k\), joten
+\[
+x_{m_{k+1}} \leq x_{m_k} \qquad \text{kaikilla } k \in \NN.
+\]
+Siis \((x_{m_k})\) on lukujonon \((x_n)\) vähenevä osajono.
+\item Oletetaan, että \(H\) on äärellinen. Jos \(H = \varnothing\),
+asetetaan \(k_1 = 1\). Muussa tapauksessa asetetaan \(k_1 = \max H + 1\).
+Tällöin mikään indeksi \(j \geq k_1\) ei kuulu joukkoon \(H\).
+
+Muodostetaan osajono rekursiivisesti. Kun \(k_n \geq k_1\) on valittu,
+pätee \(k_n \notin H\). Huippukohdan määritelmän mukaan on siis olemassa
+indeksi \(k_{n+1} > k_n\), jolle
+\[
+x_{k_{n+1}} > x_{k_n}.
+\]
+Koska myös \(k_{n+1} \geq k_1\), konstruktiota voidaan jatkaa kaikilla
+\(n \in \NN\). Näin saadaan lukujonon \((x_n)\) aidosti kasvava
+osajono \((x_{k_n})\).
+\end{enumerate}
+Molemmissa tapauksissa lukujonolla \((x_n)\) on siis monotoninen osajono.
+\end{solution}
+
 \begin{exercise}
 Olkoon \((x_n)\) lukujono, joka toteuttaa ehdon
 \(\abs{x_n - x_{n+1}} < 5 \cdot 2^{-n}\) kaikilla \(n \in \NN\).
@@ -236,5 +270,39 @@ Tehtävässä saa käyttää tietoa
 kun \(n \in \NN\) ja \(x \in \RR\), \(x \neq 1\)
 (kurssikirjan Lemma 1.4.10).
 \end{exercise}
+
+\begin{solution}
+Olkoot \(n,k \in \NN\), \(n,k \geq 1\). Teleskooppisumman,
+kolmioepäyhtälön ja tehtävän oletuksen avulla saadaan
+\[
+\begin{aligned}
+\abs{x_n - x_{n + k}} &= \abs*{\sum_{j = 0}^{k - 1}
+\left(x_{n + j} - x_{n + j + 1}\right)} \\
+&\leq \sum_{j = 0}^{k - 1} \abs{x_{n + j} - x_{n + j + 1}} \\
+&< 5\sum_{j = 0}^{k - 1} 2^{-(n + j)}
+= 5\cdot2^{-n}\sum_{j = 0}^{k - 1} \left(\frac12\right)^j.
+\end{aligned}
+\]
+Tehtävässä annetun geometrisen summan kaavan (lemma 1.4.10) nojalla
+\[
+\sum_{j = 0}^{k - 1} \left(\frac12\right)^j
+= \frac{1-2^{-k}}{1-\frac12}
+= 2(1-2^{-k}) < 2.
+\]
+Saadaan siis indeksistä \(k\) riippumaton arvio
+\[
+\abs{x_n-x_{n+k}} < 5\cdot2^{-n}\cdot2 = \frac{10}{2^n}.
+\]
+Olkoon \(\epsilon > 0\). Valitaan \(N \in \NN\) siten, että
+\(N > \frac{10}{\epsilon}\). Koska \(2^n > n\) kaikilla \(n \geq 1\),
+kaikilla \(n > N\) ja \(k \geq 1\) pätee
+\[
+\abs{x_n - x_{n + k}} < \frac{10}{2^n} < \frac{10}{n} < \epsilon.
+\]
+Kun \(k=0\), pätee \(\abs{x_n-x_n}=0<\epsilon\). Näin ollen
+\(\abs{x_n-x_{n+k}}<\epsilon\) kaikilla \(n>N\) ja \(k\in\NN_0\).
+Cauchyn yleisen suppenemisehdon (lause 2.4.4) nojalla lukujono
+\((x_n)\) suppenee.
+\end{solution}
 
 \end{document}
