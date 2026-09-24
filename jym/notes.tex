@@ -951,4 +951,166 @@ relation is a function from \(Y\) to \(X\), it is called the
   \end{enumerate}
 \end{solution}
 
+\subsection{24.09.2026}
+
+\subsubsection{Images followed by preimages}
+
+\begin{theorem}
+  Let \(f\colon X \to Y\), \(A \subseteq X\), and \(B \subseteq Y\).
+  Then
+  \begin{enumerate}[label=(\roman*)]
+    \item \(A \subseteq f^{-1}(f(A))\);
+    \item \(f(f^{-1}(B)) \subseteq B\).
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  For (i), let \(x \in A\). Then \(f(x) \in f(A)\), so the
+  definition of preimage gives \(x \in f^{-1}(f(A))\).
+
+  For (ii), let \(y \in f(f^{-1}(B))\). There exists
+  \(x \in f^{-1}(B)\) with \(y=f(x)\). Since \(x \in f^{-1}(B)\)
+  means that \(f(x) \in B\), we obtain \(y \in B\).
+\end{proof}
+
+\begin{remark}
+  These inclusions need not be equalities. For \(f\colon\RR\to\RR\),
+  \(f(x)=x^2\), and \(A=\set{1}\), we have
+  \(f^{-1}(f(A))=\set{-1,1}\). For the same function and
+  \(B=\set{-1}\), we have \(f(f^{-1}(B))=\emptyset\).
+  Here \(f^{-1}\) denotes a preimage, not an inverse function.
+\end{remark}
+
+\subsubsection{Composition of functions}
+
+\begin{definition}
+  Let \(f\colon X \to Y\) and \(g\colon Y \to Z\) be functions.
+  Their \emph{composite function} is
+  \[
+    g\circ f\colon X\to Z,
+    \qquad (g\circ f)(x)=g(f(x)) \quad (x\in X).
+  \]
+  Thus we apply \(f\) first and \(g\) second.
+\end{definition}
+
+\begin{theorem}\label{thm:composition-bijections}
+  If \(f\colon X\to Y\) and \(g\colon Y\to Z\) are bijections,
+  then \(g\circ f\colon X\to Z\) is a bijection.
+\end{theorem}
+
+\begin{proof}
+  To prove injectivity, suppose that
+  \((g\circ f)(x_1)=(g\circ f)(x_2)\). Then
+  \(g(f(x_1))=g(f(x_2))\). Injectivity of \(g\) gives
+  \(f(x_1)=f(x_2)\), and injectivity of \(f\) gives \(x_1=x_2\).
+
+  To prove surjectivity, let \(z\in Z\). Since \(g\) is surjective,
+  there is \(y\in Y\) with \(g(y)=z\). Since \(f\) is surjective,
+  there is \(x\in X\) with \(f(x)=y\). Thus
+  \((g\circ f)(x)=g(y)=z\).
+\end{proof}
+
+\subsubsection{Identity maps and inverse functions}
+
+\begin{definition}
+  The \emph{identity map} on a set \(X\) is the function
+  \[
+    \operatorname{id}_X\colon X\to X,
+    \qquad \operatorname{id}_X(x)=x \quad (x\in X).
+  \]
+\end{definition}
+
+\begin{theorem}\label{thm:inverse-identities}
+  Let \(f\colon X\to Y\) and \(g\colon Y\to X\). Then \(g\)
+  is the inverse function of \(f\) if and only if
+  \[
+    g\circ f=\operatorname{id}_X
+    \qquad\text{and}\qquad
+    f\circ g=\operatorname{id}_Y.
+  \]
+\end{theorem}
+
+\begin{proof}
+  Suppose first that \(g=f^{-1}\). For every \(x\in X\), the
+  inverse sends \(f(x)\) back to \(x\), so \(g(f(x))=x\).
+  For every \(y\in Y\), the value \(g(y)\) is the unique element
+  mapped to \(y\) by \(f\), so \(f(g(y))=y\). These are the
+  required identities.
+
+  Conversely, suppose both identities hold. If \(f(x_1)=f(x_2)\),
+  applying \(g\) gives
+  \[
+    x_1=g(f(x_1))=g(f(x_2))=x_2,
+  \]
+  so \(f\) is injective. For every \(y\in Y\), the element
+  \(g(y)\in X\) satisfies \(f(g(y))=y\), so \(f\) is surjective.
+  Thus each \(y\) has exactly one preimage, namely \(g(y)\), proving
+  that \(g=f^{-1}\).
+\end{proof}
+
+\begin{corollary}\label{cor:inverse-bijection}
+  The inverse of a bijection is a bijection.
+\end{corollary}
+
+\begin{proof}
+  Let \(f\colon X\to Y\) be a bijection. If
+  \(f^{-1}(y_1)=f^{-1}(y_2)\), applying \(f\) gives \(y_1=y_2\),
+  so \(f^{-1}\) is injective. For any \(x\in X\), set \(y=f(x)\).
+  Then \(f^{-1}(y)=x\), so \(f^{-1}\) is also surjective.
+\end{proof}
+
+\subsubsection{Infinite sets and their cardinalities}
+
+\begin{definition}
+  Sets \(A\) and \(B\) have \emph{equal cardinality} (or are
+  \emph{equinumerous}) if there exists a bijection \(A\to B\).
+  We write \(A\sim B\).
+\end{definition}
+
+\begin{definition}
+  A set \(A\) is \emph{countably infinite} if \(A\sim\NN\).
+  Equivalently, its elements can be listed as
+  \(a_0,a_1,a_2,\ldots\), with every element appearing exactly once.
+\end{definition}
+
+\begin{remark}
+  The Finnish term \emph{numeroituva} in this lecture is defined by
+  \(A\sim\NN\). We use ``countably infinite'' for this precise meaning;
+  ``countable'' is also commonly used to include finite sets.
+  Recall that \(\NN=\set{0,1,2,\ldots}\) in these notes.
+\end{remark}
+
+For this discussion, we also allow functions with empty domain: the empty
+relation is the unique function \(\emptyset\to B\) for any set \(B\).
+In particular, \(\operatorname{id}_{\emptyset}\) is a bijection from
+\(\emptyset\) to itself. This extends the earlier convention of discussing
+functions between nonempty sets and allows us to include all subsets below.
+
+\begin{theorem}
+  Let \(X\) be a set. Equal cardinality is an equivalence relation on
+  \(\powerset{X}\).
+\end{theorem}
+
+\begin{proof}
+  We verify reflexivity, symmetry, and transitivity.
+
+  \emph{Reflexivity.} Let \(A\subseteq X\). The identity map
+  \(\operatorname{id}_A\colon A\to A\) is injective, since equal
+  outputs are equal inputs, and surjective, since each \(a\in A\)
+  is its own image. Hence \(A\sim A\), including when \(A=\emptyset\).
+
+  \emph{Symmetry.} Let \(A,B\subseteq X\) and suppose \(A\sim B\).
+  Choose a bijection \(f\colon A\to B\). By
+  \cref{cor:inverse-bijection}, its inverse \(f^{-1}\colon B\to A\)
+  is a bijection, so \(B\sim A\).
+
+  \emph{Transitivity.} Let \(A,B,C\subseteq X\), and suppose
+  \(A\sim B\) and \(B\sim C\). Choose bijections
+  \(f\colon A\to B\) and \(g\colon B\to C\).
+  By \cref{thm:composition-bijections},
+  \(g\circ f\colon A\to C\) is a bijection. Therefore \(A\sim C\).
+
+  Thus \(\sim\) is an equivalence relation on \(\powerset{X}\).
+\end{proof}
+
 \end{document}
