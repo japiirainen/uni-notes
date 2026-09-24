@@ -1183,4 +1183,214 @@ By \cref{thm:monotone-convergence}, the increasing, bounded sequence
   is called \emph{Euler's number} (\emph{Neperin luku} in Finnish).
 \end{definition}
 
+\subsection{24.09.2026}
+
+\subsubsection{Sequences tending to infinity}
+
+\begin{definition}
+  A real sequence \((x_n)\) \emph{tends to positive infinity} if, for
+  every \(M\in\RR\), there exists \(N\in\NN\) such that
+  \[
+    x_n>M\qquad\text{whenever }n>N.
+  \]
+  We write \(x_n\to+\infty\), or
+  \(\lim_{n\to\infty}x_n=+\infty\).
+\end{definition}
+
+\begin{definition}
+  A real sequence \((x_n)\) \emph{tends to negative infinity} if, for
+  every \(M\in\RR\), there exists \(N\in\NN\) such that
+  \[
+    x_n<M\qquad\text{whenever }n>N.
+  \]
+  We write \(x_n\to-\infty\), or
+  \(\lim_{n\to\infty}x_n=-\infty\).
+\end{definition}
+
+\begin{remark}
+  Neither definition requires the sequence to be monotone. The symbols
+  \(+\infty\) and \(-\infty\) are not real numbers, so these statements
+  do not mean convergence to a real limit.
+\end{remark}
+
+\begin{theorem}
+  If \(x_n\to+\infty\) or \(x_n\to-\infty\), then \((x_n)\)
+  diverges as a sequence of real numbers.
+\end{theorem}
+
+\begin{proof}
+  Suppose first that \(x_n\to+\infty\), and assume for a contradiction
+  that \(x_n\to x\in\RR\). Taking \(M=x+1\) in the definition
+  of an infinite limit gives \(N_1\in\NN\) such that
+  \(x_n>x+1\) whenever \(n>N_1\). Convergence to \(x\), with
+  \(\varepsilon=1\), gives \(N_2\in\NN\) such that
+  \(\abs{x_n-x}<1\) whenever \(n>N_2\). For
+  \(n>\maxset{N_1,N_2}\), we would have both
+  \(\abs{x_n-x}>1\) and \(\abs{x_n-x}<1\), a contradiction.
+
+  If \(x_n\to-\infty\), the same argument uses \(M=x-1\).
+  Eventually \(x_n<x-1\), hence \(\abs{x_n-x}>1\), again
+  contradicting convergence to \(x\).
+\end{proof}
+
+\subsubsection{A necessary condition for convergence}
+
+\begin{theorem}\label{thm:convergent-cauchy}
+  Let \((x_n)\) be a convergent real sequence. For every
+  \(\varepsilon>0\), there exists \(N\in\NN\) such that
+  \[
+    \abs{x_n-x_{n+k}}<\varepsilon
+    \qquad\text{for all }n>N\text{ and }k\in\NN.
+  \]
+\end{theorem}
+
+\begin{proof}
+  Write \(x=\lim_{n\to\infty}x_n\), and let \(\varepsilon>0\).
+  Choose \(N\in\NN\) such that \(\abs{x_m-x}<\varepsilon/2\)
+  for every \(m>N\). If \(n>N\) and \(k\in\NN\), then
+  \(n+k>N\), so the triangle inequality gives
+  \[
+    \abs{x_n-x_{n+k}}
+    \leq\abs{x_n-x}+\abs{x_{n+k}-x}
+    <\frac{\varepsilon}{2}+\frac{\varepsilon}{2}
+    =\varepsilon.
+  \]
+\end{proof}
+
+\begin{definition}
+  A real sequence satisfying the condition in
+  \cref{thm:convergent-cauchy} is called a \emph{Cauchy sequence}.
+  Equivalently, for every \(\varepsilon>0\), there exists \(N\in\NN\)
+  such that
+  \[
+    \abs{x_p-x_q}<\varepsilon\qquad\text{whenever }p,q>N.
+  \]
+  Indeed, take \(n=\min\set{p,q}\) and \(k=\abs{p-q}\) to obtain
+  this form from the preceding one. Conversely, set \(p=n\) and
+  \(q=n+k\).
+\end{definition}
+
+\subsubsection{Nested closed intervals}
+
+\begin{lemma}[Nested interval lemma]\label{lem:nested-intervals}
+  Let \([a_n,b_n]\), \(n\geq1\), be nonempty closed intervals such that
+  \[
+    [a_{n+1},b_{n+1}]\subseteq[a_n,b_n]\qquad(n\geq1),
+    \qquad \lim_{n\to\infty}(b_n-a_n)=0.
+  \]
+  Then \(\bigcap_{n=1}^{\infty}[a_n,b_n]\) contains exactly one
+  real number.
+\end{lemma}
+
+\begin{proof}
+  The nesting gives
+  \[
+    a_n\leq a_{n+1}\leq b_{n+1}\leq b_n.
+  \]
+  Thus \((a_n)\) is increasing and \((b_n)\) is decreasing. Both
+  sequences lie in \([a_1,b_1]\), so the monotone convergence theorem
+  gives real limits
+  \[
+    a=\lim_{n\to\infty}a_n,
+    \qquad b=\lim_{n\to\infty}b_n.
+  \]
+  Since \(a_n\leq b_n\), preservation of inequalities under limits
+  yields \(a\leq b\). Monotonicity also gives
+  \(a_n\leq a\leq b\leq b_n\) for every \(n\), hence
+  \[
+    0\leq b-a\leq b_n-a_n.
+  \]
+  The right-hand side tends to zero, so \(a=b\). In particular,
+  \(a\in[a_n,b_n]\) for every \(n\), proving existence of a point
+  in the intersection.
+
+  For uniqueness, let \(y\neq a\). Since \(\abs{y-a}>0\) and
+  \(b_n-a_n\to0\), choose \(n\) with
+  \(b_n-a_n<\abs{y-a}\). If \(y\) also belonged to \([a_n,b_n]\),
+  then \(a,y\in[a_n,b_n]\) would imply
+  \(\abs{y-a}\leq b_n-a_n\), a contradiction. Therefore \(y\)
+  does not belong to the intersection, and
+  \[
+    \bigcap_{n=1}^{\infty}[a_n,b_n]=\set{a}.
+  \]
+\end{proof}
+
+\subsubsection{Cauchy's convergence criterion}
+
+\begin{theorem}[Cauchy's convergence criterion]
+  A real sequence \((x_n)\) converges if and only if it is a Cauchy
+  sequence: for every \(\varepsilon>0\), there exists \(N\in\NN\)
+  such that
+  \[
+    \abs{x_n-x_{n+k}}<\varepsilon
+    \qquad\text{for all }n>N\text{ and }k\in\NN.
+  \]
+\end{theorem}
+
+\begin{proof}
+  Necessity was proved in \cref{thm:convergent-cauchy}. Conversely,
+  suppose that \((x_n)\) satisfies the Cauchy condition.
+
+  \paragraph{Step 1: boundedness.}
+  Apply the condition with \(\varepsilon=1\), and choose a corresponding
+  \(N_0\in\NN\). For every \(m\geq N_0+1\), take
+  \(n=N_0+1\) and \(k=m-(N_0+1)\). Then
+  \[
+    \abs{x_m-x_{N_0+1}}<1,
+    \qquad \abs{x_m}<\abs{x_{N_0+1}}+1.
+  \]
+  The finitely many earlier terms are bounded as well. In particular,
+  \[
+    C=\max\bigl\{\abs{x_0},\ldots,\abs{x_{N_0}},
+    \abs{x_{N_0+1}}+1\bigr\}
+  \]
+  satisfies \(\abs{x_m}\leq C\) for every \(m\in\NN\).
+
+  \paragraph{Step 2: nested intervals from the tails.}
+  Define, for \(n\geq1\),
+  \[
+    p_n=\inf\set{x_m:m\geq n},
+    \qquad s_n=\sup\set{x_m:m\geq n}.
+  \]
+  Each tail is nonempty and bounded, so its infimum and supremum
+  exist in \(\RR\). As the tails shrink, their infima increase and
+  their suprema decrease:
+  \[
+    p_n\leq p_{n+1}\leq s_{n+1}\leq s_n.
+  \]
+  Consequently, the nonempty closed intervals \([p_n,s_n]\) are nested.
+
+  \paragraph{Step 3: the interval lengths tend to zero.}
+  Let \(\varepsilon>0\). By the Cauchy condition, choose \(N\)
+  so that \(\abs{x_r-x_t}<\varepsilon/3\) whenever \(r,t>N\).
+  Fix \(n>N\). By the approximation properties of the supremum
+  and infimum, there are indices \(r,t\geq n\) such that
+  \[
+    0\leq s_n-x_r<\frac{\varepsilon}{3},
+    \qquad 0\leq x_t-p_n<\frac{\varepsilon}{3}.
+  \]
+  Since \(r,t>N\), we obtain
+  \begin{align*}
+    0\leq s_n-p_n
+    &\leq\abs{s_n-x_r}+\abs{x_r-x_t}+\abs{x_t-p_n}\\
+    &<\frac{\varepsilon}{3}+\frac{\varepsilon}{3}
+    +\frac{\varepsilon}{3}=\varepsilon.
+  \end{align*}
+  Hence \(s_n-p_n\to0\).
+
+  \paragraph{Step 4: convergence to the common point.}
+  By \cref{lem:nested-intervals}, there is exactly one \(x\in\RR\)
+  such that
+  \[
+    \bigcap_{n=1}^{\infty}[p_n,s_n]=\set{x}.
+  \]
+  Given \(\varepsilon>0\), choose \(n\) with
+  \(s_n-p_n<\varepsilon\). For every \(m\geq n\), both
+  \(x\) and \(x_m\) belong to \([p_n,s_n]\), so
+  \[
+    \abs{x_m-x}\leq s_n-p_n<\varepsilon.
+  \]
+  This proves \(x_m\to x\), completing the sufficiency direction.
+\end{proof}
+
 \end{document}
