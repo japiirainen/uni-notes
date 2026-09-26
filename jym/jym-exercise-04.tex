@@ -285,7 +285,10 @@ Onko kahden numeroituvan joukon karteesinen tulo numeroituva? Perustele.
 \end{exercise}
 
 \begin{solution}
-Olkoot \(A\) ja \(B\) numeroituvia joukkoja ja \(C = A \times B\). Joukon
+Olkoot \(A\) ja \(B\) numeroituvia joukkoja ja \(C = A \times B\).
+Jos \(A = \emptyset\) tai \(B = \emptyset\), niin myös
+\(C = \emptyset\), joten \(C\) on numeroituva. Oletetaan siis, että
+\(A\) ja \(B\) ovat epätyhjiä. Joukon
 \(C\) alkiot ovat muotoa \((a, b)\), missä \(a \in A\) ja \(b \in
 B\). Kiinnitetään \(a \in A\). Olkoon
 \[
@@ -303,10 +306,16 @@ S = \bigcup_{a \in A} E_a,
 \]
 niin \(S = C\). Osoitetaan, että \(S\) on numeroituva.
 
-Kirjoitetaan \(A = \{a_1, a_2, \ldots\}\) ja
-\(B = \{b_1, b_2, \ldots\}\), missä kukin alkio esiintyy täsmälleen kerran.
-Merkitään \(x_{ij} = (a_i, b_j)\), kun \(i, j \geq 1\). Tällöin
-\(E_{a_i} = \{x_{i1}, x_{i2}, \ldots\}\), ja joukot voidaan järjestää riveiksi:
+Kirjoitetaan \(A = \{a_i \colon i \in I\}\) ja
+\(B = \{b_j \colon j \in J\}\), missä kukin alkio esiintyy täsmälleen kerran.
+Jos \(A\) on äärellinen ja siinä on \(m\) alkiota, valitaan
+\(I = \{1, \ldots, m\}\); muuten \(I = \{1, 2, \ldots\}\).
+Vastaavasti \(J = \{1, \ldots, n\}\), jos \(B\):ssä on \(n\) alkiota,
+ja muuten \(J = \{1, 2, \ldots\}\).
+Merkitään \(x_{ij} = (a_i, b_j)\), kun \(i \in I\) ja \(j \in J\).
+Tällöin \(E_{a_i} = \{x_{ij} \colon j \in J\}\).
+Joukot voidaan järjestää riveiksi alla olevan kuvion tapaan.
+Äärellisessä tapauksessa rivejä tai sarakkeita on vain äärellinen määrä.
 \begin{samepage}
 \begin{center}
 \begin{tikzpicture}[
@@ -322,12 +331,19 @@ draw=black, line width=0.5pt}
 \node[fill=white, inner sep=1pt] at (\j, 1-\i) {\(x_{\i\j}\)};
 \node at (4.7, 1-\i) {\(\cdots\)};
 }
-\draw[densely dotted, line width=0.6pt]
-(0.8, -3.65) -- (4.95, -3.65);
+\foreach \j in {1,...,4}
+\node at (\j, -3.8) {\(\vdots\)};
+\node at (4.7, -3.8) {\(\ddots\)};
 \end{tikzpicture}
 \end{center}
-Luetellaan alkiot diagonaaleittain indeksisumman \(i+j\) kasvaessa.
-Kukin diagonaali luetaan alhaalta vasemmalta ylös oikealle:
+Samaan diagonaaliin kuuluvat ne alkiot \(x_{ij}\), joiden indeksisumma
+\(i+j\) on sama. Esimerkiksi indeksisummaa \(4\) vastaavalla diagonaalilla
+ovat \(x_{31}, x_{22}, x_{13}\), jos kyseiset indeksit kuuluvat joukkoihin
+\(I\) ja \(J\). Luetellaan alkiot diagonaaleittain indeksisumman
+\(i+j = 2, 3, 4, \ldots\) mukaisessa järjestyksessä.
+Kukin diagonaali luetaan alhaalta vasemmalta ylös oikealle.
+Seuraavasta luettelosta jätetään pois ne \(x_{ij}\), joille
+\(i \notin I\) tai \(j \notin J\):
 \[
 x_{11},\quad
 x_{21},\ x_{12},\quad
@@ -337,10 +353,14 @@ x_{41},\ x_{32},\ x_{23},\ x_{14},\quad \ldots
 \end{samepage}
 Koska joukot \(A\) ja \(B\) on lueteltu ilman toistoja, yhtälöstä
 \(x_{ij} = x_{k\ell}\) seuraa \(i = k\) ja \(j = \ell\).
-Jokainen \(x_{ij}\) esiintyy täsmälleen kerran, diagonaalilla \(i+j\).
+Jokainen \(x_{ij}\) esiintyy täsmälleen kerran sillä diagonaalilla,
+jonka indeksisumma on \(i+j\).
 Ennen sitä on vain äärellisen monta diagonaalia, joista jokainen on
 äärellinen. Näin jokainen joukon \(S\) alkio tulee luetelluksi äärellisen
-monen askeleen jälkeen. Saatu jono luettelee siis joukon \(S = A \times B\)
+monen askeleen jälkeen. Jos molemmat joukot ovat äärellisiä, luettelo
+päättyy diagonaaliin, jonka indeksisumma on \(m+n\), ja sisältää
+\(mn\) alkiota. Muuten luettelo
+on ääretön. Kummassakin tapauksessa se luettelee joukon \(S = A \times B\)
 kaikki alkiot ilman toistoja, joten \(A \times B\) on numeroituva.
 
 \end{solution}
