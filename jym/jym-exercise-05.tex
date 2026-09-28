@@ -119,4 +119,27 @@ kompleksiluku \(a\), jolla \(a \cdot z = z \cdot a = z\) kaikilla
 \(z \in \CC\)?
 \end{exercise}
 
+\begin{solution}
+Olkoot \(z = a + bi\) ja \(w = c + di\) mielivaltaisia kompleksilukuja,
+missä \(a, b, c, d \in \RR\). Kertolaskun määritelmän sekä reaalilukujen
+yhteen- ja kertolaskun vaihdannaisuuden perusteella
+\[
+\begin{aligned}
+z \cdot w &= (a + bi)(c + di) \\
+&= (ac - bd) + (ad + bc)i \\
+&= (ca - db) + (cb + da)i \\
+&= (c + di)(a + bi) = w \cdot z.
+\end{aligned}
+\]
+Siis kompleksilukujen kertolasku on vaihdannainen.
+
+Kertolaskun \emph{neutraalialkio} on \(1 = 1 + 0i\), eli parina
+\((1, 0)\). Nimittäin jokaisella \(z = a + bi \in \CC\) pätee
+\[
+(1 + 0i)z = (1 \cdot a - 0 \cdot b) + (1 \cdot b + 0 \cdot a)i
+= a + bi = z.
+\]
+Juuri todistetun vaihdannaisuuden nojalla myös \(z(1 + 0i) = z\).
+\end{solution}
+
 \end{document}
