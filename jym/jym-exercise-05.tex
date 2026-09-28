@@ -35,6 +35,41 @@ Käytä apuna Vennin kaavioita.
 Yleistä summaperiaate \(n\) joukolle ja todista se induktiolla.
 \end{exercise}
 
+\begin{solution}
+\textbf{Väite.} Olkoon \(n \geq 1\) kokonaisluku ja olkoot
+\(A_1, \ldots, A_n\) pareittain erillisiä äärellisiä joukkoja, eli
+\(A_i \cap A_j = \emptyset\), kun \(1 \leq i,j \leq n\) ja \(i \neq j\).
+Tällöin
+\[
+  \abs{A_1 \cup \cdots \cup A_n} = \abs{A_1} + \cdots + \abs{A_n}.
+\]
+\textbf{Todistus.} Edetään induktiolla \(n\):n suhteen.
+Kun \(n = 1\), väite on yhtälö \(\abs{A_1} = \abs{A_1}\), joten se pätee.
+
+Oletetaan, että väite pätee jollakin \(n \geq 1\) kaikille \(n\):n
+pareittain erillisen äärellisen joukon kokoelmille. Olkoot
+\(A_1, \ldots, A_{n+1}\) pareittain erillisiä äärellisiä joukkoja.
+Merkitään \(B = A_1 \cup \cdots \cup A_n\). Joukko \(B\) on äärellinen,
+ja pareittaisen erillisyyden nojalla
+\[
+  B \cap A_{n+1}
+  = \bigcup_{i=1}^{n}(A_i \cap A_{n+1})
+  = \emptyset.
+\]
+Voimme siis soveltaa kahden joukon summaperiaatetta joukkoihin
+\(B\) ja \(A_{n+1}\). Sen ja induktio-oletuksen perusteella
+\[
+  \begin{aligned}
+    \abs{A_1 \cup \cdots \cup A_{n+1}}
+    &= \abs{B \cup A_{n+1}} \\
+    &= \abs{B} + \abs{A_{n+1}} \\
+    &= \abs{A_1} + \cdots + \abs{A_n} + \abs{A_{n+1}}.
+  \end{aligned}
+\]
+Väite pätee siis myös \(n+1\) joukolle. Induktioperiaatteen nojalla
+se pätee kaikilla kokonaisluvuilla \(n \geq 1\).
+\end{solution}
+
 \begin{exercise}
 Kuinka monessa \(n\) bitin jonossa on
 \begin{enumerate}[label=\alph*), nosep]
