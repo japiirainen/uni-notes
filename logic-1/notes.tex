@@ -2,6 +2,7 @@
 \documentclass[11pt,a4paper]{amsart}
 
 \input{../preamble.tex}
+\usepackage{proof}
 
 \title{Introduction to Logic I}
 \author{Joona Piirainen}
@@ -923,5 +924,269 @@ encode it as a clause set, and derive \(\emptyset\).
   satisfying \(\mathcal C\) must satisfy \(\emptyset\). Since the empty
   clause is always false, no such assignment exists.
 \end{proof}
+
+\subsection{28.09.2026}
+
+\subsubsection{Natural deduction and assumptions}
+
+Natural deduction gives introduction and elimination rules for each logical
+connective. An introduction rule tells us how to prove a formula with that
+connective; an elimination rule tells us what we can infer from such a
+formula. Each rule has one to three premises and exactly one conclusion.
+Proofs are drawn as trees, with premises above a horizontal line and the
+conclusion below it.
+
+\begin{definition}[Derivability]
+  Let \(\Gamma\) be a set of propositional formulas. We write
+  \[
+    \Gamma\vdash A
+  \]
+  if there is a natural deduction proof of \(A\) whose undischarged
+  assumptions all belong to \(\Gamma\). We write \(\vdash A\) for
+  \(\emptyset\vdash A\): a proof with no undischarged assumptions.
+\end{definition}
+
+An assumption may be used more than once. Some rules introduce a temporary
+assumption and later \emph{discharge} it. We mark the relevant occurrences
+as \([A]^i\) and put the same label \(i\) beside the rule that discharges
+them. Below that rule, these occurrences are no longer open assumptions.
+Other assumptions remain open. The notation
+\[
+  \begin{array}{c}[A]^i\\\vdots\\B
+  \end{array}
+\]
+stands for a derivation of \(B\) under the temporary assumption \(A\),
+possibly together with other open assumptions. A derivation may consist of
+just an assumption, with no inference steps.
+
+We retain the lecture's labels: \(\mathrm T\) means introduction
+(Finnish \emph{tuonti}) and \(\mathrm E\) means elimination.
+
+\subsubsection{Conjunction}
+
+\paragraph{Introduction.} From proofs of both conjuncts, infer their
+conjunction:
+\[
+  \infer[\land\mathrm T]{A\land B}{A & B}.
+\]
+\paragraph{Elimination.} From a conjunction, infer either conjunct:
+\[
+  \infer[\land\mathrm E]{A}{A\land B}
+  \qquad\qquad
+  \infer[\land\mathrm E]{B}{A\land B}.
+\]
+
+\begin{example}[Commutativity of conjunction]
+  We prove \(\{A\land B\}\vdash B\land A\):
+  \[
+    \infer[\land\mathrm T]{B\land A}{
+      \infer[\land\mathrm E]{B}{A\land B}
+    & \infer[\land\mathrm E]{A}{A\land B}}
+  \]
+  Both leaves use the same open assumption \(A\land B\).
+\end{example}
+
+\subsubsection{Disjunction introduction}
+
+From either disjunct, infer the disjunction:
+\[
+  \infer[\lor\mathrm T]{A\lor B}{A}
+  \qquad\qquad
+  \infer[\lor\mathrm T]{A\lor B}{B}.
+\]
+
+\begin{example}[From a conjunction to a disjunction]
+  There are two proofs of \(\{A\land B\}\vdash A\lor B\):
+  \[
+    \infer[\lor\mathrm T]{A\lor B}{
+    \infer[\land\mathrm E]{A}{A\land B}}
+    \qquad\text{or}\qquad
+    \infer[\lor\mathrm T]{A\lor B}{
+    \infer[\land\mathrm E]{B}{A\land B}}.
+  \]
+\end{example}
+
+\subsubsection{Implication elimination}
+
+Implication elimination is \emph{modus ponens}: from \(A\to B\) and \(A\),
+infer \(B\).
+\[
+  \infer[\to\mathrm E]{B}{A\to B & A}.
+\]
+
+\begin{example}[Two applications of modus ponens]
+  We prove \(\{A\land B,\ A\to(B\to C)\}\vdash C\):
+  \[
+    \infer[\to\mathrm E]{C}{
+      \infer[\to\mathrm E]{B\to C}{
+        A\to(B\to C)
+      & \infer[\land\mathrm E]{A}{A\land B}}
+    & \infer[\land\mathrm E]{B}{A\land B}}
+  \]
+  First extract \(A\) and \(B\) from the conjunction. Apply modus ponens
+  with \(A\) to obtain \(B\to C\), and then with \(B\) to obtain \(C\).
+\end{example}
+
+\subsubsection{Equivalence and negation elimination}
+
+\paragraph{Equivalence elimination.} An equivalence can be used in
+either direction:
+\[
+  \infer[\leftrightarrow\mathrm E]{B}{A\leftrightarrow B & A}
+  \qquad\qquad
+  \infer[\leftrightarrow\mathrm E]{A}{A\leftrightarrow B & B}.
+\]
+
+\paragraph{Negation elimination.} The lecture uses double negation elimination:
+\[
+  \infer[\neg\mathrm E]{A}{\neg\neg A}.
+\]
+This is a classical rule: a proof of \(\neg\neg A\) allows us to conclude
+\(A\).
+
+\subsubsection{Disjunction elimination: proof by cases}
+
+Suppose that \(A\lor B\) has been proved. If we can derive the same
+conclusion \(C\) under the assumption \(A\) and under the assumption
+\(B\), we may conclude \(C\) and discharge the two case assumptions:
+\[
+  \infer[\lor\mathrm E,\,i,j]{C}{
+    A\lor B
+    &
+    \begin{array}{c}[A]^i\\\vdots\\C
+    \end{array}
+    &
+    \begin{array}{c}[B]^j\\\vdots\\C
+  \end{array}}.
+\]
+The two cases are separate subproofs. An assumption made only in one case
+cannot be used in the other case. Any other open assumptions in the
+subproofs remain open after this rule.
+
+\begin{example}[A common conjunct in both cases]
+  We prove \(\{(A\land C)\lor(B\land C)\}\vdash C\):
+  \[
+    \infer[\lor\mathrm E,\,1,2]{C}{
+      (A\land C)\lor(B\land C)
+      & \infer[\land\mathrm E]{C}{[A\land C]^1}
+    & \infer[\land\mathrm E]{C}{[B\land C]^2}}
+  \]
+  In either case, conjunction elimination gives \(C\). The case
+  assumptions are discharged; the original disjunction remains open.
+\end{example}
+
+\begin{example}[Commutativity of disjunction]
+  We prove \(\{A\lor B\}\vdash B\lor A\):
+  \[
+    \infer[\lor\mathrm E,\,1,2]{B\lor A}{
+      A\lor B
+      & \infer[\lor\mathrm T]{B\lor A}{[A]^1}
+    & \infer[\lor\mathrm T]{B\lor A}{[B]^2}}
+  \]
+\end{example}
+
+\begin{example}[Repeated disjuncts]
+  We prove \(\{A\lor A\}\vdash A\):
+  \[
+    \infer[\lor\mathrm E,\,1,2]{A}{A\lor A & [A]^1 & [A]^2}
+  \]
+  Each case already has \(A\) as its assumption, so no inference is needed
+  within either case.
+\end{example}
+
+\subsubsection{Implication introduction}
+
+To prove \(A\to B\), assume \(A\), derive \(B\), and discharge the
+assumption \(A\):
+\[
+  \infer[\to\mathrm T,\,i]{A\to B}{
+    \begin{array}{c}[A]^i\\\vdots\\B
+  \end{array}}.
+\]
+The derivation of \(B\) may also use other assumptions; these remain open.
+It is permitted that the temporary assumption is never used, in which
+case the discharge is called \emph{vacuous}.
+
+\begin{example}[Introducing a disjunct in the consequent]
+  We prove \(\emptyset\vdash A\to(A\lor B)\):
+  \[
+    \infer[\to\mathrm T,\,1]{A\to(A\lor B)}{
+    \infer[\lor\mathrm T]{A\lor B}{[A]^1}}
+  \]
+  Discharging \(A\) leaves no open assumptions.
+\end{example}
+
+\begin{example}[An unused temporary assumption]
+  We prove \(\{A\}\vdash B\to A\):
+  \[
+    \infer[\to\mathrm T]{B\to A}{A}
+  \]
+  The conclusion \(A\) is already available as an open assumption, so the
+  temporary assumption \(B\) need not be used. Its discharge is vacuous;
+  the assumption \(A\) remains open.
+\end{example}
+
+\begin{example}[Identity]
+  We prove \(\vdash A\to A\):
+  \[
+    \infer[\to\mathrm T,\,1]{A\to A}{[A]^1}
+  \]
+  The one-formula derivation of \(A\) from itself suffices. Discharging it
+  leaves no open assumptions.
+\end{example}
+
+\subsubsection{Equivalence introduction}
+
+To prove \(A\leftrightarrow B\), derive \(B\) assuming \(A\), and derive
+\(A\) assuming \(B\). Discharge both temporary assumptions:
+\[
+  \infer[\leftrightarrow\mathrm T,\,i,j]{A\leftrightarrow B}{
+    \begin{array}{c}[A]^i\\\vdots\\B
+    \end{array}
+    &
+    \begin{array}{c}[B]^j\\\vdots\\A
+  \end{array}}.
+\]
+
+\begin{example}[Additional example: equivalence introduction]
+  We prove \(\vdash (A\land B)\leftrightarrow(B\land A)\).
+  Each direction uses conjunction elimination followed by introduction:
+  \[
+    \infer[\leftrightarrow\mathrm T,\,1,2]
+    {(A\land B)\leftrightarrow(B\land A)}{
+      \infer[\land\mathrm T]{B\land A}{
+        \infer[\land\mathrm E]{B}{[A\land B]^1}
+      & \infer[\land\mathrm E]{A}{[A\land B]^1}}
+      & \infer[\land\mathrm T]{A\land B}{
+        \infer[\land\mathrm E]{A}{[B\land A]^2}
+    & \infer[\land\mathrm E]{B}{[B\land A]^2}}}
+  \]
+  The final rule discharges both occurrences labelled \(1\) and both
+  occurrences labelled \(2\). There are no open assumptions.
+\end{example}
+
+\subsubsection{Negation introduction}
+
+To prove \(\neg A\), assume \(A\) and derive a contradiction
+\(B\land\neg B\). Then discharge the assumption \(A\):
+\[
+  \infer[\neg\mathrm T,\,i]{\neg A}{
+    \begin{array}{c}[A]^i\\\vdots\\B\land\neg B
+  \end{array}}.
+\]
+The formula \(B\) can be any formula; it need not be the same as \(A\).
+
+\begin{example}[Additional example: negation introduction (modus tollens)]
+  We prove \(\{A\to B,\ \neg B\}\vdash\neg A\). Assume \(A\).
+  Modus ponens gives \(B\), which contradicts the premise \(\neg B\):
+  \[
+    \infer[\neg\mathrm T,\,1]{\neg A}{
+      \infer[\land\mathrm T]{B\land\neg B}{
+        \infer[\to\mathrm E]{B}{A\to B & [A]^1}
+    & \neg B}}
+  \]
+  Only \(A\) is discharged. The premises \(A\to B\) and \(\neg B\)
+  remain open.
+\end{example}
 
 \end{document}
