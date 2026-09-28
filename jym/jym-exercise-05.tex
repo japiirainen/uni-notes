@@ -31,6 +31,33 @@
 Käytä apuna Vennin kaavioita.
 \end{exercise}
 
+\begin{solution}
+Merkitään
+\[
+  \begin{aligned}
+    X &= \text{Perusjoukko, eli joukko joka koostuu kaikista 150 henkilöstä,} \\
+    U &= \text{Uintia harrastavat henkilöt,} \\
+    P &= \text{Pyöräilyä harrastavat henkilöt,} \\
+    J &= \text{Juoksua harrastavat henkilöt.}
+  \end{aligned}
+\]
+Tiedetään, että
+\[
+  \begin{aligned}
+    \abs{X} &= 150, \\
+    \abs{U} &= 45, \\
+    \abs{P} &= 40, \\
+    \abs{J} &= 50, \\
+    \abs{J \setminus P} &= 32, \\
+    \abs{J \cap U} &= 27, \\
+    \abs{U \cap P \cap J} &= 10.
+  \end{aligned}
+\]
+\begin{enumerate}[label=\alph*), nosep]
+\item Halutaan selvittää \(\abs{J \setminus{(U \cup P)}}\).
+\end{enumerate}
+\end{solution}
+
 \begin{exercise}
 Yleistä summaperiaate \(n\) joukolle ja todista se induktiolla.
 \end{exercise}
@@ -41,7 +68,7 @@ Yleistä summaperiaate \(n\) joukolle ja todista se induktiolla.
 \(A_i \cap A_j = \emptyset\), kun \(1 \leq i,j \leq n\) ja \(i \neq j\).
 Tällöin
 \[
-  \abs{A_1 \cup \cdots \cup A_n} = \abs{A_1} + \cdots + \abs{A_n}.
+\abs{A_1 \cup \cdots \cup A_n} = \abs{A_1} + \cdots + \abs{A_n}.
 \]
 \textbf{Todistus.} Edetään induktiolla \(n\):n suhteen.
 Kun \(n = 1\), väite on yhtälö \(\abs{A_1} = \abs{A_1}\), joten se pätee.
@@ -52,19 +79,19 @@ pareittain erillisen äärellisen joukon kokoelmille. Olkoot
 Merkitään \(B = A_1 \cup \cdots \cup A_n\). Joukko \(B\) on äärellinen,
 ja pareittaisen erillisyyden nojalla
 \[
-  B \cap A_{n+1}
-  = \bigcup_{i=1}^{n}(A_i \cap A_{n+1})
-  = \emptyset.
+B \cap A_{n+1}
+= \bigcup_{i=1}^{n}(A_i \cap A_{n+1})
+= \emptyset.
 \]
 Voimme siis soveltaa kahden joukon summaperiaatetta joukkoihin
 \(B\) ja \(A_{n+1}\). Sen ja induktio-oletuksen perusteella
 \[
-  \begin{aligned}
-    \abs{A_1 \cup \cdots \cup A_{n+1}}
-    &= \abs{B \cup A_{n+1}} \\
-    &= \abs{B} + \abs{A_{n+1}} \\
-    &= \abs{A_1} + \cdots + \abs{A_n} + \abs{A_{n+1}}.
-  \end{aligned}
+\begin{aligned}
+  \abs{A_1 \cup \cdots \cup A_{n+1}}
+  &= \abs{B \cup A_{n+1}} \\
+  &= \abs{B} + \abs{A_{n+1}} \\
+  &= \abs{A_1} + \cdots + \abs{A_n} + \abs{A_{n+1}}.
+\end{aligned}
 \]
 Väite pätee siis myös \(n+1\) joukolle. Induktioperiaatteen nojalla
 se pätee kaikilla kokonaisluvuilla \(n \geq 1\).
@@ -101,8 +128,8 @@ kompleksitason pisteet koordinaatistoon.
 \item Lukujen \(z\) ja \(w\) summa ja erotus ovat
 \[
 \begin{aligned}
-  z + w &= (2 - 3i) + (4 + i) = (2 + 4) + (-3 + 1)i = 6 - 2i, \\
-  z - w &= (2 - 3i) - (4 + i) = (2 - 4) + (-3 - 1)i = -2 - 4i.
+z + w &= (2 - 3i) + (4 + i) = (2 + 4) + (-3 + 1)i = 6 - 2i, \\
+z - w &= (2 - 3i) - (4 + i) = (2 - 4) + (-3 - 1)i = -2 - 4i.
 \end{aligned}
 \]
 \item Luvun \(z\) itseisarvo eli moduli on
