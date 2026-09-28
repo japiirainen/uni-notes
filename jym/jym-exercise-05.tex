@@ -3,6 +3,8 @@
 
 \newcommand{\notelanguage}{finnish}
 \input{../preamble.tex}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
 
 \title{Johdatus yliopistomatematiikkaan\\Harjoituksen 5 ratkaisut}
 \date{}
@@ -53,6 +55,61 @@ Tarkastellaan kompleksilukuja \(z = (2, -3)\) ja \(w = (4, 1)\).
 Esitä määrittämäsi kompleksiluvut piirtämällä niitä vastaavat
 kompleksitason pisteet koordinaatistoon.
 \end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item \(z = 2 - 3i\), \(w = 4 + i\).
+\item Luvun \(z\) liittoluku on \(\overline{z} = \overline{2
+- 3i} = 2 + 3i\).
+\item Luvun \(w\) vastaluku on \(-w = -(4 + i) = -4 - i\).
+\item Lukujen \(z\) ja \(w\) summa ja erotus ovat
+\[
+\begin{aligned}
+  z + w &= (2 - 3i) + (4 + i) = (2 + 4) + (-3 + 1)i = 6 - 2i, \\
+  z - w &= (2 - 3i) - (4 + i) = (2 - 4) + (-3 - 1)i = -2 - 4i.
+\end{aligned}
+\]
+\item Luvun \(z\) itseisarvo eli moduli on
+\[
+\abs{z} = \sqrt{2^2 + (-3)^2} = \sqrt{4 + 9} = \sqrt{13}.
+\]
+\end{enumerate}
+\begin{center}
+\begin{tikzpicture}[
+x=0.85cm, y=0.85cm,
+point/.style={circle, fill=black, inner sep=1.7pt},
+every node/.style={font=\small},
+value/.style={inner sep=5pt}
+]
+\draw[-{Stealth[length=2mm]}] (-5.2,0) -- (7.4,0)
+node[right] {\(\operatorname{Re}\)};
+\draw[-{Stealth[length=2mm]}] (0,-5.2) -- (0,4.4)
+node[above] {\(\operatorname{Im}\)};
+\foreach \x in {-5,-4,-3,-2,-1,1,2,3,4,5,6,7}
+\draw (\x,0.07) -- (\x,-0.07) node[below, font=\scriptsize] {\(\x\)};
+\foreach \y in {-5,-4,-3,-2,-1,1,2,3,4}
+\draw (0.07,\y) -- (-0.07,\y) node[left, font=\scriptsize] {\(\y\)};
+\node[below left, font=\scriptsize] at (0,0) {\(0\)};
+
+\draw[thin, dashed] (0,0) -- (2,-3);
+\node[point] at (2,-3) {};
+\node[value, right] at (2,-3) {\(z\)};
+\node[point] at (4,1) {};
+\node[value, above right] at (4,1) {\(w\)};
+\node[point] at (2,3) {};
+\node[value, above right] at (2,3) {\(\overline{z}\)};
+\node[point] at (-4,-1) {};
+\node[value, below left] at (-4,-1) {\(-w\)};
+\node[point] at (6,-2) {};
+\node[value, above right] at (6,-2) {\(z+w\)};
+\node[point] at (-2,-4) {};
+\node[value, below left] at (-2,-4) {\(z-w\)};
+\end{tikzpicture}
+
+\small Katkoviivan pituus on \(\abs{z}=\sqrt{13}\).
+\end{center}
+\end{solution}
 
 \begin{exercise}
 Osoita, että kompleksilukujen kertolasku on \emph{vaihdannainen} eli
