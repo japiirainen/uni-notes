@@ -1113,4 +1113,326 @@ functions between nonempty sets and allows us to include all subsets below.
   Thus \(\sim\) is an equivalence relation on \(\powerset{X}\).
 \end{proof}
 
+\subsection{28.09.2026}
+
+\subsubsection{Finite and countable sets}
+
+We continue the discussion of cardinality. Throughout, \(\NN=\{0,1,2,\ldots\}\).
+For \(n\in\NN\), write \([n]=\{1,\ldots,n\}\), with
+\([0]=\emptyset\).
+
+\begin{definition}
+  A set \(A\) is \emph{finite} if there is a bijection \([n]\to A\)
+  for some \(n\in\NN\). Otherwise it is \emph{infinite}.
+  A set is \emph{countable} if it is finite or countably infinite, and
+  \emph{uncountable} if it is not countable.
+\end{definition}
+
+\begin{remark}
+  In today's lecture, the Finnish term \emph{numeroituva} includes finite
+  sets. This is the meaning of ``countable'' used here; ``countably
+  infinite'' continues to mean equinumerous with \(\NN\).
+\end{remark}
+
+\begin{theorem}
+  The rational numbers are countably infinite: \(\QQ\sim\NN\).
+\end{theorem}
+
+\begin{proof}
+  First list the positive rational numbers in the array
+  \[
+    \begin{array}{ccccc}
+      1/1 & 2/1 & 3/1 & 4/1 & \cdots \\
+      1/2 & 2/2 & 3/2 & 4/2 & \cdots \\
+      1/3 & 2/3 & 3/3 & 4/3 & \cdots \\
+      \vdots & \vdots & \vdots & \vdots & \ddots
+    \end{array}
+  \]
+  Visit the entries \(p/q\), where \(p,q\geq1\), in increasing order of
+  \(p+q\), and within each diagonal in increasing order of \(p\).
+  Each diagonal has finitely many entries, so each pair \((p,q)\) is
+  visited after finitely many steps. Keep an entry only if its rational
+  value has not already appeared. Every positive rational has a
+  representation \(p/q\), so it appears in the resulting list, and no
+  value appears twice. The list is infinite because it contains every
+  positive integer. Denote it by \(q_1,q_2,q_3,\ldots\).
+
+  Define \(f\colon\NN\to\QQ\) by
+  \[
+    f(0)=0,\qquad f(2n-1)=q_n,\qquad f(2n)=-q_n
+    \quad(n\geq1).
+  \]
+  Every rational number is zero, positive, or negative, so \(f\) is
+  surjective. The positive values are distinct, as are the negative
+  values, and values from different sign classes cannot be equal.
+  Thus \(f\) is injective as well, proving the claim.
+\end{proof}
+
+\subsubsection{Uncountability of the real numbers}
+
+\begin{theorem}[Cantor's diagonal argument]
+  The interval \([0,1]\), and consequently \(\RR\), is uncountable.
+\end{theorem}
+
+\begin{proof}
+  Suppose first that \([0,1]\) is countable. It is infinite, since it
+  contains the distinct numbers \(1,1/2,1/3,\ldots\). Hence we could
+  list all its elements as \(x_1,x_2,x_3,\ldots\).
+
+  For each \(x_n<1\), choose its decimal expansion that is not
+  eventually all \(9\)'s; use trailing zeros for terminating decimals.
+  Represent \(1\) by \(1.000\ldots\). Write
+  \[
+    x_n=a_n.d_{n1}d_{n2}d_{n3}\ldots,
+    \qquad d_{nj}\in\{0,1,\ldots,9\},
+  \]
+  where \(a_n\) is the integer part. Define
+  \[
+    b_n=
+    \begin{cases}
+      2,&d_{nn}=1,\\
+      1,&d_{nn}\neq1,
+    \end{cases}
+    \qquad y=\sum_{n=1}^{\infty}b_n10^{-n}=0.b_1b_2b_3\ldots.
+  \]
+  Since \(1\leq b_n\leq2\), the geometric series gives
+  \(1/9\leq y\leq2/9\), so \(y\in[0,1]\).
+
+  We check that the decimal comparison is valid even for numbers with
+  two decimal representations. Fix \(n\). If \(x_n=1\), then
+  \(x_n\neq y\). Otherwise, the decimal digits of \(x_n\) and \(y\)
+  differ at position \(n\), so they have a first differing position
+  \(k\leq n\). The difference at position \(k\) has absolute value
+  at least \(10^{-k}\), while the difference of the remaining tails
+  has absolute value at most
+  \[
+    \sum_{j>k}9\cdot10^{-j}=10^{-k}.
+  \]
+  Equality in this tail bound would require every later pair of digits
+  to differ by \(9\), which is impossible because every digit of
+  \(y\) is \(1\) or \(2\). The first difference therefore cannot be
+  cancelled by the tail. Thus \(y\neq x_n\) for every \(n\), contrary
+  to the assumption that the list contains all of \([0,1]\).
+
+  Finally, suppose \(\RR\) were countable. It is infinite, so it would
+  have a listing without repetitions. Retain just the entries in
+  \([0,1]\). Infinitely many entries remain, and every element of
+  \([0,1]\) occurs at a finite position in the original list, hence
+  also in the retained list. This would enumerate \([0,1]\), a
+  contradiction. Therefore \(\RR\) is uncountable.
+\end{proof}
+
+\subsubsection{The size of a finite set}
+
+\begin{lemma}[Pigeonhole principle]\label{lem:finite-pigeonhole}
+  If \(n,k\in\NN\) and \(k<n\), there is no injection \([n]\to[k]\).
+\end{lemma}
+
+\begin{proof}
+  We use induction on \(k\), proving the assertion for every \(n>k\).
+  For \(k=0\), no function from the nonempty set \([n]\) to the empty
+  set exists.
+
+  Suppose the assertion holds for \(k\), and let \(n>k+1\). Assume
+  there is an injection \(f\colon[n]\to[k+1]\). Set \(a=f(n)\), and
+  let \(\tau\colon[k+1]\to[k+1]\) interchange \(a\) and \(k+1\),
+  fixing all other elements. If \(a=k+1\), take \(\tau\) to be the
+  identity. In either case \(g=\tau\circ f\) is injective and
+  \(g(n)=k+1\). Injectivity implies \(g(i)\neq k+1\) for every
+  \(i\in[n-1]\). Thus the restriction of \(g\) is an injection
+  \([n-1]\to[k]\). Since \(n-1>k\), this contradicts the induction
+  hypothesis. The result follows by induction.
+\end{proof}
+
+\begin{theorem}
+  For every finite set \(A\), there is a unique \(n\in\NN\) such
+  that \([n]\sim A\).
+\end{theorem}
+
+\begin{proof}
+  Existence is the definition of finiteness. Suppose there are
+  bijections \(f\colon[n]\to A\) and \(g\colon[k]\to A\), with
+  \(n\neq k\). By interchanging the names if necessary, assume
+  \(k<n\). Then \(g^{-1}\circ f\colon[n]\to[k]\) is a bijection,
+  hence an injection, contradicting \cref{lem:finite-pigeonhole}.
+  Therefore \(n=k\).
+\end{proof}
+
+\begin{definition}
+  The unique integer above is the \emph{cardinality} (or \emph{size})
+  of the finite set \(A\), denoted by \(\abs{A}\) or \(N(A)\).
+  In particular, \(\abs{\emptyset}=0\).
+\end{definition}
+
+The following elementary fact ensures that the intersections and differences
+in our counting formulas are finite.
+
+\begin{lemma}\label{lem:finite-subsets}
+  Every subset \(S\) of a finite set \(A\) is finite, and
+  \(\abs{S}\leq\abs{A}\).
+\end{lemma}
+
+\begin{proof}
+  Choose a bijection \(f\colon[n]\to A\). Scan the indices
+  \(1,\ldots,n\) in order, retaining precisely those for which
+  \(f(i)\in S\). This finite procedure produces a list
+  \(i_1<\cdots<i_r\), where \(0\leq r\leq n\). The map
+  \(j\mapsto f(i_j)\) is a bijection \([r]\to S\): injectivity
+  follows from that of \(f\), and surjectivity follows because every
+  element of \(S\) has an index that was retained. This also covers
+  \(S=\emptyset\), using the empty list. Hence \(\abs{S}=r\leq n\).
+\end{proof}
+
+\subsubsection{Unions and the inclusion--exclusion principle}
+
+\begin{lemma}[Disjoint unions]\label{lem:disjoint-counting}
+  If \(A\) and \(B\) are finite and disjoint, then \(A\cup B\) is
+  finite and \(\abs{A\cup B}=\abs{A}+\abs{B}\).
+\end{lemma}
+
+\begin{proof}
+  Let \(m=\abs{A}\), \(n=\abs{B}\), and choose bijections
+  \(f\colon[m]\to A\) and \(g\colon[n]\to B\). Define
+  \[
+    h\colon[m+n]\to A\cup B,\qquad
+    h(i)=
+    \begin{cases}
+      f(i),&1\leq i\leq m,\\
+      g(i-m),&m<i\leq m+n.
+    \end{cases}
+  \]
+  Each branch is injective, and values from different branches lie in
+  disjoint sets, so \(h\) is injective. Every element of \(A\cup B\)
+  is reached by one of the branches, so \(h\) is surjective. Thus
+  \(h\) is a bijection and the cardinality is \(m+n\). The same
+  construction works when either set is empty.
+\end{proof}
+
+\begin{theorem}\label{thm:two-set-counting}
+  Let \(A,B\) be finite sets. Then \(A\cup B\) is finite and
+  \begin{enumerate}[label=(\alph*)]
+    \item \(\abs{A\cup B}=\abs{A}+\abs{B}-\abs{A\cap B}\);
+    \item if \(A\cap B=\emptyset\), then
+      \(\abs{A\cup B}=\abs{A}+\abs{B}\);
+    \item \(\abs{A\cup B}=\abs{A}+\abs{B\setminus A}\);
+    \item if \(A\subseteq B\), then
+      \(\abs{B}=\abs{A}+\abs{B\setminus A}\).
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  By \cref{lem:finite-subsets}, both \(B\setminus A\) and
+  \(A\cap B\) are finite. The decompositions
+  \[
+    A\cup B=A\cup(B\setminus A),\qquad
+    B=(A\cap B)\cup(B\setminus A)
+  \]
+  are disjoint unions. Applying \cref{lem:disjoint-counting} proves
+  finiteness of \(A\cup B\), part (c), and the identity
+  \[
+    \abs{B}=\abs{A\cap B}+\abs{B\setminus A}.
+  \]
+  Substitute \(\abs{B\setminus A}=\abs{B}-\abs{A\cap B}\) into
+  (c) to obtain (a). Part (b) follows from (a) and
+  \(\abs{\emptyset}=0\). If \(A\subseteq B\), then \(A\cup B=B\),
+  so (c) gives (d).
+\end{proof}
+
+\begin{theorem}[Inclusion--exclusion for three sets]
+  Let \(A,B,C\) be finite sets. Then
+  \[
+    \begin{aligned}
+      \abs{A\cup B\cup C}
+      ={}&\abs{A}+\abs{B}+\abs{C}\\
+      &-\abs{A\cap B}-\abs{A\cap C}-\abs{B\cap C}\\
+      &+\abs{A\cap B\cap C}.
+    \end{aligned}
+  \]
+\end{theorem}
+
+\begin{proof}
+  Apply \cref{thm:two-set-counting}(a) to \(A\cup B\) and \(C\):
+  \[
+    \abs{A\cup B\cup C}
+    =\abs{A\cup B}+\abs{C}-\abs{(A\cup B)\cap C}.
+  \]
+  Distributivity gives
+  \((A\cup B)\cap C=(A\cap C)\cup(B\cap C)\), so another
+  application of the same formula yields
+  \[
+    \abs{(A\cup B)\cap C}
+    =\abs{A\cap C}+\abs{B\cap C}-\abs{A\cap B\cap C}.
+  \]
+  Substituting this and
+  \(\abs{A\cup B}=\abs{A}+\abs{B}-\abs{A\cap B}\) into the first
+  equality gives the stated formula.
+\end{proof}
+
+\subsubsection{Cardinality of Cartesian products}
+
+\begin{theorem}\label{thm:finite-product-counting}
+  If \(A,B\) are finite sets, then \(A\times B\) is finite and
+  \[
+    \abs{A\times B}=\abs{A}\abs{B}.
+  \]
+\end{theorem}
+
+\begin{proof}
+  If either factor is empty, the product is empty and both sides are
+  zero. Otherwise, write \(A=\{a_1,\ldots,a_m\}\) with distinct
+  elements. Then
+  \[
+    A\times B=\bigcup_{i=1}^{m}(\{a_i\}\times B).
+  \]
+  These sets are pairwise disjoint: an ordered pair in both the
+  \(i\)th and \(j\)th sets would have first coordinate both \(a_i\)
+  and \(a_j\), forcing \(i=j\). For each \(i\), the map
+  \(B\to\{a_i\}\times B\), \(b\mapsto(a_i,b)\), is a bijection,
+  with inverse \((a_i,b)\mapsto b\). Thus each such set is finite
+  and has cardinality \(\abs{B}\).
+
+  Repeated use of \cref{lem:disjoint-counting} shows that a union of
+  finitely many pairwise disjoint finite sets is finite and its size
+  is the sum of their sizes. Formally, the assertion for one set is
+  immediate; adding the next set preserves disjointness from the
+  preceding union, so the two-set lemma proves the induction step.
+  Consequently,
+  \[
+    \abs{A\times B}
+    =\sum_{i=1}^{m}\abs{\{a_i\}\times B}
+    =m\abs{B}=\abs{A}\abs{B}.\qedhere
+  \]
+\end{proof}
+
+\begin{theorem}
+  Let \(n\geq1\), and let \(A_1,\ldots,A_n\) be finite sets.
+  Their Cartesian product is finite and
+  \[
+    \abs{A_1\times\cdots\times A_n}
+    =\prod_{i=1}^{n}\abs{A_i}.
+  \]
+\end{theorem}
+
+\begin{proof}
+  We use induction on \(n\). For \(n=1\), the identification
+  \((a_1)\mapsto a_1\) is a bijection, so the formula holds.
+  Suppose it holds for \(n\) factors. The map
+  \[
+    (a_1,\ldots,a_n,a_{n+1})
+    \longmapsto ((a_1,\ldots,a_n),a_{n+1})
+  \]
+  is a bijection from \(A_1\times\cdots\times A_{n+1}\) to
+  \((A_1\times\cdots\times A_n)\times A_{n+1}\), since its inverse
+  simply removes the inner parentheses. The first factor is finite
+  by the induction hypothesis. Hence \cref{thm:finite-product-counting}
+  and the induction hypothesis give
+  \[
+    \abs{A_1\times\cdots\times A_{n+1}}
+    =\abs{A_1\times\cdots\times A_n}\abs{A_{n+1}}
+    =\prod_{i=1}^{n+1}\abs{A_i}.
+  \]
+  This proves both finiteness and the formula by induction, including
+  cases with an empty factor.
+\end{proof}
+
 \end{document}
