@@ -12,4 +12,415 @@
 
 \exerciseheading{Johdatus logiikkaan I}{Harjoituksen 5 ratkaisut}
 
+\begin{exercise}
+  Muodosta kurssimateriaalin luvun 6.1 menetelmän avulla lausetta
+  \[
+    A = \neg p_1 \lor \neg(p_2 \rightarrow p_0)
+  \]
+  vastaava klausuulikokoelma \(\mathcal{C}_A\), joka on toteutuva, joss
+  \(A\) on toteutuva. Etsi totuusjakauma \(v\), joka toteuttaa
+  \(\mathcal{C}_A\):n ja huomaa, että \(v(A) = 1\). Etsi totuusjakauma
+  \(v'\), jolla \(v'(A) = 1\), mutta \(v'(\mathcal{C}_A) = 0\).
+\end{exercise}
+
+\begin{solution}
+  Annetaan jokaiselle alilauseelle \(D\) uusi propositiosymboli \(q_D\)
+  luvun 6.1 mukaisesti. Kokoelma \(\mathcal C_A\) koostuu taulukon
+  \(17\) klausuulista:
+  \[
+    \begin{array}{c|l}
+      \text{Symboli} & \text{Klausuulit}\\ \hline
+      q_{p_0} & \{q_{p_0},\neg p_0\},\ \{\neg q_{p_0},p_0\}\\
+      q_{p_1} & \{q_{p_1},\neg p_1\},\ \{\neg q_{p_1},p_1\}\\
+      q_{p_2} & \{q_{p_2},\neg p_2\},\ \{\neg q_{p_2},p_2\}\\
+      q_{\neg p_1} & \{q_{\neg p_1},q_{p_1}\},\ \{\neg q_{\neg
+      p_1},\neg q_{p_1}\}\\
+      q_{p_2\to p_0} & \{\neg q_{p_2\to p_0},\neg
+      q_{p_2},q_{p_0}\},\ \{q_{p_2\to p_0},q_{p_2}\},\ \{q_{p_2\to
+      p_0},\neg q_{p_0}\}\\
+      q_{\neg(p_2\to p_0)} & \{q_{\neg(p_2\to p_0)},q_{p_2\to
+      p_0}\},\ \{\neg q_{\neg(p_2\to p_0)},\neg q_{p_2\to p_0}\}\\
+      q_A & \{\neg q_A,q_{\neg p_1},q_{\neg(p_2\to p_0)}\},\\
+      & \{q_A,\neg q_{\neg p_1}\},\ \{q_A,\neg q_{\neg(p_2\to p_0)}\}\\
+      \text{Koko lauseen totuus} & \{q_A\}
+    \end{array}
+  \]
+  Valitaan \(v(p_0)=v(p_1)=v(p_2)=0\), jolloin \(v(A)=1\), koska
+  \(v(\neg p_1)=1\). Asetetaan \(v(q_D)=v(D)\):
+  \[
+    \begin{array}{c|ccccccc}
+      &q_{p_0}&q_{p_1}&q_{p_2}&q_{\neg p_1}&q_{p_2\to
+      p_0}&q_{\neg(p_2\to p_0)}&q_A\\ \hline
+      v&0&0&0&1&1&0&1
+    \end{array}
+  \]
+  Määrittelyklausuulit toteutuvat, koska \(v(q_D)=v(D)\), ja
+  \(\{q_A\}\) toteutuu, koska \(v(q_A)=1\). Siis
+  \(v(\mathcal{C}_A)=1\).
+
+  Saadaan \(v'\) vaihtamalla vain \(q_A\):n arvoksi \(0\).
+  Tällöin \(v'(A)=1\), koska alkuperäisten symbolien arvot eivät muutu,
+  mutta \(v'(\mathcal C_A)=0\), koska \(\{q_A\}\) ei toteudu.
+  Muut propositiosymbolit asetetaan molemmissa jakaumissa arvoon \(0\).
+\end{solution}
+
+\begin{solution}
+  \textbf{Luennon menetelmällä.}
+  Atomeille \(p_0,p_1,p_2\) ei anneta uusia symboleita.
+  Nimetään vain yhdistetyt alilauseet:
+  \[
+    a\leftrightarrow\neg p_1,\qquad
+    b\leftrightarrow(p_2\to p_0),\qquad
+    c\leftrightarrow\neg b,\qquad
+    d\leftrightarrow(a\lor c).
+  \]
+  Tässä \(d\) vastaa koko lausetta \(A\). Muutetaan nämä ehdot
+  klausuuleiksi ja vaaditaan lisäksi \(d\):n olevan tosi:
+  \[
+    \begin{array}{c|l}
+      \text{Ehto} & \text{Klausuulit}\\ \hline
+      a\leftrightarrow\neg p_1
+      & \{a,p_1\},\ \{\neg a,\neg p_1\}\\
+      b\leftrightarrow(p_2\to p_0)
+      & \{\neg b,\neg p_2,p_0\},\ \{b,p_2\},\ \{b,\neg p_0\}\\
+      c\leftrightarrow\neg b
+      & \{c,b\},\ \{\neg c,\neg b\}\\
+      d\leftrightarrow(a\lor c)
+      & \{\neg d,a,c\},\ \{d,\neg a\},\ \{d,\neg c\}\\
+      d & \{d\}
+    \end{array}
+  \]
+  Näin saadaan \(11\) klausuulin kokoelma \(\mathcal C_A^{\mathrm L}\):
+  edellisestä ratkaisusta poistuvat atomien kuusi klausuulia ja
+  muualla käytetään suoraan \(p_i\):tä symbolin \(q_{p_i}\) sijaan.
+
+  Valitaan
+  \[
+    v(p_0)=v(p_1)=v(p_2)=0,\qquad
+    v(a)=1,\quad v(b)=1,\quad v(c)=0,\quad v(d)=1.
+  \]
+  Kaikki klausuulit toteutuvat ja \(v(A)=1\).
+  Vaihtamalla vain \(d\):n arvoksi \(0\) saadaan jakauma \(v'\),
+  jolla edelleen \(v'(A)=1\), mutta
+  \(v'(\mathcal C_A^{\mathrm L})=0\), koska \(\{d\}\) ei toteudu.
+  Muut propositiosymbolit asetetaan molemmissa jakaumissa arvoon \(0\).
+\end{solution}
+
+\newpage
+
+\begin{exercise}
+  \leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+  \item Laske yläraja luvun 6.1 käännösmenetelmän tuottaman
+    klausuulikokoelman koolle, kun annettu propositiolause on \(n\)
+    merkkiä pitkä.
+  \item Laske yläraja totuustumenetelmällä tuotetun CNF-käännöksen
+    pituudelle, kun annettu propositiolause on \(n\) merkkiä pitkä.
+\end{enumerate}
+Ylärajoissa ei tarvitse optimoida vakiokertoimia, oleellista tässä
+tehtävässä on huomata, miten eri käännösmenetelmät \emph{skaalautuvat},
+kun \(n\) kasvaa. Mitä rajasi kertovat menetelmien käyttökelpoisuudesta
+suurilla \(n\)?
+\end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*)]
+\item Lauseessa on enintään \(n\) eri alilausetta. Kukin tuottaa
+  enintään neljä klausuulia, joissa on enintään kolme literaalia.
+  Kun lisätään \(\{q_A\}\), saadaan
+  \[
+    |\mathcal C_A|\le 4n+1=O(n).
+  \]
+  Myös kokonaispituus on siis \(O(n)\).
+
+\item Jos eri propositiosymboleita on \(k\le n\), totuustaulussa on
+  \(2^k\) riviä. Jokainen epätosi rivi tuottaa \(k\) literaalin
+  klausuulin, joten CNF-käännöksen pituus on
+  \[
+    O(k2^k)\subseteq O(n2^n).
+  \]
+\end{enumerate}
+
+Ensimmäinen käännös on kooltaan lineaarinen ja soveltuu siksi suurille
+lauseille paremmin kuin mahdollisesti eksponentiaalinen totuustaulukäännös.
+\end{solution}
+
+\begin{exercise}
+Materiaalissa yhtätoteutuvassa CNF-käännöksessä tarkastellaan \emph{kaikkia}
+annetun lauseen \(A\) alilauseita. Luennolla käännöstä hieman lyhennettiin,
+ja uusia propositiosymboleita annettiin vain niille alilauseille, jotka
+eivät ole propositiosymboleita.
+\begin{enumerate}[label=\alph*), nosep]
+\item Näytä, että molemmat versiot antavat \(A\):n kanssa yhtätoteutuvan
+klausuuliesityksen.
+\item Miten saatujen esitysten pituudet eroavat toisistaan?
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*)]
+\item Yhtätoteutuvuus tarkoittaa, että \(A\) voidaan tehdä todeksi
+täsmälleen silloin, kun kaikki käännöksen klausuulit voidaan tehdä
+yhtä aikaa tosiksi. Todistetaan molemmat suunnat.
+
+\emph{Jos \(A\) on toteutuva:} Valitaan sen toteuttava jakauma ja
+annetaan jokaiselle uudelle symbolille \(q_D\) alilauseen \(D\)
+totuusarvo. Määrittelyklausuulit toteutuvat, koska ne ilmaisevat
+juuri, miten alilauseen totuusarvo lasketaan sen osien arvoista.
+Myös koko lauseen totuutta vaativa klausuuli toteutuu, koska
+\(A\) on tosi. Tämä toimii kummassakin versiossa.
+
+\emph{Jos klausuulikokoelma on toteutuva:} Pitkässä versiossa
+atomien klausuulit pakottavat \(q_p\):n ja \(p\):n arvot samoiksi;
+lyhyessä käytetään suoraan \(p\):tä. Seuraavaksi muiden
+alilauseiden klausuulit pakottavat niiden symbolien arvot oikeiksi:
+esimerkiksi konjunktion symboli on tosi täsmälleen silloin, kun
+sen molempien osien symbolit ovat tosia. Näin edetään atomeista
+koko lauseeseen \(A\), joten \(q_A\):n arvo on sama kuin \(A\):n.
+Klausuuli \(\{q_A\}\) vaatii tämän arvon olevan \(1\), joten
+\(A\) on tosi. (Jos \(A\) on pelkkä atomi, lyhyen version
+klausuuli on suoraan \(\{A\}\).)
+
+\item Jos \(A\):ssa on \(k\) eri propositiosymbolia, lyhyessä
+versiossa on \(k\) uutta symbolia ja \(2k\) kahden literaalin
+klausuulia vähemmän: atomien ehdot \(q_p\leftrightarrow p\)
+jäävät pois ja muualla \(q_p\) korvataan \(p\):llä.
+Molempien esitysten pituus on edelleen \(O(n)\).
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+Anna luonnollinen päättely propositiolauseelle \(A \land (B \lor C)\)
+propositiolauseesta \(A \land C\).
+\end{exercise}
+
+\begin{solution}
+\[
+\dfrac{
+\dfrac{A\land C}{A}\;\land E
+\qquad
+\dfrac{\dfrac{A\land C}{C}\;\land E}{B\lor C}\;\lor T
+}{A\land(B\lor C)}\;\land T
+\]
+Oletuksesta \(A\land C\) saadaan konjunktion eliminoinnilla erikseen
+\(A\) ja \(C\). Lauseesta \(C\) saadaan disjunktion tuonnilla
+\(B\lor C\). Lopuksi yhdistetään \(A\) ja \(B\lor C\)
+konjunktion tuonnilla johtopäätökseksi \(A\land(B\lor C)\).
+\end{solution}
+
+\begin{exercise}
+Mitkä seuraavista ovat oikein tehtyjä luonnollisia päättelyitä? Oikeissa
+tapauksissa kerro mikä on oletus (tai mitkä ovat oletukset), mikä on
+johtopäätös ja mitä sääntöjä käytettiin. Väärissä tapauksissa kerro missä
+on virhe tai virheet. Tutki näissä tapauksissa, onko johtopäätös kuitenkin
+oletuksen/oletusten looginen seuraus.
+\[
+\begin{array}{cccc}
+\dfrac{\dfrac{A \land B}{B}}{A \lor B}
+& \dfrac{\dfrac{A \rightarrow \neg B \qquad B}{\neg A}}{B \rightarrow \neg A}
+& \dfrac{\dfrac{A \qquad [\neg A]}{A \land \neg A}}{\neg A}
+& \dfrac{\dfrac{A \land (B \lor C)}{B \quad C}}{B \land C}
+\\[1.2em]
+\text{(a)} & \text{(b)} & \text{(c)} & \text{(d)}
+\end{array}
+\]
+\end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*)]
+\item Oikein. Oletus on \(A\land B\), johtopäätös \(A\lor B\).
+Säännöt ovat konjunktion eliminointi ja disjunktion tuonti.
+
+\item Väärin: ensimmäinen askel ei ole luonnollisen päättelyn
+perussääntö. Sen tilalle tarvitaan alitodistus: oletetaan \(A\),
+päätellään \(\neg B\), saadaan ristiriita \(B\):n kanssa ja
+hylätään \(A\), jolloin saadaan \(\neg A\).
+Jos lopuksi halutaan hylätä \(B\), se on merkittävä
+hylättäväksi oletukseksi. Johtopäätös on silti looginen seuraus
+jo oletuksesta \(A\to\neg B\): jos \(B\) on tosi, \(A\):n
+on oltava epätosi.
+
+\item Väärin: oletuksen \(\neg A\) hylkääminen negaation
+tuonnilla antaa \(\neg\neg A\), ei \(\neg A\).
+Johtopäätös ei seuraa avoimeksi jäävästä oletuksesta \(A\):
+vastaesimerkki on \(v(A)=1\).
+
+\item Väärin: lauseesta \(B\lor C\) ei saa päätellä erikseen
+\(B\):tä ja \(C\):tä. Johtopäätös ei myöskään ole oletuksen
+looginen seuraus: kun \(v(A)=v(B)=1\) ja \(v(C)=0\),
+oletus on tosi mutta \(B\land C\) epätosi.
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+Anna luonnollinen päättely propositiolauseelle \(A \rightarrow (B
+\rightarrow C)\)
+propositiolauseesta \((A \land B) \rightarrow C\).
+\end{exercise}
+
+\begin{solution}
+Oletetaan tilapäisesti \(A\) ja \(B\). Hylätään ensin oletus \(B\)
+ja sitten oletus \(A\):
+\[
+\dfrac{
+\dfrac{
+\dfrac{
+(A\land B)\to C
+\qquad
+\dfrac{[A]^1\qquad[B]^2}{A\land B}\;\land T
+}{C}\;\to E
+}{B\to C}\;\to T,2
+}{A\to(B\to C)}\;\to T,1
+\]
+Avoimeksi oletukseksi jää vain \((A\land B)\to C\).
+\end{solution}
+
+\newpage
+
+\begin{exercise}
+Anna luonnollinen päättely propositiolauseelle
+\((A \lor B) \land (A \lor C)\) propositiolauseesta \(A \lor (B \land C)\).
+\end{exercise}
+
+\begin{solution}
+Päätellään molemmissa tapauksissa sama johtopäätös
+\(D=(A\lor B)\land(A\lor C)\). Nimetään osapäättelyt:
+\[
+\mathcal{P}:\quad
+\dfrac{
+\dfrac{[A]^1}{A\lor B}\;\lor T
+\qquad
+\dfrac{[A]^1}{A\lor C}\;\lor T
+}{(A\lor B)\land(A\lor C)}\;\land T
+\]
+\[
+\mathcal{Q}:\quad
+\dfrac{
+\dfrac{\dfrac{[B\land C]^1}{B}\;\land E}{A\lor B}\;\lor T
+\qquad
+\dfrac{\dfrac{[B\land C]^1}{C}\;\land E}{A\lor C}\;\lor T
+}{(A\lor B)\land(A\lor C)}\;\land T
+\]
+Yhdistetään osapäättelyt disjunktion eliminoinnilla:
+\[
+\dfrac{
+A\lor(B\land C)
+\qquad
+\begin{array}{c}\mathcal{P}\\D
+\end{array}
+\qquad
+\begin{array}{c}\mathcal{Q}\\D
+\end{array}
+}{D}\;\lor E,1
+\]
+Viimeinen askel hylkää kaikki merkityt oletusten \(A\) ja
+\(B\land C\) esiintymät. Avoimeksi jää vain \(A\lor(B\land C)\).
+\end{solution}
+
+\begin{exercise}
+Anna luonnollinen päättely propositiolauseelle
+\((A \rightarrow C) \land (B \rightarrow C)\)
+propositiolauseesta \((A \lor B) \rightarrow C\).
+\end{exercise}
+
+\begin{solution}
+Muodostetaan kumpikin implikaatio omassa haarassaan ja yhdistetään ne:
+{\small
+\[
+\dfrac{
+\dfrac{
+\dfrac{
+  (A\lor B)\to C
+  \qquad\dfrac{[A]^1}{A\lor B}\;\lor T
+}{C}\;\to E
+}{A\to C}\;\to T,1
+\qquad
+\dfrac{
+\dfrac{
+  (A\lor B)\to C
+  \qquad\dfrac{[B]^2}{A\lor B}\;\lor T
+}{C}\;\to E
+}{B\to C}\;\to T,2
+}{(A\to C)\land(B\to C)}\;\land T
+\]
+}
+Avoimeksi oletukseksi jää vain \((A\lor B)\to C\).
+\end{solution}
+
+\begin{exercise}
+Anna luonnollinen päättely propositiolauseelle \(A \leftrightarrow \neg\neg A\).
+\end{exercise}
+
+\begin{solution}
+Vasemmalta oikealle käytetään negaation tuontia ja oikealta vasemmalle
+kaksoisnegaation eliminointia:
+\[
+\dfrac{
+\dfrac{
+\dfrac{[A]^1\qquad[\neg A]^2}{A\land\neg A}\;\land T
+}{\neg\neg A}\;\neg T,2
+\qquad
+\dfrac{[\neg\neg A]^1}{A}\;\neg E
+}{A\leftrightarrow\neg\neg A}\;\leftrightarrow T,1
+\]
+Ekvivalenssin tuonti hylkää oletukset \(A\) ja \(\neg\neg A\),
+joten avoimia oletuksia ei jää.
+\end{solution}
+
+\begin{exercise}
+Osoita
+\[
+\vdash (A \rightarrow B) \rightarrow (\neg B \rightarrow \neg A).
+\]
+\end{exercise}
+
+\begin{solution}
+Oletuksista \(A\to B\), \(A\) ja \(\neg B\) saadaan ristiriita
+\(B\land\neg B\). Hylätään oletukset seuraavasti:
+\[
+\dfrac{
+\dfrac{
+\dfrac{
+\dfrac{
+  \dfrac{[A\to B]^2\qquad[A]^1}{B}\;\to E
+  \qquad[\neg B]^3
+}{B\land\neg B}\;\land T
+}{\neg A}\;\neg T,1
+}{\neg B\to\neg A}\;\to T,3
+}{(A\to B)\to(\neg B\to\neg A)}\;\to T,2
+\]
+Kaikki oletukset on hylätty, joten väite on todistettu.
+\end{solution}
+
+\newpage
+\noindent\emph{Seuraavasta haastetehtävästä ei saa harjoituspisteitä.
+Se on tarkoitettu aivojumpaksi loogisista peleistä pitäville.}
+
+\medskip
+\noindent\textbf{Haastetehtävä.} Viikon 3 tehtävässä 4 osoitettiin, että
+\[
+(p_1 \leftrightarrow (p_0 \rightarrow \neg p_2))
+\land (p_0 \lor (\neg p_2 \land \neg p_1))
+\]
+on ekvivalentti DNF-lauseen
+\((p_0 \land p_1 \land \neg p_2) \lor (p_0 \land \neg p_1 \land p_2)\)
+kanssa. Osoita ekvivalenssi luonnollisella päättelyllä, eli osoita
+\[
+\begin{aligned}
+\vdash {} & ((p_1 \leftrightarrow (p_0 \rightarrow \neg p_2))
+\land (p_0 \lor (\neg p_2 \land \neg p_1))) \\
+& \leftrightarrow ((p_0 \land p_1 \land \neg p_2)
+\lor (p_0 \land \neg p_1 \land p_2)).
+\end{aligned}
+\]
+Päättelyä varten voit joko
+\begin{enumerate}[label=\alph*), nosep]
+\item lisätä puuttuvat sulkeet ja käyttää luonnollisen päättelyn sääntöjä tai
+\item yleistää konjunktion ja disjunktion sääntöjä useampipaikkaisille
+konjunktioille ja disjunktioille.
+\end{enumerate}
+
 \end{document}
