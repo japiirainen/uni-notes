@@ -207,6 +207,25 @@ Kuinka monessa \(n\) bitin jonossa on
 \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Kun \(n \geq 3\), kolme ensimmäistä bittiä ovat ykkösiä ja loput
+\(n - 3\) bittiä nollia. Jokaisen bitin arvo on siis yksikäsitteisesti
+määrätty, joten ehdon täyttäviä bittijonoja on täsmälleen yksi.
+Kun \(n < 3\), tällaisia bittijonoja ei ole.
+
+\item Kun \(n \geq 3\), numeroidaan bittijonon paikat luvuin
+\(1, \ldots, n\). Kolmen peräkkäisen ykkösen jakso voi alkaa
+paikasta \(1, 2, \ldots, n - 2\), joten mahdollisia aloituspaikkoja
+on \(n - 2\). Jokainen aloituspaikka määrää
+yksikäsitteisesti yhden ehdon täyttävän bittijonon, sillä kaikki muut
+bitit ovat nollia. Eri aloituspaikat tuottavat eri bittijonot, joten
+bittijonoja on täsmälleen \(n - 2\). Kun \(n < 3\), tällaisia
+bittijonoja ei ole.
+\end{enumerate}
+\end{solution}
+
 \begin{exercise}
 Tarkastellaan kompleksilukuja \(z = (2, -3)\) ja \(w = (4, 1)\).
 \begin{enumerate}[label=\alph*), nosep]
