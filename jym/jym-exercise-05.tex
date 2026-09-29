@@ -18,6 +18,25 @@
   Osoita, että äärettömien bittijonojen joukko on ylinumeroituva.
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(\mathcal{B}\) äärettömien bittijonojen joukko. Tehdään
+  vastaoletus, että \(\mathcal{B}\) on numeroituva. Tällöin sen alkiot
+  voidaan luetella jonona \(b_1, b_2, b_3, \dots\), jossa jokainen
+  joukon \(\mathcal{B}\) alkio esiintyy.
+
+  Muodostetaan ääretön bittijono \(s\) seuraavasti: jokaisella
+  \(n \geq 1\) valitaan jonon \(s\) \(n\):nneksi bitiksi \(0\), jos
+  jonon \(b_n\) \(n\):s bitti on \(1\), ja \(1\), jos se on \(0\).
+  Näin \(s\) eroaa jokaisesta jonosta \(b_n\) sen \(n\):nnessä
+  kohdassa, joten \(s\) ei esiinny luettelossa.
+
+  Koska luettelo sisältää vastaoletuksen mukaan kaikki joukon
+  \(\mathcal{B}\) alkiot eikä \(s\) esiinny luettelossa, saadaan
+  \(s \notin \mathcal{B}\). Toisaalta \(s\) on ääretön bittijono, joten
+  \(s \in \mathcal{B}\). Tämä on ristiriita. Siis \(\mathcal{B}\) on
+  ylinumeroituva.
+\end{solution}
+
 \begin{exercise}
   Eräässä 150 henkilön ryhmässä 45 harrastaa uintia, 40 pyöräilyä ja 50 juoksua.
   Lisäksi 32 henkilöä harrastaa juoksua mutta ei pyöräilyä, 27 henkilöä
