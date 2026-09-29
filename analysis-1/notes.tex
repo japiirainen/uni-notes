@@ -1393,4 +1393,164 @@ By \cref{thm:monotone-convergence}, the increasing, bounded sequence
   This proves \(x_m\to x\), completing the sufficiency direction.
 \end{proof}
 
+\subsection{29.09.2026}
+
+\subsubsection{Limits of functions}
+
+\begin{definition}
+  Let \(f:A\to\RR\), where \(A\subseteq\RR\), and let
+  \(x_0\in\RR\). Suppose that there is \(r>0\) such that
+  \[
+    (x_0-r,x_0+r)\setminus\set{x_0}\subseteq A.
+  \]
+  The function \(f\) has \emph{limit} \(m\in\RR\) at \(x_0\) if,
+  for every \(\varepsilon>0\), there exists \(\delta>0\) such that
+  \[
+    \abs{f(x)-m}<\varepsilon
+    \qquad\text{whenever }x\in A\text{ and }0<\abs{x-x_0}<\delta.
+  \]
+  We write \(\lim_{x\to x_0}f(x)=m\).
+\end{definition}
+
+\begin{example}
+  Let \(f:\RR\to\RR\), \(f(x)=2x+1\). Then
+  \(\lim_{x\to1}f(x)=3\).
+\end{example}
+
+\begin{proof}
+  Given \(\varepsilon>0\), choose \(\delta=\varepsilon/2\).
+  If \(0<\abs{x-1}<\delta\), then
+  \[
+    \abs{f(x)-3}=\abs{2x-2}=2\abs{x-1}<2\delta=\varepsilon.
+  \]
+\end{proof}
+
+\begin{example}
+  Define \(f:\RR\to\RR\) by
+  \[
+    f(x)=
+    \begin{cases}
+      2x+1, & x\neq1,\\
+      42, & x=1.
+    \end{cases}
+  \]
+  Again, \(\lim_{x\to1}f(x)=3\), with exactly the same proof:
+  the condition \(0<\abs{x-1}<\delta\) excludes \(x=1\).
+  Thus the value of a function at the point does not affect its limit.
+\end{example}
+
+\subsubsection{Linear estimates and Lipschitz continuity}
+
+\begin{example}
+  Suppose that, for some \(C>0\), \(r>0\), and \(L\in\RR\),
+  \[
+    \abs{f(x)-L}\leq C\abs{x-x_0}
+    \qquad\text{whenever }0<\abs{x-x_0}<r.
+  \]
+  Then \(\lim_{x\to x_0}f(x)=L\). Indeed, given \(\varepsilon>0\),
+  choose \(\delta=\min\set{r,\varepsilon/C}\). For
+  \(0<\abs{x-x_0}<\delta\), we have
+  \[
+    \abs{f(x)-L}\leq C\abs{x-x_0}<C\delta\leq\varepsilon.
+  \]
+  If the estimate holds throughout the domain, we may simply take
+  \(\delta=\varepsilon/C\).
+\end{example}
+
+\begin{definition}
+  A function \(f:A\to\RR\) is \emph{Lipschitz continuous} if there
+  exists a constant \(L\geq0\) such that
+  \[
+    \abs{f(x)-f(s)}\leq L\abs{x-s}
+    \qquad\text{for all }x,s\in A.
+  \]
+\end{definition}
+
+\begin{example}
+  The function \(f:[0,1]\to\RR\), \(f(x)=\sqrt{x}\), is not
+  Lipschitz continuous. For every integer \(n\geq1\),
+  \[
+    \frac{\abs{f(1/n)-f(0)}}{\abs{1/n-0}}
+    =\frac{\sqrt{1/n}}{1/n}
+    =\sqrt{n}\longrightarrow+\infty.
+  \]
+  A Lipschitz constant would have to bound all these quotients, which
+  is impossible.
+\end{example}
+
+\subsubsection{Choosing a local bound}
+
+\begin{example}
+  Let \(f:\RR\to\RR\), \(f(x)=x^2\). Then
+  \(\lim_{x\to2}f(x)=4\).
+\end{example}
+
+\begin{proof}
+  Factor the difference:
+  \[
+    \abs{f(x)-4}=\abs{x+2}\abs{x-2}.
+  \]
+  If \(\abs{x-2}<1\), the triangle inequality gives
+  \(\abs{x+2}\leq\abs{x-2}+4<5\).
+  Given \(\varepsilon>0\), choose
+  \(\delta=\min\set{1,\varepsilon/5}\). Whenever
+  \(0<\abs{x-2}<\delta\), it follows that
+  \[
+    \abs{f(x)-4}=\abs{x+2}\abs{x-2}<5\delta\leq\varepsilon.
+  \]
+\end{proof}
+
+\begin{example}[Positivity near a point with positive limit]
+  Let \(f:\RR\to\RR\) and suppose that
+  \(\lim_{x\to x_0}f(x)=m>0\). Then there exists \(r>0\) such that
+  \[
+    f(x)>0
+    \qquad\text{for every }x\in(x_0-r,x_0+r)\setminus\set{x_0}.
+  \]
+\end{example}
+
+\begin{proof}
+  Since \(m>0\), take \(\varepsilon=m\) in the definition of the
+  limit. There exists \(\delta>0\) such that
+  \(\abs{f(x)-m}<m\) whenever \(0<\abs{x-x_0}<\delta\).
+  Hence
+  \[
+    -m<f(x)-m<m,
+    \qquad\text{so}\qquad 0<f(x)<2m.
+  \]
+  Taking \(r=\delta\) proves the claim.
+\end{proof}
+
+\subsubsection{Uniqueness of the limit}
+
+\begin{theorem}
+  The limit of a function at a point, if it exists, is unique.
+\end{theorem}
+
+\begin{proof}
+  Let \(f:A\to\RR\), and suppose that
+  \((x_0-r,x_0+r)\setminus\set{x_0}\subseteq A\) for some \(r>0\).
+  Assume, for a contradiction, that
+  \[
+    \lim_{x\to x_0}f(x)=a,
+    \qquad \lim_{x\to x_0}f(x)=b,
+    \qquad a\neq b.
+  \]
+  Set \(\varepsilon=\abs{a-b}/2>0\). There exist
+  \(\delta_1,\delta_2>0\) such that
+  \begin{align*}
+    0<\abs{x-x_0}<\delta_1&\implies\abs{f(x)-a}<\varepsilon,\\
+    0<\abs{x-x_0}<\delta_2&\implies\abs{f(x)-b}<\varepsilon.
+  \end{align*}
+  Let \(\delta=\min\set{r,\delta_1,\delta_2}>0\), and choose
+  \(x=x_0+\delta/2\). Then \(x\in A\) and
+  \(0<\abs{x-x_0}<\delta\), so both estimates hold. The triangle
+  inequality now gives
+  \[
+    \abs{a-b}\leq\abs{f(x)-a}+\abs{f(x)-b}
+    <\varepsilon+\varepsilon=\abs{a-b},
+  \]
+  a contradiction. Therefore \(a=b\).
+\end{proof}
+
 \end{document}
