@@ -19,10 +19,10 @@
 \end{exercise}
 
 \begin{solution}
-  Olkoon \(\epsilon > 0\). Valitaan \(N \in \NN\) jolla \(N >
-  \frac{8}{\epsilon}\). Kun \(n > N\), niin
+  Olkoon \(\varepsilon > 0\). Valitaan \(N \in \NN\) jolla \(N >
+  \frac{8}{\varepsilon}\). Kun \(n > N\), niin
   \[
-    \abs{x_n - 2} = \frac{8}{n + 2} < \frac{8}{n} < \frac{8}{N} < \epsilon.
+    \abs{x_n - 2} = \frac{8}{n + 2} < \frac{8}{n} < \frac{8}{N} < \varepsilon.
   \]
   Täten \(\lim_{n \to \infty} x_n = 2\).
 \end{solution}
@@ -33,13 +33,13 @@
 \end{exercise}
 
 \begin{solution}
-  Olkoon \(\epsilon > 0\). Valitaan \(N \in \NN\) jolla \(N >
-  \maxset{6, \frac{24}{\epsilon}}\). Kun \(n > N\), niin \(n > 6\),
+  Olkoon \(\varepsilon > 0\). Valitaan \(N \in \NN\) jolla \(N >
+  \maxset{6, \frac{24}{\varepsilon}}\). Kun \(n > N\), niin \(n > 6\),
   joten \(n - 3 > n/2\) ja siten
   \(\frac{12}{n - 3} < \frac{24}{n}\). Täten
   \[
     \abs{x_n - 4} = \frac{12}{n - 3} < \frac{24}{n} < \frac{24}{N}
-    < \epsilon,
+    < \varepsilon,
   \]
   eli \(\lim_{n \to \infty} x_n = 4\).
 
@@ -56,7 +56,7 @@
 
 \begin{solution}
   Tehdään vastaoletus: Oletetaan, että \(\lim_{n \to \infty} y_n = a\).
-  Valitaan \(\epsilon = 1\). Suppenemisen määritelmän nojalla on olemassa
+  Valitaan \(\varepsilon = 1\). Suppenemisen määritelmän nojalla on olemassa
   \(N \in \NN\) siten, että kaikilla \(n > N\) pätee
   \[
     \abs{y_n - a} < 1.
@@ -73,7 +73,7 @@
 
   Tutkitaan seuraavaksi alijonoa \((y_{2n})\). Tehdään jälleen vastaoletus:
   Oletetaan, että \(\lim_{n \to \infty} y_{2n} = a\). Valitaan
-  \(\epsilon = 1\). Suppenemisen määritelmän nojalla on olemassa
+  \(\varepsilon = 1\). Suppenemisen määritelmän nojalla on olemassa
   \(N \in \NN\) siten, että kaikilla \(n > N\) pätee
   \[
     \abs{y_{2n} - a} < 1.
@@ -121,15 +121,15 @@
     \end{tikzpicture}
   \end{center}
 
-  Tehdään vastaoletus: Oletetaan \(a > m\). Olkoon \(\epsilon =
+  Tehdään vastaoletus: Oletetaan \(a > m\). Olkoon \(\varepsilon =
   \frac{a - m}{2} > 0\). Koska \((x_n)\) suppenee, on olemassa \(N \in \NN\),
   jolla
   \[
-    \abs{x_n - a} < \epsilon,
+    \abs{x_n - a} < \varepsilon,
   \]
   kun \(n > N\). Saadaan
   \[
-    x_n > a - \epsilon = \frac{2a - (a - m)}{2} = \frac{a + m}{2} > m.
+    x_n > a - \varepsilon = \frac{2a - (a - m)}{2} = \frac{a + m}{2} > m.
   \]
   Tämä on ristiriidassa oletuksen \(x_n < m\). On siis oltava
   \(a \leq m\).
@@ -140,10 +140,10 @@
   \[
     \lim_{n \to \infty} x_n = m.
   \]
-  Olkoon \(\epsilon > 0\). Valitaan \(N \in \NN\) siten, että
-  \(N > \frac{1}{\epsilon}\). Kun \(n > N\), niin
+  Olkoon \(\varepsilon > 0\). Valitaan \(N \in \NN\) siten, että
+  \(N > \frac{1}{\varepsilon}\). Kun \(n > N\), niin
   \[
-    \abs{x_n - m} = \frac{1}{n} < \frac{1}{N} < \epsilon.
+    \abs{x_n - m} = \frac{1}{n} < \frac{1}{N} < \varepsilon.
   \]
   Täten \(a = \lim_{n \to \infty} x_n = m\).
 \end{solution}
@@ -155,15 +155,15 @@
 \end{exercise}
 
 \begin{solution}
-  Olkoon \(\epsilon > 0\). Lukujono \((y_n)\) suppenee, joten se on rajoitettu.
+  Olkoon \(\varepsilon > 0\). Lukujono \((y_n)\) suppenee, joten se on rajoitettu.
   Täten on olemassa \(M > 0\), jolla \(\abs{y_n} \leq M\) kaikilla
   \(n \in \NN\). Valitaan \(N_1 \in \NN\) siten, että kun \(n > N_1\), niin
   \[
-    \abs{x_n - a} < \frac{\epsilon}{2M}.
+    \abs{x_n - a} < \frac{\varepsilon}{2M}.
   \]
   Valitaan \(N_2 \in \NN\) siten, että kun \(n > N_2\), niin
   \[
-    \abs{y_n - b} < \frac{\epsilon}{2(\abs{a} + 1)}.
+    \abs{y_n - b} < \frac{\varepsilon}{2(\abs{a} + 1)}.
   \]
   Nimittäjässä käytetään lukua \(\abs{a} + 1\), jotta se on positiivinen
   myös silloin, kun \(a = 0\). Lisäksi \(\frac{\abs{a}}{\abs{a} + 1} < 1\).
@@ -173,9 +173,9 @@
     \begin{aligned}
       \abs{x_ny_n - ab} &\leq \abs{x_ny_n - ay_n} + \abs{ay_n - ab} \\
       &= \abs{y_n}\abs{x_n - a} + \abs{a}\abs{y_n - b} \\
-      &< M\frac{\epsilon}{2M} + \abs{a}\frac{\epsilon}{2(\abs{a} + 1)} \\
-      &< \frac{\epsilon}{2} + \frac{\epsilon}{2} \\
-      &= \epsilon.
+      &< M\frac{\varepsilon}{2M} + \abs{a}\frac{\varepsilon}{2(\abs{a} + 1)} \\
+      &< \frac{\varepsilon}{2} + \frac{\varepsilon}{2} \\
+      &= \varepsilon.
     \end{aligned}
   \]
   Täten \(\lim_{n \to \infty} x_ny_n = ab\).
@@ -190,22 +190,22 @@
 \end{exercise}
 
 \begin{solution}
-  Olkoon \(\epsilon > 0\). On olemassa \(N_1 \in \NN\), jolla
+  Olkoon \(\varepsilon > 0\). On olemassa \(N_1 \in \NN\), jolla
   \[
-    \abs{x_n - a} < \epsilon \quad \text{kun} \quad n > N_1,
+    \abs{x_n - a} < \varepsilon \quad \text{kun} \quad n > N_1,
   \]
   sekä \(N_2 \in \NN\), jolla
   \[
-    \abs{z_n - a} < \epsilon \quad \text{kun} \quad n > N_2.
+    \abs{z_n - a} < \varepsilon \quad \text{kun} \quad n > N_2.
   \]
   Valitaan \(N \in \NN\) siten, että \(N = \maxset{N_1, N_2}\). Kun
   \(n > N\), saadaan
   \[
-    a - \epsilon < x_n \leq y_n \leq z_n < a + \epsilon,
+    a - \varepsilon < x_n \leq y_n \leq z_n < a + \varepsilon,
   \]
   eli
   \[
-    \abs{y_n - a} < \epsilon.
+    \abs{y_n - a} < \varepsilon.
   \]
   Täten \(\lim_{n \to \infty} y_n = a\).
 \end{solution}

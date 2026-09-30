@@ -308,10 +308,10 @@ on the real line.
 
 \begin{definition}
   Let \((x_n)\) be a sequence of real numbers. We say that \((x_n)\)
-  \emph{converges} to \(a\in\RR\) if, for every \(\epsilon>0\), there
+  \emph{converges} to \(a\in\RR\) if, for every \(\varepsilon>0\), there
   exists \(N\in\NN\) such that, for every \(n\in\NN\) with \(n > N\),
   \[
-    \abs{x_n-a}<\epsilon.
+    \abs{x_n-a}<\varepsilon.
   \]
   In this case, we write \(x_n\to a\) as \(n\to\infty\), or
   \(\lim_{n\to\infty}x_n=a\).
@@ -328,13 +328,13 @@ Let us look at some examples.
   \[
     \lim_{n \to \infty} x_n = 2.
   \]
-  Let \(\epsilon > 0\). Choose \(N \in \NN\) such that
-  \(N > \frac{2}{\epsilon}\). Now for every \(n > N\), we have
+  Let \(\varepsilon > 0\). Choose \(N \in \NN\) such that
+  \(N > \frac{2}{\varepsilon}\). Now for every \(n > N\), we have
   \[
     \begin{aligned}
       \abs{x_n - 2} &= \abs{\frac{2n}{n + 1} - 2} \\
-      &= \frac{2}{n + 1} < \frac{2}{n} < \frac{2}{\frac{2}{\epsilon}}
-      = \epsilon.
+      &= \frac{2}{n + 1} < \frac{2}{n} < \frac{2}{\frac{2}{\varepsilon}}
+      = \varepsilon.
     \end{aligned}
   \]
   Thus \(x_n \to 2\) when \(n \to \infty\).
@@ -352,10 +352,10 @@ Let us look at some examples.
   \[
     \lim_{n \to \infty} x_n = 7.
   \]
-  Let \(\epsilon > 0\). Choose \(N \in \NN\) such that
-  \(N > \maxset{8, \frac{1}{\epsilon}}\). Now for every \(n > N\), we have
+  Let \(\varepsilon > 0\). Choose \(N \in \NN\) such that
+  \(N > \maxset{8, \frac{1}{\varepsilon}}\). Now for every \(n > N\), we have
   \[
-    \abs{x_n - 7} = \frac{1}{n} < \epsilon.
+    \abs{x_n - 7} = \frac{1}{n} < \varepsilon.
   \]
   Thus \(x_n \to 7\) as \(n \to \infty\).
 \end{example}
@@ -365,10 +365,10 @@ Let us now tackle a simple divergence proof.
 \begin{example}
   Let us show that the sequence \(x_n\) defined by \(x_n = n\) diverges.
   Assume that the sequence converged to some \(a \in \RR\).
-  Taking \(\epsilon = 1\), there exists \(N \in \NN\) such that,
+  Taking \(\varepsilon = 1\), there exists \(N \in \NN\) such that,
   for every \(n > N\),
   \[
-    \abs{x_n - a} < \epsilon = 1.
+    \abs{x_n - a} < \varepsilon = 1.
   \]
   Choose \(n \in \NN\) such that
   \[
@@ -399,9 +399,9 @@ Let us now tackle a simple divergence proof.
   \[
     \lim_{n \to \infty} x_n = 1.
   \]
-  Let \(\epsilon > 0\). Choose \(N \in \NN\) such that
+  Let \(\varepsilon > 0\). Choose \(N \in \NN\) such that
   \[
-    N > \maxset{84, \frac{84}{\epsilon}}.
+    N > \maxset{84, \frac{84}{\varepsilon}}.
   \]
   Now, for every \(n>N\), we have \(n>84\), and hence
   \(\frac{n}{2}-42>0\). Therefore
@@ -410,7 +410,7 @@ Let us now tackle a simple divergence proof.
       \abs{x_n - 1} &= \abs*{\frac{n}{n - 42} - 1} \\
       &= \frac{42}{n - 42} \\
       &= \frac{42}{\frac{n}{2} + \frac{n}{2} - 42} \\
-      &< \frac{84}{n} < \epsilon.
+      &< \frac{84}{n} < \varepsilon.
     \end{aligned}
   \]
   Thus \(x_n \to 1\) as \(n \to \infty\).
@@ -428,22 +428,22 @@ Let us now tackle a simple divergence proof.
 \begin{proof}
   Suppose for contradiction that \(a\neq b\), and set
   \[
-    \epsilon=\frac{\abs{a-b}}{2}>0.
+    \varepsilon=\frac{\abs{a-b}}{2}>0.
   \]
   Since \(x_n\to a\) and \(x_n\to b\), there exist \(N_a,N_b\in\NN\) such
   that
   \[
-    n>N_a \implies \abs{x_n-a}<\epsilon
+    n>N_a \implies \abs{x_n-a}<\varepsilon
   \]
   and
   \[
-    n>N_b \implies \abs{x_n-b}<\epsilon.
+    n>N_b \implies \abs{x_n-b}<\varepsilon.
   \]
   Choose \(n>\maxset{N_a,N_b}\). By the triangle inequality,
   \[
     \abs{a-b}
     \leq \abs{a-x_n}+\abs{x_n-b}
-    < 2\epsilon
+    < 2\varepsilon
     =\abs{a-b},
   \]
   which is impossible. Therefore \(a=b\).
@@ -454,7 +454,7 @@ Let us now tackle a simple divergence proof.
 \end{theorem}
 
 \begin{proof}
-  Suppose that \(x_n\to a\). Taking \(\epsilon=1\), there exists
+  Suppose that \(x_n\to a\). Taking \(\varepsilon=1\), there exists
   \(N\in\NN\) such that
   \[
     n>N \implies \abs{x_n-a}<1.
@@ -492,20 +492,20 @@ Let us now tackle a simple divergence proof.
 \begin{proof}
   \begin{enumerate}
     \item
-      Let \(\epsilon>0\). Since \(x_n\to a\) and \(y_n\to b\), there exist
+      Let \(\varepsilon>0\). Since \(x_n\to a\) and \(y_n\to b\), there exist
       \(N_x,N_y\in\NN\) such that
       \[
-        n>N_x\implies\abs{x_n-a}<\frac{\epsilon}{2}
+        n>N_x\implies\abs{x_n-a}<\frac{\varepsilon}{2}
       \]
       and
       \[
-        n>N_y\implies\abs{y_n-b}<\frac{\epsilon}{2}.
+        n>N_y\implies\abs{y_n-b}<\frac{\varepsilon}{2}.
       \]
       Thus, for \(n>\maxset{N_x,N_y}\),
       \[
         \abs{(x_n+y_n)-(a+b)}
         \leq\abs{x_n-a}+\abs{y_n-b}
-        <\epsilon.
+        <\varepsilon.
       \]
       Hence \(x_n+y_n\to a+b\). Replacing \(y_n\) and \(b\) by \(-y_n\)
       and \(-b\) gives \(x_n-y_n\to a-b\).
@@ -514,11 +514,11 @@ Let us now tackle a simple divergence proof.
       If \(c=0\), then \(cx_n=ca=0\) for every \(n\). If \(c\neq0\), choose
       \(N\in\NN\) such that
       \[
-        n>N\implies\abs{x_n-a}<\frac{\epsilon}{\abs{c}}.
+        n>N\implies\abs{x_n-a}<\frac{\varepsilon}{\abs{c}}.
       \]
       Then, for every \(n>N\),
       \[
-        \abs{cx_n-ca}=\abs{c}\abs{x_n-a}<\epsilon.
+        \abs{cx_n-ca}=\abs{c}\abs{x_n-a}<\varepsilon.
       \]
       Therefore \(cx_n\to ca\).
 
@@ -527,20 +527,20 @@ Let us now tackle a simple divergence proof.
       \(\abs{y_n}\leq M\) for every \(n\). There exist \(N_1,N_2\in\NN\)
       such that
       \[
-        n>N_1\implies\abs{x_n-a}<\frac{\epsilon}{2M}
+        n>N_1\implies\abs{x_n-a}<\frac{\varepsilon}{2M}
       \]
       and
       \[
-        n>N_2\implies\abs{y_n-b}<\frac{\epsilon}{2(\abs{a}+1)}.
+        n>N_2\implies\abs{y_n-b}<\frac{\varepsilon}{2(\abs{a}+1)}.
       \]
       For \(n>\maxset{N_1,N_2}\),
       \begin{align*}
         \abs{x_ny_n-ab}
         &\leq\abs{x_ny_n-ay_n}+\abs{ay_n-ab} \\
         &=\abs{y_n}\abs{x_n-a}+\abs{a}\abs{y_n-b} \\
-        &<M\frac{\epsilon}{2M}
-        +\abs{a}\frac{\epsilon}{2(\abs{a}+1)} \\
-        &<\epsilon.
+        &<M\frac{\varepsilon}{2M}
+        +\abs{a}\frac{\varepsilon}{2(\abs{a}+1)} \\
+        &<\varepsilon.
       \end{align*}
       Therefore \(x_ny_n\to ab\).
 
@@ -558,14 +558,14 @@ Let us now tackle a simple divergence proof.
       \(N_1\in\NN\) such that
       \[
         n>N_1\implies
-        \abs{y_n-b}<\frac{\epsilon\abs{b}^2}{2}.
+        \abs{y_n-b}<\frac{\varepsilon\abs{b}^2}{2}.
       \]
       For \(n>\maxset{N_0,N_1}\),
       \[
         \abs*{\frac{1}{y_n}-\frac{1}{b}}
         =\frac{\abs{y_n-b}}{\abs{y_n}\abs{b}}
         <\frac{2}{\abs{b}^2}\abs{y_n-b}
-        <\epsilon.
+        <\varepsilon.
       \]
       Hence \(1/y_n\to1/b\); the finitely many terms with \(n\leq N_0\) may be
       defined arbitrarily because they do not affect the limit. Applying the
@@ -591,16 +591,16 @@ Let us now tackle a simple divergence proof.
     \item
       Suppose for contradiction that \(x>M\), and set
       \[
-        \epsilon=\frac{x-M}{2}>0.
+        \varepsilon=\frac{x-M}{2}>0.
       \]
       Since \(x_n\to x\), there exists \(N\in\NN\) such that, for every
       \(n>N\),
       \[
-        \abs{x_n-x}<\epsilon.
+        \abs{x_n-x}<\varepsilon.
       \]
       It follows that
       \[
-        x_n>x-\epsilon
+        x_n>x-\varepsilon
         =x-\frac{x-M}{2}
         =\frac{x+M}{2}
         >M,
@@ -610,16 +610,16 @@ Let us now tackle a simple divergence proof.
     \item
       Suppose for contradiction that \(x<m\), and set
       \[
-        \epsilon=\frac{m-x}{2}>0.
+        \varepsilon=\frac{m-x}{2}>0.
       \]
       Since \(x_n\to x\), there exists \(N\in\NN\) such that, for every
       \(n>N\),
       \[
-        \abs{x_n-x}<\epsilon.
+        \abs{x_n-x}<\varepsilon.
       \]
       It follows that
       \[
-        x_n<x+\epsilon
+        x_n<x+\varepsilon
         =x+\frac{m-x}{2}
         =\frac{x+m}{2}
         <m,
@@ -638,20 +638,20 @@ Let us now tackle a simple divergence proof.
 \end{theorem}
 
 \begin{proof}
-  Let \(\epsilon>0\). Since \(x_n\to a\), there exists \(N_x\in\NN\) such
+  Let \(\varepsilon>0\). Since \(x_n\to a\), there exists \(N_x\in\NN\) such
   that
   \[
-    n>N_x\implies a-\epsilon<x_n<a+\epsilon.
+    n>N_x\implies a-\varepsilon<x_n<a+\varepsilon.
   \]
   Similarly, since \(z_n\to a\), there exists \(N_z\in\NN\) such that
   \[
-    n>N_z\implies a-\epsilon<z_n<a+\epsilon.
+    n>N_z\implies a-\varepsilon<z_n<a+\varepsilon.
   \]
   Therefore, for every \(n>\maxset{N_x,N_z}\),
   \[
-    a-\epsilon<x_n\leq y_n\leq z_n<a+\epsilon.
+    a-\varepsilon<x_n\leq y_n\leq z_n<a+\varepsilon.
   \]
-  Hence \(\abs{y_n-a}<\epsilon\), so \(y_n\to a\).
+  Hence \(\abs{y_n-a}<\varepsilon\), so \(y_n\to a\).
 \end{proof}
 
 The inequalities in the squeeze theorem need only hold for all sufficiently
@@ -666,8 +666,8 @@ large \(n\), since changing finitely many terms does not affect convergence.
   \[
     -\frac{1}{n}\leq\frac{(-1)^n}{n}\leq\frac{1}{n}.
   \]
-  Both bounding sequences converge to \(0\). Indeed, given \(\epsilon>0\),
-  choosing \(N>1/\epsilon\) gives \(1/n<\epsilon\) whenever \(n>N\).
+  Both bounding sequences converge to \(0\). Indeed, given \(\varepsilon>0\),
+  choosing \(N>1/\varepsilon\) gives \(1/n<\varepsilon\) whenever \(n>N\).
   The squeeze theorem therefore gives
   \[
     \lim_{n\to\infty}\frac{(-1)^n}{n}=0.
@@ -724,15 +724,15 @@ large \(n\), since changing finitely many terms does not affect convergence.
 \end{theorem}
 
 \begin{proof}
-  Let \((x_{n_k})\) be a subsequence of \((x_n)\), and let \(\epsilon>0\).
+  Let \((x_{n_k})\) be a subsequence of \((x_n)\), and let \(\varepsilon>0\).
   Since \(x_n\to x\), there exists \(N\in\NN\) such that
   \[
-    n>N\implies\abs{x_n-x}<\epsilon.
+    n>N\implies\abs{x_n-x}<\varepsilon.
   \]
   Because \((n_k)\) is strictly increasing, \(n_k\geq k\) for every
   \(k\in\NN\). Thus, whenever \(k>N\), we also have \(n_k>N\), and hence
   \[
-    \abs{x_{n_k}-x}<\epsilon.
+    \abs{x_{n_k}-x}<\varepsilon.
   \]
   Therefore \(x_{n_k}\to x\). Since the subsequence was arbitrary, every
   subsequence of \((x_n)\) converges to the same limit \(x\).
@@ -846,21 +846,21 @@ in \(\RR\).
 
 \begin{theorem}
   Let \(\varnothing\neq E\subseteq\RR\) be bounded above. For every
-  \(\epsilon>0\), there exists \(x\in E\) such that
+  \(\varepsilon>0\), there exists \(x\in E\) such that
   \[
-    \sup E-\epsilon<x\leq\sup E.
+    \sup E-\varepsilon<x\leq\sup E.
   \]
 \end{theorem}
 
 \begin{proof}
   Since \(\sup E\) is an upper bound, \(x\leq\sup E\) for every
   \(x\in E\). Suppose, for a contradiction, that for some
-  \(\epsilon>0\),
+  \(\varepsilon>0\),
   \[
-    x\leq\sup E-\epsilon \qquad\text{for every }x\in E.
+    x\leq\sup E-\varepsilon \qquad\text{for every }x\in E.
   \]
-  Then \(\sup E-\epsilon\) is an upper bound of \(E\), but
-  \(\sup E-\epsilon<\sup E\). This contradicts the fact that \(\sup E\)
+  Then \(\sup E-\varepsilon\) is an upper bound of \(E\), but
+  \(\sup E-\varepsilon<\sup E\). This contradicts the fact that \(\sup E\)
   is the least upper bound. Hence the claimed element \(x\) exists.
 \end{proof}
 
@@ -898,16 +898,16 @@ in \(\RR\).
 \begin{proof}
   The set \(E=\set{x_n:n\in\NN}\) is nonempty and bounded above by
   \(M\). By completeness, \(s=\sup E\) exists in \(\RR\), and
-  \(s\leq M\). Let \(\epsilon>0\). By the approximation property of
+  \(s\leq M\). Let \(\varepsilon>0\). By the approximation property of
   the supremum, there is an index \(N\in\NN\) such that
   \[
-    s-\epsilon<x_N\leq s.
+    s-\varepsilon<x_N\leq s.
   \]
   Since \((x_n)\) is increasing, for every \(n>N\),
   \[
-    s-\epsilon<x_N\leq x_n\leq s.
+    s-\varepsilon<x_N\leq x_n\leq s.
   \]
-  Hence \(\abs{x_n-s}=s-x_n<\epsilon\), proving \(x_n\to s\).
+  Hence \(\abs{x_n-s}=s-x_n<\varepsilon\), proving \(x_n\to s\).
 \end{proof}
 
 \begin{corollary}[Decreasing case]\label{cor:decreasing-convergence}

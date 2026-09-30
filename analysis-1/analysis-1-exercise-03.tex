@@ -20,11 +20,11 @@
 \end{exercise}
 
 \begin{solution}
-  Olkoon \(\epsilon > 0\). Valitaan \(N \in \NNone\) siten, että \(N >
-  \frac{111}{\epsilon}\). Tällöin
+  Olkoon \(\varepsilon > 0\). Valitaan \(N \in \NNone\) siten, että \(N >
+  \frac{111}{\varepsilon}\). Tällöin
   \[
     \abs{x_n - 3} = \frac{111}{n + 37} < \frac{111}{n} < \frac{111}{N}
-    < \epsilon,
+    < \varepsilon,
   \]
   kun \(n > N\). Täten \(\lim_{n \to \infty} x_n = 3\). Osoitetaan vielä,
   että \((x_n)\) on kasvava. Huomataan, että
@@ -55,11 +55,11 @@
 \leavevmode\par
 \begin{enumerate}[label=\alph*), nosep]
 \item Olkoon \(x = \lim_{n \to \infty} x_n\) ja \((z_n)\) lukujono, jolle
-  \(z_n = \frac{1}{\sqrt{n}}\). Olkoon \(\epsilon > 0\). Valitaan \(N
+  \(z_n = \frac{1}{\sqrt{n}}\). Olkoon \(\varepsilon > 0\). Valitaan \(N
   \in \NNone\)
-  siten, että \(N > \frac{1}{\epsilon^2}\). Tällöin
+  siten, että \(N > \frac{1}{\varepsilon^2}\). Tällöin
   \[
-    \abs{z_n - 0} = \frac{1}{\sqrt{n}} < \epsilon,
+    \abs{z_n - 0} = \frac{1}{\sqrt{n}} < \varepsilon,
   \]
   kun \(n > N\), eli \(\lim_{n \to \infty} z_n = 0\). Lauseen (2.2.8) nojalla
   \[
@@ -70,11 +70,11 @@
 
 \item Koska \((x_n)\) on rajoitettu, on olemassa \(M \in \RR\), jolla
   \(\abs{x_n} \leq M\) kaikilla \(n \in \NNone\). Osoitetaan, että
-  \(\lim_{n \to \infty} y_n = 0\). Olkoon \(\epsilon > 0\). Valitaan
-  \(N \in \NNone\) siten, että \(N > \frac{M^2}{\epsilon^2}\). Tällöin
+  \(\lim_{n \to \infty} y_n = 0\). Olkoon \(\varepsilon > 0\). Valitaan
+  \(N \in \NNone\) siten, että \(N > \frac{M^2}{\varepsilon^2}\). Tällöin
   \[
     \abs{y_n - 0} = \abs*{\frac{1}{\sqrt{n}}x_n} \leq
-    M\frac{1}{\sqrt{n}} < \epsilon,
+    M\frac{1}{\sqrt{n}} < \varepsilon,
   \]
   kun \(n > N\). Lukujono \((y_n)\) suppenee siis kohti lukua \(0\).
 \end{enumerate}
@@ -106,11 +106,11 @@ kaikilla \(n > N\), joten lukujono kasvaa rajatta. Lemman 2.3.8 nojalla
 lukujono \((x_n)\) hajaantuu.
 \item Olkoon \((x_n)\) lukujono, jolle \(x_n = 1 + \frac{1}{n} =
 \frac{n + 1}{n}\). Osoitetaan, että \(\lim_{n \to \infty} x_n = 1\).
-Olkoon \(\epsilon > 0\). Valitaan \(N \in \NNone\) siten, että
-\(N > \frac{1}{\epsilon}\). Tällöin
+Olkoon \(\varepsilon > 0\). Valitaan \(N \in \NNone\) siten, että
+\(N > \frac{1}{\varepsilon}\). Tällöin
 \[
 \abs{x_n - 1} = \abs*{(1 + \frac{1}{n}) - 1} = \frac{1}{n} <
-\frac{1}{N} < \epsilon,
+\frac{1}{N} < \varepsilon,
 \]
 kun \(n > N\). Täten \(\lim_{n \to \infty} x_n = 1\). Osoitetaan vielä, että
 \((x_n)\) on aidosti vähenevä. Huomataan, että
@@ -123,16 +123,16 @@ Lukujono \((x_n)\) on siis aidosti vähenevä.
 
 \begin{exercise}
 Olkoon \(E\) reaalilukujen \(\RR\) epätyhjä alhaalta rajoitettu osajoukko.
-Osoita, että jokaista \(\epsilon > 0\) kohti on olemassa sellainen \(x \in E\),
-että \(\inf E \leq x < \inf E + \epsilon\).
+Osoita, että jokaista \(\varepsilon > 0\) kohti on olemassa sellainen \(x \in E\),
+että \(\inf E \leq x < \inf E + \varepsilon\).
 \end{exercise}
 
 \begin{solution}
 Koska \(\inf E\) on joukon \(E\) alaraja, \(\inf E \leq x\) kaikilla
 \(x \in E\).
-Tehdään vastaoletus, että \(\inf{E} + \epsilon \leq x\) jollain
-\(\epsilon > 0\) ja kaikilla \(x \in E\). Tällöin \(\inf{E} + \epsilon\)
-on joukon \(E\) alaraja sekä \(\inf{E} + \epsilon > \inf{E}\).
+Tehdään vastaoletus, että \(\inf{E} + \varepsilon \leq x\) jollain
+\(\varepsilon > 0\) ja kaikilla \(x \in E\). Tällöin \(\inf{E} + \varepsilon\)
+on joukon \(E\) alaraja sekä \(\inf{E} + \varepsilon > \inf{E}\).
 Tämä on ristiriidassa sen kanssa, että \(\inf{E}\) on joukon \(E\) suurin
 alaraja. Täten alkuperäisen väitteen on oltava tosi.
 \end{solution}
@@ -186,12 +186,12 @@ suppenee kohti lukua \(0\).
 \end{exercise}
 
 \begin{solution}
-Olkoon \(\epsilon > 0\). Koska \(\abs{\sin(x)} \leq 1\) kaikilla \(x \in \RR\),
+Olkoon \(\varepsilon > 0\). Koska \(\abs{\sin(x)} \leq 1\) kaikilla \(x \in \RR\),
 on myös \(\abs{\sin(x)^4} \leq 1\) kaikilla \(x \in \RR\). Täten
 \(\abs{12\sin(x)^4} \leq 12\) ja \(\abs{n(2 + \sin(x))} \geq n\).
-Valitaan \(N \in \NNone\) siten, että \(N > \frac{12}{\epsilon}\). Tällöin
+Valitaan \(N \in \NNone\) siten, että \(N > \frac{12}{\varepsilon}\). Tällöin
 \[
-\abs{x_n - 0} \leq \frac{12}{n} < \frac{12}{N} < \epsilon,
+\abs{x_n - 0} \leq \frac{12}{n} < \frac{12}{N} < \varepsilon,
 \]
 kun \(n > N\). Täten \(\lim_{n \to \infty} x_n = 0\).
 \end{solution}
