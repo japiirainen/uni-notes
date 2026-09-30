@@ -1,0 +1,56 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Analyysi I\\Harjoitus 5}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Analyysi I}{Harjoitus 5}
+
+\begin{exercise}
+  Osoita suoraan määritelmästä, että funktion \(f\colon \RR \to \RR\),
+  \(f(x) = 2x + 4\), raja-arvo pisteessä 2 on 8.
+\end{exercise}
+
+\begin{exercise}
+  Osoita suoraan määritelmästä, että funktion \(f\colon [0,10] \to \RR\),
+  \(f(x) = 4x - 7\), raja-arvo pisteessä 1 on \(-3\).
+\end{exercise}
+
+\begin{exercise}
+  Osoita suoraan määritelmästä, että funktion \(f\colon \RR \to \RR\),
+  \(f(x) = \abs{x} + 1\), raja-arvo origossa ei ole 4.
+\end{exercise}
+
+\begin{exercise}
+  Määritellään funktio \(f\colon \RR \to \RR\) asettamalla, että
+  \(f(x) = 3\abs{x}\) kun \(x < 0\), \(f(x) = x^2\) kun \(x > 0\)
+  ja \(f(0) = 8\). Osoita suoraan määritelmästä, että funktiolla \(f\)
+  on origossa raja-arvo 0.
+\end{exercise}
+
+\begin{exercise}
+  (\textsc{Suppiloperiaate} eli \textsc{Kuristusperiaate})
+  Olkoon \(x_0 \in (a,b)\) ja olkoot
+  \(f,g\colon (a,b) \setminus \{x_0\} \to \RR\) funktioita, joilla on
+  raja-arvo \(c \in \RR\) pisteessä \(x_0\). Olkoon
+  \(h\colon (a,b) \setminus \{x_0\} \to \RR\) funktio, jolle pätee
+  \[
+    f(x) \leq h(x) \leq g(x)
+  \]
+  kaikilla \(x \in (a,b) \setminus \{x_0\}\). Osoita määritelmän nojalla,
+  että funktiolla \(h\) on raja-arvo \(c\) pisteessä \(x_0\).
+\end{exercise}
+
+\begin{exercise}
+  Olkoon \(f\colon \RR \setminus \{-3,1\} \to \RR\),
+  \(f(x) = \frac{4}{(x+3)(x-1)^2}\). Tutki missä pisteissä \(x_0\)
+  pätee \(\lim_{x \to x_0} f(x) = \infty\).
+\end{exercise}
+
+\end{document}
