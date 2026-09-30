@@ -287,17 +287,10 @@ klausuulijoukko ristiriitaiseksi resoluutiolla:
 \item \(\{\neg p_3\}\) (rivit 7 ja 9)
 \item \(\emptyset\) (rivit 8 ja 10)
 \end{enumerate}
-Resoluution \emph{eheyden} nojalla johdettu tyhjä klausuuli on oletusten
-looginen seuraus. Koska tyhjä klausuuli on aina epätosi, mikään
-totuusjakauma ei voi toteuttaa kaikkia oletuksia. Alkuperäinen joukko
-ei siis ole toteutuva.
-
-\emph{Kumoustäydellisyys} puolestaan takaa, että jokaisesta
-ristiriitaisesta klausuulijoukosta voidaan johtaa tyhjä klausuuli
-resoluutiolla. Se takaa siis tällaisen todistuksen olemassaolon, kun
-joukko on ristiriitainen. Yllä löydetystä todistuksesta tehtävä päätelmä
-joukon toteutumattomuudesta perustuu eheyteen; kumoustäydellisyyttä ei
-tarvita tämän yksittäisen todistuksen johtopäätöksen perustelemiseen.
+\emph{Eheyden} nojalla tyhjän klausuulin johtaminen osoittaa, ettei
+alkuperäinen joukko ole toteutuva. \emph{Kumoustäydellisyys} takaa, että
+ristiriitaisesta klausuulijoukosta voidaan aina johtaa tyhjä klausuuli.
+Tämän löydetyn todistuksen johtopäätökseen tarvitaan vain eheyttä.
 \end{solution}
 
 \begin{exercise}
@@ -386,25 +379,12 @@ ei tarvitse etsiä optimaalista ylärajaa.
 \end{exercise}
 
 \begin{solution}
-Olkoon \(L\) kaikkien oletusklausuuleissa esiintyvien literaalien joukko.
-Koska oletuksia on \(m\) ja kussakin on korkeintaan \(n\) literaalia,
-niin \(|L|\le mn\). Resoluutio ei tuota uusia literaaleja: resolventti
-muodostetaan poistamalla vastakkaiset literaalit ja ottamalla jäljelle
-jäävien joukkojen yhdiste. Siksi jokainen johdettu klausuuli on
-joukon \(L\) osajoukko.
-
-Mahdollisia klausuuleja on siis korkeintaan
-\[
-|\mathcal{P}(L)|=2^{|L|}\le 2^{mn},
-\]
-missä myös tyhjä klausuuli on mukana. Kun jokaisella askeleella lisätään
-aidosti uusi klausuuli, askelia voi näin ollen olla korkeintaan
-\(2^{mn}\). Jos myös alkuperäiset \(m\) oletusriviä lasketaan mukaan,
-resoluutiotodistuksen pituudelle kelpaa yläraja \(m+2^{mn}\).
-
-Tässä samoja klausuuleja ei johdeta uudelleen: jos toistoja sallittaisiin,
-todistusta voisi pitkittää mielivaltaisesti. Pysähtyminen tarkoittaa,
-että lopulta uusia klausuuleja ei enää saada.
+Oletuksissa esiintyvien literaalien joukossa \(L\) on korkeintaan
+\(mn\) alkiota. Resoluutio ei tuota uusia literaaleja, joten jokainen
+johdettu klausuuli kuuluu joukkoon \(\mathcal P(L)\). Aidosti uusia
+klausuuleja voidaan siis lisätä korkeintaan \(2^{mn}\), joten oletusrivit
+mukaan lukien ylärajaksi kelpaa \(m+2^{mn}\). Toistoja sallittaessa
+todistuksen pituutta ei voi näin rajoittaa.
 \end{solution}
 
 \begin{exercise}
