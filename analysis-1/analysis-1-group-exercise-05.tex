@@ -25,9 +25,88 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  Olkoon \((x_n)\) lukujono, jolla \(x_n \to x\) ja \(f \colon A \to \RR\)
+  funktio, jolle \(\lim_{t \to x_0} f(t) = L\).
+  Merkitään pisteen \(a\in\RR\) \(\varepsilon\)-ympäristöä
+  \[
+    N_\varepsilon(a)=(a-\varepsilon,a+\varepsilon)
+    =\{t\in\RR : |t-a|<\varepsilon\}, \qquad \varepsilon>0.
+  \]
+\begin{enumerate}[label=\alph*), nosep]
+  \item Lukujonon tapauksessa \(x_n\to x\) tarkoittaa sitä, että jokaista
+    \(\varepsilon>0\) kohti löytyy indeksi \(N\), jolle
+    \(x_n\in N_\varepsilon(x)\) kaikilla \(n > N\).
+
+    Funktion tapauksessa \(\lim_{t\to x_0}f(t)=L\) tarkoittaa sitä, että
+    jokaista \(\varepsilon>0\) kohti löytyy \(\delta>0\) siten, että
+    \[
+      t\in (A\cap N_\delta(x_0))\setminus\{x_0\}
+      \quad\Longrightarrow\quad f(t)\in N_\varepsilon(L).
+    \]
+    Molemmissa määritelmissä arvot saadaan siis mihin tahansa raja-arvon
+    ympäristöön rajoittamalla syötteitä sopivasti. Lukujono on funktio,
+    jonka määrittelyjoukko on \(\NN\): sen tapauksessa tarkastellaan
+    riittävän suuria indeksejä. Funktion raja-arvossa pisteessä \(x_0\)
+    taas tarkastellaan riittävän lähellä pistettä \(x_0\) olevia
+    määrittelyjoukon pisteitä, mutta itse piste \(x_0\) jätetään pois.
+
+    Funktion arvo pisteessä \(x_0\) ei vaikuta raja-arvoon, eikä funktion
+    tarvitse edes olla määritelty siinä. Vastaavasti jonon äärellisen
+    monen alkupään jäsenen muuttaminen ei vaikuta sen raja-arvoon.
+  \item Määritellään \(f\colon\RR\to\RR\) asettamalla
+    \[
+      f(x)=
+      \begin{cases}
+        0, & x\le 0,\\
+        1, & x>0.
+      \end{cases}
+    \]
+    Valitaan \(x_n=1/n\), kun \(n\ge 1\). Tällöin \(x_n\to 0\) ja
+    \(f(x_n)=1\) kaikilla \(n\), joten
+    \(\lim_{n\to\infty}f(x_n)=1\).
+    Toisaalta
+    \[
+      \lim_{x\to 0^-}f(x)=0
+      \quad\text{ja}\quad
+      \lim_{x\to 0^+}f(x)=1.
+    \]
+    Koska toispuoleiset raja-arvot ovat eri suuret,
+    raja-arvoa \(\lim_{x\to 0}f(x)\) ei ole olemassa.
+\end{enumerate}
+\end{solution}
+
 \begin{exercise}
-  Tutustukaa kirjassa Lauseen 3.1.8 todistukseen. Selittäkää todistuksen
-  idea noin kuudella ranskalaisella viivalle.
+Tutustukaa kirjassa Lauseen 3.1.8 todistukseen. Selittäkää todistuksen
+idea noin kuudella ranskalaisella viivalle.
 \end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{itemize}[label=--, nosep]
+  \item Todistuksessa osoitetaan funktion raja-arvon ja jonoehdon
+    yhtäpitävyys, joten todistus sisältää kaksi suuntaa.
+  \item Ensimmäisessä suunnassa oletetaan, että \(\lim_{x \to x_0} f(x) = L\),
+    ja valitaan mielivaltainen funktion \(f\) määrittelyjoukon lukujono
+    \((y_n)\), jolle \(y_n \to x_0\) ja \(y_n \neq x_0\) kaikilla \(n\).
+    Tavoitteena on osoittaa, että \(f(y_n) \to L\).
+  \item Kun \(\varepsilon>0\) on annettu, funktion raja-arvon määritelmä
+    antaa sopivan luvun \(\delta>0\). Koska \(y_n \to x_0\), riittävän
+    suurilla \(n\) pätee \(0<|y_n-x_0|<\delta\), joten
+    \(|f(y_n)-L|<\varepsilon\). Siis \(f(y_n) \to L\).
+  \item Toisessa suunnassa oletetaan, että \(f(y_n) \to L\) jokaisella
+    määrittelyjoukon lukujonolla \((y_n)\), jolle \(y_n \to x_0\) ja
+    \(y_n \neq x_0\) kaikilla \(n\). Tehdään vastaoletus, että
+    \(f(x)\) ei suppene kohti lukua \(L\), kun \(x \to x_0\).
+  \item Vastaoletuksen nojalla on olemassa \(\varepsilon_0>0\) siten,
+    että jokaisella \(n\ge 1\) voidaan valita määrittelyjoukosta piste
+    \(y_n\), jolle \(0<|y_n-x_0|<1/n\), mutta
+    \(|f(y_n)-L|\ge\varepsilon_0\).
+  \item Näin muodostettu jono toteuttaa ehdot \(y_n \to x_0\) ja
+    \(y_n \neq x_0\), mutta \(f(y_n)\) ei suppene kohti lukua \(L\).
+    Tämä on ristiriidassa oletuksen kanssa, joten vastaoletus on väärä
+    ja \(\lim_{x \to x_0} f(x)=L\).
+\end{itemize}
+\end{solution}
 
 \end{document}
