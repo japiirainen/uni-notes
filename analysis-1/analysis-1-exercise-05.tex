@@ -17,15 +17,52 @@
   \(f(x) = 2x + 4\), raja-arvo pisteessä 2 on 8.
 \end{exercise}
 
+\begin{solution}
+  Osoitetaan \(\lim_{x \to 2} f(x) = 8\). Olkoon \(\varepsilon > 0\). Valitaan
+  \(\delta = \frac{\varepsilon}{2}\). Tällöin
+  \[
+    \abs{f(x) - 8} = \abs{2x + 4 - 8} = \abs{2x - 4} = 2\abs{x - 2} <
+    \varepsilon,
+  \]
+  kun \(0 < \abs{x - 2} < \delta\).
+\end{solution}
+
 \begin{exercise}
   Osoita suoraan määritelmästä, että funktion \(f\colon [0,10] \to \RR\),
   \(f(x) = 4x - 7\), raja-arvo pisteessä 1 on \(-3\).
 \end{exercise}
 
+\begin{solution}
+  Osoitetaan \(\lim_{x \to 1} f(x) = -3\). Olkoon \(\varepsilon > 0\). Olkoon
+  \(r = 1\). Tällöin
+  \[
+    (1 - r, 1 + r) \setminus \set{1} = (0, 2) \setminus \set{1} \subset [0, 10].
+  \]
+  Valitaan \(\delta = \minset{r, \frac{\varepsilon}{4}}\). Tällöin
+  \[
+    \abs{f(x) - (-3)} = \abs{4x - 4} = 4\abs{x - 1} < \varepsilon,
+  \]
+  kun \(0 < \abs{x - 1} < \delta\).
+\end{solution}
+
 \begin{exercise}
   Osoita suoraan määritelmästä, että funktion \(f\colon \RR \to \RR\),
   \(f(x) = \abs{x} + 1\), raja-arvo origossa ei ole 4.
 \end{exercise}
+
+\begin{solution}
+  Osoitetaan \(\lim_{x \to 0} f(x) \neq 4\). Olkoon \(\varepsilon_0 = 1\).
+  Olkoon \(\delta > 0\). Asetetaan \(h = \minset{1, \frac{\delta}{2}} > 0\).
+  Tällöin
+  \[
+    0 < \abs{h - 0} = h < \delta.
+  \]
+  Koska \(0 < h \leq 1\), niin
+  \[
+    \abs{f(h) - 4} = \abs{\abs{h} - 3} = \abs{h - 3} \geq 2 > 1 = \varepsilon_0.
+  \]
+  Täten \(\lim_{x \to 0} f(x) \neq 4\).
+\end{solution}
 
 \begin{exercise}
   Määritellään funktio \(f\colon \RR \to \RR\) asettamalla, että
@@ -33,6 +70,16 @@
   ja \(f(0) = 8\). Osoita suoraan määritelmästä, että funktiolla \(f\)
   on origossa raja-arvo 0.
 \end{exercise}
+
+\begin{solution}
+  Osoitetaan \(\lim_{x \to 0} f(x) = 0\). Olkoon \(\varepsilon > 0\). Valitaan
+  \(\delta = \minset{1, \frac{\varepsilon}{3}}\). Koska \(\delta \leq 1\),
+  niin \(x^2 \leq 3\abs{x}\), kun \(0 < \abs{x - 0} < \delta\). Täten
+  \[
+    \abs{f(x) - 0} = \abs{f(x)} \leq 3\abs{x} < \varepsilon,
+  \]
+  kun \(0 < \abs{x - 0} < \delta\).
+\end{solution}
 
 \begin{exercise}
   (\textsc{Suppiloperiaate} eli \textsc{Kuristusperiaate})
@@ -47,10 +94,122 @@
   että funktiolla \(h\) on raja-arvo \(c\) pisteessä \(x_0\).
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(f,g,h,c,x_0\) kuten tehtävänannossa. Olkoon \(\varepsilon > 0\).
+  Seuraavassa tarkastellaan pisteitä \(x \in (a,b) \setminus \{x_0\}\).
+  On olemassa \(\delta_1 > 0\) siten että \(\abs{f(x) - c} < \varepsilon\),
+  kun \(0 < \abs{x - x_0} < \delta_1\). Samoin, on olemassa \(\delta_2 > 0\)
+  siten että \(\abs{g(x) - c} < \varepsilon\), kun \(0 < \abs{x -
+  x_0} < \delta_2\). Olkoon \(\delta = \minset{\delta_1, \delta_2}\). Tällöin
+  \[
+    c - \varepsilon < f(x) \leq h(x) \leq g(x) < c + \varepsilon,
+  \]
+  kun \(0 < \abs{x - x_0} < \delta\). Toisin sanoen,
+  \[
+    \abs{h(x) - c} < \varepsilon,
+  \]
+  kun \(0 < \abs{x - x_0} < \delta\). Täten \(\lim_{x \to x_0} h(x) = c\).
+\end{solution}
+
 \begin{exercise}
   Olkoon \(f\colon \RR \setminus \{-3,1\} \to \RR\),
   \(f(x) = \frac{4}{(x+3)(x-1)^2}\). Tutki missä pisteissä \(x_0\)
   pätee \(\lim_{x \to x_0} f(x) = \infty\).
 \end{exercise}
+
+\begin{solution}
+  Tarkastellaan nimittäjää funktiona \(g\colon \RR \to \RR\),
+  \(g(x) = (x + 3)(x - 1)^2\). Olkoon \(x_0 \in \RR\).
+  Suoraan raja-arvon määritelmästä saadaan
+  \[
+    \lim_{x \to x_0} x = x_0
+    \qquad\text{ja}\qquad
+    \lim_{x \to x_0} c = c
+  \]
+  kaikilla vakioilla \(c \in \RR\): molemmissa tapauksissa voidaan
+  valita \(\delta = \varepsilon\), kun \(\varepsilon > 0\).
+  Lauseen 3.1.11 summan ja erotuksen raja-arvosääntöjen nojalla
+  \[
+    \lim_{x \to x_0} (x + 3) = x_0 + 3
+    \qquad\text{ja}\qquad
+    \lim_{x \to x_0} (x - 1) = x_0 - 1.
+  \]
+  Soveltamalla saman lauseen tulon raja-arvosääntöä kahdesti saadaan
+  \[
+    \begin{aligned}
+      \lim_{x \to x_0} g(x)
+      &= \lim_{x \to x_0} \bigl((x + 3)(x - 1)(x - 1)\bigr) \\
+      &= \left(\lim_{x \to x_0} (x + 3)\right)
+      \left(\lim_{x \to x_0} (x - 1)\right)
+      \left(\lim_{x \to x_0} (x - 1)\right) \\
+      &= (x_0 + 3)(x_0 - 1)^2.
+    \end{aligned}
+  \]
+  Koska \((x_0 + 3)(x_0 - 1)^2 = 0\) täsmälleen silloin, kun
+  \(x_0 = -3\) tai \(x_0 = 1\), olemme osoittaneet, että
+  \[
+    \lim_{x \to x_0} g(x) = 0
+    \quad\Longleftrightarrow\quad
+    x_0 \in \{-3,1\}.
+  \]
+  Kun \(x_0 \notin \{-3,1\}\), nimittäjän raja-arvo on nollasta poikkeava.
+  Lauseen 3.1.11 osamääräsäännön nojalla tällöin
+  \[
+    \lim_{x \to x_0} f(x)
+    = \frac{4}{(x_0 + 3)(x_0 - 1)^2} \in \RR.
+  \]
+  Näin ollen raja-arvo voi olla \(+\infty\) vain pisteissä \(-3\) ja \(1\).
+  Tutkitaan näitä pisteitä erikseen.
+
+  Tarkastellaan pistettä \(x_0 = 1\). Olkoon \(M \in \RR\).
+  Jos \(M \leq 0\), valitaan \(\delta = 1\). Kun
+  \(0 < \abs{x - 1} < \delta\), niin \(0 < x < 2\) ja \(x \neq 1\).
+  Siten \(g(x) = (x + 3)(x - 1)^2 > 0\), joten
+  \[
+    f(x) = \frac{4}{g(x)} > 0 \geq M.
+  \]
+
+  Oletetaan sitten, että \(M > 0\). Koska \(\lim_{x \to 1} g(x) = 0\),
+  on olemassa \(\delta_1 > 0\) siten, että
+  \[
+    \abs{g(x)} < \frac{4}{M},
+    \qquad\text{kun } 0 < \abs{x - 1} < \delta_1.
+  \]
+  Olkoon \(\delta = \minset{1, \delta_1}\). Kun \(0 < \abs{x - 1} < \delta\),
+  niin \(0 < x < 2\) ja \(x \neq 1\), joten
+  \[
+    g(x) = (x + 3)(x - 1)^2 > 0.
+  \]
+  Yhdistämällä nämä tiedot saadaan
+  \[
+    0 < g(x) < \frac{4}{M} \implies f(x) = \frac{4}{g(x)} > M.
+  \]
+  Molemmissa tapauksissa on siis löydetty \(\delta > 0\), jolla
+  \(f(x) > M\), kun \(0 < \abs{x - 1} < \delta\).
+  Täten \(\lim_{x \to 1} f(x) = +\infty\).
+
+  Tarkastellaan seuraavaksi pistettä \(x_0 = -3\). Osoitetaan, ettei
+  funktion \(f\) raja-arvo tässä pisteessä ole \(+\infty\).
+  Valitaan \(M = 0\). Olkoon
+  \(\delta > 0\) mielivaltainen ja asetetaan \(x = -3 - \frac{\delta}{2}\).
+  Tällöin \(x < -3\), joten \(x\) kuuluu funktion \(f\) määrittelyjoukkoon ja
+  \[
+    0 < \abs{x + 3} = \frac{\delta}{2} < \delta.
+  \]
+  Koska \(x + 3 < 0\) ja \((x - 1)^2 > 0\), saadaan
+  \[
+    f(x) = \frac{4}{(x + 3)(x - 1)^2} < 0 = M.
+  \]
+  Siis millään \(\delta > 0\) ei päde \(f(x) > M\) kaikilla \(x\), joille
+  \(0 < \abs{x + 3} < \delta\). Näin ollen
+  \[
+    \lim_{x \to -3} f(x) \neq +\infty.
+  \]
+
+  Täten \(x_0 = 1\) on ainoa piste, jossa toteutuu
+  \[
+    \lim_{x \to x_0} f(x) = +\infty.
+  \]
+\end{solution}
 
 \end{document}
