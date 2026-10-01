@@ -1149,22 +1149,22 @@ To prove \(A\leftrightarrow B\), derive \(B\) assuming \(A\), and derive
 \]
 
 \begin{samepage}
-\begin{example}[Additional example: equivalence introduction]
-  We prove \(\vdash (A\land B)\leftrightarrow(B\land A)\).
-  Each direction uses conjunction elimination followed by introduction:
-  \[
-    \infer[\leftrightarrow\mathrm T,\,1,2]
-    {(A\land B)\leftrightarrow(B\land A)}{
-      \infer[\land\mathrm T]{B\land A}{
-        \infer[\land\mathrm E]{B}{[A\land B]^1}
-      & \infer[\land\mathrm E]{A}{[A\land B]^1}}
-      & \infer[\land\mathrm T]{A\land B}{
-        \infer[\land\mathrm E]{A}{[B\land A]^2}
-    & \infer[\land\mathrm E]{B}{[B\land A]^2}}}
-  \]
-  The final rule discharges both occurrences labelled \(1\) and both
-  occurrences labelled \(2\). There are no open assumptions.
-\end{example}
+  \begin{example}[Additional example: equivalence introduction]
+    We prove \(\vdash (A\land B)\leftrightarrow(B\land A)\).
+    Each direction uses conjunction elimination followed by introduction:
+    \[
+      \infer[\leftrightarrow\mathrm T,\,1,2]
+      {(A\land B)\leftrightarrow(B\land A)}{
+        \infer[\land\mathrm T]{B\land A}{
+          \infer[\land\mathrm E]{B}{[A\land B]^1}
+        & \infer[\land\mathrm E]{A}{[A\land B]^1}}
+        & \infer[\land\mathrm T]{A\land B}{
+          \infer[\land\mathrm E]{A}{[B\land A]^2}
+      & \infer[\land\mathrm E]{B}{[B\land A]^2}}}
+    \]
+    The final rule discharges both occurrences labelled \(1\) and both
+    occurrences labelled \(2\). There are no open assumptions.
+  \end{example}
 
 \end{samepage}
 
@@ -1190,6 +1190,223 @@ The formula \(B\) can be any formula; it need not be the same as \(A\).
   \]
   Only \(A\) is discharged. The premises \(A\to B\) and \(\neg B\)
   remain open.
+\end{example}
+
+\subsection{01.10.2026}
+
+\subsubsection{Planning a natural deduction proof}
+
+Two useful questions are: \emph{What may I assume?} and \emph{What do I
+want to derive?} Work backwards from the main connective of the goal.
+For an implication, assume its antecedent and aim for its consequent;
+for a negation, assume the formula to be negated and aim for a contradiction.
+Keep track of which rule will discharge each temporary assumption.
+
+\begin{example}[Introducing an implication]
+  To prove \(\vdash A\to(A\lor B)\), we may temporarily assume \(A\).
+  The new goal is \(A\lor B\), obtained by disjunction introduction:
+  \[
+    \infer[\to\mathrm T,\,1]{A\to(A\lor B)}{
+    \infer[\lor\mathrm T]{A\lor B}{[A]^1}}
+  \]
+\end{example}
+
+\begin{example}[An implication with an unused antecedent]
+  We prove \(\{A\to(B\land C),\ A\land D\}\vdash E\to B\).
+  Besides the premises, we may assume \(E\) temporarily. Our goal is
+  \(B\), which follows from the premises alone:
+  \[
+    \infer[\to\mathrm T]{E\to B}{
+      \infer[\land\mathrm E]{B}{
+        \infer[\to\mathrm E]{B\land C}{
+    A\to(B\land C) & \infer[\land\mathrm E]{A}{A\land D}}}}
+  \]
+  The discharge of \(E\) is vacuous, since it was never used.
+\end{example}
+
+\begin{example}[Commutativity of conjunction]
+  For an equivalence, prove each direction under its own assumption:
+  \[
+    \infer[\leftrightarrow\mathrm T,\,1,2]
+    {(A\land B)\leftrightarrow(B\land A)}{
+      \infer[\land\mathrm T]{B\land A}{
+        \infer[\land\mathrm E]{B}{[A\land B]^1}
+      & \infer[\land\mathrm E]{A}{[A\land B]^1}}
+      & \infer[\land\mathrm T]{A\land B}{
+        \infer[\land\mathrm E]{A}{[B\land A]^2}
+    & \infer[\land\mathrm E]{B}{[B\land A]^2}}}
+  \]
+  All four assumption occurrences are discharged by the final rule.
+\end{example}
+
+\subsubsection{De Morgan's law for a disjunction}
+
+\begin{example}[From two negations to the negation of a disjunction]
+  We prove \(\vdash(\neg A\land\neg B)\to\neg(A\lor B)\).
+  Assume \(\neg A\land\neg B\), and then assume \(A\lor B\) to
+  derive a contradiction. In each case of the disjunction, we can derive
+  \(\neg(A\lor B)\). Write these two subproofs as
+  \[
+    \mathcal P_A =
+    \infer[\neg\mathrm T\text{ (vacuous)}]{\neg(A\lor B)}{
+      \infer[\land\mathrm T]{A\land\neg A}{
+    [A]^1 & \infer[\land\mathrm E]{\neg A}{[\neg A\land\neg B]^3}}}
+  \]
+  and
+  \[
+    \mathcal P_B =
+    \infer[\neg\mathrm T\text{ (vacuous)}]{\neg(A\lor B)}{
+      \infer[\land\mathrm T]{B\land\neg B}{
+    [B]^1 & \infer[\land\mathrm E]{\neg B}{[\neg A\land\neg B]^3}}}.
+  \]
+  The negation introductions here discharge no assumptions: each
+  contradiction already follows from the open assumptions in that case.
+  In particular, the case assumptions labelled \(1\) remain open until
+  disjunction elimination. Combining the subproofs gives
+  \[
+    \infer[\to\mathrm T,\,3]{(\neg A\land\neg B)\to\neg(A\lor B)}{
+      \infer[\neg\mathrm T,\,2]{\neg(A\lor B)}{
+        \infer[\land\mathrm T]{(A\lor B)\land\neg(A\lor B)}{
+          [A\lor B]^2
+          & \infer[\lor\mathrm E,\,1]{\neg(A\lor B)}{
+    [A\lor B]^2 & \mathcal P_A & \mathcal P_B}}}}
+  \]
+\end{example}
+
+\paragraph{Alternative proof with a common contradiction.}
+Disjunction elimination requires the same conclusion in both cases.
+We can use \(B\land\neg B\) as that conclusion. In the \(A\)-case,
+first obtain \(A\land\neg A\), and use a vacuous negation introduction
+followed by double negation elimination:
+\[
+  \mathcal R_A =
+  \infer[\neg\mathrm E]{B\land\neg B}{
+    \infer[\neg\mathrm T\text{ (vacuous)}]{\neg\neg(B\land\neg B)}{
+      \infer[\land\mathrm T]{A\land\neg A}{
+  [A]^1 & \infer[\land\mathrm E]{\neg A}{[\neg A\land\neg B]^3}}}}.
+\]
+In the \(B\)-case, the contradiction is immediate:
+\[
+  \mathcal R_B =
+  \infer[\land\mathrm T]{B\land\neg B}{
+  [B]^1 & \infer[\land\mathrm E]{\neg B}{[\neg A\land\neg B]^3}}.
+\]
+Now finish with
+\[
+  \infer[\to\mathrm T,\,3]{(\neg A\land\neg B)\to\neg(A\lor B)}{
+    \infer[\neg\mathrm T,\,2]{\neg(A\lor B)}{
+      \infer[\lor\mathrm E,\,1]{B\land\neg B}{
+  [A\lor B]^2 & \mathcal R_A & \mathcal R_B}}}.
+\]
+\begin{remark}[Corrections to the handwritten proof]
+  The common conclusion of the case split is \(B\land\neg B\),
+  rather than \(B\lor\neg B\). Both branches must yield a contradiction
+  for the subsequent negation introduction.
+\end{remark}
+
+\begin{example}[From the negation of a disjunction to two negations]
+  We prove \(\vdash\neg(A\lor B)\to(\neg A\land\neg B)\).
+  Assume \(\neg(A\lor B)\). To obtain the conjunction, prove
+  \(\neg A\) and \(\neg B\) separately, using temporary assumptions
+  \(A\) and \(B\), respectively:
+  \[
+    \mathcal P =
+    \infer[\neg\mathrm T,\,1]{\neg A}{
+      \infer[\land\mathrm T]{(A\lor B)\land\neg(A\lor B)}{
+        \infer[\lor\mathrm T]{A\lor B}{[A]^1}
+    & [\neg(A\lor B)]^3}},
+  \]
+  \[
+    \mathcal Q =
+    \infer[\neg\mathrm T,\,2]{\neg B}{
+      \infer[\land\mathrm T]{(A\lor B)\land\neg(A\lor B)}{
+        \infer[\lor\mathrm T]{A\lor B}{[B]^2}
+    & [\neg(A\lor B)]^3}}.
+  \]
+  Combine these subproofs and discharge the original assumption:
+  \[
+    \infer[\to\mathrm T,\,3]{\neg(A\lor B)\to(\neg A\land\neg B)}{
+    \infer[\land\mathrm T]{\neg A\land\neg B}{\mathcal P & \mathcal Q}}
+  \]
+\end{example}
+
+\subsubsection{De Morgan's law for a conjunction}
+
+\begin{example}[From a disjunction of negations to a negated conjunction]
+  We prove \(\vdash(\neg A\lor\neg B)\to\neg(A\land B)\).
+  Assume \(\neg A\lor\neg B\), and temporarily assume \(A\land B\).
+  Split into the cases \(\neg A\) and \(\neg B\). The two subproofs are
+  \[
+    \mathcal P =
+    \infer[\neg\mathrm T\text{ (vacuous)}]{\neg(A\land B)}{
+      \infer[\land\mathrm T]{A\land\neg A}{
+    \infer[\land\mathrm E]{A}{[A\land B]^2} & [\neg A]^3}},
+  \]
+  \[
+    \mathcal Q =
+    \infer[\neg\mathrm T\text{ (vacuous)}]{\neg(A\land B)}{
+      \infer[\land\mathrm T]{B\land\neg B}{
+    \infer[\land\mathrm E]{B}{[A\land B]^2} & [\neg B]^3}}.
+  \]
+  The case assumptions labelled \(3\) are discharged by \(\lor\mathrm E\).
+  The assumption labelled \(2\) remains open through both subproofs and
+  is discharged after the cases have been combined:
+  \[
+    \infer[\to\mathrm T,\,1]{(\neg A\lor\neg B)\to\neg(A\land B)}{
+      \infer[\neg\mathrm T,\,2]{\neg(A\land B)}{
+        \infer[\land\mathrm T]{(A\land B)\land\neg(A\land B)}{
+          [A\land B]^2
+          & \infer[\lor\mathrm E,\,3]{\neg(A\land B)}{
+    [\neg A\lor\neg B]^1 & \mathcal P & \mathcal Q}}}}
+  \]
+\end{example}
+
+\begin{remark}[Discharge labels]
+  In the handwritten tree, the negation introductions inside the cases
+  are marked with the case label \(3\). Those steps are vacuous: the
+  assumptions \(\neg A\) and \(\neg B\) must instead remain open until
+  the case split is closed by disjunction elimination.
+\end{remark}
+
+\begin{example}[From a negated conjunction to a disjunction of negations]
+  We prove \(\vdash\neg(A\land B)\to(\neg A\lor\neg B)\).
+  Assume \(\neg(A\land B)\). To derive the disjunction, assume its
+  negation \(\neg(\neg A\lor\neg B)\), derive a contradiction, and
+  apply double negation elimination.
+
+  First assume \(B\), and within that subproof assume \(A\). The
+  conjunction \(A\land B\) contradicts the original assumption,
+  allowing us to discharge \(A\):
+  \[
+    \mathcal P =
+    \infer[\neg\mathrm T,\,1]{\neg A}{
+      \infer[\land\mathrm T]{(A\land B)\land\neg(A\land B)}{
+        \infer[\land\mathrm T]{A\land B}{[A]^1 & [B]^2}
+    & [\neg(A\land B)]^4}}.
+  \]
+  From \(\neg A\), introduce \(\neg A\lor\neg B\). This contradicts
+  the assumption labelled \(3\), so we can discharge \(B\):
+  \[
+    \mathcal Q =
+    \infer[\neg\mathrm T,\,2]{\neg B}{
+      \infer[\land\mathrm T]
+      {(\neg A\lor\neg B)\land\neg(\neg A\lor\neg B)}{
+        \infer[\lor\mathrm T]{\neg A\lor\neg B}{\mathcal P}
+    & [\neg(\neg A\lor\neg B)]^3}}.
+  \]
+  Introduce the disjunction again, now from \(\neg B\), to obtain the
+  final contradiction:
+  \[
+    \infer[\to\mathrm T,\,4]{\neg(A\land B)\to(\neg A\lor\neg B)}{
+      \infer[\neg\mathrm E]{\neg A\lor\neg B}{
+        \infer[\neg\mathrm T,\,3]{\neg\neg(\neg A\lor\neg B)}{
+          \infer[\land\mathrm T]
+          {(\neg A\lor\neg B)\land\neg(\neg A\lor\neg B)}{
+            \infer[\lor\mathrm T]{\neg A\lor\neg B}{\mathcal Q}
+    & [\neg(\neg A\lor\neg B)]^3}}}}
+  \]
+  All assumptions have now been discharged. This proof uses the
+  classical double negation elimination rule.
 \end{example}
 
 \end{document}
