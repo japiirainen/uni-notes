@@ -1553,4 +1553,451 @@ By \cref{thm:monotone-convergence}, the increasing, bounded sequence
   a contradiction. Therefore \(a=b\).
 \end{proof}
 
+\subsection{01.10.2026}
+
+\subsubsection{Further examples of function limits}
+
+\begin{example}[Constant functions]
+  If \(f(x)=a\) for every \(x\in\RR\), then
+  \(\lim_{x\to x_0}f(x)=a\) for every \(x_0\in\RR\).
+  Indeed, given \(\varepsilon>0\), choose \(\delta=1\). Then
+  \(\abs{f(x)-a}=0<\varepsilon\) whenever
+  \(0<\abs{x-x_0}<\delta\).
+\end{example}
+
+\begin{example}
+  For \(f(x)=x^3\), we have \(\lim_{x\to2}f(x)=8\).
+\end{example}
+
+\begin{proof}
+  If \(\abs{x-2}<1\), then \(1<x<3\), so
+  \[
+    \abs{x^2+2x+4}<9+6+4=19.
+  \]
+  Given \(\varepsilon>0\), choose
+  \(\delta=\min\set{1,\varepsilon/19}\). For
+  \(0<\abs{x-2}<\delta\), factor the difference to obtain
+  \[
+    \abs{x^3-8}=\abs{x-2}\abs{x^2+2x+4}
+    <19\abs{x-2}<19\delta\leq\varepsilon.
+  \]
+\end{proof}
+
+\subsubsection{Polynomial division}
+
+Polynomial division lets us factor differences such as \(P(x)-P(a)\),
+which is useful in direct proofs of limits.
+
+\begin{theorem}[Polynomial division]\label{thm:polynomial-division}
+  Let \(P,D\) be polynomials with real coefficients, with \(D\neq0\).
+  There are unique polynomials \(Q,R\) such that
+  \[
+    P=DQ+R,
+  \]
+  where either \(R=0\) or \(\deg R<\deg D\).
+  We call \(Q\) the \emph{quotient} and \(R\) the \emph{remainder}.
+\end{theorem}
+
+\begin{proof}
+  Start with \(Q=0\) and \(R=P\). If \(R=0\) or
+  \(\deg R<\deg D\), we are done. Otherwise, write the leading terms
+  of \(R\) and \(D\) as \(ax^m\) and \(bx^d\), respectively.
+  Since \(b\neq0\) and \(m\geq d\), replace
+  \[
+    Q\quad\text{by}\quad Q+\frac{a}{b}x^{m-d},
+    \qquad
+    R\quad\text{by}\quad R-\frac{a}{b}x^{m-d}D.
+  \]
+  The identity \(P=DQ+R\) is preserved, and the leading term of
+  \(R\) cancels. Thus the remainder becomes zero or its degree
+  strictly decreases. After finitely many steps the required degree
+  condition holds.
+
+  For uniqueness, suppose \(DQ+R=D\widetilde Q+\widetilde R\),
+  with both remainders satisfying the degree condition. Then
+  \[
+    D(Q-\widetilde Q)=\widetilde R-R.
+  \]
+  If \(Q-\widetilde Q\neq0\), the left side has degree at least
+  \(\deg D\), while the right side is zero or has smaller degree.
+  This is impossible. Hence \(Q=\widetilde Q\) and \(R=\widetilde R\).
+\end{proof}
+
+\begin{corollary}[Remainder and factor theorems]
+  The remainder when dividing \(P(x)\) by \(x-a\) is \(P(a)\).
+  In particular, \(x-a\) is a factor of \(P(x)\) if and only if
+  \(P(a)=0\).
+\end{corollary}
+
+\begin{proof}
+  Polynomial division gives \(P(x)=(x-a)Q(x)+r\) with constant
+  remainder \(r\). Substituting \(x=a\) gives \(r=P(a)\).
+  Thus the remainder vanishes exactly when \(P(a)=0\).
+\end{proof}
+
+To divide by hand, arrange terms in descending powers, insert zero
+coefficients for missing powers, and repeatedly divide the leading
+terms, multiply the divisor, and subtract.
+
+\begin{example}[Cancelling a factor in a limit]\label{ex:division-exact}
+  Consider the limit
+  \[
+    \lim_{x\to2}\frac{x^3+5x^2-2x-24}{x-2}.
+  \]
+  Both numerator and denominator tend to zero, so direct use of the
+  quotient law is not possible. Divide
+  \(P(x)=x^3+5x^2-2x-24\) by \(x-2\).
+  The successive quotient terms are \(x^2\), \(7x\), and \(12\):
+  \begin{align*}
+    P(x)-x^2(x-2)&=7x^2-2x-24,\\
+    (7x^2-2x-24)-7x(x-2)&=12x-24,\\
+    (12x-24)-12(x-2)&=0.
+  \end{align*}
+  Therefore
+  \[
+    x^3+5x^2-2x-24=(x-2)(x^2+7x+12).
+  \]
+  For \(x\neq2\), we can cancel \(x-2\), giving
+  \[
+    \frac{x^3+5x^2-2x-24}{x-2}=x^2+7x+12.
+  \]
+  Thus the desired limit is \(4+14+12=30\). A direct verification
+  uses
+  \[
+    \abs{x^2+7x+12-30}=\abs{x-2}\abs{x+9}.
+  \]
+  If \(\abs{x-2}<1\), then \(\abs{x+9}<12\). Given
+  \(\varepsilon>0\), take \(\delta=\min\set{1,\varepsilon/12}\).
+  For \(0<\abs{x-2}<\delta\), the difference from \(30\) is
+  less than \(12\delta\leq\varepsilon\). The quotient need not
+  be defined at \(x=2\), because the limit uses only nearby points.
+\end{example}
+
+\begin{example}[Using a remainder to simplify a limit]
+  Consider
+  \[
+    \lim_{x\to1}\frac{x^3-1}{x^2-1}.
+  \]
+  Again, both numerator and denominator tend to zero. Dividing
+  \(x^3-1\) by \(x^2-1\) gives quotient \(x\) and remainder
+  \(x-1\), since
+  \[
+    (x^3-1)-x(x^2-1)=x-1.
+  \]
+  The remainder has degree \(1<2\), so division is complete.
+  For \(x\neq\pm1\), factor the denominator and cancel:
+  \[
+    \frac{x^3-1}{x^2-1}
+    =x+\frac{x-1}{x^2-1}
+    =x+\frac{x-1}{(x-1)(x+1)}
+    =x+\frac1{x+1}.
+  \]
+  This suggests the limit \(1+1/2=3/2\). To verify it directly,
+  suppose \(0<\abs{x-1}<1/2\). Then \(x+1>3/2\), and
+  \begin{align*}
+    \abs*{\frac{x^3-1}{x^2-1}-\frac32}
+    &=\abs*{(x-1)+\frac1{x+1}-\frac12}\\
+    &\leq\abs{x-1}+\frac{\abs{x-1}}{2\abs{x+1}}\\
+    &<2\abs{x-1}.
+  \end{align*}
+  Given \(\varepsilon>0\), take
+  \(\delta=\min\set{1/2,\varepsilon/2}\). The displayed estimate
+  is then less than \(2\delta\leq\varepsilon\), proving the limit.
+\end{example}
+
+\begin{remark}
+  In both examples, division exposes a common factor that can be
+  cancelled for \(x\neq x_0\). Functions that agree throughout a
+  punctured neighbourhood of \(x_0\) have the same limit there:
+  their defining \(\varepsilon\)--\(\delta\) estimates are identical
+  after shrinking \(\delta\) to stay in that neighbourhood.
+\end{remark}
+
+\subsubsection{Limits using factorisation and local estimates}
+
+\begin{example}
+  For \(f(x)=x^3+5x^2-2x-24\), we have
+  \(\lim_{x\to2}f(x)=0\).
+\end{example}
+
+\begin{proof}
+  By \cref{ex:division-exact}, \(f(x)=(x-2)(x^2+7x+12)\).
+  If \(\abs{x-2}<1\), then \(1<x<3\), and hence
+  \[
+    \abs{x^2+7x+12}<9+21+12=42.
+  \]
+  Given \(\varepsilon>0\), choose
+  \(\delta=\min\set{1,\varepsilon/42}\). If
+  \(0<\abs{x-2}<\delta\), then
+  \[
+    \abs{f(x)-0}<42\abs{x-2}<42\delta\leq\varepsilon.
+  \]
+\end{proof}
+
+\begin{example}[A piecewise function]
+  Define \(f:\RR\to\RR\) by
+  \[
+    f(x)=
+    \begin{cases}
+      2\abs{x},&x<0,\\
+      7,&x=0,\\
+      x^2,&x>0.
+    \end{cases}
+  \]
+  Then \(\lim_{x\to0}f(x)=0\), even though \(f(0)=7\).
+\end{example}
+
+\begin{proof}
+  Given \(\varepsilon>0\), take
+  \(\delta=\min\set{1,\varepsilon/2}\). If \(-\delta<x<0\),
+  then \(\abs{f(x)}=2\abs{x}<2\delta\leq\varepsilon\).
+  If \(0<x<\delta\), then \(x<1\), so
+  \(\abs{f(x)}=x^2<x<\delta\leq\varepsilon/2<\varepsilon\).
+  These cases cover \(0<\abs{x}<\delta\).
+\end{proof}
+
+\begin{example}[Keeping a denominator away from zero]
+  Let \(f:(0,1)\to\RR\), \(f(x)=7/x\). Then
+  \(\lim_{x\to1/2}f(x)=14\).
+\end{example}
+
+\begin{proof}
+  We have
+  \[
+    \abs*{\frac7x-14}=\frac{14}{\abs{x}}\abs*{x-\frac12}.
+  \]
+  If \(\abs{x-1/2}<1/4\), then \(x>1/4\), so
+  \(14/\abs{x}<56\). Given \(\varepsilon>0\), choose
+  \(\delta=\min\set{1/4,\varepsilon/56}\). Then
+  \[
+    0<\abs*{x-\frac12}<\delta
+    \quad\implies\quad
+    \abs{f(x)-14}<56\abs*{x-\frac12}<56\delta\leq\varepsilon.
+  \]
+\end{proof}
+
+\subsubsection{A necessary Cauchy condition for function limits}
+
+In the following results, domains contain a punctured neighbourhood of
+\(x_0\): for some \(r>0\),
+\((x_0-r,x_0+r)\setminus\set{x_0}\subseteq A\), as in the
+previous lecture's definition. All points at which a function is
+evaluated are understood to belong to its domain.
+
+\begin{theorem}\label{thm:function-cauchy-necessary}
+  If \(\lim_{x\to x_0}f(x)=L\in\RR\), then for every
+  \(\varepsilon>0\) there exists \(\delta>0\) such that
+  \[
+    \abs{f(x)-f(y)}<\varepsilon
+  \]
+  whenever \(0<\abs{x-x_0}<\delta\) and
+  \(0<\abs{y-x_0}<\delta\).
+\end{theorem}
+
+\begin{proof}
+  Choose \(\delta>0\) so that \(\abs{f(t)-L}<\varepsilon/2\)
+  whenever \(0<\abs{t-x_0}<\delta\). For the stated \(x,y\),
+  \[
+    \abs{f(x)-f(y)}\leq\abs{f(x)-L}+\abs{f(y)-L}
+    <\frac\varepsilon2+\frac\varepsilon2=\varepsilon.
+  \]
+\end{proof}
+
+\begin{example}[A jump prevents a limit]
+  Let \(f(x)=1\) for \(x\leq0\), and \(f(x)=2\) for \(x>0\).
+  The limit at \(0\) does not exist. Indeed, fix \(\varepsilon=1/2\).
+  For every \(\delta>0\), the points \(x=\delta/2\) and
+  \(y=-\delta/2\) satisfy \(0<\abs{x},\abs{y}<\delta\), but
+  \[
+    \abs{f(x)-f(y)}=1>\varepsilon.
+  \]
+  This contradicts the necessary condition in
+  \cref{thm:function-cauchy-necessary}.
+\end{example}
+
+\subsubsection{The sequential criterion for function limits}
+
+\begin{theorem}[Sequential criterion]\label{thm:function-sequential}
+  Let \(f:A\to\RR\) and \(m\in\RR\). The following are equivalent:
+  \begin{enumerate}[label=(\alph*)]
+    \item \(\lim_{x\to x_0}f(x)=m\).
+    \item For every sequence \((y_n)\) in \(A\setminus\set{x_0}\)
+      with \(y_n\to x_0\), we have \(f(y_n)\to m\).
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  Suppose (a) holds, and let \(y_n\to x_0\) with
+  \(y_n\in A\setminus\set{x_0}\). Given \(\varepsilon>0\), choose
+  \(\delta>0\) such that
+  \[
+    0<\abs{x-x_0}<\delta\implies\abs{f(x)-m}<\varepsilon.
+  \]
+  There is \(N\in\NN\) such that \(\abs{y_n-x_0}<\delta\)
+  for \(n>N\). Since \(y_n\neq x_0\), it follows that
+  \(\abs{f(y_n)-m}<\varepsilon\) for \(n>N\). Thus (b) holds.
+
+  Conversely, suppose (b) holds but (a) fails. The negation of (a)
+  says that there exists \(\varepsilon_0>0\) such that for every
+  \(\delta>0\) we can find \(y\in A\) satisfying
+  \[
+    0<\abs{y-x_0}<\delta,
+    \qquad \abs{f(y)-m}\geq\varepsilon_0.
+  \]
+  For each \(n\in\NN\), choose such a point \(y_n\) with
+  \(\delta=\min\set{r,1/(n+1)}\). Then \(y_n\neq x_0\) and
+  \(\abs{y_n-x_0}<1/(n+1)\), so \(y_n\to x_0\). But
+  \(\abs{f(y_n)-m}\geq\varepsilon_0\) for every \(n\),
+  contradicting (b). Therefore (a) holds.
+\end{proof}
+
+\begin{remark}
+  In the converse proof, we negate the statement that the limit equals
+  the specified number \(m\). This includes both a nonexistent limit
+  and a limit different from \(m\). The restriction \(y_n\neq x_0\)
+  is essential because \(f(x_0)\) need not equal the limit.
+\end{remark}
+
+\subsubsection{Local boundedness and preservation of bounds}
+
+\begin{theorem}[Local boundedness]\label{thm:function-local-bound}
+  If \(\lim_{x\to x_0}f(x)=L\in\RR\), there are \(M,\delta>0\)
+  such that \(\abs{f(x)}<M\) whenever \(0<\abs{x-x_0}<\delta\).
+\end{theorem}
+
+\begin{proof}
+  Choose \(\delta>0\) using \(\varepsilon=1\) in the limit
+  definition. Then
+  \[
+    \abs{f(x)}\leq\abs{f(x)-L}+\abs{L}<1+\abs{L}
+  \]
+  whenever \(0<\abs{x-x_0}<\delta\). Take \(M=1+\abs{L}>0\).
+\end{proof}
+
+\begin{theorem}[Preservation of bounds]
+  Suppose \(\lim_{x\to x_0}f(x)=L\in\RR\).
+  If \(f(x)\leq M\) throughout some punctured neighbourhood of
+  \(x_0\), then \(L\leq M\). If \(f(x)\geq m\) throughout
+  such a neighbourhood, then \(L\geq m\).
+  In particular, these conclusions hold if the bounds hold on all of \(A\).
+\end{theorem}
+
+\begin{proof}
+  For the upper bound, suppose \(L>M\) and choose
+  \(\varepsilon=L-M>0\). The limit definition gives \(\delta>0\)
+  such that
+  \[
+    f(x)>L-\varepsilon=M\qquad(0<\abs{x-x_0}<\delta).
+  \]
+  Shrink \(\delta\) if necessary so that this neighbourhood lies
+  in \(A\) and the assumed bound holds there. Taking
+  \(x=x_0+\delta/2\) contradicts \(f(x)\leq M\). Hence \(L\leq M\).
+
+  For the lower bound, suppose \(L<m\) and take
+  \(\varepsilon=m-L>0\). For all sufficiently close \(x\neq x_0\),
+  \[
+    f(x)<L+\varepsilon=m.
+  \]
+  Choosing such a point in the neighbourhood where \(f(x)\geq m\)
+  gives a contradiction. Thus \(L\geq m\).
+\end{proof}
+
+\subsubsection{Arithmetic laws for function limits}
+
+\begin{theorem}\label{thm:function-limit-laws}
+  Let \(f,g:A\to\RR\), with
+  \(\lim_{x\to x_0}f(x)=a\) and \(\lim_{x\to x_0}g(x)=b\).
+  Then, for every \(c\in\RR\),
+  \begin{align*}
+    \lim_{x\to x_0}(f(x)+g(x))&=a+b,\\
+    \lim_{x\to x_0}cf(x)&=ca,\\
+    \lim_{x\to x_0}f(x)g(x)&=ab.
+  \end{align*}
+  If \(b\neq0\), then \(g(x)\neq0\) in some punctured
+  neighbourhood of \(x_0\), and
+  \[
+    \lim_{x\to x_0}\frac{f(x)}{g(x)}=\frac ab.
+  \]
+  The quotient is defined on \(\set{x\in A:g(x)\neq0}\).
+\end{theorem}
+
+\begin{proof}
+  Let \(\varepsilon>0\). All estimates below apply to points in
+  a sufficiently small punctured neighbourhood of \(x_0\).
+
+  \paragraph{Sum.}
+  Choose \(\delta_f,\delta_g>0\) so that
+  \(\abs{f(x)-a}<\varepsilon/2\) for
+  \(0<\abs{x-x_0}<\delta_f\), and
+  \(\abs{g(x)-b}<\varepsilon/2\) for
+  \(0<\abs{x-x_0}<\delta_g\). With
+  \(\delta=\min\set{\delta_f,\delta_g}\),
+  \[
+    \abs{f(x)+g(x)-(a+b)}
+    \leq\abs{f(x)-a}+\abs{g(x)-b}<\varepsilon.
+  \]
+
+  \paragraph{Scalar multiple.}
+  If \(c=0\), the result follows from the constant-function example.
+  If \(c\neq0\), choose \(\delta>0\) so that
+  \(\abs{f(x)-a}<\varepsilon/\abs{c}\). Then
+  \[
+    \abs{cf(x)-ca}=\abs{c}\abs{f(x)-a}<\varepsilon.
+  \]
+
+  \paragraph{Product.}
+  By \cref{thm:function-local-bound}, there are \(M>0\) and
+  \(\delta_0>0\) such that \(\abs{f(x)}<M\) when
+  \(0<\abs{x-x_0}<\delta_0\). Choose \(\delta_1,\delta_2>0\)
+  to ensure respectively that
+  \[
+    \abs{g(x)-b}<\frac{\varepsilon}{2M},
+    \qquad
+    \abs{f(x)-a}<\frac{\varepsilon}{2(\abs{b}+1)}.
+  \]
+  For \(0<\abs{x-x_0}<\min\set{\delta_0,\delta_1,\delta_2}\),
+  \begin{align*}
+    \abs{f(x)g(x)-ab}
+    &=\abs{f(x)(g(x)-b)+b(f(x)-a)}\\
+    &\leq\abs{f(x)}\abs{g(x)-b}+\abs{b}\abs{f(x)-a}\\
+    &<\frac\varepsilon2+
+    \frac{\abs{b}\varepsilon}{2(\abs{b}+1)}<\varepsilon.
+  \end{align*}
+
+  \paragraph{Quotient.}
+  Assume \(b\neq0\). First choose \(\delta_0>0\) such that
+  \(\abs{g(x)-b}<\abs{b}/2\). The reverse triangle inequality gives
+  \[
+    \abs{g(x)}\geq\abs{b}-\abs{g(x)-b}>\frac{\abs{b}}2>0.
+  \]
+  Thus the quotient is defined near \(x_0\). To prove
+  \(1/g(x)\to1/b\), choose \(\delta_1>0\) so that
+  \(\abs{g(x)-b}<\varepsilon\abs{b}^2/2\). For
+  \(0<\abs{x-x_0}<\min\set{\delta_0,\delta_1}\),
+  \[
+    \abs*{\frac1{g(x)}-\frac1b}
+    =\frac{\abs{g(x)-b}}{\abs{g(x)}\abs{b}}
+    \leq\frac{2\abs{g(x)-b}}{\abs{b}^2}<\varepsilon.
+  \]
+  The product law applied to \(f\) and \(1/g\) now yields
+  \(f(x)/g(x)\to a/b\).
+\end{proof}
+
+\begin{corollary}[Polynomial and rational limits]
+  For every real polynomial \(P\) and every \(x_0\in\RR\),
+  \(\lim_{x\to x_0}P(x)=P(x_0)\). If \(Q\) is another polynomial
+  with \(Q(x_0)\neq0\), then
+  \[
+    \lim_{x\to x_0}\frac{P(x)}{Q(x)}=\frac{P(x_0)}{Q(x_0)}.
+  \]
+\end{corollary}
+
+\begin{proof}
+  The identity function has limit \(x_0\) at \(x_0\): choose
+  \(\delta=\varepsilon\). Repeated use of the product law gives
+  \(x^k\to x_0^k\) for each positive integer \(k\). Constant
+  functions, scalar multiples, and finite sums then give the polynomial
+  statement. The rational statement follows from the quotient law.
+\end{proof}
+
 \end{document}
