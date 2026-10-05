@@ -1696,4 +1696,196 @@ Thus \(\CC=\set{a+bi:a,b\in\RR}\).
   Taking the nonnegative real square root gives the second identity.
 \end{proof}
 
+\subsection{05.10.2026}
+
+\subsubsection{Properties of conjugation and modulus}
+
+\begin{proposition}
+  For all \(z,w\in\CC\),
+  \begin{enumerate}[label=(\alph*)]
+    \item \(\overline{z+w}=\overline z+\overline w\);
+    \item \(\overline{zw}=\overline z\,\overline w\);
+    \item \(\overline{\overline z}=z\);
+    \item \(\operatorname{Im}z=0\) if and only if \(\overline z=z\).
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  Write \(z=a+bi\) and \(w=c+di\), where \(a,b,c,d\in\RR\).
+  Then
+  \begin{align*}
+    \overline{z+w}
+    &=\overline{(a+c)+(b+d)i}
+    =(a+c)-(b+d)i=\overline z+\overline w,\\
+    \overline{zw}
+    &=\overline{(ac-bd)+(ad+bc)i}
+    =(ac-bd)-(ad+bc)i\\
+    &=(a-bi)(c-di)=\overline z\,\overline w.
+  \end{align*}
+  Also, \(\overline{\overline z}=\overline{a-bi}=a+bi=z\).
+  Finally, \(\overline z=z\) holds precisely when
+  \(a-bi=a+bi\), which is equivalent to \(b=0\), or
+  \(\operatorname{Im}z=0\).
+\end{proof}
+
+\begin{proposition}
+  For all \(z,w\in\CC\),
+  \begin{enumerate}[label=(\alph*)]
+    \item \(\abs{z}=\sqrt{z\overline z}\);
+    \item \(\abs{zw}=\abs{z}\abs{w}\);
+    \item \(zw=0\) if and only if \(z=0\) or \(w=0\);
+    \item \(\abs{z}=0\) if and only if \(z=0\).
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  Part (a) was proved at the end of the previous lecture.
+  Using conjugation of products and commutativity,
+  \[
+    \abs{zw}^{2}
+    =(zw)\overline{zw}
+    =(z\overline z)(w\overline w)
+    =\abs{z}^{2}\abs{w}^{2}.
+  \]
+  Moduli are nonnegative, so taking square roots proves (b).
+  If \(z=a+bi\), then \(\abs{z}^{2}=a^{2}+b^{2}\).
+  Since both squares are nonnegative, \(\abs{z}=0\) exactly when
+  \(a=b=0\), proving (d). Now (b) and (d) show that
+  \(zw=0\) exactly when \(\abs{z}\abs{w}=0\), which is equivalent
+  to \(z=0\) or \(w=0\). This proves (c).
+\end{proof}
+
+\subsubsection{Reciprocals and quotients}
+
+\begin{definition}
+  If \(z\in\CC\setminus\{0\}\), its \emph{reciprocal} is
+  \[
+    z^{-1}=\frac1z=\frac{\overline z}{\abs{z}^{2}}.
+  \]
+  For \(w\neq0\), division is defined by
+  \[
+    \frac zw=zw^{-1}=\frac{z\overline w}{\abs{w}^{2}}.
+  \]
+\end{definition}
+
+\begin{proof}[Verification]
+  Because \(z\neq0\), the preceding proposition gives
+  \(\abs{z}^{2}>0\), so the formula is defined. Moreover,
+  \[
+    z\frac{\overline z}{\abs{z}^{2}}
+    =\frac{z\overline z}{\abs{z}^{2}}=1.
+  \]
+  Thus it agrees with the multiplicative inverse established earlier.
+  The quotient formula follows by substituting the reciprocal of \(w\).
+\end{proof}
+
+\begin{example}
+  If \(z=a+bi\neq0\), then
+  \[
+    \frac1{a+bi}
+    =\frac{a-bi}{a^{2}+b^{2}}
+    =\frac{a}{a^{2}+b^{2}}-\frac{b}{a^{2}+b^{2}}i.
+  \]
+  More generally, for \(w=c+di\neq0\),
+  \[
+    \frac{a+bi}{c+di}
+    =\frac{(a+bi)(c-di)}{c^{2}+d^{2}}
+    =\frac{ac+bd}{c^{2}+d^{2}}
+    +\frac{bc-ad}{c^{2}+d^{2}}i.
+  \]
+\end{example}
+
+\begin{proposition}
+  If \(z\neq0\), then \(\abs{z^{-1}}=\abs{z}^{-1}=1/\abs{z}\).
+\end{proposition}
+
+\begin{proof}
+  Since \(zz^{-1}=1\), multiplicativity of the modulus gives
+  \(\abs{z}\abs{z^{-1}}=\abs{1}=1\). Divide by \(\abs{z}>0\).
+\end{proof}
+
+\subsubsection{Polar form of a complex number}
+
+\begin{definition}
+  A \emph{polar form} of \(z\in\CC\) is an expression
+  \[
+    z=\abs{z}(\cos\varphi+i\sin\varphi).
+  \]
+  For \(z\neq0\), the angle \(\varphi\) is an \emph{argument} of
+  \(z\), determined modulo \(2\pi\). If \(z=a+bi\), then
+  \(\cos\varphi=a/\abs{z}\) and \(\sin\varphi=b/\abs{z}\).
+  Consequently, \(\tan\varphi=b/a\) when \(a\neq0\), but this
+  ratio alone does not determine the quadrant. For \(z=0\), every
+  angle gives a polar form; its argument is left undefined.
+\end{definition}
+
+\begin{example}
+  The numbers \(z=1+i\) and \(w=\sqrt3-i\) have moduli
+  \(\sqrt2\) and \(2\), respectively. Their locations in the
+  complex plane give arguments \(\pi/4\) and \(-\pi/6\). Thus
+  \[
+    1+i=\sqrt2\left(\cos\frac\pi4+i\sin\frac\pi4\right),
+    \qquad
+    \sqrt3-i=2\left(\cos\!\left(-\frac\pi6\right)
+    +i\sin\!\left(-\frac\pi6\right)\right).
+  \]
+\end{example}
+
+\begin{proposition}
+  If \(z=\abs{z}(\cos\varphi+i\sin\varphi)\), then
+  \[
+    \overline z=\abs{z}(\cos(-\varphi)+i\sin(-\varphi)).
+  \]
+  If, moreover, \(z\neq0\), then
+  \[
+    z^{-1}=\frac1{\abs{z}}
+    (\cos(-\varphi)+i\sin(-\varphi)).
+  \]
+\end{proposition}
+
+\begin{proof}
+  Conjugation changes the sign of the imaginary part, so
+  \[
+    \overline z=\abs{z}(\cos\varphi-i\sin\varphi)
+    =\abs{z}(\cos(-\varphi)+i\sin(-\varphi)),
+  \]
+  using that cosine is even and sine is odd. For \(z\neq0\),
+  the reciprocal formula gives
+  \[
+    z^{-1}=\frac{\overline z}{\abs{z}^{2}}
+    =\frac1{\abs{z}}
+    (\cos(-\varphi)+i\sin(-\varphi)).
+  \]
+\end{proof}
+
+\begin{proposition}
+  Let \(z=\abs{z}(\cos\alpha+i\sin\alpha)\) and
+  \(w=\abs{w}(\cos\beta+i\sin\beta)\). Then
+  \[
+    zw=\abs{z}\abs{w}
+    (\cos(\alpha+\beta)+i\sin(\alpha+\beta)).
+  \]
+  If \(w\neq0\), then
+  \[
+    \frac zw=\frac{\abs{z}}{\abs{w}}
+    (\cos(\alpha-\beta)+i\sin(\alpha-\beta)).
+  \]
+\end{proposition}
+
+\begin{proof}
+  Expanding the product and using the angle addition identities,
+  \begin{align*}
+    zw
+    &=\abs{z}\abs{w}
+    \bigl[(\cos\alpha\cos\beta-\sin\alpha\sin\beta)\\
+      &\hspace{43mm}
+    +i(\sin\alpha\cos\beta+\cos\alpha\sin\beta)\bigr]\\
+    &=\abs{z}\abs{w}
+    (\cos(\alpha+\beta)+i\sin(\alpha+\beta)).
+  \end{align*}
+  If \(w\neq0\), its reciprocal has modulus \(1/\abs{w}\)
+  and angle \(-\beta\) by the preceding proposition. Applying
+  the product formula to \(zw^{-1}\) gives the quotient formula.
+\end{proof}
+
 \end{document}
