@@ -64,6 +64,32 @@ Olkoot \(z = -3 + 3i\) ja \(w = \sqrt{3} + i\).
 \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+\item Luku \(z=-3+3i\) on kompleksitason toisessa neljänneksessä.
+Sen viitekulma on \(\pi/4\), joten sen pääargumentti on \(3\pi/4\).
+Luku \(w=\sqrt{3}+i\) on ensimmäisessä neljänneksessä, ja sen
+viitekulma on \(\pi/6\). Siis pääargumentit ovat
+\[
+\arg z = \frac{3\pi}{4}, \qquad \arg w = \frac{\pi}{6}.
+\]
+Muut argumentit saadaan lisäämällä näihin kulmiin \(2k\pi\), missä
+\(k \in \ZZ\).
+\item Koska \(\abs{z}=\sqrt{(-3)^2+3^2}=3\sqrt{2}\), luvun \(z\)
+napaesitys on
+\[
+z=3\sqrt{2}\left(\cos\frac{3\pi}{4}
++i\sin\frac{3\pi}{4}\right).
+\]
+\item Koska \(\abs{w}=\sqrt{(\sqrt{3})^2+1^2}=2\), luvun \(w\)
+eksponenttiesitys on
+\[
+w=2e^{i\pi/6}.
+\]
+\end{enumerate}
+\end{solution}
+
 \begin{exercise}
 Olkoot \(z,w \in \CC\), \(w \neq 0\). Osoita, että osamäärän liittoluku on
 liittolukujen osamäärä eli
@@ -72,9 +98,45 @@ liittolukujen osamäärä eli
 \]
 \end{exercise}
 
+\begin{solution}
+Olkoon \(z,w \in \CC\) ja \(w \neq 0\). Tällöin
+\(\abs{w}^2=w\overline{w}>0\), joten
+\(\frac{z}{w}=z\overline{w}\cdot\frac{1}{\abs{w}^2}\).
+Koska \(\frac{1}{\abs{w}^2}\) on reaalinen, tulon liittoluvun kaavasta
+ja yhtälöstä \(\overline{\overline{w}}=w\) seuraa
+\[
+\begin{aligned}
+\overline{\left(\frac{z}{w}\right)}
+&=\overline{\left(z\overline{w}\cdot\frac{1}{\abs{w}^2}\right)} \\
+&=\overline{z}\,w\cdot\frac{1}{\abs{w}^2} \\
+&=\frac{\overline{z}\,w}{w\overline{w}} \\
+&=\frac{\overline{z}}{\overline{w}}.
+\end{aligned}
+\]
+\end{solution}
+
 \begin{exercise}
 Laske de Moivren kaavan avulla \((1 + \sqrt{3}\,i)^5\).
 \end{exercise}
+
+\begin{solution}
+Olkoon \(z=1+\sqrt{3}\,i\). Koska \(z\) on ensimmäisessä neljänneksessä,
+sen pääargumentti on \(\arg z=\pi/3\). Lisäksi
+\(\abs{z}=\sqrt{1^2+(\sqrt{3})^2}=2\). Siis luvun \(z\) napaesitys on
+\[
+z=2\left(\cos\frac{\pi}{3}+i\sin\frac{\pi}{3}\right).
+\]
+De Moivren kaavan avulla saadaan
+\[
+\begin{aligned}
+z^5
+&=\left[2\left(\cos\frac{\pi}{3}+i\sin\frac{\pi}{3}\right)\right]^5 \\
+&=2^5\left(\cos\frac{5\pi}{3}+i\sin\frac{5\pi}{3}\right) \\
+&=32\left(\frac{1}{2}-\frac{\sqrt{3}}{2}i\right) \\
+&=16-16\sqrt{3}\,i.
+\end{aligned}
+\]
+\end{solution}
 
 \begin{exercise}
 Määritä
