@@ -1409,4 +1409,152 @@ Now finish with
   classical double negation elimination rule.
 \end{example}
 
+\subsection{05.10.2026}
+
+\subsubsection{Derivations and their open assumptions}
+
+The inference rules above define natural deduction derivations inductively.
+For a derivation \(\mathcal D\), let \(O(\mathcal D)\) be its set of
+\emph{open assumption occurrences}. We track occurrences rather than just
+formulas, since a rule may discharge some occurrences of \(A\) while leaving
+other occurrences of the same formula open.
+
+\begin{definition}[Natural deduction derivation]
+  A derivation is a finite proof tree obtained by the following clauses.
+  \begin{enumerate}
+    \item For every formula \(A\), the one-node tree \(A\) is a derivation
+      with conclusion \(A\). Its sole occurrence of \(A\) is open.
+    \item If derivations have the conclusions required as premises of any
+      natural deduction rule listed above, applying that rule gives a new
+      derivation with the conclusion displayed by the rule.
+    \item The open assumptions of the new derivation are the open
+      assumptions of its premise derivations, except for the occurrences
+      explicitly discharged by that rule. No other trees are derivations.
+  \end{enumerate}
+\end{definition}
+
+In particular, rules that discharge no assumptions take the union of the
+open assumptions of their premise derivations. If \(\mathcal P\) concludes
+\(A\) and \(\mathcal Q\) concludes \(B\), then
+\[
+  O\!\left(\infer[\land\mathrm T]{A\land B}{\mathcal P & \mathcal Q}\right)
+  =O(\mathcal P)\cup O(\mathcal Q).
+\]
+If \(\mathcal P\) concludes \(A\land B\), either conjunction elimination
+retains exactly \(O(\mathcal P)\). The same union rule applies to disjunction
+introduction, implication and equivalence elimination, and double negation
+elimination.
+
+For a rule that discharges assumptions, let \(S_A\) denote the selected
+open occurrences of \(A\) in the relevant subderivation. For example,
+implication introduction changes \(O(\mathcal Q)\) to
+\(O(\mathcal Q)\setminus S_A\), and negation introduction does the same.
+Equivalence introduction removes its selected \(A\)-occurrences from the
+first subderivation and its selected \(B\)-occurrences from the second.
+For disjunction elimination, where \(\mathcal P\) proves \(A\lor B\),
+\(\mathcal Q\) proves \(C\) under \(A\), and \(\mathcal R\) proves \(C\)
+under \(B\), the open assumptions are
+\[
+  O(\mathcal P)\cup
+  \bigl(O(\mathcal Q)\setminus S_A\bigr)\cup
+  \bigl(O(\mathcal R)\setminus S_B\bigr).
+\]
+Here \(S_A\) and \(S_B\) contain only the case assumptions selected for
+discharge. These sets may be empty when a discharge is vacuous.
+
+\subsubsection{Soundness of natural deduction}
+
+For a truth assignment \(v\), write \(v\models\Gamma\) if \(v(G)=1\) for
+every \(G\in\Gamma\). We write \(\Gamma\models A\) if every assignment
+satisfying \(\Gamma\) also satisfies \(A\).
+
+\begin{theorem}[Soundness of natural deduction]
+  If \(\Gamma\vdash A\), then \(\Gamma\models A\). More precisely, if a
+  derivation \(\mathcal D\) concludes \(A\), then every truth assignment
+  making all assumptions in \(O(\mathcal D)\) true also makes \(A\) true.
+\end{theorem}
+
+\begin{proof}
+  We prove the stronger statement by induction on the construction of
+  \(\mathcal D\). If \(\mathcal D\) is the assumption leaf \(A\), the
+  claim is immediate.
+
+  Suppose the last step applies a rule to smaller derivations and the
+  induction hypothesis holds for each of them. Fix an assignment \(v\)
+  satisfying all open assumptions of the resulting derivation. For rules
+  with no discharge, \(v\) satisfies the open assumptions of every premise
+  derivation. The induction hypothesis therefore makes their conclusions
+  true. The truth tables verify each inference:
+  \begin{itemize}
+    \item \(\land\mathrm T\) combines two true formulas, and
+      \(\land\mathrm E\) extracts a true conjunct.
+    \item \(\lor\mathrm T\) makes a disjunction true from either true
+      disjunct.
+    \item \(\to\mathrm E\) uses \(v(A\to B)=v(A)=1\) to obtain
+      \(v(B)=1\).
+    \item Either \(\leftrightarrow\mathrm E\) rule uses the equal truth
+      values of \(A\) and \(B\).
+    \item \(\neg\mathrm E\) uses \(v(\neg\neg A)=1\), which implies
+      \(v(A)=1\).
+  \end{itemize}
+
+  It remains to check the rules that discharge assumptions.
+  \begin{itemize}
+    \item For \(\to\mathrm T\), let the premise derivation prove \(B\)
+      while some occurrences of \(A\) are discharged. If \(v(A)=0\), then
+      \(v(A\to B)=1\). If \(v(A)=1\), \(v\) satisfies the discharged
+      occurrences too. The induction hypothesis gives \(v(B)=1\), so
+      again \(v(A\to B)=1\).
+    \item For \(\leftrightarrow\mathrm T\), the first subderivation proves
+      \(B\) under discharged assumptions \(A\), and the second proves
+      \(A\) under discharged assumptions \(B\). By the induction
+      hypothesis, \(v(A)=1\) implies \(v(B)=1\), and \(v(B)=1\) implies
+      \(v(A)=1\). Thus \(v(A\leftrightarrow B)=1\).
+    \item For \(\neg\mathrm T\), the premise derivation proves
+      \(B\land\neg B\) while some occurrences of \(A\) are discharged.
+      If \(v(A)=1\), the induction hypothesis would make
+      \(v(B\land\neg B)=1\), which is impossible. Hence \(v(A)=0\) and
+      \(v(\neg A)=1\).
+    \item For \(\lor\mathrm E\), the major premise proves \(A\lor B\),
+      so its induction hypothesis gives \(v(A\lor B)=1\). If \(v(A)=1\),
+      the induction hypothesis for the \(A\)-case yields \(v(C)=1\): its
+      discharged occurrences of \(A\) are true, and its other open
+      assumptions are true by choice of \(v\). If \(v(A)=0\), then
+      \(v(B)=1\), and the same argument with the \(B\)-case yields
+      \(v(C)=1\).
+  \end{itemize}
+  This proves the stronger statement for every derivation. If
+  \(\Gamma\vdash A\), the open assumptions of a witnessing derivation all
+  belong to \(\Gamma\), so every model of \(\Gamma\) makes \(A\) true.
+\end{proof}
+
+\begin{corollary}[Using soundness to rule out a derivation]
+  If \(\Gamma\not\models A\), then \(\Gamma\not\vdash A\).
+\end{corollary}
+
+\begin{example}
+  The assignment \(v(p_0)=0\) and \(v(p_1)=1\) satisfies both \(p_1\)
+  and \(p_0\to p_1\), but it falsifies \(p_0\land p_1\). Hence
+  \[
+    \{p_1,p_0\to p_1\}\not\models p_0\land p_1,
+    \qquad\text{and therefore}\qquad
+    \{p_1,p_0\to p_1\}\not\vdash p_0\land p_1.
+  \]
+\end{example}
+
+\begin{example}[A consequence of a symmetric premise]
+  Can we infer \((p_0\to p_1)\to p_1\) from
+  \((p_1\to p_0)\to p_0\)? The two formulas are logically equivalent:
+  \[
+    (p_0\to p_1)\to p_1
+    \Leftrightarrow p_0\lor p_1
+    \Leftrightarrow (p_1\to p_0)\to p_0.
+  \]
+  Indeed, \((X\to Y)\to Y\) has truth value \(1\) exactly when
+  \(X\lor Y\) does. Thus the semantic inference is valid:
+  \[
+    \{(p_1\to p_0)\to p_0\}\models (p_0\to p_1)\to p_1.
+  \]
+\end{example}
+
 \end{document}
