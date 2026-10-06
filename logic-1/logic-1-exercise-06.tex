@@ -1,0 +1,392 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+\usepackage{forest}
+
+\title{Johdatus logiikkaan I\\Harjoitus 6}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Johdatus logiikkaan I}{Harjoituksen 6 ratkaisut}
+
+\begin{exercise}
+  Osoita \(\{\neg A\} \vdash A \to B\).
+\end{exercise}
+
+\begin{solution}
+  \[
+    \dfrac{
+      \dfrac{
+        \dfrac{[\neg B]^2\qquad
+        \dfrac{[A]^1\qquad\neg A}{A\land\neg A}\;\land T}
+        {\neg\neg B}\;\neg T,2
+      }{B}\;\neg E
+    }{A\to B}\;\to T,1
+  \]
+  \(\neg T\) hylkää käyttämättömän oletuksen \(\neg B\).
+  Avoimeksi jää \(\neg A\).
+\end{solution}
+
+\begin{exercise}
+  Osoita
+  \[
+    \{(A \land B) \to C\} \vdash (A \to C) \lor (B \to C).
+  \]
+\end{exercise}
+
+\begin{solution}
+  Merkitään \(D=(A\to C)\lor(B\to C)\) ja \(E=A\lor\neg A\).
+  Johdetaan ensin \(E\) materiaalin esimerkin 7.6 tapaan:
+  \[
+    \mathcal L:\quad
+    \dfrac{
+      \dfrac{\dfrac{[A]^1}{E}\;\lor T\qquad[\neg E]^2}
+      {E\land\neg E}\;\land T
+    }{\neg A}\;\neg T,1
+  \]
+  \[
+    \dfrac{
+      \dfrac{
+        \dfrac{
+          \dfrac{
+            \begin{array}{c}\mathcal L\\\neg A
+          \end{array}}{E}\;\lor T
+          \qquad[\neg E]^2
+        }{E\land\neg E}\;\land T
+      }{\neg\neg E}\;\neg T,2
+    }{E}\;\neg E
+  \]
+  Tapauksessa \(A\):
+  \[
+    \mathcal P:\quad
+    \dfrac{
+      \dfrac{
+        \dfrac{(A\land B)\to C\qquad
+        \dfrac{[A]^3\qquad[B]^4}{A\land B}\;\land T}
+        {C}\;\to E
+      }{B\to C}\;\to T,4
+    }{D}\;\lor T.
+  \]
+  Tapauksessa \(\neg A\):
+  \[
+    \mathcal Q:\quad
+    \dfrac{
+      \dfrac{
+        \dfrac{
+          \dfrac{[\neg C]^7\qquad
+            \dfrac{[A]^6\qquad[\neg A]^5}
+          {A\land\neg A}\;\land T}
+          {\neg\neg C}\;\neg T,7
+        }{C}\;\neg E
+      }{A\to C}\;\to T,6
+    }{D}\;\lor T.
+  \]
+  \(\neg T\) hylkää käyttämättömän oletuksen \(\neg C\).
+  Yhdistetään tapaukset:
+  \[
+    \dfrac{
+      E\qquad
+      \begin{array}{c}\mathcal P\\D
+      \end{array}\qquad
+      \begin{array}{c}\mathcal Q\\D
+      \end{array}
+    }{D}\;\lor E,3,5.
+  \]
+  Avoimeksi jää \((A\land B)\to C\).
+\end{solution}
+
+\begin{exercise}
+  Todista eheyslauseen kohdat 6 ja 7, eli osoita, että implikaation tuonti- ja
+  eliminointisäännöt säilyttävät eheyden.
+\end{exercise}
+
+\begin{solution}
+  \begin{enumerate}[label=\arabic*.,start=6]
+    \item \emph{Implikaation tuonti.} Oletetaan induktio-oletuksena,
+      että päättely \(P\), jonka johtopäätös on \(B\), on ehyt.
+      Olkoon \(Q\) päättely
+      \[
+        Q:\quad
+        \dfrac{
+          \begin{array}{c}[A]\\P\\B
+        \end{array}}{A\to B}\;\to T.
+      \]
+      Olkoon \(v\) totuusjakauma, joka toteuttaa \(Q\):n oletukset.
+      Jos \(v(A)=0\), niin \(v(A\to B)=1\). Jos \(v(A)=1\),
+      \(v\) toteuttaa myös päättelyssä \(Q\) hylätyt \(A\):n
+      esiintymät ja siten kaikki \(P\):n oletukset. Induktio-oletuksen
+      nojalla \(v(B)=1\), joten jälleen \(v(A\to B)=1\). Siis
+      \(Q\) on ehyt.
+
+    \item \emph{Implikaation eliminointi.} Oletetaan, että päättelyt
+      \(P\), jonka johtopäätös on \(A\to B\), ja \(Q\), jonka
+      johtopäätös on \(A\), ovat ehyitä. Olkoon \(R\) päättely
+      \[
+        R:\quad
+        \dfrac{
+          \begin{array}{c}P\\A\to B
+          \end{array}
+          \qquad
+          \begin{array}{c}Q\\A
+        \end{array}}{B}\;\to E.
+      \]
+      Jos \(v\) toteuttaa \(R\):n oletukset, se toteuttaa myös
+      \(P\):n ja \(Q\):n oletukset. Induktio-oletuksen nojalla
+      \(v(A\to B)=v(A)=1\), joten \(v(B)=1\). Siis \(R\) on ehyt.
+  \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+  Osoita, ettei luonnollisella päättelyllä voi päätellä lausetta
+  \((p_0 \lor p_1) \to p_2\) lauseesta \((p_0 \to p_2) \lor (p_1 \to p_2)\).
+\end{exercise}
+
+\begin{solution}
+  Vastaesimerkki:
+  \[
+    v(p_0)=0,\qquad v(p_1)=1,\qquad v(p_2)=0.
+  \]
+  \[
+    v\bigl((p_0\to p_2)\lor(p_1\to p_2)\bigr)=1,
+    \qquad v\bigl((p_0\lor p_1)\to p_2\bigr)=0.
+  \]
+  Eheyden nojalla päättelyä ei ole.
+\end{solution}
+
+\begin{exercise}
+  Voidaanko luonnollisella päättelyllä päätellä lause
+  \((p_0 \to p_2) \land (p_1 \to p_2)\) lauseesta \((p_0 \land p_1) \to p_2\)?
+\end{exercise}
+
+\begin{solution}
+  Ei voida. Vastaesimerkki:
+  \[
+    v(p_0)=0,\qquad v(p_1)=1,\qquad v(p_2)=0.
+  \]
+  \[
+    v\bigl((p_0\land p_1)\to p_2\bigr)=1,
+    \qquad v\bigl((p_0\to p_2)\land(p_1\to p_2)\bigr)=0.
+  \]
+  Eheyden nojalla päättelyä ei ole.
+\end{solution}
+
+\begin{exercise}
+  Voidaanko luonnollisella päättelyllä päätellä lause
+  \((p_0 \land p_1) \to p_2\) lauseesta
+  \((p_0 \to p_2) \land (p_1 \to p_2)\)?
+\end{exercise}
+
+\begin{solution}
+  Voidaan:
+  \[
+    \dfrac{
+      \dfrac{
+        \dfrac{(p_0\to p_2)\land(p_1\to p_2)}{p_0\to p_2}\;\land E
+        \qquad
+        \dfrac{[p_0\land p_1]^1}{p_0}\;\land E
+      }{p_2}\;\to E
+    }{(p_0\land p_1)\to p_2}\;\to T,1
+  \]
+  Avoimeksi jää \((p_0\to p_2)\land(p_1\to p_2)\).
+\end{solution}
+
+\begin{exercise}
+  Etsi semanttisen puun avulla totuusjakauma, joka toteuttaa propositiolauseen
+  \[
+    (\neg(p_0 \land p_1) \to p_2) \land ((\neg p_0 \land \neg p_1)
+    \to \neg p_2).
+  \]
+\end{exercise}
+
+\begin{solution}
+  Riittää jatkaa yhtä oksaa literaaleihin asti:
+  \begin{center}
+    \begin{forest}
+      for tree={grow'=south, l sep=5mm, s sep=8mm,
+      edge={-}, align=center}
+      [$(\neg(p_0\land p_1)\to p_2)\land
+        ((\neg p_0\land\neg p_1)\to\neg p_2)$
+        [$\neg(p_0\land p_1)\to p_2$
+          [$(\neg p_0\land\neg p_1)\to\neg p_2$
+            [$\neg(\neg p_0\land\neg p_1)$
+              [ei jatketa]
+            ]
+            [$\neg p_2$
+              [$\neg\neg(p_0\land p_1)$
+                [$p_0\land p_1$
+                  [$p_0$
+                    [$p_1$
+                      [avoin]
+                    ]
+                  ]
+                ]
+              ]
+              [$p_2$
+                [$\times$]
+              ]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}
+  \end{center}
+  Avoin oksa antaa toteuttavan jakauman
+  \[
+    v(p_0)=v(p_1)=1,\qquad v(p_2)=0.
+  \]
+\end{solution}
+
+\begin{exercise}
+  Osoita semanttisen puun avulla, että
+  \[
+    ((A \to C) \land (B \to C)) \to ((A \lor B) \to C)
+  \]
+  on tautologia.
+\end{exercise}
+
+\begin{solution}
+  Lauseen negaation semanttinen puu:
+  \begin{center}
+    \begin{forest}
+      for tree={grow'=south, l sep=4mm, s sep=9mm,
+      edge={-}, align=center}
+      [$\neg\bigl(((A\to C)\land(B\to C))\to((A\lor B)\to C)\bigr)$
+        [$(A\to C)\land(B\to C)$
+          [$\neg((A\lor B)\to C)$
+            [$A\to C$
+              [$B\to C$
+                [$A\lor B$
+                  [$\neg C$
+                    [$A$
+                      [$\neg A$
+                        [$\times$]
+                      ]
+                      [$C$
+                        [$\times$]
+                      ]
+                    ]
+                    [$B$
+                      [$\neg B$
+                        [$\times$]
+                      ]
+                      [$C$
+                        [$\times$]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}
+  \end{center}
+  Kaikki oksat sulkeutuvat, joten lause on tautologia.
+\end{solution}
+
+\begin{exercise}
+  Anna semanttinen todistus lauseelle \((A \to \neg B) \to \neg(A \land B)\).
+\end{exercise}
+
+\begin{solution}
+  Lauseen negaation semanttinen puu:
+  \begin{center}
+    \begin{forest}
+      for tree={grow'=south, l sep=4mm, s sep=12mm,
+      edge={-}, align=center}
+      [$\neg\bigl((A\to\neg B)\to\neg(A\land B)\bigr)$
+        [$A\to\neg B$
+          [$\neg\neg(A\land B)$
+            [$A\land B$
+              [$A$
+                [$B$
+                  [$\neg A$
+                    [$\times$]
+                  ]
+                  [$\neg B$
+                    [$\times$]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}
+  \end{center}
+  Molemmat oksat sulkeutuvat, joten lause on tautologia.
+\end{solution}
+
+\begin{exercise}
+  Anna semanttinen todistus lauseelle \(\neg(A \lor B)
+  \leftrightarrow (\neg A \land \neg B)\).
+\end{exercise}
+
+\begin{solution}
+  Lauseen negaation semanttinen puu:
+  \begin{center}
+    \begin{forest}
+      for tree={grow'=south, l sep=4mm, s sep=8mm,
+      edge={-}, align=center}
+      [$\neg\bigl(\neg(A\lor B)\leftrightarrow
+        (\neg A\land\neg B)\bigr)$
+        [$\neg(A\lor B)$
+          [$\neg(\neg A\land\neg B)$
+            [$\neg A$
+              [$\neg B$
+                [$\neg\neg A$
+                  [$A$
+                    [$\times$]
+                  ]
+                ]
+                [$\neg\neg B$
+                  [$B$
+                    [$\times$]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+        [$\neg\neg(A\lor B)$
+          [$\neg A\land\neg B$
+            [$A\lor B$
+              [$\neg A$
+                [$\neg B$
+                  [$A$
+                    [$\times$]
+                  ]
+                  [$B$
+                    [$\times$]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}
+  \end{center}
+  Kaikki oksat sulkeutuvat, joten ekvivalenssi on tautologia.
+\end{solution}
+
+\bigskip
+\noindent\emph{Seuraavasta haastetehtävästä ei saa
+  harjoituspisteitä. Se on tarkoitettu lisäpohdintatehtäväksi
+aiheesta kiinnostuneille.}
+
+\medskip
+\noindent\textbf{Haastetehtävä.} Shefferin viiva on kaksipaikkainen
+konnektiivi \(|\), jolle \(v(A|B) = 0\) jos ja
+vain jos \(v(A) = v(B) = 1\). Anna \(A|B\):lle ja \(\neg(A|B)\):lle
+säännöt semanttista puuta varten.
+Riittävätkö säännöt ehyeeseen ja täydelliseen semanttiseen
+todistukseen lauseille, joissa
+esiintyy konnektiivina pelkkää Shefferin viivaa?
+
+\end{document}
