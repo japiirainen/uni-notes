@@ -2000,4 +2000,128 @@ evaluated are understood to belong to its domain.
   statement. The rational statement follows from the quotient law.
 \end{proof}
 
+\subsection{06.10.2026}
+
+\subsubsection{Infinite limits at a finite point}
+
+As before, assume that the domain of \(f:A\to\RR\) contains a punctured
+neighbourhood of \(x_0\in\RR\).
+
+\begin{definition}
+  We write \(\lim_{x\to x_0}f(x)=+\infty\) if for every \(M\in\RR\)
+  there is \(\delta>0\) such that
+  \[
+    0<\abs{x-x_0}<\delta \quad\implies\quad f(x)>M.
+  \]
+  Similarly, \(\lim_{x\to x_0}f(x)=-\infty\) if for every
+  \(M\in\RR\) there is \(\delta>0\) such that
+  \[
+    0<\abs{x-x_0}<\delta \quad\implies\quad f(x)<M.
+  \]
+\end{definition}
+
+\begin{example}
+  For \(f:\RR\setminus\set{0}\to\RR\), \(f(x)=1/\abs{x}\),
+  we have \(\lim_{x\to0}f(x)=+\infty\). If \(M\leq0\), every
+  \(x\neq0\) satisfies \(f(x)>M\). If \(M>0\), choose
+  \(\delta=1/M\). Then \(0<\abs{x}<\delta\) implies
+  \(f(x)=1/\abs{x}>1/\delta=M\).
+\end{example}
+
+\subsubsection{One-sided limits}
+
+For the following definitions, the domain \(A\) need only contain the
+corresponding one-sided interval near \(x_0\).
+
+\begin{definition}
+  The function \(f:A\to\RR\) has \emph{left-hand limit} \(L\in\RR\)
+  at \(x_0\), written \(\lim_{x\to x_0^-}f(x)=L\), if for every
+  \(\varepsilon>0\) there is \(\delta>0\) such that
+  \[
+    x_0-\delta<x<x_0 \quad\implies\quad \abs{f(x)-L}<\varepsilon.
+  \]
+  The \emph{right-hand limit} \(\lim_{x\to x_0^+}f(x)=L\) is defined
+  by requiring
+  \[
+    x_0<x<x_0+\delta \quad\implies\quad \abs{f(x)-L}<\varepsilon.
+  \]
+\end{definition}
+
+The left-hand limit is also denoted by \(\lim_{x\to x_0-}f(x)\), and
+similarly on the right.
+
+\begin{example}
+  Let
+  \[
+    f(x)=
+    \begin{cases}
+      1-x,&x\leq0,\\
+      2x-1,&x>0.
+    \end{cases}
+  \]
+  For \(x<0\), \(\abs{f(x)-1}=\abs{x}\), so choosing
+  \(\delta=\varepsilon\) proves \(\lim_{x\to0^-}f(x)=1\).
+  For \(x>0\), \(\abs{f(x)-(-1)}=2\abs{x}\), so choosing
+  \(\delta=\varepsilon/2\) proves
+  \(\lim_{x\to0^+}f(x)=-1\). The two-sided limit at \(0\)
+  therefore does not exist.
+\end{example}
+
+\begin{theorem}\label{thm:one-sided-limits}
+  Suppose \(A\) contains a punctured neighbourhood of \(x_0\).
+  Then \(\lim_{x\to x_0}f(x)=L\in\RR\) if and only if
+  \[
+    \lim_{x\to x_0^-}f(x)
+    =\lim_{x\to x_0^+}f(x)=L.
+  \]
+\end{theorem}
+
+\begin{proof}
+  If the two-sided limit is \(L\), its \(\delta\) for a given
+  \(\varepsilon>0\) works on each side of \(x_0\).
+
+  Conversely, suppose both one-sided limits equal \(L\). Given
+  \(\varepsilon>0\), choose \(\delta_-\) and \(\delta_+\) from
+  the respective definitions, and put
+  \(\delta=\min\set{\delta_-,\delta_+}\). If
+  \(0<\abs{x-x_0}<\delta\), then \(x\) is either in
+  \((x_0-\delta_-,x_0)\) or in \((x_0,x_0+\delta_+)\).
+  In either case \(\abs{f(x)-L}<\varepsilon\).
+\end{proof}
+
+\begin{example}
+  For \(f:[0,\infty)\to\RR\), \(f(x)=\sqrt{x}\), we have
+  \(\lim_{x\to0^+}f(x)=0\). Given \(\varepsilon>0\), take
+  \(\delta=\varepsilon^2\). Then
+  \(0<x<\delta\) implies
+  \(\abs{f(x)-0}=\sqrt{x}<\sqrt{\delta}=\varepsilon\).
+  Here only the right-hand limit is defined, since the domain has no
+  points immediately to the left of \(0\).
+\end{example}
+
+\subsubsection{A necessary Cauchy condition for one-sided limits}
+
+\begin{theorem}
+  Suppose \(A\) contains an interval \((x_0,x_0+r)\) for some
+  \(r>0\). If \(\lim_{x\to x_0^+}f(x)=L\in\RR\), then for every
+  \(\varepsilon>0\) there is \(\delta>0\) such that
+  \[
+    \abs{f(x)-f(y)}<\varepsilon
+    \qquad\text{whenever }x,y\in(x_0,x_0+\delta).
+  \]
+  The analogous statement holds for a left-hand limit.
+\end{theorem}
+
+\begin{proof}
+  Choose \(0<\delta\leq r\) so that
+  \(\abs{f(t)-L}<\varepsilon/2\) for all
+  \(t\in(x_0,x_0+\delta)\). Then, for any \(x,y\) in this interval,
+  \[
+    \abs{f(x)-f(y)}
+    \leq\abs{f(x)-L}+\abs{f(y)-L}
+    <\frac\varepsilon2+\frac\varepsilon2=\varepsilon.
+  \]
+  The left-hand case is identical.
+\end{proof}
+
 \end{document}
