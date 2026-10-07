@@ -62,6 +62,66 @@
   yhtäsuuria.
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(f\colon A \to \RR\) funktio.
+
+  \(\Rightarrow\): Oletetaan, että
+  \(\lim_{t \to \infty} f(t) = L \in \RR\).
+  Tällöin on olemassa \(r \in \RR\), jolla \((r,\infty) \subset A\).
+  Asetetaan
+  \[
+    \rho = \frac{1}{\maxset{0,r} + 1} > 0.
+  \]
+  Kun \(0 < x < \rho\), niin
+  \(1/x > \maxset{0,r} + 1 > r\), joten \(1/x \in A\).
+  Näin ollen \(g(x) = f(1/x)\) on määritelty välillä \((0,\rho)\).
+
+  Olkoon \(\varepsilon > 0\). Oletuksen nojalla on olemassa
+  \(M \in \RR\) siten, että \(\abs{f(t) - L} < \varepsilon\)
+  kaikilla \(t \in A\), joille \(t > M\). Valitaan
+  \[
+    M' = \maxset{0,r,M} + 1
+    \qquad\text{ja}\qquad
+    \delta = \frac{1}{M'}.
+  \]
+  Tällöin \(0 < \delta \leq \rho\). Kun \(0 < x < \delta\),
+  niin \(1/x > M' > M\) ja \(1/x \in A\). Siten
+  \[
+    \abs{g(x) - L}
+    = \abs*{f\left(\frac{1}{x}\right) - L} < \varepsilon.
+  \]
+  Siis oikeanpuoleisen raja-arvon määritelmän nojalla
+  \[
+    \lim_{x \to 0^+} f\left(\frac{1}{x}\right) = L.
+  \]
+
+  \(\Leftarrow\): Oletetaan, että
+  \(\lim_{x \to 0^+} f(1/x) = L \in \RR\).
+  Oletuksen nojalla on olemassa \(r > 0\) siten, että \(f(1/x)\)
+  on määritelty kaikilla \(x \in (0,r)\). Asetetaan \(\rho = 1/r > 0\).
+  Kun \(t > \rho\), niin \(0 < 1/t < r\), joten
+  \(f(1/(1/t)) = f(t)\) on määritelty. Siis \((\rho,\infty) \subset A\).
+
+  Olkoon \(\varepsilon > 0\). Oletuksen nojalla voidaan valita
+  \(0 < \delta \leq r\) siten, että
+  \[
+    \abs*{f\left(\frac{1}{x}\right) - L} < \varepsilon
+  \]
+  kaikilla \(x \in (0,\delta)\). Asetetaan \(M = 1/\delta\).
+  Tällöin \(M \geq \rho\). Kun \(t > M\), niin \(t \in A\) ja
+  \(0 < 1/t < \delta\). Soveltamalla edellistä arviota pisteessä
+  \(x = 1/t\) saadaan
+  \[
+    \abs{f(t) - L}
+    = \abs*{f\left(\frac{1}{1/t}\right) - L} < \varepsilon,
+  \]
+  kun \(t > M\). Siis raja-arvon määritelmän nojalla
+  \[
+    \lim_{t \to \infty} f(t) = L.
+  \]
+  Molemmat suunnat on osoitettu, ja raja-arvot ovat yhtä suuret.
+\end{solution}
+
 \begin{exercise}
   Olkoon \(f\colon (1,2) \to \RR\) funktio, jolla on vasemmanpuoleinen
   raja-arvo pisteessä 2. Osoita, että on olemassa sellaiset
