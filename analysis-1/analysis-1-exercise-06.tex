@@ -237,4 +237,57 @@
   Voiko epäyhtälö olla aito?
 \end{exercise}
 
+\begin{solution}
+  Olkoon
+  \[
+    \begin{aligned}
+      V &= \set{f(x) \colon x \in (a, x_0)}, \\
+      O &= \set{f(x) \colon x \in (x_0, b)}.
+    \end{aligned}
+  \]
+  Joukot \(V\) ja \(O\) ovat epätyhjiä, sillä \(a < x_0 < b\).
+  Koska \(f\) on vähenevä, on \(f(x_0)\) joukon \(V\) alaraja, sekä joukon
+  \(O\) yläraja. Täten
+  \[
+    \begin{aligned}
+      p &= \inf{V} \in \RR, \\
+      s &= \sup{O} \in \RR.
+    \end{aligned}
+  \]
+  Lisäksi pätee \(s \leq f(x_0) \leq p\). Osoitetaan seuraavaksi, että
+  \(\lim_{x \to x_0^-} f(x) = p\) ja \(\lim_{x \to x_0^+} f(x) = s\).
+
+  Tarkastellaan ensin vasemmanpuoleista raja-arvoa. Olkoon
+  \(\varepsilon > 0\). On olemassa sellainen \(x_1 \in (a, x_0)\),
+  että \(p \leq f(x_1) < p + \varepsilon\). Koska \(f\) on vähenevä,
+  niin \(p \leq f(x) \leq f(x_1) < p + \varepsilon\) kaikilla \(x \in
+  (x_1, x_0)\). Olkoon \(\delta = x_0 - x_1\), jolloin \((x_0 -
+  \delta, x_0) = (x_1, x_0)\). Tällöin
+  \[
+    \abs{f(x) - p} < \varepsilon,
+  \]
+  kun \(x \in (x_0 - \delta, x_0)\). Siis \(\lim_{x \to x_0^-} f(x) = p\).
+
+  Tarkastellaan seuraavaksi oikeanpuoleista raja-arvoa. Olkoon
+  \(\varepsilon > 0\). On olemassa \(x_1 \in (x_0, b)\) siten että
+  \(s - \varepsilon < f(x_1) \leq s\). Koska \(f\) on vähenevä, niin
+  \(s - \varepsilon < f(x_1) \leq f(x) \leq s\) kaikilla \(x \in (x_0, x_1)\).
+  Olkoon \(\delta = x_1 - x_0\), jolloin \((x_0, x_0 + \delta) = (x_0, x_1)\).
+  Tällöin
+  \[
+    \abs{f(x) - s} < \varepsilon,
+  \]
+  kun \(x \in (x_0, x_0 + \delta)\). Siis \(\lim_{x \to x_0^+} f(x) = s\).
+
+  Koska \(s \leq f(x_0) \leq p\), saadaan
+  \[
+    \lim_{x \to x_0^-} f(x) = p \geq s = \lim_{x \to x_0^+} f(x).
+  \]
+
+  Epäyhtälö voi olla aito: olkoon \(f \colon (-1, 1) \to \RR\), jolle
+  \(f(x) = 1\) kun \(-1 < x < 0\) ja \(f(x) = -1\) kun \(0 \leq x < 1\). Tällöin
+  \(\lim_{x \to 0^-} f(x) = 1\) ja \(\lim_{x \to 0^+} f(x) = -1\).
+  Siis \(\lim_{x \to 0^-} f(x) > \lim_{x \to 0^+} f(x)\).
+\end{solution}
+
 \end{document}
