@@ -1,0 +1,63 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Analyysi I\\Harjoitus 6}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Analyysi I}{Harjoitus 6}
+
+\begin{exercise}
+  Olkoon \(b \in \RR\). Määritellään funktio \(f\colon \RR \to \RR\)
+  asettamalla \(f(x) = x^2 + x + 1\), kun \(x > 0\),
+  \(f(x) = \abs{x - 2b}\), kun \(x < 0\), ja
+  \(f(0) = 7 + b^2 + b^3\). Millä vakion \(b\) arvoilla funktiolla
+  \(f\) on raja-arvo origossa?
+\end{exercise}
+
+\begin{exercise}
+  Todista, että jos toinen raja-arvoista \(\lim_{x \to \infty} f(x)\)
+  ja \(\lim_{x \to 0^+} f\left(\frac{1}{x}\right)\) on olemassa ja on
+  reaaliluku, niin on toinenkin ja lisäksi raja-arvot ovat reaalilukuina
+  yhtäsuuria.
+\end{exercise}
+
+\begin{exercise}
+  Olkoon \(f\colon (1,2) \to \RR\) funktio, jolla on vasemmanpuoleinen
+  raja-arvo pisteessä 2. Osoita, että on olemassa sellaiset
+  \(m, \delta > 0\), että
+  \[
+    \abs{f(x)} < m
+  \]
+  kaikilla \(2 - \delta < x < 2\). Voidaanko aina valita, että \(m = 1\)?
+\end{exercise}
+
+\begin{exercise}
+  Olkoon \(a\) positiivinen reaaliluku. Olkoon
+  \(f\colon (0,\infty) \to \RR\), \(f(x) = \frac{a}{x}\).
+  Osoita suoraan määritelmistä, että \(\lim_{x \to 0^+} f(x) = \infty\)
+  ja \(\lim_{x \to \infty} f(x) = 0\).
+\end{exercise}
+
+\begin{exercise}
+  Olkoon \(r \in \RR\), ja \(f\colon (a,b) \to \RR\) aidosti kasvava.
+  Osoita, että \(rf\colon (a,b) \to \RR\) on aidosti kasvava jos
+  \(r > 0\), aidosti vähenevä jos \(r < 0\), sekä kasvava ja vähenevä
+  jos \(r = 0\).
+\end{exercise}
+
+\begin{exercise}
+  Olkoon \(f\colon (a,b) \to \RR\) vähenevä, ja \(x_0 \in (a,b)\).
+  Osoita, että
+  \[
+    \lim_{x \to x_0^-} f(x) \geq \lim_{x \to x_0^+} f(x).
+  \]
+  Voiko epäyhtälö olla aito?
+\end{exercise}
+
+\end{document}
