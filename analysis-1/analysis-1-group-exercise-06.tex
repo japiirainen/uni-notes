@@ -26,9 +26,106 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Olkoon \(f \colon \RR \to \RR\),
+      \[
+        f(x) =
+        \begin{cases}
+          \sin(1/x), & x > 0, \\
+          0, & x \leq 0.
+        \end{cases}
+      \]
+      Jonot \(x_n = 1/(\pi/2 + 2\pi n)\) ja
+      \(y_n = 1/(3\pi/2 + 2\pi n)\), \(n \geq 1\), lähestyvät nollaa
+      oikealta, mutta \(f(x_n) = 1\) ja \(f(y_n) = -1\) kaikilla \(n\).
+      Täten funktiolla \(f\) ei ole oikeanpuoleista raja-arvoa origossa.
+    \item Tavalliselle jonon raja-arvolle ei määritellä erikseen oikean- ja
+      vasemmanpuoleista raja-arvoa kuten funktion raja-arvolle äärellisessä
+      pisteessä. Jonon raja-arvossa indeksi \(n\) lähestyy ääretöntä, eikä
+      mitään äärellistä pistettä kahdelta eri puolelta. Funktion
+      toispuoleisissa raja-arvoissa puoli tarkoittaa argumentin
+      lähestymissuuntaa, ei funktion arvojen sijaintia raja-arvoon nähden.
+      Jonon termit voivat lähestyä raja-arvoa yläpuolelta, alapuolelta tai
+      vuorotellen molemmilta puolilta, kuten jonot \(1/n\), \(-1/n\) ja
+      \((-1)^n/n\) lähestyvät nollaa.
+    \item Olkoon \(f \colon A \to \RR\).
+
+      Oletetaan, että on olemassa \(r > 0\) siten, että
+      \((x_0 - r, x_0) \subset A\). Tällöin määritellään
+      \(\lim_{x \to x_0^-} f(x) = +\infty\) jos ja vain jos jokaista
+      \(M \in \RR\) kohti on olemassa sellainen \(0 < \delta \leq r\), että
+      \(f(x) > M\) kaikilla \(x \in (x_0 - \delta, x_0)\).
+
+      Oletetaan, että on olemassa \(r > 0\) siten, että
+      \((x_0 - r, x_0) \subset A\). Tällöin määritellään
+      \(\lim_{x \to x_0^-} f(x) = -\infty\) jos ja vain jos jokaista
+      \(m \in \RR\) kohti on olemassa sellainen \(0 < \delta \leq r\), että
+      \(f(x) < m\) kaikilla \(x \in (x_0 - \delta, x_0)\).
+
+      Oletetaan, että on olemassa \(r > 0\) siten, että
+      \((x_0, x_0 + r) \subset A\). Tällöin määritellään
+      \(\lim_{x \to x_0^+} f(x) = +\infty\) jos ja vain jos jokaista
+      \(M \in \RR\) kohti on olemassa sellainen \(0 < \delta \leq r\), että
+      \(f(x) > M\) kaikilla \(x \in (x_0, x_0 + \delta)\).
+
+      Oletetaan, että on olemassa \(r > 0\) siten, että
+      \((x_0, x_0 + r) \subset A\). Tällöin määritellään
+      \(\lim_{x \to x_0^+} f(x) = -\infty\) jos ja vain jos jokaista
+      \(m \in \RR\) kohti on olemassa sellainen \(0 < \delta \leq r\), että
+      \(f(x) < m\) kaikilla \(x \in (x_0, x_0 + \delta)\).
+
+    \item Olkoon \(f \colon \RR \setminus \set{1} \to \RR\), \(f(x) =
+      1/\abs{x - 1}\). Olkoon \(M \in \RR\). Jos \(M \leq 0\), valitaan
+      \(\delta = 1\). Tällöin \(f(x) > 0 \geq M\), kun \(x \in (1 -
+      \delta, 1)\).
+      Oletetaan sitten, että \(M > 0\). Valitaan \(\delta = \minset{1, 1/M}\).
+      Tällöin
+      \[
+        f(x) = \frac{1}{\abs{x - 1}} = \frac{1}{1 - x} >
+        \frac{1}{\delta} \geq M,
+      \]
+      kun \(1 - \delta < x < 1\).
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}
   Tutustu kirjan Lauseeseen 3.2.3. Voiko lauseen todistusta muokata niin,
   että se toimii tapauksessa \(m = \infty\)?
 \end{exercise}
+
+\begin{solution}
+  Kyllä. Korvataan todistuksessa ehto \(\abs{f(x) - m} < \varepsilon\)
+  ehdolla \(f(x) > M\), missä \(M \in \RR\) on mielivaltainen.
+  Lauseen oletuksilla pätee siis
+  \[
+    \lim_{x \to x_0} f(x) = +\infty
+    \quad\Longleftrightarrow\quad
+    \lim_{x \to x_0^-} f(x) = \lim_{x \to x_0^+} f(x) = +\infty.
+  \]
+
+  Oletetaan ensin, että \(\lim_{x \to x_0} f(x) = +\infty\), ja olkoon
+  \(M \in \RR\). Tällöin on olemassa \(0 < \delta \leq r\) siten, että
+  \(f(x) > M\), kun \(0 < \abs{x - x_0} < \delta\). Ehto pätee siis
+  sekä silloin, kun \(x_0 - \delta < x < x_0\), että silloin, kun
+  \(x_0 < x < x_0 + \delta\). Näin ollen molemmat toispuoleiset
+  raja-arvot ovat \(+\infty\).
+
+  Oletetaan sitten, että molemmat toispuoleiset raja-arvot ovat
+  \(+\infty\), ja olkoon \(M \in \RR\). Tällöin on olemassa
+  \(\delta_-, \delta_+ > 0\) siten, että
+  \[
+    f(x) > M \quad\text{kun } x_0 - \delta_- < x < x_0,
+  \]
+  ja
+  \[
+    f(x) > M \quad\text{kun } x_0 < x < x_0 + \delta_+.
+  \]
+  Valitaan \(\delta = \min\{r, \delta_-, \delta_+\} > 0\).
+  Jos \(0 < \abs{x - x_0} < \delta\), niin \(x\) kuuluu jompaankumpaan
+  yllä olevista väleistä, joten \(f(x) > M\). Koska \(M\) oli
+  mielivaltainen, saadaan \(\lim_{x \to x_0} f(x) = +\infty\).
+\end{solution}
 
 \end{document}
