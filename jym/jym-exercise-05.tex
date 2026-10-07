@@ -172,13 +172,41 @@ Tällöin
 \[
 \abs{A_1 \cup \cdots \cup A_n} = \abs{A_1} + \cdots + \abs{A_n}.
 \]
-\textbf{Todistus.} Edetään induktiolla \(n\):n suhteen.
+\textbf{Todistus.} Todistetaan ensin kahden joukon summaperiaate.
+Olkoot \(C\) ja \(D\) erillisiä äärellisiä joukkoja ja merkitään
+\(p = \abs{C}\), \(q = \abs{D}\). Äärellisen joukon mahtavuuden
+määritelmän nojalla on olemassa bijektiot
+\(f\colon \{1,\ldots,p\} \to C\) ja
+\(g\colon \{1,\ldots,q\} \to D\), missä
+\(\{1,\ldots,0\} = \emptyset\). Määritellään kuvaus
+\(h\colon \{1,\ldots,p+q\} \to C\cup D\) kaavalla
+\[
+h(k) =
+\begin{cases}
+  f(k), & 1 \leq k \leq p, \\
+  g(k-p), & p < k \leq p+q.
+\end{cases}
+\]
+Kuvaus \(h\) on injektio: kummankin tapauksen sisällä tämä seuraa
+kuvausten \(f\) ja \(g\) injektiivisyydestä, ja eri tapauksissa
+kuvat ovat eri alkioita, koska \(C\cap D = \emptyset\).
+Lisäksi \(h\) on surjektio, sillä \(f\) saa arvoikseen kaikki
+joukon \(C\) alkiot ja \(g\) kaikki joukon \(D\) alkiot.
+Siis \(h\) on bijektio, joten \(C\cup D\) on äärellinen ja
+\[
+\abs{C\cup D} = p+q = \abs{C}+\abs{D}.
+\]
+Todistus kattaa myös tapaukset, joissa toinen tai molemmat joukot
+ovat tyhjiä.
+
+Todistetaan nyt yleinen väite induktiolla \(n\):n suhteen.
 Kun \(n = 1\), väite on yhtälö \(\abs{A_1} = \abs{A_1}\), joten se pätee.
 
 Oletetaan, että väite pätee jollakin \(n \geq 1\) kaikille \(n\):n
 pareittain erillisen äärellisen joukon kokoelmille. Olkoot
 \(A_1, \ldots, A_{n+1}\) pareittain erillisiä äärellisiä joukkoja.
-Merkitään \(B = A_1 \cup \cdots \cup A_n\). Joukko \(B\) on äärellinen,
+Merkitään \(B = A_1 \cup \cdots \cup A_n\). Induktio-oletuksen nojalla
+joukko \(B\) on äärellinen,
 ja pareittaisen erillisyyden nojalla
 \[
 B \cap A_{n+1}
