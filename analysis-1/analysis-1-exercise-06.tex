@@ -20,6 +20,41 @@
   \(f\) on raja-arvo origossa?
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(b \in \RR\). Tutkitaan funktion \(f\) toispuoleiset
+  raja-arvot origossa.
+
+  Osoitetaan ensin, että \(\lim_{x \to 0^+} f(x) = 1\).
+  Olkoon \(\varepsilon > 0\) ja valitaan
+  \(\delta = \minset{1, \frac{\varepsilon}{2}} > 0\).
+  Kun \(0 < x < \delta\), niin \(0 < x < 1\), joten \(x^2 < x\).
+  Näin ollen
+  \[
+    \abs{f(x) - 1} = \abs{x^2 + x}
+    \leq 2x < 2\delta \leq \varepsilon.
+  \]
+  Siis \(\lim_{x \to 0^+} f(x) = 1\).
+
+  Osoitetaan seuraavaksi, että \(\lim_{x \to 0^-} f(x) = \abs{2b}\).
+  Olkoon \(\varepsilon > 0\) ja valitaan \(\delta = \varepsilon > 0\).
+  Kun \(-\delta < x < 0\), käänteisen kolmioepäyhtälön nojalla
+  \[
+    \begin{aligned}
+      \abs{f(x) - \abs{2b}}
+      &= \abs{\abs{x - 2b} - \abs{-2b}} \\
+      &\leq \abs{(x - 2b) - (-2b)} \\
+      &= \abs{x} < \delta = \varepsilon.
+    \end{aligned}
+  \]
+  Siis \(\lim_{x \to 0^-} f(x) = \abs{2b}\).
+
+  Lauseen 3.2.3 mukaan funktiolla \(f\) on raja-arvo origossa jos ja
+  vain jos toispuoleiset raja-arvot ovat yhtä suuret. Edellä osoitetun
+  perusteella tämä toteutuu jos ja vain jos \(\abs{2b} = 1\), eli
+  \(b = \pm\frac{1}{2}\). Tällöin \(\lim_{x \to 0} f(x) = 1\).
+  Funktion arvo \(f(0)\) ei vaikuta raja-arvon olemassaoloon eikä sen arvoon.
+\end{solution}
+
 \begin{exercise}
   Todista, että jos toinen raja-arvoista \(\lim_{x \to \infty} f(x)\)
   ja \(\lim_{x \to 0^+} f\left(\frac{1}{x}\right)\) on olemassa ja on
