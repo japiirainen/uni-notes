@@ -173,12 +173,60 @@
   ja \(\lim_{x \to \infty} f(x) = 0\).
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(M \in \RR\). Jos \(M \leq 0\), valitaan \(\delta = 1\).
+  Koska \(a > 0\), niin \(f(x) > 0 \geq M\) kaikilla \(x \in (0, \infty)\).
+  Täten \(f(x) > M\), kun \(x \in (0, \delta)\). Oletetaan sitten \(M > 0\).
+  Valitaan \(\delta = a/M > 0\). Kun \(0 < x < \delta = a/M\), niin \(a/x > M\).
+  Siis
+  \[
+    f(x) = \frac{a}{x} > M,
+  \]
+  kun \(x \in (0, \delta)\). Täten \(\lim_{x \to 0^+} f(x) = \infty\).
+
+  Osoitetaan seuraavaksi, että \(\lim_{x \to \infty} f(x) = 0\). Olkoon
+  \(\varepsilon > 0\). Valitaan \(h = a/\varepsilon > 0\). Tällöin
+  \[
+    \abs{f(x) - 0} = \frac{a}{x} < \frac{a}{h} = \varepsilon,
+  \]
+  kun \(x > h\). On osoitettu, että \(\lim_{x \to \infty} f(x) = 0\).
+\end{solution}
+
 \begin{exercise}
   Olkoon \(r \in \RR\), ja \(f\colon (a,b) \to \RR\) aidosti kasvava.
   Osoita, että \(rf\colon (a,b) \to \RR\) on aidosti kasvava jos
   \(r > 0\), aidosti vähenevä jos \(r < 0\), sekä kasvava ja vähenevä
   jos \(r = 0\).
 \end{exercise}
+
+\begin{solution}
+  Olkoon \(f \colon (a, b) \to \RR\) aidosti kasvava.
+  Olkoon \(x, y \in (a, b)\) siten, että \(x < y\). Olkoon \(r \in \RR\).
+  Koska \(f\) on aidosti kasvava, on voimassa
+  \[
+    f(x) < f(y).
+  \]
+
+  Oletetaan ensin, että \(r > 0\).
+  Koska \(f(x) < f(y)\), niin \(f(y) - f(x) > 0\). Järjestysaksiooman
+  (J3) nojalla \(\left(f(y) - f(x)\right)r > 0\). Tästä seuraa, että
+  \(rf(x) < rf(y)\). On osoitettu, että funktio
+  \(rf \colon (a, b) \to \RR\) on aidosti kasvava.
+
+  Oletetaan sitten, että \(r < 0\). Olkoon \(h = -r\). Tällöin
+  \(h > 0\). Edellisen kohdan nojalla funktio
+  \(hf \colon (a, b) \to \RR\) on aidosti kasvava, joten \(hf(x) < hf(y)\).
+  Kerrotaan epäyhtälön molemmat puolet luvulla \(-1\), jolloin
+  epäyhtälön suunta vaihtuu. Saadaan
+  \[
+    -hf(y) < -hf(x) \quad \iff \quad rf(y) < rf(x).
+  \]
+  Funktio \(rf \colon (a, b) \to \RR\) on siis aidosti vähenevä.
+
+  Lopuksi, jos \(r = 0\), niin \(rf(x) = 0 = rf(y)\). Siten sekä
+  \(rf(x) \leq rf(y)\) että \(rf(x) \geq rf(y)\), joten \(rf\) on
+  sekä kasvava että vähenevä.
+\end{solution}
 
 \begin{exercise}
   Olkoon \(f\colon (a,b) \to \RR\) vähenevä, ja \(x_0 \in (a,b)\).
