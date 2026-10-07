@@ -132,6 +132,40 @@
   kaikilla \(2 - \delta < x < 2\). Voidaanko aina valita, että \(m = 1\)?
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(\lim_{x \to 2^-} f(x) = L \in \RR\).
+  Valitaan \(r = 1\), jolloin \((2-r,2) \subset (1,2)\).
+  Soveltamalla raja-arvon määritelmää arvolla \(\varepsilon = 1\)
+  saadaan \(0 < \delta \leq r\) siten, että
+  \[
+    \abs{f(x) - L} < 1
+  \]
+  kaikilla \(x \in (2-\delta,2)\). Kolmioepäyhtälön nojalla tällöin
+  \[
+    \abs{f(x)} = \abs{f(x) - L + L}
+    \leq \abs{f(x) - L} + \abs{L} < \abs{L} + 1.
+  \]
+  Voidaan siis valita \(m = \abs{L} + 1 > 0\).
+
+  Lukua \(m = 1\) ei voida aina valita, kuten seuraava vastaesimerkki
+  osoittaa. Määritellään \(f\colon (1,2) \to \RR\) asettamalla
+  \[
+    f(x) = 100 + \sqrt{x - 1} + \sqrt{2 - x}.
+  \]
+  Tällä funktiolla on vasemmanpuoleinen raja-arvo pisteessä 2:
+  \[
+    \lim_{x \to 2^-} f(x) = 100 + 1 + 0 = 101.
+  \]
+  Kuitenkin \(\abs{f(x)} \geq 100 > 1\) kaikilla \(x \in (1,2)\),
+  joten ehto \(\abs{f(x)} < 1\) ei toteudu millään välillä
+  \((2-\delta,2) \subset (1,2)\), missä \(\delta > 0\).
+
+  Myös yksinkertaisempi vastaesimerkki \(g\colon (1,2) \to \RR\),
+  \(g(x) = 2\), toimii: vakiofunktion määrittelyjoukoksi voidaan valita
+  \((1,2)\). Tällöin \(\lim_{x \to 2^-} g(x) = 2\), mutta
+  \(\abs{g(x)} = 2 > 1\) kaikilla \(x \in (1,2)\).
+\end{solution}
+
 \begin{exercise}
   Olkoon \(a\) positiivinen reaaliluku. Olkoon
   \(f\colon (0,\infty) \to \RR\), \(f(x) = \frac{a}{x}\).
