@@ -1881,4 +1881,323 @@ Thus \(\CC=\set{a+bi:a,b\in\RR}\).
   the product formula to \(zw^{-1}\) gives the quotient formula.
 \end{proof}
 
+\subsection{08.10.2026}
+
+\subsubsection{Integer powers and de Moivre's formula}
+
+\begin{definition}
+  For \(z\in\CC\) and a positive integer \(n\), the power \(z^n\)
+  is the product of \(n\) copies of \(z\). For \(z\neq0\), define
+  \[
+    z^0=1,\qquad z^{-n}=(z^n)^{-1}=\frac1{z^n}.
+  \]
+  We also define \(0^0=1\).
+\end{definition}
+
+\begin{theorem}[De Moivre's formula]
+  If \(z=r(\cos\theta+i\sin\theta)\neq0\), where \(r=\abs{z}\), then
+  for every \(n\in\ZZ\),
+  \[
+    z^n=r^n\bigl(\cos(n\theta)+i\sin(n\theta)\bigr).
+  \]
+  For \(z=0\), the formula also holds for positive integers \(n\),
+  with any choice of \(\theta\).
+\end{theorem}
+
+\begin{proof}
+  For \(n=0\), both sides are \(1\), and for \(n=1\) the formula is
+  the polar form of \(z\). If it holds for a positive integer \(n\),
+  the product formula for polar forms gives
+  \[
+    z^{n+1}=z^nz
+    =r^{n+1}\bigl(\cos((n+1)\theta)+i\sin((n+1)\theta)\bigr).
+  \]
+  Induction proves the claim for all positive integers.
+  If \(n=-m\), where \(m>0\), the reciprocal formula gives
+  \[
+    z^{-m}=\frac1{z^m}
+    =r^{-m}\bigl(\cos(-m\theta)+i\sin(-m\theta)\bigr).
+  \]
+  Finally, when \(z=0\) and \(n>0\), both sides vanish.
+\end{proof}
+
+\begin{example}[Lecture exercise]
+  Compute \(\left(\frac12+\frac12i\right)^{10}\).
+\end{example}
+
+\begin{solution}
+  The number \(z=\frac12+\frac12i\) has modulus \(1/\sqrt2\).
+  Its real and imaginary parts are positive and equal, so an argument
+  is \(\pi/4\). Thus
+  \[
+    z^{10}=\left(\frac1{\sqrt2}\right)^{10}
+    \left(\cos\frac{10\pi}{4}+i\sin\frac{10\pi}{4}\right)
+    =\frac1{32}\left(\cos\frac\pi2+i\sin\frac\pi2\right)
+    =\frac{i}{32}.\qedhere
+  \]
+\end{solution}
+
+\subsubsection{Euler's formula and exponential form}
+
+\begin{definition}
+  The \emph{complex exponential} is defined by the power series
+  \[
+    e^z=\sum_{k=0}^{\infty}\frac{z^k}{k!},\qquad z\in\CC.
+  \]
+  Its constant term is \(1\), including at \(z=0\).
+\end{definition}
+
+\begin{remark}[Analytic prerequisites]
+  We take the power series for the real exponential, sine,
+  and cosine as given; their derivation belongs to later analysis.
+  The proof below uses these series and standard facts about absolutely
+  convergent series. In particular, the exponential series converges
+  absolutely for every \(z\): for \(z\neq0\), the ratio of successive
+  absolute terms is \(\abs{z}/(k+1)\to0\), so the ratio test applies.
+  At \(z=0\) convergence is immediate. Absolute convergence justifies
+  grouping even and odd terms and taking Cauchy products below.
+\end{remark}
+
+\begin{theorem}[Euler's formula]
+  For every \(\theta\in\RR\),
+  \[
+    e^{i\theta}=\cos\theta+i\sin\theta.
+  \]
+\end{theorem}
+
+\begin{proof}
+  Recall the real power series
+  \[
+    \cos\theta=\sum_{j=0}^{\infty}\frac{(-1)^j\theta^{2j}}{(2j)!},
+    \qquad
+    \sin\theta=\sum_{j=0}^{\infty}\frac{(-1)^j\theta^{2j+1}}{(2j+1)!}.
+  \]
+  Since \(i^{2j}=(-1)^j\) and \(i^{2j+1}=i(-1)^j\), absolute
+  convergence allows us to write
+  \begin{align*}
+    e^{i\theta}
+    &=\sum_{k=0}^{\infty}\frac{(i\theta)^k}{k!}\\
+    &=\sum_{j=0}^{\infty}\frac{(-1)^j\theta^{2j}}{(2j)!}
+    +i\sum_{j=0}^{\infty}\frac{(-1)^j\theta^{2j+1}}{(2j+1)!}\\
+    &=\cos\theta+i\sin\theta.\qedhere
+  \end{align*}
+\end{proof}
+
+\begin{proposition}[Exponential addition law]
+  For all \(u,v\in\CC\),
+  \[
+    e^{u+v}=e^ue^v.
+  \]
+  Consequently, for \(x,y\in\RR\),
+  \[
+    e^{x+iy}=e^x(\cos y+i\sin y),\qquad \abs{e^{x+iy}}=e^x>0.
+  \]
+\end{proposition}
+
+\begin{proof}
+  The Cauchy product of the absolutely convergent series gives
+  \[
+    e^ue^v
+    =\sum_{n=0}^{\infty}\sum_{k=0}^{n}
+    \frac{u^kv^{n-k}}{k!(n-k)!}
+    =\sum_{n=0}^{\infty}\frac1{n!}
+    \sum_{k=0}^{n}\binom nk u^kv^{n-k}
+    =\sum_{n=0}^{\infty}\frac{(u+v)^n}{n!}=e^{u+v}.
+  \]
+  Here the inner sum is the binomial theorem. Taking \(u=x\) and
+  \(v=iy\) and applying Euler's formula proves the second formula.
+  Its modulus is \(e^x\sqrt{\cos^2y+\sin^2y}=e^x\).
+\end{proof}
+
+\begin{definition}
+  The \emph{exponential form} of a nonzero complex number is
+  \[
+    z=\abs{z}e^{i\theta},
+  \]
+  where \(\theta\) is any argument of \(z\). Arguments differ by
+  integer multiples of \(2\pi\). We can write \(0=0e^{i\theta}\)
+  for any \(\theta\), but zero has no defined argument.
+\end{definition}
+
+\begin{remark}
+  The addition law gives \(e^0=1\), \(e^{-u}=1/e^u\), and
+  \((e^u)^n=e^{nu}\) for all \(n\in\ZZ\). Thus, for \(z\neq0\),
+  \[
+    z^n=(\abs{z}e^{i\theta})^n
+    =\abs{z}^ne^{in\theta}
+    =\abs{z}^n(\cos(n\theta)+i\sin(n\theta)),
+  \]
+  giving a second proof of de Moivre's formula.
+\end{remark}
+
+\begin{example}
+  Euler's identity and another exponential evaluation are
+  \[
+    e^{i\pi}=-1,\qquad e^{i\pi}+1=0,
+    \qquad e^{-1+i\pi/2}=e^{-1}(0+i)=\frac{i}{e}.
+  \]
+\end{example}
+
+\subsubsection{Complex roots}
+
+\begin{definition}
+  Let \(n\) be a positive integer and \(z\in\CC\).
+  An \emph{\(n\)th root} of \(z\) is a number \(w\in\CC\)
+  such that \(w^n=z\).
+\end{definition}
+
+\begin{theorem}
+  Let \(n\geq1\) be an integer and let \(z=re^{i\theta}\neq0\),
+  where \(r=\abs{z}>0\). Then \(z\) has exactly \(n\) distinct
+  \(n\)th roots, namely
+  \begin{align*}
+    w_k&=r^{1/n}e^{i(\theta+2\pi k)/n}\\
+    &=r^{1/n}\left(\cos\frac{\theta+2\pi k}{n}
+    +i\sin\frac{\theta+2\pi k}{n}\right),
+    \qquad k=0,\ldots,n-1.
+  \end{align*}
+  Here \(r^{1/n}\) is the positive real \(n\)th root of \(r\).
+  The only \(n\)th root of zero is zero.
+\end{theorem}
+
+\begin{proof}
+  Each displayed number is a root, since de Moivre's formula yields
+  \[
+    w_k^n=re^{i(\theta+2\pi k)}=re^{i\theta}=z.
+  \]
+  Conversely, suppose \(w^n=z\neq0\). Write \(w=se^{i\varphi}\)
+  with \(s>0\). Taking moduli gives \(s^n=r\), hence
+  \(s=r^{1/n}\). Equality of the unit complex factors gives
+  \(e^{in\varphi}=e^{i\theta}\), which is equivalent to
+  \(n\varphi-\theta\in2\pi\ZZ\). Indeed, Euler's formula reduces
+  this to \(\cos(n\varphi-\theta)=1\) and
+  \(\sin(n\varphi-\theta)=0\).
+  Thus \(\varphi=(\theta+2\pi k)/n\) for some \(k\in\ZZ\).
+  Replacing \(k\) by \(k+n\) adds \(2\pi\) to the angle and leaves
+  \(w\) unchanged, so \(k=0,\ldots,n-1\) gives all roots.
+
+  If \(w_k=w_\ell\), then \(e^{2\pi i(k-\ell)/n}=1\), so
+  \(k-\ell\) is divisible by \(n\). For \(0\leq k,\ell<n\),
+  this forces \(k=\ell\), proving distinctness.
+  Finally, \(w^n=0\) implies \(\abs{w}^n=0\), hence \(w=0\).
+\end{proof}
+
+\begin{remark}
+  Changing the chosen argument \(\theta\) by \(2\pi m\), where
+  \(m\in\ZZ\), only permutes the root list. For \(n\geq3\), the
+  roots are the vertices of a regular \(n\)-gon centred at the origin,
+  on the circle of radius \(r^{1/n}\); successive arguments differ
+  by \(2\pi/n\). For \(n=2\), the two roots are opposite points.
+\end{remark}
+
+\begin{example}[Lecture exercise, corrected]
+  Find all sixth roots of \(-8\).
+\end{example}
+
+\begin{solution}
+  Here \(r=\abs{-8}=8\), \(\theta=\pi\), and
+  \(r^{1/6}=8^{1/6}=\sqrt2\). Therefore
+  \[
+    w_k=\sqrt2\,e^{i(\pi+2\pi k)/6},\qquad k=0,\ldots,5.
+  \]
+  Explicitly, these are
+  \[
+    \sqrt2\,e^{i\pi/6},\quad \sqrt2\,e^{i\pi/2},\quad
+    \sqrt2\,e^{5i\pi/6},\quad \sqrt2\,e^{7i\pi/6},\quad
+    \sqrt2\,e^{3i\pi/2},\quad \sqrt2\,e^{11i\pi/6}.
+  \]
+  For example, \(w_0=\sqrt6/2+i\sqrt2/2\) and
+  \(w_1=i\sqrt2\). Each root satisfies
+  \(w_k^6=(\sqrt2)^6e^{i(\pi+2\pi k)}=-8\).
+\end{solution}
+
+\subsubsection{Additional applications}
+
+The following worked applications supplement the lecture material.
+
+\begin{example}[Rotations and repeated transformations]
+  Multiplication by \(e^{i\alpha}\) rotates the complex plane
+  anticlockwise through angle \(\alpha\): a point \(re^{i\theta}\)
+  becomes \(re^{i(\theta+\alpha)}\). More generally, multiplication
+  by \(\rho e^{i\alpha}\), with \(\rho>0\), also scales distances
+  from the origin by \(\rho\).
+
+  For instance, the iteration \(z_{m+1}=(\frac12+\frac12i)z_m\)
+  has the explicit solution
+  \[
+    z_m=2^{-m/2}e^{im\pi/4}z_0,\qquad m\geq0.
+  \]
+  Each step rotates by \(\pi/4\) and shrinks distances by
+  \(1/\sqrt2\). After eight steps, \(z_8=z_0/16\); after ten,
+  \(z_{10}=iz_0/32\). Since \(\abs{z_m}=2^{-m/2}\abs{z_0}\to0\),
+  every starting point approaches the origin.
+\end{example}
+
+\begin{example}[Deriving trigonometric identities]
+  De Moivre's formula turns the binomial expansion of a complex power
+  into identities for multiple angles. Writing \(c=\cos\theta\)
+  and \(s=\sin\theta\), we obtain
+  \[
+    \cos(3\theta)+i\sin(3\theta)
+    =(c+is)^3=(c^3-3cs^2)+i(3c^2s-s^3).
+  \]
+  Equating real and imaginary parts and using \(c^2+s^2=1\) gives
+  \[
+    \cos(3\theta)=4\cos^3\theta-3\cos\theta,
+    \qquad
+    \sin(3\theta)=3\sin\theta-4\sin^3\theta.
+  \]
+  This method generalises to any positive integer multiple of an angle.
+\end{example}
+
+\begin{example}[Roots of unity and cancellation]
+  For \(n\geq2\), set \(\zeta=e^{2\pi i/n}\). The \(n\)th roots
+  of unity are \(1,\zeta,\ldots,\zeta^{n-1}\). Since
+  \(\zeta^n=1\) and \(\zeta\neq1\), the finite geometric sum gives
+  \[
+    1+\zeta+\cdots+\zeta^{n-1}
+    =\frac{1-\zeta^n}{1-\zeta}=0.
+  \]
+  Thus equally spaced unit vectors cancel. Taking real and imaginary
+  parts gives
+  \[
+    \sum_{k=0}^{n-1}\cos\frac{2\pi k}{n}=0,
+    \qquad \sum_{k=0}^{n-1}\sin\frac{2\pi k}{n}=0.
+  \]
+  More generally, every integer \(m\) satisfies
+  \[
+    \sum_{k=0}^{n-1}\zeta^{mk}
+    =
+    \begin{cases}
+      n,& n\mid m,\\
+      0,& n\nmid m.
+    \end{cases}
+  \]
+  If \(n\mid m\), every summand is \(1\); otherwise, apply the
+  geometric sum to \(\zeta^m\neq1\). This cancellation is the basic
+  algebra behind separating discrete frequencies in the discrete
+  Fourier transform.
+\end{example}
+
+\begin{example}[Solving and factoring a polynomial]
+  To solve \(w^3=-8\), use argument \(\pi\) and root modulus \(2\).
+  The roots are
+  \[
+    2e^{i\pi/3}=1+i\sqrt3,\qquad
+    2e^{i\pi}=-2,\qquad
+    2e^{5i\pi/3}=1-i\sqrt3.
+  \]
+  Pairing the conjugate roots gives a real quadratic:
+  \[
+    (X-(1+i\sqrt3))(X-(1-i\sqrt3))=(X-1)^2+3=X^2-2X+4.
+  \]
+  Hence
+  \[
+    X^3+8=(X+2)(X^2-2X+4)
+    =(X+2)(X-1-i\sqrt3)(X-1+i\sqrt3).
+  \]
+  Complex roots thus describe the complete linear factorisation even
+  when only one root is real.
+\end{example}
+
 \end{document}
