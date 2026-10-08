@@ -3,6 +3,13 @@
 
 \input{../preamble.tex}
 \usepackage{proof}
+\usepackage{forest}
+\forestset{
+  semantic tree/.style={
+    for tree={math content, parent anchor=south,
+    child anchor=north, l sep=5mm, s sep=7mm, inner sep=2pt}
+  }
+}
 
 \title{Introduction to Logic I}
 \author{Joona Piirainen}
@@ -1555,6 +1562,287 @@ satisfying \(\Gamma\) also satisfies \(A\).
   \[
     \{(p_1\to p_0)\to p_0\}\models (p_0\to p_1)\to p_1.
   \]
+\end{example}
+
+\subsection{08.10.2026}
+
+\subsubsection{Counterexamples and semantic trees}
+
+\begin{example}[An implication does not imply its converse]
+  To show that
+  \[
+    \{p_0\to p_1\}\not\models p_1\to p_0,
+  \]
+  we seek a truth assignment satisfying
+  \((p_0\to p_1)\land\neg(p_1\to p_0)\). The following tree decomposes
+  the requirements for this formula to be true:
+  \begin{center}
+    \begin{forest} semantic tree
+      [{(p_0\to p_1)\land\neg(p_1\to p_0)\;\checkmark}
+        [{p_0\to p_1\;\checkmark}
+          [{\neg(p_1\to p_0)\;\checkmark}
+            [{\neg p_0} [{p_1} [{\neg p_0}]]]
+            [{p_1} [{p_1} [{\neg p_0}]]]
+          ]
+        ]
+      ]
+    \end{forest}
+  \end{center}
+  Both branches give the same counterexample:
+  \(v(p_0)=0\) and \(v(p_1)=1\). The premise is true, whereas its
+  converse is false. By soundness, the converse is not derivable from
+  the premise either.
+\end{example}
+
+A \emph{semantic tree} (or \emph{semantic tableau}) is a method for finding
+a truth assignment satisfying a formula, or showing that no such assignment
+exists. It can require less work than writing out a full truth table.
+The idea is to decompose truth requirements: write formulas on the same
+branch when both are required, and split into branches when there are
+alternative ways to satisfy a formula.
+
+\begin{definition}[Open, closed, and completed branches]
+  Mark a formula with \(\checkmark\) after applying its expansion rule.
+  A branch containing both \(A\) and \(\neg A\) is \emph{closed}, marked
+  \(\times\). A branch that is not closed is \emph{open}. A tree is
+  \emph{closed} when all its branches are closed.
+
+  An open branch is \emph{completed} when all its nonliteral formulas
+  have been expanded, so that only literals remain unmarked. A satisfying
+  truth assignment can then be read from it: set \(v(p_n)=1\) if \(p_n\)
+  occurs on the branch and \(v(p_n)=0\) if \(\neg p_n\) occurs. Symbols
+  absent from the branch may be assigned either value.
+\end{definition}
+
+\subsubsection{Expansion rules}
+
+Each formula on a branch is required to be true. In the table below,
+commas mean that both formulas are added to the same branch; the vertical
+bar separates two alternative branches. Apply a rule to every open branch
+below the formula being expanded.
+
+\begin{center}
+  \renewcommand{\arraystretch}{1.45}
+  \begin{tabular}{lll}
+    \hline
+    Formula & Expansion & Type \\
+    \hline
+    \(A\land B\) & \(A,\ B\) & Same branch \\
+    \(\neg(A\land B)\) & \(\neg A\mid\neg B\) & Split \\
+    \(A\lor B\) & \(A\mid B\) & Split \\
+    \(\neg(A\lor B)\) & \(\neg A,\ \neg B\) & Same branch \\
+    \(A\to B\) & \(\neg A\mid B\) & Split \\
+    \(\neg(A\to B)\) & \(A,\ \neg B\) & Same branch \\
+    \(A\leftrightarrow B\) & \((A,\ B)\mid(\neg A,\ \neg B)\) & Split \\
+    \(\neg(A\leftrightarrow B)\) & \((A,\ \neg B)\mid(\neg A,\ B)\) & Split \\
+    \(\neg\neg A\) & \(A\) & Same branch \\
+    \hline
+  \end{tabular}
+\end{center}
+
+For example, \(\neg(A\to B)\) requires both \(A\) and \(\neg B\) on
+the same branch. A branch closes as soon as it contains a contradictory
+pair, in either order; the pair need not consist of adjacent formulas or
+of literals. There is no need to expand a closed branch further.
+
+\begin{example}[Finding a satisfying assignment]
+  Consider \((p_0\lor p_1)\land(p_0\to p_1)\). Its completed tree is
+  \begin{center}
+    \begin{forest} semantic tree
+      [{(p_0\lor p_1)\land(p_0\to p_1)\;\checkmark}
+        [{p_0\lor p_1\;\checkmark}
+          [{p_0\to p_1\;\checkmark}
+            [{p_0}
+              [{\neg p_0} [{\times}]]
+              [{p_1}]
+            ]
+            [{p_1}
+              [{\neg p_0}]
+              [{p_1}]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}
+  \end{center}
+  The leftmost branch closes, but the other branches remain open.
+  For example, the branch containing \(p_0,p_1\) gives the satisfying
+  assignment \(v(p_0)=v(p_1)=1\).
+\end{example}
+
+\subsubsection{Semantic proofs}
+
+\begin{definition}[Semantic proof]
+  A \emph{semantic proof} of a formula \(A\) is a closed semantic tree
+  starting from \(\neg A\). It shows that \(\neg A\) is unsatisfiable,
+  and hence that \(A\) is a tautology.
+\end{definition}
+
+\begin{example}[De Morgan's law]
+  To show that
+  \[
+    \neg(A\land B)\Leftrightarrow(\neg A\lor\neg B),
+  \]
+  construct a tree for the negation of the corresponding equivalence:
+  \begin{center}
+    \begin{forest} semantic tree
+      [{\neg\bigl(\neg(A\land B)\leftrightarrow(\neg A\lor\neg B)\bigr)
+        \;\checkmark}
+        [{\neg(A\land B)\;\checkmark}
+          [{\neg(\neg A\lor\neg B)\;\checkmark}
+            [{\neg\neg A\;\checkmark}
+              [{\neg\neg B\;\checkmark}
+                [{A} [{B}
+                    [{\neg A} [{\times}]]
+                    [{\neg B} [{\times}]]
+                ]]
+              ]
+            ]
+          ]
+        ]
+        [{\neg\neg(A\land B)\;\checkmark}
+          [{\neg A\lor\neg B\;\checkmark}
+            [{A\land B\;\checkmark}
+              [{A} [{B}
+                  [{\neg A} [{\times}]]
+                  [{\neg B} [{\times}]]
+              ]]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}
+  \end{center}
+  Every branch closes: each contains either \(A,\neg A\) or
+  \(B,\neg B\). The negated equivalence is unsatisfiable, so the
+  original equivalence is a tautology.
+\end{example}
+
+\clearpage
+\begin{example}[Distributivity]
+  We give a semantic proof of
+  \[
+    \bigl(A\land(B\lor C)\bigr)
+    \leftrightarrow\bigl((A\land B)\lor(A\land C)\bigr).
+  \]
+  Abbreviate the two sides by \(L=A\land(B\lor C)\) and
+  \(R=(A\land B)\lor(A\land C)\). Expanding
+  \(\neg(L\leftrightarrow R)\) gives the two main branches below.
+  Each formula occupies its own node; vertical lines join formulas
+  required on the same branch.
+
+  \begin{center}
+    \begin{forest} semantic tree,
+      for tree={font=\small, l sep=3mm, s sep=4mm}
+      [{\neg(L\leftrightarrow R)\;\checkmark}
+        [{L\;\checkmark}
+          [{\neg R\;\checkmark}
+            [{A}
+              [{B\lor C\;\checkmark}
+                [{\neg(A\land B)\;\checkmark}
+                  [{\neg(A\land C)\;\checkmark}
+                    [{B}
+                      [{\neg A} [{\times}]]
+                      [{\neg B} [{\times}]]
+                    ]
+                    [{C}
+                      [{\neg A} [{\times}]]
+                      [{\neg B}
+                        [{\neg A} [{\times}]]
+                        [{\neg C} [{\times}]]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+        [{\neg L\;\checkmark}
+          [{R\;\checkmark}
+            [{A\land B\;\checkmark}
+              [{A}
+                [{B}
+                  [{\neg A} [{\times}]]
+                  [{\neg(B\lor C)\;\checkmark}
+                    [{\neg B} [{\neg C} [{\times}]]]
+                  ]
+                ]
+              ]
+            ]
+            [{A\land C\;\checkmark}
+              [{A}
+                [{C}
+                  [{\neg A} [{\times}]]
+                  [{\neg(B\lor C)\;\checkmark}
+                    [{\neg B} [{\neg C} [{\times}]]]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    \end{forest}
+  \end{center}
+
+  On the left, \(L\) yields \(A\) and \(B\lor C\), while \(\neg R\)
+  yields \(\neg(A\land B)\) and \(\neg(A\land C)\). In the
+  \(B\)-case, expanding \(\neg(A\land B)\) closes both branches.
+  In the \(C\)-case, the remaining branch closes after expanding
+  \(\neg(A\land C)\).
+
+  On the right, \(R\) gives the alternatives \(A\land B\) and
+  \(A\land C\). In each case, \(\neg L\) gives the alternatives
+  \(\neg A\) and \(\neg(B\lor C)\). The former contradicts \(A\);
+  the latter yields \(\neg B\) and \(\neg C\), contradicting \(B\)
+  or \(C\), respectively.
+
+  Every branch closes, so the negated equivalence is unsatisfiable and
+  distributivity is a tautology. A checkmark means that a formula has
+  been expanded on every branch where it is still needed; closed branches
+  require no further expansion.
+\end{example}
+
+\subsubsection{Satisfiability is not tautologicity}
+
+A completed tree for \(A\) tells us whether \(A\) is satisfiable.
+A completed tree for \(\neg A\) tells us whether \(A\) is falsifiable.
+These give the following classification:
+\begin{center}
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{lll}
+    \hline
+    Classification of \(A\) & Tree for \(A\) & Tree for \(\neg A\) \\
+    \hline
+    Tautology & Has an open branch & Closed \\
+    Contradiction & Closed & Has an open branch \\
+    Contingent & Has an open branch & Has an open branch \\
+    \hline
+  \end{tabular}
+\end{center}
+Thus the satisfiable formulas and the falsifiable formulas overlap exactly
+in the contingent formulas. Tautologies are satisfiable but not falsifiable;
+contradictions are falsifiable but not satisfiable.
+
+\begin{example}[All branches open does not mean tautology]
+  The tree for \((p_0\lor p_1)\land(p_2\lor p_3)\) has four open branches:
+  \begin{center}
+    \begin{forest} semantic tree
+      [{(p_0\lor p_1)\land(p_2\lor p_3)\;\checkmark}
+        [{p_0\lor p_1\;\checkmark}
+          [{p_2\lor p_3\;\checkmark}
+            [{p_0} [{p_2}] [{p_3}]]
+            [{p_1} [{p_2}] [{p_3}]]
+          ]
+        ]
+      ]
+    \end{forest}
+  \end{center}
+  This shows that the formula is satisfiable, but it is not a tautology:
+  setting all four symbols to \(0\) makes it false. Open branches
+  describe ways to satisfy the formula; they do not assert that every
+  truth assignment satisfies it.
 \end{example}
 
 \end{document}
