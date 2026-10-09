@@ -2124,4 +2124,279 @@ similarly on the right.
   The left-hand case is identical.
 \end{proof}
 
+\subsection{09.10.2026}
+
+\subsubsection{Oscillation and one-sided limits}
+
+\begin{example}[An oscillating function without a right-hand limit]
+  Let \(f:(0,\infty)\to\RR\), \(f(x)=\sin(1/x)\). Then
+  \(\lim_{x\to0^+}f(x)\) does not exist.
+\end{example}
+
+\begin{proof}
+  For \(n\in\NN\), put
+  \[
+    x_n=\frac1{\pi/2+2\pi n},
+    \qquad y_n=\frac1{3\pi/2+2\pi n}.
+  \]
+  Both sequences are positive and tend to zero. Indeed, for \(n\geq1\),
+  \(0<x_n<1/n\) and \(0<y_n<1/n\). However,
+  \[
+    f(x_n)=1,\qquad f(y_n)=-1,
+    \qquad \abs{f(x_n)-f(y_n)}=2.
+  \]
+  For every \(\delta>0\), sufficiently large \(n\) therefore gives
+  \(x_n,y_n\in(0,\delta)\) while their function values remain distance
+  \(2\) apart. Taking \(\varepsilon=1\) contradicts the necessary
+  Cauchy condition for a finite right-hand limit. The function cannot
+  tend to either infinity either, since \(-1\leq f(x)\leq1\).
+\end{proof}
+
+\begin{example}[Damping the oscillation]
+  If \(g:(0,\infty)\to\RR\) satisfies \(\lim_{x\to0^+}g(x)=0\), then
+  \[
+    \lim_{x\to0^+}g(x)\sin(1/x)=0.
+  \]
+\end{example}
+
+\begin{proof}
+  Since \(\abs{\sin(1/x)}\leq1\), we have
+  \[
+    \abs{g(x)\sin(1/x)-0}\leq\abs{g(x)}.
+  \]
+  Given \(\varepsilon>0\), choose \(\delta>0\) such that
+  \(0<x<\delta\) implies \(\abs{g(x)}<\varepsilon\).
+  The displayed inequality proves the claimed limit.
+\end{proof}
+
+\begin{remark}
+  The usual product law cannot be applied directly here, because
+  \(\sin(1/x)\) has no right-hand limit at zero. The estimate works
+  because one factor tends to zero and the other is bounded.
+\end{remark}
+
+\subsubsection{The indicator function of the rational numbers}
+
+\begin{example}
+  Define \(\chi_{\QQ}:\RR\to\RR\) by
+  \[
+    \chi_{\QQ}(x)=
+    \begin{cases}
+      1,&x\in\QQ,\\
+      0,&x\notin\QQ.
+    \end{cases}
+  \]
+  Then \(\lim_{x\to0}\chi_{\QQ}(x)\) does not exist.
+\end{example}
+
+\begin{proof}[Proof directly from the definition]
+  Suppose that the limit is \(L\in\RR\). With \(\varepsilon=1/2\),
+  there is \(\delta>0\) such that
+  \[
+    0<\abs{x}<\delta\implies\abs{\chi_{\QQ}(x)-L}<\frac12.
+  \]
+  Choose a positive integer \(n>\sqrt2/\delta\). Then
+  \(u=1/n\) and \(v=\sqrt2/n\) both lie in \((0,\delta)\).
+  The number \(u\) is rational and \(v\) is irrational: if \(v\)
+  were rational, then \(nv=\sqrt2\) would be rational as well.
+  Thus \(\abs{1-L}<1/2\) and \(\abs{L}<1/2\), giving
+  \[
+    1\leq\abs{1-L}+\abs{L}<1,
+  \]
+  a contradiction.
+\end{proof}
+
+\begin{proof}[Proof using sequences]
+  For positive integers \(n\), both \(1/n\) and \(\sqrt2/n\)
+  tend to zero, but
+  \[
+    \chi_{\QQ}(1/n)=1,\qquad \chi_{\QQ}(\sqrt2/n)=0.
+  \]
+  By \cref{thm:function-sequential}, a limit at zero would have to
+  equal both \(1\) and \(0\), which is impossible.
+\end{proof}
+
+\subsubsection{Arithmetic laws for one-sided limits}
+
+\begin{theorem}\label{thm:one-sided-limit-laws}
+  Let \(f,g:A\to\RR\), and suppose \((x_0-r,x_0)\subseteq A\)
+  for some \(r>0\). If
+  \[
+    \lim_{x\to x_0^-}f(x)=a,\qquad
+    \lim_{x\to x_0^-}g(x)=b,
+  \]
+  then, for every \(c\in\RR\),
+  \begin{align*}
+    \lim_{x\to x_0^-}(f(x)+g(x))&=a+b,\\
+    \lim_{x\to x_0^-}cf(x)&=ca,\\
+    \lim_{x\to x_0^-}f(x)g(x)&=ab.
+  \end{align*}
+  If \(b\neq0\), then \(g(x)\neq0\) sufficiently close to \(x_0\)
+  on the left, and
+  \[
+    \lim_{x\to x_0^-}\frac{f(x)}{g(x)}=\frac ab.
+  \]
+  The quotient is defined where \(g(x)\neq0\). The same laws hold
+  for right-hand limits when \((x_0,x_0+r)\subseteq A\).
+\end{theorem}
+
+\begin{proof}
+  Let \(\varepsilon>0\). All radii below are chosen at most \(r\),
+  so the relevant intervals lie in \(A\).
+
+  \paragraph{Sum.}
+  Choose \(\delta_f,\delta_g>0\) so that
+  \(\abs{f(x)-a}<\varepsilon/2\) for \(x_0-\delta_f<x<x_0\),
+  and \(\abs{g(x)-b}<\varepsilon/2\) for \(x_0-\delta_g<x<x_0\).
+  With \(\delta=\min\set{\delta_f,\delta_g}\), for
+  \(x_0-\delta<x<x_0\) we obtain
+  \[
+    \abs{f(x)+g(x)-(a+b)}
+    \leq\abs{f(x)-a}+\abs{g(x)-b}<\varepsilon.
+  \]
+
+  \paragraph{Scalar multiple.}
+  If \(c=0\), the difference \(cf(x)-ca\) is identically zero.
+  Otherwise choose \(\delta>0\) so that
+  \(\abs{f(x)-a}<\varepsilon/\abs{c}\) for \(x_0-\delta<x<x_0\).
+  Then \(\abs{cf(x)-ca}=\abs{c}\abs{f(x)-a}<\varepsilon\).
+
+  \paragraph{Product.}
+  First choose \(\delta_0>0\) such that
+  \(\abs{g(x)-b}<1\) on \((x_0-\delta_0,x_0)\). There,
+  \(\abs{g(x)}<\abs{b}+1\). Choose \(\delta_a,\delta_b>0\)
+  so that, on the respective left-hand intervals,
+  \[
+    \abs{f(x)-a}<\frac{\varepsilon}{2(\abs{b}+1)},
+    \qquad
+    \abs{g(x)-b}<\frac{\varepsilon}{2(\abs{a}+1)}.
+  \]
+  Set \(\delta=\min\set{\delta_0,\delta_a,\delta_b}\). For
+  \(x_0-\delta<x<x_0\),
+  \begin{align*}
+    \abs{f(x)g(x)-ab}
+    &=\abs{g(x)(f(x)-a)+a(g(x)-b)}\\
+    &\leq\abs{g(x)}\abs{f(x)-a}+\abs{a}\abs{g(x)-b}\\
+    &\leq(\abs{b}+1)\abs{f(x)-a}+\abs{a}\abs{g(x)-b}\\
+    &<\frac\varepsilon2+
+    \frac{\abs{a}\varepsilon}{2(\abs{a}+1)}<\varepsilon.
+  \end{align*}
+
+  \paragraph{Quotient.}
+  Suppose \(b\neq0\). Choose \(\delta_0>0\) so that
+  \(\abs{g(x)-b}<\abs{b}/2\) for \(x_0-\delta_0<x<x_0\).
+  Then
+  \[
+    \abs{g(x)}\geq\abs{b}-\abs{g(x)-b}>\frac{\abs{b}}2>0.
+  \]
+  Choose \(\delta_1>0\) so that
+  \(\abs{g(x)-b}<\varepsilon\abs{b}^2/2\) for
+  \(x_0-\delta_1<x<x_0\). On the interval with radius
+  \(\min\set{\delta_0,\delta_1}\),
+  \[
+    \abs*{\frac1{g(x)}-\frac1b}
+    =\frac{\abs{g(x)-b}}{\abs{g(x)}\abs{b}}
+    \leq\frac{2\abs{g(x)-b}}{\abs{b}^2}<\varepsilon.
+  \]
+  Thus \(1/g(x)\to1/b\) from the left. Applying the product law
+  just proved to \(f\) and \(1/g\) proves the quotient law.
+
+  For right-hand limits, replace each interval
+  \((x_0-\delta,x_0)\) by \((x_0,x_0+\delta)\). The same choices
+  and estimates prove all four statements.
+\end{proof}
+
+\subsubsection{Finite limits at infinity}
+
+\begin{definition}
+  Let \(f:A\to\RR\), and suppose that \((r,\infty)\subseteq A\)
+  for some \(r\in\RR\). We write \(\lim_{x\to+\infty}f(x)=L\in\RR\)
+  if for every \(\varepsilon>0\) there exists \(R\geq r\) such that
+  \[
+    x>R\implies\abs{f(x)-L}<\varepsilon.
+  \]
+  Similarly, if \(( -\infty,r)\subseteq A\), we write
+  \(\lim_{x\to-\infty}f(x)=L\) if for every \(\varepsilon>0\)
+  there exists \(R\leq r\) such that
+  \[
+    x<R\implies\abs{f(x)-L}<\varepsilon.
+  \]
+\end{definition}
+
+\begin{example}
+  For \(f:(1,\infty)\to\RR\), \(f(x)=1/x\), we have
+  \(\lim_{x\to+\infty}f(x)=0\).
+\end{example}
+
+\begin{proof}
+  Given \(\varepsilon>0\), take \(R=\max\set{1,1/\varepsilon}\).
+  For \(x>R\),
+  \[
+    \abs{f(x)-0}=\frac1x<\varepsilon.
+  \]
+\end{proof}
+
+\begin{example}
+  For \(f:(3,\infty)\to\RR\), \(f(x)=2x/(x-3)\), we have
+  \(\lim_{x\to+\infty}f(x)=2\).
+\end{example}
+
+\begin{proof}
+  Given \(\varepsilon>0\), take \(R=\max\set{6,12/\varepsilon}\).
+  If \(x>R\), then \(x/2-3>0\), and hence
+  \[
+    \abs*{\frac{2x}{x-3}-2}
+    =\frac6{x-3}
+    =\frac6{x/2+(x/2-3)}
+    <\frac{12}{x}<\varepsilon.
+  \]
+\end{proof}
+
+\begin{example}
+  For \(f:\RR\to\RR\), \(f(x)=x/(\abs{x}+1)\), we have
+  \(\lim_{x\to-\infty}f(x)=-1\).
+\end{example}
+
+\begin{proof}
+  Given \(\varepsilon>0\), take \(R=\min\set{0,-1/\varepsilon}\).
+  If \(x<R\), then \(x<0\), so \(\abs{x}=-x\). Therefore
+  \[
+    \abs*{\frac{x}{\abs{x}+1}-(-1)}
+    =\abs*{\frac{x+\abs{x}+1}{\abs{x}+1}}
+    =\frac1{1-x}<\frac1{-x}<\varepsilon.
+  \]
+\end{proof}
+
+\subsubsection{Infinite limits at infinity}
+
+\begin{definition}
+  Suppose \((r,\infty)\subseteq A\). We write
+  \(\lim_{x\to+\infty}f(x)=+\infty\) if for every \(M\in\RR\)
+  there exists \(R\geq r\) such that \(x>R\) implies \(f(x)>M\).
+  We write \(\lim_{x\to+\infty}f(x)=-\infty\) if instead
+  \(x>R\) implies \(f(x)<M\).
+
+  If \((-\infty,r)\subseteq A\), the definitions at \(-\infty\)
+  use \(R\leq r\) and \(x<R\): for every \(M\in\RR\),
+  eventually \(f(x)>M\) for a limit of \(+\infty\), or
+  eventually \(f(x)<M\) for a limit of \(-\infty\).
+\end{definition}
+
+\begin{example}
+  For \(f:(-\infty,-3)\to\RR\), \(f(x)=x^2/(x+3)\), we have
+  \[
+    \lim_{x\to-\infty}f(x)=-\infty.
+  \]
+\end{example}
+
+\begin{proof}
+  Let \(M\in\RR\), and choose \(R=\min\set{-3,M}\).
+  For \(x<R\), we have \(x<x+3<0\), and consequently
+  \(1/(x+3)<1/x\). Multiplication by \(x^2>0\) gives
+  \[
+    f(x)=\frac{x^2}{x+3}<\frac{x^2}{x}=x<M.
+  \]
+  This is precisely the definition of the asserted infinite limit.
+\end{proof}
+
 \end{document}
