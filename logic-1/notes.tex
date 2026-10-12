@@ -1845,4 +1845,172 @@ contradictions are falsifiable but not satisfiable.
   truth assignment satisfies it.
 \end{example}
 
+\subsection{12.10.2026}
+
+\subsubsection{Completeness and syntactic consistency}
+
+The goal is to prove the converse of soundness: if \(\Gamma\models A\),
+then \(\Gamma\vdash A\). We prove its contrapositive:
+\[
+  \Gamma\nvdash A \quad\Longrightarrow\quad \Gamma\not\models A.
+\]
+Thus we must construct a truth assignment satisfying every formula in
+\(\Gamma\) but making \(A\) false.
+
+\begin{definition}[Syntactic consistency]
+  A set \(\Gamma\) of propositional formulas is \emph{syntactically
+  inconsistent} if, for some formula \(B\),
+  \[
+    \Gamma\vdash B\land\neg B.
+  \]
+  Otherwise it is \emph{syntactically consistent}.
+\end{definition}
+
+\begin{example}
+  The set \(\{p_0,\neg p_0\}\) is syntactically inconsistent, since
+  conjunction introduction gives
+  \(\{p_0,\neg p_0\}\vdash p_0\land\neg p_0\).
+\end{example}
+
+Semantic consistency means that some truth assignment satisfies every
+formula in the set. By soundness, syntactic inconsistency implies
+semantic inconsistency: no truth assignment can satisfy \(B\land\neg B\).
+In the following, ``consistent'' means syntactically consistent.
+
+\begin{lemma}\label{lem:consistency-negated-assumption}
+  For every set \(S\) of formulas and every formula \(A\),
+  \[
+    S\cup\{\neg A\}\text{ is inconsistent}
+    \quad\Longleftrightarrow\quad S\vdash A.
+  \]
+\end{lemma}
+
+\begin{proof}
+  Suppose first that a derivation \(\mathcal P\) from
+  \(S\cup\{\neg A\}\) concludes \(B\land\neg B\). Discharge the
+  added assumption \(\neg A\) by negation introduction, then apply
+  double negation elimination:
+  \[
+    \infer[\neg\mathrm E]{A}{
+      \infer[\neg\mathrm T,\,1]{\neg\neg A}{
+        \begin{array}{c}
+          S\qquad[\neg A]^1\\
+          \mathcal P\\
+          B\land\neg B
+        \end{array}
+      }
+    }
+  \]
+  All remaining open assumptions belong to \(S\), so \(S\vdash A\).
+
+  Conversely, if \(\mathcal Q\) derives \(A\) from \(S\), then
+  \[
+    \infer[\land\mathrm T]{A\land\neg A}{
+      \begin{array}{c}S\\\mathcal Q\\A
+      \end{array}
+      & \neg A
+    }
+  \]
+  is a derivation from \(S\cup\{\neg A\}\), proving inconsistency.
+\end{proof}
+
+\subsubsection{Maximal consistency and Lindenbaum's lemma}
+
+\begin{definition}[Maximal syntactic consistency]
+  A set \(\Gamma\) is \emph{maximally consistent} if it is consistent
+  and every proper superset \(\Gamma'\supsetneq\Gamma\) of propositional
+  formulas is inconsistent.
+\end{definition}
+
+\begin{lemma}[Lindenbaum's lemma]
+  Every consistent set of propositional formulas can be extended to a
+  maximally consistent set.
+\end{lemma}
+
+\begin{proof}
+  Let \(\Gamma\) be consistent and enumerate all propositional formulas
+  as \(A_0,A_1,A_2,\ldots\). Define
+  \[
+    S_0=\Gamma,\qquad
+    S_{n+1}=
+    \begin{cases}
+      S_n\cup\{A_n\}, & \text{if this set is consistent},\\
+      S_n\cup\{\neg A_n\}, & \text{otherwise},
+    \end{cases}
+  \]
+  and put \(\Gamma'=\bigcup_{n\in\NN}S_n\). The sets form an increasing
+  chain, and \(\Gamma\subseteq\Gamma'\).
+
+  \emph{Claim 1: every \(S_n\) is consistent.}
+  The base case \(S_0=\Gamma\) holds by assumption. Suppose \(S_n\)
+  is consistent. If \(S_n\cup\{A_n\}\) is consistent, the claim follows
+  by construction. Otherwise we choose
+  \(S_{n+1}=S_n\cup\{\neg A_n\}\).
+  If this were inconsistent too,
+  \cref{lem:consistency-negated-assumption} would give \(S_n\vdash A_n\).
+  Substitute this derivation for the added \(A_n\)-assumptions in a
+  derivation of a contradiction from \(S_n\cup\{A_n\}\). This yields a
+  contradiction from \(S_n\) alone, contrary to the induction hypothesis.
+  Thus \(S_{n+1}\) is consistent, and induction proves the claim.
+
+  \emph{Claim 2: \(\Gamma'\) is consistent.}
+  Suppose \(\Gamma'\vdash B\land\neg B\). A derivation uses only
+  finitely many open assumptions. Since the \(S_n\) form an increasing
+  chain, all these assumptions belong to some single \(S_n\). Hence
+  \(S_n\vdash B\land\neg B\), contradicting Claim 1.
+
+  \emph{Claim 3: \(\Gamma'\) is maximally consistent.}
+  If \(A\notin\Gamma'\), then \(\neg A\in\Gamma'\) by construction:
+  when \(A\) was considered in the enumeration, its negation must have
+  been added. Consequently,
+  \[
+    \Gamma'\cup\{A\}\vdash A\land\neg A.
+  \]
+  Every proper superset of \(\Gamma'\) contains such an \(A\), so every
+  proper superset is inconsistent.
+\end{proof}
+
+\subsubsection{A truth assignment from a maximally consistent set}
+
+Let \(\Gamma'\) be maximally consistent. Define a truth assignment on
+propositional symbols by
+\[
+  v(p_i)=
+  \begin{cases}
+    1, & \text{if }p_i\in\Gamma',\\
+    0, & \text{if }p_i\notin\Gamma'.
+  \end{cases}
+\]
+Extend \(v\) to all formulas using the usual truth tables.
+
+\begin{lemma}[Truth lemma]\label{lem:maximal-consistency-truth}
+  For every propositional formula \(B\),
+  \[
+    v(B)=1\quad\Longleftrightarrow\quad B\in\Gamma'.
+  \]
+\end{lemma}
+
+The proof of this lemma was omitted in the lecture. In particular, the
+lemma says that \(v\models\Gamma'\).
+
+\subsubsection{Completeness of natural deduction}
+
+\begin{theorem}[Completeness of natural deduction]
+  If \(\Gamma\models A\), then \(\Gamma\vdash A\).
+\end{theorem}
+
+\begin{proof}
+  We prove the contrapositive. Suppose \(\Gamma\nvdash A\). By
+  \cref{lem:consistency-negated-assumption}, the set
+  \(\Gamma\cup\{\neg A\}\) is consistent. Lindenbaum's lemma gives
+  a maximally consistent extension
+  \[
+    \Gamma'\supseteq\Gamma\cup\{\neg A\}.
+  \]
+  Define \(v(p_i)=1\) exactly when \(p_i\in\Gamma'\). By the truth
+  lemma, \(v\models\Gamma'\). In particular, \(v\models\Gamma\) and
+  \(v(\neg A)=1\), so \(v(A)=0\). This is the required counterexample
+  to semantic consequence: \(\Gamma\not\models A\).
+\end{proof}
+
 \end{document}
