@@ -2200,4 +2200,105 @@ The following worked applications supplement the lecture material.
   when only one root is real.
 \end{example}
 
+\subsection{12.10.2026}
+
+\subsubsection{Solving quadratic equations over the complex numbers}
+
+\begin{proposition}[The quadratic formula]
+  Let \(a,b,c\in\RR\), with \(a\neq0\). The solutions in
+  \(\CC\) of
+  \[
+    ax^2+bx+c=0
+  \]
+  are determined by the \emph{discriminant} \(D=b^2-4ac\):
+  \begin{itemize}
+    \item If \(D>0\), there are two distinct real roots,
+      \(x=(-b\pm\sqrt D)/(2a)\).
+    \item If \(D=0\), there is one distinct root,
+      \(x=-b/(2a)\), called a \emph{double root}.
+    \item If \(D<0\), there are two nonreal complex roots,
+      \[
+        x_1=\frac{-b+i\sqrt{-D}}{2a},\qquad
+        x_2=\frac{-b-i\sqrt{-D}}{2a}.
+      \]
+      These roots are complex conjugates: \(x_1=\overline{x_2}\).
+  \end{itemize}
+\end{proposition}
+
+\begin{example}
+  Solve \(3x^2-5x+2=0\). Here \(D=25-24=1\), so
+  \[
+    x=\frac{5\pm\sqrt{25-24}}6=\frac{5\pm1}6.
+  \]
+  Thus the roots are \(x=1\) and \(x=2/3\).
+\end{example}
+
+\begin{example}
+  Solve \(x^2+x+1=0\). Since \(D=1-4=-3\), the roots are
+  \[
+    x=\frac{-1\pm i\sqrt3}{2},
+  \]
+  or, explicitly,
+  \[
+    x_1=-\frac12+\frac{\sqrt3}{2}i,\qquad
+    x_2=-\frac12-\frac{\sqrt3}{2}i=\overline{x_1}.
+  \]
+\end{example}
+
+\subsubsection{Biquadratic equations}
+
+An equation of the form
+\[
+  az^4+bz^2+c=0,\qquad a\neq0,
+\]
+can be reduced to a quadratic equation by the substitution \(x=z^2\).
+First solve
+\[
+  ax^2+bx+c=0
+\]
+for \(x_1,x_2\), and then solve \(z^2=x_1\) and \(z^2=x_2\)
+over \(\CC\). Each nonzero value of \(x\) has two square roots;
+zero has only the square root zero. Repeated values are counted only
+once when listing distinct solutions.
+
+\subsubsection{Lecture exercise: fourth roots}
+
+\begin{problem}[Lecture exercise]
+  Solve in \(\CC\):
+  \[
+    z^4+1-i\sqrt3=0.
+  \]
+\end{problem}
+
+\begin{solution}
+  Rewrite the equation as \(z^4=-1+i\sqrt3\). Set
+  \(w=-1+i\sqrt3\). Its modulus is
+  \[
+    \abs{w}=\sqrt{(-1)^2+(\sqrt3)^2}=2.
+  \]
+  Since \(w\) lies in the second quadrant, an argument is
+  \(2\pi/3\). Hence
+  \[
+    w=2\left(\cos\frac{2\pi}3+i\sin\frac{2\pi}3\right)
+    =2e^{2\pi i/3}.
+  \]
+  The four roots are therefore
+  \begin{align*}
+    z_k
+    &=2^{1/4}\left(
+      \cos\frac{2\pi/3+2\pi k}{4}
+    +i\sin\frac{2\pi/3+2\pi k}{4}\right)\\
+    &=2^{1/4}e^{i(\pi/6+k\pi/2)},\qquad k=0,1,2,3.
+  \end{align*}
+  In Cartesian form,
+  \begin{align*}
+    z_0&=2^{1/4}\left(\frac{\sqrt3}{2}+\frac12i\right),&
+    z_1&=2^{1/4}\left(-\frac12+\frac{\sqrt3}{2}i\right),\\
+    z_2&=2^{1/4}\left(-\frac{\sqrt3}{2}-\frac12i\right),&
+    z_3&=2^{1/4}\left(\frac12-\frac{\sqrt3}{2}i\right).
+  \end{align*}
+  Indeed, \(z_k^4=2e^{i(2\pi/3+2\pi k)}=-1+i\sqrt3\)
+  for each \(k\). These are four distinct roots, so the list is complete.
+\end{solution}
+
 \end{document}
