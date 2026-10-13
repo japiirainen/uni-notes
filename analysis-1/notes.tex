@@ -2399,4 +2399,212 @@ similarly on the right.
   This is precisely the definition of the asserted infinite limit.
 \end{proof}
 
+\subsection{13.10.2026}
+
+\subsubsection{Monotone functions}
+
+\begin{definition}
+  Let \(A\subseteq\RR\) and \(f:A\to\RR\). The function \(f\) is
+  \begin{enumerate}[label=(\alph*)]
+    \item \emph{increasing} on \(A\) if
+      \(x_1\leq x_2\) implies \(f(x_1)\leq f(x_2)\);
+    \item \emph{strictly increasing} on \(A\) if
+      \(x_1<x_2\) implies \(f(x_1)<f(x_2)\);
+    \item \emph{decreasing} on \(A\) if
+      \(x_1\leq x_2\) implies \(f(x_1)\geq f(x_2)\);
+    \item \emph{strictly decreasing} on \(A\) if
+      \(x_1<x_2\) implies \(f(x_1)>f(x_2)\);
+    \item \emph{monotone} on \(A\) if it is increasing or decreasing;
+    \item \emph{strictly monotone} on \(A\) if it is strictly increasing
+      or strictly decreasing.
+  \end{enumerate}
+  In each implication, \(x_1,x_2\in A\). Increasing and decreasing
+  in the non-strict sense are also called \emph{nondecreasing} and
+  \emph{nonincreasing}, respectively.
+\end{definition}
+
+\begin{theorem}
+  Every strictly monotone function is injective.
+\end{theorem}
+
+\begin{proof}
+  Let \(f:A\to\RR\) be strictly monotone, and let \(x_1,x_2\in A\)
+  be distinct. Interchanging the points if necessary, assume
+  \(x_1<x_2\). If \(f\) is strictly increasing, then
+  \(f(x_1)<f(x_2)\); if it is strictly decreasing, then
+  \(f(x_1)>f(x_2)\). In either case \(f(x_1)\neq f(x_2)\),
+  which proves injectivity.
+\end{proof}
+
+\begin{example}
+  For every positive integer \(n\), the function
+  \[
+    f_n:[0,\infty)\to\RR,\qquad f_n(x)=x^n,
+  \]
+  is strictly increasing, and hence injective.
+\end{example}
+
+\begin{proof}
+  We use induction on \(n\). For \(n=1\), the assertion follows
+  from \(f_1(x)=x\). Suppose that \(f_n\) is strictly increasing
+  for some \(n\geq1\), and let \(0\leq x_1<x_2\). Since
+  \(x_1\geq0\) and \(x_2^n>0\),
+  \[
+    x_1^{n+1}=x_1x_1^n
+    \leq x_1x_2^n
+    <x_2x_2^n=x_2^{n+1}.
+  \]
+  Thus \(f_{n+1}\) is strictly increasing, completing the induction.
+\end{proof}
+
+\subsubsection{Endpoint limits of monotone functions}
+
+\begin{theorem}\label{thm:monotone-endpoint-limits}
+  Let \(a,b\in\RR\), \(a<b\), and let \(f:(a,b)\to\RR\)
+  be increasing.
+  \begin{enumerate}[label=(\alph*)]
+    \item If \(f((a,b))\) is bounded below, then
+      \[
+        \lim_{x\to a^+}f(x)=\inf\set{f(x):x\in(a,b)}\in\RR.
+      \]
+    \item If \(f((a,b))\) is bounded above, then
+      \[
+        \lim_{x\to b^-}f(x)=\sup\set{f(x):x\in(a,b)}\in\RR.
+      \]
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  For (a), let \(p=\inf f((a,b))\). The image is nonempty and
+  bounded below, so completeness gives \(p\in\RR\). Given
+  \(\varepsilon>0\), the definition of the infimum gives a point
+  \(x_p\in(a,b)\) such that
+  \[
+    p\leq f(x_p)<p+\varepsilon.
+  \]
+  Indeed, otherwise \(p+\varepsilon\) would be a lower bound,
+  contradicting the choice of \(p\). By monotonicity,
+  \[
+    p\leq f(x)\leq f(x_p)<p+\varepsilon
+    \qquad(a<x<x_p).
+  \]
+  Choose \(\delta=x_p-a>0\). For \(a<x<a+\delta\), we have
+  \(\abs{f(x)-p}<\varepsilon\), proving the right-hand limit.
+
+  For (b), let \(s=\sup f((a,b))\in\RR\). Given
+  \(\varepsilon>0\), choose \(x_s\in(a,b)\) such that
+  \[
+    s-\varepsilon<f(x_s)\leq s.
+  \]
+  Such a point exists because \(s-\varepsilon\) is not an upper
+  bound. Monotonicity now gives
+  \[
+    s-\varepsilon<f(x_s)\leq f(x)\leq s
+    \qquad(x_s<x<b).
+  \]
+  With \(\delta=b-x_s>0\), it follows that
+  \(\abs{f(x)-s}<\varepsilon\) for \(b-\delta<x<b\).
+  This proves the left-hand limit.
+\end{proof}
+
+\begin{corollary}\label{cor:decreasing-endpoint-limits}
+  Let \(f:(a,b)\to\RR\) be decreasing, where \(a<b\) are real.
+  If \(f((a,b))\) is bounded above, then
+  \[
+    \lim_{x\to a^+}f(x)=\sup f((a,b))\in\RR.
+  \]
+  If \(f((a,b))\) is bounded below, then
+  \[
+    \lim_{x\to b^-}f(x)=\inf f((a,b))\in\RR.
+  \]
+\end{corollary}
+
+\begin{proof}
+  The function \(g=-f\) is increasing. If \(f((a,b))\) is
+  bounded above, then \(g((a,b))\) is bounded below, and
+  \cref{thm:monotone-endpoint-limits} gives
+  \[
+    \lim_{x\to a^+}g(x)=\inf g((a,b))=-\sup f((a,b)).
+  \]
+  Multiplying by \(-1\) proves the first assertion. If
+  \(f((a,b))\) is bounded below, then \(g((a,b))\) is bounded
+  above, so the same theorem gives
+  \[
+    \lim_{x\to b^-}g(x)=\sup g((a,b))=-\inf f((a,b)).
+  \]
+  Multiplying by \(-1\) proves the second assertion.
+\end{proof}
+
+\subsubsection{One-sided limits on a closed interval}
+
+\begin{theorem}\label{thm:monotone-one-sided-limits}
+  Let \(f:[a,b]\to\RR\) be monotone, where \(a<b\). Then
+  \(f\) has finite left-hand and right-hand limits at every
+  \(x_0\in(a,b)\), as well as finite limits from within the
+  interval at \(a\) and \(b\).
+
+  If \(f\) is increasing, then
+  \[
+    \lim_{x\to x_0^-}f(x)\leq f(x_0)
+    \leq\lim_{x\to x_0^+}f(x),
+  \]
+  and
+  \[
+    f(a)\leq\lim_{x\to a^+}f(x),
+    \qquad \lim_{x\to b^-}f(x)\leq f(b).
+  \]
+  If \(f\) is decreasing, all these inequalities are reversed.
+\end{theorem}
+
+\begin{proof}
+  First suppose that \(f\) is increasing and fix \(x_0\in(a,b)\).
+  The sets
+  \[
+    A=\set{f(x):a<x<x_0},\qquad
+    B=\set{f(x):x_0<x<b}
+  \]
+  are nonempty. For \(a<x<x_0\), monotonicity gives
+  \(f(x)\leq f(x_0)\), so \(A\) is bounded above by \(f(x_0)\).
+  Applying \cref{thm:monotone-endpoint-limits} to the restriction
+  of \(f\) to \((a,x_0)\), we obtain
+  \[
+    \lim_{x\to x_0^-}f(x)=\sup A\leq f(x_0).
+  \]
+  For \(x_0<x<b\), we have \(f(x_0)\leq f(x)\), so \(B\) is
+  bounded below by \(f(x_0)\). Applying the same theorem on
+  \((x_0,b)\) gives
+  \[
+    \lim_{x\to x_0^+}f(x)=\inf B\geq f(x_0).
+  \]
+  Both limits are finite by completeness.
+
+  For the endpoint limits, observe that
+  \[
+    f(a)\leq f(x)\leq f(b)\qquad(a<x<b).
+  \]
+  Thus \(f((a,b))\) is bounded both below and above. The endpoint
+  theorem yields
+  \[
+    \lim_{x\to a^+}f(x)=\inf f((a,b))\geq f(a),
+    \qquad
+    \lim_{x\to b^-}f(x)=\sup f((a,b))\leq f(b).
+  \]
+
+  If \(f\) is decreasing, then \(g=-f\) is increasing. Applying
+  the result just proved to \(g\) establishes all the required
+  finite limits. Its inequalities at an interior point become
+  \[
+    -\lim_{x\to x_0^-}f(x)\leq-f(x_0)
+    \leq-\lim_{x\to x_0^+}f(x).
+  \]
+  Multiplying by \(-1\) reverses the inequalities and gives
+  \[
+    \lim_{x\to x_0^-}f(x)\geq f(x_0)
+    \geq\lim_{x\to x_0^+}f(x).
+  \]
+  The endpoint inequalities for \(g\) likewise give
+  \(f(a)\geq\lim_{x\to a^+}f(x)\) and
+  \(\lim_{x\to b^-}f(x)\geq f(b)\).
+\end{proof}
+
 \end{document}
