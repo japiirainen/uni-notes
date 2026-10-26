@@ -28,6 +28,201 @@ yliopiston kurssisivulta}.
 
 \section{Muistiinpanot}
 
-\subsection{26.10.2026}
+\subsection{26.10.2026: Predikaattilogiikan motivaatio ja mallit}
+
+\subsubsection{Propositiologiikasta predikaattilogiikkaan}
+
+Tarkastellaan päättelyä:
+\begin{quote}
+  Kaikki ihmiset ovat kuolevaisia. Sokrates on ihminen.
+  Siis Sokrates on kuolevainen.
+\end{quote}
+Jos nämä kolme lausetta nimetään propositiosymboleiksi $P_0$, $P_1$ ja
+$P_2$, niiden sisäinen rakenne katoaa. Propositiologiikassa
+\[
+  \{P_0,P_1\}\nvdash P_2:
+\]
+arvotus, jossa $P_0$ ja $P_1$ ovat tosia mutta $P_2$ epätosi, toteuttaa
+premissit mutta ei johtopäätöstä. Propositiosymbolit eivät itsessään
+ilmaise, miten ihmisyys ja kuolevaisuus liittyvät toisiinsa.
+
+Predikaattilogiikassa puhutaan yksilöistä, niiden ominaisuuksista ja
+niiden välisistä suhteista. Propositiologiikan konnektiivien lisäksi
+käytetään kvanttoreita:
+\begin{itemize}
+  \item $\forall x$: kaikilla $x$;
+  \item $\exists x$: on olemassa $x$.
+\end{itemize}
+Kun $I(x)$ tarkoittaa, että $x$ on ihminen, $K(x)$ tarkoittaa, että $x$
+on kuolevainen, ja $s$ nimeää Sokrateen, päättelyn rakenne on
+\[
+  \forall x\bigl(I(x)\to K(x)\bigr),\quad I(s)
+  \quad\Longrightarrow\quad K(s).
+\]
+Yleinen väite koskee myös Sokratesta: $I(s)\to K(s)$. Yhdessä väitteen
+$I(s)$ kanssa tämä antaa johtopäätöksen $K(s)$.
+
+\newpage
+Myös matematiikassa tarvitaan tätä ilmaisukykyä. Esimerkiksi luonnollisista
+luvuista voidaan tarkastella järjestystä, laskutoimituksia ja jaollisuutta.
+Yleisesti tarkasteltavaan joukkoon liitetään
+\begin{itemize}
+  \item osajoukkoja eli yksilöiden ominaisuuksia;
+  \item relaatioita, esimerkiksi järjestys- tai ekvivalenssirelaatio;
+  \item funktioita, esimerkiksi yhteen- ja kertolasku;
+  \item nimettyjä alkioita eli vakioita.
+\end{itemize}
+
+\subsubsection{Aakkosto: mitä symboleja käytetään?}
+
+\begin{definition}[Aakkosto]
+  Aakkosto $L$ on symbolikokoelma, jonka symbolit ovat
+  \emph{relaatiosymboleja}, \emph{funktiosymboleja} tai
+  \emph{vakiosymboleja}. Jokaiseen relaatio- ja funktiosymboliin liittyy
+  tieto sen \emph{paikkaluvusta}, eli argumenttien lukumäärästä.
+\end{definition}
+
+Merkinnöissä $R_i^k$ ja $f_i^k$ yläindeksi $k$ ilmaisee paikkaluvun ja
+alaindeksi $i$ erottaa symbolit toisistaan. Esimerkiksi $R_0^2,R_1^2,R_2^2$
+ovat kaksipaikkaisia relaatiosymboleja, $f_0^2,f_1^2$ kaksipaikkaisia
+funktiosymboleja ja $c_0,c_1$ vakiosymboleja. Yläindeksi ei tässä tarkoita
+potenssia.
+
+\begin{remark}[Symboli ja sen tulkinta]
+  Aakkosto kertoo vain, millaisia symboleja on käytössä. Se ei vielä
+  kerro, mitä ne tarkoittavat. Esimerkiksi kaksipaikkainen relaatiosymboli
+  voidaan tulkita yhdessä mallissa relaatioksi $<$ ja toisessa
+  relaatioksi $\geq$.
+\end{remark}
+
+\subsubsection{Malli: missä ja miten symbolit tulkitaan?}
+
+\begin{definition}[$L$-malli]
+  Olkoon $L$ aakkosto. \emph{$L$-malli} eli \emph{$L$-rakenne}
+  $\mathcal M$ koostuu seuraavista tiedoista:
+  \begin{enumerate}[label=(\roman*)]
+    \item Epätyhjä joukko $M=\operatorname{dom}(\mathcal M)$, jota kutsutaan
+      mallin \emph{universumiksi} tai \emph{perusjoukoksi}.
+    \item Jokaisen vakiosymbolin $c_i\in L$ tulkinta on alkio
+      \[
+        c_i^{\mathcal M}\in M.
+      \]
+    \item Jokaisen $k$-paikkaisen relaatiosymbolin $R_i^k\in L$ tulkinta
+      on relaatio
+      \[
+        (R_i^k)^{\mathcal M}\subseteq M^k.
+      \]
+    \item Jokaisen $k$-paikkaisen funktiosymbolin $f_i^k\in L$ tulkinta
+      on funktio
+      \[
+        (f_i^k)^{\mathcal M}\colon M^k\longrightarrow M.
+      \]
+  \end{enumerate}
+\end{definition}
+
+Tässä $M^k$ on kaikkien $M$:n alkioista muodostettujen järjestettyjen
+$k$-jonojen joukko. Erityisesti yksipaikkainen relaatio on $M$:n
+osajoukko. Funktiosymbolin tulkinnan on annettava arvo jokaiselle
+$M^k$:n alkiolle, ja arvon on kuuluttava samaan universumiin $M$.
+
+\begin{example}[Reaalilukujen rakenne]
+  Tarkastellaan rakennetta
+  \[
+    \mathcal R=(\RR,+,\cdot,<,0,1)
+  \]
+  aakkostossa $L=\{f_0^2,f_1^2,R_0^2,c_0,c_1\}$. Sen universumi on
+  $\operatorname{dom}(\mathcal R)=\RR$, ja symbolien tulkinnat ovat
+  \[
+    (f_0^2)^{\mathcal R}=+,\qquad
+    (f_1^2)^{\mathcal R}=\cdot,\qquad
+    (R_0^2)^{\mathcal R}=<,\qquad
+    c_0^{\mathcal R}=0,\quad c_1^{\mathcal R}=1.
+  \]
+  Yhteen- ja kertolasku ovat funktioita $\RR^2\to\RR$,
+  järjestysrelaatio on $\RR^2$:n osajoukko ja vakiot ovat reaalilukuja.
+\end{example}
+
+\newpage
+\begin{example}[Merkkijonoista muodostettu malli]
+  Olkoon $L=\{c_0,f_0^3,R_0^1\}$ ja
+  \[
+    M=\{\text{miu},\text{mau}\}^{<\omega}.
+  \]
+  Tämä on kaikkien sanoista \text{miu} ja \text{mau} muodostettujen
+  äärellisten jonojen joukko. Mukana on myös tyhjä jono $\varepsilon$.
+  Esimerkiksi \text{miu}, \text{mau} ja \text{miumau} kuuluvat joukkoon.
+  Määritellään tulkinnat
+  \begin{align*}
+    c_0^{\mathcal M}&=\varepsilon,\\
+    (f_0^3)^{\mathcal M}(a,b,c)&=\varepsilon
+    &&\text{kaikilla }a,b,c\in M,\\
+    (R_0^1)^{\mathcal M}&=\{w\in M : w\text{ alkaa sanalla miu}\}.
+  \end{align*}
+  Näin saadaan $L$-malli: vakion tulkinta kuuluu universumiin,
+  kolmipaikkainen funktio kuvaa $M^3$:n joukkoon $M$ ja yksipaikkainen
+  relaatio on $M$:n osajoukko. Tyhjä jono $\varepsilon$ ei ole sama asia
+  kuin tyhjä joukko $\varnothing$.
+\end{example}
+
+\subsubsection{Merkintätavat ja lisää esimerkkejä}
+
+Virallisten symbolien $R_i^k,f_i^k,c_i$ sijasta voidaan käyttää
+lyhyempiä nimiä, kuten $R,R',f,g,h,c,d$, kun symbolien tyypit ja
+paikkaluvut ovat selvillä. Seuraavassa taulukossa mallin osat on
+kirjoitettu samassa järjestyksessä kuin aakkoston symbolit on lueteltu.
+
+\begin{center}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabular}{lll}
+    \hline
+    Aakkosto $L$ & Tulkittavat symbolit & Esimerkki $L$-mallista\\
+    \hline
+    $\{c_0\}$ & vakio & $(\RR,\pi)$\\
+    $\{R_0^1,R_0^2\}$ & 1- ja 2-paikkainen relaatio & $(\ZZ,\NN,<)$\\
+    $\{f_5^1,c_3\}$ & 1-paikkainen funktio ja vakio & $(\ZZ,s,42)$\\
+    $\{c_0,R_1^2\}$ & vakio ja 2-paikkainen relaatio & $(\ZZ,69,\geq)$\\
+    $\varnothing$ & ei tulkittavia symboleja & $\CC$\\
+    \hline
+  \end{tabular}
+\end{center}
+
+Kolmannella rivillä $s\colon\ZZ\to\ZZ$ on seuraajafunktio $s(n)=n+1$.
+Toisella rivillä $\NN$ tulkitsee yksipaikkaisen relaatiosymbolin:
+ominaisuus on siis luonnollisiin lukuihin kuuluminen, vaikka universumi
+on koko $\ZZ$. Tyhjän aakkoston malli on pelkkä epätyhjä joukko.
+
+\subsubsection{Täydentävä esimerkki: jaollisuus ja kvanttorit}
+
+Erillisessä valokuvassa oleva jaollisuustodistus havainnollistaa,
+miten matematiikan päättelyissä käytetään ominaisuuksia ja kvanttoreita.
+Kokonaisluvuilla jaollisuus määritellään ehdolla
+\[
+  a\mid b\quad\Longleftrightarrow\quad
+  \exists d\in\ZZ\;(b=ad).
+\]
+
+\begin{proposition}
+  Jos $a,b,c\in\ZZ$, $a\mid b$ ja $a\mid c$, niin kaikilla
+  $x,y\in\ZZ$ pätee $a\mid(xb+yc)$.
+\end{proposition}
+
+\begin{proof}
+  Oletusten nojalla on olemassa $d,d'\in\ZZ$, joille $b=ad$ ja $c=ad'$.
+  Olkoot $x,y\in\ZZ$ mielivaltaisia. Tällöin
+  \[
+    xb+yc=xad+yad'=a(xd+yd').
+  \]
+  Koska $xd+yd'\in\ZZ$, jaollisuuden määritelmä antaa $a\mid(xb+yc)$.
+\end{proof}
+
+Todistuksessa ilmaukset \emph{on olemassa} ja \emph{mielivaltaiset}
+vastaavat eksistenssi- ja universaalikvanttoria. Kun universumiksi
+valitaan $\ZZ$ ja $D(a,b)$ tarkoittaa relaatiota $a\mid b$, väitteen
+kvanttorirakenne on
+\[
+  \forall a\,\forall b\,\forall c\,
+  \Bigl((D(a,b)\land D(a,c))\to
+  \forall x\,\forall y\,D(a,xb+yc)\Bigr).
+\]
 
 \end{document}
