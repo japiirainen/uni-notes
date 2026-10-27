@@ -361,6 +361,42 @@ Ratkaise yhtälöryhmä
 \]
 \end{exercise}
 
+\begin{solution}
+Koska tuntemattomien \(x_3\) ja \(x_4\) kertoimet ovat jokaisessa
+yhtälössä samat, merkitään \(s=x_3+x_4\). Yhtälöryhmä saa muodon
+\[
+\begin{linearsystem}{3}
+  x_1 &{}+{}& x_2 &{}+{}& s &= 0 \\
+  2x_1 &{}+{}& 3x_2 &{}-{}& s &= 2 \\
+  3x_1 &{}+{}& 2x_2 &{}+{}& s &= 5 \\
+  3x_1 &{}+{}& 6x_2 &{}-{}& s &= 4.
+\end{linearsystem}
+\]
+Vähennetään toisesta yhtälöstä kaksi kertaa ensimmäinen ja kolmannesta
+sekä neljännestä yhtälöstä kolme kertaa ensimmäinen. Kolmesta
+viimeisestä yhtälöstä saadaan tällöin
+\[
+\begin{linearsystem}{2}
+  x_2 &{}-{}& 3s &= 2 \\
+  -x_2 &{}-{}& 2s &= 5 \\
+  3x_2 &{}-{}& 4s &= 4.
+\end{linearsystem}
+\]
+Laskemalla näistä kaksi ensimmäistä yhteen saadaan \(-5s=7\), joten
+\(s=-\frac75\). Ensimmäisestä yhtälöstä seuraa nyt
+\[
+x_2=2+3s=2-\frac{21}{5}=-\frac{11}{5}.
+\]
+Toisaalta viimeisestä yhtälöstä saadaan
+\[
+3x_2=4+4s=4-\frac{28}{5}=-\frac85,
+\qquad\text{eli}\qquad x_2=-\frac{8}{15}.
+\]
+Koska \(-\frac{11}{5}\ne-\frac{8}{15}\), nämä ehdot ovat
+ristiriidassa. Alkuperäisellä yhtälöryhmällä ei siis ole ratkaisuja,
+ja sen ratkaisujoukko on \(\varnothing\).
+\end{solution}
+
 \begin{exercise}
 Ratkaise yhtälöryhmä
 \[
@@ -376,6 +412,57 @@ Ratkaise yhtälöryhmä
 \end{linearsystem}
 \]
 \end{exercise}
+
+\begin{solution}
+Vähennetään toisesta ja neljännestä yhtälöstä kaksi kertaa ensimmäinen
+ja jaetaan kolmas yhtälö luvulla \(5\). Saadaan yhtäpitävä yhtälöryhmä
+\[
+\begin{linearsystem}{1}
+  x_1+3x_2-2x_3+2x_5 &= 0 \\
+  -x_3-2x_4-3x_6 &= -1 \\
+  x_3+2x_4+3x_6 &= 1 \\
+  4x_3+8x_4+18x_6 &= 6.
+\end{linearsystem}
+\]
+Toinen yhtälö on kolmas kerrottuna luvulla \(-1\), joten niiden
+summa antaa vain yhtälön \(0=0\). Toinen yhtälö ei siis tuo uutta ehtoa.
+Vähentämällä neljännestä yhtälöstä neljä kertaa kolmas saadaan
+\[
+6x_6=2, \qquad\text{joten}\qquad x_6=\frac13.
+\]
+Kolmannesta yhtälöstä seuraa tällöin
+\[
+x_3+2x_4+1=1, \qquad\text{eli}\qquad x_3=-2x_4.
+\]
+Sijoittamalla tämä ensimmäiseen yhtälöön saadaan
+\[
+x_1+3x_2+4x_4+2x_5=0,
+\qquad\text{eli}\qquad x_1=-3x_2-4x_4-2x_5.
+\]
+Kaikki alkuperäiset yhtälöt toteutuvat näillä ehdoilla: sijoitusten
+jälkeen toinen ja neljäs yhtälö ovat ensimmäisen monikertoja ja
+kolmas toteutuu identtisesti. Muuttujat \(x_2\), \(x_4\) ja \(x_5\)
+voidaan siis valita vapaasti.
+
+Valitaan \(x_2=s\), \(x_4=t\) ja \(x_5=u\), missä \(s,t,u\in\RR\).
+Ratkaisujoukon parametriesitys on
+\[
+\left\{
+  \begin{pmatrix} 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ \frac13
+  \end{pmatrix}
+  +s
+  \begin{pmatrix} -3 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0
+  \end{pmatrix}
+  +t
+  \begin{pmatrix} -4 \\ 0 \\ -2 \\ 1 \\ 0 \\ 0
+  \end{pmatrix}
+  +u
+  \begin{pmatrix} -2 \\ 0 \\ 0 \\ 0 \\ 1 \\ 0
+  \end{pmatrix}
+  \colon\ s,t,u\in\RR
+\right\}.
+\]
+\end{solution}
 
 \begin{exercise}
 Olkoon \(n \in \ZZ_+\). Todista monisteen Lemma 1.3.2:
