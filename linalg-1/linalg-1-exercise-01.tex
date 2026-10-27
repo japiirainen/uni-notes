@@ -1,0 +1,260 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\title{Lineaarialgebra ja matriisilaskenta I\\Harjoituksen 1 ratkaisut}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Lineaarialgebra ja matriisilaskenta I}{Harjoituksen
+1 ratkaisut}
+
+\begin{exercise}
+  Tutki, onko yhtälöryhmällä
+  \[
+    \text{(a)}\;
+    \begin{linearsystem}{2}
+      2x_1 &{}-{}& x_2 &= 3 \\
+      -4x_1 &{}+{}& 2x_2 &= -6
+    \end{linearsystem}
+    \quad
+    \text{(b)}\;
+    \begin{linearsystem}{2}
+      -x_1 &{}+{}& 3x_2 &= -2 \\
+      2x_1 &{}+{}& x_2 &= -3
+    \end{linearsystem}
+    \quad
+    \text{(c)}\;
+    \begin{linearsystem}{2}
+      -2x_1 &{}+{}& 6x_2 &= -1 \\
+      x_1 &{}-{}& 3x_2 &= 1
+    \end{linearsystem}
+  \]
+  tasan yksi, ei yhtään vai ääretön määrä ratkaisuja. Tulkitse jokaisen
+  yhtälöparin ratkaiseminen graafisesti \(x_1x_2\)-tasossa.
+\end{exercise}
+
+\begin{solution}
+  \leavevmode\par
+\begin{enumerate}[label=\alph*), nosep]
+  \item Kertomalla yhtälöryhmän toinen yhtälö luvulla \(-\frac12\) saadaan
+    \[
+      \begin{linearsystem}{2}
+        2x_1 &{}-{}& x_2 &= 3 \\
+        2x_1 &{}-{}& x_2 &= 3.
+      \end{linearsystem}
+    \]
+    Molemmat yhtälöt kuvaavat siis samaa suoraa \(x_2 = 2x_1 - 3\).
+    Suorat ovat päällekkäiset, ja jokainen tämän suoran piste on
+    yhtälöryhmän ratkaisu. Ratkaisuja on siten äärettömän monta.
+
+    Valitaan \(x_1=t\in\RR\). Tällöin \(x_2=2t-3\), joten
+    \[
+      \begin{pmatrix} x_1 \\ x_2
+      \end{pmatrix}
+      =
+      \begin{pmatrix} t \\ 2t-3
+      \end{pmatrix}
+      =
+      \begin{pmatrix} 0 \\ -3
+      \end{pmatrix}
+      + t
+      \begin{pmatrix} 1 \\ 2
+      \end{pmatrix}.
+    \]
+    Ratkaisujoukko on siis
+    \[
+      \left\{
+        \begin{pmatrix} 0 \\ -3
+        \end{pmatrix}
+        + t
+        \begin{pmatrix} 1 \\ 2
+        \end{pmatrix}
+        \colon\ t \in \RR
+      \right\}.
+    \]
+    \begin{center}
+      \begin{tikzpicture}
+        \begin{axis}[
+            width=7cm, height=6cm,
+            axis lines=middle, axis equal image,
+            axis line style={thin, gray},
+            xmin=-1, xmax=4, ymin=-4, ymax=4,
+            xlabel={$x_1$}, ylabel={$x_2$},
+            xtick={1.5}, xticklabels={$\frac32$}, ytick={-3},
+            tick label style={font=\small},
+            domain=-0.5:3.5, samples=2,
+            clip=false,
+          ]
+          \addplot[black, semithick] {2*x-3};
+          \node[anchor=west, font=\small] at (axis cs:2.7,2.4)
+          {$x_2=2x_1-3$};
+        \end{axis}
+      \end{tikzpicture}
+    \end{center}
+  \item Lisäämällä toiseen yhtälöön ensimmäinen yhtälö kerrottuna
+    kahdella saadaan
+    \[
+      \begin{linearsystem}{2}
+        -x_1 &{}+{}& 3x_2 &= -2 \\
+        &     & 7x_2 &= -7.
+      \end{linearsystem}
+    \]
+    Siis \(x_2=-1\). Sijoittamalla tämä ensimmäiseen yhtälöön saadaan
+    \(-x_1-3=-2\), joten \(x_1=-1\).
+    Yhtälöryhmällä on siten täsmälleen yksi ratkaisu, ja ratkaisujoukko on
+    \[
+      \left\{
+        \begin{pmatrix} -1 \\ -1
+      \end{pmatrix}\right\}.
+    \]
+    \begin{samepage}
+      Graafisesti yhtälöt kuvaavat suoria
+      \[
+        x_2=\frac13x_1-\frac23
+        \qquad\text{ja}\qquad
+        x_2=-2x_1-3.
+      \]
+      Suorien kulmakertoimet ovat erisuuret, joten ne leikkaavat toisensa
+      täsmälleen yhdessä pisteessä \((-1,-1)\).
+      \begin{center}
+        \begin{tikzpicture}
+          \begin{axis}[
+              width=8cm, height=6cm,
+              axis lines=middle, axis equal image,
+              axis line style={thin, gray},
+              xmin=-3, xmax=2, ymin=-4, ymax=2,
+              xlabel={$x_1$}, ylabel={$x_2$},
+              xtick=\empty, ytick=\empty,
+              samples=2, clip=false,
+            ]
+            \addplot[black, semithick, domain=-3:2] {x/3-2/3};
+            \addplot[black, semithick, domain=-2.5:0.5] {-2*x-3};
+            \addplot[only marks, mark=*, mark size=1.5pt, black]
+            coordinates {(-1,-1)};
+            \node[anchor=south east, font=\small] at (axis cs:-1,-1)
+            {$(-1,-1)$};
+            \node[anchor=north west, font=\small] at (axis cs:1,-0.3333)
+            {$x_2=\frac13x_1-\frac23$};
+            \node[anchor=east, font=\small] at (axis cs:-2.2,1.4)
+            {$x_2=-2x_1-3$};
+          \end{axis}
+        \end{tikzpicture}
+      \end{center}
+    \end{samepage}
+  \item Lisäämällä ensimmäiseen yhtälöön toinen yhtälö kerrottuna
+    kahdella saadaan
+    \[
+      (-2x_1+6x_2)+2(x_1-3x_2)=-1+2,
+    \]
+    eli \(0=1\), mikä on ristiriita. Yhtälöryhmällä ei siis ole ratkaisuja,
+    ja ratkaisujoukko on \(\varnothing\).
+
+    \begin{samepage}
+      Graafisesti yhtälöt kuvaavat suoria
+      \[
+        x_2=\frac13x_1-\frac16
+        \qquad\text{ja}\qquad
+        x_2=\frac13x_1-\frac13.
+      \]
+      Suorilla on sama kulmakerroin mutta eri vakiotermit. Ne ovat siis
+      erilliset yhdensuuntaiset suorat, eikä niillä ole yhteisiä pisteitä.
+      \begin{center}
+        \begin{tikzpicture}
+          \begin{axis}[
+              width=8cm, height=4.5cm,
+              axis lines=middle, axis equal image,
+              axis line style={thin, gray},
+              xmin=-2, xmax=2, ymin=-1.2, ymax=1,
+              xlabel={$x_1$}, ylabel={$x_2$},
+              xtick=\empty, ytick=\empty,
+              domain=-2:2, samples=2, clip=false,
+            ]
+            \addplot[black, semithick] {x/3-1/6};
+            \addplot[black, semithick] {x/3-1/3};
+            \node[anchor=west, font=\small] at (axis cs:2,0.5)
+            {$x_2=\frac13x_1-\frac16$};
+            \node[anchor=north west, font=\small] at (axis cs:-2,-1)
+            {$x_2=\frac13x_1-\frac13$};
+          \end{axis}
+        \end{tikzpicture}
+      \end{center}
+    \end{samepage}
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+Kemiallisia reaktioita kuvaavat yhtälöt pitää tasapainottaa niin, että
+niissä on kummallakin puolella sama määrä kunkin alkuaineen atomeja.
+Määritä seuraavien reaktioyhtälöiden kertoimet \(x_1\), \(x_2\), \(x_3\)
+ja \(x_4\), joiksi etsitään mahdollisimman pienet
+positiiviset kokonaisluvut:
+\begin{enumerate}[label=(\alph*)]
+  \item \(x_1\mathrm{NO}_2 + x_2\mathrm{H}_2\mathrm{O}
+    \to x_3\mathrm{HNO}_2 + x_4\mathrm{HNO}_3\),
+  \item \(x_1\mathrm{C}_6\mathrm{H}_6 + x_2\mathrm{O}_2
+    \to x_3\mathrm{C} + x_4\mathrm{H}_2\mathrm{O}\).
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Etsi kertoimet \(a\), \(b\) ja \(c\) siten, että funktion
+\(f(x) = ax^2 + bx + c\) kuvaaja kulkee pisteiden \((1,2)\),
+\((-1,6)\) ja \((2,3)\) kautta.
+\end{exercise}
+
+\begin{exercise}
+Ratkaise yhtälöryhmä
+\[
+  \begin{linearsystem}{4}
+    x_1 &{}+{}& x_2 &{}+{}& x_3 &{}+{}& x_4 &= 0 \\
+    2x_1 &{}+{}& 3x_2 &{}-{}& x_3 &{}-{}& x_4 &= 2 \\
+    3x_1 &{}+{}& 2x_2 &{}+{}& x_3 &{}+{}& x_4 &= 5 \\
+    3x_1 &{}+{}& 6x_2 &{}-{}& x_3 &{}-{}& x_4 &= 4.
+  \end{linearsystem}
+\]
+\end{exercise}
+
+\begin{exercise}
+Ratkaise yhtälöryhmä
+\[
+  \begin{linearsystem}{6}
+    x_1 &{}+{}& 3x_2 &{}-{}& 2x_3 & & &{}+{}&
+    2x_5 & & &= 0 \\
+    2x_1 &{}+{}& 6x_2 &{}-{}& 5x_3 &{}-{}& 2x_4 &{}+{}&
+    4x_5 &{}-{}& 3x_6 &= -1 \\
+    & & & & 5x_3 &{}+{}& 10x_4 & &
+    &{}+{}& 15x_6 &= 5 \\
+    2x_1 &{}+{}& 6x_2 & & &{}+{}& 8x_4 &{}+{}&
+    4x_5 &{}+{}& 18x_6 &= 6.
+  \end{linearsystem}
+\]
+\end{exercise}
+
+\begin{exercise}
+Olkoon \(n \in \ZZ_+\). Todista monisteen Lemma 1.3.2:
+yhtälöryhmillä
+\[
+  \begin{linearsystem}{1}
+    a_{11}x_1 + \dots + a_{1n}x_n &= b_1 \\
+    a_{21}x_1 + \dots + a_{2n}x_n &= b_2
+  \end{linearsystem}
+\]
+ja
+\[
+  \begin{linearsystem}{1}
+    a_{11}x_1 + \dots + a_{1n}x_n &= b_1 \\
+    (a_{21} + a_{11})x_1 + \dots + (a_{2n} +
+    a_{1n})x_n &= b_2 + b_1
+  \end{linearsystem}
+\]
+on sama ratkaisujoukko.
+\end{exercise}
+
+\end{document}

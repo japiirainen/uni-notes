@@ -50,6 +50,11 @@
 \usepackage{mathtools}
 \usepackage{aliascnt}
 
+% Linear systems: the argument gives the number of alignment pairs.
+\newenvironment{linearsystem}[1]
+  {\left\{\begin{alignedat}{#1}}
+  {\end{alignedat}\right.}
+
 \usepackage[hidelinks,pdfusetitle]{hyperref}
 
 \numberwithin{equation}{section}
