@@ -3,6 +3,8 @@
 
 \newcommand{\notelanguage}{finnish}
 \input{../preamble.tex}
+\usepackage{tikz}
+\definecolor{analysisblue}{HTML}{23566B}
 
 \title{Analyysi II: jatkuvuus ja derivaatta}
 \author{Joona Piirainen}
@@ -28,6 +30,188 @@ yliopiston kurssisivulta}.
 
 \section{Muistiinpanot}
 
-\subsection{27.10.2026}
+\subsection{27.10.2026: jatkuvuus pisteessä}
+
+Jatkuvuus yhdistää funktion raja-arvon ja sen arvon tarkastelupisteessä:
+kun $x$ lähestyy pistettä $x_0$, funktion arvot lähestyvät arvoa $f(x_0)$.
+
+\subsubsection*{Raja-arvo ei yksin takaa jatkuvuutta}
+
+\begin{example}
+  Tarkastellaan funktiota $f\colon\RR\to\RR$,
+  \[
+    f(x)=
+    \begin{cases}
+      x, & x\ne 1,\\
+      2, & x=1.
+    \end{cases}
+  \]
+  Vaikka raja-arvo on olemassa, se ei ole sama kuin funktion arvo:
+  \[
+    \lim_{x\to 1}f(x)=1\ne 2=f(1).
+  \]
+  Siis $f$ ei ole jatkuva pisteessä $1$.
+\end{example}
+
+\begin{center}
+  \begin{tikzpicture}[scale=1.15,>=stealth]
+    \draw[->,gray] (-0.35,0)--(3.1,0) node[right] {$x$};
+    \draw[->,gray] (0,-0.25)--(0,2.8) node[above] {$y$};
+    \draw[analysisblue,very thick] (-0.2,-0.2)--(2.5,2.5)
+    node[right,black] {$y=x$};
+    \draw[dashed,gray] (1,0)--(1,2)--(0,2);
+    \draw[dashed,gray] (0,1)--(1,1);
+    \draw[analysisblue,thick,fill=white] (1,1) circle (2.7pt);
+    \fill[analysisblue] (1,2) circle (2.7pt);
+    \node[below] at (1,0) {$1$};
+    \node[left] at (0,1) {$1$};
+    \node[left] at (0,2) {$2$};
+    \node[above] at (1,2.15) {$f(1)=2$};
+  \end{tikzpicture}
+
+  \small Avoin piste kuvaa puuttuvaa arvoa $(1,1)$;
+  täytetty piste on funktion arvo kohdassa $x=1$.
+\end{center}
+
+\subsubsection*{Jatkuvuuden määritelmä}
+
+\begin{definition}[Jatkuvuus sisäpisteessä]
+  Olkoon $A\subseteq\RR$, $f\colon A\to\RR$ ja $x_0\in A$.
+  Oletetaan, että jollakin $r>0$ pätee
+  $(x_0-r,x_0+r)\subseteq A$.
+  Funktio $f$ on \emph{jatkuva pisteessä $x_0$}, jos
+  \[
+    \boxed{\lim_{x\to x_0}f(x)=f(x_0).}
+  \]
+\end{definition}
+
+\subsubsection*{Sama määritelmä epsilonin ja deltan avulla}
+
+Edellä esitetyin oletuksin $f$ on jatkuva pisteessä $x_0$ täsmälleen
+silloin, kun jokaista $\varepsilon>0$ kohti on olemassa $\delta>0$
+siten, että kaikilla $x\in A$ pätee
+\[
+  \boxed{\abs{x-x_0}<\delta
+    \quad\Longrightarrow\quad
+  \abs{f(x)-f(x_0)}<\varepsilon.}
+\]
+Luku $\varepsilon$ määrää sallitun virheen funktion arvoissa;
+luku $\delta$ kertoo, kuinka lähellä pistettä $x_0$ on pysyttävä.
+
+\begin{remark}
+  Valinta $\delta=\delta(\varepsilon,x_0)$ saa riippua sekä
+  luvusta $\varepsilon$ että tarkastelupisteestä $x_0$.
+  Sen on kuitenkin toimittava kaikille ehdon $\abs{x-x_0}<\delta$
+  täyttäville $x\in A$ samanaikaisesti.
+\end{remark}
+
+\subsubsection*{Esimerkki: jatkuvuuden osoittaminen määritelmästä}
+
+\begin{example}
+  Olkoon $f\colon\RR\to\RR$,
+  \[
+    f(x)=\frac12x^2+x+1.
+  \]
+  Osoitetaan, että $f$ on jatkuva pisteessä $-3$.
+\end{example}
+
+\begin{solution}
+  \textbf{1. Hajotetaan erotus tekijöihin.}
+  Koska $f(-3)=\frac52$, saadaan
+  \begin{align*}
+    \abs{f(x)-f(-3)}
+    &=\abs{\tfrac12x^2+x+1-\tfrac52}\\
+    &=\tfrac12\abs{x^2+2x-3}
+    =\tfrac12\abs{x+3}\abs{x-1}.
+  \end{align*}
+  Tekijä $\abs{x+3}$ on juuri etäisyys tarkastelupisteestä $-3$.
+
+  \medskip
+  \noindent\textbf{2. Rajoitetaan toinen tekijä.}
+  Kun $\abs{x+3}<1$, kolmioepäyhtälö antaa
+  \[
+    \abs{x-1}=\abs{(x+3)-4}
+    \le\abs{x+3}+4<5.
+  \]
+  Siksi $\abs{f(x)-f(-3)}\le\frac52\abs{x+3}$.
+
+  \medskip
+  \noindent\textbf{3. Valitaan delta ja tarkistetaan ehto.}
+  Olkoon $\varepsilon>0$ annettu. Valitaan
+  \[
+    \boxed{\delta=\min\left\{1,\frac{2\varepsilon}{5}\right\}>0.}
+  \]
+  Jos $\abs{x-(-3)}=\abs{x+3}<\delta$, niin
+  \[
+    \abs{f(x)-f(-3)}
+    \le\frac52\abs{x+3}
+    <\frac52\delta
+    \le\varepsilon.
+  \]
+  Näin ollen $f$ on jatkuva pisteessä $-3$.
+\end{solution}
+
+\medskip
+\noindent\textbf{Todistuksen idea.}
+Valinnan $\delta\le 1$ avulla saadaan paikallinen yläraja toiselle
+tekijälle. Ehto $\delta\le 2\varepsilon/5$ puolestaan takaa
+halutun tarkkuuden funktion arvoille.
+
+\newpage
+\subsubsection*{Esimerkki: epäjatkuvuus suoraan määritelmästä}
+
+Jatkuvuuden määritelmän negaatio antaa tavan osoittaa epäjatkuvuus:
+riittää löytää \emph{yksi} $\varepsilon_0>0$, jolle \emph{jokaista}
+$\delta>0$ kohti löytyy $x\in A$ siten, että
+\[
+  \boxed{\abs{x-x_0}<\delta
+    \quad\text{ja}\quad
+  \abs{f(x)-f(x_0)}\ge\varepsilon_0.}
+\]
+
+\begin{example}
+  Palataan luennon alun paloittain määriteltyyn funktioon
+  $f\colon\RR\to\RR$,
+  \[
+    f(x)=
+    \begin{cases}
+      x, & x\ne 1,\\
+      2, & x=1.
+    \end{cases}
+  \]
+  Osoitetaan ilman raja-arvoja, ettei $f$ ole jatkuva pisteessä $1$.
+\end{example}
+
+\begin{solution}
+  \textbf{1. Kiinnitetään sallittu virhe.}
+  Valitaan $\varepsilon_0=\frac12$.
+
+  \medskip
+  \noindent\textbf{2. Etsitään vastaesimerkki jokaiselle deltalle.}
+  Olkoon $\delta>0$ mielivaltainen. Valitaan
+  \[
+    x=1-\frac{\delta}{2}.
+  \]
+  Tällöin $x<1$, joten $f(x)=x$, ja piste on vaaditun lähellä:
+  \[
+    \abs{x-1}=\frac{\delta}{2}<\delta.
+  \]
+  Funktion arvot eivät kuitenkaan ole riittävän lähellä toisiaan:
+  \[
+    \abs{f(x)-f(1)}
+    =\abs{1-\frac{\delta}{2}-2}
+    =1+\frac{\delta}{2}
+    >1>\varepsilon_0.
+  \]
+  Siis valitulla $\varepsilon_0$ mikään $\delta>0$ ei toteuta
+  jatkuvuuden ehtoa. Näin ollen $f$ ei ole jatkuva pisteessä $1$.
+\end{solution}
+
+\medskip
+\noindent\textbf{Muista valintojen järjestys.}
+Ensin kiinnitetään $\varepsilon_0$. Sen jälkeen tarkastellaan
+mielivaltaista $\delta>0$ ja valitaan siitä riippuva vastaesimerkkipiste
+$x$. Yhden deltan epäonnistuminen ei vielä todista epäjatkuvuutta;
+ehdon on epäonnistuttava jokaisella deltalla.
 
 \end{document}
