@@ -1,0 +1,81 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Analyysi II\\Harjoitus 1}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Analyysi II}{Harjoitus 1}
+
+\begin{exercise}
+  Olkoon \(f\colon \RR \to \RR\),
+  \[
+    f(x) =
+    \begin{cases}
+      1, & \text{kun } x < 2,\\
+      2, & \text{kun } x \geqslant 2.
+    \end{cases}
+  \]
+  Osoita jatkuvuuden \((\varepsilon,\delta)\)-määritelmän
+  perusteella, että funktio \(f\)
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item on jatkuva pistessä \(x = -2\),
+    \item ei ole jatkuva pisteessä \(x = 2\).
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Olkoon \(f\colon \RR \to \RR\),
+  \[
+    f(x) =
+    \begin{cases}
+      x, & \text{kun } x < 0,\\
+      x^2, & \text{kun } x \geqslant 0.
+    \end{cases}
+  \]
+  Osoita määritelmän perusteella, että funktio \(f\) on jatkuva origossa.
+\end{exercise}
+
+\begin{exercise}
+  Todista oppikirjan Lause 4.1.7.
+
+  \medskip
+  \noindent\textsc{Lause 4.1.7:} Olkoon \((x_n)\) suppeneva lukujono, jonka
+  raja-arvo on \(x \in (a,b)\), ja olkoon \(f\colon (a,b) \to \RR\)
+  funktio, joka on jatkuva pisteessä \(x\). Jos
+  \(\{x_n : n \in \NNone\} \subset (a,b)\), niin lukujono \((f(x_n))\)
+  suppenee kohti lukua \(f(x)\).
+\end{exercise}
+
+\begin{exercise}
+  Olkoon \(f\colon \RR \to \RR\) jatkuva.
+  Määritellään funktio \(g\colon \RR \to \RR\) asettamalla, että
+  \(g(x) = \abs{f(x)}\). Osoita, että \(g\) on jatkuva.
+\end{exercise}
+
+\begin{exercise}
+  Olkoon \(f\colon \RR \setminus \set{0} \to \RR\),
+  \(f(x) = \frac{1}{x}\). Osoita määritelmän perusteella, että funktio
+  \(f\) on jatkuva.
+\end{exercise}
+
+\begin{exercise}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Olkoon \(f\colon \RR \to \RR\) funktio, jolle
+      \[
+        f(x+y) = f(x) + f(y)
+      \]
+      kaikilla \(x,y \in \RR\). Osoita: jos funktio \(f\) on jatkuva
+      origossa, niin \(f\) on jatkuva kaikkialla.
+    \item Anna esimerkki funktiosta \(f\colon \RR \to \RR\), joka toteuttaa
+      (a)-kohdan ehdot mutta ei saa jokaisessa pisteessä arvoa \(0\).
+  \end{enumerate}
+\end{exercise}
+
+\end{document}
