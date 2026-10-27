@@ -28,6 +28,179 @@ yliopiston kurssisivulta}.
 
 \section{Muistiinpanot}
 
-\subsection{27.10.2026}
+\subsection{27.10.2026: lineaariset yhtälöryhmät}
 
-\end{document}
+Lineaarisen yhtälöryhmän ratkaisu toteuttaa kaikki ryhmän yhtälöt
+samanaikaisesti. Geometrisesti ratkaiseminen tarkoittaa yhtälöiden
+ratkaisujoukkojen yhteisten pisteiden etsimistä.
+
+\subsubsection*{Suorat tasossa ja niiden leikkauspisteet}
+
+Yhtälö $y=ax+b$, missä $a,b\in\RR$, esittää tason suoraa.
+Suora voidaan ajatella pistejoukkona
+\[
+  L=\{(x,y)\in\RR^2:y=ax+b\}.
+\]
+Kahden suoran $y=ax+b$ ja $y=a'x+b'$ yhteiset pisteet muodostavat
+joukon $L\cap L'$. Ne saadaan ratkaisemalla molemmat yhtälöt yhtä aikaa.
+
+\begin{example}[Kahden suoran leikkaus]
+  Ratkaistaan yhtälöryhmä
+  \[
+    \begin{cases}
+      y=2x+3,\\
+      y=-x+2.
+    \end{cases}
+  \]
+  Koska molemmat oikeat puolet ovat yhtä suuret kuin $y$, saadaan
+  \[
+    2x+3=-x+2
+    \quad\Longleftrightarrow\quad
+    3x=-1
+    \quad\Longleftrightarrow\quad
+    x=-\frac13.
+  \]
+  Sijoittamalla toiseen yhtälöön saadaan
+  \[
+    y=-\left(-\frac13\right)+2=\frac73.
+  \]
+  Suorien ainoa leikkauspiste on siis
+  \[
+    \boxed{(x,y)=\left(-\frac13,\frac73\right).}
+  \]
+\end{example}
+
+\newpage
+\subsubsection*{Kahden suoran yhteiset pisteet}
+\begin{center}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabular}{lll}
+    \hline
+    Ehto & Suorien sijainti & Ratkaisuja\\
+    \hline
+    $a\ne a'$ & Leikkaavat yhdessä pisteessä & Yksi\\
+    $a=a'$, $b\ne b'$ & Erilliset yhdensuuntaiset suorat & Ei yhtään\\
+    $a=a'$, $b=b'$ & Sama suora & Äärettömän monta\\
+    \hline
+  \end{tabular}
+\end{center}
+
+\subsubsection*{Suoran ja tason yleinen yhtälö}
+
+Muoto $y=ax+b$ ei kata pystysuoria suoria $x=c$. Kaikki tason suorat
+voidaan esittää muodossa
+\[
+  \boxed{a_1x_1+a_2x_2=b,\qquad (a_1,a_2)\ne(0,0),}
+\]
+missä $a_1,a_2,b\in\RR$. Esimerkiksi $x_1=c$ saadaan valitsemalla
+$a_1=1$, $a_2=0$ ja $b=c$. Suoran pistejoukko on
+\[
+  L=\{(x_1,x_2)\in\RR^2:a_1x_1+a_2x_2=b\}.
+\]
+
+\begin{remark}[Yhtälön kertominen vakiolla]
+  Kun $\lambda\ne0$, yhtälön molemmat puolet voidaan kertoa luvulla
+  $\lambda$ muuttamatta ratkaisujoukkoa:
+  \[
+    a_1x_1+a_2x_2=b
+    \quad\Longleftrightarrow\quad
+    \lambda a_1x_1+\lambda a_2x_2=\lambda b.
+  \]
+\end{remark}
+
+Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
+\[
+  a_1x_1+a_2x_2+a_3x_3=b,
+  \qquad (a_1,a_2,a_3)\ne(0,0,0).
+\]
+
+\subsubsection*{Yhtälöryhmä, ratkaisu ja ratkaisujoukko}
+
+\begin{definition}[Lineaarinen yhtälöryhmä]
+  Olkoot $m,n$ positiivisia kokonaislukuja ja
+  $a_{ij},b_i\in\RR$, missä $i=1,\ldots,m$ ja $j=1,\ldots,n$.
+  Ryhmää
+  \begin{equation}\label{eq:linear-system}
+    \left\{
+      \begin{aligned}
+        a_{11}x_1+\cdots+a_{1n}x_n&=b_1,\\
+        &\ \vdots\\
+        a_{m1}x_1+\cdots+a_{mn}x_n&=b_m
+      \end{aligned}\right.
+      \tag{YR}
+    \end{equation}
+    kutsutaan \emph{lineaariseksi yhtälöryhmäksi}.
+    Siinä on $m$ yhtälöä ja $n$ tuntematonta.
+    Kerroin $a_{ij}$ on yhtälön $i$ muuttujan $x_j$ kerroin.
+  \end{definition}
+
+  \begin{definition}[Ratkaisu ja ratkaisujoukko]
+    Vektori $(x_1,\ldots,x_n)\in\RR^n$ on ryhmän
+    \eqref{eq:linear-system} \emph{ratkaisu}, jos se toteuttaa ryhmän
+    kaikki yhtälöt. Kaikkien ratkaisujen joukko on
+    \[
+      R=\left\{(x_1,\ldots,x_n)\in\RR^n:
+      \sum_{j=1}^n a_{ij}x_j=b_i\ \text{kaikilla }i=1,\ldots,m\right\}.
+    \]
+  \end{definition}
+
+  \noindent\textbf{Geometrinen tulkinta.}
+  Jos $L_i$ on yhtälön $i$ ratkaisujoukko, koko ryhmän ratkaisujoukko on
+  $R=L_1\cap\cdots\cap L_m$.
+
+  \newpage
+  \subsubsection*{Avaruuden \texorpdfstring{$\RR^n$}{Rⁿ} laskutoimitukset}
+
+  Avaruuden $\RR^n$ alkiot ovat vektoreita $(x_1,\ldots,x_n)$.
+  Vektorien yhteenlasku ja skalaarilla kertominen tehdään
+  \emph{koordinaateittain}.
+
+  \begin{definition}[Yhteenlasku ja skalaarilla kertominen]
+    Yhteenlasku $+\colon\RR^n\times\RR^n\to\RR^n$ määritellään kaavalla
+    \[
+      \boxed{(x_1,\ldots,x_n)+(y_1,\ldots,y_n)
+      =(x_1+y_1,\ldots,x_n+y_n).}
+    \]
+    Skalaarilla kertominen $\RR\times\RR^n\to\RR^n$ määritellään kaavalla
+    \[
+      \boxed{c(x_1,\ldots,x_n)=(cx_1,\ldots,cx_n).}
+    \]
+    Tässä $c\in\RR$ on \emph{skalaari}.
+  \end{definition}
+
+  \begin{example}
+    Kun $u=(1,-2)$ ja $v=(3,4)$, saadaan
+    \[
+      u+v=(4,2),\qquad 2u=(2,-4).
+    \]
+  \end{example}
+
+  \subsubsection*{Vektorien laskusäännöt}
+  Kaikilla $u,v,w\in\RR^n$ ja $c,d\in\RR$ pätevät
+  \begin{align*}
+    u+v&=v+u, & (u+v)+w&=u+(v+w),\\
+    u+0&=u, & u+(-u)&=0,\\
+    c(u+v)&=cu+cv, & (c+d)u&=cu+du,\\
+    c(du)&=(cd)u, & 1u&=u.
+  \end{align*}
+  Näiden laskutoimitusten kanssa $\RR^n$ on vektoriavaruus kunnan
+  $\RR$ yli. Yleisemmin puhutaan vektoriavaruudesta kunnan $K$ yli;
+  renkaan yli vastaava käsite on $K$-moduuli.
+
+  \subsubsection*{Yhtälöt $0=0$ ja $0=b_i$}
+
+  Yhtälöryhmässä voi esiintyä rivi, jonka kaikki kertoimet ovat nollia:
+  \[
+    0x_1+0x_2+\cdots+0x_n=b_i.
+  \]
+  Tällöin on erotettava kaksi tapausta.
+  \begin{description}[style=nextline,leftmargin=0pt]
+    \item[$b_i=0$: yhtälö $0=0$.]
+      Rivi toteutuu kaikilla vektoreilla eikä aseta ratkaisuille mitään
+      ehtoa. Sen voi poistaa muuttamatta ryhmän ratkaisujoukkoa.
+    \item[$b_i\ne0$: yhtälö $0=b_i$.]
+      Rivi ei toteudu millään vektorilla. Siksi koko yhtälöryhmällä
+      ei ole ratkaisuja: $\boxed{R=\varnothing}$.
+  \end{description}
+
+  \end{document}
