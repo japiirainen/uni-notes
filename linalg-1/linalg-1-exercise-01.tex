@@ -203,37 +203,177 @@ positiiviset kokonaisluvut:
 \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=\alph*)]
+\item Kunkin alkuaineen atomien lukumäärän tulee olla sama reaktion
+  molemmilla puolilla. Typen, hapen ja vedyn atomien lukumäärien
+  säilymisestä saadaan tässä järjestyksessä yhtälöryhmä
+  \[
+    \begin{linearsystem}{1}
+      x_1 - x_3 - x_4 &= 0 \\
+      2x_1 + x_2 - 2x_3 - 3x_4 &= 0 \\
+      2x_2 - x_3 - x_4 &= 0.
+    \end{linearsystem}
+  \]
+  Vähentämällä toisesta yhtälöstä kaksi kertaa ensimmäinen saadaan
+  \[
+    \begin{linearsystem}{1}
+      x_1 - x_3 - x_4 &= 0 \\
+      x_2 - x_4 &= 0 \\
+      2x_2 - x_3 - x_4 &= 0.
+    \end{linearsystem}
+  \]
+  Nyt vähentämällä kolmannesta yhtälöstä kaksi kertaa toinen saadaan
+  \[
+    \begin{linearsystem}{1}
+      x_1 - x_3 - x_4 &= 0 \\
+      x_2 - x_4 &= 0 \\
+      - x_3 + x_4 &= 0.
+    \end{linearsystem}
+  \]
+  Kolmannesta yhtälöstä saadaan \(x_4=x_3\). Sijoittamalla tämä
+  kahteen ensimmäiseen yhtälöön saadaan
+  \[
+    \begin{linearsystem}{1}
+      x_1 &= 2x_3 \\
+      x_2 &= x_3 \\
+      x_3 &= x_4.
+    \end{linearsystem}
+  \]
+  Valitaan \(x_3=t\). Tällöin kaikki ratkaisut ovat muotoa
+  \[
+    (x_1,x_2,x_3,x_4)=(2t,t,t,t), \qquad t\in\RR.
+  \]
+  Kertoimet ovat positiivisia kokonaislukuja täsmälleen silloin, kun
+  \(t\in\ZZ_+\). Pienin mahdollinen arvo on \(t=1\), joten pienimmät
+  positiiviset kokonaislukukertoimet ovat
+  \[
+    (x_1,x_2,x_3,x_4)=(2,1,1,1).
+  \]
+  Tasapainotettu reaktioyhtälö on siis
+  \[
+    2\mathrm{NO}_2+\mathrm{H}_2\mathrm{O}
+    \longrightarrow \mathrm{HNO}_2+\mathrm{HNO}_3.
+  \]
+\item Esitetään atomien lukumäärät vektoreina järjestyksessä hiili,
+  vety ja happi. Atomien lukumäärien säilyminen antaa vektoriyhtälön
+  \[
+    x_1
+    \begin{pmatrix} 6 \\ 6 \\ 0
+    \end{pmatrix}
+    +x_2
+    \begin{pmatrix} 0 \\ 0 \\ 2
+    \end{pmatrix}
+    =x_3
+    \begin{pmatrix} 1 \\ 0 \\ 0
+    \end{pmatrix}
+    +x_4
+    \begin{pmatrix} 0 \\ 2 \\ 1
+    \end{pmatrix}.
+  \]
+  Tämä vastaa yhtälöryhmää
+  \[
+    \begin{linearsystem}{1}
+      6x_1-x_3 &= 0 \\
+      6x_1-2x_4 &= 0 \\
+      2x_2-x_4 &= 0.
+    \end{linearsystem}
+  \]
+  Ensimmäisestä yhtälöstä saadaan \(x_3=6x_1\), toisesta
+  \(x_4=3x_1\) ja kolmannesta \(x_4=2x_2\).
+  Siis \(3x_1=2x_2\), joten
+  \[
+    x_1=\frac23x_2, \qquad
+    x_3=6\cdot\frac23x_2=4x_2, \qquad
+    x_4=2x_2.
+  \]
+  Valitaan \(x_2=t\). Tällöin kaikki ratkaisut ovat muotoa
+  \[
+    (x_1,x_2,x_3,x_4)=\left(\frac23t,t,4t,2t\right),
+    \qquad t\in\RR.
+  \]
+  Koska \(t=x_2\) on positiivinen kokonaisluku ja myös \(\frac23t\)
+  on oltava kokonaisluku, luvun \(t\) tulee olla jaollinen kolmella.
+  Pienin mahdollinen arvo on siis \(t=3\), jolloin kaikki kertoimet
+  ovat positiivisia kokonaislukuja. Pienimmät kertoimet ovat siten
+  \[
+    (x_1,x_2,x_3,x_4)=(2,3,12,6).
+  \]
+  Tasapainotettu reaktioyhtälö on siis
+  \[
+    2\mathrm{C}_6\mathrm{H}_6+3\mathrm{O}_2
+    \longrightarrow 12\mathrm{C}+6\mathrm{H}_2\mathrm{O}.
+  \]
+\end{enumerate}
+\end{solution}
+
 \begin{exercise}
 Etsi kertoimet \(a\), \(b\) ja \(c\) siten, että funktion
 \(f(x) = ax^2 + bx + c\) kuvaaja kulkee pisteiden \((1,2)\),
 \((-1,6)\) ja \((2,3)\) kautta.
 \end{exercise}
 
+\begin{solution}
+Kuvaaja kulkee annettujen pisteiden kautta täsmälleen silloin, kun
+\(f(1)=2\), \(f(-1)=6\) ja \(f(2)=3\). Näistä ehdoista saadaan yhtälöryhmä
+\[
+\begin{linearsystem}{3}
+  a &{}+{}& b &{}+{}& c &= 2 \\
+  a &{}-{}& b &{}+{}& c &= 6 \\
+  4a &{}+{}& 2b &{}+{}& c &= 3.
+\end{linearsystem}
+\]
+Vähentämällä ensimmäisestä yhtälöstä toinen saadaan \(2b=-4\),
+joten \(b=-2\). Sijoittamalla tämä ensimmäiseen ja kolmanteen yhtälöön saadaan
+\[
+\begin{linearsystem}{2}
+  a &{}+{}& c &= 4 \\
+  4a &{}+{}& c &= 7.
+\end{linearsystem}
+\]
+Vähentämällä jälkimmäisestä yhtälöstä ensimmäinen saadaan \(3a=3\),
+siis \(a=1\). Tällöin \(c=4-a=3\).
+Kertoimet ovat siis yksikäsitteisesti
+\[
+(a,b,c)=(1,-2,3),
+\]
+ja vastaava funktio on \(f(x)=x^2-2x+3\). Tarkistetaan vielä, että
+\[
+\begin{aligned}
+  f(1) &= 1-2+3=2, \\
+  f(-1) &= 1+2+3=6, \\
+  f(2) &= 4-4+3=3.
+\end{aligned}
+\]
+Kuvaaja kulkee siis kaikkien kolmen annetun pisteen kautta.
+\end{solution}
+
 \begin{exercise}
 Ratkaise yhtälöryhmä
 \[
-  \begin{linearsystem}{4}
-    x_1 &{}+{}& x_2 &{}+{}& x_3 &{}+{}& x_4 &= 0 \\
-    2x_1 &{}+{}& 3x_2 &{}-{}& x_3 &{}-{}& x_4 &= 2 \\
-    3x_1 &{}+{}& 2x_2 &{}+{}& x_3 &{}+{}& x_4 &= 5 \\
-    3x_1 &{}+{}& 6x_2 &{}-{}& x_3 &{}-{}& x_4 &= 4.
-  \end{linearsystem}
+\begin{linearsystem}{4}
+  x_1 &{}+{}& x_2 &{}+{}& x_3 &{}+{}& x_4 &= 0 \\
+  2x_1 &{}+{}& 3x_2 &{}-{}& x_3 &{}-{}& x_4 &= 2 \\
+  3x_1 &{}+{}& 2x_2 &{}+{}& x_3 &{}+{}& x_4 &= 5 \\
+  3x_1 &{}+{}& 6x_2 &{}-{}& x_3 &{}-{}& x_4 &= 4.
+\end{linearsystem}
 \]
 \end{exercise}
 
 \begin{exercise}
 Ratkaise yhtälöryhmä
 \[
-  \begin{linearsystem}{6}
-    x_1 &{}+{}& 3x_2 &{}-{}& 2x_3 & & &{}+{}&
-    2x_5 & & &= 0 \\
-    2x_1 &{}+{}& 6x_2 &{}-{}& 5x_3 &{}-{}& 2x_4 &{}+{}&
-    4x_5 &{}-{}& 3x_6 &= -1 \\
-    & & & & 5x_3 &{}+{}& 10x_4 & &
-    &{}+{}& 15x_6 &= 5 \\
-    2x_1 &{}+{}& 6x_2 & & &{}+{}& 8x_4 &{}+{}&
-    4x_5 &{}+{}& 18x_6 &= 6.
-  \end{linearsystem}
+\begin{linearsystem}{6}
+  x_1 &{}+{}& 3x_2 &{}-{}& 2x_3 & & &{}+{}&
+  2x_5 & & &= 0 \\
+  2x_1 &{}+{}& 6x_2 &{}-{}& 5x_3 &{}-{}& 2x_4 &{}+{}&
+  4x_5 &{}-{}& 3x_6 &= -1 \\
+  & & & & 5x_3 &{}+{}& 10x_4 & &
+  &{}+{}& 15x_6 &= 5 \\
+  2x_1 &{}+{}& 6x_2 & & &{}+{}& 8x_4 &{}+{}&
+  4x_5 &{}+{}& 18x_6 &= 6.
+\end{linearsystem}
 \]
 \end{exercise}
 
@@ -241,18 +381,18 @@ Ratkaise yhtälöryhmä
 Olkoon \(n \in \ZZ_+\). Todista monisteen Lemma 1.3.2:
 yhtälöryhmillä
 \[
-  \begin{linearsystem}{1}
-    a_{11}x_1 + \dots + a_{1n}x_n &= b_1 \\
-    a_{21}x_1 + \dots + a_{2n}x_n &= b_2
-  \end{linearsystem}
+\begin{linearsystem}{1}
+  a_{11}x_1 + \dots + a_{1n}x_n &= b_1 \\
+  a_{21}x_1 + \dots + a_{2n}x_n &= b_2
+\end{linearsystem}
 \]
 ja
 \[
-  \begin{linearsystem}{1}
-    a_{11}x_1 + \dots + a_{1n}x_n &= b_1 \\
-    (a_{21} + a_{11})x_1 + \dots + (a_{2n} +
-    a_{1n})x_n &= b_2 + b_1
-  \end{linearsystem}
+\begin{linearsystem}{1}
+  a_{11}x_1 + \dots + a_{1n}x_n &= b_1 \\
+  (a_{21} + a_{11})x_1 + \dots + (a_{2n} +
+  a_{1n})x_n &= b_2 + b_1
+\end{linearsystem}
 \]
 on sama ratkaisujoukko.
 \end{exercise}
