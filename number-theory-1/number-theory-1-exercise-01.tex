@@ -1,0 +1,74 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Lukuteoria I\\Harjoitus 1}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Lukuteoria I}{Harjoitus 1}
+
+\begin{exercise}
+  Olkoot \(a\), \(b\), \(c\) ja \(d\) kokonaislukuja sekä \(n\)
+  positiivinen kokonaisluku. Todista seuraavat väitteet.
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Jos \(a \mid b\) ja \(a \mid c\), niin \(a \mid xb + yc\)
+      aina, kun \(x\) ja \(y\) ovat kokonaislukuja.
+    \item Jos \(a \mid b\) ja \(b \mid c\), niin \(a \mid c\).
+    \item Jos \(a \equiv b \pmod{n}\) ja \(b \equiv c \pmod{n}\),
+      niin \(a \equiv c \pmod{n}\).
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Todista, että luku \(20 \cdot 14^k + 6\) on jaollinen luvulla \(13\)
+  kaikilla \(k \in \ZZ_+\)
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item induktiolla,
+    \item kongruenssin avulla.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Olkoon \(k\) positiivinen kokonaisluku. Osoita, että on olemassa \(k\)
+  peräkkäistä positiivista kokonaislukua, joista yksikään ei ole alkuluku.
+  (Vinkki: Luvusta \((k + 1)! + 2\) on hyötyä. Muista, että
+  \(n! = 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (n - 1) \cdot n\).)
+\end{exercise}
+
+\begin{exercise}
+  Mikä on luvun \(7\) potenssi luvun \(100!\) alkutekijähajotelmassa?
+\end{exercise}
+
+\begin{exercise}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Olkoot \(a, b \in \ZZ\), \(d, n \in \ZZ_+\) ja \(d \mid n\).
+      Oletetaan lisäksi, että \(ad \equiv bd \pmod{n}\). Osoita, että
+      \(a \equiv b \pmod{\frac{n}{d}}\).
+    \item Pääteekö aina, että jos \(ad \equiv bd \pmod{n}\), niin
+      \(a \equiv b \pmod{n}\)?
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Olkoon luvun \(n\) kymmenjärjestelmäesitys
+  \[
+    n = a_k 10^k + a_{k-1} 10^{k-1} + \cdots a_1 10 + a_0,
+  \]
+  missä \(0 \leq a_i \leq 9\) kaikilla \(i = 0, 1, \ldots, k\).
+
+  Todista seitsemän jaollisuussääntö:
+
+  Luku \(n\) on jaollinen luvulla \(7\) täsmälleen silloin, kun luku
+  \[
+    a_k 10^{k-1} + a_{k-1} 10^{k-2} + \cdots a_2 10 + a_1 - 2a_0
+  \]
+  on jaollinen luvulla \(7\).
+\end{exercise}
+
+\end{document}
