@@ -30,4 +30,187 @@ yliopiston kurssisivulta}.
 
 \subsection{27.10.2026}
 
+\noindent\textit{Aihealue: monisteen luku 2.1 (s.~9--11) ja luku 4
+  lauseeseen 39 asti (s.~21--22). Alla mainitut lausenumerot viittaavat
+monisteeseen.}
+
+\subsubsection{Jaollisuus}
+
+Kokonaisluku $a$ \emph{jakaa} kokonaisluvun $b$, jos
+\[
+  a\mid b \quad\Longleftrightarrow\quad
+  b=ac \text{ jollakin } c\in\ZZ.
+\]
+Tällöin $a$ on luvun $b$ tekijä ja $b$ on luvun $a$ monikerta.
+Merkintä $a\nmid b$ tarkoittaa, ettei $a$ jaa lukua $b$.
+Esimerkiksi $3\mid 24$, koska $24=3\cdot 8$, mutta $5\nmid 24$.
+
+\paragraph{Nollan erikoistapaus.}
+Jokaiselle $a\in\ZZ$ pätee $a\mid 0$, myös $0\mid 0$.
+Sen sijaan $0\mid b$ vain, kun $b=0$.
+Ehto $b/a\in\ZZ$ on siis jaollisuuden kanssa yhtäpitävä vain, kun
+$a\ne 0$; määritelmä $b=ac$ toimii myös nollalle.
+
+\paragraph{Jaollisuuden laskusäännöt (lause 5).}
+Kun kaikki luvut ovat kokonaislukuja, pätee:
+\begin{enumerate}[label=(\alph*)]
+  \item Jos $a\mid b$ ja $a\mid c$, niin $a\mid (xb+yc)$ kaikilla
+    $x,y\in\ZZ$. Yhteinen tekijä jakaa siis myös summan ja erotuksen.
+  \item Jos $a\mid b$ ja $c\mid d$, niin $ac\mid bd$.
+  \item Jos $a\mid b$ ja $b\mid c$, niin $a\mid c$.
+  \item Jos $a\mid b$ ja $b\mid a$, niin $a=\pm b$.
+  \item Jos $a\mid b$ ja $b\ne 0$, niin $|a|\le |b|$.
+\end{enumerate}
+
+\begin{proof}
+  (a) Kirjoitetaan $b=ak$ ja $c=a\ell$, missä $k,\ell\in\ZZ$.
+  Silloin $xb+yc=a(xk+y\ell)$ ja $xk+y\ell\in\ZZ$, joten
+  $a\mid(xb+yc)$.
+
+  (b) Oletuksista saadaan $b=ak$ ja $d=c\ell$ joillakin
+  $k,\ell\in\ZZ$. Siis $bd=ac(k\ell)$, joten $ac\mid bd$.
+
+  (c) Kirjoitetaan $b=ak$ ja $c=b\ell$, missä $k,\ell\in\ZZ$.
+  Tällöin $c=a(k\ell)$, joten $a\mid c$.
+
+  (d) Kirjoitetaan $b=ak$ ja $a=b\ell$, missä $k,\ell\in\ZZ$.
+  Jos $b=0$, jälkimmäinen yhtälö antaa $a=0$, joten $a=b$.
+  Jos $b\ne0$, sijoittamalla saadaan $b=b\ell k$ ja siten
+  $k\ell=1$. Kokonaisluvuille tämä on mahdollista vain, kun
+  $k=\ell=1$ tai $k=\ell=-1$. Siis $a=b$ tai $a=-b$.
+
+  (e) Kirjoitetaan $b=ak$, missä $k\in\ZZ$.
+  Koska $b\ne0$, myös $k\ne0$, joten $|k|\ge1$.
+  Näin ollen $|b|=|a||k|\ge|a|$.
+\end{proof}
+
+\subsubsection{Jakoyhtälö ja jakojäännös}
+
+\paragraph{Jakoyhtälö (lause 6).}
+Kun $a,b\in\ZZ$ ja $b\ne 0$, on olemassa yksikäsitteiset
+$q,r\in\ZZ$, joille
+\[
+  \boxed{a=qb+r,\qquad 0\le r<|b|.}
+\]
+Luku $q$ on osamäärä ja $r$ jakojäännös.
+Jakojäännös valitaan aina epänegatiiviseksi, vaikka $a$ tai $b$
+olisi negatiivinen.
+
+\begin{proof}
+  Kun $b>0$, valitse $q=\lfloor a/b\rfloor$ ja aseta $r=a-qb$.
+  Ehdosta $qb\le a<(q+1)b$ seuraa $0\le r<b$.
+  Kun $b<0$, jo todistetun positiivisen jakajan tapauksen perusteella
+  on olemassa $Q,r\in\ZZ$, joille $a=Q|b|+r$ ja $0\le r<|b|$.
+  Koska $|b|=-b$, valinta $q=-Q$ antaa $a=qb+r$.
+
+  Jos $a=q_1b+r_1=q_2b+r_2$, niin
+  $(q_1-q_2)b=r_2-r_1$. Oikean puolen itseisarvo on pienempi
+  kuin $|b|$, joten se voi olla luvun $b$ monikerta vain ollessaan
+  nolla. Siis $r_1=r_2$ ja $q_1=q_2$.
+\end{proof}
+
+\paragraph{Esimerkkejä.}
+\[
+  \begin{aligned}
+    17 &= 3\cdot 5+2,    & q&=3,  & r&=2,\\
+    -17 &= (-4)\cdot 5+3,& q&=-4, & r&=3,\\
+    17 &= (-3)\cdot(-5)+2,& q&=-3,& r&=2.
+  \end{aligned}
+\]
+Esitys $-17=(-3)\cdot 5-2$ ei ole vaadittu jakoyhtälö, koska
+jakojäännös olisi negatiivinen.
+
+\paragraph{Seurauksia.}
+Kun $b\ne 0$, pätee $b\mid a$ täsmälleen silloin, kun $r=0$.
+Jakamalla kahdella nähdään, että jokainen kokonaisluku on joko
+muotoa $2k$ (parillinen) tai $2k+1$ (pariton), missä $k\in\ZZ$.
+Jakajaa $b=0$ ei sallita: ehto $0\le r<|b|$ olisi mahdoton.
+
+\newpage
+\subsubsection{Kongruenssit}
+
+Olkoon tässä $n$ positiivinen kokonaisluku.
+Kokonaisluvut $a$ ja $b$ ovat \emph{kongruentit modulo $n$}, jos
+\[
+  \boxed{a\equiv b\pmod n
+  \quad\Longleftrightarrow\quad n\mid(a-b).}
+\]
+Toisin sanoen $a=b+kn$ jollakin $k\in\ZZ$.
+Luku $n$ on \emph{modulo}.
+Esimerkiksi $3\equiv7\pmod4$ ja $-2\equiv3\pmod5$.
+
+\paragraph{Yhteys jakojäännöksiin.}
+Kongruenssi $a\equiv b\pmod n$ tarkoittaa, että luvuilla on sama
+jakojäännös jaettaessa luvulla $n$. Nimittäin jos
+$a=qn+r$ ja $b=sn+t$, missä $0\le r,t<n$, niin
+\[
+  n\mid(a-b)\quad\Longleftrightarrow\quad n\mid(r-t)
+  \quad\Longleftrightarrow\quad r=t.
+\]
+Viimeinen ekvivalenssi seuraa ehdosta $|r-t|<n$.
+Erityisesti $a\equiv0\pmod n$ tarkoittaa samaa kuin $n\mid a$.
+
+\paragraph{Laskusäännöt (lause 38).}
+Jos $a\equiv b\pmod n$ ja $c\equiv d\pmod n$, niin
+\[
+  a+c\equiv b+d\pmod n,\qquad
+  a-c\equiv b-d\pmod n,\qquad
+  ac\equiv bd\pmod n.
+\]
+Laskuissa luvun saa siis korvata sen kanssa kongruentilla,
+helpommalla luvulla. Kaikissa kongruensseissa modulo on sama.
+
+\begin{proof}
+  Oletusten mukaan $n\mid(a-b)$ ja $n\mid(c-d)$.
+  Jaollisuuden laskusäännön (a) perusteella $n$ jakaa luvut
+  \[
+    \begin{aligned}
+      (a+c)-(b+d)&=(a-b)+(c-d),\\
+      (a-c)-(b-d)&=(a-b)-(c-d),\\
+      ac-bd&=c(a-b)+b(c-d).
+    \end{aligned}
+  \]
+  Kongruenssin määritelmä antaa siis vastaavasti
+  $a+c\equiv b+d\pmod n$, $a-c\equiv b-d\pmod n$ ja
+  $ac\equiv bd\pmod n$.
+\end{proof}
+
+\paragraph{Potenssit (lause 39).}
+Jos $a\equiv b\pmod n$, niin kaikilla kokonaisluvuilla $m\ge0$
+\[
+  a^m\equiv b^m\pmod n.
+\]
+\begin{proof}
+  Todistetaan väite induktiolla eksponentin $m$ suhteen.
+  Kun $m=0$, molemmat potenssit ovat $1$, kun eksponentin $0$
+  potenssi tulkitaan tyhjäksi tuloksi. Siis $a^0\equiv b^0\pmod n$,
+  koska $n\mid(1-1)$.
+
+  Oletetaan, että $a^k\equiv b^k\pmod n$ jollakin $k\ge0$.
+  Koska myös $a\equiv b\pmod n$, lauseen 38 kertolaskusääntö antaa
+  \[
+    a^{k+1}=a^k a\equiv b^k b=b^{k+1}\pmod n.
+  \]
+  Induktioperiaatteen nojalla väite pätee kaikilla $m\ge0$.
+\end{proof}
+
+\paragraph{Laskuesimerkkejä.}
+Koska $17\equiv2\pmod5$ ja $14\equiv-1\pmod5$, saadaan
+\[
+  17\cdot14+8\equiv2\cdot(-1)+3=1\pmod5.
+\]
+Suuriakin potensseja voidaan käsitellä laskematta niitä auki:
+\[
+  7^{20}\equiv(-1)^{20}=1\pmod8,
+  \qquad
+  3^{10}=(3^2)^5\equiv(-1)^5\equiv4\pmod5.
+\]
+
+\paragraph{Muista.}
+Jaollisuus todistetaan esittämällä luku kokonaislukumonikertana;
+kongruenssi todistetaan osoittamalla puolten erotus jaolliseksi
+modulolla. Kongruensseissa yhteen-, vähennys- ja kertolasku sekä
+kokonaislukupotenssit yllä olevin ehdoin toimivat. Jakaminen ei
+yleensä toimi: $2\equiv6\pmod4$, mutta $1\not\equiv3\pmod4$.
+
 \end{document}
