@@ -136,6 +136,46 @@
   \(f\) on jatkuva.
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(A = \RR \setminus \set{0}\) ja \(g \colon A \to \RR\), \(g(x) = x\).
+  Funktio \(g\) on jatkuva, sillä jokaisella \(t \in A\) ja
+  \(\varepsilon > 0\) valinta \(\delta = \varepsilon\) antaa
+  \[
+    \abs{g(x) - g(t)} = \abs{x - t} < \varepsilon
+  \]
+  kaikilla \(x \in A\), joilla \(\abs{x - t} < \delta\).
+
+  Olkoon nyt \(t \in A\) mielivaltainen ja \(\varepsilon > 0\).
+  Koska \(g(t) = t \neq 0\) ja \(g\) on jatkuva pisteessä \(t\),
+  on olemassa \(\delta_1 > 0\) siten, että
+  \[
+    \abs{g(x) - g(t)} < \frac{\abs{g(t)}}{2}
+  \]
+  kaikilla \(x \in A\), joilla \(\abs{x - t} < \delta_1\). Tällöin
+  \[
+    \abs{g(x)} \geq \abs{g(t)} - \abs{g(x) - g(t)}
+    > \frac{\abs{g(t)}}{2}.
+  \]
+  Jatkuvuuden perusteella on myös olemassa \(\delta_2 > 0\) siten, että
+  \[
+    \abs{g(x) - g(t)} < \frac{\varepsilon\abs{g(t)}^2}{2}
+  \]
+  kaikilla \(x \in A\), joilla \(\abs{x - t} < \delta_2\). Valitaan
+  \(\delta = \minset{\delta_1, \delta_2} > 0\). Nyt kaikilla \(x \in A\),
+  joilla \(\abs{x - t} < \delta\), pätee
+  \[
+    \begin{aligned}
+      \abs{f(x) - f(t)} &= \abs*{\frac{1}{g(x)} - \frac{1}{g(t)}} \\
+      &= \abs{g(x) - g(t)}\frac{1}{\abs{g(x)}\abs{g(t)}} \\
+      &\leq \abs{g(x) - g(t)}\frac{2}{\abs{g(t)}^2} \\
+      &< \frac{\varepsilon\abs{g(t)}^2}{2}\frac{2}{\abs{g(t)}^2}
+      = \varepsilon.
+    \end{aligned}
+  \]
+  Täten \(f\) on jatkuva pisteessä \(t\). Koska \(t \in A\) oli
+  mielivaltainen, \(f\) on jatkuva.
+\end{solution}
+
 \begin{exercise}
   \leavevmode\par
   \begin{enumerate}[label=(\alph*), nosep]
