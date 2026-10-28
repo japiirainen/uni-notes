@@ -1,0 +1,168 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+\counterwithout{equation}{section}
+\counterwithout{theorem}{section}
+
+\title{Analyysi II\\Tutkijapolku 1}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Analyysi II}{Tutkijapolku 1}
+
+\begin{lemma}\label{lem:cont-seq}
+  Olkoon \(f\colon (a,b) \to \RR\) jatkuva pisteessä \(x \in (a,b)\).
+  Jos \(x_n \in (a,b)\) kaikilla \(n \in \NNone\) ja \(x_n \to x\),
+  niin \(f(x_n) \to f(x)\).
+\end{lemma}
+
+\begin{proof}
+  Olkoon \(\varepsilon > 0\). Jatkuvuuden nojalla on olemassa
+  \(\delta > 0\) siten, että \(\abs{f(t)-f(x)} < \varepsilon\), kun
+  \(t \in (a,b)\) ja \(\abs{t-x} < \delta\).
+  Koska \(x_n \to x\), on olemassa \(N \in \NNone\) siten, että
+  \(\abs{x_n-x} < \delta\) kaikilla \(n \geq N\). Näin ollen
+  \(\abs{f(x_n)-f(x)} < \varepsilon\) kaikilla \(n \geq N\),
+  joten \(f(x_n) \to f(x)\).
+\end{proof}
+
+\begin{exercise}
+  Määritä kaikki jatkuvat funktiot \(f\colon \RR \to \RR\), joille
+  \begin{equation}\label{eq:add}
+    f(x+y) = f(x) + f(y)
+  \end{equation}
+  kaikilla \(x,y \in \RR\). Mitä tapahtuu, jos ei oleteta jatkuvuutta?
+\end{exercise}
+
+\begin{solution}
+  Ensiksi ehdosta \eqref{eq:add} seuraa, että
+  \[
+    f(0) = f(0 + 0) = 2f(0),
+  \]
+  eli \(f(0) = 0\).
+
+  Olkoon \(x \in \RR\) mielivaltainen. Näytetään induktiolla, että
+  \(f(nx) = nf(x)\) kaikilla \(n \in \NN\). Ensiksi
+  \(f(0x) = 0 = 0f(x)\), joten väite pätee, kun \(n = 0\). Olkoon sitten
+  \(n \in \NN\) mielivaltainen ja oletetaan, että
+  \[
+    f(nx) = nf(x).
+  \]
+  Tällöin yhtälön \eqref{eq:add} nojalla
+  \[
+    f((n + 1)x) = f(nx + x) = f(nx) + f(x) = nf(x) + f(x) = (n + 1)f(x).
+  \]
+  Väite pätee siis luvulla \(n + 1\). Täten väite pätee kaikilla \(n \in \NN\).
+
+  Lisäksi
+  \[
+    0 = f(x + (-x)) = f(x) + f(-x),
+  \]
+  eli \(f(-x) = -f(x)\). Näistä yhdessä seuraa, että \(f(zx) = zf(x)\)
+  kaikilla \(z \in \ZZ\) ja \(x \in \RR\). Erityisesti asettamalla
+  \(c = f(1)\) saadaan \(f(z) = zf(1) = cz\) kaikilla \(z \in \ZZ\).
+
+  Olkoon sitten \(m \in \ZZ\) ja \(n \in \NNone\). Tällöin
+  \[
+    nf\left(\frac{m}{n}\right) = f\left(n\frac{m}{n}\right) = f(m) = cm.
+  \]
+  Nyt jakamalla puolittain luvulla \(n\) saadaan
+  \[
+    f(q) = cq
+  \]
+  kaikilla \(q \in \QQ\).
+
+  Olkoon \(x \in \RR\) mielivaltainen. Rationaalilukujen tiheyden nojalla
+  on olemassa lukujono \((q_k)\), missä \(q_k \in \QQ\) kaikilla
+  \(k \in \NNone\) ja \(q_k \to x\), kun \(k \to \infty\).
+  Lemman \ref{lem:cont-seq} nojalla
+  \[
+    f(x) = \lim_{k \to \infty} f(q_k) = \lim_{k \to \infty} cq_k = cx.
+  \]
+  Olemme siis tässä vaiheessa osoittaneet, että kaikki jatkuvat ja
+  ehdon \ref{eq:add} täyttävät funktiot ovat muotoa \(f(x) = cx\),
+  missä \(c = f(1) \in \RR\).
+
+  On siis vielä näytettävä, että funktiot \(f \colon \RR \to \RR\),
+  \(f(x) = cx\),
+  missä \(c \in \RR\) ovat jatkuvia ja toteuttavat ehdon \ref{eq:add}.
+
+  Olkoon \(\varepsilon > 0\) ja \(t \in \RR\). Valitaan \(\delta =
+  \frac{\varepsilon}{\abs{c} + 1} > 0\). Tällöin
+  \[
+    \begin{aligned}
+      \abs{f(x) - f(t)} &= \abs{c(x - t)}  \\
+      &= \abs{c}\abs{x - t} \\
+      &\leq \frac{\varepsilon\abs{c}}{\abs{c} + 1} \\
+      &< \varepsilon
+    \end{aligned}
+  \]
+  kaikilla \(x \in \RR\) joilla \(\abs{x - t} < \delta\). Täten \(f\) on jatkuva
+  pisteessä \(t \in \RR\). Koska \(t\) oli mielivaltainen, \(f\) on jatkuva.
+  Lisäksi,
+  \[
+    f(x + y) = c(x + y) = cx + cy = f(x) + f(y)
+  \]
+  kaikilla \(x,y \in \RR\), joten \(f\) täyttää myös ehdon \ref{eq:add}.
+
+  Olemme nyt osoittaneet, että jatkuvat, ehdon \ref{eq:add} täyttävät
+  funktiot ovat täsmälleen reaalisen vektoriavaruuden \(\RR\)
+  lineaariset operaattorit
+  eli funktiot \(f \colon \RR \to \RR\), \(f(x) = cx\), missä \(c \in \RR\).
+
+  Tutkitaan seuraavaksi ehdon \ref{eq:add} täyttävien funktioiden \(f\)
+  käyttäytymistä ilman oletuksia jatkuvuudesta. Edellisen perusteella
+  tiedetään, että ehdon \ref{eq:add} täyttävät funktiot ovat muotoa
+  \[
+    f(q) = cq
+  \]
+  kaikilla \(q \in \QQ\). Tämän laajentaminen reaaliluvuille käytti funktion
+  \(f\) jatkuvuutta.
+
+  Olkoon \(x \in \RR\), \(m \in \ZZ\) ja \(n \in \NNone\). Edellisen ja
+  ehdon \ref{eq:add} nojalla
+  \[
+    nf\left(\frac{m}{n}x\right) = f(mx) = mf(x),
+  \]
+  joten \(f(qx) = qf(x)\) kaikilla \(q \in \QQ\) ja \(x \in \RR\).
+  Täten additiivisuuden ja yhtälön \(f(qx) = qf(x)\) nojalla
+  \(f\) on \(\QQ\)-lineaarinen.
+
+  Olemme siis osoittaneet, että jokainen ehdon \eqref{eq:add} täyttävä
+  funktio on \(\QQ\)-lineaarinen. Lisäksi jokainen \(\QQ\)-lineaarinen
+  kuvaus on additiivinen, joten ilman jatkuvuusoletusta ratkaisut ovat
+  täsmälleen \(\QQ\)-lineaariset kuvaukset \(\RR \to \RR\).
+
+  Näytetään vielä, että tällainen kuvaus ei välttämättä ole jatkuva.
+  Tarkastellaan reaalilukuja vektoriavaruutena rationaalilukujen yli.
+  Koska \(\sqrt{2}\) on irrationaalinen, luvut \(1\) ja \(\sqrt{2}\)
+  ovat lineaarisesti riippumattomia yli \(\QQ\):n. Kannanlaajennuslauseen
+  nojalla joukko \(\set{1,\sqrt{2}}\) voidaan täydentää tämän
+  vektoriavaruuden kannaksi \(\mathcal{B}\). Asetetaan
+  \[
+    f(\sqrt{2}) = 1, \qquad
+    f(b) = 0 \quad \text{kaikilla } b \in \mathcal{B} \setminus \set{\sqrt{2}}.
+  \]
+  Kannalla määritelty kuvaus voidaan laajentaa yksikäsitteisesti
+  \(\QQ\)-lineaariseksi kuvaukseksi \(f\colon \RR \to \RR\).
+  Täten \(f\) täyttää ehdon \eqref{eq:add}.
+
+  Jos \(f\) olisi jatkuva, aiemmin osoitetun perusteella olisi
+  \[
+    f(x) = f(1)x = 0
+  \]
+  kaikilla \(x \in \RR\). Tämä on ristiriidassa ehdon
+  \(f(\sqrt{2}) = 1\) kanssa. Täten \(f\) ei ole jatkuva.
+\end{solution}
+
+\begin{remark}
+  Edellä käytettiin ilman todistusta kannanlaajennuslausetta sekä sitä,
+  että kannalla määritelty kuvaus voidaan laajentaa yksikäsitteisesti
+  lineaariseksi kuvaukseksi.
+\end{remark}
+
+\end{document}
