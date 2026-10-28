@@ -179,6 +179,34 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Kongruenssin määritelmästä saadaan
+      \[
+        d(a - b) = \ell n
+      \]
+      jollain \(\ell \in \ZZ\). Koska \(d > 0\), voidaan jakaa luvulla
+      \(d\), jolloin
+      \[
+        a - b = \ell \frac{n}{d}.
+      \]
+      Koska \(d \mid n\) ja \(d, n > 0\), luku \(n/d\) on positiivinen
+      kokonaisluku. Siis
+      \[
+        \frac{n}{d} \mid a - b.
+      \]
+      Toisin sanoen
+      \[
+        a \equiv b \pmod{\frac{n}{d}}.
+      \]
+    \item Olkoon \(a = 4\), \(b = 2\), \(d = 2\) ja \(n = 4\). Tällöin
+      \(ad = 8 \equiv 0 \pmod{4}\) ja \(bd = 4 \equiv 0 \pmod{4}\), mutta
+      \(a = 4 \equiv 0 \pmod{4}\) ja \(b = 2 \equiv 2 \pmod{4}\). Väite
+      ei siis päde aina. Kyseinen väite pätee joss \(syt(d, n) = 1\).
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}
   Olkoon luvun \(n\) kymmenjärjestelmäesitys
   \[
