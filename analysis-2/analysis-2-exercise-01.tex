@@ -111,6 +111,25 @@
   \(g(x) = \abs{f(x)}\). Osoita, että \(g\) on jatkuva.
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(t \in \RR\) mielivaltainen ja \(\varepsilon > 0\).
+  Koska \(f\) on jatkuva pisteessä \(t\), on olemassa \(\delta > 0\) siten, että
+  \[
+    \abs{f(x) - f(t)} < \varepsilon
+  \]
+  kaikilla \(x \in \RR\), joilla \(\abs{x - t} < \delta\).
+  Tällöin
+  \[
+    \begin{aligned}
+      \abs{g(x) - g(t)} &= \abs*{\abs{f(x)} - \abs{f(t)}} \\
+      &\leq \abs{f(x) - f(t)} < \varepsilon
+    \end{aligned}
+  \]
+  kaikilla \(x \in \RR\), joilla \(\abs{x - t} < \delta\).
+  Siis \(g\) on jatkuva pisteessä \(t\). Koska \(t \in \RR\) oli mielivaltainen,
+  \(g\) on jatkuva.
+\end{solution}
+
 \begin{exercise}
   Olkoon \(f\colon \RR \setminus \set{0} \to \RR\),
   \(f(x) = \frac{1}{x}\). Osoita määritelmän perusteella, että funktio
