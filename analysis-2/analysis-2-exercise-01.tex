@@ -86,6 +86,25 @@
   suppenee kohti lukua \(f(x)\).
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(\varepsilon > 0\). Koska \(f\) on jatkuva pisteessä \(x \in (a, b)\),
+  on olemassa \(\delta > 0\) siten, että
+  \[
+    \abs{f(t) - f(x)} < \varepsilon
+  \]
+  kaikilla \(t \in (a, b)\), joilla \(\abs{t - x} < \delta\).
+  Koska \(x_n \to x\), on olemassa \(N \in \NNone\) siten, että
+  \[
+    \abs{x_n - x} < \delta,
+  \]
+  kun \(n > N\). Koska lisäksi \(x_n \in (a, b)\) kaikilla \(n \in
+  \NNone\), saadaan
+  \[
+    \abs{f(x_n) - f(x)} < \varepsilon,
+  \]
+  kun \(n > N\). Siis \(\lim_{n \to \infty} f(x_n) = f(x)\).
+\end{solution}
+
 \begin{exercise}
   Olkoon \(f\colon \RR \to \RR\) jatkuva.
   Määritellään funktio \(g\colon \RR \to \RR\) asettamalla, että
