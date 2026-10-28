@@ -24,6 +24,53 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  Olkoot \(a, b, c \in \ZZ\) ja \(n \in \ZZ_+\).
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Oletetaan, että \(a \mid b\) ja \(a \mid c\). Tällöin on olemassa
+      \(k, \ell \in \ZZ\) siten, että
+      \[
+        b = ka, \quad c = \ell a.
+      \]
+      Tällöin
+      \[
+        b + c = ka + \ell a = a(k + \ell),
+      \]
+      eli \(a \mid b + c\). Olkoon \(x, y \in \ZZ\). Tällöin
+      \[
+        xb + yc = a(xk + y\ell),
+      \]
+      eli \(a \mid xb + yc\).
+    \item Oletetaan, että \(a \mid b\) ja \(b \mid c\). Tällöin on olemassa
+      \(k, \ell \in \ZZ\) siten, että
+      \[
+        b = ka, \quad c = \ell b.
+      \]
+      Tällöin
+      \[
+        c = \ell b = \ell(ka) = a(\ell k),
+      \]
+      eli \(a \mid c\).
+    \item Oletetaan, että \(a \equiv b \pmod{n}\) ja \(b \equiv c \pmod{n}\).
+      Kongruenssin määritelmän mukaan
+      \[
+        n \mid a - b, \quad n \mid b - c.
+      \]
+      Täten on olemassa \(k, \ell \in \ZZ\) siten, että
+      \[
+        a - b = kn, \quad b - c = \ell n.
+      \]
+      Tällöin
+      \[
+        (a - b) + (b - c) = a - c = n(k + \ell),
+      \]
+      eli \(n \mid a - c\). Siis
+      \[
+        a \equiv c \pmod{n}.
+      \]
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}
   Todista, että luku \(20 \cdot 14^k + 6\) on jaollinen luvulla \(13\)
   kaikilla \(k \in \ZZ_+\)
