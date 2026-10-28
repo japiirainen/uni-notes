@@ -133,6 +133,25 @@
   \(n! = 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (n - 1) \cdot n\).)
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(k \in \ZZ_+\) ja \(f \colon \NN \to \NN\),
+  \[
+    f(n) = (k + 1)! + 2 + n.
+  \]
+  Kun \(0 \leq n < k\), pätee \(2 \leq n + 2 \leq k + 1\), joten
+  \(n + 2 \mid (k + 1)!\). Näin ollen
+  \[
+    n + 2 \mid f(n).
+  \]
+  Koska \(1 < n + 2 < f(n)\), luku \(f(n)\) ei ole alkuluku.
+  Luvut
+  \[
+    f(0), f(1), \ldots, f(k-1)
+  \]
+  ovat siis \(k\) peräkkäistä positiivista kokonaislukua, joista
+  yksikään ei ole alkuluku.
+\end{solution}
+
 \begin{exercise}
   Mikä on luvun \(7\) potenssi luvun \(100!\) alkutekijähajotelmassa?
 \end{exercise}
