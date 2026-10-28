@@ -176,6 +176,8 @@
   mielivaltainen, \(f\) on jatkuva.
 \end{solution}
 
+\pagebreak
+
 \begin{exercise}
   \leavevmode\par
   \begin{enumerate}[label=(\alph*), nosep]
@@ -189,5 +191,50 @@
       (a)-kohdan ehdot mutta ei saa jokaisessa pisteessä arvoa \(0\).
   \end{enumerate}
 \end{exercise}
+
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Koska \(f(x + y) = f(x) + f(y)\) kaikilla \(x,y \in \RR\), niin
+      \[
+        f(x) = f((x - y) + y) = f(x - y) + f(y),
+      \]
+      eli \(f(x - y) = f(x) - f(y)\). Lisäksi
+      \[
+        f(0) = f(0 + 0) = 2f(0),
+      \]
+      eli \(f(0) = 0\).
+
+      Olkoon \(y \in \RR\) mielivaltainen ja \(\varepsilon > 0\). Koska
+      \(f\) on jatkuva origossa, on olemassa sellainen \(\delta > 0\), että
+      \[
+        \abs{f(t) - f(0)} < \varepsilon
+      \]
+      kaikilla \(t \in \RR\), joilla \(\abs{t} < \delta\).
+      Soveltamalla tätä lukuun \(t = x - y\) saadaan
+      \[
+        \begin{aligned}
+          \abs{f(x) - f(y)} &= \abs{f(x - y)} \\
+          &= \abs{f(x - y) - f(0)} \\
+          &< \varepsilon
+        \end{aligned}
+      \]
+      kaikilla \(x \in \RR\), joilla \(\abs{x - y} < \delta\).
+      Siis \(f\) on jatkuva pisteessä \(y\). Koska \(y \in \RR\) oli
+      mielivaltainen, \(f\) on jatkuva kaikkialla.
+    \item Olkoon \(g \colon \RR \to \RR\), \(g(x) = x\). Tällöin
+      \[
+        g(x + y) = x + y = g(x) + g(y)
+      \]
+      kaikilla \(x,y \in \RR\). Olkoon \(\varepsilon > 0\).
+      Valitaan \(\delta = \varepsilon\). Tällöin
+      \[
+        \abs{g(x) - g(0)} = \abs{x} < \varepsilon
+      \]
+      kaikilla \(x \in \RR\), joilla \(\abs{x} < \delta\). Siis \(g\) on
+      jatkuva origossa ja täyttää kohdan (a) ehdot. Lisäksi
+      \(g(1) = 1 \neq 0\), joten \(g\) ei ole kaikkialla \(0\).
+  \end{enumerate}
+\end{solution}
 
 \end{document}
