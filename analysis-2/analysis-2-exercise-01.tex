@@ -24,10 +24,34 @@
   Osoita jatkuvuuden \((\varepsilon,\delta)\)-määritelmän
   perusteella, että funktio \(f\)
   \begin{enumerate}[label=(\alph*), nosep]
-    \item on jatkuva pistessä \(x = -2\),
+    \item on jatkuva pisteessä \(x = -2\),
     \item ei ole jatkuva pisteessä \(x = 2\).
   \end{enumerate}
 \end{exercise}
+
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Olkoon \(\varepsilon > 0\). Valitaan \(\delta = 1\). Kun
+      \(\abs{x - (-2)} < \delta = 1\), niin \(x \in (-3, -1)\). Täten
+      \[
+        \abs{f(x) - f(-2)} = \abs{1 - 1} = 0 < \varepsilon,
+      \]
+      joten \(f\) on jatkuva pisteessä \(-2\).
+    \item Oletetaan, että \(f\) on jatkuva pisteessä \(2\).
+      Valitaan \(\varepsilon_0 = \frac{1}{2}\). Tällöin on olemassa
+      sellainen \(\delta > 0\), että kaikilla \(x \in \RR\)
+      \[
+        \abs{f(x) - f(2)} < \varepsilon_0 = \frac{1}{2},
+      \]
+      kun \(\abs{x - 2} < \delta\). Olkoon \(t = 2 - \frac{\delta}{2}\). Tällöin
+      \(\abs{t - 2} = \frac{\delta}{2} < \delta\) ja \(t < 2\), joten
+      \[
+        \abs{f(t) - f(2)} = \abs{1 - 2} = 1 > \frac{1}{2} = \varepsilon_0.
+      \]
+      Tämä on ristiriita, joten \(f\) ei ole jatkuva pisteessä \(2\).
+  \end{enumerate}
+\end{solution}
 
 \begin{exercise}
   Olkoon \(f\colon \RR \to \RR\),
@@ -40,6 +64,16 @@
   \]
   Osoita määritelmän perusteella, että funktio \(f\) on jatkuva origossa.
 \end{exercise}
+
+\begin{solution}
+  Olkoon \(\varepsilon > 0\). Valitaan \(\delta = \minset{1, \varepsilon}\).
+  Kun \(\abs{x - 0} < \delta \leq 1\), niin \(\abs{x^2} \leq \abs{x}\).
+  Täten
+  \[
+    \abs{f(x) - f(0)} = \abs{f(x)} \leq \abs{x} < \delta \leq \varepsilon,
+  \]
+  kun \(\abs{x - 0} = \abs{x} < \delta\). Täten \(f\) on jatkuva origossa.
+\end{solution}
 
 \begin{exercise}
   Todista oppikirjan Lause 4.1.7.
