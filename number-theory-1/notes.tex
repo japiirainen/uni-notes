@@ -213,4 +213,256 @@ modulolla. Kongruensseissa yhteen-, vähennys- ja kertolasku sekä
 kokonaislukupotenssit yllä olevin ehdoin toimivat. Jakaminen ei
 yleensä toimi: $2\equiv6\pmod4$, mutta $1\not\equiv3\pmod4$.
 
+\newpage
+\subsection{29.10.2026: alkuluvut ja aritmetiikan peruslause}
+
+\subsubsection{Kertaus: suuren potenssin viimeinen numero}
+Luvun viimeinen numero on sen jakojäännös modulo $10$.
+Koska $3^2=9\equiv-1\pmod{10}$, saadaan
+\[
+  3^{2023}=3(3^2)^{1011}
+  \equiv3(-1)^{1011}=-3\equiv7\pmod{10}.
+\]
+Vaihtoehtoisesti $3^4\equiv1\pmod{10}$ ja $2023=4\cdot505+3$, joten
+$3^{2023}\equiv3^3\equiv7\pmod{10}$.
+\emph{Eksponentin saa tässä supistaa modulo $4$, koska $3^4\equiv1$;
+yleensä eksponenttia ei saa supistaa samalla modulolla kuin kantalukua.}
+
+\subsubsection{Alkuluvut ja alkutekijät}
+\begin{definition}
+  Kokonaisluku $p\ge2$ on \emph{alkuluku}, jos sen ainoat
+  positiiviset tekijät ovat $1$ ja $p$. Kokonaisluku $n\ge2$ on
+  \emph{yhdistetty}, jos se ei ole alkuluku, eli $n=ab$ joillakin
+  kokonaisluvuilla $a,b\ge2$. Alkuluku $p$ on luvun $n$
+  \emph{alkutekijä}, jos $p\mid n$.
+\end{definition}
+Esimerkiksi $2,3,5,7,11$ ovat alkulukuja ja $12=3\cdot4$ on
+yhdistetty. Luku $1$ ei ole alkuluku eikä yhdistetty luku.
+Alkuluvun negatiiviset tekijät ovat $-1$ ja $-p$.
+
+\begin{lemma}[Alkutekijän olemassaolo]
+  Jokaisella kokonaisluvulla $n\ge2$ on alkutekijä.
+\end{lemma}
+\begin{proof}
+  Olkoon $d>1$ luvun $n$ pienin positiivinen tekijä; tällainen on
+  olemassa, koska $n\mid n$. Jos $d=ab$ joillakin $a,b\ge2$, niin
+  $1<a<d$ ja $a\mid n$, mikä on ristiriita minimaalisuuden kanssa.
+  Siis $d$ on alkuluku.
+\end{proof}
+
+\begin{theorem}[Alkulukujen äärettömyys]
+  Alkulukuja on äärettömän monta.
+\end{theorem}
+\begin{proof}
+  Oletetaan, että kaikki alkuluvut ovat $p_1,\ldots,p_k$.
+  Luvulla $N=p_1\cdots p_k+1>1$ on alkutekijä $q$.
+  Jos $q=p_i$ jollakin $i$, niin $q$ jakaa sekä luvun $N$ että
+  tulon $p_1\cdots p_k$ ja siis niiden erotuksen $1$. Tämä on
+  mahdotonta, joten $q$ puuttuu luettelosta. Ristiriita.
+\end{proof}
+Luvun $N$ ei tarvitse itse olla alkuluku. Esimerkiksi
+$2\cdot3\cdot5\cdot7\cdot11\cdot13+1=30031=59\cdot509$.
+Todistus tarvitsee vain yhden luvun $N$ alkutekijän.
+
+\subsubsection{Yksikäsitteisyyden apuväline: Eukleideen lemma}
+Seuraavat apulauseet tekevät aritmetiikan peruslauseen todistuksesta
+itsenäisen: yksikäsitteistä alkutekijähajotelmaa ei oleteta etukäteen.
+
+\begin{lemma}[Bézout'n identiteetti]
+  Olkoot $a,b\in\ZZ$, eivät molemmat nollia. Niiden suurin yhteinen
+  tekijä $d=\syt(a,b)$ voidaan esittää muodossa
+  \[
+    d=ua+vb,\qquad u,v\in\ZZ.
+  \]
+\end{lemma}
+\begin{proof}
+  Valitaan pienin positiivinen luku $d$ muotoa $ua+vb$.
+  Sellainen on olemassa, sillä ainakin toinen luvuista $|a|,|b|$
+  on positiivinen ja tätä muotoa. Jakoyhtälössä $a=qd+r$,
+  $0\le r<d$, myös $r=a-qd$ on lukujen $a,b$ kokonaislukukertoiminen
+  summa. Minimaalisuus pakottaa $r=0$, joten $d\mid a$.
+  Samoin $d\mid b$. Jokainen yhteinen tekijä jakaa luvun $ua+vb=d$,
+  joten $d$ on suurin positiivinen yhteinen tekijä.
+\end{proof}
+
+\begin{lemma}[Eukleideen lemma]
+  Jos $p$ on alkuluku ja $p\mid ab$, niin $p\mid a$ tai $p\mid b$.
+\end{lemma}
+\begin{proof}
+  Jos $p\nmid a$, niin $\syt(p,a)=1$, sillä luvun $p$ ainoat
+  positiiviset tekijät ovat $1$ ja $p$. Bézout'n identiteetillä
+  $up+va=1$ joillakin $u,v\in\ZZ$. Kertomalla luvulla $b$ saadaan
+  $b=upb+vab$. Molemmat oikean puolen termit ovat jaollisia luvulla
+  $p$, joten $p\mid b$.
+\end{proof}
+Toistamalla lemma saadaan: jos $p\mid a_1\cdots a_r$, niin
+$p\mid a_i$ ainakin yhdellä indeksillä $i$.
+Alkulukuoletus on välttämätön: $6\mid2\cdot3$, mutta
+$6\nmid2$ ja $6\nmid3$.
+
+\subsubsection{Aritmetiikan peruslause}
+\begin{theorem}[Aritmetiikan peruslause]
+  Jokainen kokonaisluku $n\ge2$ on alkulukujen tulo.
+  Esitys on tekijöiden järjestystä vaille yksikäsitteinen.
+  Yhdistämällä samat alkuluvut saadaan \emph{kanoninen alkutekijähajotelma}
+  \[
+    \boxed{n=p_1^{\alpha_1}\cdots p_k^{\alpha_k},\qquad
+    p_1<\cdots<p_k,\quad \alpha_i\ge1,}
+  \]
+  missä $p_i$ ovat alkulukuja ja $\alpha_i$ kokonaislukuja.
+  Sekä alkuluvut että niiden eksponentit määräytyvät yksikäsitteisesti.
+\end{theorem}
+\begin{proof}
+  \emph{Olemassaolo:} käytetään vahvaa induktiota luvun $n\ge2$
+  suhteen. Jos $n$ on alkuluku, väite on selvä (erityisesti kun
+  $n=2$). Muuten $n=ab$, missä $2\le a,b<n$. Induktio-oletuksen
+  mukaan $a$ ja $b$ ovat alkulukujen tuloja, joten myös $n$ on.
+
+  \emph{Yksikäsitteisyys:} olkoon
+  $n=p_1\cdots p_r=q_1\cdots q_s$ kaksi alkulukuesitystä,
+  joissa sama alkuluku saa toistua. Koska $p_1\mid q_1\cdots q_s$,
+  Eukleideen lemma antaa $p_1\mid q_j$ jollakin $j$.
+  Alkulukujen vuoksi $p_1=q_j$. Järjestetään tämä tekijä ensimmäiseksi
+  ja supistetaan se puolittain. Toistetaan sama jäljelle jääville
+  tekijöille. Kummaltakaan puolelta ei voi loppua tekijöitä ennen
+  toista, sillä silloin $1$ olisi vähintään yhden alkuluvun tulo.
+  Siis $r=s$ ja tekijät ovat samat kertalukuineen.
+\end{proof}
+
+\paragraph{Esimerkki: hajotelma ja jaollisuus.}
+\[
+  360=36\cdot10=2^3\cdot3^2\cdot5.
+\]
+Sen positiiviset tekijät ovat täsmälleen luvut
+$2^a3^b5^c$, missä $0\le a\le3$, $0\le b\le2$ ja $0\le c\le1$.
+Nimittäin tekijä ja sen osamäärä muodostavat yhdessä luvun $360$
+alkutekijähajotelman; kääntäen näillä eksponenteilla osamäärä on
+$2^{3-a}3^{2-b}5^{1-c}\in\ZZ$.
+Tekijöitä on siis $4\cdot3\cdot2=24$.
+Esimerkiksi $72=2^3\cdot3^2\mid360$, mutta $27=3^3\nmid360$.
+Luku $1$ vastaa tyhjää tuloa. Negatiivisen kokonaisluvun
+$n\le-2$ hajotelma saadaan liittämällä luvun $|n|$ hajotelman eteen $-1$.
+
+\subsubsection{Alkuluvun testaaminen}
+\begin{lemma}[Neliöjuuriraja]
+  Jos $n\ge2$ on yhdistetty, sillä on alkutekijä $p\le\sqrt n$.
+\end{lemma}
+\begin{proof}
+  Kirjoitetaan $n=ab$, missä $2\le a\le b$. Tällöin $a^2\le ab=n$,
+  joten $a\le\sqrt n$. Luvulla $a$ on alkutekijä $p$, ja
+  $p\mid a\mid n$ sekä $p\le a\le\sqrt n$.
+\end{proof}
+Siis luvun $n\ge2$ alkuluvuksi osoittamiseen riittää tarkistaa,
+ettei mikään alkuluku $p\le\sqrt n$ jaa sitä. Raja on suljettu:
+myös $p=\sqrt n$ on tarkistettava, kuten $49=7^2$ osoittaa.
+
+\paragraph{Esimerkkejä.}
+Koska $9<\sqrt{97}<10$, kokeillaan vain alkulukuja $2,3,5,7$.
+Luku $97$ on pariton, sen numeroiden summa on $16$, viimeinen numero
+on $7$, ja $97=7\cdot13+6$. Mikään näistä alkuluvuista ei siis jaa
+lukua $97$, joten se on alkuluku.
+Sen sijaan $221=13\cdot17$ on yhdistetty: alkutekijä $13$ löytyy
+ennen rajaa $\sqrt{221}<15$.
+
+\newpage
+\subsubsection{Lisäesimerkkejä: rivioperaatiot lukuteoriassa}
+Rivioperaatioilla voidaan toteuttaa Eukleideen algoritmi ja samalla
+laskea Bézout'n kertoimet. Tämä täydentää luennon alkulukuteoriaa.
+
+\paragraph{Miksi kokonaislukurivioperaatiot toimivat?}
+Luvuilla $a,b$ ja $a-qb,b$ on samat yhteiset tekijät, kun $q\in\ZZ$:
+\[
+  c\mid a,\ c\mid b
+  \quad\Longleftrightarrow\quad
+  c\mid(a-qb),\ c\mid b.
+\]
+Suunta takaisin seuraa yhtälöstä $a=(a-qb)+qb$.
+Siksi rivien vaihto, merkinvaihto ja operaatio
+$R_i\leftarrow R_i-qR_j$ säilyttävät lukujen suurimman yhteisen tekijän.
+Jakoyhtälön mukainen vähennys tuottaa aina pienemmän epänegatiivisen
+jakojäännöksen. Menettely päättyy nollaan, ja viimeinen positiivinen
+jakojäännös on suurin yhteinen tekijä, koska $\syt(d,0)=d$.
+
+\paragraph{Esimerkki 1: suurin yhteinen tekijä ja Bézout'n kertoimet.}
+Lasketaan $\syt(252,198)$. Rivissä $(r,u,v)$ pidetään voimassa
+$r=252u+198v$; siksi sama operaatio tehdään kaikille kolmelle sarakkeelle.
+\[
+  \begin{array}{c|rr}
+    r&u&v\\\hline
+    252&1&0\\198&0&1
+  \end{array}
+  \xrightarrow{R_1\leftarrow R_1-R_2}
+  \begin{array}{c|rr}
+    54&1&-1\\198&0&1
+  \end{array}
+  \xrightarrow{R_2\leftarrow R_2-3R_1}
+  \begin{array}{c|rr}
+    54&1&-1\\36&-3&4
+  \end{array}
+\]
+\[
+  \xrightarrow{R_1\leftarrow R_1-R_2}
+  \begin{array}{c|rr}
+    18&4&-5\\36&-3&4
+  \end{array}
+  \xrightarrow{R_2\leftarrow R_2-2R_1}
+  \begin{array}{c|rr}
+    18&4&-5\\0&-11&14
+  \end{array}.
+\]
+Siis $\syt(252,198)=18$ ja
+\[
+  \boxed{18=4\cdot252-5\cdot198.}
+\]
+Sama identiteetti ratkaisee kokonaislukuyhtälön $252x+198y=36$:
+kertomalla kahdella saadaan yksi ratkaisu $(x,y)=(8,-10)$.
+Yhtälöllä $252x+198y=10$ ei ole kokonaislukuratkaisua, sillä vasen
+puoli on aina jaollinen luvulla $18$, mutta oikea puoli ei ole.
+
+\paragraph{Esimerkki 2: käänteisluku ja kongruenssin ratkaiseminen.}
+Etsitään luvun $17$ käänteisluku modulo $43$. Nyt rivi $(r,u,v)$
+tarkoittaa yhtälöä $r=43u+17v$.
+\[
+  \begin{array}{c|rr}
+    43&1&0\\17&0&1
+  \end{array}
+  \xrightarrow{R_1\leftarrow R_1-2R_2}
+  \begin{array}{c|rr}
+    9&1&-2\\17&0&1
+  \end{array}
+  \xrightarrow{R_2\leftarrow R_2-R_1}
+  \begin{array}{c|rr}
+    9&1&-2\\8&-1&3
+  \end{array}
+\]
+\[
+  \xrightarrow{R_1\leftarrow R_1-R_2}
+  \begin{array}{c|rr}
+    1&2&-5\\8&-1&3
+  \end{array}.
+\]
+Ensimmäinen rivi antaa $1=2\cdot43-5\cdot17$, joten
+$17(-5)\equiv1\pmod{43}$. Käänteisluku on siis $-5\equiv38$.
+Näin
+\[
+  17x\equiv6\pmod{43}
+  \quad\Longleftrightarrow\quad
+  x\equiv-30\equiv13\pmod{43}.
+\]
+Tarkistus: $17\cdot13=221=5\cdot43+6$.
+
+\paragraph{Huomaa ero tavalliseen rivireduktioon.}
+Suurinta yhteistä tekijää laskettaessa riviä ei saa jakaa mielivaltaisesti:
+esimerkiksi parin $(6,10)$ syt on $2$, mutta parin $(3,10)$ syt on $1$.
+Kongruenssiyhtälössä rivin saa kertoa kertoimella, jolla on käänteisluku
+kyseisen modulon suhteen. Yllä luvulla $17$ jakaminen tarkoitti juuri
+kertomista sen käänteisluvulla $38$ modulo $43$.
+
+\paragraph{Kertauksen ydin.}
+Jokaisella luvulla $n\ge2$ on alkutekijä, ja alkulukuja on äärettömästi.
+Alkutekijähajotelman olemassaolo seuraa vahvasta induktiosta;
+yksikäsitteisyys seuraa Eukleideen lemmasta. Alkuluvun testaamisessa
+riittävät alkulukujakajat neliöjuureen asti. Kokonaislukurivioperaatiot
+antavat syt:n lisäksi konkreettiset Bézout'n kertoimet.
+
 \end{document}
