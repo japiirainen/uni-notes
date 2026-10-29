@@ -214,4 +214,421 @@ mielivaltaista $\delta>0$ ja valitaan siitä riippuva vastaesimerkkipiste
 $x$. Yhden deltan epäonnistuminen ei vielä todista epäjatkuvuutta;
 ehdon on epäonnistuttava jokaisella deltalla.
 
+\newpage
+\subsection{29.10.2026: toispuoleinen jatkuvuus ja jatkuvuuden laskusäännöt}
+
+\subsubsection*{Kertaus ja esimerkki epäjatkuvuudesta}
+
+Sisäpisteessä $x_0$ jatkuvuus tarkoittaa ehtoa
+\[
+  \lim_{x\to x_0}f(x)=f(x_0).
+\]
+Epsilon--delta-muodossa jokaista
+$\varepsilon>0$ kohti on löydettävä $\delta>0$, jolla
+\[
+  x\in A,\quad \abs{x-x_0}<\delta
+  \quad\Longrightarrow\quad \abs{f(x)-f(x_0)}<\varepsilon.
+\]
+Epäjatkuvuuden osoittamiseksi etsitään yksi $\varepsilon_0>0$, jolle
+mikään $\delta>0$ ei toimi.
+
+\begin{example}[Hyppyfunktio]
+  Olkoon $f\colon\RR\to\RR$,
+  \[
+    f(x)=
+    \begin{cases}0,&x<0,\\1,&x\ge0.
+    \end{cases}
+  \]
+  Funktio ei ole jatkuva pisteessä $0$.
+\end{example}
+\begin{proof}
+  Valitaan $\varepsilon_0=\frac12$. Olkoon $\delta>0$ mielivaltainen
+  ja asetetaan $x=-\delta/2$. Tällöin
+  \[
+    \abs{x-0}=\frac{\delta}{2}<\delta,
+    \qquad \abs{f(x)-f(0)}=\abs{0-1}=1>\varepsilon_0.
+  \]
+  Jatkuvuuden ehto ei siis toteudu millään deltalla.
+\end{proof}
+
+\subsubsection*{Perusfunktioiden jatkuvuus määritelmästä}
+
+\begin{example}[Vakiofunktio ja lineaarinen funktio]
+  Vakiofunktio $f(x)=c$ on jatkuva jokaisessa $x_0\in\RR$:
+  kun $\varepsilon>0$, voidaan valita esimerkiksi $\delta=1$, sillä
+  \[
+    \abs{f(x)-f(x_0)}=\abs{c-c}=0<\varepsilon.
+  \]
+  Jos $f(x)=cx$ ja $c\ne0$, valitaan
+  $\delta=\varepsilon/\abs{c}>0$. Kun $\abs{x-x_0}<\delta$, saadaan
+  \[
+    \abs{f(x)-f(x_0)}=\abs{c}\abs{x-x_0}
+    <\abs{c}\delta=\varepsilon.
+  \]
+  Tapaus $c=0$ on jo käsitelty vakiofunktiona. Erityisesti
+  identtinen funktio $x\mapsto x$ on jatkuva.
+\end{example}
+
+\begin{example}[Kuutiofunktio avoimella välillä]
+  Funktio $f\colon(0,1)\to\RR$, $f(x)=x^3$, on jatkuva.
+  Kun $x,x_0\in(0,1)$, erotuksen tekijöihinjako antaa
+  \[
+    \abs{x^3-x_0^3}
+    =\abs{x-x_0}\abs{x^2+xx_0+x_0^2}
+    \le3\abs{x-x_0}.
+  \]
+  Siksi jokaiselle $\varepsilon>0$ riittää
+  $\delta=\varepsilon/3$: jos $x\in(0,1)$ ja
+  $\abs{x-x_0}<\delta$, niin $\abs{x^3-x_0^3}<\varepsilon$.
+  Määrittelyjoukkoon kuulumista ei tarvitse varmistaa deltalla,
+  sillä $x$ valitaan alun perin tästä joukosta.
+\end{example}
+
+\newpage
+\subsubsection*{Vasemmalta ja oikealta jatkuvuus}
+
+\begin{definition}[Toispuoleinen jatkuvuus]
+  Olkoot $f\colon A\to\RR$ ja $x_0\in A$.
+  Jos $(x_0-r,x_0]\subseteq A$ jollakin $r>0$, niin $f$ on
+  \emph{vasemmalta jatkuva} pisteessä $x_0$, kun
+  \[
+    \lim_{x\to x_0^-}f(x)=f(x_0).
+  \]
+  Jos $[x_0,x_0+r)\subseteq A$ jollakin $r>0$, niin $f$ on
+  \emph{oikealta jatkuva} pisteessä $x_0$, kun
+  \[
+    \lim_{x\to x_0^+}f(x)=f(x_0).
+  \]
+\end{definition}
+
+Oikealta jatkuvuuden epsilon--delta-ehto on: jokaista
+$\varepsilon>0$ kohti on $\delta>0$ siten, että kaikilla $x\in A$
+\[
+  0<x-x_0<\delta\quad\Longrightarrow\quad
+  \abs{f(x)-f(x_0)}<\varepsilon.
+\]
+Vasemmalta jatkuvuudessa lähtöehto on $0<x_0-x<\delta$.
+Pisteen $x=x_0$ voi myös sisällyttää ehtoihin, koska silloin
+funktion arvojen erotus on nolla.
+
+\begin{example}
+  Olkoon
+  \[
+    f(x)=
+    \begin{cases}x^2,&x<0,\\x^2+1,&x\ge0.
+    \end{cases}
+  \]
+  Tällöin $f(0)=1$. Funktio on oikealta jatkuva mutta ei
+  vasemmalta jatkuva pisteessä $0$.
+\end{example}
+\begin{solution}
+  Kun $\varepsilon>0$, valinta $\delta=\sqrt{\varepsilon}$ antaa
+  $0<x<\delta\Rightarrow\abs{f(x)-f(0)}=x^2<\varepsilon$.
+  Siis $f$ on oikealta jatkuva. Samalla arviolla
+  $-\delta<x<0\Rightarrow\abs{f(x)-0}=x^2<\varepsilon$, joten
+  vasemmanpuoleinen raja-arvo on $0\ne1=f(0)$.
+  Funktio ei siis ole vasemmalta jatkuva.
+\end{solution}
+
+\begin{theorem}[Jatkuvuus ja toispuoleinen jatkuvuus]
+  Oletetaan, että $(x_0-r,x_0+r)\subseteq A$ jollakin $r>0$.
+  Funktio $f\colon A\to\RR$ on jatkuva pisteessä $x_0$ täsmälleen
+  silloin, kun se on sekä vasemmalta että oikealta jatkuva siinä.
+\end{theorem}
+\begin{proof}
+  Jos $f$ on jatkuva pisteessä $x_0$, jatkuvuuden ehdon toteuttava
+  $\delta$ toimii myös silloin, kun $x$ rajoitetaan kummalle tahansa
+  puolelle pistettä $x_0$. Siis $f$ on jatkuva molemmilta puolilta.
+
+  Oletetaan kääntäen toispuoleiset jatkuvuudet ja kiinnitetään
+  $\varepsilon>0$. Valitaan niiden perusteella $\delta_->0$ ja
+  $\delta_+>0$ siten, että $\abs{f(x)-f(x_0)}<\varepsilon$, kun
+  $x_0-\delta_-<x<x_0$ tai $x_0<x<x_0+\delta_+$.
+  Asetetaan $\delta=\min\{\delta_-,\delta_+\}$.
+  Jos $\abs{x-x_0}<\delta$ ja $x\ne x_0$, toinen näistä ehdoista
+  toteutuu. Jos $x=x_0$, erotus on nolla. Näin $\delta$ toteuttaa
+  kaksipuolisen jatkuvuuden ehdon.
+\end{proof}
+
+\newpage
+\subsubsection*{Jatkuvuus joukossa ja välin päätepisteissä}
+
+\begin{definition}[Jatkuvuus välillä]
+  Funktio on \emph{jatkuva avoimella välillä} $(a,b)$, jos se on
+  jatkuva jokaisessa välin pisteessä. Funktio on
+  \emph{jatkuva suljetulla välillä} $[a,b]$, jos se on
+  \begin{itemize}
+    \item jatkuva jokaisessa sisäpisteessä $x\in(a,b)$,
+    \item oikealta jatkuva pisteessä $a$ ja
+    \item vasemmalta jatkuva pisteessä $b$.
+  \end{itemize}
+  Puoliavoimella välillä tarkistetaan vastaavasti vain mukana
+  olevan päätepisteen jatkuvuus välin sisältä päin.
+\end{definition}
+
+\begin{definition}[Jatkuvuus joukossa]
+  Funktio $f\colon A\to\RR$ on \emph{jatkuva}, jos jokaista
+  $x_0\in A$ ja $\varepsilon>0$ kohti on olemassa $\delta>0$, jolla
+  \[
+    x\in A,\quad\abs{x-x_0}<\delta
+    \quad\Longrightarrow\quad\abs{f(x)-f(x_0)}<\varepsilon.
+  \]
+  Jatkuvuus osajoukossa $E\subseteq A$ tarkoittaa rajoittuman
+  $f|_E\colon E\to\RR$ jatkuvuutta: tällöin sekä $x_0$ että $x$
+  valitaan joukosta $E$.
+\end{definition}
+
+Tämä määritelmä toimii myös muille joukoille kuin väleille.
+Välillä se antaa juuri edellä kuvatut ehdot: sisäpistettä voidaan
+lähestyä molemmilta puolilta, mutta päätepistettä vain välin sisältä.
+Suljetun välin vasemmassa päätepisteessä $a$ ehto
+$x\in[a,b]$ ja $\abs{x-a}<\delta$ tarkoittaa $a\le x<a+\delta$;
+oikeassa päätepisteessä saadaan vastaavasti $b-\delta<x\le b$.
+
+\begin{example}[Kuutiofunktio puoliavoimella välillä]
+  Funktio $f\colon[0,1)\to\RR$, $f(x)=x^3$, on jatkuva.
+  Edellä saatu arvio $\abs{x^3-x_0^3}\le3\abs{x-x_0}$ pätee
+  myös kaikille $x,x_0\in[0,1)$. Valinta $\delta=\varepsilon/3$
+  todistaa siis jatkuvuuden samalla kertaa sekä sisäpisteissä
+  että päätepisteessä $0$. Piste $1$ ei kuulu määrittelyjoukkoon.
+\end{example}
+
+\begin{example}[Määrittelyjoukon merkitys]
+  Olkoon $f\colon\RR\setminus\{0\}\to\RR$,
+  \[
+    f(x)=
+    \begin{cases}-1,&x<0,\\1,&x>0.
+    \end{cases}
+  \]
+  Funktio on jatkuva. Nimittäin kun $x_0\ne0$ ja
+  $\varepsilon>0$, valitaan $\delta=\abs{x_0}>0$.
+  Jos $\abs{x-x_0}<\delta$, niin $x$ ja $x_0$ ovat samanmerkkisiä,
+  joten
+  \[
+    \abs{f(x)-f(x_0)}=0<\varepsilon.
+  \]
+  Kuvaajan kaksi erillistä osaa eivät estä jatkuvuutta:
+  $0$ ei kuulu funktion määrittelyjoukkoon.
+\end{example}
+
+\newpage
+\subsubsection*{Summien, tulojen ja osamäärien jatkuvuus}
+
+\begin{theorem}[Jatkuvuuden laskusäännöt]
+  Olkoot $f,g\colon A\to\RR$ jatkuvia sisäpisteessä $x_0$.
+  Tällöin $f+g$ ja $fg$ ovat jatkuvia pisteessä $x_0$.
+  Jos lisäksi $g(x_0)\ne0$, niin myös $f/g$ on jatkuva
+  pisteessä $x_0$.
+\end{theorem}
+\begin{proof}
+  Merkitään $a=f(x_0)$ ja $b=g(x_0)$ ja kiinnitetään
+  $\varepsilon>0$. Kaikissa seuraavissa arvioissa $x\in A$.
+
+  \smallskip
+  \noindent\textbf{Summa.}
+  Jatkuvuuksien nojalla on $\delta_f,\delta_g>0$ siten, että
+  \[
+    \abs{x-x_0}<\delta_f\Rightarrow\abs{f(x)-a}<\varepsilon/2,
+    \qquad
+    \abs{x-x_0}<\delta_g\Rightarrow\abs{g(x)-b}<\varepsilon/2.
+  \]
+  Kun $\abs{x-x_0}<\min\{\delta_f,\delta_g\}$, kolmioepäyhtälö antaa
+  \[
+    \abs{(f(x)+g(x))-(a+b)}
+    \le\abs{f(x)-a}+\abs{g(x)-b}<\varepsilon.
+  \]
+
+  \smallskip
+  \noindent\textbf{Tulo.}
+  Jatkuvuuksien nojalla voidaan valita yhteinen $\delta>0$ siten,
+  että ehdosta $\abs{x-x_0}<\delta$ seuraa
+  \[
+    \abs{f(x)-a}<\min\left\{1,\frac{\varepsilon}{2(\abs{b}+1)}\right\},
+    \qquad
+    \abs{g(x)-b}<\frac{\varepsilon}{2(\abs{a}+1)}.
+  \]
+  Tällöin $\abs{f(x)}\le\abs{a}+\abs{f(x)-a}<\abs{a}+1$ ja
+  \begin{align*}
+    \abs{f(x)g(x)-ab}
+    &=\abs{f(x)(g(x)-b)+b(f(x)-a)}\\
+    &\le\abs{f(x)}\abs{g(x)-b}+\abs{b}\abs{f(x)-a}\\
+    &<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.
+  \end{align*}
+
+  \smallskip
+  \noindent\textbf{Osamäärä.}
+  Oletetaan $b\ne0$. Osoitetaan ensin funktion $1/g$ jatkuvuus.
+  Valitaan $\delta>0$ siten, että ehdosta $\abs{x-x_0}<\delta$ seuraa
+  \[
+    \abs{g(x)-b}<\min\left\{\frac{\abs{b}}2,
+    \frac{\varepsilon\abs{b}^2}{2}\right\}.
+  \]
+  Käänteinen kolmioepäyhtälö antaa
+  $\abs{g(x)}\ge\abs{b}-\abs{g(x)-b}>\abs{b}/2>0$, joten
+  $1/g$ on määritelty tässä ympäristössä ja
+  \[
+    \left|\frac1{g(x)}-\frac1b\right|
+    =\frac{\abs{g(x)-b}}{\abs{g(x)}\abs{b}}
+    \le\frac{2\abs{g(x)-b}}{\abs{b}^2}<\varepsilon.
+  \]
+  Siis $1/g$ on jatkuva pisteessä $x_0$, ja jo todistetun
+  tulosäännön mukaan myös $f/g=f\cdot(1/g)$ on jatkuva siinä.
+\end{proof}
+
+Erityisesti $-f=(-1)f$ on jatkuva, jos $f$ on jatkuva.
+Samoin jatkuvien funktioiden erotukset, vakiokerrannaiset sekä
+äärelliset summat ja tulot ovat jatkuvia.
+
+\newpage
+\subsubsection*{Potenssit ja polynomit}
+
+\begin{theorem}[Potenssifunktioiden jatkuvuus]
+  Funktio $x\mapsto x^n$ on jatkuva koko reaalilukujoukossa
+  jokaisella positiivisella kokonaisluvulla $n$.
+\end{theorem}
+\begin{proof}
+  Todistetaan induktiolla. Kun $n=1$, väite on edellä osoitettu
+  identtisen funktion jatkuvuus. Jos $x\mapsto x^n$ on jatkuva,
+  niin $x\mapsto x^{n+1}=x\cdot x^n$ on kahden jatkuvan funktion
+  tulona jatkuva. Induktioperiaate antaa väitteen kaikille $n\ge1$.
+  Myös vakiopolynomi $x\mapsto1$ on jatkuva.
+\end{proof}
+
+\begin{theorem}[Polynomien jatkuvuus]
+  Jokainen polynomifunktio $P\colon\RR\to\RR$ on jatkuva.
+\end{theorem}
+\begin{proof}
+  Kirjoitetaan
+  \[
+    P(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0.
+  \]
+  Potenssifunktiot ja vakiofunktiot ovat jatkuvia.
+  Siis jokainen termi on jatkuva, ja äärellisen summan jatkuvuus
+  antaa väitteen.
+\end{proof}
+
+\begin{corollary}
+  Rationaalifunktio $P/Q$, missä $P$ ja $Q$ ovat polynomeja,
+  on jatkuva joukossa $\{x\in\RR:Q(x)\ne0\}$.
+\end{corollary}
+\begin{proof}
+  Olkoon $x_0$ mikä tahansa nimittäjän nollakohdista eroava piste.
+  Polynomit $P$ ja $Q$ ovat jatkuvia pisteessä $x_0$, ja
+  $Q(x_0)\ne0$. Osamääräsäännön mukaan $P/Q$ on jatkuva siinä.
+  Koska $x_0$ oli mielivaltainen, väite pätee koko määrittelyjoukossa.
+\end{proof}
+
+\medskip
+\noindent\textbf{Todistusten työnjako.}
+Epsilon--delta-määritelmällä rakennetaan perustulokset.
+Laskusäännöillä niistä saadaan laajoja funktioluokkia ilman,
+että jokaiselle lausekkeelle etsitään erikseen delta.
+
+\subsubsection*{Yhdistetyn funktion jatkuvuus}
+
+\begin{theorem}[Yhdistetyn funktion jatkuvuus]
+  Olkoot $A,B\subseteq\RR$, $f\colon A\to B$ ja $g\colon B\to\RR$.
+  Jos $f$ on jatkuva pisteessä $x_0\in A$ ja $g$ on jatkuva
+  pisteessä $f(x_0)$, niin $g\circ f$ on jatkuva pisteessä $x_0$.
+\end{theorem}
+\begin{proof}
+  Olkoon $\varepsilon>0$.
+  Koska $g$ on jatkuva pisteessä $f(x_0)$, on olemassa $\eta>0$
+  siten, että kaikilla $y\in B$
+  \[
+    \abs{y-f(x_0)}<\eta
+    \quad\Longrightarrow\quad
+    \abs{g(y)-g(f(x_0))}<\varepsilon.
+  \]
+  Koska $f$ on jatkuva pisteessä $x_0$, tätä lukua $\eta$ kohti
+  on olemassa $\delta>0$ siten, että kaikilla $x\in A$
+  \[
+    \abs{x-x_0}<\delta
+    \quad\Longrightarrow\quad
+    \abs{f(x)-f(x_0)}<\eta.
+  \]
+  Asettamalla ensimmäiseen ehtoon $y=f(x)$ saadaan
+  \[
+    \abs{x-x_0}<\delta
+    \quad\Longrightarrow\quad
+    \abs{g(f(x))-g(f(x_0))}<\varepsilon.
+  \]
+  Tämä on funktion $g\circ f$ jatkuvuuden ehto.
+\end{proof}
+
+Ulomman funktion jatkuvuus määrää ensin välivaiheen tarkkuuden
+$\eta$; sisemmän funktion jatkuvuus antaa sitten sitä vastaavan $\delta$:n.
+
+\begin{example}[Laskusäännöt ja yhdistäminen yhdessä]
+  Funktio
+  \[
+    F\colon\RR\to\RR,\qquad
+    F(x)=\left(\frac{5x^4+3x+1}{(x+1)^2+1}\right)^4
+  \]
+  on jatkuva.
+\end{example}
+\begin{solution}
+  Osoittaja ja nimittäjä ovat polynomeja, ja
+  $(x+1)^2+1\ge1>0$ kaikilla $x$. Niiden osamäärä on siis jatkuva
+  koko joukossa $\RR$. Yhdistäminen jatkuvan funktion $t\mapsto t^4$
+  kanssa säilyttää jatkuvuuden.
+\end{solution}
+
+\newpage
+\subsubsection*{Paloittain jatkuvuus}
+
+\begin{definition}[Paloittain jatkuva funktio]
+  Funktio $f\colon(a,b)\to\RR$ on \emph{paloittain jatkuva},
+  jos on olemassa äärellinen joukko
+  $\{x_1,\ldots,x_n\}\subset(a,b)$ siten, että
+  \begin{itemize}
+    \item $f$ on jatkuva joukossa $(a,b)\setminus\{x_1,\ldots,x_n\}$ ja
+    \item molemmat toispuoleiset raja-arvot
+      $\lim_{x\to x_i^-}f(x)$ ja $\lim_{x\to x_i^+}f(x)$
+      ovat olemassa ja äärellisiä jokaisella $i$.
+  \end{itemize}
+  Suljetulla välillä vaaditaan vastaavasti päätepisteissä
+  äärelliset raja-arvot välin sisältä päin.
+\end{definition}
+
+\begin{remark}
+  Raja-arvojen ei tarvitse olla keskenään samat eikä niiden tarvitse
+  olla yhtä suuria kuin $f(x_i)$. Äärellinen määrä hyppyjä tai
+  poistuvia epäjatkuvuuksia on siis sallittu. Pelkkä jatkuvuus
+  äärellisen joukon ulkopuolella ei riitä: myös toispuoleisten
+  raja-arvojen olemassaolo ja äärellisyys on tarkistettava.
+\end{remark}
+
+\begin{example}
+  Olkoon $f\colon(-2,2)\to\RR$,
+  \[
+    f(x)=
+    \begin{cases}
+      -1,&-2<x<-1,\\
+      1,&-1\le x\le1,\\
+      x+1,&1<x<2.
+    \end{cases}
+  \]
+  Funktio on paloittain jatkuva.
+\end{example}
+\begin{solution}
+  Väleillä $(-2,-1)$ ja $(-1,1)$ funktio on vakio, ja välillä
+  $(1,2)$ se on polynomi $x+1$. Siis se on jatkuva joukon
+  $\{-1,1\}$ ulkopuolella. Liitoskohtien tiedot ovat
+  \[
+    \begin{array}{c|ccc}
+      x_i & \displaystyle\lim_{x\to x_i^-}f(x)
+      & f(x_i) & \displaystyle\lim_{x\to x_i^+}f(x)\\[2pt]
+      \hline
+      -1 & -1 & 1 & 1\\
+      1 &  1 & 1 & 2
+    \end{array}
+  \]
+  Kaikki neljä toispuoleista raja-arvoa ovat äärellisiä, joten
+  $f$ on paloittain jatkuva. Kummassakaan liitoskohdassa $f$ ei
+  ole jatkuva, koska vasen ja oikea raja-arvo eroavat toisistaan.
+  Se on kuitenkin oikealta jatkuva pisteessä $-1$ ja vasemmalta
+  jatkuva pisteessä $1$.
+\end{solution}
+
 \end{document}
