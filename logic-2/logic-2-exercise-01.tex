@@ -1,0 +1,124 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Johdatus logiikkaan II\\Harjoituksen 1 ratkaisut}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Johdatus logiikkaan II}{Harjoituksen 1 ratkaisut}
+
+\begin{exercise}
+  Mikä aakkosto kuuluu mihinkin malliin? Mikä on jäljelle jäävän
+  mallin aakkosto?
+  \[
+    L_1 = \{P_1, P_2, c_0\},\qquad
+    L_2 = \{P_3, P_8\},\qquad
+    L_3 = \{R_0, c_0\}.
+  \]
+  \begin{center}
+    \includegraphics[width=\linewidth]{figures/exercise-01-models.pdf}
+  \end{center}
+\end{exercise}
+
+\begin{exercise}
+  Anna esimerkki \(L\)-mallista, kun
+  \begin{enumerate}[label=(\alph*)]
+    \item \(L = \{R\}\),
+    \item \(L = \{P, R\}\),
+    \item \(L = \{R_0, R_1, c_0\}\),
+    \item \(L = \{P, c\}\),
+    \item \(L = \varnothing\).
+  \end{enumerate}
+  Tässä \(P\) on aina yksipaikkainen ja \(R\) tai \(R_i\) kaksipaikkainen
+  relaatiosymboli.
+\end{exercise}
+
+\begin{exercise}
+  Olkoon \(\mathcal M\) seuraava malli:
+  \begin{center}
+    \includegraphics[width=0.5\linewidth]{figures/exercise-01-model.pdf}
+  \end{center}
+  \begin{enumerate}[label=(\alph*)]
+    \item Minkä aakkoston malli \(\mathcal M\) on?
+    \item Mikä on \(\operatorname{dom}(\mathcal M)\)?
+    \item Mitkä ovat aakkoston symbolien tulkinnat?
+  \end{enumerate}
+  Ovatko vastaukset yksikäsitteiset?
+\end{exercise}
+
+\begin{exercise}
+  Anna aakkoston \(\{P_0, P_1, P_2\}\) malli, jossa predikaatit jakavat mallin
+  universumin kuuteen erilliseen, epätyhjään osaan (\(P_i\) ovat yksipaikkaisia
+  predikaattisymboleita).
+\end{exercise}
+
+\begin{exercise}
+  Olkoon \(L = \{P_0, c_0\}\). Anna esimerkki \(L\)-malleista \(\mathcal M\)
+  ja \(\mathcal M'\), s.e. kaikki seuraavat pätevät:
+  \begin{itemize}
+    \item \(\operatorname{dom}(\mathcal M) \ne
+      \operatorname{dom}(\mathcal M')\),
+    \item \(P_0^{\mathcal M} = P_0^{\mathcal M'}\),
+    \item \(c_0^{\mathcal M} \in P_0^{\mathcal M}\), mutta
+      \(c_0^{\mathcal M'} \notin P_0^{\mathcal M'}\).
+  \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+  Tarkastellaan muotoa
+  \[
+    \mathcal M = (X, \{(0,1), (1,1), (2,0)\}, (0,1))
+  \]
+  olevaa mallia. Anna esimerkki joukosta \(X\) ja aakkostosta \(L\), joilla
+  \(\mathcal M\) on \(L\)-malli.
+\end{exercise}
+
+\begin{exercise}
+  Mitkä seuraavista ovat predikaattilogiikan termejä/kaavoja/ei kumpaakaan
+  (kun sallitaan materiaalissa mainittuja lyhennysmerkintöjä
+  \(x, y, z, \ldots\) muuttujille, ja \(P, P_i, R, R_i\) relaatioille)?
+  Termien ja kaavojen kohdalla kerro myös, mitä symboleita
+  aakkostossa on oltava?
+  \begin{enumerate}[label=(\alph*)]
+    \item \(c_7\)
+    \item \(z\)
+    \item \(x = y\)
+    \item \(\forall y\, P(x)\)
+    \item \(\forall x\, x = y\)
+    \item \(\forall x\, x\)
+    \item \(\neg x_1 = x_1\)
+    \item \((x \land z)\)
+    \item \((P(x) \land R(x,x))\)
+    \item \((\forall x\, x = y \land R(y,z))\)
+    \item \(P_0\)
+    \item \(\forall x\exists x R(x,x)\)
+    \item \((\forall x \land \exists y R(x,y))\)
+    \item \(\exists x R(x,\exists y)\)
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  (Pohjustusta semantiikkaan) Miten kirjoittaisit luonnolliselle kielelle kaavat
+  \begin{enumerate}[label=(\alph*)]
+    \item \(\forall x P(x)\), kun tarkasteltavana mallina on ämpäreiden joukko,
+      ja \(P\) merkitsee ominaisuutta 'olla sininen'.
+    \item \(\forall x\exists y R(x,y)\), kun tarkasteltavana mallina on
+      luonnollisten lukujen joukko, ja \(R\) merkitsee järjestystä \(<\).
+    \item \(\exists x(R(x,y) \land P(x))\), kun tarkasteltavana joukkona on
+      osaston opettajien joukko, \(R\) merkitsee relaatiota 'olla pidempi kuin'
+      ja \(P\) ominaisuutta 'käyttää silmälaseja'.
+  \end{enumerate}
+\end{exercise}
+
+\noindent\textbf{Haastetehtävä.} Toisinaan predikaattilogiikka
+esitetään muodossa,
+jossa aakkostoissa on vain relaatio- ja funktiosymboleita. Tällöin
+sallitaan myös
+0-paikkaiset funktiot ja relaatiot. Mitä ne vastaavat?
+
+\end{document}
