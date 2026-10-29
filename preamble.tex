@@ -50,6 +50,9 @@
 \usepackage{mathtools}
 \usepackage{aliascnt}
 
+% Row operations beside the affected row, e.g. \rowop{+2R_1}.
+\newcommand{\rowop}[1]{\mathrel{\big|}\,#1}
+
 % Linear systems: the argument gives the number of alignment pairs.
 \newenvironment{linearsystem}[1]
 {\left\{
