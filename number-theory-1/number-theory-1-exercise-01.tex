@@ -223,4 +223,29 @@
   on jaollinen luvulla \(7\).
 \end{exercise}
 
+\begin{solution}
+  Olkoon
+  \[
+    n = a_k10^k + \cdots + a_1 \cdot 10 + a_0 = 10\ell + r,
+  \]
+  missä \(r = a_0\) ja \(\ell = a_k10^{k-1} + \cdots + a_1\). Tällöin
+  \[
+    a_k 10^{k-1} + a_{k-1} 10^{k-2} + \cdots a_2 10 + a_1 - 2a_0 = \ell - 2r.
+  \]
+  Huomataan, että
+  \[
+    n = 10\ell + r = 10(\ell - 2r) + 21r.
+  \]
+  Koska \(21 \equiv 0 \pmod{7}\), niin
+  \[
+    n \equiv 0 \pmod{7} \iff 10(\ell - 2r) = n - 21r \equiv 0 \pmod{7}.
+  \]
+  Lisäksi, koska \(\syt(7, 10) = 1\), niin
+  \[
+    10(\ell - 2r) \equiv 0 \pmod{7} \iff \ell - 2r \equiv 0 \pmod{7}.
+  \]
+  Siis \(7 \mid n\) joss \(7 \mid (\ell - 2r)\),
+  kuten väitettiin.
+\end{solution}
+
 \end{document}
