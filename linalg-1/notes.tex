@@ -203,4 +203,369 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
       ei ole ratkaisuja: $\boxed{R=\varnothing}$.
   \end{description}
 
+  \newpage
+  \subsection{29.10.2026: rivioperaatiot ja Gauss--Jordanin menetelmä}
+
+  Rivioperaatioilla yhtälöryhmä muutetaan helpommin luettavaan muotoon
+  säilyttäen sen ratkaisujoukko. Tavoitteena on selvittää, onko ratkaisuja,
+  ja esittää kaikki ratkaisut sidottujen ja vapaiden muuttujien avulla.
+
+  \subsubsection*{Sallitut rivioperaatiot ja niiden perustelut}
+
+  \begin{definition}[Ekvivalentit yhtälöryhmät]
+    Kaksi yhtälöryhmää, joissa on samat muuttujat, ovat
+    \emph{ekvivalentit}, jos niiden ratkaisujoukot ovat samat.
+  \end{definition}
+
+  Merkitään ryhmän $i$:ttä yhtälöä eli riviä symbolilla $R_i$ ja sen
+  vasenta puolta $L_i(x)=\sum_{j=1}^n a_{ij}x_j$. Rivi on siis
+  $L_i(x)=b_i$. Jokainen operaatio tehdään \emph{yhtälön molemmille puolille}.
+
+  \begin{lemma}[Rivin kertominen]
+    Kun $\lambda\ne0$, operaatio $R_i\leftarrow\lambda R_i$
+    säilyttää ratkaisujoukon.
+  \end{lemma}
+  \begin{proof}
+    Koska $\lambda\ne0$, jokaisella $x\in\RR^n$ pätee
+    \[
+      L_i(x)=b_i\quad\Longleftrightarrow\quad
+      \lambda L_i(x)=\lambda b_i.
+    \]
+    Suunta oikealle saadaan kertomalla luvulla $\lambda$ ja suunta
+    vasemmalle jakamalla sillä. Muut yhtälöt pysyvät samoina.
+  \end{proof}
+
+  \begin{lemma}[Toisen rivin monikerran lisääminen]
+    Kun $i\ne j$ ja $c\in\RR$, operaatio
+    $R_i\leftarrow R_i+cR_j$ säilyttää ratkaisujoukon.
+    Rivi $R_j$ säilytetään ennallaan.
+  \end{lemma}
+  \begin{proof}
+    Jos $x$ toteuttaa alkuperäiset yhtälöt, niin
+    $L_i(x)+cL_j(x)=b_i+cb_j$, joten se toteuttaa myös uuden ryhmän.
+    Kääntäen uuden ryhmän ratkaisulle pätevät
+    \[
+      L_i(x)+cL_j(x)=b_i+cb_j,\qquad L_j(x)=b_j.
+    \]
+    Vähentämällä ensimmäisestä yhtälöstä $c$ kertaa toinen saadaan
+    $L_i(x)=b_i$. Muut yhtälöt eivät muutu, joten ratkaisujoukot ovat samat.
+  \end{proof}
+
+  \begin{lemma}[Rivien järjestyksen vaihtaminen]
+    Yhtälöiden järjestyksen vaihtaminen säilyttää ratkaisujoukon.
+    Erityisesti voidaan vaihtaa kaksi riviä: $R_i\leftrightarrow R_j$.
+  \end{lemma}
+  \begin{proof}
+    Olkoon $S_i$ yhtälön $i$ ratkaisujoukko ja $\sigma$ joukon
+    $\{1,\ldots,m\}$ permutaatio. Tällöin
+    \[
+      \bigcap_{i=1}^m S_i=\bigcap_{i=1}^m S_{\sigma(i)},
+    \]
+    sillä kummassakin leikkauksessa vaaditaan täsmälleen samojen
+    yhtälöiden toteutumista.
+  \end{proof}
+
+  \noindent\textbf{Muista.}
+  Kaikki kolme operaatiota voidaan perua: kertoimella $1/\lambda$,
+  operaatiolla $R_i\leftarrow R_i-cR_j$ tai vaihtamalla rivit takaisin.
+  Siksi myös niiden äärellinen jono säilyttää ratkaisujoukon.
+  Nollalla kertominen ei ole sallittua: esimerkiksi $x=1$ muuttuisi
+  ehdoksi $0=0$. Myöskään kahden yhtälön korvaaminen pelkällä niiden
+  summalla ei yleensä säilytä ratkaisujoukkoa.
+
+  \newpage
+  \subsubsection*{Matriisimerkintä ja porrasmuodot}
+
+  Laskemista tiivistää \emph{laajennettu matriisi}
+  \[
+    [A\mid b]=\left[
+      \begin{array}{ccc|c}
+        a_{11}&\cdots&a_{1n}&b_1\\
+        \vdots&&\vdots&\vdots\\
+        a_{m1}&\cdots&a_{mn}&b_m
+    \end{array}\right].
+  \]
+  Sarakkeet ennen pystyviivaa vastaavat muuttujia $x_1,\ldots,x_n$;
+  viimeinen sarake sisältää oikeat puolet. Rivioperaatio koskee aina
+  koko riviä, myös viimeistä saraketta. Merkintä $M\sim N$ tarkoittaa,
+  että matriisit saadaan toisistaan rivioperaatioilla.
+
+  \noindent\textbf{Rivioperaatioiden merkintä.}
+  Rivin vieressä $\rowop{-2R_1}$ tarkoittaa, että kyseisestä rivistä
+  vähennetään kaksi kertaa ensimmäinen rivi. Merkintä
+  $\rowop{\cdot(1/2)}$ tarkoittaa kyseisen rivin kertomista luvulla $1/2$.
+  Merkinnät koskevat siirtymää seuraavaan matriisiin; samalla kertaa
+  merkityissä operaatioissa käytetään lähtömatriisin rivejä.
+  Rivinvaihto merkitään $\underset{R_i\leftrightarrow R_j}{\sim}$.
+
+  \begin{definition}[Porrasmuoto]
+    Rivin ensimmäinen nollasta poikkeava alkio on sen \emph{johtava alkio}
+    eli \emph{pivot}. Matriisi on tässä käytetyn määritelmän mukaan
+    \emph{porrasmuodossa}, jos
+    \begin{enumerate}
+      \item jokaisen nollasta poikkeavan rivin johtava alkio on $1$;
+      \item kaikki nollarivit ovat alimpina;
+      \item alemman rivin johtava alkio on aina ylemmän rivin johtavan
+        alkion oikealla puolella.
+    \end{enumerate}
+    Se on \emph{supistetussa porrasmuodossa}, jos lisäksi jokainen
+    johtava $1$ on sarakkeensa ainoa nollasta poikkeava alkio.
+  \end{definition}
+
+  Ehto 3 takaa nollat johtavien alkioiden alapuolelle; supistetussa
+  muodossa myös niiden yläpuolella on nollia. Joissakin lähteissä
+  porrasmuodon johtavilta alkioilta ei vaadita arvoa $1$. Tässä
+  noudatetaan luennon määritelmää.
+  Esimerkiksi
+  \[
+    \underbrace{\left[
+        \begin{array}{ccc|c}
+          1&2&0&3\\0&0&1&4\\0&0&0&0
+    \end{array}\right]}_{\text{supistettu porrasmuoto}},\qquad
+    \underbrace{\left[
+        \begin{array}{ccc|c}
+          1&2&3&4\\0&1&5&6\\0&0&0&0
+    \end{array}\right]}_{\text{porrasmuoto, ei supistettu}}.
+  \]
+
+  \begin{remark}[Nollarivi ja ristiriitarivi]
+    Laajennetun matriisin nollarivi $[0\ \cdots\ 0\mid0]$ tarkoittaa
+    yhtälöä $0=0$. Rivi $[0\ \cdots\ 0\mid d]$, missä $d\ne0$,
+    ei ole nollarivi, vaan ristiriita $0=d$. Siinä johtava alkio on
+    oikean puolen sarakkeessa, eikä se vastaa mitään muuttujaa.
+  \end{remark}
+
+  \newpage
+  \subsubsection*{Miksi eliminointi onnistuu aina?}
+
+  \begin{theorem}[Gauss--Jordan]
+    Jokainen laajennettu matriisi voidaan saattaa rivioperaatioilla
+    supistettuun porrasmuotoon. Näin saatu yhtälöryhmä on ekvivalentti
+    alkuperäisen kanssa.
+  \end{theorem}
+  \begin{proof}
+    Nollamatriisi on jo supistetussa porrasmuodossa. Muuten
+    etsitään vasemmanpuoleisin sarake, jossa on nollasta poikkeava
+    alkio. Vaihdetaan tällainen alkio ensimmäiselle riville,
+    jaetaan rivi tällä alkiolla ja nollataan sen alapuoliset alkiot
+    lisäämällä sopivia ensimmäisen rivin monikertoja.
+
+    Toistetaan sama alemmille riveille ja johtavan alkion oikealla
+    puolella oleville sarakkeille. Jos jäljellä olevat rivit ovat
+    nollia, lopetetaan. Aiemmat johtavat sarakkeet säilyvät alemmilla
+    riveillä nollina. Jokainen vaihe siirtyy yhden rivin alas ja
+    vähintään yhden sarakkeen oikealle, joten vaiheita on äärellisesti.
+    Tuloksena on porrasmuoto.
+
+    Käydään sitten johtavat ykköset läpi alhaalta ylöspäin ja
+    nollataan kunkin yläpuoliset alkiot kyseisen rivin monikerroilla.
+    Jo käsitellyt johtavat sarakkeet eivät muutu, sillä käsiteltävällä
+    rivillä on niissä nollat. Saadaan supistettu porrasmuoto.
+    Kaikki käytetyt operaatiot säilyttävät ratkaisujoukon.
+  \end{proof}
+
+  \noindent\textbf{Gauss vai Gauss--Jordan?}
+  Gaussin eliminoinnissa riittää porrasmuoto, josta muuttujat ratkaistaan
+  alimmasta yhtälöstä alkaen \emph{takaisinsijoituksella}.
+  Gauss--Jordanissa jatketaan supistettuun porrasmuotoon, josta ratkaisut
+  voidaan lukea suoraan.
+
+  \subsubsection*{Sidotut muuttujat, vapaat muuttujat ja ratkaisujen määrä}
+
+  \begin{definition}
+    Porrasmuodossa muuttuja on \emph{sidottu}, jos sen sarakkeessa
+    on johtava alkio. Muut muuttujat ovat \emph{vapaita}.
+  \end{definition}
+
+  \begin{theorem}[Ratkaisujen lukumäärä reaaliluvuilla]
+    Tarkastellaan rivioperaatioilla saatua supistettua porrasmuotoa.
+    \begin{enumerate}
+      \item Jos siinä on rivi $[0\ \cdots\ 0\mid d]$, $d\ne0$,
+        ratkaisuja ei ole.
+      \item Jos ristiriitariviä ei ole ja kaikki muuttujat ovat
+        sidottuja, ratkaisuja on täsmälleen yksi.
+      \item Jos ristiriitariviä ei ole ja ainakin yksi muuttuja on
+        vapaa, ratkaisuja on äärettömän monta.
+    \end{enumerate}
+  \end{theorem}
+  \begin{proof}
+    Ristiriitarivi vaatisi $0=d\ne0$, mikä on mahdotonta.
+    Ilman ristiriitariviä jokainen ei-nollarivi voidaan kirjoittaa muodossa
+    \[
+      x_{p_i}=b_i-\sum_{j\in F}a_{ij}x_j,
+    \]
+    missä $x_{p_i}$ on rivin sidottu muuttuja ja $F$ on vapaiden
+    muuttujien indeksijoukko. Muita sidottuja muuttujia ei esiinny
+    tällä rivillä, koska niiden johtavissa sarakkeissa on muualla nollat.
+    Vapaat muuttujat voidaan siis valita mielivaltaisesti, minkä jälkeen
+    jokainen sidottu muuttuja määräytyy yksikäsitteisesti.
+    Jos $F=\varnothing$, saadaan yksi ratkaisu. Jos $F\ne\varnothing$,
+    jo yhden vapaan muuttujan vaihteleminen reaaliluvuissa antaa
+    äärettömän monta eri ratkaisua.
+  \end{proof}
+
+  \newpage
+  \subsubsection*{Esimerkkejä rivioperaatioiden käytöstä}
+
+  \begin{example}[Yksi ratkaisu: kaikki kolme rivioperaatiota]
+    Ratkaistaan
+    \[
+      \begin{cases}
+        2y+2z=10,\\
+        x+y+z=6,\\
+        2x+3y+4z=20.
+      \end{cases}
+    \]
+    Vaihdetaan ensin rivit, jotta ensimmäinen johtava alkio on $1$:
+    \begin{align*}
+      \left[
+        \begin{array}{ccc|c}0&2&2&10\\1&1&1&6\\2&3&4&20
+      \end{array}\right]
+      &\underset{R_1\leftrightarrow R_2}{\sim}
+      \left[
+        \begin{array}{ccc|c}1&1&1&6\\0&2&2&10\\2&3&4&20
+      \end{array}\right]
+      \begin{array}{@{}l@{}}\vphantom{0}\\\vphantom{0}\\\rowop{-2R_1}
+      \end{array}\\[3pt]
+      &\sim
+      \left[
+        \begin{array}{ccc|c}1&1&1&6\\0&2&2&10\\0&1&2&8
+      \end{array}\right]
+      \begin{array}{@{}l@{}}\vphantom{0}\\\rowop{\cdot(1/2)}\\\vphantom{0}
+      \end{array}\\[3pt]
+      &\sim
+      \left[
+        \begin{array}{ccc|c}1&1&1&6\\0&1&1&5\\0&1&2&8
+      \end{array}\right]
+      \begin{array}{@{}l@{}}\vphantom{0}\\\vphantom{0}\\\rowop{-R_2}
+      \end{array}\\[3pt]
+      &\sim
+      \left[
+        \begin{array}{ccc|c}1&1&1&6\\0&1&1&5\\0&0&1&3
+      \end{array}\right].
+    \end{align*}
+    Nyt ollaan porrasmuodossa. Takaisinsijoitus antaa
+    $z=3$, $y=5-z=2$ ja $x=6-y-z=1$.
+    Gauss--Jordanin menetelmällä jatkettaisiin vielä:
+    \begin{align*}
+      \left[
+        \begin{array}{ccc|c}1&1&1&6\\0&1&1&5\\0&0&1&3
+      \end{array}\right]
+      \begin{array}{@{}l@{}}\rowop{-R_3}\\\rowop{-R_3}\\\vphantom{0}
+      \end{array}
+      &\sim
+      \left[
+        \begin{array}{ccc|c}1&1&0&3\\0&1&0&2\\0&0&1&3
+      \end{array}\right]
+      \begin{array}{@{}l@{}}\rowop{-R_2}\\\vphantom{0}\\\vphantom{0}
+      \end{array}
+      \\[3pt]
+      &\sim
+      \left[
+        \begin{array}{ccc|c}1&0&0&1\\0&1&0&2\\0&0&1&3
+      \end{array}\right].
+    \end{align*}
+    Siis $\boxed{(x,y,z)=(1,2,3)}$.
+    Tarkistus alkuperäisiin yhtälöihin: $4+6=10$, $1+2+3=6$ ja
+    $2+6+12=20$.
+  \end{example}
+
+  \begin{example}[Ei ratkaisuja: ristiriita tulee näkyviin]
+    \[
+      \begin{cases}x+2y=3,\\2x+4y=7
+      \end{cases}
+      \quad\longrightarrow\quad
+      \left[
+        \begin{array}{cc|c}1&2&3\\2&4&7
+      \end{array}\right]
+      \begin{array}{@{}l@{}}\vphantom{0}\\\rowop{-2R_1}
+      \end{array}
+      \sim
+      \left[
+        \begin{array}{cc|c}1&2&3\\0&0&1
+      \end{array}\right].
+    \]
+    Viimeinen rivi tarkoittaa $0=1$, joten ratkaisujoukko on
+    $\boxed{\varnothing}$. Eliminoinnin voi lopettaa heti ristiriitaan;
+    supistettua porrasmuotoa ei tarvitse laskea loppuun.
+  \end{example}
+
+  \newpage
+  \begin{example}[Äärettömän monta ratkaisua: kaksi vapaata muuttujaa]
+    Ratkaistaan neljän muuttujan yhtälöryhmä
+    \[
+      \begin{cases}
+        x_1+2x_2-x_3+x_4=3,\\
+        2x_1+4x_2-x_3+3x_4=8,\\
+        3x_1+6x_2-2x_3+4x_4=11.
+      \end{cases}
+    \]
+    Nollataan ensimmäisen johtavan alkion alapuoli:
+    \[
+      \left[
+        \begin{array}{rrrr|r}
+          1&2&-1&1&3\\2&4&-1&3&8\\3&6&-2&4&11
+      \end{array}\right]
+      \begin{array}{@{}l@{}}\vphantom{0}\\\rowop{-2R_1}\\\rowop{-3R_1}
+      \end{array}
+      \sim
+      \left[
+        \begin{array}{rrrr|r}
+          1&2&-1&1&3\\0&0&1&1&2\\0&0&1&1&2
+      \end{array}\right].
+    \]
+    Toisen sarakkeen jäljellä olevat alkiot ovat nollia, joten seuraava
+    johtava alkio tulee kolmanteen sarakkeeseen:
+    \begin{align*}
+      \left[
+        \begin{array}{rrrr|r}
+          1&2&-1&1&3\\0&0&1&1&2\\0&0&1&1&2
+      \end{array}\right]
+      \begin{array}{@{}l@{}}\vphantom{0}\\\vphantom{0}\\\rowop{-R_2}
+      \end{array}
+      &\sim
+      \left[
+        \begin{array}{rrrr|r}
+          1&2&-1&1&3\\0&0&1&1&2\\0&0&0&0&0
+      \end{array}\right]
+      \begin{array}{@{}l@{}}\rowop{+R_2}\\\vphantom{0}\\\vphantom{0}
+      \end{array}\\[3pt]
+      &\sim
+      \left[
+        \begin{array}{rrrr|r}
+          1&2&0&2&5\\0&0&1&1&2\\0&0&0&0&0
+      \end{array}\right].
+    \end{align*}
+    Sidotut muuttujat ovat $x_1,x_3$ ja vapaat muuttujat $x_2,x_4$.
+    Valitaan $x_2=s$ ja $x_4=t$, missä $s,t\in\RR$. Tällöin
+    \[
+      x_1=5-2s-2t,\qquad x_3=2-t,
+    \]
+    joten koko ratkaisujoukko on
+    \[
+      \boxed{R=\{(5-2s-2t,\ s,\ 2-t,\ t):s,t\in\RR\}.}
+    \]
+    Vektorimuodossa sama ratkaisu on
+    \[
+      (x_1,x_2,x_3,x_4)
+      =(5,0,2,0)+s(-2,1,0,0)+t(-2,0,-1,1).
+    \]
+    Esimerkiksi $s=t=0$ antaa ratkaisun $(5,0,2,0)$ ja $s=1,t=0$
+    ratkaisun $(3,1,2,0)$. Vain nämä esimerkit luettelemalla ei kuitenkaan
+    saataisi kaikkia ratkaisuja: siihen tarvitaan vapaat parametrit.
+  \end{example}
+
+  \subsubsection*{Kertaus: miten luet lopputuloksen?}
+  \begin{enumerate}
+    \item Tarkista ensin ristiriitarivit. Yksikin $0=d\ne0$ tarkoittaa,
+      ettei ratkaisuja ole, vaikka mukana olisi vapaita muuttujia.
+    \item Jos ristiriitaa ei ole, etsi muuttujasarakkeiden johtavat alkiot.
+      Muut muuttujat saavat omat vapaat parametrinsa.
+    \item Ratkaise sidotut muuttujat ja kirjoita \emph{koko} ratkaisujoukko.
+      Jos vapaita muuttujia ei ole, ratkaisu on yksikäsitteinen.
+    \item Tarkista tulos sijoittamalla alkuperäisiin yhtälöihin.
+      Nollarivi $0=0$ ei itsessään tarkoita äärettömän montaa ratkaisua:
+      ratkaisevaa on vapaiden muuttujien olemassaolo.
+  \end{enumerate}
+
   \end{document}
