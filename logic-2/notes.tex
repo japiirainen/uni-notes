@@ -225,4 +225,263 @@ kvanttorirakenne on
   \forall x\,\forall y\,D(a,xb+yc)\Bigr).
 \]
 
+\clearpage
+\subsection{29.10.2026: Termit, atomikaavat ja kaavojen muodostaminen}
+
+Predikaattilogiikan kaavat rakennetaan vaiheittain: ensin valitaan
+\emph{termit}, sitten muodostetaan niistä \emph{atomikaavoja} ja lopuksi
+liitetään kaavoja yhteen konnektiiveilla ja kvanttoreilla.
+Tärkein ero on tämä: termillä viitataan yksilöön, kun taas kaavalla
+ilmaistaan yksilöiden ominaisuus tai niiden välinen suhde.
+
+\subsubsection{Kaavojen symbolit ja termit}
+
+Aakkosto $L$ määrää käytettävissä olevat relaatio-, vakio- ja
+funktiosymbolit sekä relaatioiden ja funktioiden paikkaluvut.
+Niiden lisäksi käytössä ovat aina
+\begin{itemize}
+  \item muuttujat $x_0,x_1,x_2,\ldots$ (lyhyemmin myös $x,y,z,\ldots$);
+  \item yhtäsuuruussymboli $=$ ja sulkeet;
+  \item konnektiivit $\neg,\land,\lor,\to,\leftrightarrow$;
+  \item kvanttorit $\forall$ ja $\exists$.
+\end{itemize}
+Muuttujia ja loogisia symboleja ei siis tarvitse erikseen lisätä
+aakkostoon $L$. Esimerkiksi yhtäsuuruutta voi käyttää myös silloin,
+kun $L=\varnothing$.
+
+\begin{definition}[Termit ilman funktiosymboleita]
+  Oletetaan tässä luennossa, ettei $L$ sisällä funktiosymboleita.
+  Tällöin \emph{$L$-termejä} ovat täsmälleen kaikki muuttujat ja
+  aakkostoon $L$ kuuluvat vakiosymbolit.
+\end{definition}
+
+\begin{example}[Mikä on termi?]
+  Olkoon $L=\{P,R,c\}$, missä $P$ on yksipaikkainen ja $R$
+  kaksipaikkainen relaatiosymboli ja $c$ on vakiosymboli.
+  Tällöin $x,y,x_{17}$ ja $c$ ovat termejä. Sen sijaan $P$ ja $R$
+  eivät ole termejä, eikä $P(x)$ ole termi: se on atomikaava.
+  Myöskään $d$ ei ole tämän aakkoston vakio eikä $x+c$ ole sen termi,
+  koska symboleita $d$ ja $+$ ei ole annettu aakkostossa.
+\end{example}
+
+Numeromerkintä, kuten $3$, ei automaattisesti kuulu muodolliseen kieleen:
+sitä voidaan käyttää vakiosymbolina, jos niin on sovittu. Vakiosymboli
+$c$ on puolestaan nimi, jonka tarkoittama alkio kiinnitetään mallissa.
+Muuttujan arvo voi vaihdella samassakin mallissa.
+
+\subsubsection{Atomikaavat: yksinkertaisimmat väitteet}
+
+\begin{definition}[Atomikaavat]
+  Aakkoston $L$ atomikaavat ovat seuraavaa kahta muotoa:
+  \begin{enumerate}
+    \item $t=u$, missä $t$ ja $u$ ovat $L$-termejä;
+    \item $S(t_1,\ldots,t_n)$, missä $S\in L$ on $n$-paikkainen
+      relaatiosymboli ja jokainen $t_i$ on $L$-termi.
+  \end{enumerate}
+\end{definition}
+
+Atomikaava ei vielä sisällä konnektiiveja eikä kvanttoreita.
+Relaation argumenttien määrän täytyy vastata sen paikkalukua.
+Argumenttien järjestys on olennainen, ja sama termi saa esiintyä
+useassa argumenttipaikassa.
+
+\begin{example}[Atomikaavojen lukeminen]
+  Aakkostossa $L=\{P,R,c\}$ edellä sovituilla paikkaluvuilla
+  atomikaavoja ovat esimerkiksi
+  \[
+    x=y,\qquad x=c,\qquad P(x),\qquad P(c),\qquad
+    R(x,c),\qquad R(c,c).
+  \]
+  Jos havainnollistavassa tulkinnassa $P$ tarkoittaa opiskelijuutta,
+  $R(x,y)$ tarkoittaa, että $x$ tuntee $y$:n, ja $c$ nimeää Ainon,
+  niin $P(c)$ ilmaisee Ainon olevan opiskelija ja $R(x,c)$ ilmaisee
+  $x$:n tuntevan Ainon. Kaava $R(c,x)$ ilmaisee eri asian:
+  Aino tuntee $x$:n. Pelkkä syntaksi ei takaa näiden väitteiden
+  samanaikaista totuutta.
+\end{example}
+
+\clearpage
+\subsubsection{Kaavojen induktiivinen määritelmä}
+
+\begin{definition}[$L$-kaavat]
+  Kaavat muodostetaan seuraavilla säännöillä:
+  \begin{enumerate}
+    \item Jokainen $L$-atomikaava on $L$-kaava.
+    \item Jos $A$ ja $B$ ovat $L$-kaavoja, niin myös
+      \[
+        \neg A,\quad (A\land B),\quad (A\lor B),\quad
+        (A\to B),\quad (A\leftrightarrow B)
+      \]
+      ovat $L$-kaavoja.
+    \item Jos $A$ on $L$-kaava ja $x$ on muuttuja, niin
+      $\forall x A$ ja $\exists x A$ ovat $L$-kaavoja.
+  \end{enumerate}
+  Muita kaavoja ei ole: jokainen kaava syntyy näistä säännöistä
+  äärellisen monella askeleella.
+\end{definition}
+
+Kirjaimet $A$ ja $B$ ovat tässä kokonaisia kaavoja tarkoittavia
+apumerkintöjä, eivät uusia aakkoston symboleja. Negaatio tarvitsee yhden
+kaavan, muut konnektiivit kaksi. Kvanttori tarvitsee muuttujan ja kaavan.
+Muodostussääntö ei vaadi, että kvantifioitava muuttuja esiintyisi kaavassa:
+myös $\forall x P(c)$ on oikein muodostettu kaava.
+
+\begin{example}[Kaavan rakentaminen askel askeleelta]
+  Rakennetaan aakkostossa $L=\{P,R,c\}$ kaava
+  \[
+    \forall x\bigl(P(x)\to\exists y\,(R(x,y)\land P(y))\bigr).
+  \]
+  \begin{enumerate}
+    \item $x$ ja $y$ ovat termejä.
+    \item $P(x)$, $R(x,y)$ ja $P(y)$ ovat atomikaavoja.
+    \item $(R(x,y)\land P(y))$ on kaava konjunktiosäännöllä.
+    \item $\exists y\,(R(x,y)\land P(y))$ on kaava
+      eksistenssikvanttorin muodostussäännöllä.
+    \item Yhdistetään $P(x)$ ja edellinen kaava implikaatiolla.
+    \item Lisätään koko implikaation eteen $\forall x$.
+  \end{enumerate}
+  Edellisen esimerkin tulkinnassa kaava sanoo:
+  \emph{jokainen opiskelija tuntee jonkun opiskelijan}.
+  Tunnettu opiskelija voi riippua siitä, ketä $x$ tarkoittaa.
+  Kaava ei vaadi, että $x$ ja $y$ olisivat eri yksilöitä.
+\end{example}
+
+\clearpage
+\subsubsection{Kvanttorien ja konnektiivien lukeminen}
+
+Konnektiivien merkitykset ovat tutut: $\neg A$ tarkoittaa ``ei $A$'',
+$A\land B$ tarkoittaa ``$A$ ja $B$'', $A\lor B$ tarkoittaa
+``$A$ tai $B$ (tai molemmat)'', $A\to B$ tarkoittaa ``jos $A$, niin $B$''
+ja $A\leftrightarrow B$ tarkoittaa ``$A$ jos ja vain jos $B$''.
+Kvanttoreilla puhutaan tarkasteltavan universumin yksilöistä:
+\[
+  \forall x A:\ \text{jokaisella }x\text{ pätee }A,
+  \qquad
+  \exists x A:\ \text{jollakin }x\text{ pätee }A.
+\]
+Eksistenssikvanttori sanoo \emph{ainakin yksi}, ei \emph{täsmälleen yksi}.
+Se ei myöskään tarkoita automaattisesti ``joku toinen''.
+
+\begin{example}[Kaikki ja jokin: kaksi perusmallia]
+  Olkoon $L=\{P,Q\}$, missä molemmat symbolit ovat yksipaikkaisia.
+  Kun $P$ tarkoittaa opiskelijuutta ja $Q$ pyöräilyä, saadaan
+  \begin{align*}
+    \forall x\,(P(x)\to Q(x))
+    &\quad\text{Jokainen opiskelija pyöräilee.}\\
+    \exists x\,(P(x)\land Q(x))
+    &\quad\text{Joku opiskelija pyöräilee.}
+  \end{align*}
+  Ensimmäisessä kaavassa implikaatio rajaa vaatimuksen opiskelijoihin.
+  Kaava $\forall x\,(P(x)\land Q(x))$ vaatisi sen sijaan, että
+  universumin \emph{jokainen} yksilö on sekä opiskelija että pyöräilijä.
+
+  Toisessa kaavassa konjunktio vaatii samalta yksilöltä molemmat
+  ominaisuudet. Kaava $\exists x\,(P(x)\to Q(x))$ ei ilmaise samaa:
+  jo yksi yksilö, joka ei ole opiskelija, riittää tekemään sen todeksi.
+\end{example}
+
+\begin{example}[Sama todistaja vai eri todistajat?]
+  Kun $R(x,y)$ tarkoittaa, että $x$ tuntee $y$:n, kaavat
+  \begin{align*}
+    \forall x\,\exists y\,R(x,y)
+    &\quad\text{Jokainen tuntee jonkun.}\\
+    \exists y\,\forall x\,R(x,y)
+    &\quad\text{On joku, jonka kaikki tuntevat.}
+  \end{align*}
+  sanovat eri asioita. Jos universumissa on vain Aino ja Eero ja
+  kumpikin tuntee vain itsensä, ensimmäinen väite on tosi: valitaan
+  kullekin $x$:lle $y=x$. Toinen on epätosi, koska ei ole yhtä
+  henkilöä, jonka molemmat tuntevat. Kvanttorien järjestystä ei siis
+  yleensä voi vaihtaa.
+\end{example}
+
+\subsubsection{Sulkeet ja kaavan rakenteen purkaminen}
+
+Kvanttorin \emph{vaikutusala} on se kaava, johon se muodostussäännössä
+liitetään. Sulkeet kertovat, mitkä osat kuuluvat yhteen. Esimerkiksi
+\[
+  \forall x\,(P(x)\lor Q(x))
+  \qquad\text{ja}\qquad
+  (\forall x\,P(x))\lor Q(x)
+\]
+ovat eri kaavoja. Vasemmalla kvanttori koskee koko disjunktiota;
+oikealla se koskee vain osaa $P(x)$, joten jälkimmäisen $Q(x)$:n
+muuttuja ei kuulu tämän kvanttorin vaikutusalaan.
+Käytännössä uloimpia sulkeita jätetään pois, kun rakenne pysyy selvänä.
+Epäselvässä kohdassa sulkeet kannattaa aina kirjoittaa näkyviin.
+
+Kaavan rakennetta voi tutkia myös \emph{ulkoa sisään} kysymällä,
+mikä oli viimeinen muodostusaskel. Esimerkiksi kaavassa
+\[
+  \neg\exists x\,(P(x)\land R(x,c))
+\]
+uloin merkki on negaatio. Sen alla on eksistenssikvanttori ja tämän
+alla konjunktio, jonka osat $P(x)$ ja $R(x,c)$ ovat atomikaavoja.
+Kaava sanoo esimerkkitulkinnassa, ettei kukaan opiskelija tunne Ainoa.
+Sen muodostaminen ja purkaminen käyttävät samoja sääntöjä eri suuntiin.
+
+\clearpage
+\subsubsection{Syntaksi ei ole sama asia kuin totuus}
+
+\emph{Syntaksi} kertoo, onko merkkijono oikein muodostettu kaava.
+\emph{Semantiikka} kertoo, mitä kaava ilmaisee annetussa mallissa
+ja milloin se on tosi. Oikein muodostettu kaava voi olla epätosi.
+Esimerkiksi $\neg(x=x)$ on täysin kelvollinen kaava, vaikka se on
+aina epätosi, kun yhtäsuuruus tulkitaan tavalliseen tapaan.
+
+\begin{example}[Tavallisten syntaksivirheiden tunnistaminen]
+  Käytetään jälleen aakkostoa $L=\{P,R,c\}$, jossa $P$ on
+  yksipaikkainen, $R$ kaksipaikkainen ja $c$ vakio.
+  \begin{center}
+    \renewcommand{\arraystretch}{1.25}
+    \begin{tabular}{lp{0.67\textwidth}}
+      \hline
+      Merkkijono & Miksi se ei ole tämän aakkoston kaava?\\
+      \hline
+      $R(x)$ & Kaksipaikkainen relaatio tarvitsee kaksi termiä.\\
+      $P(x,y)$ & Yksipaikkaiselle relaatiolle on annettu kaksi termiä.\\
+      $P(R(x,y))$ & Relaation argumentiksi tarvitaan termi, ei kaavaa.\\
+      $x\land P(x)$ & Konnektiivin molemmin puolin tarvitaan kaava.\\
+      $\forall c\,P(c)$ & Kvanttorilla sidotaan muuttuja, ei vakiosymbolia.\\
+      $Q(x)$ & Relaatiosymboli $Q$ ei kuulu annettuun aakkostoon.\\
+      \hline
+    \end{tabular}
+  \end{center}
+  Sen sijaan $R(x,x)$ ja $\forall x P(c)$ ovat kaavoja.
+  Samojen termien toistuminen ja kvanttorin kannalta tarpeeton muuttuja
+  eivät riko muodostussääntöjä.
+\end{example}
+
+\subsubsection{Kertaus ja oma tarkistus}
+
+Kun tarkistat kaavaa, etene seuraavasti:
+\begin{enumerate}
+  \item Tarkista aakkosto, symbolien tyypit ja paikkaluvut.
+  \item Erota yksilöihin viittaavat termit väitteitä ilmaisevista kaavoista.
+  \item Tarkista atomikaavat: yhtäsuuruuden molemmin puolin ja
+    relaation jokaisessa argumenttipaikassa on oltava termi.
+  \item Tunnista uloin konnektiivi tai kvanttori ja tarkista sen osat
+    samalla tavalla, kunnes pääset atomikaavoihin.
+  \item Lue vasta sitten kaava sanallisesti sovitussa tulkinnassa.
+\end{enumerate}
+
+\begin{exercise}[Tunnista rakenne]
+  Olkoon $L=\{P,R,c\}$ kuten edellä. Luokittele seuraavat termeiksi,
+  atomikaavoiksi, muiksi kaavoiksi tai virheellisiksi ilmauksiksi:
+  \[
+    c,\quad R(c,x),\quad \neg P(c),\quad
+    \exists x\,(R(c,x)\land\neg(x=c)),\quad R(P(c),x).
+  \]
+  Mitä neljäs ilmaus sanoo, jos $R$ tarkoittaa tuntemista ja $c$ Ainoa?
+\end{exercise}
+
+\begin{solution}
+  $c$ on termi ja $R(c,x)$ atomikaava. $\neg P(c)$ on negaatiolla
+  muodostettu kaava. Neljäs ilmaus on eksistenssikvanttorilla
+  muodostettu kaava: \emph{Aino tuntee jonkun muun kuin itsensä}.
+  Ehto $\neg(x=c)$ vaatii eri yksilön; sitä lyhennetään usein
+  merkinnällä $x\ne c$. Viimeinen ilmaus on virheellinen, koska
+  $P(c)$ on kaava eikä relaatioon argumentiksi kelpaava termi.
+\end{solution}
+
 \end{document}
