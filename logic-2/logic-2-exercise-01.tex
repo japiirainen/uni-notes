@@ -25,6 +25,20 @@
   \end{center}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Malli sisältää kaksi osajoukkoa, jotka vastaavat yksipaikkaisia
+      relaatioita, joten vastaava aakkosto on \(L_2\).
+    \item Malli sisältää kaksi osajoukkoa ja yhden vakion, joten
+      aakkosto on \(L_1\).
+    \item Malli sisältää yhden kaksipaikkaisen relaation ja yhden vakion,
+      joten aakkosto on \(L_3\).
+    \item Malli sisältää yhden kaksipaikkaisen relaation, joten mallin
+      aakkosto on esimerkiksi \(L_c = \set{R_0}\).
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}
   Anna esimerkki \(L\)-mallista, kun
   \begin{enumerate}[label=(\alph*)]
@@ -37,6 +51,18 @@
   Tässä \(P\) on aina yksipaikkainen ja \(R\) tai \(R_i\) kaksipaikkainen
   relaatiosymboli.
 \end{exercise}
+
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*)]
+    \item \(\mathcal{M} = (\ZZ, \leq)\).
+    \item \(\mathcal{M} = (\ZZ, \PP, \leq)\).
+    \item Olkoon \(S = \set{(x, y) \in \RR^2 \colon \abs{x - y} = 1}\) ja
+      \(\mathcal{M} = (\RR, \leq, S, 0)\).
+    \item \(\mathcal{M} = (\NN, \PP, 42)\).
+    \item \(\mathcal{M} = (\CC)\).
+  \end{enumerate}
+\end{solution}
 
 \begin{exercise}
   Olkoon \(\mathcal M\) seuraava malli:
@@ -51,11 +77,68 @@
   Ovatko vastaukset yksikäsitteiset?
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*)]
+    \item Kuvassa on kaksi yksipaikkaista relaatiota. Yksi mahdollinen
+      aakkosto on
+      \[
+        L = \set{P_0, P_1}.
+      \]
+    \item \(\dom(\mathcal{M}) = \set{1, 2, 3, 4, 5, 6}\).
+    \item Kohdan (a) relaatiosymbolien tulkinnoiksi voidaan valita
+      \[
+        P_0^{\mathcal M} = \set{3, 4}, \qquad
+        P_1^{\mathcal M} = \set{4}.
+      \]
+      Tällöin \(P_0\) vastaa kuvan aluetta \(A\) ja \(P_1\) aluetta \(B\).
+  \end{enumerate}
+  Vastaukset eivät ole kaikilta osin yksikäsitteisiä. Relaatiosymbolien nimet
+  voidaan valita eri tavoin. Kuvasta ei myöskään käy yksikäsitteisesti ilmi,
+  ovatko numerot vain alkioiden nimiä vai ilmaisevatko ne vakiosymbolien
+  tulkintoja. Yllä numerot on tulkittu universumin alkioiden nimiksi.
+\end{solution}
+
 \begin{exercise}
   Anna aakkoston \(\{P_0, P_1, P_2\}\) malli, jossa predikaatit jakavat mallin
   universumin kuuteen erilliseen, epätyhjään osaan (\(P_i\) ovat yksipaikkaisia
   predikaattisymboleita).
 \end{exercise}
+
+\begin{solution}
+  Olkoon \(\dom(\mathcal{M}) = \set{1, 2, 3, 4, 5, 6}\) ja
+  \[
+    P_0^{\mathcal{M}} = \set{1, 4}, P_1^{\mathcal{M}} = \set{2, 5},
+    P_2^{\mathcal{M}} = \set{3, 4, 5}.
+  \]
+  Olkoon \(f_i \colon \dom(\mathcal{M}) \to \set{0, 1}\),
+  \[
+    f_i(x) =
+    \begin{cases}
+      1, & x \in P_i^{\mathcal{M}} \\
+      0, & x \notin P_i^{\mathcal{M}},
+    \end{cases}
+  \]
+  missä \(i \in \set{0, 1, 2}\). Tällöin
+  \[
+    \begin{aligned}
+      (f_0(1), f_1(1), f_2(1)) &= (1, 0, 0) \\
+      (f_0(2), f_1(2), f_2(2)) &= (0, 1, 0) \\
+      (f_0(3), f_1(3), f_2(3)) &= (0, 0, 1) \\
+      (f_0(4), f_1(4), f_2(4)) &= (1, 0, 1) \\
+      (f_0(5), f_1(5), f_2(5)) &= (0, 1, 1) \\
+      (f_0(6), f_1(6), f_2(6)) &= (0, 0, 0).
+    \end{aligned}
+  \]
+  Huomataan, että
+  \[
+    (f_0(a), f_1(a), f_2(a)) \neq (f_0(b), f_1(b), f_2(b))
+  \]
+  kaikilla \(a, b \in \dom(\mathcal{M})\), joilla \(a \ne b\).
+  Siis jokaisella alkiolla on eri jäsenyyskolmikko, joten predikaatit jakavat
+  universumin kuuteen erilliseen, epätyhjään osaan
+  \(\set{1}, \set{2}, \set{3}, \set{4}, \set{5}, \set{6}\).
+\end{solution}
 
 \begin{exercise}
   Olkoon \(L = \{P_0, c_0\}\). Anna esimerkki \(L\)-malleista \(\mathcal M\)
@@ -69,6 +152,28 @@
   \end{itemize}
 \end{exercise}
 
+\begin{solution}
+  Olkoon
+  \[
+    \begin{aligned}
+      \dom(\mathcal{M}) &= \set{0, 1, 2, 3}, \\
+      \dom(\mathcal{M}') &= \set{0, 1, 2, 3, 4}.
+    \end{aligned}
+  \]
+  Määritellään seuraavaksi
+  \[
+    P_0^{\mathcal{M}} = P_0^{\mathcal{M}'} = \set{0, 1}
+  \]
+  ja valitaan \(c_0^{\mathcal{M}} = 0\) ja \(c_0^{\mathcal{M}'} = 4\).
+  Tällöin
+  \[
+    \begin{aligned}
+      c_0^{\mathcal{M}} = 0 &\in P_0^{\mathcal{M}}, \\
+      c_0^{\mathcal{M}'} = 4 &\notin P_0^{\mathcal{M}'}.
+    \end{aligned}
+  \]
+\end{solution}
+
 \begin{exercise}
   Tarkastellaan muotoa
   \[
@@ -77,6 +182,16 @@
   olevaa mallia. Anna esimerkki joukosta \(X\) ja aakkostosta \(L\), joilla
   \(\mathcal M\) on \(L\)-malli.
 \end{exercise}
+
+\begin{solution}
+  Valitaan \(X = \NN^2\) ja \(L = \set{P_0, c_0}\), missä \(P_0\) on
+  yksipaikkainen relaatiosymboli. Tulkinnat ovat
+  \[
+    P_0^{\mathcal M} = \set{(0,1), (1,1), (2,0)} \subseteq X,
+    \qquad c_0^{\mathcal M} = (0,1) \in X.
+  \]
+  Näin \(\mathcal M\) on \(L\)-malli.
+\end{solution}
 
 \begin{exercise}
   Mitkä seuraavista ovat predikaattilogiikan termejä/kaavoja/ei kumpaakaan
@@ -102,6 +217,41 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*)]
+    \item \(L\)-termi, kun aakkostossa on vakiosymboli \(c_7\).
+    \item \(L\)-termi. Muuttuja \(z\) ei aseta aakkostolle vaatimuksia.
+    \item \(L\)-atomikaava. Muuttujien yhtäsuuruus ei aseta aakkostolle
+      vaatimuksia.
+    \item \(L\)-kaava, kun aakkostossa on yksipaikkainen relaatiosymboli
+      \(P\). Kvantifioidun muuttujan \(y\) ei tarvitse esiintyä
+      kaavassa \(P(x)\).
+    \item \(L\)-kaava, sillä \(x = y\) on atomikaava.
+      Ei vaatimuksia aakkostolle.
+    \item Ei kumpikaan. Kvanttorin \(\forall x\) jälkeen on oltava kaava,
+      mutta \(x\) on termi.
+    \item \(L\)-kaava, sillä kyseessä on atomikaavan \(x_1 = x_1\)
+      negaatio. Ei vaatimuksia aakkostolle.
+    \item Ei kumpikaan. Konjunktion molempien osien on oltava kaavoja,
+      mutta \(x\) ja \(z\) ovat termejä.
+    \item \(L\)-kaava, kun aakkostossa on yksipaikkainen relaatiosymboli
+      \(P\) ja kaksipaikkainen relaatiosymboli \(R\).
+    \item \(L\)-kaava, kun aakkostossa on kaksipaikkainen relaatiosymboli
+      \(R\). Konjunktion osat ovat \(\forall x\, x = y\) ja \(R(y,z)\).
+    \item Ei kumpikaan. Pelkkä relaatiosymboli \(P_0\) ei ole termi eikä
+      kaava, vaan se tarvitsee argumentit.
+    \item \(L\)-kaava, kun aakkostossa on kaksipaikkainen relaatiosymboli
+      \(R\). Kaava saadaan kvantifioimalla \(R(x,x)\) ensin kvanttorilla
+      \(\exists x\) ja sitten kvanttorilla \(\forall x\). Saman muuttujan
+      kvantifioiminen uudelleen on sallittua.
+    \item Ei kumpikaan. Konjunktion vasen osa \(\forall x\) ei ole kaava,
+      sillä kvanttorin jälkeinen kaava puuttuu.
+    \item Ei kumpikaan. Relaatiosymbolin argumenttien on oltava termejä,
+      mutta \(\exists y\) ei ole termi.
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}
   (Pohjustusta semantiikkaan) Miten kirjoittaisit luonnolliselle kielelle kaavat
   \begin{enumerate}[label=(\alph*)]
@@ -115,10 +265,34 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*)]
+    \item Kaikki ämpärit ovat sinisiä.
+    \item Kaikille luonnollisille luvuille \(x\) on olemassa luonnollinen
+      luku \(y\) siten, että \(x\) on pienempi kuin \(y\).
+    \item On olemassa osaston opettaja, joka käyttää silmälaseja ja on
+      pidempi kuin opettaja \(y\).
+  \end{enumerate}
+\end{solution}
+
 \noindent\textbf{Haastetehtävä.} Toisinaan predikaattilogiikka
 esitetään muodossa,
 jossa aakkostoissa on vain relaatio- ja funktiosymboleita. Tällöin
 sallitaan myös
 0-paikkaiset funktiot ja relaatiot. Mitä ne vastaavat?
+
+\begin{solution}
+  Nollapaikkainen funktiosymboli vastaa vakiosymbolia. Merkitään mallin
+  universumia \(M\):llä. Tällöin \(M^0 = \set{()}\), joten tulkinta
+  \[
+    f^{\mathcal{M}} \colon M^0 \to M
+  \]
+  valitsee yhden joukon \(M\) alkion \(f^{\mathcal{M}}(())\).
+
+  Nollapaikkainen relaatio puolestaan vastaa totuusarvoa: sen tulkinta on
+  joko \(\varnothing\) (epätosi) tai \(\set{()}\) (tosi), sillä nämä ovat
+  joukon \(M^0 = \set{()}\) ainoat osajoukot.
+\end{solution}
 
 \end{document}
