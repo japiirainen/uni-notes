@@ -137,4 +137,40 @@
   kaikilla \(x \in \RR\). Onko \(f\) välttämättä jatkuva?
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(f \colon \RR \to \RR\),
+  \[
+    f(x) =
+    \begin{cases}
+      1, & x = 0,\\
+      0, & x \neq 0.
+    \end{cases}
+  \]
+  Olkoon \(x \in \RR\) mielivaltainen ja \(\varepsilon > 0\).
+  Kun \(x = 0\), valitaan \(\delta = \varepsilon > 0\). Tällöin
+  \[
+    \abs{f(x + h) - f(x - h)} = \abs{0 - 0} = 0 < \varepsilon,
+  \]
+  kun \(0 < \abs{h} < \delta\). Kun \(x \neq 0\), valitaan \(\delta =
+  \abs{x} > 0\). Tällöin
+  \[
+    \abs{x \pm h} \geq \abs{x} - \abs{h} > 0,
+  \]
+  kun \(0 < \abs{h} < \delta = \abs{x}\), joten \(x + h \neq 0\)
+  ja \(x - h \neq 0\). Täten
+  \[
+    \abs{f(x + h) - f(x - h)} = \abs{0 - 0} = 0 < \varepsilon,
+  \]
+  kun \(0 < \abs{h} < \delta\). On osoitettu, että
+  \[
+    \lim_{h \to 0} [f(x + h) - f(x - h)] = 0
+  \]
+  kaikilla \(x \in \RR\). Toisaalta
+  \[
+    f(0) = 1 \neq 0 = \lim_{x \to 0} f(x),
+  \]
+  joten \(f\) ei ole jatkuva pisteessä \(0\). Ehdon toteuttava funktio
+  ei siis välttämättä ole jatkuva.
+\end{solution}
+
 \end{document}
