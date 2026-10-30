@@ -1,0 +1,140 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\usepackage{tikz}
+
+\title{Analyysi II\\Ryhmätyö 1 ratkaisut}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Analyysi II}{Ryhmätyö 1 ratkaisut}
+
+\begin{exercise}
+  Tutki, missä pisteissä funktio \(f\colon [0,3] \to \RR\),
+  \[
+    f(x) =
+    \begin{cases}
+      \sin x, & 0 < x < \frac{\pi}{2},\\
+      1, & x = 0 \text{ tai } \frac{\pi}{2} \leqslant x < 2,\\
+      x - 2, & 2 \leqslant x \leqslant 3,
+    \end{cases}
+  \]
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item on vasemmalta jatkuva,
+    \item on oikealta jatkuva,
+    \item on jatkuva,
+    \item ei ole jatkuva.
+  \end{enumerate}
+  Piirrä funktion kuvaaja. Tässä tehtävässä kuvasta katsominen riittää
+  perusteluksi! Saat tarkastella sinifunktiota \(x \mapsto \sin x\)
+  lukiotietojen perusteella (sinifunktion määritelmä ja jatkuvuus esitetään
+  oppikirjan luvuissa 1.6 ja 4.2; niitä käsitellään tällä kurssilla myöhemmin).
+
+  Huom! Tee jatkuvuustarkastelut \emph{pisteittäin} Määritelmien 4.1.1 ja
+  4.1.4 perusteella, älä käytä Määritelmässä 4.1.8 esitettyä jatkuvuutta
+  \emph{joukossa}.
+\end{exercise}
+
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Koska \(x \mapsto \sin x\) on jatkuva jokaisessa pisteessä
+      \(x \in \RR\), myös \(f\) on jatkuva ja siten vasemmalta jatkuva
+      jokaisessa pisteessä \(x \in (0, \pi/2)\).
+      Lisäksi
+      \[
+        f(\pi/2) = 1 = \sin(\pi/2) = \lim_{x \to \pi/2^-} f(x),
+      \]
+      joten \(f\) on vasemmalta jatkuva myös pisteessä \(\pi/2\).
+      Koska vakiofunktio \(x \mapsto 1\) on jatkuva jokaisessa pisteessä,
+      \(f\) on vasemmalta jatkuva jokaisessa pisteessä
+      \(x \in (\pi/2, 2)\). Samoin funktion \(x \mapsto x - 2\)
+      jatkuvuudesta seuraa, että \(f\) on vasemmalta jatkuva jokaisessa
+      pisteessä \(x \in (2, 3)\). Lisäksi \(f\) on vasemmalta jatkuva
+      pisteessä \(3\), sillä
+      \[
+        f(3) = 1 = \lim_{x \to 3^-} f(x).
+      \]
+      Pisteessä \(2\) funktio ei ole vasemmalta jatkuva, sillä
+      \(\lim_{x \to 2^-} f(x) = 1 \neq 0 = f(2)\).
+      Pisteessä \(0\) vasemmalta jatkuvuutta ei ole määritelty, koska
+      määrittelyjoukossa ei ole pisteitä nollan vasemmalla puolella.
+      Siis \(f\) on vasemmalta jatkuva täsmälleen pisteissä
+      \[
+        x \in (0, 2) \cup (2, 3].
+      \]
+    \item Kuten kohdassa (a), sinifunktion jatkuvuudesta seuraa, että
+      \(f\) on oikealta jatkuva jokaisessa pisteessä
+      \(x \in (0, \pi/2)\).
+      Lisäksi \(f\) on oikealta jatkuva pisteessä \(\pi/2\), sillä
+      \[
+        f(\pi/2) = 1 = \lim_{x \to (\pi/2)^+} f(x).
+      \]
+      Jokaisessa pisteessä \(x \in (\pi/2, 2)\) funktio \(f\) on
+      oikealta jatkuva, koska se on tällä välillä vakio.
+      Funktio \(f\) ei ole oikealta jatkuva pisteessä \(0\), sillä
+      \[
+        f(0) = 1 \neq 0 = \lim_{x \to 0^+} f(x).
+      \]
+      Funktion \(x \mapsto x - 2\) jatkuvuudesta seuraa, että \(f\) on
+      oikealta jatkuva jokaisessa pisteessä \(x \in (2, 3)\).
+      Lisäksi \(f\) on oikealta jatkuva pisteessä \(2\), sillä
+      \[
+        f(2) = 0 = \lim_{x \to 2^+} f(x).
+      \]
+      Pisteessä \(3\) oikealta jatkuvuutta ei ole määritelty, koska
+      määrittelyjoukko ei sisällä pisteitä \(3\):n oikealla puolella.
+      Siis \(f\) on oikealta jatkuva täsmälleen pisteissä
+      \[
+        x \in (0, 3).
+      \]
+    \item Funktio \(f\) on jatkuva sisäpisteessä täsmälleen silloin, kun
+      se on sekä oikealta että vasemmalta jatkuva. Kohtien (a) ja (b)
+      nojalla \(f\) on siis jatkuva täsmälleen pisteissä
+      \[
+        x \in (0, 2) \cup (2, 3).
+      \]
+    \item Kohdan (c) nojalla \(f\) ei ole jatkuva täsmälleen pisteissä
+      \(x \in \set{0, 2, 3}\). Päätepisteissä \(0\) ja \(3\)
+      kaksipuolista jatkuvuutta ei ole määritelty, ja pisteessä \(2\)
+      toispuoleiset raja-arvot eroavat toisistaan.
+  \end{enumerate}
+  \begin{center}
+    \begin{tikzpicture}[x=2.6cm,y=2.6cm,>=stealth]
+      \draw[->] (-0.2,0) -- (3.35,0) node[right] {\(x\)};
+      \draw[->] (0,-0.2) -- (0,1.4) node[above] {\(y\)};
+      \draw[densely dashed,gray] ({pi/2},0) -- ({pi/2},1);
+      \draw[densely dashed,gray] (2,0) -- (2,1);
+      \draw[densely dashed,gray] (3,0) -- (3,1);
+      \node[below left] at (0,0) {\(0\)};
+      \foreach \x/\label in {1/1,1.5707963268/{\frac{\pi}{2}},2/2,3/3} {
+        \draw (\x,0.025) -- (\x,-0.025) node[below] {\(\label\)};
+      }
+      \draw (0.025,1) -- (-0.025,1) node[left] {\(1\)};
+      \draw[thick,domain=0:pi/2,samples=80] plot (\x,{sin(\x r)});
+      \draw[thick] ({pi/2},1) -- (2,1);
+      \draw[thick] (2,0) -- (3,1);
+      \draw[thick,fill=white] (0,0) circle (2.5pt);
+      \draw[thick,fill=white] (2,1) circle (2.5pt);
+      \fill (0,1) circle (2.5pt);
+      \fill ({pi/2},1) circle (2.5pt);
+      \fill (2,0) circle (2.5pt);
+      \fill (3,1) circle (2.5pt);
+    \end{tikzpicture}
+  \end{center}
+\end{solution}
+
+\begin{exercise}
+  Olkoon \(f\colon \RR \to \RR\) sellainen funktio, että
+  \[
+    \lim_{h \to 0} [f(x + h) - f(x - h)] = 0
+  \]
+  kaikilla \(x \in \RR\). Onko \(f\) välttämättä jatkuva?
+\end{exercise}
+
+\end{document}
