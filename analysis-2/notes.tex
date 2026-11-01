@@ -631,4 +631,534 @@ $\eta$; sisemmän funktion jatkuvuus antaa sitten sitä vastaavan $\delta$:n.
   jatkuva pisteessä $1$.
 \end{solution}
 
+\newpage
+\subsection{Bolzanon lause ja väliarvot}
+
+Jatkuva funktio ei voi vaihtaa merkkiä kulkematta nollan kautta.
+Tämän täsmällinen muoto on Bolzanon lause. Todistuksissa tarvitaan
+reaalilukujen täydellisyyttä sekä seuraavia jatkuvuuden seurauksia.
+
+\subsubsection*{Todistuksissa tarvittavat aputulokset}
+
+\begin{lemma}[Merkin säilyminen lähiympäristössä]
+  \label{lem:local-sign}
+  Olkoon $f\colon A\to\RR$ jatkuva pisteessä $x_0\in A$.
+  Jos $f(x_0)>0$, niin jollakin $\delta>0$ pätee
+  \[
+    x\in A,\quad\abs{x-x_0}<\delta
+    \quad\Longrightarrow\quad f(x)>\tfrac12f(x_0)>0.
+  \]
+  Jos $f(x_0)<0$, saadaan vastaavasti
+  $f(x)<\tfrac12f(x_0)<0$ riittävän lähellä pistettä $x_0$.
+\end{lemma}
+\begin{proof}
+  Valitaan jatkuvuuden määritelmässä
+  $\varepsilon=\abs{f(x_0)}/2>0$. Tällöin sopivalla $\delta>0$
+  \[
+    f(x_0)-\frac{\abs{f(x_0)}}2
+    <f(x)<f(x_0)+\frac{\abs{f(x_0)}}2,
+  \]
+  kun $x\in A$ ja $\abs{x-x_0}<\delta$.
+  Molemmat väitteet seuraavat tästä.
+\end{proof}
+
+\begin{theorem}[Jatkuvuuden jonokriteeri]
+  \label{thm:sequential-continuity}
+  Funktio $f\colon A\to\RR$ on jatkuva pisteessä $x_0\in A$
+  täsmälleen silloin, kun jokaiselle jonolle $(x_n)$ joukossa $A$
+  pätee
+  \[
+    x_n\to x_0\quad\Longrightarrow\quad f(x_n)\to f(x_0).
+  \]
+\end{theorem}
+\begin{proof}
+  Oletetaan ensin jatkuvuus ja olkoon $x_n\to x_0$.
+  Kun $\varepsilon>0$, jatkuvuus antaa $\delta>0$, jolla
+  $\abs{x-x_0}<\delta$ ja $x\in A$ takaavat
+  $\abs{f(x)-f(x_0)}<\varepsilon$.
+  Jonon suppenemisen nojalla $\abs{x_n-x_0}<\delta$ kaikilla
+  riittävän suurilla $n$, joten myös
+  $\abs{f(x_n)-f(x_0)}<\varepsilon$ lopulta.
+
+  Jos $f$ ei ole jatkuva pisteessä $x_0$, on olemassa
+  $\varepsilon_0>0$ siten, että jokaista $n\ge1$ kohti voidaan
+  valita $x_n\in A$, jolle
+  \[
+    \abs{x_n-x_0}<\frac1n,
+    \qquad \abs{f(x_n)-f(x_0)}\ge\varepsilon_0.
+  \]
+  Tällöin $x_n\to x_0$, mutta $f(x_n)$ ei suppene kohti
+  lukua $f(x_0)$. Tämä todistaa käänteisen suunnan.
+\end{proof}
+
+\begin{lemma}[Sisäkkäiset suljetut välit]
+  \label{lem:nested-intervals}
+  Olkoot $I_n=[a_n,b_n]$ epätyhjiä suljettuja välejä, joille
+  $I_{n+1}\subseteq I_n$ kaikilla $n\ge0$ ja $b_n-a_n\to0$.
+  Tällöin on olemassa täsmälleen yksi
+  \[
+    c\in\bigcap_{n=0}^{\infty}I_n.
+  \]
+  Lisäksi $a_n\to c$ ja $b_n\to c$.
+\end{lemma}
+\begin{proof}
+  Jono $(a_n)$ on kasvava ja ylhäältä rajoitettu luvulla $b_0$.
+  Olkoon $c=\sup\{a_n:n\ge0\}$. Jokainen $b_n$ on kaikkien
+  lukujen $a_k$ yläraja: kun $k\le n$, niin $a_k\le a_n\le b_n$,
+  ja kun $k>n$, sisäkkäisyys antaa $a_k\le b_k\le b_n$.
+  Siis $a_n\le c\le b_n$ kaikilla $n$.
+  Koska
+  \[
+    0\le c-a_n\le b_n-a_n,
+    \qquad 0\le b_n-c\le b_n-a_n,
+  \]
+  päätepistejonot suppenevat kohti lukua $c$.
+  Jos myös $d$ kuuluu kaikkiin väleihin, niin
+  $\abs{c-d}\le b_n-a_n$ kaikilla $n$, joten $c=d$.
+\end{proof}
+
+\newpage
+\subsubsection*{Bolzanon lause: todistus supremumin avulla}
+
+\begin{theorem}[Bolzanon lause]
+  \label{thm:bolzano}
+  Olkoot $a<b$ ja $f\colon[a,b]\to\RR$ jatkuva.
+  Jos $f(a)f(b)<0$, niin on olemassa $c\in(a,b)$ siten, että
+  \[
+    \boxed{f(c)=0.}
+  \]
+\end{theorem}
+\begin{proof}
+  Oletetaan ensin $f(a)<0<f(b)$ ja asetetaan
+  \[
+    E=\{x\in[a,b]:f(x)<0\}.
+  \]
+  Joukko on epätyhjä, sillä $a\in E$, ja ylhäältä rajoitettu,
+  sillä $E\subseteq[a,b]$. Reaalilukujen täydellisyyden nojalla
+  on olemassa $s=\sup E\in[a,b]$.
+
+  Osoitetaan ensin $a<s<b$.
+  Oikealta jatkuvuus pisteessä $a$ ja \cref{lem:local-sign}
+  antavat $\delta_a>0$, jolla $f(x)<0$, kun
+  $x\in[a,b]$ ja $x<a+\delta_a$. Esimerkiksi
+  \[
+    t=a+\min\{\delta_a/2,(b-a)/2\}
+  \]
+  kuuluu joukkoon $E$ ja on suurempi kuin $a$.
+  Siis $s\ge t>a$.
+  Vastaavasti vasemmalta jatkuvuus pisteessä $b$ antaa
+  $\delta_b>0$, jolla $f(x)>0$, kun
+  $x\in[a,b]$ ja $b-\delta_b<x\le b$.
+  Kun $h=\min\{\delta_b/2,(b-a)/2\}>0$, kaikki joukon $E$
+  alkiot ovat enintään $b-h$. Siten $s\le b-h<b$.
+
+  Supremumin määritelmän nojalla voidaan valita jokaisella
+  $n\ge1$ piste $x_n\in E$, jolle
+  \[
+    s-\frac1n<x_n\le s.
+  \]
+  Tällöin $x_n\to s$. Jatkuvuuden jonokriteerin mukaan
+  \[
+    f(s)=\lim_{n\to\infty}f(x_n)\le0,
+  \]
+  koska $f(x_n)<0$ kaikilla $n$. Huomaa, että raja-arvo
+  voi olla nolla, vaikka jokainen jonon termi on negatiivinen.
+
+  Toisaalta jokainen $x\in(s,b]$ on joukon $E$ ulkopuolella,
+  joten $f(x)\ge0$. Valitaan esimerkiksi
+  $y_n=s+(b-s)/(n+1)$. Tällöin $y_n\in(s,b]$, $y_n\to s$ ja
+  \[
+    f(s)=\lim_{n\to\infty}f(y_n)\ge0.
+  \]
+  Näin $f(s)=0$, joten voidaan valita $c=s\in(a,b)$.
+
+  Jos $f(a)>0>f(b)$, sovelletaan jo todistettua tapausta
+  jatkuvaan funktioon $-f$. Sen nollakohdat ovat samat kuin
+  funktion $f$ nollakohdat.
+\end{proof}
+
+\begin{remark}
+  Merkintä $a\in E$ koskee määrittelyjoukon pistettä $a$;
+  funktion arvo $f(a)$ ei välttämättä kuulu joukkoon $E$.
+  Jos päätepisteessä on jo $f(a)=0$ tai $f(b)=0$, nollakohta
+  löytyy päätepisteestä. Ehto $f(a)f(b)<0$ takaa nollakohdan
+  nimenomaan avoimella välillä $(a,b)$.
+\end{remark}
+
+\newpage
+\subsubsection*{Toinen todistus: välin puolittaminen}
+
+\begin{proof}[Bolzanon lauseen toinen todistus]
+  Oletetaan $f(a)>0>f(b)$ ja asetetaan $I_0=[a,b]$.
+  Muodostetaan induktiivisesti välit $I_n=[a_n,b_n]$.
+  Kun $I_n$ on valittu, olkoon
+  \[
+    c_n=\frac{a_n+b_n}{2},\qquad
+    I_{n+1}=
+    \begin{cases}
+      [c_n,b_n],&f(c_n)\ge0,\\
+      [a_n,c_n],&f(c_n)<0.
+    \end{cases}
+  \]
+  Jos $f(c_n)=0$, nollakohta on jo löytynyt; määritelmä sallii
+  myös puolittamisen jatkamisen. Jokaisella $n\ge0$ pätee
+  \[
+    I_{n+1}\subseteq I_n,\qquad
+    f(a_n)\ge0,\qquad f(b_n)<0,\qquad
+    b_n-a_n=\frac{b-a}{2^n}\longrightarrow0.
+  \]
+  \Cref{lem:nested-intervals} antaa täsmälleen yhden pisteen
+  $c\in\bigcap_{n=0}^{\infty}I_n$ sekä suppenemiset
+  $a_n\to c$ ja $b_n\to c$. Jatkuvuuden nojalla
+  \[
+    f(c)=\lim_{n\to\infty}f(a_n)\ge0,
+    \qquad
+    f(c)=\lim_{n\to\infty}f(b_n)\le0.
+  \]
+  Siis $f(c)=0$. Koska alkuperäiset päätepistearvot ovat
+  nollasta poikkeavia, $c\in(a,b)$.
+  Toinen merkkijärjestys käsitellään korvaamalla $f$ funktiolla $-f$.
+\end{proof}
+
+\begin{remark}[Puolitusmenetelmän virhearvio]
+  Kun nollakohta $c$ kuuluu väliin $I_n$, sen keskipiste $c_n$
+  toteuttaa
+  \[
+    \abs{c_n-c}\le\frac{b_n-a_n}{2}
+    =\frac{b-a}{2^{n+1}}.
+  \]
+  Todistus antaa siis myös numeerisen menetelmän nollakohdan
+  arvioimiseen. Lause takaa ainakin yhden nollakohdan;
+  nollakohdan yksikäsitteisyys vaatii lisäoletuksen,
+  esimerkiksi aidon monotonisuuden.
+\end{remark}
+
+\subsubsection*{Väliarvolause}
+
+\begin{corollary}[Väliarvolause]
+  \label{cor:intermediate-value}
+  Jos $f\colon[a,b]\to\RR$ on jatkuva, se saa jokaisen arvon
+  lukujen $f(a)$ ja $f(b)$ välissä. Täsmällisesti
+  \[
+    \min\{f(a),f(b)\}\le y\le\max\{f(a),f(b)\}
+    \quad\Longrightarrow\quad
+    \text{on olemassa }c\in[a,b]\text{, jolla }f(c)=y.
+  \]
+  Jos epäyhtälöt ovat aitoja, voidaan valita $c\in(a,b)$.
+\end{corollary}
+\begin{proof}
+  Päätepistearvot saadaan valitsemalla $c=a$ tai $c=b$.
+  Jos $y$ on aidosti niiden välissä, funktio
+  $g(x)=f(x)-y$ on jatkuva ja sen päätepistearvot ovat
+  erimerkkiset. Bolzanon lause antaa $c\in(a,b)$, jolla
+  $g(c)=0$, eli $f(c)=y$.
+\end{proof}
+
+\newpage
+\subsubsection*{Jatkuva kuva välistä on väli}
+
+\begin{lemma}
+  \label{lem:interval-image}
+  Olkoon $\Delta\subseteq\RR$ epätyhjä väli ja
+  $f\colon\Delta\to\RR$ jatkuva. Tällöin
+  \[
+    f(\Delta)=\{f(x):x\in\Delta\}
+  \]
+  on väli; myös yhden pisteen joukko luetaan väliksi.
+\end{lemma}
+\begin{proof}
+  Olkoot $y_1,y_2\in f(\Delta)$ ja $y_1<y_2$.
+  Valitaan $x_1,x_2\in\Delta$ siten, että
+  $f(x_1)=y_1$ ja $f(x_2)=y_2$.
+  Koska $\Delta$ on väli,
+  \[
+    A=[\min\{x_1,x_2\},\max\{x_1,x_2\}]\subseteq\Delta.
+  \]
+  Funktion $f$ rajoittuma välille $A$ on jatkuva.
+  Väliarvolauseen mukaan jokaista $y\in(y_1,y_2)$ kohti on
+  $x\in A$, jolla $f(x)=y$. Siis $y\in f(\Delta)$.
+  Kuva sisältää näin kaikkien kahden alkionsa väliset reaaliluvut,
+  mikä on välin tunnusomainen ominaisuus.
+\end{proof}
+
+\begin{proof}[Vaihtoehtoinen todistus infimumin ja supremumin avulla]
+  Merkitään laajennettuja reaalilukuja käyttäen
+  \[
+    p=\inf f(\Delta)\in\RR\cup\{-\infty\},\qquad
+    s=\sup f(\Delta)\in\RR\cup\{\infty\}.
+  \]
+  Jos $p=s$, funktio on vakio ja kuva on yhden pisteen joukko.
+  Oletetaan $p<s$ ja valitaan reaaliluku $y$, jolla $p<y<s$.
+  Infimumin ja supremumin määritelmistä seuraa, että on olemassa
+  $x_1,x_2\in\Delta$ siten, että
+  \[
+    f(x_1)<y<f(x_2).
+  \]
+  Tämä pätee myös, kun $p=-\infty$ tai $s=\infty$:
+  tällöin käytetään vastaavasti kuvan rajoittamattomuutta.
+  Kuten edellisessä todistuksessa, väliarvolause antaa
+  $x\in\Delta$, jolla $f(x)=y$.
+  Näin kuva sisältää kaikki reaaliluvut aidosti rajojen $p$ ja $s$
+  välissä, eikä se sisällä näiden rajojen ulkopuolisia lukuja.
+  Äärellinen päätepiste kuuluu kuvaan täsmälleen silloin,
+  kun funktio saavuttaa kyseisen arvon. Siis kuva on väli.
+\end{proof}
+
+\begin{remark}
+  Välin kuva voi olla avoin, suljettu, puoliavoin tai rajoittamaton.
+  Esimerkiksi $f(x)=x^2$ kuvaa välin $(-1,1)$ väliksi $[0,1)$.
+  Lähtövälin oletus on olennainen: jatkuvan funktion
+  $f(x)=x$ kuva joukosta $\RR\setminus\{0\}$ ei ole väli.
+\end{remark}
+
+\newpage
+\subsection{Käänteisfunktion jatkuvuus ja juurifunktiot}
+
+\subsubsection*{Aidosti monotonisen funktion käänteisfunktio}
+
+\begin{theorem}[Käänteisfunktion jatkuvuus]
+  \label{thm:inverse-continuity}
+  Olkoon $\Delta\subseteq\RR$ epätyhjä väli ja
+  $f\colon\Delta\to\RR$ jatkuva ja aidosti monotoninen.
+  Tällöin käänteisfunktio
+  \[
+    f^{-1}\colon f(\Delta)\to\Delta
+  \]
+  on olemassa, jatkuva ja aidosti monotoninen samaan suuntaan
+  kuin $f$. Lisäksi $f(\Delta)$ on väli.
+\end{theorem}
+\begin{proof}
+  Aito monotonisuus takaa injektiivisyyden, ja funktio on
+  surjektiivinen omaan kuvaansa. Käänteisfunktio $g=f^{-1}$
+  on siis olemassa. Jos $f$ on aidosti kasvava ja $y_1<y_2$,
+  niin $g(y_1)<g(y_2)$, sillä vastakkainen järjestys antaisi
+  $y_1=f(g(y_1))\ge f(g(y_2))=y_2$.
+  Siis myös $g$ on aidosti kasvava.
+
+  Todistetaan jatkuvuus jonokriteerillä. Olkoon
+  $y_0\in f(\Delta)$, $x_0=g(y_0)$ ja $y_n\to y_0$, missä
+  $y_n\in f(\Delta)$. Oletetaan vastoin väitettä, ettei
+  $g(y_n)\to x_0$. Tällöin jollakin $\varepsilon>0$ on
+  osajono $(y_{n_k})$, jolle
+  \[
+    \abs{g(y_{n_k})-x_0}\ge\varepsilon
+    \quad\text{kaikilla }k.
+  \]
+  Ainakin toinen erotuksen merkeistä esiintyy äärettömän usein.
+  Siirtymällä edelleen osajonoon voidaan siis olettaa joko
+  \[
+    g(y_{n_k})\ge x_0+\varepsilon\quad\text{kaikilla }k,
+    \qquad\text{tai}\qquad
+    g(y_{n_k})\le x_0-\varepsilon\quad\text{kaikilla }k.
+  \]
+  Ensimmäisessä tapauksessa $z=x_0+\varepsilon/2\in\Delta$,
+  sillä $z$ on pisteiden $x_0$ ja $g(y_{n_1})$ välissä ja
+  $\Delta$ on väli. Aidon kasvavuuden nojalla
+  \[
+    y_{n_k}=f(g(y_{n_k}))\ge f(z)>f(x_0)=y_0.
+  \]
+  Tämä on ristiriidassa suppenemisen $y_{n_k}\to y_0$ kanssa,
+  sillä kiinteä luku $f(z)-y_0$ on positiivinen.
+  Toisessa tapauksessa $z=x_0-\varepsilon/2\in\Delta$ ja
+  \[
+    y_{n_k}=f(g(y_{n_k}))\le f(z)<f(x_0)=y_0,
+  \]
+  mikä antaa samanlaisen ristiriidan.
+  Siis $g(y_n)\to g(y_0)$, joten $g$ on jatkuva.
+
+  Jos $f$ on aidosti vähenevä, $h=-f$ on jatkuva ja aidosti
+  kasvava. Jo todistetun nojalla $h^{-1}$ on jatkuva ja aidosti
+  kasvava. Koska $f^{-1}(y)=h^{-1}(-y)$, myös $f^{-1}$ on
+  jatkuva ja se on aidosti vähenevä.
+  Väite kuvan välimuodosta on \cref{lem:interval-image}.
+\end{proof}
+
+\begin{remark}[Päätepisteet käänteisfunktion todistuksessa]
+  Pisteiden $x_0\pm\varepsilon$ kuulumista välille $\Delta$
+  ei voi olettaa, varsinkaan päätepisteessä.
+  Edellä valittu väliin jäävä piste $z$ kuuluu varmasti välille
+  siinä tapauksessa, jossa sitä käytetään.
+  Jatkuvuus tarkoittaa kaikkialla jatkuvuutta suhteessa
+  määrittelyjoukkoon, joten todistus kattaa myös päätepisteet.
+\end{remark}
+
+\newpage
+\subsubsection*{Juurifunktion olemassaolo ja jatkuvuus}
+
+\begin{theorem}[Positiivinen kokonaislukujuuri]
+  \label{thm:nth-root}
+  Jokaisella kokonaisluvulla $n\ge1$ ja luvulla $x\ge0$ on
+  täsmälleen yksi $u\ge0$, jolle $u^n=x$. Tätä lukua merkitään
+  \[
+    u=\sqrt[n]{x}=x^{1/n}.
+  \]
+  Funktio $x\mapsto x^{1/n}$ on jatkuva ja aidosti kasvava
+  välillä $[0,\infty)$.
+\end{theorem}
+\begin{proof}
+  Funktio $P_n(u)=u^n$ on jatkuva ja aidosti kasvava välillä
+  $[0,\infty)$. Aidon kasvavuuden näkee tekijöihinjaosta:
+  kun $0\le u<v$,
+  \[
+    v^n-u^n=(v-u)\sum_{j=0}^{n-1}v^{n-1-j}u^j>0.
+  \]
+  Summan ensimmäinen termi on positiivinen (ja kun $n=1$,
+  summa on $1$).
+  Jos $x=0$, ratkaisu on $u=0$. Jos $x>0$, valitaan $M=x+1>1$.
+  Tällöin $P_n(0)=0<x<M^n=P_n(M)$, joten väliarvolause
+  antaa $u\in(0,M)$, jolla $u^n=x$.
+  Aito kasvavuus takaa ratkaisun yksikäsitteisyyden.
+  Siten $P_n$ on bijektio väliltä $[0,\infty)$ itselleen.
+  Sen käänteisfunktion jatkuvuus ja aito kasvavuus seuraavat
+  \cref{thm:inverse-continuity}.
+\end{proof}
+
+\subsubsection*{Rationaaliset potenssit}
+
+\begin{definition}[Rationaalinen potenssi]
+  Kun $x>0$, $m\ge0$ on kokonaisluku ja $n\ge1$, määritellään
+  \[
+    x^{m/n}=\left(x^{1/n}\right)^m.
+  \]
+  Erityisesti $x^0=1$. Negatiivisille rationaalisille eksponenteille
+  asetetaan $x^{-r}=1/x^r$, kun $r>0$.
+\end{definition}
+
+\begin{lemma}[Määritelmän riippumattomuus esitystavasta]
+  Jos $m/n=p/q$, missä $m,p\ge0$ ja $n,q\ge1$ ovat
+  kokonaislukuja, niin
+  \[
+    \left(x^{1/n}\right)^m=\left(x^{1/q}\right)^p.
+  \]
+\end{lemma}
+\begin{proof}
+  Molemmat puolet ovat positiivisia, ja niiden $nq$:nnet
+  potenssit ovat vastaavasti $x^{mq}$ ja $x^{pn}$.
+  Koska $mq=pn$, nämä potenssit ovat samat.
+  Potenssifunktion $u\mapsto u^{nq}$ injektiivisyys
+  positiivisilla luvuilla antaa väitteen.
+  Negatiivisten eksponenttien tapauksessa otetaan käänteisluvut.
+\end{proof}
+
+\newpage
+\begin{theorem}[Potenssien laskusäännöt]
+  Olkoot $x,y>0$, $m,p\ge0$ ja $n,q\ge1$ kokonaislukuja.
+  Tällöin
+  \begin{enumerate}[label=\textup{(\alph*)}]
+    \item $\displaystyle (x^m)^{1/n}=(x^{1/n})^m=x^{m/n}$,
+    \item $\displaystyle x^{m/n+p/q}=x^{m/n}x^{p/q}$,
+    \item $\displaystyle (xy)^{1/n}=x^{1/n}y^{1/n}$.
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  \textbf{(a)} Kokonaislukupotenssien laskusäännöillä
+  \[
+    \left((x^{1/n})^m\right)^n
+    =\left((x^{1/n})^n\right)^m=x^m.
+  \]
+  Koska $(x^{1/n})^m>0$, juuren yksikäsitteisyys antaa väitteen.
+
+  \smallskip
+  \noindent\textbf{(b)} Yhteisen nimittäjän avulla
+  $m/n+p/q=(mq+np)/(nq)$, joten
+  \[
+    \left(x^{m/n+p/q}\right)^{nq}=x^{mq+np}.
+  \]
+  Toisaalta
+  \[
+    \left(x^{m/n}x^{p/q}\right)^{nq}
+    =\left(x^{m/n}\right)^{nq}\left(x^{p/q}\right)^{nq}
+    =x^{mq}x^{np}=x^{mq+np}.
+  \]
+  Positiivisten lukujen $nq$:nnet potenssit ovat samat,
+  joten myös itse luvut ovat samat.
+
+  \smallskip
+  \noindent\textbf{(c)} Koska
+  \[
+    \left(x^{1/n}y^{1/n}\right)^n
+    =\left(x^{1/n}\right)^n\left(y^{1/n}\right)^n=xy
+  \]
+  ja $x^{1/n}y^{1/n}>0$, juuren yksikäsitteisyys antaa väitteen.
+\end{proof}
+
+\begin{corollary}[Rationaalisten potenssifunktioiden jatkuvuus]
+  Jokaisella $r\in\QQ$ funktio $x\mapsto x^r$ on jatkuva
+  välillä $(0,\infty)$.
+\end{corollary}
+\begin{proof}
+  Jos $r=m/n\ge0$, funktio on jatkuvan juurifunktion ja
+  jatkuvan kokonaislukupotenssin yhdistetty funktio.
+  Jos $r<0$, käytetään esitystä $x^r=1/x^{-r}$ sekä
+  osamäärän jatkuvuutta; nimittäjä on positiivinen.
+\end{proof}
+
+\begin{remark}
+  Kun $r>0$ on rationaalinen, määritellään lisäksi $0^r=0$.
+  Sama juurifunktion ja potenssifunktion yhdistäminen todistaa
+  jatkuvuuden myös välillä $[0,\infty)$.
+  Negatiivista potenssia ei määritellä nollassa.
+\end{remark}
+
+\newpage
+\subsection{Sinin ja kosinin jatkuvuus}
+
+\begin{theorem}
+  Funktiot $\sin\colon\RR\to\RR$ ja
+  $\cos\colon\RR\to\RR$ ovat jatkuvia.
+\end{theorem}
+\begin{proof}
+  \textbf{1. Sini origossa.}
+  Yksikköympyrän geometriasta tiedetään, että radiaaneina
+  mitatulle kulmalle $0<t<\pi/2$ pätee
+  \[
+    0<\sin t<t.
+  \]
+  Ylemmän arvion voi nähdä vertaamalla yksikköympyrän
+  keskuskulman $t$ määräämää kolmiota sektoriin:
+  niiden pinta-alat ovat $\sin t/2$ ja $t/2$.
+  Puristusperiaatteen nojalla $\lim_{t\to0^+}\sin t=0$.
+  Koska $\sin(-t)=-\sin t$, myös
+  \[
+    \lim_{x\to0^-}\sin x
+    =\lim_{t\to0^+}(-\sin t)=0.
+  \]
+  Siis $\lim_{x\to0}\sin x=0=\sin0$, eli sini on jatkuva
+  pisteessä $0$.
+
+  \medskip
+  \noindent\textbf{2. Kosini origossa.}
+  Kun $-\pi/2<x<\pi/2$, kosini on positiivinen ja
+  \[
+    \cos x=\sqrt{1-\sin^2x}.
+  \]
+  Sinin jatkuvuus pisteessä $0$, jatkuvuuden laskusäännöt
+  ja neliöjuurifunktion jatkuvuus antavat
+  \[
+    \lim_{x\to0}\cos x=\sqrt{1-0^2}=1=\cos0.
+  \]
+  Siis myös kosini on jatkuva pisteessä $0$.
+
+  \medskip
+  \noindent\textbf{3. Sini ja kosini mielivaltaisessa pisteessä.}
+  Kiinnitetään $x_0\in\RR$ ja asetetaan $h=x-x_0$.
+  Tällöin $x\to x_0$ täsmälleen silloin, kun $h\to0$.
+  Yhteenlaskukaavoista ja jo todistetuista raja-arvoista saadaan
+  \begin{align*}
+    \lim_{x\to x_0}\sin x
+    &=\lim_{h\to0}\sin(x_0+h)\\
+    &=\lim_{h\to0}(\sin x_0\cos h+\cos x_0\sin h)\\
+    &=\sin x_0\cdot1+\cos x_0\cdot0=\sin x_0,
+  \end{align*}
+  sekä
+  \begin{align*}
+    \lim_{x\to x_0}\cos x
+    &=\lim_{h\to0}\cos(x_0+h)\\
+    &=\lim_{h\to0}(\cos x_0\cos h-\sin x_0\sin h)\\
+    &=\cos x_0\cdot1-\sin x_0\cdot0=\cos x_0.
+  \end{align*}
+  Koska $x_0$ oli mielivaltainen, molemmat funktiot ovat
+  jatkuvia koko reaalilukujoukossa.
+\end{proof}
+
 \end{document}
