@@ -3,6 +3,7 @@
 
 \newcommand{\notelanguage}{finnish}
 \input{../preamble.tex}
+\usepackage{tikz}
 
 \title{Johdatus logiikkaan II}
 \author{Joona Piirainen}
@@ -483,5 +484,210 @@ Kun tarkistat kaavaa, etene seuraavasti:
   merkinnällä $x\ne c$. Viimeinen ilmaus on virheellinen, koska
   $P(c)$ on kaava eikä relaatioon argumentiksi kelpaava termi.
 \end{solution}
+
+\clearpage
+% Päiväys käyttäjän pyynnön mukaan; ensimmäisessä kuvassa lukee 1.11.2026.
+\subsection{2.11.2026: Tulkintafunktiot ja kaavojen totuus}
+
+Malli antaa merkityksen aakkoston symboleille, mutta ei vielä muuttujille.
+Esimerkiksi aakkoston $L=\{P,R,c\}$ kaavan $P(c)\land R(c,x)$
+totuus voi riippua siitä, mitä alkiota $x$ tarkoittaa. Tätä varten
+tarvitaan \emph{tulkintafunktio}. Kuten edellisellä luennolla,
+aakkostoissa ei tässä ole funktiosymboleita.
+
+\subsubsection{Tulkintafunktio ja termin arvo}
+
+\begin{definition}[Tulkintafunktio ja termin tulkinta]
+  Olkoon $\mathcal M$ $L$-malli ja $M=\dom(\mathcal M)$.
+  \emph{$\mathcal M$-tulkintafunktio} on funktio
+  \[
+    s\colon\{x_i:i\in\NN\}\longrightarrow M.
+  \]
+  Termin $t$ arvo mallissa $\mathcal M$ tulkintafunktiolla $s$ on
+  \[
+    t^{\mathcal M}\langle s\rangle=
+    \begin{cases}
+      s(x_i),&\text{jos }t=x_i,\\
+      c_i^{\mathcal M},&\text{jos }t=c_i.
+    \end{cases}
+  \]
+\end{definition}
+
+Vakion arvo määräytyy siis mallista ja muuttujan arvo tulkintafunktiosta.
+Eri muuttujat voivat saada saman arvon. Tulkintafunktio antaa arvon
+\emph{kaikille} muuttujille; esimerkeissä luetellaan vain tarvittavat arvot.
+
+\subsubsection{Atomikaavat ja konnektiivit}
+
+Merkintä $\mathcal M\models_s A$ tarkoittaa, että $s$ \emph{toteuttaa}
+kaavan $A$ mallissa $\mathcal M$. Jos näin ei ole, kirjoitetaan
+$\mathcal M\not\models_s A$. Toteutuminen määritellään kaavan
+rakenteen mukaan, atomikaavoista alkaen.
+
+\begin{definition}[Atomikaavojen toteutuminen]
+  Kun $t,u,t_1,\ldots,t_n$ ovat termejä ja $R\in L$ on
+  $n$-paikkainen relaatiosymboli,
+  \begin{align*}
+    \mathcal M\models_s t=u
+    &\iff t^{\mathcal M}\langle s\rangle=u^{\mathcal M}\langle s\rangle,\\
+    \mathcal M\models_s R(t_1,\ldots,t_n)
+    &\iff (t_1^{\mathcal M}\langle s\rangle,\ldots,
+    t_n^{\mathcal M}\langle s\rangle)\in R^{\mathcal M}.
+  \end{align*}
+  Erityisesti $\mathcal M\models_s P(t)$ täsmälleen silloin, kun
+  $t^{\mathcal M}\langle s\rangle\in P^{\mathcal M}$.
+\end{definition}
+
+Konnektiivien totuusehdot ovat samat kuin propositiologiikassa.
+Kaikki alla olevat toteutumiset koskevat samaa mallia ja samaa
+tulkintafunktiota:
+\begin{align*}
+  \mathcal M\models_s\neg A
+  &\iff \mathcal M\not\models_s A,\\
+  \mathcal M\models_s(A\land B)
+  &\iff \mathcal M\models_s A\ \text{ja}\ \mathcal M\models_s B,\\
+  \mathcal M\models_s(A\lor B)
+  &\iff \mathcal M\models_s A\ \text{tai}\ \mathcal M\models_s B,\\
+  \mathcal M\models_s(A\to B)
+  &\iff \mathcal M\not\models_s A\ \text{tai}\ \mathcal M\models_s B,\\
+  \mathcal M\models_s(A\leftrightarrow B)
+  &\iff A\text{:lla ja }B\text{:llä on sama totuusarvo mallissa }
+  \mathcal M\text{ tulkinnalla }s.
+\end{align*}
+Sana \emph{tai} sallii molemmat vaihtoehdot. Implikaatio on epätosi
+vain, kun sen etujäsen on tosi ja takajäsen epätosi.
+
+\clearpage
+\subsubsection{Kvanttorit muuttavat tulkintafunktiota}
+
+Kvanttori käy läpi muuttujan mahdollisia arvoja \emph{samassa mallissa}.
+Jos $a\in M$, merkintä $s(a/x_i)$ tarkoittaa tulkintafunktiota, joka
+eroaa $s$:stä enintään muuttujan $x_i$ kohdalla:
+\[
+  s(a/x_i)(x_j)=
+  \begin{cases}
+    a,&\text{jos }j=i,\\
+    s(x_j),&\text{jos }j\ne i.
+  \end{cases}
+\]
+Esimerkiksi jos $s(x)=4$ ja $s(y)=5$, niin $s(3/x)$ antaa arvoiksi
+$x\mapsto3$ ja $y\mapsto5$. Vakioiden tulkinnat eivät muutu.
+
+\begin{definition}[Kvanttorien toteutuminen]
+  \begin{align*}
+    \mathcal M\models_s\exists x A
+    &\iff \text{jollakin }a\in M\text{ pätee }
+    \mathcal M\models_{s(a/x)}A,\\
+    \mathcal M\models_s\forall x A
+    &\iff \text{kaikilla }a\in M\text{ pätee }
+    \mathcal M\models_{s(a/x)}A.
+  \end{align*}
+\end{definition}
+
+Eksistenssiväitteeseen riittää yksi \emph{todistaja}; sen kumoamiseksi
+on suljettava pois jokainen mahdollinen arvo. Universaaliväitteen
+kumoamiseen riittää yksi \emph{vastaesimerkki}. Atomikaavojen,
+konnektiivien ja kvanttorien ehdot muodostavat yhdessä
+\emph{Tarskin totuusmääritelmän}.
+
+\subsubsection{Luentoesimerkki: suunnattu relaatio}
+
+Olkoon nyt $L=\{P,R\}$, missä $P$ on yksipaikkainen ja $R$
+kaksipaikkainen. Tarkastellaan mallia, jossa
+\[
+  M=\{1,2,3,4,5\},\qquad P^{\mathcal M}=\{1,2,3\},\qquad
+  R^{\mathcal M}=\{(1,2),(2,3),(3,4),(5,4)\}.
+\]
+\begin{center}
+  \begin{tikzpicture}[>=stealth, every node/.style={font=\small}]
+    \draw[rounded corners] (-0.5,-0.55) rectangle (3.7,0.65);
+    \node[above] at (1.6,0.65) {$P^{\mathcal M}$};
+    \node (one) at (0,0) {$1$};
+    \node (two) at (1.6,0) {$2$};
+    \node (three) at (3.2,0) {$3$};
+    \node (four) at (4.8,0) {$4$};
+    \node (five) at (4.8,-1) {$5$};
+    \draw[->] (one) -- (two);
+    \draw[->] (two) -- (three);
+    \draw[->] (three) -- (four);
+    \draw[->] (five) -- (four);
+  \end{tikzpicture}
+\end{center}
+Nuoli $a\to b$ tarkoittaa, että $(a,b)\in R^{\mathcal M}$.
+Valitaan tulkintafunktio $s$, jolla $s(x)=4$ ja $s(y)=5$.
+
+\begin{enumerate}
+  \item \textbf{Ilman kvanttoreita:}
+    $\mathcal M\not\models_s P(x)\land R(x,y)$, koska
+    $4\notin P^{\mathcal M}$. Jo yksi epätosi osa kumoaa konjunktion.
+  \item \textbf{Vain $x$ kvantifioidaan:}
+    $\mathcal M\not\models_s\exists x\,(P(x)\land R(x,y))$.
+    Jokaisella $a\in M$ tulkintafunktio $s(a/x)$ pitää $y$:n arvona
+    luvun $5$. Koska mikään pari $(a,5)$ ei kuulu relaatioon
+    $R^{\mathcal M}$, yhtään todistajaa ei ole.
+\end{enumerate}
+
+\clearpage
+\subsubsection{Sisäkkäiset kvanttorit: kaksi todistajaa}
+
+Saman mallin kolmas väite on
+\[
+  \mathcal M\models_s\exists x\,\exists y\,(P(x)\land R(x,y)).
+\]
+Puretaan se suoraan totuusmääritelmän avulla:
+\begin{align*}
+  &\mathcal M\models_s\exists x\,\exists y\,(P(x)\land R(x,y))\\
+  &\iff \text{on }a\in M:\quad
+  \mathcal M\models_{s(a/x)}\exists y\,(P(x)\land R(x,y))\\
+  &\iff \text{on }a,b\in M:\quad
+  \mathcal M\models_{s(a/x)(b/y)}P(x)\land R(x,y)\\
+  &\iff \text{on }a,b\in M:\quad
+  a\in P^{\mathcal M}\ \text{ja}\ (a,b)\in R^{\mathcal M}.
+\end{align*}
+Valinnat $a=3$ ja $b=4$ toteuttavat viimeisen ehdon, joten väite on
+tosi. Merkintä $s(a/x)(b/y)$ tarkoittaa, että ensin asetetaan
+$x$:n arvoksi $a$ ja sitten $y$:n arvoksi $b$.
+Alkuperäiset arvot $s(x)=4$ ja $s(y)=5$ eivät estä toteutumista:
+molemmat korvataan kvanttorien käsittelyn ajaksi.
+
+\subsubsection{Täydennyksiä kirjan luvusta 3}
+
+\paragraph{Kvanttorin negaatio.}
+Totuusehdoista seuraa, että seuraavien kaavaparien totuusarvot
+ovat samat jokaisessa mallissa jokaisella tulkintafunktiolla:
+\[
+  \neg\forall x A\ \equiv\ \exists x\neg A,
+  \qquad
+  \neg\exists x A\ \equiv\ \forall x\neg A.
+\]
+Esimerkiksi luentomallissa $\forall x P(x)$ on epätosi, koska
+$4\notin P^{\mathcal M}$. Sama alkio todistaa kaavan
+$\exists x\neg P(x)$ todeksi.
+
+\paragraph{Toteutuminen tulkinnalla ja totuus mallissa.}
+Kirjan kohdassa 3.4 erotetaan seuraavat merkinnät:
+\begin{align*}
+  \mathcal M\models_s A
+  &:\quad A\text{ toteutuu juuri tulkintafunktiolla }s,\\
+  \mathcal M\models A
+  &:\quad A\text{ toteutuu kaikilla }\mathcal M
+  \text{-tulkintafunktioilla},\\
+  \models A
+  &:\quad A\text{ on tosi kaikissa }L\text{-malleissa (validi).}
+\end{align*}
+Esimerkiksi $\mathcal M\models_s\exists x\,(P(x)\land R(x,y))$
+voi riippua $s(y)$:stä: arvolla $5$ se on epätosi, arvolla $4$ tosi
+(todistaja $x=3$). Siksi
+$\mathcal M\not\models\exists x\,(P(x)\land R(x,y))$.
+Sen sijaan edellä todistettu
+$\exists x\exists y\,(P(x)\land R(x,y))$ ei sisällä vapaita
+muuttujia: se on \emph{lause}, jonka totuus tässä mallissa ei riipu
+alkuperäisestä tulkintafunktiosta.
+
+\paragraph{Käytännön tarkistus.}
+Pura kaavaa ulkoa sisään. Kvanttorin kohdalla muuta vain sen sitoman
+muuttujan arvoa; atomikaavan kohdalla tarkista alkioiden yhtäsuuruus
+tai kuuluminen annettuun relaatioon. Erityisesti
+$R(x,y)$ ja $R(y,x)$ voivat saada eri totuusarvot.
 
 \end{document}
