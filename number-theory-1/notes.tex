@@ -465,4 +465,262 @@ yksikäsitteisyys seuraa Eukleideen lemmasta. Alkuluvun testaamisessa
 riittävät alkulukujakajat neliöjuureen asti. Kokonaislukurivioperaatiot
 antavat syt:n lisäksi konkreettiset Bézout'n kertoimet.
 
+\newpage
+\subsection{3.11.2026: suurin yhteinen tekijä ja Bézout'n identiteetti}
+
+\subsubsection{Suurin yhteinen tekijä}
+\begin{definition}
+  Olkoot $a,b\in\ZZ$, eivät molemmat nollia. Lukujen $a$ ja $b$
+  \emph{suurin yhteinen tekijä} $\syt(a,b)$ on suurin positiivinen
+  kokonaisluku $d$, jolle $d\mid a$ ja $d\mid b$.
+\end{definition}
+Suurin yhteinen tekijä on olemassa ja yksikäsitteinen: positiivisten
+yhteisten tekijöiden joukko on epätyhjä, sillä se sisältää luvun $1$,
+ja äärellinen, sillä sen jokainen alkio on enintään jonkin
+nollasta poikkeavan luvun $a,b$ itseisarvo. Erityisesti
+\[
+  \syt(a,b)=\syt(|a|,|b|)=\syt(b,a),\qquad
+  \syt(a,0)=|a|\quad(a\ne0).
+\]
+Pari $(0,0)$ jätetään tässä määritelmän ulkopuolelle: jokainen
+positiivinen kokonaisluku jakaa molemmat nollat, joten suurinta ei ole.
+
+\subsubsection{Bézout'n identiteetti ja yhteiset tekijät}
+Aiemmin aritmetiikan peruslauseen apuna käytetty Bézout'n identiteetti
+antaa syt:lle toisen kuvauksen: se on pienin positiivinen lukujen
+$a,b$ kokonaislukukertoiminen lineaarikombinaatio.
+
+\begin{theorem}[Bézout'n identiteetti]
+  Olkoot $a,b\in\ZZ$, eivät molemmat nollia, ja $d=\syt(a,b)$.
+  Tällöin on olemassa $x,y\in\ZZ$, joille
+  \[
+    \boxed{d=ax+by.}
+  \]
+\end{theorem}
+\begin{proof}
+  Tarkastellaan joukkoa
+  \[
+    S=\{as+bt:s,t\in\ZZ,\ as+bt>0\}.
+  \]
+  Ainakin toinen luvuista $|a|,|b|$ on positiivinen ja kuuluu
+  joukkoon $S$, joten $S\ne\varnothing$. Hyvinjärjestysperiaatteen
+  nojalla joukolla on pienin alkio $m=ax+by$.
+
+  Jakoyhtälön mukaan $a=qm+r$, missä $0\le r<m$. Nyt
+  \[
+    r=a-qm=a(1-qx)+b(-qy).
+  \]
+  Jos $r>0$, niin $r\in S$, vastoin luvun $m$ minimaalisuutta.
+  Siis $r=0$ ja $m\mid a$. Samoin, jakamalla $b$ luvulla $m$,
+  saadaan $m\mid b$.
+
+  Jos $t$ on lukujen $a,b$ mikä tahansa yhteinen tekijä, niin
+  $t\mid ax+by=m$. Jokainen positiivinen yhteinen tekijä on siis
+  enintään $m$, ja $m$ itse on positiivinen yhteinen tekijä.
+  Täten $m=\syt(a,b)=d$.
+\end{proof}
+
+\begin{corollary}\label{cor:nt-common-divisors}
+  Kun $a,b$ eivät molemmat ole nollia, niin kaikilla $t\in\ZZ$
+  \[
+    t\mid a\ \text{ja}\ t\mid b
+    \quad\Longleftrightarrow\quad t\mid\syt(a,b).
+  \]
+\end{corollary}
+\begin{proof}
+  Jos $t\mid a$ ja $t\mid b$, niin Bézout'n identiteetistä
+  $t\mid ax+by=\syt(a,b)$. Käänteinen suunta seuraa jaollisuuden
+  transitiivisuudesta, sillä $\syt(a,b)$ jakaa molemmat luvut.
+\end{proof}
+Syt ei siis ole vain suuruusjärjestyksessä suurin yhteinen tekijä:
+kaikki yhteiset tekijät myös jakavat sen.
+
+\subsubsection{Keskenään jaottomat luvut ja Eukleideen lemma}
+\begin{definition}
+  Luvut $a,b\in\ZZ$ ovat \emph{keskenään jaottomia}, jos
+  $\syt(a,b)=1$.
+\end{definition}
+Bézout'n identiteetin ja edellisen korollaarin perusteella
+\[
+  \syt(a,b)=1
+  \quad\Longleftrightarrow\quad
+  ax+by=1\ \text{joillakin }x,y\in\ZZ.
+\]
+Keskenään jaottomien lukujen ei tarvitse olla alkulukuja:
+esimerkiksi $8$ ja $9$ ovat yhdistettyjä, mutta $9-8=1$.
+
+\begin{theorem}[Jaottoman tekijän supistaminen]\label{thm:nt-coprime-divisor}
+  Olkoot $a,b,c\in\ZZ$. Jos $\syt(a,b)=1$ ja $a\mid bc$,
+  niin $a\mid c$.
+\end{theorem}
+\begin{proof}
+  Bézout'n identiteetillä $ax+by=1$ joillakin $x,y\in\ZZ$.
+  Kertomalla luvulla $c$ saadaan
+  \[
+    c=acx+bcy.
+  \]
+  Luku $a$ jakaa molemmat oikean puolen termit, joten $a\mid c$.
+\end{proof}
+
+\begin{corollary}[Eukleideen lemma]
+  Jos $p$ on alkuluku ja $p\mid ab$, niin $p\mid a$ tai $p\mid b$.
+\end{corollary}
+\begin{proof}
+  Jos $p\nmid a$, niin $\syt(p,a)=1$: luvun $p$ ainoat
+  positiiviset tekijät ovat $1$ ja $p$. Edellinen lause antaa $p\mid b$.
+\end{proof}
+
+\begin{corollary}\label{cor:nt-coprime-product}
+  Jos $\syt(a,b)=1$, $a\mid c$ ja $b\mid c$, niin $ab\mid c$.
+\end{corollary}
+\begin{proof}
+  Kirjoitetaan $c=ak$. Koska $b\mid ak$ ja $\syt(b,a)=1$,
+  \cref{thm:nt-coprime-divisor} antaa $b\mid k$. Siis $k=b\ell$
+  jollakin $\ell\in\ZZ$ ja $c=ab\ell$.
+\end{proof}
+Jaottomuusoletusta ei voi poistaa: $4\mid12$ ja $6\mid12$, mutta
+$24\nmid12$.
+
+\subsubsection{Eukleideen algoritmi ja Bézout'n kertoimien laskeminen}
+\begin{lemma}\label{lem:nt-euclidean-step}
+  Jos $a=qb+r$, niin luvuilla $a,b$ ja $b,r$ on samat yhteiset
+  tekijät. Erityisesti $\syt(a,b)=\syt(b,r)$, kun $a,b$ eivät
+  molemmat ole nollia.
+\end{lemma}
+\begin{proof}
+  Jos $t\mid a$ ja $t\mid b$, niin $t\mid a-qb=r$.
+  Jos taas $t\mid b$ ja $t\mid r$, niin $t\mid qb+r=a$.
+\end{proof}
+
+Algoritmia varten vaihdetaan luvut tarvittaessa itseisarvoikseen ja
+järjestetään ne niin, että $a\ge b\ge0$. Jos $b=0$, syt on $a$.
+Muuten asetetaan $r_0=a$, $r_1=b$ ja muodostetaan jakoyhtälöt
+\[
+  r_{i-1}=q_i r_i+r_{i+1},\qquad 0\le r_{i+1}<r_i,
+\]
+kunnes $r_{k+1}=0$. Positiiviset jakojäännökset pienenevät aidosti,
+joten algoritmi päättyy. \Cref{lem:nt-euclidean-step} antaa
+\[
+  \syt(a,b)=\syt(r_1,r_2)=\cdots=\syt(r_k,0)=r_k.
+\]
+\emph{Syt on siis viimeinen nollasta poikkeava jakojäännös.}
+Ratkaisemalla jakoyhtälöistä jakojäännökset ja sijoittamalla
+takaperin saadaan samalla Bézout'n kertoimet.
+
+\paragraph{Luennon esimerkki: $742$ ja $336$.}
+\[
+  \begin{aligned}
+    742&=2\cdot336+70,\\
+    336&=4\cdot70+56,\\
+    70&=1\cdot56+14,\\
+    56&=4\cdot14+0.
+  \end{aligned}
+\]
+Siis $\syt(742,336)=14$. Takaisinsijoituksella
+\[
+  \begin{aligned}
+    14&=70-56\\
+    &=70-(336-4\cdot70)\\
+    &=5\cdot70-336\\
+    &=5(742-2\cdot336)-336\\
+    &=5\cdot742-11\cdot336.
+  \end{aligned}
+\]
+Bézout'n kertoimiksi kelpaavat siis $x=5$ ja $y=-11$.
+Tarkistus: $5\cdot742-11\cdot336=3710-3696=14$.
+
+\subsubsection{Pienin yhteinen jaettava}
+\begin{definition}
+  Olkoot $a,b\in\ZZ\setminus\{0\}$. Lukujen $a,b$
+  \emph{pienin yhteinen jaettava} $\operatorname{pyj}(a,b)$ on
+  pienin positiivinen kokonaisluku $m$, jolle $a\mid m$ ja $b\mid m$.
+\end{definition}
+Luku on olemassa ja yksikäsitteinen: positiivisten yhteisten
+monikertojen joukko sisältää luvun $|ab|$, ja hyvinjärjestysperiaate
+antaa sille yksikäsitteisen pienimmän alkion.
+Jos jompikumpi luvuista on nolla, positiivista yhteistä monikertaa
+ei ole; tällöin sovitaan erikseen $\operatorname{pyj}(a,b)=0$.
+
+\begin{theorem}[Syt:n ja pyj:n yhteys]
+  Olkoot $a,b\in\ZZ$, eivät molemmat nollia. Tällöin
+  \[
+    \boxed{\operatorname{pyj}(a,b)=\frac{|ab|}{\syt(a,b)}.}
+  \]
+\end{theorem}
+\begin{proof}
+  Jos toinen luvuista on nolla, molemmat puolet ovat nollia.
+  Muuten merkitään $d=\syt(a,b)$, $A=|a|/d$ ja $B=|b|/d$.
+  Bézout'n identiteetti itseisarvoille antaa $d=u|a|+v|b|$ ja siis
+  $1=uA+vB$. Näin $\syt(A,B)=1$.
+
+  Luku $L=dAB=|ab|/d$ on positiivinen yhteinen monikerta, koska
+  $L=|a|B=|b|A$. Jos $M$ on jokin positiivinen yhteinen monikerta,
+  niin $M=|a|k=dAk$ jollakin positiivisella kokonaisluvulla $k$.
+  Ehdosta $|b|=dB\mid M=dAk$ seuraa $B\mid Ak$, ja koska
+  $\syt(B,A)=1$, \cref{thm:nt-coprime-divisor} antaa $B\mid k$.
+  Siis $L\mid M$ ja erityisesti $L\le M$. Näin $L$ on pienin
+  positiivinen yhteinen monikerta.
+\end{proof}
+Esimerkiksi
+\[
+  \operatorname{pyj}(742,336)=\frac{742\cdot336}{14}=17808.
+\]
+Jos $a,b\ne0$ ovat keskenään jaottomia, niin
+$\operatorname{pyj}(a,b)=|ab|$. Yleensä tulo on liian suuri:
+$\syt(4,6)=2$ ja $\operatorname{pyj}(4,6)=12$.
+
+\subsubsection{Lineaarinen Diofantoksen yhtälö}
+\begin{theorem}[Kokonaislukuratkaisun olemassaolo]
+  Olkoot $a,b,c\in\ZZ$, eivätkä $a,b$ molemmat nollia.
+  Yhtälöllä $ax+by=c$ on ratkaisu $x,y\in\ZZ$ täsmälleen silloin,
+  kun $\syt(a,b)\mid c$.
+\end{theorem}
+\begin{proof}
+  Merkitään $d=\syt(a,b)$. Jos $ax+by=c$, niin $d\mid c$,
+  koska $d$ jakaa molemmat vasemman puolen termit.
+  Jos taas $d\mid c$, kirjoitetaan $c=kd$. Bézout'n identiteetillä
+  $d=au+bv$ joillakin $u,v\in\ZZ$, joten
+  \[
+    c=kd=a(ku)+b(kv).
+  \]
+  Siis $(x,y)=(ku,kv)$ on kokonaislukuratkaisu.
+\end{proof}
+
+\paragraph{Ratkaisun löytäminen käytännössä.}
+Laske ensin $d=\syt(a,b)$ Eukleideen algoritmilla. Jos $d\nmid c$,
+ratkaisua ei ole. Muuten etsi takaisinsijoituksella esitys $d=au+bv$
+ja kerro kertoimet luvulla $c/d$.
+Esimerkiksi yhtälöllä $742x+336y=10$ ei ole kokonaislukuratkaisua,
+koska $14\nmid10$. Yhtälölle $742x+336y=28$ saadaan sen sijaan
+\[
+  28=742\cdot10+336\cdot(-22),
+\]
+joten yksi ratkaisu on $(10,-22)$.
+
+\paragraph{Täydennys: kaikki ratkaisut, kun $a,b\ne0$.}
+Jos $(x_0,y_0)$ on yksi ratkaisu ja $d=\syt(a,b)$, niin kaikki
+kokonaislukuratkaisut ovat
+\[
+  \boxed{x=x_0+\frac{b}{d}t,\qquad
+  y=y_0-\frac{a}{d}t,\qquad t\in\ZZ.}
+\]
+\begin{proof}
+  Sijoitus osoittaa, että jokainen näin saatu pari on ratkaisu.
+  Kääntäen kahden ratkaisun erotukselle pätee
+  \[
+    \frac{a}{d}(x-x_0)=-\frac{b}{d}(y-y_0).
+  \]
+  Luvut $a/d$ ja $b/d$ ovat keskenään jaottomia, sillä Bézout'n
+  yhtälön $d=au+bv$ jakaminen luvulla $d$ antaa niiden
+  lineaarikombinaatioksi luvun $1$.
+  Niinpä \cref{thm:nt-coprime-divisor} antaa
+  $b/d\mid x-x_0$. Kirjoitetaan $x-x_0=(b/d)t$ ja sijoitetaan
+  yhtälöön; supistamalla $b/d\ne0$ saadaan $y-y_0=-(a/d)t$.
+\end{proof}
+Edellisen esimerkin kaikki ratkaisut ovat siis
+$x=10+24t$, $y=-22-53t$, missä $t\in\ZZ$.
+Jos $a=0$ ja $b\ne0$, yhtälö määrää $y=c/b$ ja $x$ on vapaa;
+jos $b=0$ ja $a\ne0$, vastaavasti $x=c/a$ ja $y$ on vapaa,
+kunhan määrätty osamäärä on kokonaisluku.
+
 \end{document}
