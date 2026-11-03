@@ -1,0 +1,220 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Lineaarialgebra ja matriisilaskenta I\\Harjoituksen 2 ratkaisut}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Lineaarialgebra ja matriisilaskenta I}{Harjoituksen
+2 ratkaisut}
+
+\begin{exercise}
+  Olkoot
+  \[
+    A =
+    \begin{bmatrix}
+      2 & -1 & -4 \\
+      -5 & 3 & 0 \\
+      -2 & -3 & 1
+    \end{bmatrix}
+    \qquad\text{ja}\qquad
+    B =
+    \begin{bmatrix}
+      1 & 7 & -1 \\
+      -2 & -2 & 2 \\
+      5 & 2 & -3
+    \end{bmatrix}.
+  \]
+  Laske \(A+B\), \(B-2A\) ja \(AB\). Onko voimassa \(AB=BA\)?
+\end{exercise}
+
+\begin{solution}
+  Laskemalla saadaan
+  \[
+    \begin{aligned}
+      A + B &=
+      \begin{bmatrix}
+        2 + 1 & -1 + 7 & -4 - 1 \\
+        -5 - 2 & 3 - 2 & 0 + 2 \\
+        -2 + 5 & -3 + 2 & 1 - 3
+      \end{bmatrix} \\
+      &=
+      \begin{bmatrix}
+        3 & 6 & -5 \\
+        -7 & 1 & 2 \\
+        3 & -1 & -2
+      \end{bmatrix}.
+    \end{aligned}
+  \]
+  Samoin
+  \[
+    \begin{aligned}
+      B - 2A &=
+      \begin{bmatrix}
+        1 - 4 & 7 + 2 & -1 + 8 \\
+        -2 + 10 & -2 - 6 & 2 - 0 \\
+        5 + 4 & 2 + 6 & -3 - 2
+      \end{bmatrix} \\
+      &=
+      \begin{bmatrix}
+        -3 & 9 & 7 \\
+        8 & -8 & 2 \\
+        9 & 8 & -5
+      \end{bmatrix}.
+    \end{aligned}
+  \]
+  Lasketaan seuraavaksi matriisitulo \(AB\) sarakettain. Merkintä
+  \(B_{\bullet j}\) tarkoittaa matriisin \(B\) saraketta \(j\), joten
+  \((AB)_{\bullet j} = A B_{\bullet j}\). Saadaan
+  \[
+    \begin{aligned}
+      AB_{\bullet 1} &=
+      \begin{bmatrix}
+        2\cdot 1 + (-1)\cdot(-2) + (-4)\cdot 5 \\
+        (-5)\cdot 1 + 3\cdot(-2) + 0\cdot 5 \\
+        (-2)\cdot 1 + (-3)\cdot(-2) + 1\cdot 5
+      \end{bmatrix}
+      &=
+      \begin{bmatrix}
+        -16 \\
+        -11 \\
+        9
+      \end{bmatrix}, \\[0.5ex]
+      AB_{\bullet 2} &=
+      \begin{bmatrix}
+        2\cdot 7 + (-1)\cdot(-2) + (-4)\cdot 2 \\
+        (-5)\cdot 7 + 3\cdot(-2) + 0\cdot 2 \\
+        (-2)\cdot 7 + (-3)\cdot(-2) + 1\cdot 2
+      \end{bmatrix}
+      &=
+      \begin{bmatrix}
+        8 \\
+        -41 \\
+        -6
+      \end{bmatrix}, \\[0.5ex]
+      AB_{\bullet 3} &=
+      \begin{bmatrix}
+        2\cdot(-1) + (-1)\cdot 2 + (-4)\cdot(-3) \\
+        (-5)\cdot(-1) + 3\cdot 2 + 0\cdot(-3) \\
+        (-2)\cdot(-1) + (-3)\cdot 2 + 1\cdot(-3)
+      \end{bmatrix}
+      &=
+      \begin{bmatrix}
+        8 \\
+        11 \\
+        -7
+      \end{bmatrix}.
+    \end{aligned}
+  \]
+  Täten
+  \[
+    AB =
+    \begin{bmatrix}
+      (AB)_{\bullet 1} & (AB)_{\bullet 2} & (AB)_{\bullet 3}
+    \end{bmatrix} =
+    \begin{bmatrix}
+      -16 & 8 & 8 \\
+      -11 & -41 & 11 \\
+      9 & -6 & -7
+    \end{bmatrix}.
+  \]
+  Huomataan, että
+  \[
+    (BA)_{13} = 1\cdot(-4) + 7\cdot 0 + (-1)\cdot 1
+    = -5 \neq 8 = (AB)_{13}.
+  \]
+  Täten \(AB \neq BA\).
+\end{solution}
+
+\begin{exercise}
+  Olkoon \(A =
+    \begin{bmatrix} 1 & 1 \\ 1 & 1
+  \end{bmatrix}\).
+  Osoita, että
+  \[
+    A^n =
+    \begin{bmatrix}
+      2^{n-1} & 2^{n-1} \\
+      2^{n-1} & 2^{n-1}
+    \end{bmatrix},
+    \qquad\text{kun } n \in \ZZ_+.
+  \]
+  \textit{Vihje:} Induktio.
+\end{exercise}
+
+\begin{exercise}
+  Olkoot
+  \[
+    A =
+    \begin{bmatrix}
+      1 & 1 & -2 \\
+      2 & 3 & 4
+    \end{bmatrix}
+    \qquad\text{ja}\qquad
+    b =
+    \begin{bmatrix} 5 \\ 2
+    \end{bmatrix}.
+  \]
+  Etsi matriisiyhtälön \(Ax=b\) ratkaisut \(x \in \RR^{3\times 1}\)
+  yhtälöryhmän \([A \mid b]\) avulla.
+\end{exercise}
+
+\begin{exercise}
+  Olkoon \(A \in \RR^{m\times n}\) matriisi. Määritellään kuvaus
+  \(L_A\colon \RR^{n\times 1} \to \RR^{m\times 1}\) ehdolla
+  \[
+    L_A(x) = Ax, \qquad x \in \RR^{n\times 1}.
+  \]
+  Osoita eksplisiittisellä matriisitulojen laskulla, että kuvaukselle
+  \(L_A\) on voimassa
+  \[
+    L_A(x+y) = L_A(x)+L_A(y)
+    \qquad\text{ja}\qquad
+    L_A(\lambda x) = \lambda L_A(x)
+  \]
+  kaikilla \(x,y \in \RR^{n\times 1}\) ja \(\lambda \in \RR\).
+  (Tehtävän tarkoituksena on tarkistaa monisteen Lemman 2.3.15
+  todistuksen laskut kirjoittamalla matriisitulot auki.)
+\end{exercise}
+
+\begin{exercise}
+  Tutki, onko matriisi
+  \[
+    \text{(a)}\;
+    \begin{bmatrix}
+      -1 & 3 & -4 \\
+      2 & 4 & 1 \\
+      -4 & 2 & -9
+    \end{bmatrix},
+    \qquad
+    \text{(b)}\;
+    \begin{bmatrix}
+      \frac15 & \frac15 & -\frac25 \\
+      \frac15 & \frac15 & \frac1{10} \\
+      \frac15 & -\frac45 & \frac1{10}
+    \end{bmatrix}
+  \]
+  kääntyvä, ja myönteisessä tapauksessa määritä matriisin käänteismatriisi.
+\end{exercise}
+
+\begin{exercise}
+  Olkoon
+  \[
+    A =
+    \begin{bmatrix}
+      2 & 0 & 3 & 2 \\
+      1 & 1 & -1 & 0 \\
+      0 & 0 & 1 & 0 \\
+      1 & 0 & 0 & 1
+    \end{bmatrix} \in \RR^{4\times 4}.
+  \]
+  Selvitä neliömatriisien kääntyvyyslauseen (Lause 2.5.1) avulla, onko
+  matriisi \(A\) kääntyvä.
+\end{exercise}
+
+\end{document}
