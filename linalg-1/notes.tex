@@ -568,4 +568,362 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
       ratkaisevaa on vapaiden muuttujien olemassaolo.
   \end{enumerate}
 
+  \newpage
+  \subsection{3.11.2026: matriisit ja matriisikertolasku}
+
+  % Lähdekuvat: IMG_1999.HEIC ja IMG_2001.HEIC--IMG_2005.HEIC.
+  Matriisi on suorakulmainen lukutaulukko. Sen avulla voidaan esittää
+  sekä lineaarinen yhtälöryhmä että kuvaus, joka vie vektorin toiseksi
+  vektoriksi. Aloitetaan merkinnöistä ja laskutoimituksista.
+
+  \subsubsection*{Matriisi, rivit ja sarakkeet}
+
+  \begin{definition}[Matriisi]
+    Olkoot $m,n$ positiivisia kokonaislukuja. Reaalinen
+    \emph{$m\times n$-matriisi} on funktio
+    \[
+      A\colon\{1,\ldots,m\}\times\{1,\ldots,n\}\to\RR.
+    \]
+    Merkitään $a_{ij}=A(i,j)$. Matriisi kirjoitetaan taulukkona
+    \[
+      A=[a_{ij}]=
+      \begin{bmatrix}
+        a_{11}&\cdots&a_{1n}\\
+        \vdots&&\vdots\\
+        a_{m1}&\cdots&a_{mn}
+      \end{bmatrix}\in\RR^{m\times n}.
+    \]
+    Siinä on $m$ riviä ja $n$ saraketta. Alkion $a_{ij}$ ensimmäinen
+    indeksi kertoo rivin ja toinen sarakkeen. Lukua $a_{ij}$ kutsutaan
+    matriisin \emph{alkioksi} eli \emph{kertoimeksi}.
+  \end{definition}
+
+  Kaksi matriisia ovat samat, jos ne ovat samankokoiset ja niiden
+  vastinalkiot ovat samat. Tämä antaa myös tavallisen todistustavan:
+  matriisiyhtälö todistetaan tarkistamalla sen jokainen alkio.
+
+  Matriisin $i$:s \emph{rivivektori} ja $j$:s \emph{sarakevektori} ovat
+  \[
+    A_{i\cdot}=[a_{i1}\ \cdots\ a_{in}]\in\RR^{1\times n},
+    \qquad
+    A_{\cdot j}=
+    \begin{bmatrix}a_{1j}\\\vdots\\a_{mj}
+    \end{bmatrix}
+    \in\RR^{m\times1}.
+  \]
+  Siten matriisin voi koota joko riveistä tai sarakkeista:
+  \[
+    A=
+    \begin{bmatrix}A_{1\cdot}\\\vdots\\A_{m\cdot}
+    \end{bmatrix}
+    =[A_{\cdot1}\ \cdots\ A_{\cdot n}].
+  \]
+  Kun kirjoitamme rivejä tai sarakkeita vierekkäin tai allekkain,
+  tarkoitamme näin muodostettua matriisia.
+
+  \begin{remark}[Vektorit ja skalaarit matriiseina]
+    Samaistamme vektorin $(x_1,\ldots,x_n)\in\RR^n$ sarakematriisiin
+    $[x_1\ \cdots\ x_n]^{\mathsf T}\in\RR^{n\times1}$; merkintä
+    $\mathsf T$ kääntää tässä rivin sarakkeeksi.
+    Vastaavasti $1\times1$-matriisi $[a]$ samaistetaan lukuun $a\in\RR$.
+    Rivi- ja sarakevektori on silti erotettava toisistaan, sillä niiden
+    koot ovat erilaiset.
+  \end{remark}
+
+  \newpage
+  \subsubsection*{Yhteenlasku ja skalaarilla kertominen}
+
+  \begin{definition}
+    Olkoot $A=[a_{ij}],B=[b_{ij}]\in\RR^{m\times n}$ ja
+    $\lambda\in\RR$. Määritellään \emph{summa} ja
+    \emph{skalaarilla kertominen} alkioittain:
+    \[
+      \boxed{(A+B)_{ij}=a_{ij}+b_{ij},\qquad
+      (\lambda A)_{ij}=\lambda a_{ij}.}
+    \]
+    Summa on määritelty vain samankokoisille matriiseille.
+    Molemmat tulokset kuuluvat joukkoon $\RR^{m\times n}$.
+  \end{definition}
+
+  \begin{lemma}[Summan ja skalaarikertolaskun laskusäännöt]
+    Olkoot $A,B,C\in\RR^{m\times n}$ ja $\lambda,\mu\in\RR$.
+    Tällöin
+    \begin{align*}
+      (A+B)+C&=A+(B+C), & A+B&=B+A,\\
+      \lambda(A+B)&=\lambda A+\lambda B,
+      & (\lambda\mu)A&=\lambda(\mu A),\\
+      (\lambda+\mu)A&=\lambda A+\mu A.
+    \end{align*}
+  \end{lemma}
+  \begin{proof}
+    Kaikki yhtälöissä esiintyvät matriisit ovat kokoa $m\times n$.
+    Kiinnitetään $i,j$. Reaalilukujen laskusäännöt antavat
+    \begin{align*}
+      ((A+B)+C)_{ij}
+      &=(a_{ij}+b_{ij})+c_{ij}
+      =a_{ij}+(b_{ij}+c_{ij})=(A+(B+C))_{ij},\\
+      (A+B)_{ij}&=a_{ij}+b_{ij}=b_{ij}+a_{ij}=(B+A)_{ij},\\
+      (\lambda(A+B))_{ij}
+      &=\lambda(a_{ij}+b_{ij})
+      =\lambda a_{ij}+\lambda b_{ij}=(\lambda A+\lambda B)_{ij},\\
+      ((\lambda\mu)A)_{ij}
+      &=(\lambda\mu)a_{ij}=\lambda(\mu a_{ij})
+      =(\lambda(\mu A))_{ij},\\
+      ((\lambda+\mu)A)_{ij}
+      &=(\lambda+\mu)a_{ij}=\lambda a_{ij}+\mu a_{ij}
+      =(\lambda A+\mu A)_{ij}.
+    \end{align*}
+    Koska vastinalkiot ovat samat kaikilla $i,j$, matriisit ovat samat.
+  \end{proof}
+
+  \emph{Nollamatriisin} $0_{m\times n}$ kaikki alkiot ovat nollia ja
+  \emph{vastamatriisi} on $-A=[-a_{ij}]$. Alkioittain nähdään myös, että
+  \[
+    A+0_{m\times n}=A,\qquad A+(-A)=0_{m\times n},\qquad 1A=A.
+  \]
+  Näin $\RR^{m\times n}$ on reaalinen vektoriavaruus samoilla
+  laskusäännöillä kuin $\RR^n$. Erotus tarkoittaa summaa $A-B=A+(-B)$.
+
+  \subsubsection*{Matriisikertolaskun koko ja määritelmä}
+
+  \begin{definition}[Matriisitulo]
+    Olkoot $A=[a_{ij}]\in\RR^{m\times n}$ ja
+    $B=[b_{j\ell}]\in\RR^{n\times k}$. Niiden \emph{tulo}
+    $AB\in\RR^{m\times k}$ määritellään kaavalla
+    \[
+      \boxed{(AB)_{i\ell}=\sum_{j=1}^n a_{ij}b_{j\ell}
+      =a_{i1}b_{1\ell}+\cdots+a_{in}b_{n\ell}.}
+    \]
+    Alkio $(i,\ell)$ saadaan siis $A$:n rivin $i$ ja $B$:n sarakkeen
+    $\ell$ pistetulona: vastinalkiot kerrotaan ja tulot lasketaan yhteen.
+  \end{definition}
+
+  \newpage
+  Tulon määrittely edellyttää, että vasemman matriisin sarakkeita on
+  yhtä monta kuin oikean matriisin rivejä. Tuloksen koon määräävät
+  ulommat luvut:
+  \[
+    \underbrace{(m\times n)(n\times k)}_{\text{sisemmat koot samat}}
+    \quad\longrightarrow\quad m\times k.
+  \]
+  Matriisitulo ei siis ole alkioittainen kertolasku. Myös tekijöiden
+  järjestyksellä on väliä: esimerkiksi seuraavan esimerkin $AB$ on
+  kokoa $2\times2$, mutta $BA$ olisi kokoa $3\times3$.
+
+  \begin{example}[Luennon laskutehtävä: $AB+2C$]
+    Olkoot
+    \[
+      A=
+      \begin{bmatrix}1&0&-1\\-2&1&2
+      \end{bmatrix},\qquad
+      B=
+      \begin{bmatrix}3&2\\-1&1\\0&1
+      \end{bmatrix},\qquad
+      C=
+      \begin{bmatrix}-1&2\\3&4
+      \end{bmatrix}.
+    \]
+    Koska $A\in\RR^{2\times3}$ ja $B\in\RR^{3\times2}$,
+    tulo $AB$ on kokoa $2\times2$, kuten $C$. Summa on siis määritelty.
+    Lasketaan jokainen alkio rivin ja sarakkeen avulla:
+    \begin{align*}
+      (AB)_{11}&=1\cdot3+0\cdot(-1)+(-1)\cdot0=3,\\
+      (AB)_{12}&=1\cdot2+0\cdot1+(-1)\cdot1=1,\\
+      (AB)_{21}&=(-2)\cdot3+1\cdot(-1)+2\cdot0=-7,\\
+      (AB)_{22}&=(-2)\cdot2+1\cdot1+2\cdot1=-1.
+    \end{align*}
+    Siis
+    \[
+      AB=
+      \begin{bmatrix}3&1\\-7&-1
+      \end{bmatrix},\qquad
+      2C=
+      \begin{bmatrix}-2&4\\6&8
+      \end{bmatrix},
+    \]
+    ja siten
+    \[
+      \boxed{AB+2C=
+        \begin{bmatrix}1&5\\-1&7
+      \end{bmatrix}.}
+    \]
+  \end{example}
+
+  \subsubsection*{Matriisin ja vektorin tulo; yhteys yhtälöryhmiin}
+
+  Erityisesti, kun $x=[x_1\ \cdots\ x_n]^{\mathsf T}\in\RR^{n\times1}$,
+  matriisikertolaskun määritelmä antaa
+  \[
+    Ax=
+    \begin{bmatrix}
+      a_{11}x_1+\cdots+a_{1n}x_n\\
+      \vdots\\
+      a_{m1}x_1+\cdots+a_{mn}x_n
+    \end{bmatrix}\in\RR^{m\times1}.
+  \]
+  Näin yhtälöryhmä \eqref{eq:linear-system} voidaan kirjoittaa lyhyesti
+  \[
+    \boxed{Ax=b,\qquad b=
+      \begin{bmatrix}b_1\\\vdots\\b_m
+    \end{bmatrix}.}
+  \]
+  Vektorien yhtäsuuruus tarkoittaa koordinaattien yhtäsuuruutta, joten
+  tämä matriisiyhtälö ja alkuperäinen yhtälöryhmä ovat täsmälleen sama
+  ehto. Sen \emph{laajennettu matriisi} on $[A\mid b]$.
+
+  \newpage
+  \subsubsection*{Tulon sarakkeet ja rivit}
+
+  \begin{lemma}[Matriisitulo sarakkeittain ja riveittäin]
+    Olkoot $A\in\RR^{m\times n}$ ja $B\in\RR^{n\times k}$.
+    Kirjoitetaan $B=[b_1\ \cdots\ b_k]$, missä $b_\ell$ ovat sen
+    sarakkeet. Tällöin
+    \[
+      \boxed{AB=[Ab_1\ \cdots\ Ab_k].}
+    \]
+    Jos $a_i=A_{i\cdot}$ ovat $A$:n rivit, niin vastaavasti
+    \[
+      \boxed{AB=
+        \begin{bmatrix}a_1B\\\vdots\\a_mB
+      \end{bmatrix}.}
+    \]
+  \end{lemma}
+  \begin{proof}
+    Sarakkeen $\ell$ rivillä $i$ molemmat ensimmäisen yhtälön puolet
+    saavat arvon
+    \[
+      (Ab_\ell)_i=\sum_{j=1}^n a_{ij}(b_\ell)_j
+      =\sum_{j=1}^n a_{ij}b_{j\ell}=(AB)_{i\ell}.
+    \]
+    Toisessa yhtälössä rivin $i$ sarakkeessa $\ell$ on
+    \[
+      (a_iB)_{1\ell}=\sum_{j=1}^n(a_i)_{1j}b_{j\ell}
+      =\sum_{j=1}^n a_{ij}b_{j\ell}=(AB)_{i\ell}.
+    \]
+    Myös koot täsmäävät: $Ab_\ell\in\RR^{m\times1}$ ja
+    $a_iB\in\RR^{1\times k}$.
+  \end{proof}
+
+  \begin{lemma}[Matriisin ja vektorin tulo sarakkeiden summana]
+    Kun $A\in\RR^{m\times n}$ ja $x\in\RR^n$, pätee
+    \[
+      \boxed{Ax=x_1A_{\cdot1}+\cdots+x_nA_{\cdot n}.}
+    \]
+    Siis $Ax$ on $A$:n sarakkeiden lineaarikombinaatio, jonka
+    kertoimet ovat vektorin $x$ koordinaatit.
+  \end{lemma}
+  \begin{proof}
+    Oikean puolen koordinaatti $i$ on
+    $\sum_{j=1}^n x_ja_{ij}=\sum_{j=1}^n a_{ij}x_j=(Ax)_i$.
+    Tämä pätee jokaiselle $i=1,\ldots,m$.
+  \end{proof}
+
+  Näin $Ax=b$ kysyy myös, millä kertoimilla $x_1,\ldots,x_n$
+  matriisin $A$ sarakkeista saadaan vektori $b$.
+  Esimerkin matriisille $A$ tämä tarkoittaa kaavaa
+  \[
+    Ax=x_1
+    \begin{bmatrix}1\\-2
+    \end{bmatrix}
+    +x_2
+    \begin{bmatrix}0\\1
+    \end{bmatrix}
+    +x_3
+    \begin{bmatrix}-1\\2
+    \end{bmatrix}
+    =
+    \begin{bmatrix}x_1-x_3\\-2x_1+x_2+2x_3
+    \end{bmatrix}.
+  \]
+
+  \subsubsection*{Koordinaattivektorit}
+
+  \begin{definition}
+    Avaruuden $\RR^n$ $j$:s \emph{koordinaattivektori} $e_j$ on
+    sarakevektori, jonka $j$:s koordinaatti on $1$ ja muut ovat $0$:
+    \[
+      (e_j)_i=
+      \begin{cases}1,&i=j,\\0,&i\ne j.
+      \end{cases}
+    \]
+    Esimerkiksi avaruudessa $\RR^3$
+    \[
+      e_1=
+      \begin{bmatrix}1\\0\\0
+      \end{bmatrix},\qquad
+      e_2=
+      \begin{bmatrix}0\\1\\0
+      \end{bmatrix},\qquad
+      e_3=
+      \begin{bmatrix}0\\0\\1
+      \end{bmatrix}.
+    \]
+  \end{definition}
+
+  \newpage
+  \subsubsection*{Matriisi kuvauksena}
+
+  Matriisi $A\in\RR^{m\times n}$ määrittää kuvauksen
+  \[
+    f_A\colon\RR^n\to\RR^m,\qquad x\mapsto Ax.
+  \]
+  Tässä $A$:n $n$ saraketta vastaavat lähtövektorin $n$:ää
+  koordinaattia ja $m$ riviä tulosvektorin $m$:ää koordinaattia.
+  Kuvaus $f_A$ on eri funktio kuin matriisin määritelmässä esiintyvä
+  indeksiparin kuvaus $(i,j)\mapsto a_{ij}$.
+
+  \begin{lemma}[Matriisikuvauksen lineaarisuus ja sarakkeet]
+    Olkoot $A\in\RR^{m\times n}$, $x,y\in\RR^n$ ja
+    $\lambda,\mu\in\RR$. Tällöin
+    \[
+      f_A(\lambda x+\mu y)=\lambda f_A(x)+\mu f_A(y).
+    \]
+    Tätä ominaisuutta kutsutaan \emph{lineaarisuudeksi}.
+    Lisäksi $f_A(e_j)=Ae_j=A_{\cdot j}$ jokaisella $j=1,\ldots,n$.
+  \end{lemma}
+  \begin{proof}
+    Jokaiselle tuloskoordinaatille $i$ pätee
+    \begin{align*}
+      (A(\lambda x+\mu y))_i
+      &=\sum_{j=1}^n a_{ij}(\lambda x_j+\mu y_j)\\
+      &=\lambda\sum_{j=1}^n a_{ij}x_j
+      +\mu\sum_{j=1}^n a_{ij}y_j
+      =(\lambda Ax+\mu Ay)_i.
+    \end{align*}
+    Sarakkeiden lineaarikombinaation kaavassa $Ae_j$:n kaikki
+    kertoimet ovat nollia lukuun ottamatta sarakkeen $j$ kerrointa $1$.
+    Siis $Ae_j=A_{\cdot j}$.
+  \end{proof}
+
+  Jokainen vektori voidaan kirjoittaa muodossa
+  $x=x_1e_1+\cdots+x_ne_n$. Siksi lineaarinen kuvaus määräytyy
+  koordinaattivektorien kuvista: jos $f\colon\RR^n\to\RR^m$ on
+  lineaarinen ja $A=[f(e_1)\ \cdots\ f(e_n)]$, niin
+  \[
+    f(x)=\sum_{j=1}^n x_jf(e_j)=Ax.
+  \]
+  Tämä perustelee, miksi matriiseilla voidaan esittää kaikki
+  näiden avaruuksien väliset lineaariset kuvaukset.
+
+  \begin{example}[Sarakkeet kertovat koordinaattivektorien kuvat]
+    Edellä käytetylle matriisille
+    $A=\left[
+      \begin{smallmatrix}1&0&-1\\-2&1&2
+    \end{smallmatrix}\right]$
+    kuvaus on $f_A\colon\RR^3\to\RR^2$, ja
+    \[
+      f_A(e_1)=
+      \begin{bmatrix}1\\-2
+      \end{bmatrix},\qquad
+      f_A(e_2)=
+      \begin{bmatrix}0\\1
+      \end{bmatrix},\qquad
+      f_A(e_3)=
+      \begin{bmatrix}-1\\2
+      \end{bmatrix}.
+    \]
+    Esimerkiksi $f_A(1,2,3)=(-2,6)$, kun tulokset esitetään
+    koordinaattipareina.
+  \end{example}
+
   \end{document}
