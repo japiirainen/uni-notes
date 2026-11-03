@@ -218,6 +218,62 @@
   yhtälöryhmän \([A \mid b]\) avulla.
 \end{exercise}
 
+\begin{solution}
+  Muokataan yhtälöryhmän liitetty matriisi supistettuun porrasmuotoon
+  rivioperaatioilla:
+  \[
+    \begin{aligned}
+      [A \mid b] &={}
+      \left[
+        \begin{array}{ccc|r}
+          1 & 1 & -2 & 5 \\
+          2 & 3 & 4 & 2
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        \smash{\rowop{-2R_1}}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{ccc|r}
+          1 & 1 & -2 & 5 \\
+          0 & 1 & 8 & -8
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        \smash{\rowop{-R_2}} \\
+        {}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{ccc|r}
+          1 & 0 & -10 & 13 \\
+          0 & 1 & 8 & -8
+        \end{array}
+      \right].
+    \end{aligned}
+  \]
+  Täten \(x_1 = 10x_3 + 13\) ja \(x_2 = -8x_3 - 8\).
+  Muuttuja \(x_3\) on vapaa. Valitsemalla \(x_3 = t \in \RR\) saadaan
+  \[
+    (x_1,x_2,x_3) = (10t+13,-8t-8,t)
+    = (13,-8,0) + t(10,-8,1).
+  \]
+  Koska rivioperaatiot säilyttävät ratkaisujoukon, matriisiyhtälön
+  \(Ax = b\) ratkaisujoukko on
+  \[
+    \left\{
+      (13,-8,0) + t(10,-8,1)
+      \colon t \in \RR
+    \right\}.
+  \]
+\end{solution}
+
 \begin{exercise}
   Olkoon \(A \in \RR^{m\times n}\) matriisi. Määritellään kuvaus
   \(L_A\colon \RR^{n\times 1} \to \RR^{m\times 1}\) ehdolla
