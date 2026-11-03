@@ -288,9 +288,99 @@
     L_A(\lambda x) = \lambda L_A(x)
   \]
   kaikilla \(x,y \in \RR^{n\times 1}\) ja \(\lambda \in \RR\).
-  (Tehtävän tarkoituksena on tarkistaa monisteen Lemman 2.3.15
-  todistuksen laskut kirjoittamalla matriisitulot auki.)
 \end{exercise}
+
+\begin{solution}
+  Olkoot \(x,y \in \RR^{n\times 1}\) ja \(\lambda \in \RR\)
+  mielivaltaisia. Kirjoitetaan
+  \[
+    A =
+    \begin{bmatrix}
+      a_{11} & \cdots & a_{1n} \\
+      \vdots & \ddots & \vdots \\
+      a_{m1} & \cdots & a_{mn}
+    \end{bmatrix},
+    \qquad
+    x =
+    \begin{bmatrix} x_1 \\ \vdots \\ x_n
+    \end{bmatrix},
+    \qquad
+    y =
+    \begin{bmatrix} y_1 \\ \vdots \\ y_n
+    \end{bmatrix}.
+  \]
+  Matriisitulon määritelmän sekä reaalilukujen osittelulain ja
+  yhteenlaskun laskusääntöjen nojalla saadaan
+  \[
+    \begin{aligned}
+      L_A(x+y)
+      &= A(x+y)
+      = A
+      \begin{bmatrix} x_1+y_1 \\ \vdots \\ x_n+y_n
+      \end{bmatrix}
+      \\[1ex]
+      &=
+      \begin{bmatrix}
+        a_{11}(x_1+y_1)+\cdots+a_{1n}(x_n+y_n) \\
+        \vdots \\
+        a_{m1}(x_1+y_1)+\cdots+a_{mn}(x_n+y_n)
+      \end{bmatrix}
+      \\[1ex]
+      &=
+      \begin{bmatrix}
+        (a_{11}x_1+\cdots+a_{1n}x_n)
+        +(a_{11}y_1+\cdots+a_{1n}y_n) \\
+        \vdots \\
+        (a_{m1}x_1+\cdots+a_{mn}x_n)
+        +(a_{m1}y_1+\cdots+a_{mn}y_n)
+      \end{bmatrix}
+      \\[1ex]
+      &=
+      \begin{bmatrix}
+        a_{11}x_1+\cdots+a_{1n}x_n \\
+        \vdots \\
+        a_{m1}x_1+\cdots+a_{mn}x_n
+      \end{bmatrix}
+      +
+      \begin{bmatrix}
+        a_{11}y_1+\cdots+a_{1n}y_n \\
+        \vdots \\
+        a_{m1}y_1+\cdots+a_{mn}y_n
+      \end{bmatrix}
+      \\[1ex]
+      &= Ax+Ay = L_A(x)+L_A(y).
+    \end{aligned}
+  \]
+  Vastaavasti reaalilukujen kertolaskun laskusääntöjen ja osittelulain
+  nojalla
+  \[
+    \begin{aligned}
+      L_A(\lambda x)
+      &= A(\lambda x)
+      = A
+      \begin{bmatrix} \lambda x_1 \\ \vdots \\ \lambda x_n
+      \end{bmatrix}
+      \\[1ex]
+      &=
+      \begin{bmatrix}
+        a_{11}(\lambda x_1)+\cdots+a_{1n}(\lambda x_n) \\
+        \vdots \\
+        a_{m1}(\lambda x_1)+\cdots+a_{mn}(\lambda x_n)
+      \end{bmatrix}
+      \\[1ex]
+      &= \lambda
+      \begin{bmatrix}
+        a_{11}x_1+\cdots+a_{1n}x_n \\
+        \vdots \\
+        a_{m1}x_1+\cdots+a_{mn}x_n
+      \end{bmatrix}
+      \\[1ex]
+      &= \lambda(Ax) = \lambda L_A(x).
+    \end{aligned}
+  \]
+  Molemmat yhtälöt pätevät siis kaikilla \(x,y \in \RR^{n\times 1}\)
+  ja \(\lambda \in \RR\), joten \(L_A\) on lineaarinen.
+\end{solution}
 
 \begin{exercise}
   Tutki, onko matriisi
