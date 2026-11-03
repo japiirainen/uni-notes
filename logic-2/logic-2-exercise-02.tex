@@ -1,0 +1,289 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Johdatus logiikkaan II\\Harjoituksen 2 ratkaisut}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Johdatus logiikkaan II}{Harjoituksen 2 ratkaisut}
+
+\noindent\textit{Lue kurssimateriaalista luku 3 semantiikasta.}
+
+\begin{exercise}
+  Mitkä seuraavista tulkintafunktioista toteuttavat kaavan
+  \(P_0(x) \lor R_0(y,z)\) kuvan 1 mallissa? Anna perustelu.
+  \begin{center}
+    \begin{tabular}{c|ccc}
+      & \(x\) & \(y\) & \(z\) \\
+      \hline
+      \(s_0\) & 5 & 6 & 7 \\
+      \(s_1\) & 6 & 2 & 6 \\
+      \(s_2\) & 2 & 3 & 4
+    \end{tabular}
+
+    \medskip
+    \includegraphics[width=0.4\linewidth]{figures/exercise-02-model.pdf}
+
+    \smallskip
+    \textsc{Kuva 1.} Malli
+  \end{center}
+\end{exercise}
+
+\begin{solution}
+  Disjunktion ja atomikaavojen totuusmääritelmien nojalla
+  \[
+    \begin{aligned}
+      &\mathcal M \models_s \bigl(P_0(x) \lor R_0(y,z)\bigr) \\
+      &\quad\text{joss}\quad
+      \mathcal M \models_s P_0(x)
+      \quad\text{tai}\quad
+      \mathcal M \models_s R_0(y,z) \\
+      &\quad\text{joss}\quad
+      x^{\mathcal M}\langle s\rangle \in P_0^{\mathcal M}
+      \quad\text{tai}\quad
+      \bigl(y^{\mathcal M}\langle s\rangle,
+      z^{\mathcal M}\langle s\rangle\bigr)
+      \in R_0^{\mathcal M}.
+    \end{aligned}
+  \]
+  Muuttujatermin arvo on \(x^{\mathcal M}\langle s\rangle = s(x)\),
+  ja vastaavasti muuttujille \(y\) ja \(z\).
+
+  Kuvasta nähdään, että \(P_0^{\mathcal M} = \{5,6,7\}\). Koska
+  \[
+    \begin{aligned}
+      x^{\mathcal M}\langle s_0\rangle &= s_0(x) = 5
+      \in P_0^{\mathcal M}, \\
+      x^{\mathcal M}\langle s_1\rangle &= s_1(x) = 6
+      \in P_0^{\mathcal M},
+    \end{aligned}
+  \]
+  sekä \(s_0\) että \(s_1\) toteuttavat kaavan \(P_0(x)\) ja siten
+  myös kaavan \(P_0(x) \lor R_0(y,z)\).
+
+  Tulkintafunktiolle \(s_2\) sen sijaan pätee
+  \[
+    \begin{aligned}
+      x^{\mathcal M}\langle s_2\rangle &= s_2(x) = 2
+      \notin P_0^{\mathcal M}, \\
+      \bigl(y^{\mathcal M}\langle s_2\rangle,
+      z^{\mathcal M}\langle s_2\rangle\bigr)
+      &= \bigl(s_2(y),s_2(z)\bigr) = (3,4)
+      \notin R_0^{\mathcal M}.
+    \end{aligned}
+  \]
+  Siis \(s_2\) ei toteuta kumpaakaan disjunktia, joten
+  \(\mathcal M \not\models_{s_2} \bigl(P_0(x) \lor R_0(y,z)\bigr)\).
+  Näin ollen annetuista tulkintafunktioista kaavan toteuttavat
+  \textbf{täsmälleen \(s_0\) ja \(s_1\)}.
+\end{solution}
+
+\newpage
+
+\begin{exercise}
+  Olkoon \(L = \{P, R, c, d\}\), ja olkoon \(\mathcal M\) malli, jonka
+  universumi on \(\NN\) ja jossa \(P^{\mathcal M} = 2\NN\) (eli parilliset
+  luonnolliset luvut), \(R^{\mathcal M} = \{(0,1)\}\),
+  \(c^{\mathcal M} = 1\) ja \(d^{\mathcal M} = 0\). Olkoon lisäksi \(s\)
+  tulkintafunktio, jolla \(s(x_n) = n + 1\) kaikilla \(n \in \NN\).
+  \begin{enumerate}[label=(\alph*)]
+    \item Mikä on termin \(t\) arvo, kun
+      \begin{enumerate}[label=(\alph*)]
+        \item \(t = x_2\),
+        \item \(t = c\),
+        \item \(t = x_7\)?
+      \end{enumerate}
+    \item Toteuttaako tulkintafunktio \(s\) seuraavan kaavan mallissa
+      \(\mathcal M\)?
+      \begin{enumerate}[label=(\alph*)]
+        \item \(P(x_8)\),
+        \item \(P(x_1)\),
+        \item \(R(c,d)\),
+        \item \(R(d,x_0)\)?
+      \end{enumerate}
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*)]
+    \item Muuttujatermin arvon määrää tulkintafunktio \(s\), kun taas
+      vakiosymbolin arvo on sen tulkinta mallissa \(\mathcal M\). Siten
+      \[
+        \begin{aligned}
+          x_2^{\mathcal M}\langle s\rangle &= s(x_2) = 2 + 1 = 3, \\
+          c^{\mathcal M}\langle s\rangle &= c^{\mathcal M} = 1, \\
+          x_7^{\mathcal M}\langle s\rangle &= s(x_7) = 7 + 1 = 8.
+        \end{aligned}
+      \]
+
+    \item Atomikaavojen totuusmääritelmän nojalla saadaan seuraavat
+      vastaukset.
+      \begin{enumerate}[label=(\alph*)]
+        \item Kaava \(P(x_8)\) ei toteudu, sillä
+          \[
+            x_8^{\mathcal M}\langle s\rangle = s(x_8) = 9
+            \notin P^{\mathcal M} = 2\NN.
+          \]
+          Siis \(\mathcal M \not\models_s P(x_8)\).
+
+        \item Kaava \(P(x_1)\) toteutuu, sillä
+          \[
+            x_1^{\mathcal M}\langle s\rangle = s(x_1) = 2
+            \in P^{\mathcal M} = 2\NN.
+          \]
+          Siis \(\mathcal M \models_s P(x_1)\).
+
+        \item Kaava \(R(c,d)\) ei toteudu, sillä
+          \[
+            \bigl(c^{\mathcal M}\langle s\rangle,
+            d^{\mathcal M}\langle s\rangle\bigr)
+            = (1,0) \notin R^{\mathcal M} = \{(0,1)\}.
+          \]
+          Siis \(\mathcal M \not\models_s R(c,d)\).
+
+        \item Kaava \(R(d,x_0)\) toteutuu, sillä
+          \[
+            \bigl(d^{\mathcal M}\langle s\rangle,
+            x_0^{\mathcal M}\langle s\rangle\bigr)
+            = (0,1) \in R^{\mathcal M} = \{(0,1)\}.
+          \]
+          Siis \(\mathcal M \models_s R(d,x_0)\).\qedhere
+      \end{enumerate}
+  \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+  Täytä tulkintafunktioiden arvot taulukkoon:
+  \begin{center}
+    \begin{tabular}{c|ccc}
+      & \(x\) & \(y\) & \(z\) \\
+      \hline
+      \(s\) & 1 & 2 & 3 \\
+      \(s(4/x)\) & 4 & 2 & 3 \\
+      \(s(3/y)\) & 1 & 3 & 3 \\
+      \(s(1/x)\) & 1 & 2 & 3 \\
+      \(s(1/z)(1/y)\) & 1 & 1 & 1 \\
+      \(s(3/x)(2/z)\) & 3 & 2 & 2 \\
+      \(s(2/x)(3/y)(4/x)\) & 4 & 3 & 3
+    \end{tabular}
+  \end{center}
+\end{exercise}
+
+\begin{exercise}
+  Mitkä seuraavista tulkintafunktioista toteuttavat kaavan
+  \(E(x,y) \to E(y,z)\) kuvan 2 verkossa? Entä mitkä tulkintafunktioista
+  toteuttavat kaavan \(E(x,y) \to \exists y\, E(y,z)\)? Anna perustelu.
+  \begin{center}
+    \begin{tabular}{c|ccc}
+      & \(x\) & \(y\) & \(z\) \\
+      \hline
+      \(s_0\) & 1 & 2 & 3 \\
+      \(s_1\) & 1 & 5 & 6 \\
+      \(s_2\) & 4 & 8 & 8 \\
+      \(s_3\) & 1 & 2 & 7 \\
+      \(s_4\) & 1 & 2 & 5
+    \end{tabular}
+
+    \medskip
+    \includegraphics[width=0.3\linewidth]{figures/exercise-02-graph.pdf}
+
+    \smallskip
+    \textsc{Kuva 2.} Verkko
+  \end{center}
+\end{exercise}
+
+\begin{solution}
+  Implikaatio on epätosi vain, kun etujäsen on tosi ja takajäsen epätosi.
+  Kaava \(\exists y\,E(y,z)\) toteutuu täsmälleen silloin, kun
+  \(s(z)\notin\{3,5\}\), sillä vain solmut \(3\) ja \(5\) ovat
+  eristettyjä. Sidotun muuttujan \(y\) alkuperäinen arvo ei vaikuta tähän.
+  Taulukossa \(1\) tarkoittaa toteutumista ja \(0\) toteutumatta jäämistä.
+  \begin{center}
+    \renewcommand{\arraystretch}{1.15}
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabular}{c|ccc|cc}
+      & \(E(x,y)\) & \(E(y,z)\) & \(\exists y\,E(y,z)\)
+      & \(E(x,y)\to E(y,z)\)
+      & \(E(x,y)\to\exists y\,E(y,z)\) \\
+      \hline
+      \(s_0\) & 1 & 0 & 0 & 0 & 0 \\
+      \(s_1\) & 0 & 0 & 1 & 1 & 1 \\
+      \(s_2\) & 1 & 0 & 1 & 0 & 1 \\
+      \(s_3\) & 1 & 0 & 1 & 0 & 1 \\
+      \(s_4\) & 1 & 0 & 0 & 0 & 0
+    \end{tabular}
+  \end{center}
+  Ensimmäisen kaavan toteuttaa siis vain \(s_1\), ja toisen kaavan
+  täsmälleen \(s_1\), \(s_2\) ja \(s_3\).
+\end{solution}
+
+\begin{exercise}
+  Anna \(\{E\}\)-kaava, joka verkossa ilmaisee (eli voit olettaa mallin olevan
+  verkko), että jokaisella solmulla on ainakin kaksi eri naapuria. Kaksi verkon
+  solmua ovat naapureita keskenään, jos niiden välissä on särmä.
+\end{exercise}
+
+\begin{exercise}
+  Ovatko seuraavat kaavat \textit{tosia} kuvan 2 verkossa? Perustele.
+  \begin{enumerate}[label=(\alph*)]
+    \item \(E(x,y)\)
+    \item \(\exists x E(x,y)\)
+    \item \(\exists x\exists y E(x,y)\)
+    \item \(\exists y\exists z((E(x,y) \leftrightarrow E(x,z)) \land
+      (E(x,y) \leftrightarrow E(y,z)))\)
+  \end{enumerate}
+\end{exercise}
+
+\begin{samepage}
+  \begin{exercise}
+    Anna esimerkki kaavasta \(A\) tai selitä, miksi sellaista ei ole,
+    kun \(A\) on
+    \begin{enumerate}[label=(\alph*)]
+      \item toteutuva muttei validi,
+      \item kumoutuva muttei ristiriita,
+      \item tautologia muttei validi,
+      \item validi muttei tautologia.
+    \end{enumerate}
+  \end{exercise}
+\end{samepage}
+
+\begin{exercise}
+  \leavevmode
+  \begin{enumerate}[label=(\alph*)]
+    \item Osoita, että kaava \(\exists x P(x)\) on kaavan \(\forall x P(x)\)
+      looginen seuraus.
+    \item Osoita, että kaavat \(\exists x P(x)\) ja \(\forall x P(x)\) eivät ole
+      loogisesti ekvivalentit.
+  \end{enumerate}
+\end{exercise}
+
+\noindent\textit{Seuraavasta haastetehtävästä ei saa harjoituspisteitä (eikä
+  siinä varsinaisia muita haasteita ole kuin induktio). Se antaa tavan koodata
+propositiologiikka predikaattilogiikan osaksi sallimatta propositiosymboleita.}
+
+\medskip
+\noindent\textbf{Haastetehtävä.} Olkoon \(L\) aakkosto
+\(\{P_0, \ldots, P_n\}\). Jos \(A\) on propositiolause, jossa esiintyy
+korkeintaan propositiosymbolit \(p_0, \ldots, p_n\), niin olkoon \(A^*\)
+määritelty seuraavasti:
+\[
+  \begin{aligned}
+    p_i^* &= \exists x P_i(x) \\
+    (\neg A)^* &= \neg A^* \\
+    (A \land B)^* &= A^* \land B^* \\
+    (A \lor B)^* &= A^* \lor B^* \\
+    (A \to B)^* &= A^* \to B^* \\
+    (A \leftrightarrow B)^* &= A^* \leftrightarrow B^*
+  \end{aligned}
+\]
+Osoita, että \(A\) on toteutuva jos ja vain jos on olemassa \(L\)-malli
+\(\mathcal M\) ja tulkintafunktio \(s\) siten että
+\(\mathcal M \models_s A^*\).
+
+\end{document}
