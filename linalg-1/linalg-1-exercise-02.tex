@@ -592,4 +592,87 @@
   matriisi \(A\) kääntyvä.
 \end{exercise}
 
+\begin{solution}
+  Lauseen 2.5.1 kohdan (2) mukaan \(A\) on kääntyvä täsmälleen silloin,
+  kun yhtälön \(Ax=0\) ainoa ratkaisu on nollavektori.
+  Tutkitaan homogeenista yhtälöryhmää rivioperaatioilla:
+  \[
+    \begin{aligned}
+      [A\mid 0] &={}
+      \left[
+        \begin{array}{rrrr|r}
+          2 & 0 & 3 & 2 & 0 \\
+          1 & 1 & -1 & 0 & 0 \\
+          0 & 0 & 1 & 0 & 0 \\
+          1 & 0 & 0 & 1 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        \smash{\rowop{-2R_4}} \\
+        \smash{\rowop{-R_4}} \\
+        {} \\
+        {}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrrr|r}
+          0 & 0 & 3 & 0 & 0 \\
+          0 & 1 & -1 & -1 & 0 \\
+          0 & 0 & 1 & 0 & 0 \\
+          1 & 0 & 0 & 1 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        \smash{\rowop{R_1\leftrightarrow R_4}} \\
+        {} \\
+        {} \\
+        {}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrrr|r}
+          1 & 0 & 0 & 1 & 0 \\
+          0 & 1 & -1 & -1 & 0 \\
+          0 & 0 & 1 & 0 & 0 \\
+          0 & 0 & 3 & 0 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        \smash{\rowop{+R_3}} \\
+        {} \\
+        \smash{\rowop{-3R_3}}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrrr|r}
+          1 & 0 & 0 & 1 & 0 \\
+          0 & 1 & 0 & -1 & 0 \\
+          0 & 0 & 1 & 0 & 0 \\
+          0 & 0 & 0 & 0 & 0
+        \end{array}
+      \right].
+    \end{aligned}
+  \]
+  Täten \(x_1=-x_4\), \(x_2=x_4\) ja \(x_3=0\), ja muuttuja
+  \(x_4\) on vapaa. Valitsemalla \(x_4=t\in\RR\) saadaan
+  \[
+    (x_1,x_2,x_3,x_4)=(-t,t,0,t)=t(-1,1,0,1).
+  \]
+  Koska rivioperaatiot säilyttävät ratkaisujoukon, yhtälön \(Ax=0\)
+  ratkaisujoukko on
+  \[
+    \left\{t(-1,1,0,1)\colon t\in\RR\right\}.
+  \]
+  Esimerkiksi valinnalla \(t=1\) saadaan nollasta poikkeava ratkaisu
+  \((-1,1,0,1)\). Lauseen 2.5.1 kohdan (2) nojalla \(A\) ei siis ole
+  kääntyvä.
+\end{solution}
+
 \end{document}
