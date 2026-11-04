@@ -161,4 +161,46 @@
   Täten \(f \circ g\) ei ole jatkuva pisteessä \(\frac{1}{2}\).
 \end{solution}
 
+\begin{exercise}
+  Olkoon \(n \in \NNone\) pariton. Osoita, että funktiolla
+  \(f \colon \RR \to \RR\), \(f(x) = x^n\), on jatkuva ja aidosti kasvava
+  käänteisfunktio \(f^{-1} \colon \RR \to \RR\).
+\end{exercise}
+
+\begin{solution}
+  Olkoon \(n \in \NNone\) pariton. Jos \(n = 1\), niin \(f(x) = x\),
+  joten väite on selvä. Oletetaan siis, että \(n \geq 3\).
+  Olkoon \(x, y \in \RR\) siten, että
+  \(x < y\). Kun \(0 \leq x < y\), niin
+  \[
+    y^n - x^n = (y - x)(y^{n - 1} + y^{n - 2}x + \cdots
+    + x^{n - 1}) > 0,
+  \]
+  sillä \(y - x > 0\), summan kaikki termit ovat epänegatiivisia ja
+  \(y^{n - 1} > 0\). Siis \(f(x) < f(y)\).
+  Kun \(x < y \leq 0\), niin \(0 \leq (-y) < (-x)\).
+  Edellisen tapauksen ja luvun \(n\) parittomuuden nojalla
+  \[
+    (-y)^n < (-x)^n \iff x^n < y^n,
+  \]
+  eli \(f(x) < f(y)\). Lopuksi, kun \(x < 0 < y\), niin luvun \(n\)
+  parittomuuden nojalla
+  \[
+    x^n < 0 < y^n.
+  \]
+  On osoitettu, että \(f\) on aidosti kasvava. Lisäksi \(f\) on jatkuva
+  ollessaan polynomifunktio.
+
+  Olkoon \(a \in \RR\) ja \(M = \abs{a} + 1\). Koska \(n \geq 1\), niin
+  \(M^n \geq M\), joten \(n\) parittomuuden nojalla
+  \[
+    f(-M) = -M^n \leq -M < a < M \leq M^n = f(M).
+  \]
+  Nyt väliarvolauseen (korollaari 4.2.2) nojalla on olemassa
+  \(x \in (-M, M)\) siten, että \(f(x) = a\). Koska \(a\) oli
+  mielivaltainen reaaliluku, saadaan \(f(\RR) = \RR\).
+  Nyt lauseen 4.2.4 nojalla funktiolla \(f\) on jatkuva ja aidosti kasvava
+  käänteisfunktio \(f^{-1} \colon \RR \to \RR\).
+\end{solution}
+
 \end{document}
