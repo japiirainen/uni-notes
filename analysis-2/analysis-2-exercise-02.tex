@@ -44,4 +44,64 @@
   \(x^7 = x + 7\) ratkaisu.
 \end{solution}
 
+\begin{exercise}
+  Rajoita funktio \(f(x) = (x^3 - 1)^2\) väleihin, joilla se on aidosti
+  monotoninen, ja määritä vastaavat käänteisfunktiot.
+\end{exercise}
+
+\begin{solution}
+  Olkoon \(g \colon \RR \to \RR\), \(g(x) = x^3 - 1\). Kun
+  \(x, y \in \RR\) ja \(x < y\), saadaan
+  \[
+    \begin{aligned}
+      g(y) - g(x) &= y^3 - x^3 \\
+      &= (y - x)(y^2 + yx + x^2).
+    \end{aligned}
+  \]
+  Tässä \(y - x > 0\) ja
+  \[
+    y^2 + yx + x^2 = \left(y + \frac{x}{2}\right)^2 + \frac{3}{4}x^2 > 0.
+  \]
+  Jälkimmäinen lauseke voisi olla nolla vain, jos \(x = y = 0\), mikä on
+  ristiriidassa ehdon \(x < y\) kanssa. Siis \(g(x) < g(y)\), joten \(g\)
+  on aidosti kasvava.
+  Koska \(g(1) = 0\), on \(g(x) \leq 0\), kun \(x \leq 1\), ja
+  \(g(x) \geq 0\), kun \(x \geq 1\).
+  Neliöfunktio on aidosti vähenevä välillä \((-\infty, 0]\) ja aidosti
+  kasvava välillä \([0, \infty)\). Näin ollen \(f(x) = [g(x)]^2\) on
+  aidosti vähenevä välillä \((-\infty, 1]\) ja aidosti kasvava välillä
+  \([1, \infty)\).
+
+  Merkitään näitä rajoittumia \(f_- = f|_{(-\infty, 1]}\) ja
+  \(f_+ = f|_{[1, \infty)}\). Määritetään niiden käänteisfunktiot.
+  Olkoon \(y \geq 0\). Kun \(x \leq 1\), saadaan
+  \[
+    \begin{aligned}
+      y = (x^3 - 1)^2
+      &\iff \sqrt{y} = 1 - x^3 \\
+      &\iff x = \sqrt[3]{1 - \sqrt{y}}.
+    \end{aligned}
+  \]
+  Vastaavasti, kun \(x \geq 1\), saadaan
+  \[
+    \begin{aligned}
+      y = (x^3 - 1)^2
+      &\iff \sqrt{y} = x^3 - 1 \\
+      &\iff x = \sqrt[3]{1 + \sqrt{y}}.
+    \end{aligned}
+  \]
+  Jokaisella \(y \geq 0\) ensimmäinen kaava antaa arvon \(x \leq 1\) ja
+  toinen arvon \(x \geq 1\). Kummankin rajoittuman arvojoukko on siis
+  \([0, \infty)\), ja aidon monotonisuuden vuoksi ne ovat injektioita.
+  Täten vastaavat käänteisfunktiot ovat
+  \[
+    \begin{aligned}
+      f_-^{-1} &\colon [0, \infty) \to (-\infty, 1],
+      & f_-^{-1}(y) &= \sqrt[3]{1 - \sqrt{y}}, \\
+      f_+^{-1} &\colon [0, \infty) \to [1, \infty),
+      & f_+^{-1}(y) &= \sqrt[3]{1 + \sqrt{y}}.
+    \end{aligned}
+  \]
+\end{solution}
+
 \end{document}
