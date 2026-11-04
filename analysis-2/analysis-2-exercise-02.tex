@@ -203,4 +203,66 @@
   käänteisfunktio \(f^{-1} \colon \RR \to \RR\).
 \end{solution}
 
+\begin{exercise}
+  Olkoon \(P \colon \RR \to \RR\) paritonta astetta oleva polynomifunktio.
+  Funktio \(P\) on siis muotoa
+  \[
+    P(x) = a_{2n+1}x^{2n+1} + a_{2n}x^{2n} + \cdots + a_1x + a_0
+  \]
+  joillakin \(n \in \NN_0\) ja joillakin \(a_{2n+1}, \ldots, a_0 \in \RR\),
+  missä \(a_{2n+1} \ne 0\). Osoita, että funktiolla \(P\) on ainakin yksi
+  nollakohta.
+\end{exercise}
+
+\begin{solution}
+  Olkoon \(d = 2n + 1\). Oletetaan ensin, että \(a_d > 0\).
+  Kun \(x \ne 0\), merkitään \(P(x) = x^dB(x)\), missä
+  \[
+    B(x) = a_d + \frac{a_{2n}}{x} + \cdots + \frac{a_0}{x^{2n + 1}}.
+  \]
+  Kun \(x \to \infty\), niin jokainen termeistä
+  \[
+    \frac{a_{2n}}{x}, \cdots, \frac{a_0}{x^{2n + 1}} \to 0.
+  \]
+  Täten raja-arvojen laskusääntöjen nojalla \(\lim_{x \to \infty} B(x) = a_d\).
+  Koska \(\frac{a_d}{2} > 0\), on olemassa \(R_0 > 0\) siten, että
+  \[
+    x > R_0 \implies \abs{B(x) - a_d} < \frac{a_d}{2}.
+  \]
+  Täten erityisesti \(B(x) > \frac{a_d}{2}\), kun \(x > R_0\).
+  Olkoon \(M \in \RR\) mielivaltainen ja valitaan
+  \[
+    H = \maxset{R_0, \left(\frac{2M}{a_d}\right)^{1/d}}.
+  \]
+  Tällöin
+  \[
+    P(x) = x^dB(x) > x^d\frac{a_d}{2} > \frac{2M}{a_d}\frac{a_d}{2} = M,
+  \]
+  kun \(x > H\). Täten \(\lim_{x \to \infty} P(x) = \infty\).
+
+  Olkoon \(Q(t) = -P(-t)\). Koska \(d\) on pariton, niin polynomifunktion \(Q\)
+  johtava termi on
+  \[
+    (-a_d)(-t)^{d} = a_dt^d.
+  \]
+  Täten \(Q\):n johtava kerroin on positiivinen, ja edellisen päättelyn nojalla
+  \[
+    \lim_{t \to \infty} Q(t) = \infty.
+  \]
+  Kun \(x \to -\infty\), niin \(-x \to \infty\). Koska
+  \(P(x) = -Q(-x)\), saadaan
+  \[
+    \lim_{x \to -\infty} P(x) = -\infty.
+  \]
+  Edellisten raja-arvojen nojalla voidaan valita \(u < 0 < v\) siten, että
+  \(P(u) < 0 < P(v)\). Koska \(P\) on polynomifunktiona jatkuva välillä
+  \([u, v]\), Bolzanon lauseen nojalla on olemassa \(x_0 \in (u, v)\)
+  siten, että \(P(x_0) = 0\).
+
+  Jos \(a_d < 0\), sovelletaan edellistä päättelyä polynomiin \(-P\),
+  jonka johtava kerroin on positiivinen. Tällöin on olemassa
+  \(x_0 \in \RR\) siten, että \(-P(x_0) = 0\), joten myös \(P(x_0) = 0\).
+  Täten funktiolla \(P\) on ainakin yksi nollakohta.
+\end{solution}
+
 \end{document}
