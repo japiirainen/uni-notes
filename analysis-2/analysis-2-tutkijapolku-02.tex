@@ -1,0 +1,61 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Analyysi II\\Tutkijapolku 2}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Analyysi II}{Tutkijapolku 2}
+
+\begin{exercise}
+  Olkoon \(I \subset \RR\) väli ja \(f, g \colon I \to \RR\) konvekseja ja
+  \[
+    f(x), g(x) \geq 0
+  \]
+  kaikilla \(x \in I\). Anna esimerkki tilanteesta, jossa \(fg\) ei
+  ole konveksi.
+\end{exercise}
+
+\begin{solution}
+  Olkoon \(I = [0, 1]\) ja määritellään \(f, g \colon I \to \RR\) asettamalla
+  \[
+    f(x) = x, \quad g(x) = 1 - x.
+  \]
+  Kun \(x \in I\), niin \(f(x) = x \geq 0\) ja \(g(x) = 1 - x \geq 0\).
+  Olkoot \(x, y \in I\) ja \(\lambda \in [0, 1]\) mielivaltaisia. Tällöin
+  \[
+    \begin{aligned}
+      f(\lambda x + (1 - \lambda)y) &= \lambda x + (1 - \lambda)y \\
+      &= \lambda f(x) + (1 - \lambda)f(y),
+    \end{aligned}
+  \]
+  eli \(f\) on konveksi. Samoin
+  \[
+    \begin{aligned}
+      g(\lambda x + (1 - \lambda)y) &= 1 - \lambda x - (1 - \lambda)y \\
+      &= \lambda(1 - x) + (1 - \lambda)(1 - y) \\
+      &= \lambda g(x) + (1 - \lambda)g(y),
+    \end{aligned}
+  \]
+  eli myös \(g\) on konveksi. Kyseisillä valinnoilla
+  \[
+    h(x) = (fg)(x) = f(x)g(x) = x(1 - x) = x - x^2.
+  \]
+  Valitaan \(x = 0\), \(y = 1\) ja \(\lambda = \frac{1}{2}\). Tällöin
+  \[
+    \begin{aligned}
+      h(\lambda x + (1 - \lambda)y)
+      &= h\left(\frac{1}{2}\right) = \frac{1}{4} \\
+      &> 0 = \frac{h(0) + h(1)}{2} \\
+      &= \lambda h(x) + (1 - \lambda)h(y),
+    \end{aligned}
+  \]
+  eli \(h = fg\) ei ole konveksi.
+\end{solution}
+
+\end{document}
