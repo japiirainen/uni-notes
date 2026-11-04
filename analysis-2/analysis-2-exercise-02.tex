@@ -1,0 +1,34 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Analyysi II\\Harjoitus 2}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Analyysi II}{Harjoitus 2}
+
+\begin{exercise}
+  Bolzanon lauseen 4.2.1 todistuksessa todistettiin vain tapaus
+  \(f(a) < 0\) ja \(f(b) > 0\). Todista tapaus \(f(a) > 0\) ja \(f(b) < 0\)
+  tämän avulla ja tutkimalla funktiota \(-f\).
+\end{exercise}
+
+\begin{solution}
+  Olkoon \(g \colon [a, b] \to \RR\), \(g(x) = -f(x)\). Koska funktiot \(f\) ja
+  \(x \mapsto -1\) ovat jatkuvia, on myös niiden tulo \(g\) jatkuva.
+  Oletetaan, että \(f(a) > 0\) ja \(f(b) < 0\). Tällöin \(g(a) < 0\) ja
+  \(g(b) > 0\). Funktio \(g\) täten täyttää jo todistetun tapauksen ehdot,
+  eli on olemassa \(x \in (a, b)\) siten, että \(g(x) = 0\). Lisäksi
+  \[
+    f(x) = -g(x) = 0.
+  \]
+  Täten tapaus \(f(a) > 0\) ja \(f(b) < 0\) on todistettu.
+
+\end{solution}
+
+\end{document}
