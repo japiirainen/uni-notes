@@ -24,44 +24,37 @@
 \begin{solution}
   Olkoon \(I = [0, 1]\) ja määritellään \(f, g \colon I \to \RR\) asettamalla
   \[
-    f(x) = x, \quad g(x) = 1 - x.
+    f(x) = x, \qquad g(x) = 1 - x.
   \]
-  Kun \(x \in I\), niin \(f(x) = x \geq 0\) ja \(g(x) = 1 - x \geq 0\).
+  Molemmat funktiot ovat epänegatiivisia välillä \(I\).
   Olkoot \(x, y \in I\) ja \(\lambda \in [0, 1]\) mielivaltaisia. Tällöin
   \[
     \begin{aligned}
-      f(\lambda x + (1 - \lambda)y) &= \lambda x + (1 - \lambda)y \\
-      &= \lambda f(x) + (1 - \lambda)f(y),
-    \end{aligned}
-  \]
-  eli \(f\) on konveksi. Samoin
-  \[
-    \begin{aligned}
-      g(\lambda x + (1 - \lambda)y) &= 1 - \lambda x - (1 - \lambda)y \\
-      &= \lambda(1 - x) + (1 - \lambda)(1 - y) \\
+      f\bigl(\lambda x + (1 - \lambda)y\bigr)
+      &= \lambda f(x) + (1 - \lambda)f(y), \\
+      g\bigl(\lambda x + (1 - \lambda)y\bigr)
       &= \lambda g(x) + (1 - \lambda)g(y),
     \end{aligned}
   \]
-  eli myös \(g\) on konveksi. Kyseisillä valinnoilla
+  joten \(f\) ja \(g\) ovat konvekseja. Niiden tulolle pätee
   \[
-    h(x) = (fg)(x) = f(x)g(x) = x(1 - x) = x - x^2.
+    h(x) = (fg)(x) = x(1 - x).
   \]
-  Valitaan \(x = 0\), \(y = 1\) ja \(\lambda = \frac{1}{2}\). Tällöin
+  Pisteissä \(x = 0\) ja \(y = 1\) konveksiusehto ei kuitenkaan toteudu
+  valinnalla \(\lambda = \tfrac{1}{2}\), sillä
   \[
-    \begin{aligned}
-      h(\lambda x + (1 - \lambda)y)
-      &= h\left(\frac{1}{2}\right) = \frac{1}{4} \\
-      &> 0 = \frac{h(0) + h(1)}{2} \\
-      &= \lambda h(x) + (1 - \lambda)h(y),
-    \end{aligned}
+    h\!\left(\frac{0 + 1}{2}\right)
+    = \frac{1}{4}
+    > 0
+    = \frac{h(0) + h(1)}{2}.
   \]
-  eli \(h = fg\) ei ole konveksi.
+  Siis \(fg\) ei ole konveksi.
 \end{solution}
 
 \begin{exercise}
   Olkoon \(I \subset \RR\) väli ja \(f, g \colon I \to \RR\) konvekseja ja
   \[
-    f(x),g(x) \geq 0
+    f(x), g(x) \geq 0
   \]
   kaikilla \(x \in I\). Anna jotkin sellaiset ehdot funktioille \(f, g\),
   että \(fg\) on varmasti konveksi. Pohdi, onko antamasi ehto paras
@@ -69,7 +62,109 @@
 \end{exercise}
 
 \begin{solution}
-  TODO
+  Oletetaan tehtävän oletusten lisäksi, että
+  \begin{equation}\tag{*}\label{eq:fg-condition}
+    \bigl(f(x) - f(y)\bigr)\bigl(g(x) - g(y)\bigr) \geq 0
+    \qquad \text{kaikilla } x, y \in I.
+  \end{equation}
+  Osoitetaan, että tällöin \(fg\) on konveksi.
+
+  Olkoot \(x, y \in I\) ja \(\lambda \in [0, 1]\) mielivaltaisia, ja merkitään
+  \(z = (1 - \lambda)x + \lambda y \in I\).
+  Funktioiden \(f\) ja \(g\) konveksiuden ja epänegatiivisuuden nojalla
+  \[
+    \begin{aligned}
+      (fg)(z)
+      &= f(z)g(z) \\
+      &\leq \bigl[(1 - \lambda)f(x) + \lambda f(y)\bigr]
+      \bigl[(1 - \lambda)g(x) + \lambda g(y)\bigr] \\
+      &= (1 - \lambda)f(x)g(x) + \lambda f(y)g(y) \\
+      &\qquad {}- \lambda(1 - \lambda)
+      \bigl(f(x) - f(y)\bigr)\bigl(g(x) - g(y)\bigr) \\
+      &\leq (1 - \lambda)(fg)(x) + \lambda(fg)(y).
+    \end{aligned}
+  \]
+  Viimeinen epäyhtälö seuraa ehdosta~\eqref{eq:fg-condition}.
+  Siis \(fg\) on konveksi.
+
+  \newpage
+  \begin{samepage}
+    Oletetaan seuraavaksi, että \(f\) ja \(g\) ovat lisäksi jatkuvia
+    välillä \(I\) ja kaksi kertaa derivoituvia sen sisäpisteissä.
+    Tällöin toinen riittävä ehto tulon konveksiudelle on
+    \begin{equation}\tag{**}\label{eq:fg-condition-2}
+      2f'(x)g'(x) \geq 0
+      \qquad \text{kaikilla } x \in I^\circ.
+    \end{equation}
+    Ehdon riittävyys seuraa tulon derivoimissäännöstä:
+    \[
+      (fg)''(x)
+      = f''(x)g(x) + 2f'(x)g'(x) + f(x)g''(x).
+    \]
+    Ensimmäinen ja viimeinen termi ovat epänegatiivisia funktioiden
+    \(f\) ja \(g\) konveksiuden ja epänegatiivisuuden nojalla.
+    Keskimmäinen termi on epänegatiivinen ehdon~\eqref{eq:fg-condition-2}
+    nojalla. Siis \((fg)''(x) \geq 0\) kaikilla \(x \in I^\circ\),
+    joten tulon jatkuvuuden nojalla \(fg\) on konveksi koko välillä \(I\).\par
+  \end{samepage}
+
+  Näillä lisäoletuksilla ehto~\eqref{eq:fg-condition-2} on aidosti
+  yleisempi kuin ehto~\eqref{eq:fg-condition}.
+  Jos nimittäin \eqref{eq:fg-condition} pätee, niin kaikilla
+  \(x, y \in I\), \(x \ne y\), saadaan
+  \[
+    \frac{f(y) - f(x)}{y - x}\,
+    \frac{g(y) - g(x)}{y - x} \geq 0.
+  \]
+  Kun \(x \in I^\circ\) ja \(y \to x\), saadaan
+  \(f'(x)g'(x) \geq 0\), joten myös
+  \eqref{eq:fg-condition-2} pätee.
+
+  \begin{samepage}
+    Käänteinen väite ei kuitenkaan päde. Valitaan
+    \[
+      I = [-1, 1], \qquad f(x) = x^2, \qquad g(x) = x^2(3 + x).
+    \]
+    Molemmat funktiot ovat epänegatiivisia välillä \(I\) ja konvekseja, sillä
+    \[
+      f''(x) = 2, \qquad g''(x) = 6(1 + x) \geq 0.
+    \]
+    Ehto~\eqref{eq:fg-condition-2} toteutuu, koska
+    \[
+      2f'(x)g'(x) = 12x^2(x + 2) \geq 0
+      \qquad (x \in I).
+    \]
+    Sen sijaan ehto~\eqref{eq:fg-condition} ei toteudu:
+    \[
+      \begin{aligned}
+        \bigl(f(-1) - f(\tfrac34)\bigr)
+        \bigl(g(-1) - g(\tfrac34)\bigr)
+        &= \left(1 - \frac9{16}\right)
+        \left(2 - \frac{135}{64}\right) \\
+        &= -\frac{49}{1024} < 0.
+      \end{aligned}
+    \]
+    Siis \eqref{eq:fg-condition} ei ole välttämätön tulon konveksiudelle.\par
+  \end{samepage}
+
+  \begin{samepage}
+    Myöskään ehto~\eqref{eq:fg-condition-2} ei ole välttämätön.
+    Esimerkiksi välillä \(I = [0, 1]\) funktiot
+    \[
+      f(x) = x^2, \qquad g(x) = 3 - x
+    \]
+    ovat epänegatiivisia ja konvekseja, mutta
+    \(2f'(x)g'(x) = -4x < 0\) kaikilla \(x \in (0, 1)\).
+    Silti niiden tulo \(h(x) = 3x^2 - x^3\) on konveksi, sillä
+    \[
+      h''(x) = 6(1 - x) \geq 0
+      \qquad (x \in I).
+    \]
+    Kumpikin annetuista ehdoista on siis riittävä, mutta ei
+    välttämätön. Toisin sanoen, olemme löytäneet kaksi eri ehto funktion
+    \(fg\) konveksiudelle, mutta kumpikaan näistä ei ole paras
+    mahdollinen. \qedhere\par
+  \end{samepage}
 \end{solution}
 
 \end{document}
