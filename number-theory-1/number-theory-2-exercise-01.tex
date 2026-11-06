@@ -1,0 +1,70 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Lukuteoria I\\Harjoitus 2}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Lukuteoria I}{Harjoitus 2}
+
+\begin{exercise}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Määritä lukujen \(924\) ja \(630\) alkutekijähajotelmat.
+    \item Määritä \(\syt(924, 630)\) sekä alkutekijähajotelmien avulla, että
+      Eukleideen algoritmilla.
+    \item Esitä \(\syt(924, 630)\) lukujen \(924\) ja \(630\)
+      lineaarikombinaationa.
+    \item Määritä \(\operatorname{pyj}(924, 630)\).
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Olkoot \(a\), \(b\) ja \(c\) kokonaislukuja.
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Osoita, että jos \(\syt(a, b) = 1\), \(a \mid c\) ja
+      \(b \mid c\), niin \(ab \mid c\).
+    \item Osoita, että edellisen kohdan tulos ei aina päde, jos
+      \(\syt(a, b) > 1\).
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Ratkaise seuraavat Diofantoksen yhtälöt
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item \(9x + 21y = 3\)
+    \item \(32x - 10y = 5\)
+    \item \(-4x + 11y = 7\)
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Olkoot \(a\) ja \(b\) kokonaislukuja sekä \(p\) ja \(q\) erisuuria
+  alkulukuja.
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Osoita, että jos \(a \equiv b \pmod{p}\) ja
+      \(a \equiv b \pmod{q}\), niin \(a \equiv b \pmod{pq}\).
+    \item Osoita, että \(p^{q-1} + q^{p-1} \equiv 1 \pmod{pq}\).
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Ratkaise seuraavat kongruenssiyhtälöt
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item \(3x \equiv 2 \pmod{9}\),
+    \item \(15y \equiv 7 \pmod{41}\),
+    \item \(30z - 5 \equiv 11 + 2z \pmod{40}\).
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Etsi luvulle \(3^{90} - 1\) ainakin kolme tekijää \(d\), joille pätee
+  \(2 < d < 3^{90} - 1\).
+\end{exercise}
+
+\end{document}
