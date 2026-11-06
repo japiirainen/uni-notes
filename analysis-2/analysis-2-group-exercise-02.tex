@@ -133,6 +133,69 @@
   Osoita, että \(f\colon[0,1]\to\RR\) on konveksi.
 \end{exercise}
 
+\begin{solution}
+  Koska potenssisarja suppenee pisteessä \(x=1\), sen suppenemissäde
+  \(R\) toteuttaa ehdon \(R\geq 1\). Jokainen piste \(x\in(0,1)\)
+  on siis suppenemisvälin sisäpiste, joten potenssisarjaa voidaan
+  derivoida tällä välillä kahdesti termi termiltä. Saadaan
+  \[
+    \begin{aligned}
+      f'(x)&=\sum_{n=1}^{\infty}na_nx^{n-1},\\
+      f''(x)&=\sum_{n=2}^{\infty}n(n-1)a_nx^{n-2}\geq 0,
+      \qquad x\in(0,1),
+    \end{aligned}
+  \]
+  sillä \(a_n\geq 0\) ja \(x>0\), joten jälkimmäisen sarjan kaikki
+  termit ovat epänegatiivisia.
+
+  Tarkistetaan vielä jatkuvuus koko välillä \([0,1]\).
+  Pisteessä \(x=1\) suppenemisen perusteella
+  \[
+    \sum_{n=0}^{\infty}a_n=f(1)<\infty.
+  \]
+  Olkoot \(x_0\in[0,1]\) ja \(\varepsilon>0\) mielivaltaisia.
+  Koska sarja \(\sum_{n=0}^{\infty}a_n\) suppenee, voidaan valita
+  \(N\geq 0\) siten, että
+  \[
+    \sum_{n=N+1}^{\infty}a_n<\frac{\varepsilon}{3}.
+  \]
+  Merkitään \(S_N(x)=\sum_{n=0}^{N}a_nx^n\). Koska
+  \(0\leq x^n\leq 1\) kaikilla \(x\in[0,1]\), saadaan
+  \[
+    |f(x)-S_N(x)|
+    =\sum_{n=N+1}^{\infty}a_nx^n
+    \leq\sum_{n=N+1}^{\infty}a_n
+    <\frac{\varepsilon}{3}
+    \qquad\text{kaikilla }x\in[0,1].
+  \]
+  Sama osasumma \(S_N\) siis approksimoi funktiota \(f\) näin tarkasti
+  koko välillä \([0,1]\). Tämä on tasaisen suppenemisen ydin.
+
+  Koska \(S_N\) on polynomina jatkuva pisteessä \(x_0\), on olemassa
+  \(\delta>0\) siten, että
+  \[
+    |S_N(x)-S_N(x_0)|<\frac{\varepsilon}{3},
+    \qquad\text{kun }|x-x_0|<\delta.
+  \]
+  Kun \(x\in[0,1]\) ja \(|x-x_0|<\delta\), kolmioepäyhtälö antaa
+  \[
+    \begin{aligned}
+      |f(x)-f(x_0)|
+      &\leq |f(x)-S_N(x)|+|S_N(x)-S_N(x_0)|\\
+      &\quad+|S_N(x_0)-f(x_0)|\\
+      &<\frac{\varepsilon}{3}+\frac{\varepsilon}{3}
+      +\frac{\varepsilon}{3}=\varepsilon.
+    \end{aligned}
+  \]
+  Siis \(f\) on jatkuva pisteessä \(x_0\). Koska \(x_0\in[0,1]\)
+  oli mielivaltainen, \(f\) on jatkuva koko välillä \([0,1]\),
+  myös päätepisteissä.
+
+  Siis \(f\) on jatkuva välillä \([0,1]\), kahdesti derivoituva
+  välillä \((0,1)\) ja \(f''(x)\geq 0\) kaikilla \(x\in(0,1)\).
+  Tehtävän 3 nojalla \(f\) on siten konveksi välillä \([0,1]\).
+\end{solution}
+
 \begin{exercise}[Aritmeettis-geometrinen epäyhtälö]
   Olkoot \(n\in\NNone\) ja \(x_1,\ldots,x_n\geq 0\).
   Todista, että
