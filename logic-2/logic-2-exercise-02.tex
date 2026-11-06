@@ -246,6 +246,84 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  Merkitään kuvan 2 verkkoa mallilla \(\mathcal M\). Kaava \(A\) on
+  tosi mallissa \(\mathcal M\), eli \(\mathcal M\models A\), jos
+  \(\mathcal M\models_s A\) kaikilla \(\mathcal M\)-tulkintafunktioilla
+  \(s\). Siksi yksi vastaesimerkki riittää osoittamaan, ettei kaava ole
+  tosi mallissa.
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*)]
+    \item Kaava \(E(x,y)\) \textbf{ei ole tosi}. Valitaan
+      tulkintafunktio \(s\), jolla \(s(x)=1\) ja \(s(y)=5\).
+      Solmujen \(1\) ja \(5\) välillä ei ole särmää, joten
+      \[
+        (s(x),s(y))=(1,5)\notin E^{\mathcal M}.
+      \]
+      Siis \(\mathcal M\not\models_s E(x,y)\), joten
+      \(\mathcal M\not\models E(x,y)\).
+
+    \item Kaava \(\exists x\,E(x,y)\) \textbf{ei ole tosi}.
+      Valitaan tulkintafunktio \(s\), jolla \(s(y)=3\).
+      Koska solmu \(3\) on eristetty, kaikilla
+      \(a\in\dom(\mathcal M)\) pätee
+      \[
+        \bigl(x^{\mathcal M}\langle s(a/x)\rangle,
+        y^{\mathcal M}\langle s(a/x)\rangle\bigr)
+        =(a,3)\notin E^{\mathcal M}.
+      \]
+      Näin ollen \(\mathcal M\not\models_{s(a/x)} E(x,y)\)
+      kaikilla \(a\in\dom(\mathcal M)\). Eksistenssikvanttorin
+      totuusmääritelmän nojalla
+      \(\mathcal M\not\models_s\exists x\,E(x,y)\), joten
+      \(\mathcal M\not\models\exists x\,E(x,y)\).
+
+    \item Kaava \(\exists x\exists y\,E(x,y)\) \textbf{on tosi}.
+      Olkoon \(s\) mielivaltainen \(\mathcal M\)-tulkintafunktio.
+      Valitaan eksistenssikvanttorien todistajiksi \(a=1\) ja \(b=2\).
+      Tulkintafunktiolle \(s'=s(1/x)(2/y)\) pätee
+      \[
+        (s'(x),s'(y))=(1,2)\in E^{\mathcal M},
+      \]
+      sillä solmujen \(1\) ja \(2\) välillä on särmä. Siis
+      \(\mathcal M\models_{s'}E(x,y)\), joten
+      \(\mathcal M\models_s\exists x\exists y\,E(x,y)\).
+      Koska \(s\) oli mielivaltainen,
+      \[
+        \mathcal M\models\exists x\exists y\,E(x,y).
+      \]
+
+    \item Kaava \textbf{on tosi}. Olkoon \(s\) mielivaltainen
+      \(\mathcal M\)-tulkintafunktio. Valitaan molempien
+      eksistenssikvanttorien todistajaksi solmu \(3\), eli asetetaan
+      \(s'=s(3/y)(3/z)\). Koska solmu \(3\) on eristetty,
+      \[
+        \begin{aligned}
+          (s'(x),s'(y))&=(s(x),3)\notin E^{\mathcal M},\\
+          (s'(x),s'(z))&=(s(x),3)\notin E^{\mathcal M},\\
+          (s'(y),s'(z))&=(3,3)\notin E^{\mathcal M}.
+        \end{aligned}
+      \]
+      Kaavat \(E(x,y)\), \(E(x,z)\) ja \(E(y,z)\) ovat siis
+      kaikki epätosia tulkinnalla \(s'\). Ekvivalenssi on tosi,
+      kun sen molemmilla puolilla on sama totuusarvo, joten
+      \[
+        \mathcal M\models_{s'}
+        \bigl((E(x,y)\leftrightarrow E(x,z))\land
+        (E(x,y)\leftrightarrow E(y,z))\bigr).
+      \]
+      Eksistenssikvanttorien totuusmääritelmän ja tulkintafunktion
+      \(s\) mielivaltaisuuden nojalla
+      \[
+        \mathcal M\models\exists y\exists z
+        \bigl((E(x,y)\leftrightarrow E(x,z))\land
+        (E(x,y)\leftrightarrow E(y,z))\bigr).
+      \]
+      Valinta \(y=z=3\) on sallittu, sillä kaava ei edellytä
+      todistajien olevan eri solmuja.\qedhere
+  \end{enumerate}
+\end{solution}
+
 \begin{samepage}
   \begin{exercise}
     Anna esimerkki kaavasta \(A\) tai selitä, miksi sellaista ei ole,
@@ -259,6 +337,56 @@
   \end{exercise}
 \end{samepage}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*)]
+    \item Valitaan \(A=(x=y)\). Olkoon \(\mathcal M\) malli, jonka
+      universumi on \(\{1\}\), ja olkoon \(s\) sen tulkintafunktio.
+      Tällöin \(s(x)=s(y)=1\), joten
+      \[
+        \mathcal M\models_s x=y.
+      \]
+      Kaava on siis toteutuva. Se ei kuitenkaan ole validi:
+      valitaan malli \(\mathcal N\), jonka universumi on \(\{1,2\}\),
+      ja tulkintafunktio \(t\), jolla \(t(x)=1\) ja \(t(y)=2\).
+      Koska \(t(x)\ne t(y)\), saadaan
+      \[
+        \mathcal N\not\models_t x=y.
+      \]
+
+    \item Myös tässä \(A=(x=y)\) toimii. Kohdan (a) malli
+      \(\mathcal N\) ja tulkintafunktio \(t\) osoittavat, että kaava
+      on kumoutuva, sillä \(\mathcal N\not\models_t A\).
+      Toisaalta \(\mathcal M\models_s A\), joten kaava on toteutuva
+      eikä siten ristiriita.
+
+    \item Tällaista kaavaa ei ole, sillä jokainen tautologia on
+      validi. Tautologian totuus seuraa sen propositionaalisesta
+      muodosta riippumatta osakaavojen totuusarvoista. Siksi se
+      toteutuu jokaisessa mallissa jokaisella tulkintafunktiolla.
+
+    \item Valitaan \(A=\forall x\,(x=x)\). Olkoon \(\mathcal M\)
+      mielivaltainen malli ja \(s\) sen mielivaltainen
+      tulkintafunktio. Kaikilla \(a\in\dom(\mathcal M)\) pätee
+      \[
+        x^{\mathcal M}\langle s(a/x)\rangle
+        =a
+        =x^{\mathcal M}\langle s(a/x)\rangle,
+      \]
+      joten \(\mathcal M\models_{s(a/x)}x=x\).
+      Universaalikvanttorin totuusmääritelmän nojalla
+      \(\mathcal M\models_s\forall x\,(x=x)\).
+      Koska \(\mathcal M\) ja \(s\) olivat mielivaltaisia,
+      kaava on validi.
+
+      Kaava ei kuitenkaan ole tautologia. Sen propositionaalinen
+      muoto on pelkkä propositiosymboli \(p\), joka ei ole
+      propositiologiikan tautologia: se on epätosi arvotuksella,
+      jossa \(p\) saa totuusarvon \(0\). Kaavan \(A\) validius
+      perustuu yhtäsuuruuden ja kvanttorin semantiikkaan.\qedhere
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}
   \leavevmode
   \begin{enumerate}[label=(\alph*)]
@@ -269,27 +397,55 @@
   \end{enumerate}
 \end{exercise}
 
-\noindent\textit{Seuraavasta haastetehtävästä ei saa harjoituspisteitä (eikä
-  siinä varsinaisia muita haasteita ole kuin induktio). Se antaa tavan koodata
-propositiologiikka predikaattilogiikan osaksi sallimatta propositiosymboleita.}
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*)]
+    \item Olkoon \(\mathcal M\) mielivaltainen \(\{P\}\)-malli ja
+      \(s\) sen mielivaltainen tulkintafunktio. Oletetaan, että
+      \(\mathcal M\models_s\forall x\,P(x)\).
+      Universaalikvanttorin totuusmääritelmän nojalla
+      \[
+        \mathcal M\models_{s(a/x)}P(x)
+        \quad\text{kaikilla }a\in\dom(\mathcal M).
+      \]
+      Mallin universumi on epätyhjä, joten voidaan valita
+      \(a_0\in\dom(\mathcal M)\). Erityisesti
+      \(\mathcal M\models_{s(a_0/x)}P(x)\), joten
+      eksistenssikvanttorin totuusmääritelmän nojalla
+      \[
+        \mathcal M\models_s\exists x\,P(x).
+      \]
+      Koska \(\mathcal M\) ja \(s\) olivat mielivaltaisia, on osoitettu,
+      että
+      \[
+        \forall x\,P(x)\models\exists x\,P(x).
+      \]
 
-\medskip
-\noindent\textbf{Haastetehtävä.} Olkoon \(L\) aakkosto
-\(\{P_0, \ldots, P_n\}\). Jos \(A\) on propositiolause, jossa esiintyy
-korkeintaan propositiosymbolit \(p_0, \ldots, p_n\), niin olkoon \(A^*\)
-määritelty seuraavasti:
-\[
-  \begin{aligned}
-    p_i^* &= \exists x P_i(x) \\
-    (\neg A)^* &= \neg A^* \\
-    (A \land B)^* &= A^* \land B^* \\
-    (A \lor B)^* &= A^* \lor B^* \\
-    (A \to B)^* &= A^* \to B^* \\
-    (A \leftrightarrow B)^* &= A^* \leftrightarrow B^*
-  \end{aligned}
-\]
-Osoita, että \(A\) on toteutuva jos ja vain jos on olemassa \(L\)-malli
-\(\mathcal M\) ja tulkintafunktio \(s\) siten että
-\(\mathcal M \models_s A^*\).
+    \item Valitaan \(\{P\}\)-malli \(\mathcal M\), jossa
+      \[
+        \dom(\mathcal M)=\NN,
+        \qquad
+        P^{\mathcal M}=\{n\in\NN\mid n\text{ on alkuluku}\}.
+      \]
+      Olkoon \(s\) mielivaltainen \(\mathcal M\)-tulkintafunktio.
+      Koska \(2\) on alkuluku, saadaan
+      \[
+        x^{\mathcal M}\langle s(2/x)\rangle
+        =2\in P^{\mathcal M}.
+      \]
+      Siis \(\mathcal M\models_{s(2/x)}P(x)\), joten
+      \(\mathcal M\models_s\exists x\,P(x)\).
+      Toisaalta \(4\) ei ole alkuluku, joten
+      \[
+        x^{\mathcal M}\langle s(4/x)\rangle
+        =4\notin P^{\mathcal M}.
+      \]
+      Näin ollen \(\mathcal M\not\models_{s(4/x)}P(x)\), joten
+      \(\mathcal M\not\models_s\forall x\,P(x)\).
+      Kaavoilla on siis eri totuusarvot samassa mallissa samalla
+      tulkintafunktiolla. Siksi ne eivät ole loogisesti
+      ekvivalentit.\qedhere
+  \end{enumerate}
+\end{solution}
 
 \end{document}
