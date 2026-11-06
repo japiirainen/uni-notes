@@ -139,8 +139,53 @@
   \[
     (x_1\cdots x_n)^{1/n}\leq\frac{x_1+\cdots+x_n}{n}.
   \]
-  \textit{Vihje.} Tarkastele funktiota \(x\mapsto-\ln x\)
-  välillä \((0,\infty)\).
 \end{exercise}
+
+\begin{solution}
+  Olkoot \(n\in\NNone\) ja \(x_1,\ldots,x_n\geq 0\).
+  Jos jokin luvuista \(x_i\) on nolla, niin
+  \[
+    (x_1\cdots x_n)^{1/n}=0\leq\frac{x_1+\cdots+x_n}{n},
+  \]
+  joten väite pätee. Voidaan siis olettaa, että \(x_i>0\) kaikilla
+  \(i=1,\ldots,n\). Tällöin kaikki seuraavassa esiintyvät logaritmit
+  ovat määriteltyjä.
+
+  Olkoon \(f\colon(0,\infty)\to\RR\), \(f(x)=-\ln x\).
+  Derivoimalla saadaan
+  \[
+    f'(x)=-\frac{1}{x},
+    \qquad f''(x)=\frac{1}{x^2}>0
+    \quad\text{kaikilla }x\in(0,\infty).
+  \]
+  Tehtävän 3 nojalla \(f\) on konveksi jokaisella suljetulla välillä
+  \([a,b]\subset(0,\infty)\), missä \(a<b\). Koska mitkä tahansa kaksi
+  positiivista lukua sisältyvät tällaiseen väliin, \(f\) on konveksi
+  koko välillä \((0,\infty)\).
+
+  Logaritmin laskusääntöjä soveltamalla saadaan
+  \[
+    f\left((x_1\cdots x_n)^{1/n}\right)
+    =-\frac{1}{n}\left(\ln x_1+\cdots+\ln x_n\right).
+  \]
+  Valitaan painot \(\lambda_i=1/n\) kaikilla \(i=1,\ldots,n\).
+  Ne ovat epänegatiivisia ja niiden summa on \(1\), joten Jensenin
+  epäyhtälön (tehtävä 2) nojalla
+  \[
+    -\frac{1}{n}\left(\ln(x_1) + \cdots + \ln(x_n)\right) \geq
+    -\ln\left(\frac{1}{n}(x_1 + \cdots + x_n)\right).
+  \]
+  Kertomalla puolittain \(-1\):llä saadaan
+  \[
+    \ln\left((x_1 \cdots x_n)^{1/n}\right) \leq
+    \ln\left(\frac{1}{n}(x_1 + \cdots + x_n)\right).
+  \]
+  Koska eksponenttifunktio on aidosti kasvava, sen soveltaminen
+  epäyhtälön molemmille puolille säilyttää epäyhtälön suunnan. Näin saadaan
+  \[
+    (x_1 \cdots x_n)^{1/n} \leq
+    \frac{1}{n}(x_1 + \cdots + x_n).
+  \]
+\end{solution}
 
 \end{document}
