@@ -1,0 +1,70 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\usepackage{tikz}
+
+\title{Analyysi II\\Ryhmätyö 2 ratkaisut}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Analyysi II}{Ryhmätyö 2 ratkaisut}
+
+\setcounter{exercise}{1}
+
+\begin{exercise}[Jensenin epäyhtälö]
+  Olkoot \(N,m\in\NNone\), \(S\subset\RR^N\) konveksi joukko ja
+  \(f\colon S\to\RR\) konveksi funktio. Olkoot
+  \(x_1,\ldots,x_m\in S\) ja \(\lambda_1,\ldots,\lambda_m\geq 0\)
+  siten, että \(\sum_{i=1}^m\lambda_i=1\).
+  Käy huolellisesti läpi epäyhtälön
+  \[
+    f\!\left(\sum_{i=1}^m\lambda_i x_i\right)
+    \leq \sum_{i=1}^m\lambda_i f(x_i)
+  \]
+  induktiotodistus. Kirjoita muistiinpanot ja valmistaudu perustelemaan
+  todistuksen vaiheet suullisesti.
+\end{exercise}
+
+\begin{exercise}[Konveksisuus ja toinen derivaatta]
+  Olkoot \(a,b\in\RR\), \(a<b\), ja \(f\colon[a,b]\to\RR\) jatkuva
+  välillä \([a,b]\) ja kahdesti derivoituva välillä \((a,b)\).
+  Oletetaan, että \(f''(x)\geq 0\) kaikilla \(x\in(a,b)\).
+  Osoita, että \(f\) on konveksi välillä \([a,b]\).
+  \begin{enumerate}[label=(\alph*)]
+    \item Olkoot \(a\leq x_1<c<x_2\leq b\). Mitä väliarvolause kertoo
+      osamääristä
+      \[
+        \frac{f(c)-f(x_1)}{c-x_1}
+        \qquad\text{ja}\qquad
+        \frac{f(x_2)-f(c)}{x_2-c}?
+      \]
+    \item Johda näiden avulla haluttu konveksisuusväite.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}[Potenssisarjan konveksisuus]
+  Olkoon \(a_n\geq 0\) kaikilla \(n\geq 0\), ja oletetaan, että
+  potenssisarja
+  \[
+    f(x)=\sum_{n=0}^{\infty}a_n x^n
+  \]
+  suppenee jokaisessa pisteessä \(x\in[0,1]\).
+  Osoita, että \(f\colon[0,1]\to\RR\) on konveksi.
+\end{exercise}
+
+\begin{exercise}[Aritmeettis-geometrinen epäyhtälö]
+  Olkoot \(n\in\NNone\) ja \(x_1,\ldots,x_n\geq 0\).
+  Todista, että
+  \[
+    (x_1\cdots x_n)^{1/n}\leq\frac{x_1+\cdots+x_n}{n}.
+  \]
+  \textit{Vihje.} Tarkastele funktiota \(x\mapsto-\ln x\)
+  välillä \((0,\infty)\).
+\end{exercise}
+
+\end{document}
