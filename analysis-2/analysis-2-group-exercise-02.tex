@@ -47,6 +47,82 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*)]
+    \item Väliarvolauseen nojalla on olemassa pisteet
+      \(u\in(x_1,c)\) ja \(v\in(c,x_2)\), joille
+      \[
+        \frac{f(c)-f(x_1)}{c-x_1}=f'(u)
+        \qquad\text{ja}\qquad
+        \frac{f(x_2)-f(c)}{x_2-c}=f'(v).
+      \]
+      Koska \(f\) on kahdesti derivoituva välillä \((a,b)\),
+      \(f'\) on jatkuva välillä \([u,v]\) ja derivoituva välillä
+      \((u,v)\). Soveltamalla väliarvolausetta funktioon \(f'\)
+      saadaan piste \(w\in(u,v)\), jolle
+      \[
+        f'(v)-f'(u)=f''(w)(v-u)\geq 0.
+      \]
+      Siis
+      \[
+        \frac{f(c)-f(x_1)}{c-x_1}
+        \leq \frac{f(x_2)-f(c)}{x_2-c}.
+      \]
+    \item Olkoot \(x_1,x_2\in[a,b]\) ja \(t\in[0,1]\).
+      Jos \(x_1=x_2=x\), niin
+      \[
+        f\bigl((1-t)x+tx\bigr)=f(x)=(1-t)f(x)+tf(x),
+      \]
+      joten konveksisuusehto toteutuu yhtäsuuruutena ilman jakamista
+      luvulla \(x_2-x_1\). Myös tapauksissa \(t \in \set{0, 1}\)
+      ehto toteutuu yhtäsuuruutena.
+
+      Voidaan siis olettaa, että \(x_1\neq x_2\) ja \(0<t<1\).
+      Vaihtamalla tarvittaessa pisteiden nimet ja korvaamalla
+      \(t\) luvulla \(1-t\) voidaan lisäksi olettaa \(x_1<x_2\).
+      Valitaan \(c=(1-t)x_1+tx_2\in(x_1,x_2)\).
+      Koska \(c-x_1>0\) ja \(x_2-c>0\), kohdan (a)
+      epäyhtälöstä seuraa
+      \[
+        (x_2-c)\bigl(f(c)-f(x_1)\bigr)
+        \leq (c-x_1)\bigl(f(x_2)-f(c)\bigr).
+      \]
+      Kokoamalla termin \(f(c)\) sisältävät lausekkeet vasemmalle
+      ja jakamalla luvulla \(x_2-x_1>0\) saadaan
+      \[
+        f(c)\leq
+        \frac{x_2-c}{x_2-x_1}f(x_1)
+        +\frac{c-x_1}{x_2-x_1}f(x_2).
+      \]
+      Valitun pisteen \(c\) määritelmän nojalla
+      \[
+        \begin{aligned}
+          \frac{x_2-c}{x_2-x_1}
+          &=\frac{x_2-\bigl((1-t)x_1+tx_2\bigr)}{x_2-x_1}\\
+          &=\frac{(1-t)x_2-(1-t)x_1}{x_2-x_1}
+          =\frac{(1-t)(x_2-x_1)}{x_2-x_1}=1-t
+        \end{aligned}
+      \]
+      ja
+      \[
+        \begin{aligned}
+          \frac{c-x_1}{x_2-x_1}
+          &=\frac{(1-t)x_1+tx_2-x_1}{x_2-x_1}\\
+          &=\frac{-tx_1+tx_2}{x_2-x_1}
+          =\frac{t(x_2-x_1)}{x_2-x_1}=t.
+        \end{aligned}
+      \]
+      Siten edellinen epäyhtälö antaa
+      \[
+        f\bigl((1-t)x_1+tx_2\bigr)
+        \leq (1-t)f(x_1)+tf(x_2).
+      \]
+      Tämä on konveksisuuden määritelmä, joten \(f\) on konveksi
+      välillä \([a,b]\).
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}[Potenssisarjan konveksisuus]
   Olkoon \(a_n\geq 0\) kaikilla \(n\geq 0\), ja oletetaan, että
   potenssisarja
