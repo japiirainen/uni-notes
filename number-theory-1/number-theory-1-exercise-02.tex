@@ -237,6 +237,40 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Koska \(\syt(9, 3) = 3 \nmid 2\), kongruenssiyhtälöllä
+      \(3x \equiv 2 \pmod{9}\) ei ole ratkaisuja.
+    \item Koska \(\syt(15, 41) = 1\), kongruenssiyhtälöllä on täsmälleen
+      yksi ratkaisu modulo \(41\). Luvun \(15\) käänteisluku modulo \(41\)
+      on \(11\), sillä \(15 \cdot 11 \equiv 165 \equiv 1 \pmod{41}\).
+      Kertomalla kongruenssin puolittain luvulla \(11\) saadaan
+      \[
+        y \equiv 7 \cdot 11 \equiv 77 \equiv 36 \pmod{41}.
+      \]
+      Siis kaikki kokonaislukuratkaisut ovat \(y = 36 + 41k\), missä
+      \(k \in \ZZ\).
+    \item Muokkaamalla kongruenssia saadaan
+      \[
+        \begin{aligned}
+          &30z - 5 \equiv 11 + 2z \pmod{40} \\
+          \iff{} &28z \equiv 16 \pmod{40} \\
+          \iff{} &7z \equiv 4 \pmod{10}.
+        \end{aligned}
+      \]
+      Koska \(\syt(7, 10) = 1\), kongruenssiyhtälöllä on täsmälleen yksi
+      ratkaisu modulo \(10\). Luvun \(7\) käänteisluku modulo \(10\) on \(3\),
+      sillä \(7 \cdot 3 \equiv 21 \equiv 1 \pmod{10}\). Kertomalla
+      kongruenssin puolittain luvulla \(3\) saadaan
+      \[
+        z \equiv 3 \cdot 4 \equiv 2 \pmod{10}.
+      \]
+      Siis kaikki kokonaislukuratkaisut ovat \(z = 10k + 2\), missä
+      \(k \in \ZZ\).
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}
   Etsi luvulle \(3^{90} - 1\) ainakin kolme tekijää \(d\), joille pätee
   \(2 < d < 3^{90} - 1\).
