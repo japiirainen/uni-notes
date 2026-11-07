@@ -650,7 +650,7 @@ $x$:n arvoksi $a$ ja sitten $y$:n arvoksi $b$.
 Alkuperäiset arvot $s(x)=4$ ja $s(y)=5$ eivät estä toteutumista:
 molemmat korvataan kvanttorien käsittelyn ajaksi.
 
-\subsubsection{Täydennyksiä kirjan luvusta 3}
+\subsubsection{Täydennyksiä semantiikkaan}
 
 \paragraph{Kvanttorin negaatio.}
 Totuusehdoista seuraa, että seuraavien kaavaparien totuusarvot
@@ -665,7 +665,7 @@ $4\notin P^{\mathcal M}$. Sama alkio todistaa kaavan
 $\exists x\neg P(x)$ todeksi.
 
 \paragraph{Toteutuminen tulkinnalla ja totuus mallissa.}
-Kirjan kohdassa 3.4 erotetaan seuraavat merkinnät:
+Erotetaan seuraavat merkinnät:
 \begin{align*}
   \mathcal M\models_s A
   &:\quad A\text{ toteutuu juuri tulkintafunktiolla }s,\\
@@ -689,5 +689,260 @@ Pura kaavaa ulkoa sisään. Kvanttorin kohdalla muuta vain sen sitoman
 muuttujan arvoa; atomikaavan kohdalla tarkista alkioiden yhtäsuuruus
 tai kuuluminen annettuun relaatioon. Erityisesti
 $R(x,y)$ ja $R(y,x)$ voivat saada eri totuusarvot.
+
+\clearpage
+\subsection{Validisuus ja loogiset seuraukset}
+
+Kiinnitetään aakkosto $L$; kaikki tarkasteltavat kaavat ovat $L$-kaavoja,
+mallit $L$-malleja ja mallien universumit epätyhjiä.
+
+\subsubsection{Kolme totuuden tasoa ja kaavojen luokittelu}
+
+\begin{definition}[Totuus mallissa ja validisuus]
+  Tarskin totuusmääritelmän merkinnöistä saadaan kolme eri tasoa:
+  \begin{align*}
+    \mathcal M\models_s A
+    &:\quad A\text{ toteutuu mallissa }\mathcal M
+    \text{ tulkintafunktiolla }s,\\
+    \mathcal M\models A
+    &\iff \mathcal M\models_s A
+    \text{ kaikilla }\mathcal M\text{-tulkintafunktioilla }s,\\
+    \models A
+    &\iff \mathcal M\models A\text{ kaikilla }L\text{-malleilla }\mathcal M.
+  \end{align*}
+  Viimeisessä tapauksessa $A$ on \emph{validi}: se toteutuu jokaisessa
+  mallissa jokaisella tulkintafunktiolla.
+\end{definition}
+
+\begin{definition}[Toteutuvuus ja kumoutuvuus]
+  Kaava $A$ on
+  \begin{itemize}
+    \item \emph{toteutuva}, jos joillakin $\mathcal M,s$ pätee
+      $\mathcal M\models_s A$;
+    \item \emph{kumoutuva}, jos joillakin $\mathcal M,s$ pätee
+      $\mathcal M\not\models_s A$, eli $A$ ei ole validi;
+    \item \emph{ristiriita}, jos se ei ole toteutuva;
+    \item \emph{kontingentti}, jos se on sekä toteutuva että kumoutuva.
+  \end{itemize}
+\end{definition}
+
+Jokainen kaava kuuluu täsmälleen yhteen seuraavista kolmesta luokasta.
+Toteutuvuus ja kumoutuvuus eivät siis sulje toisiaan pois.
+\begin{center}
+  \renewcommand{\arraystretch}{1.2}
+  \begin{tabular}{lcc}
+    \hline
+    Luokka & Toteutuva & Kumoutuva\\
+    \hline
+    Validi & kyllä & ei\\
+    Kontingentti & kyllä & kyllä\\
+    Ristiriita & ei & kyllä\\
+    \hline
+  \end{tabular}
+\end{center}
+
+\begin{example}[Totuus voi riippua tulkintafunktiosta]
+  Olkoon $L=\varnothing$ ja mallin $\mathcal M$ universumi $\{0,1\}$.
+  Jos $s(x)=s(y)=0$, niin $\mathcal M\models_s x=y$.
+  Jos $t(x)=0$ ja $t(y)=1$, niin $\mathcal M\not\models_t x=y$.
+  Siten $x=y$ on kontingentti ja $\mathcal M\not\models x=y$.
+  Myös $\mathcal M\not\models\neg(x=y)$, sillä $s$ ei toteuta negaatiota.
+  Siis $\mathcal M\not\models A$ ei yleensä tarkoita samaa kuin
+  $\mathcal M\models\neg A$.
+\end{example}
+
+Toteutuvuuteen riittää yksi pari $(\mathcal M,s)$; validisuuden
+kumoamiseen riittää yksi vastaesimerkkipari. Ristiriitaisuus vaatii,
+ettei yksikään pari toteuta kaavaa. Lisäksi $A$ on ristiriita täsmälleen
+silloin, kun $\neg A$ on validi.
+
+\clearpage
+\subsubsection{Tautologia on validisuuden erityistapaus}
+
+\begin{definition}[Predikaattilogiikan tautologia]
+  Kaava on \emph{tautologia}, jos se saadaan propositiologiikan
+  tautologiasta korvaamalla propositiosymbolit predikaattilogiikan
+  kaavoilla. Saman propositiosymbolin jokainen esiintymä korvataan
+  samalla kaavalla.
+\end{definition}
+
+Esimerkiksi $R(x,y)\lor\neg R(x,y)$ on tautologia: se saadaan
+kaavasta $p\lor\neg p$ sijoituksella $p\mapsto R(x,y)$.
+Jokainen tautologia on validi, koska konnektiivien totuusehdot
+ovat samat kuin propositiologiikassa.
+
+\begin{example}[Validi, mutta ei tautologia]
+  Kaava $x=x$ on validi yhtäsuuruuden tulkinnan vuoksi. Kaava
+  \[
+    \forall x\,P(x)\to\exists y\,P(y)
+  \]
+  on myös validi. Jos mielivaltaisessa mallissa etujäsen toteutuu,
+  valitaan universumista alkio $a$. Tällöin $a\in P^{\mathcal M}$,
+  joten sama $a$ on takajäsenen todistaja. Jos etujäsen ei toteudu,
+  implikaatio toteutuu joka tapauksessa. Todistus käyttää universumin
+  epätyhjyyttä.
+
+  Kumpikaan kaava ei ole tautologia edellä annetun määritelmän mukaan:
+  kun atomikaavat ja kvanttorilla alkavat osakaavat käsitellään
+  propositiosymboleina, saadaan vastaavasti $p$ ja $p\to q$.
+  Nämä eivät ole propositiologiikan tautologioita. Validisuus perustuu
+  tässä yhtäsuuruuteen tai kvanttoreihin.
+\end{example}
+
+\begin{example}[Kaavojen luokittelu]
+  Olkoon $L=\{R\}$, missä $R$ on kaksipaikkainen.
+  \begin{enumerate}
+    \item $\forall x\forall y\,(R(x,y)\lor\neg R(x,y))$ on validi:
+      jokainen pari joko kuuluu relaatioon tai ei kuulu siihen.
+      Kaava ei silti ole tautologia, sillä koko kaavan uloin
+      operaattori on kvanttori; sen propositiologiikan rakenne on $p$.
+    \item $\forall x\forall y\,(R(x,y)\lor R(y,x))$ on kontingentti.
+      Valitaan molemmille malleille universumiksi $M=\{0,1\}$.
+      Jos $R^{\mathcal M_1}=\varnothing$, pari $(0,0)$ kumoaa väitteen.
+      Jos taas
+      \[
+        R^{\mathcal M_2}=\{(0,0),(0,1),(1,1)\},
+      \]
+      jokaiselle parille $(a,b)\in M^2$ joko $(a,b)$ tai $(b,a)$
+      kuuluu relaatioon. Siis kaava on tosi mallissa $\mathcal M_2$.
+    \item $(\forall x\forall y\,R(x,y))\land\exists x\neg R(x,x)$
+      on ristiriita. Jos ensimmäinen osa toteutuu, niin
+      $(a,a)\in R^{\mathcal M}$ jokaisella $a\in M$.
+      Jälkimmäisen osan vaatimaa todistajaa ei silloin ole.
+  \end{enumerate}
+\end{example}
+
+\clearpage
+\subsubsection{Looginen seuraus ja vastaesimerkit}
+
+\begin{definition}[Looginen seuraus]
+  Kaava $B$ on kaavan $A$ \emph{looginen seuraus}, merkitään
+  $A\Rightarrow B$, jos jokaisella mallilla $\mathcal M$ ja jokaisella
+  $\mathcal M$-tulkintafunktiolla $s$ pätee
+  \[
+    \text{jos }\mathcal M\models_s A,\text{ niin }\mathcal M\models_s B.
+  \]
+  Molempien kaavojen toteutumista tarkastellaan siis \emph{samalla}
+  mallilla ja \emph{samalla} tulkintafunktiolla.
+\end{definition}
+
+\begin{proposition}
+  $A\Rightarrow B$ täsmälleen silloin, kun $\models(A\to B)$.
+\end{proposition}
+
+\begin{proof}
+  Implikaatio $A\to B$ on epätosi täsmälleen niillä pareilla
+  $(\mathcal M,s)$, joilla $A$ toteutuu mutta $B$ ei toteudu.
+  Näiden parien puuttuminen on sekä validisuuden että loogisen
+  seurauksen määritelmän ehto.
+\end{proof}
+
+Merkki $\to$ on kaavoja muodostava konnektiivi; merkki $\Rightarrow$
+ilmaisee kaavojen välisen semanttisen suhteen.
+Seurausväitteen kumoamiseksi etsitään yksi pari $(\mathcal M,s)$,
+jolla premissi $A$ on tosi ja johtopäätös $B$ epätosi.
+Pelkkä molempien toteutuminen jossakin mallissa ei osoita seurausta.
+
+\begin{example}[Todistajan valinta]
+  Pätee
+  \[
+    R(x,y)\Rightarrow\exists z\,R(x,z).
+  \]
+  Jos $\mathcal M\models_s R(x,y)$, niin
+  $(s(x),s(y))\in R^{\mathcal M}$. Valitaan eksistenssikvanttorin
+  todistajaksi $a=s(y)$. Koska $z$ on eri muuttuja kuin $x$, tulkinta
+  $s(a/z)$ säilyttää $x$:n arvon ja toteuttaa kaavan $R(x,z)$.
+  Näin $\mathcal M\models_s\exists z\,R(x,z)$.
+\end{example}
+
+\begin{example}[Seurauksen suunta on olennainen]
+  Edellä osoitettiin
+  \[
+    \forall x\,P(x)\Rightarrow\exists y\,P(y).
+  \]
+  Käänteinen seuraus ei päde. Mallissa, jossa $M=\{0,1\}$ ja
+  $P^{\mathcal M}=\{0\}$, eksistenssiväite on tosi todistajalla $0$,
+  mutta universaaliväite on epätosi alkion $1$ vuoksi.
+\end{example}
+
+\begin{remark}[Avoimen kaavan premissi]
+  Myöskään $P(x)\Rightarrow\forall y\,P(y)$ ei päde. Käytetään
+  edellisen esimerkin mallia ja valitaan $s(x)=0$: premissi toteutuu
+  tällä tulkinnalla, mutta johtopäätös ei. Ei saa olettaa, että
+  $\mathcal M\models P(x)$, koska se vaatisi premissin toteutumista
+  \emph{kaikilla} tulkintafunktioilla ja olisi vahvempi oletus.
+\end{remark}
+
+Jos $A$ on ristiriita, $A\Rightarrow B$ pätee jokaiselle $B$:lle,
+koska premissiä toteuttavaa vastaesimerkkiparia ei ole.
+
+\clearpage
+\subsubsection{Looginen ekvivalenssi ja kvanttorien muunnokset}
+
+\begin{definition}[Looginen ekvivalenssi]
+  Kaavat $A$ ja $B$ ovat \emph{loogisesti ekvivalentit}, merkitään
+  $A\Leftrightarrow B$, jos $A\Rightarrow B$ ja $B\Rightarrow A$.
+  Yhtäpitävästi
+  \[
+    A\Leftrightarrow B
+    \quad\Longleftrightarrow\quad
+    \models(A\leftrightarrow B).
+  \]
+  Kaavat toteutuvat siis täsmälleen samoilla pareilla $(\mathcal M,s)$.
+\end{definition}
+
+Samoin kuin edellä, $\leftrightarrow$ kuuluu kaavakieleen ja
+$\Leftrightarrow$ ilmaisee semanttisen suhteen. Pelkkä sama totuusarvo
+yhdessä mallissa yhdellä tulkinnalla ei riitä ekvivalenssiin.
+
+\begin{proposition}[Kvanttorien perusekvivalenssit]
+  Kaikilla kaavoilla $A,B$ ja muuttujilla $x$ pätee
+  \begin{align*}
+    \neg\forall x A &\Leftrightarrow\exists x\neg A,\\
+    \neg\exists x A &\Leftrightarrow\forall x\neg A,\\
+    \forall x(A\land B) &\Leftrightarrow
+    (\forall x A)\land(\forall x B).
+  \end{align*}
+\end{proposition}
+
+\begin{proof}
+  Kiinnitetään mielivaltaiset $\mathcal M,s$ ja merkitään
+  $M=\dom(\mathcal M)$. Ensimmäinen ekvivalenssi seuraa ketjusta
+  \begin{align*}
+    \mathcal M\models_s\neg\forall x A
+    &\iff \text{ei päde: kaikilla }a\in M,
+    \ \mathcal M\models_{s(a/x)}A\\
+    &\iff \text{jollakin }a\in M,
+    \ \mathcal M\not\models_{s(a/x)}A\\
+    &\iff \mathcal M\models_s\exists x\neg A.
+  \end{align*}
+  Toisessa ekvivalenssissa ``ei ole yhtään $A$:n toteuttavaa alkiota''
+  tarkoittaa, että jokainen alkio toteuttaa $\neg A$:n.
+  Kolmannessa $A\land B$ toteutuu jokaisella tulkinnalla $s(a/x)$
+  täsmälleen silloin, kun sekä $A$ että $B$ toteutuvat jokaisella
+  tällaisella tulkinnalla.
+\end{proof}
+
+\begin{example}[Negaation siirtäminen kvanttorien läpi]
+  Väite ``kaikki eivät tunne kaikkia'' voidaan kirjoittaa ja muuntaa
+  \[
+    \neg\forall x\forall y\,R(x,y)
+    \ \Leftrightarrow\ \exists x\neg\forall y\,R(x,y)
+    \ \Leftrightarrow\ \exists x\exists y\neg R(x,y).
+  \]
+  Siis on joku, joka ei tunne jotakuta. Väite ei sano, ettei kukaan
+  tuntisi ketään: sen ilmaisisi $\forall x\forall y\neg R(x,y)$.
+\end{example}
+
+\begin{example}[Eksistenssikvanttori ja konjunktio]
+  Muunnos $\exists x(A\land B)\Leftrightarrow
+  (\exists x A)\land(\exists x B)$ ei yleisesti päde.
+  Jos $M=\{0,1\}$, $P^{\mathcal M}=\{0\}$ ja
+  $Q^{\mathcal M}=\{1\}$, niin $\exists x P(x)$ ja $\exists x Q(x)$
+  ovat tosia, mutta $\exists x(P(x)\land Q(x))$ on epätosi.
+  Erilliset todistajat eivät takaa yhteistä todistajaa.
+  Suunta $\exists x(A\land B)\Rightarrow
+  (\exists x A)\land(\exists x B)$ kuitenkin pätee.
+\end{example}
 
 \end{document}
