@@ -926,4 +926,361 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
     koordinaattipareina.
   \end{example}
 
+  \newpage
+  \subsection{5.11.2026: käänteismatriisit ja kääntyvyyslause}
+
+  % Lähdekuvat: IMG_2025.HEIC--IMG_2029.HEIC.
+  Matriisitulon laskusäännöt yhdistävät yhtälöryhmät ja matriisikuvaukset.
+  Niiden avulla määritellään käänteismatriisi ja perustellaan sen
+  laskeminen rivioperaatioilla.
+
+  \subsubsection*{Matriisitulon laskusäännöt}
+
+  \begin{theorem}[Liitännäisyys, osittelulait ja skalaarit]
+    Olkoot $A,A'\in\RR^{m\times n}$, $B,B'\in\RR^{n\times k}$,
+    $C\in\RR^{k\times p}$ ja $\lambda\in\RR$. Tällöin
+    \begin{align*}
+      (AB)C&=A(BC),\\
+      (A+A')B&=AB+A'B,\\
+      A(B+B')&=AB+AB',\\
+      \lambda(AB)&=(\lambda A)B=A(\lambda B).
+    \end{align*}
+  \end{theorem}
+  \begin{proof}
+    Liitännäisyydessä molemmat puolet ovat kokoa $m\times p$.
+    Kiinnitetään $i\in\{1,\ldots,m\}$ ja $\ell\in\{1,\ldots,p\}$.
+    Matriisitulon määritelmä ja äärellisten summien järjestyksen vaihto
+    antavat
+    \begin{align*}
+      ((AB)C)_{i\ell}
+      &=\sum_{r=1}^k\left(\sum_{j=1}^n a_{ij}b_{jr}\right)c_{r\ell}\\
+      &=\sum_{j=1}^n a_{ij}\left(\sum_{r=1}^k b_{jr}c_{r\ell}\right)
+      =(A(BC))_{i\ell}.
+    \end{align*}
+    Muissa väitteissä tulokset ovat kokoa $m\times k$. Niiden
+    vastinalkioille pätevät reaalilukujen laskusäännöistä
+    \begin{align*}
+      ((A+A')B)_{i\ell}
+      &=\sum_{j=1}^n(a_{ij}+a'_{ij})b_{j\ell}
+      =(AB)_{i\ell}+(A'B)_{i\ell},\\
+      (A(B+B'))_{i\ell}
+      &=\sum_{j=1}^n a_{ij}(b_{j\ell}+b'_{j\ell})
+      =(AB)_{i\ell}+(AB')_{i\ell},\\
+      \lambda(AB)_{i\ell}
+      &=\sum_{j=1}^n(\lambda a_{ij})b_{j\ell}
+      =\sum_{j=1}^n a_{ij}(\lambda b_{j\ell}).
+    \end{align*}
+    Siis kaikki väitteet pätevät alkioittain.
+  \end{proof}
+
+  Liitännäisyyden vuoksi voidaan kirjoittaa $ABC$ ilman sulkuja.
+  Se sallii laskujärjestyksen valinnan, mutta ei tekijöiden vaihtamista.
+  Esimerkiksi matriiseille
+  \[
+    P=\begin{bmatrix}1&1\\0&1\end{bmatrix},\qquad
+    Q=\begin{bmatrix}1&0\\1&1\end{bmatrix}
+  \]
+  saadaan $PQ=\left[\begin{smallmatrix}2&1\\1&1\end{smallmatrix}\right]$
+  ja $QP=\left[\begin{smallmatrix}1&1\\1&2\end{smallmatrix}\right]$.
+  Matriisitulo ei siis yleensä ole vaihdannainen.
+
+  \subsubsection*{Matriisitulo kuvausten yhdistämisenä}
+
+  Kun $A\in\RR^{m\times n}$ ja $B\in\RR^{n\times k}$, kuvaukset
+  $f_B\colon\RR^k\to\RR^n$ ja $f_A\colon\RR^n\to\RR^m$ voidaan
+  yhdistää. Jokaisella $x\in\RR^k$ pätee
+  \[
+    (f_A\circ f_B)(x)=A(Bx)=(AB)x=f_{AB}(x).
+  \]
+  Siis $\boxed{f_{AB}=f_A\circ f_B}$: tulossa $AB$ matriisi $B$
+  vaikuttaa vektoriin ensin.
+
+  \newpage
+  \subsubsection*{Neliömatriisi ja identiteettimatriisi}
+
+  \begin{definition}
+    Matriisi on \emph{neliömatriisi}, jos sen rivien ja sarakkeiden
+    määrät ovat samat. Koon $n\times n$ \emph{identiteettimatriisi}
+    eli \emph{yksikkömatriisi} on
+    \[
+      I_n=[e_1\ \cdots\ e_n],\qquad
+      (I_n)_{ij}=\begin{cases}1,&i=j,\\0,&i\ne j.\end{cases}
+    \]
+    Esimerkiksi $I_3=\left[\begin{smallmatrix}
+      1&0&0\\0&1&0\\0&0&1\end{smallmatrix}\right]$.
+    Alaindeksi jätetään pois, kun koko selviää asiayhteydestä.
+  \end{definition}
+
+  \begin{lemma}[Identiteettimatriisi tulon neutraalialkiona]
+    Kun $A\in\RR^{m\times n}$, pätee $I_mA=A=AI_n$.
+    Erityisesti $I_nx=x$ jokaisella $x\in\RR^n$.
+  \end{lemma}
+  \begin{proof}
+    Määritelmästä $(I_nx)_i=x_i$, joten $I_nx=x$.
+    Sarakkeittain laskemalla saadaan
+    \[
+      AI_n=[Ae_1\ \cdots\ Ae_n]
+      =[A_{\cdot1}\ \cdots\ A_{\cdot n}]=A.
+    \]
+    Samoin $I_mA=[I_mA_{\cdot1}\ \cdots\ I_mA_{\cdot n}]=A$.
+  \end{proof}
+
+  \subsubsection*{Käänteismatriisin määritelmä ja yksikäsitteisyys}
+
+  \begin{definition}[Käänteismatriisi]
+    Matriisi $A\in\RR^{n\times n}$ on \emph{kääntyvä}, jos on olemassa
+    $B\in\RR^{n\times n}$, jolle
+    \[
+      AB=BA=I_n.
+    \]
+    Tällöin $B$ on $A$:n \emph{käänteismatriisi}, ja merkitään $B=A^{-1}$.
+  \end{definition}
+
+  \begin{lemma}[Käänteismatriisi on yksikäsitteinen]
+    Jos $B$ ja $C$ ovat $A$:n käänteismatriiseja, niin $B=C$.
+  \end{lemma}
+  \begin{proof}
+    Identiteettimatriisin ominaisuuksien ja liitännäisyyden nojalla
+    \[
+      B=BI=B(AC)=(BA)C=IC=C.
+    \]
+  \end{proof}
+
+  \begin{theorem}[Käänteismatriisien laskusäännöt]\label{thm:inverse-product}
+    Jos $A,B\in\RR^{n\times n}$ ovat kääntyviä, niin myös $AB$ ja
+    $A^{-1}$ ovat kääntyviä ja
+    \[
+      \boxed{(AB)^{-1}=B^{-1}A^{-1},\qquad (A^{-1})^{-1}=A.}
+    \]
+  \end{theorem}
+  \begin{proof}
+    Tarkistetaan tulot kummassakin järjestyksessä:
+    \begin{align*}
+      (AB)(B^{-1}A^{-1})&=A(BB^{-1})A^{-1}=AA^{-1}=I,\\
+      (B^{-1}A^{-1})(AB)&=B^{-1}(A^{-1}A)B=B^{-1}B=I.
+    \end{align*}
+    Siis $B^{-1}A^{-1}$ on $AB$:n käänteismatriisi. Lisäksi
+    $A^{-1}A=AA^{-1}=I$ sanoo suoraan, että $A$ on $A^{-1}$:n
+    käänteismatriisi.
+  \end{proof}
+
+  \newpage
+  \subsubsection*{Alkeismatriisit: rivioperaatiot matriisituloina}
+
+  \begin{definition}[Alkeismatriisi]
+    \emph{Alkeismatriisi} saadaan identiteettimatriisista yhdellä
+    sallitulla rivioperaatiolla.
+  \end{definition}
+
+  Merkitään koon $n\times n$ alkeismatriiseja seuraavasti:
+  \begin{itemize}
+    \item $D_{p,\lambda}$ saadaan kertomalla $I_n$:n rivi $p$ luvulla
+      $\lambda\ne0$.
+    \item $S_{pr}$ saadaan vaihtamalla $I_n$:n rivit $p$ ja $r$,
+      missä $p\ne r$.
+    \item $T_{pr}(c)=I_n+cE_{pr}$, missä $p\ne r$, $c\in\RR$ ja
+      $E_{pr}$:n ainoa nollasta poikkeava alkio on
+      $(E_{pr})_{pr}=1$. Se saadaan operaatiolla $R_p\leftarrow R_p+cR_r$.
+  \end{itemize}
+  Esimerkiksi koossa $3\times3$
+  \[
+    D_{2,\lambda}=\begin{bmatrix}1&0&0\\0&\lambda&0\\0&0&1\end{bmatrix},
+    \quad S_{12}=\begin{bmatrix}0&1&0\\1&0&0\\0&0&1\end{bmatrix},
+    \quad T_{13}(c)=\begin{bmatrix}1&0&c\\0&1&0\\0&0&1\end{bmatrix}.
+  \]
+
+  \begin{lemma}\label{lem:elementary-rows}
+    Jos $E\in\RR^{n\times n}$ vastaa tiettyä rivioperaatiota, niin
+    $EM$ saadaan tekemällä sama operaatio matriisille
+    $M\in\RR^{n\times k}$. Alkeismatriisit ovat kääntyviä ja
+    \[
+      D_{p,\lambda}^{-1}=D_{p,1/\lambda},\qquad
+      S_{pr}^{-1}=S_{pr},\qquad T_{pr}(c)^{-1}=T_{pr}(-c).
+    \]
+    Myös niiden käänteismatriisit ovat alkeismatriiseja.
+  \end{lemma}
+  \begin{proof}
+    Rivin $i$ kaava on $(EM)_{i\cdot}=\sum_{j=1}^n E_{ij}M_{j\cdot}$.
+    Matriisille $D_{p,\lambda}$ se antaa rivin $\lambda M_{p\cdot}$
+    paikalle $p$ ja säilyttää muut rivit. Matriisille $S_{pr}$ se
+    vaihtaa rivit $p$ ja $r$. Matriisille $T_{pr}(c)$ se antaa rivin
+    $M_{p\cdot}+cM_{r\cdot}$ paikalle $p$ ja säilyttää muut rivit.
+
+    Luetellut käänteisoperaatiot palauttavat alkuperäisen matriisin
+    kummassakin suoritusjärjestyksessä. Soveltamalla niitä matriisiin
+    $I_n$ saadaan kummassakin järjestyksessä tuloksi $I_n$, mikä
+    todistaa käänteismatriisien kaavat.
+  \end{proof}
+
+  \subsubsection*{Kääntyvyyslause}
+
+  \begin{theorem}[Neliömatriisin kääntyvyys]\label{thm:invertibility}
+    Olkoon $A\in\RR^{n\times n}$. Seuraavat ehdot ovat yhtäpitäviä:
+    \begin{enumerate}
+      \item $A$ on kääntyvä.
+      \item Yhtälön $Ax=0$ ainoa ratkaisu on $x=0$.
+      \item Laajennetun matriisin $[A\mid0]$ supistettu porrasmuoto
+        on $[I_n\mid0]$.
+      \item $A$ voidaan esittää alkeismatriisien tulona.
+    \end{enumerate}
+  \end{theorem}
+
+  \newpage
+  \begin{proof}
+    $(1)\Rightarrow(2)$: Nollavektori on aina ratkaisu. Jos $Ax=0$,
+    niin $x=A^{-1}Ax=A^{-1}0=0$.
+
+    $(2)\Rightarrow(3)$: Rivioperaatiot säilyttävät ratkaisujoukon
+    ja oikean puolen nollana. Jos supistetussa porrasmuodossa olisi
+    vapaa muuttuja, sille voisi antaa arvon $1$ ja muille vapaille
+    muuttujille arvon $0$. Sidotut muuttujat ratkaisemalla saataisiin
+    nollasta poikkeava ratkaisu. Siis jokaisessa $n$:ssä
+    muuttujasarakkeessa on johtava alkio. Koska rivejä on myös $n$,
+    supistettu kerroinmatriisi on $I_n$.
+
+    $(3)\Rightarrow(4)$: Lemman \ref{lem:elementary-rows} perusteella
+    eliminoinnin rivioperaatioita vastaavat alkeismatriisit
+    $E_1,\ldots,E_s$ toteuttavat
+    \[
+      E_s\cdots E_1A=I_n.
+    \]
+    Kerrotaan vasemmalta matriisilla $E_1^{-1}\cdots E_s^{-1}$.
+    Tekijät kumoutuvat pareittain, joten
+    \[
+      A=E_1^{-1}\cdots E_s^{-1}.
+    \]
+    Jokainen tekijä on alkeismatriisi. Jos operaatioita ei tarvita,
+    $A=I_n$, joka saadaan myös kertomalla identiteettimatriisin rivi
+    luvulla $1$.
+
+    $(4)\Rightarrow(1)$: Alkeismatriisit ovat kääntyviä.
+    Lauseen \ref{thm:inverse-product} mukaan niiden äärellinen tulo
+    on kääntyvä.
+  \end{proof}
+
+  \begin{corollary}[Yksi käänteismatriisiehto riittää]
+    Jos $A,B\in\RR^{n\times n}$ ja joko $BA=I_n$ tai $AB=I_n$,
+    niin $A$ on kääntyvä ja $B=A^{-1}$.
+  \end{corollary}
+  \begin{proof}
+    Jos $BA=I_n$, niin $Ax=0$ antaa $x=BAx=0$. Kääntyvyyslauseen
+    nojalla $A$ on kääntyvä, ja
+    $B=B(AA^{-1})=(BA)A^{-1}=A^{-1}$.
+    Jos taas $AB=I_n$, sama päättely matriisille $B$ osoittaa,
+    että $B$ on kääntyvä ja $A=B^{-1}$. Siis myös $BA=I_n$.
+  \end{proof}
+
+  Neliömatriisiolettamus on olennainen: esimerkiksi
+  $U=\left[\begin{smallmatrix}1&0\end{smallmatrix}\right]$ ja
+  $V=\left[\begin{smallmatrix}1\\0\end{smallmatrix}\right]$
+  toteuttavat $UV=I_1$, mutta
+  $VU=\left[\begin{smallmatrix}1&0\\0&0\end{smallmatrix}\right]\ne I_2$.
+
+  \begin{corollary}[Yhtälön ratkaiseminen käänteismatriisilla]
+    Jos $A\in\RR^{n\times n}$ on kääntyvä, niin jokaisella
+    $b\in\RR^n$ yhtälöllä $Ax=b$ on täsmälleen yksi ratkaisu,
+    $\boxed{x=A^{-1}b}$.
+  \end{corollary}
+  \begin{proof}
+    Jos $Ax=b$, vasemmalta kertominen antaa $x=A^{-1}b$.
+    Tämä vektori on myös ratkaisu, sillä $A(A^{-1}b)=b$.
+  \end{proof}
+
+  \newpage
+  \subsubsection*{Käänteismatriisin laskeminen}
+
+  Kirjoitetaan tuntematon matriisi $B=[b_1\ \cdots\ b_n]$.
+  Tulon sarakemuodosta seuraa
+  \[
+    AB=I_n\quad\Longleftrightarrow\quad
+    Ab_j=e_j\ \text{kaikilla }j=1,\ldots,n.
+  \]
+  Näissä $n$:ssä yhtälöryhmässä on sama kerroinmatriisi. Ne ratkaistaan
+  samanaikaisesti tekemällä rivioperaatiot koko lohkomatriisille
+  $[A\mid I_n]$. Sen oikealla puolella on siis $n$ eri oikeaa puolta.
+
+  \begin{proposition}[Gauss--Jordanin käänteismatriisialgoritmi]
+    Matriisi $A\in\RR^{n\times n}$ on kääntyvä täsmälleen silloin,
+    kun sen vasen lohko voidaan muuttaa muotoon $I_n$:
+    \[
+      \boxed{[A\mid I_n]\sim[I_n\mid A^{-1}].}
+    \]
+    Jos vasempaan lohkoon ei saada johtavaa alkiota jokaiseen
+    sarakkeeseen, $A$ ei ole kääntyvä.
+  \end{proposition}
+  \begin{proof}
+    Kääntyvyyslauseen mukaan $A$ on kääntyvä täsmälleen silloin, kun
+    se voidaan supistaa matriisiksi $I_n$. Jos käytettyjen
+    rivioperaatioiden alkeismatriisien tulo on $E=E_s\cdots E_1$,
+    koko lohkomatriisi muuttuu muotoon
+    \[
+      E[A\mid I_n]=[EA\mid E].
+    \]
+    Kun $EA=I_n$, on $E=E(AA^{-1})=(EA)A^{-1}=A^{-1}$.
+    Siten oikeasta lohkosta saadaan käänteismatriisi.
+  \end{proof}
+
+  \begin{example}[Neliömatriisi, joka ei ole kääntyvä]
+    Olkoon $A=\left[\begin{smallmatrix}1&2\\1&2\end{smallmatrix}\right]$.
+    Tällöin
+    \[
+      \left[\begin{array}{cc|cc}1&2&1&0\\1&2&0&1\end{array}\right]
+      \begin{array}{@{}l@{}}\vphantom{0}\\\rowop{-R_1}\end{array}
+      \sim
+      \left[\begin{array}{cc|cc}1&2&1&0\\0&0&-1&1\end{array}\right].
+    \]
+    Vasempaan lohkoon ei saada kahta johtavaa alkiota. Esimerkiksi
+    yhtälö $Ab_1=e_1$ vaatisi viimeisellä rivillä $0=-1$.
+    Siis käänteismatriisia ei ole. Saman näkee kääntyvyyslauseesta:
+    $A(-2,1)=0$, vaikka $(-2,1)\ne0$.
+  \end{example}
+
+  \newpage
+  \subsubsection*{Luennon laskutehtävä: käänteismatriisi ja neliön käänteismatriisi}
+
+  \begin{example}
+    Osoitetaan, että
+    \[
+      A=\begin{bmatrix}1&1&1\\2&3&2\\3&8&2\end{bmatrix}
+    \]
+    on kääntyvä, ja määritetään $(A^2)^{-1}$.
+    Aloitetaan lohkomatriisista $[A\mid I_3]$:
+    \begin{align*}
+      &\left[\begin{array}{rrr|rrr}
+        1&1&1&1&0&0\\2&3&2&0&1&0\\3&8&2&0&0&1
+      \end{array}\right]
+      \begin{array}{@{}l@{}}\vphantom{0}\\\rowop{-2R_1}\\\rowop{-3R_1}
+      \end{array}\\[3pt]
+      &\quad\sim
+      \left[\begin{array}{rrr|rrr}
+        1&1&1&1&0&0\\0&1&0&-2&1&0\\0&5&-1&-3&0&1
+      \end{array}\right]
+      \begin{array}{@{}l@{}}\rowop{-R_2}\\\vphantom{0}\\\rowop{-5R_2}
+      \end{array}\\[3pt]
+      &\quad\sim
+      \left[\begin{array}{rrr|rrr}
+        1&0&1&3&-1&0\\0&1&0&-2&1&0\\0&0&-1&7&-5&1
+      \end{array}\right]
+      \begin{array}{@{}l@{}}\rowop{+R_3}\\\vphantom{0}\\\rowop{\cdot(-1)}
+      \end{array}\\[3pt]
+      &\quad\sim
+      \left[\begin{array}{rrr|rrr}
+        1&0&0&10&-6&1\\0&1&0&-2&1&0\\0&0&1&-7&5&-1
+      \end{array}\right].
+    \end{align*}
+    Viimeisen siirtymän molemmat operaatiot käyttävät edellisen
+    matriisin kolmatta riviä. Vasen lohko on $I_3$, joten
+    \[
+      \boxed{A^{-1}=\begin{bmatrix}10&-6&1\\-2&1&0\\-7&5&-1\end{bmatrix}.}
+    \]
+    Suora tarkistus antaa $AA^{-1}=A^{-1}A=I_3$.
+    Tulon käänteismatriisin kaavalla
+    \[
+      (A^2)^{-1}=(AA)^{-1}=A^{-1}A^{-1}
+      =\begin{bmatrix}10&-6&1\\-2&1&0\\-7&5&-1\end{bmatrix}^{\!2}
+      =\boxed{\begin{bmatrix}105&-61&9\\-22&13&-2\\-73&42&-6\end{bmatrix}.}
+    \]
+    Tässä $A^2$ tarkoittaa matriisituloa $AA$.
+  \end{example}
+
   \end{document}
