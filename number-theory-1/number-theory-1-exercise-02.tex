@@ -271,9 +271,24 @@
   \end{enumerate}
 \end{solution}
 
+\newpage
+
 \begin{exercise}
   Etsi luvulle \(3^{90} - 1\) ainakin kolme tekijää \(d\), joille pätee
   \(2 < d < 3^{90} - 1\).
 \end{exercise}
+
+\begin{solution}
+  Etsitään lukuja \(p \in \PP\) siten, että \(p - 1 \mid 90\). Tällaisia
+  ovat esimerkiksi \(p \in \set{7, 11, 19}\). Fermat'n pienen lauseen nojalla
+  \[
+    \begin{aligned}
+      (3^6)^{15} &\equiv 1 \pmod{7}, \\
+      (3^{10})^9 &\equiv 1 \pmod{11}, \\
+      (3^{18})^5 &\equiv 1 \pmod{19}.
+    \end{aligned}
+  \]
+  Näin ollen \(d \mid 3^{90} - 1\), kun \(d \in \set{7, 11, 19}\).
+\end{solution}
 
 \end{document}
