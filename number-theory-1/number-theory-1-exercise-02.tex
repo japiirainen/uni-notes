@@ -24,6 +24,54 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item \(924 = 2^2 \cdot 3 \cdot 7 \cdot 11\), \(630 = 2 \cdot 3^2
+      \cdot 5 \cdot 7\).
+    \item Alkutekijähajotelman avulla:
+      \[
+        \begin{aligned}
+          \syt(924, 630) &= 2^{\minset{1, 2}} \cdot 3^{\minset{1, 2}}
+          \cdot 5^{\minset{0, 1}}
+          \cdot 7^{\minset{1}} \cdot 11^{\minset{0, 1}} \\
+          &= 2 \cdot 3 \cdot 7 \\
+          &= 42.
+        \end{aligned}
+      \]
+      Laskemalla saadaan
+      \[
+        \begin{aligned}
+          924 &= 1 \cdot 630 + 294 \\
+          630 &= 2 \cdot 294 + 42 \\
+          294 &= 7 \cdot 42 + 0.
+        \end{aligned}
+      \]
+      Täten Eukleideen algoritmin nojalla
+      \[
+        \syt(924, 630) = \syt(630, 294) = \syt(294, 42) = \syt(42, 0) = 42.
+      \]
+    \item Kohdan (b) nojalla saadaan
+      \[
+        \begin{aligned}
+          \syt(924, 630) &= 42 \\
+          &= 630 - 2 \cdot 294 \\
+          &= 630 - 2(924 - 630) \\
+          &= 3 \cdot 630 - 2 \cdot 924.
+        \end{aligned}
+      \]
+    \item Alkutekijähajotelmien nojalla
+      \[
+        \begin{aligned}
+          \pyj(924, 630) &= 2^{\maxset{1, 2}} \cdot 3^{\maxset{1, 2}}
+          \cdot 5^{\maxset{0, 1}}
+          \cdot 7^{\maxset{1}} \cdot 11^{\maxset{0, 1}} \\
+          &= 2^2 \cdot 3^2 \cdot 5 \cdot 7 \cdot 11.
+        \end{aligned}
+      \]
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}
   Olkoot \(a\), \(b\) ja \(c\) kokonaislukuja.
   \begin{enumerate}[label=(\alph*), nosep]
