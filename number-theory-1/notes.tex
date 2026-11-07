@@ -30,10 +30,6 @@ yliopiston kurssisivulta}.
 
 \subsection{27.10.2026}
 
-\noindent\textit{Aihealue: monisteen luku 2.1 (s.~9--11) ja luku 4
-  lauseeseen 39 asti (s.~21--22). Alla mainitut lausenumerot viittaavat
-monisteeseen.}
-
 \subsubsection{Jaollisuus}
 
 Kokonaisluku $a$ \emph{jakaa} kokonaisluvun $b$, jos
@@ -51,7 +47,7 @@ Sen sijaan $0\mid b$ vain, kun $b=0$.
 Ehto $b/a\in\ZZ$ on siis jaollisuuden kanssa yhtäpitävä vain, kun
 $a\ne 0$; määritelmä $b=ac$ toimii myös nollalle.
 
-\paragraph{Jaollisuuden laskusäännöt (lause 5).}
+\paragraph{Jaollisuuden laskusäännöt.}
 Kun kaikki luvut ovat kokonaislukuja, pätee:
 \begin{enumerate}[label=(\alph*)]
   \item Jos $a\mid b$ ja $a\mid c$, niin $a\mid (xb+yc)$ kaikilla
@@ -86,7 +82,7 @@ Kun kaikki luvut ovat kokonaislukuja, pätee:
 
 \subsubsection{Jakoyhtälö ja jakojäännös}
 
-\paragraph{Jakoyhtälö (lause 6).}
+\paragraph{Jakoyhtälö.}
 Kun $a,b\in\ZZ$ ja $b\ne 0$, on olemassa yksikäsitteiset
 $q,r\in\ZZ$, joille
 \[
@@ -150,7 +146,7 @@ $a=qn+r$ ja $b=sn+t$, missä $0\le r,t<n$, niin
 Viimeinen ekvivalenssi seuraa ehdosta $|r-t|<n$.
 Erityisesti $a\equiv0\pmod n$ tarkoittaa samaa kuin $n\mid a$.
 
-\paragraph{Laskusäännöt (lause 38).}
+\paragraph{Laskusäännöt.}
 Jos $a\equiv b\pmod n$ ja $c\equiv d\pmod n$, niin
 \[
   a+c\equiv b+d\pmod n,\qquad
@@ -175,7 +171,7 @@ helpommalla luvulla. Kaikissa kongruensseissa modulo on sama.
   $ac\equiv bd\pmod n$.
 \end{proof}
 
-\paragraph{Potenssit (lause 39).}
+\paragraph{Potenssit.}
 Jos $a\equiv b\pmod n$, niin kaikilla kokonaisluvuilla $m\ge0$
 \[
   a^m\equiv b^m\pmod n.
@@ -187,7 +183,7 @@ Jos $a\equiv b\pmod n$, niin kaikilla kokonaisluvuilla $m\ge0$
   koska $n\mid(1-1)$.
 
   Oletetaan, että $a^k\equiv b^k\pmod n$ jollakin $k\ge0$.
-  Koska myös $a\equiv b\pmod n$, lauseen 38 kertolaskusääntö antaa
+  Koska myös $a\equiv b\pmod n$, kongruenssien kertolaskusääntö antaa
   \[
     a^{k+1}=a^k a\equiv b^k b=b^{k+1}\pmod n.
   \]
@@ -697,30 +693,219 @@ koska $14\nmid10$. Yhtälölle $742x+336y=28$ saadaan sen sijaan
 \]
 joten yksi ratkaisu on $(10,-22)$.
 
-\paragraph{Täydennys: kaikki ratkaisut, kun $a,b\ne0$.}
-Jos $(x_0,y_0)$ on yksi ratkaisu ja $d=\syt(a,b)$, niin kaikki
-kokonaislukuratkaisut ovat
-\[
-  \boxed{x=x_0+\frac{b}{d}t,\qquad
-  y=y_0-\frac{a}{d}t,\qquad t\in\ZZ.}
-\]
-\begin{proof}
-  Sijoitus osoittaa, että jokainen näin saatu pari on ratkaisu.
-  Kääntäen kahden ratkaisun erotukselle pätee
+\newpage
+\subsection{5.11.2026: Diofantoksen yhtälöt ja modulaarinen laskenta}
+
+\subsubsection{Homogeeninen yhtälö ja yleinen ratkaisu}
+Yhtälön $ax+by=c$ ratkeavuusehto on $\syt(a,b)\mid c$.
+Selvitetään nyt kaikki ratkaisut. Oletetaan tässä $a,b\ne0$ ja
+merkitään $d=\syt(a,b)$.
+
+\begin{theorem}[Homogeeninen yhtälö]
+  Yhtälön $ax+by=0$ kaikki kokonaislukuratkaisut ovat
   \[
-    \frac{a}{d}(x-x_0)=-\frac{b}{d}(y-y_0).
+    x=\frac{b}{d}k,\qquad y=-\frac{a}{d}k,\qquad k\in\ZZ.
   \]
-  Luvut $a/d$ ja $b/d$ ovat keskenään jaottomia, sillä Bézout'n
-  yhtälön $d=au+bv$ jakaminen luvulla $d$ antaa niiden
-  lineaarikombinaatioksi luvun $1$.
-  Niinpä \cref{thm:nt-coprime-divisor} antaa
-  $b/d\mid x-x_0$. Kirjoitetaan $x-x_0=(b/d)t$ ja sijoitetaan
-  yhtälöön; supistamalla $b/d\ne0$ saadaan $y-y_0=-(a/d)t$.
+\end{theorem}
+\begin{proof}
+  Bézout'n yhtälöstä $d=au+bv$ seuraa $\syt(a/d,b/d)=1$.
+  Jos $ax+by=0$, niin
+  \[
+    \frac{a}{d}x=-\frac{b}{d}y.
+  \]
+  Lauseen~\ref{thm:nt-coprime-divisor} perusteella $b/d\mid x$.
+  Kirjoitetaan $x=(b/d)k$ ja sijoitetaan yhtälöön; supistamalla
+  $b/d\ne0$ saadaan $y=-(a/d)k$. Kääntäen sijoitus osoittaa,
+  että jokainen tällä kaavalla saatu pari on ratkaisu.
+\end{proof}
+
+\begin{theorem}[Yleinen ratkaisu]
+  Jos $(x_0,y_0)$ on yhtälön $ax+by=c$ yksi kokonaislukuratkaisu,
+  niin kaikki kokonaislukuratkaisut ovat
+  \[
+    \boxed{x=x_0+\frac{b}{d}k,\qquad
+    y=y_0-\frac{a}{d}k,\qquad k\in\ZZ.}
+  \]
+\end{theorem}
+\begin{proof}
+  Kahden ratkaisun erotukselle pätee
+  $a(x-x_0)+b(y-y_0)=0$, joten erotus on homogeenisen yhtälön
+  ratkaisu. Edellinen lause antaa kaavan. Kääntäen jokainen kaavan
+  pari toteuttaa yhtälön, sillä $k$:sta riippuvat termit kumoutuvat.
 \end{proof}
 Edellisen esimerkin kaikki ratkaisut ovat siis
-$x=10+24t$, $y=-22-53t$, missä $t\in\ZZ$.
+$x=10+24k$, $y=-22-53k$, missä $k\in\ZZ$.
+Kun ratkaisu on olemassa, niitä on äärettömän monta, koska eri
+parametrin arvot antavat eri pareja.
 Jos $a=0$ ja $b\ne0$, yhtälö määrää $y=c/b$ ja $x$ on vapaa;
 jos $b=0$ ja $a\ne0$, vastaavasti $x=c/a$ ja $y$ on vapaa,
 kunhan määrätty osamäärä on kokonaisluku.
+
+\paragraph{Luennon esimerkki: $20x+50y=370$.}
+Eukleideen algoritmi antaa $50=2\cdot20+10$ ja $20=2\cdot10$,
+joten $d=10\mid370$. Koska $10=50-2\cdot20$, saadaan
+\[
+  370=37\cdot50-74\cdot20.
+\]
+Yksi ratkaisu on $(x_0,y_0)=(-74,37)$, ja kaikki ratkaisut ovat
+\[
+  x=-74+5k,\qquad y=37-2k,\qquad k\in\ZZ.
+\]
+Jos etsitään vain epänegatiivisia ratkaisuja, on lisäksi vaadittava
+\[
+  -74+5k\ge0,\quad 37-2k\ge0
+  \quad\Longleftrightarrow\quad
+  \frac{74}{5}\le k\le\frac{37}{2}.
+\]
+Siis $k=15,16,17,18$ ja ratkaisut ovat
+\[
+  \boxed{(x,y)=(1,7),\ (6,5),\ (11,3),\ (16,1).}
+\]
+Kaikki neljä ovat myös positiivisia. Kokonaislukuratkaisujen
+äärettömyys ei siis tarkoita positiivisten ratkaisujen äärettömyyttä.
+
+\subsubsection{Käänteisluku modulo $n$}
+Olkoon $n\ge2$. Kokonaisluku $u$ on luvun $a$ \emph{käänteisluku
+modulo $n$}, jos $au\equiv1\pmod n$. Merkintä $a^{-1}$ tarkoittaa
+tässä tätä käänteislukua, ei tavallista rationaalilukua $1/a$.
+
+\begin{theorem}[Käänteisluvun olemassaolo]
+  Luvulla $a\in\ZZ$ on käänteisluku modulo $n$ täsmälleen silloin,
+  kun $\syt(a,n)=1$. Käänteisluku on yksikäsitteinen modulo $n$.
+\end{theorem}
+\begin{proof}
+  Jos $\syt(a,n)=1$, Bézout'n identiteetti antaa $au+nv=1$,
+  joten $au\equiv1\pmod n$.
+  Kääntäen, jos $au\equiv1\pmod n$, niin $au-nk=1$ jollakin
+  $k\in\ZZ$. Jokainen lukujen $a,n$ yhteinen tekijä jakaa siis
+  luvun $1$, joten $\syt(a,n)=1$.
+
+  Jos $au\equiv av\equiv1\pmod n$, niin $n\mid a(u-v)$.
+  Koska $\syt(n,a)=1$, \cref{thm:nt-coprime-divisor} antaa
+  $n\mid(u-v)$ eli $u\equiv v\pmod n$.
+\end{proof}
+Yksikäsitteisyys koskee jäännösluokkaa: jos $u$ on käänteisluku,
+niin myös $u+kn$ on käänteisluku jokaisella $k\in\ZZ$.
+Edustaja väliltä $0,\ldots,n-1$ on yksikäsitteinen.
+
+\paragraph{Luennon esimerkki: luvun $4$ käänteisluku modulo $13$.}
+Jakoyhtälöstä $13=3\cdot4+1$ saadaan
+\[
+  1=13-3\cdot4,\qquad 4(-3)\equiv1\pmod{13}.
+\]
+Niinpä $4^{-1}\equiv-3\equiv10\pmod{13}$.
+Tarkistus: $4\cdot10=40=3\cdot13+1$.
+Esimerkiksi kertominen käänteisluvulla ratkaisee kongruenssin
+\[
+  4x\equiv7\pmod{13}
+  \quad\Longleftrightarrow\quad
+  x\equiv10\cdot7\equiv5\pmod{13}.
+\]
+Luvulla $6$ ei sen sijaan ole käänteislukua modulo $15$, koska
+$\syt(6,15)=3>1$.
+
+\paragraph{Milloin kongruenssista saa supistaa tekijän?}
+Jos $\syt(c,n)=1$, kertominen luvun $c$ käänteisluvulla antaa
+\[
+  ca\equiv cb\pmod n
+  \quad\Longleftrightarrow\quad a\equiv b\pmod n.
+\]
+Yleisemmin, kun $g=\syt(c,n)$, pätee
+\[
+  \boxed{ca\equiv cb\pmod n
+  \quad\Longleftrightarrow\quad a\equiv b\pmod{n/g}.}
+\]
+Nimittäin $n\mid c(a-b)$ on yhtäpitävä ehdon
+$n/g\mid(c/g)(a-b)$ kanssa. Luvut $n/g$ ja $c/g$ ovat keskenään
+jaottomia, joten jälkimmäinen ehto on yhtäpitävä ehdon
+$n/g\mid(a-b)$ kanssa. Esimerkiksi $2\equiv6\pmod4$ antaa
+$1\equiv3\pmod2$; supistettaessa myös modulo muuttuu.
+
+\subsubsection{Jäännössysteemit}
+\begin{definition}
+  Joukko $S=\{a_1,\ldots,a_n\}$ on \emph{täydellinen jäännössysteemi
+  modulo $n$}, jos sen alkiot ovat pareittain epäkongruentteja modulo
+  $n$. Siinä on siis täsmälleen yksi edustaja jokaisesta
+  jäännösluokasta. Joukko
+  \[
+    \{a\in S:\syt(a,n)=1\}
+  \]
+  on \emph{redusoitu jäännössysteemi modulo $n$}.
+\end{definition}
+Tavallinen täydellinen jäännössysteemi on $\{0,1,\ldots,n-1\}$.
+Esimerkiksi modulo $5$ myös $\{3,4,5,6,7\}$ on täydellinen ja
+$\{3,4,6,7\}$ on redusoitu jäännössysteemi. Modulo $8$ tavallinen
+redusoitu jäännössysteemi on $\{1,3,5,7\}$.
+Jaottomuus ei riipu edustajasta: jos $a\equiv b\pmod n$,
+niin $\syt(a,n)=\syt(b,n)$, sillä pareilla on samat yhteiset tekijät.
+
+\begin{lemma}[Kertominen jaottomalla luvulla]
+  Jos $\syt(a,n)=1$, kertominen luvulla $a$ permutoi jäännösluokat
+  modulo $n$. Erityisesti, jos $p$ on alkuluku ja $p\nmid a$, niin
+  $a,2a,\ldots,(p{-}1)a$ muodostavat redusoidun jäännössysteemin
+  modulo $p$.
+\end{lemma}
+\begin{proof}
+  Jos $aj\equiv ak\pmod n$, tekijä $a$ voidaan supistaa, joten
+  $j\equiv k\pmod n$. Eri jäännösluokat kuvautuvat siis eri
+  luokkiin, ja äärellisyyden vuoksi jokainen luokka esiintyy.
+  Alkuluvun tapauksessa luokat $a,\ldots,(p-1)a$ ovat erilliset
+  ja nollasta poikkeavat; ne ovat siis täsmälleen kaikki $p-1$
+  nollasta poikkeavaa luokkaa.
+\end{proof}
+
+\paragraph{Jaollisuussääntö luvulle $9$.}
+Jos luvun $N\ge0$ kymmenjärjestelmäesitys on
+$N=\sum_{i=0}^r a_i10^i$, niin $10\equiv1\pmod9$ antaa
+\[
+  N\equiv\sum_{i=0}^r a_i\pmod9.
+\]
+Siis $9\mid N$ täsmälleen silloin, kun $9$ jakaa numeroiden summan.
+Sama todistus toimii luvulle $3$, koska myös $10\equiv1\pmod3$.
+
+\subsubsection{Fermat'n pieni lause}
+\begin{theorem}[Fermat'n pieni lause]
+  Jos $p$ on alkuluku ja $p\nmid a$ eli $\syt(a,p)=1$, niin
+  \[
+    \boxed{a^{p-1}\equiv1\pmod p.}
+  \]
+\end{theorem}
+\begin{proof}
+  Edellisen lemman mukaan luvut $a,2a,\ldots,(p-1)a$ edustavat
+  samoja jäännösluokkia kuin $1,2,\ldots,p-1$, vain eri järjestyksessä.
+  Tuloille saadaan siis
+  \[
+    a\cdot2a\cdots(p-1)a\equiv1\cdot2\cdots(p-1)\pmod p,
+  \]
+  eli $a^{p-1}(p-1)!\equiv(p-1)!\pmod p$.
+  Koska $p$ on alkuluku eikä jaa yhtäkään luvuista $1,\ldots,p-1$,
+  Eukleideen lemma antaa $p\nmid(p-1)!$. Siis
+  $\syt((p-1)!,p)=1$, ja kertoma voidaan supistaa kongruenssista.
+\end{proof}
+
+\paragraph{Kaksi hyödyllistä seurausta.}
+Kaikille $a\in\ZZ$ pätee $a^p\equiv a\pmod p$: jos $p\nmid a$,
+kerrotaan Fermat'n kongruenssi luvulla $a$; jos $p\mid a$, molemmat
+puolet ovat kongruentteja nollan kanssa.
+Kun $p\nmid a$, saadaan myös $a^{-1}\equiv a^{p-2}\pmod p$,
+koska $a\cdot a^{p-2}\equiv1\pmod p$.
+
+\paragraph{Sovellus: suuren potenssin sieventäminen.}
+Kun $p\nmid a$ ja $m\ge0$, kirjoitetaan $m=q(p-1)+r$,
+missä $0\le r<p-1$. Tällöin
+\[
+  a^m=(a^{p-1})^q a^r\equiv a^r\pmod p.
+\]
+Eksponentin saa siis supistaa modulo $p-1$, kun kantaluku ei ole
+jaollinen alkuluvulla $p$. Esimerkiksi kun $p=7$ ja $a=5$:
+\[
+  5^{600}=(5^6)^{100}\equiv1\pmod7,
+  \qquad\text{siis }7\mid(5^{600}-1).
+\]
+Samoin $2026=6\cdot337+4$ antaa
+$3^{2026}\equiv3^4=81\equiv4\pmod7$.
+Oletukset ovat olennaiset: jos $p\mid a$, niin
+$a^{p-1}\equiv0\pmod p$, ja yhdistetylle modulolle kaava ei
+yleensä päde, esimerkiksi $2^3\equiv0\not\equiv1\pmod4$.
 
 \end{document}
