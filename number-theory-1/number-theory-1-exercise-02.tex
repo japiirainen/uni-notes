@@ -183,6 +183,51 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item \emph{Todistus 1:} Oletuksista seuraa \(p \mid (a-b)\) ja
+      \(q \mid (a-b)\).
+      Koska \(p\) ja \(q\) ovat erisuuria alkulukuja, \(\syt(p, q) = 1\).
+      Tehtävän 2(a) nojalla \(pq \mid (a-b)\), joten kongruenssin
+      määritelmän mukaan \(a \equiv b \pmod{pq}\).
+
+      \emph{Todistus 2:} Oletusten nojalla on olemassa \(k, \ell \in \ZZ\)
+      siten, että \(a-b = kp = \ell q\). Koska \(\syt(p, q) = 1\),
+      Bézout'n lemman nojalla on olemassa \(x, y \in \ZZ\) siten,
+      että \(px + qy = 1\). Näin ollen
+      \[
+        \begin{aligned}
+          a-b &= (a-b)(px + qy) \\
+          &= \ell qpx + kpqy \\
+          &= pq(\ell x + ky).
+        \end{aligned}
+      \]
+      Koska \(\ell x + ky \in \ZZ\), saadaan \(pq \mid (a-b)\).
+      Siis \(a \equiv b \pmod{pq}\).
+    \item Koska \(p\) ja \(q\) ovat erisuuria alkulukuja, \(\syt(p, q) = 1\).
+      Fermat'n pienen lauseen nojalla
+      \[
+        p^{q - 1} \equiv 1 \pmod{q}, \quad q^{p - 1} \equiv 1 \pmod{p}.
+      \]
+      Lisäksi
+      \[
+        p^{q - 1} \equiv 0 \pmod{p}, \quad q^{p - 1} \equiv 0 \pmod{q}.
+      \]
+      Laskemalla yhteen mod \(p\) ja mod \(q\) saadaan
+      \[
+        \begin{aligned}
+          p^{q - 1} + q^{p - 1} &\equiv 1 \pmod{p}, \\
+          p^{q - 1} + q^{p - 1} &\equiv 1 \pmod{q}.
+        \end{aligned}
+      \]
+      Kohdan (a) nojalla
+      \[
+        p^{q - 1} + q^{p - 1} \equiv 1 \pmod{pq}.
+      \]
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}
   Ratkaise seuraavat kongruenssiyhtälöt
   \begin{enumerate}[label=(\alph*), nosep]
