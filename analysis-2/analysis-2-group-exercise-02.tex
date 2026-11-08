@@ -16,7 +16,7 @@
 
 \setcounter{exercise}{1}
 
-\begin{exercise}[Jensenin epäyhtälö]
+\begin{exercise}
   Olkoot \(N,m\in\NNone\), \(S\subset\RR^N\) konveksi joukko ja
   \(f\colon S\to\RR\) konveksi funktio. Olkoot
   \(x_1,\ldots,x_m\in S\) ja \(\lambda_1,\ldots,\lambda_m\geq 0\)
@@ -65,7 +65,7 @@
   Muut vaiheet ovat yhtäsuuruuksia, joten induktio on valmis.
 \end{solution}
 
-\begin{exercise}[Konveksisuus ja toinen derivaatta]
+\begin{exercise}
   Olkoot \(a,b\in\RR\), \(a<b\), ja \(f\colon[a,b]\to\RR\) jatkuva
   välillä \([a,b]\) ja kahdesti derivoituva välillä \((a,b)\).
   Oletetaan, että \(f''(x)\geq 0\) kaikilla \(x\in(a,b)\).
@@ -109,9 +109,8 @@
       \[
         f\bigl((1-t)x+tx\bigr)=f(x)=(1-t)f(x)+tf(x),
       \]
-      joten konveksisuusehto toteutuu yhtäsuuruutena ilman jakamista
-      luvulla \(x_2-x_1\). Myös tapauksissa \(t \in \set{0, 1}\)
-      ehto toteutuu yhtäsuuruutena.
+      joten konveksisuusehto toteutuu yhtäsuuruutena. Myös tapauksissa
+      \(t \in \set{0, 1}\) ehto toteutuu yhtäsuuruutena.
 
       Voidaan siis olettaa, että \(x_1\neq x_2\) ja \(0<t<1\).
       Vaihtamalla tarvittaessa pisteiden nimet ja korvaamalla
@@ -153,12 +152,11 @@
         f\bigl((1-t)x_1+tx_2\bigr)
         \leq (1-t)f(x_1)+tf(x_2).
       \]
-      Tämä on konveksisuuden määritelmä, joten \(f\) on konveksi
-      välillä \([a,b]\).
+      Siis \(f\) on konveksi välillä \([a,b]\).
   \end{enumerate}
 \end{solution}
 
-\begin{exercise}[Potenssisarjan konveksisuus]
+\begin{exercise}
   Olkoon \(a_n\geq 0\) kaikilla \(n\geq 0\), ja oletetaan, että
   potenssisarja
   \[
@@ -169,10 +167,9 @@
 \end{exercise}
 
 \begin{solution}
-  Koska potenssisarja suppenee pisteessä \(x=1\), sen suppenemissäde
-  \(R\) toteuttaa ehdon \(R\geq 1\). Jokainen piste \(x\in(0,1)\)
-  on siis suppenemisvälin sisäpiste, joten potenssisarjaa voidaan
-  derivoida tällä välillä kahdesti termi termiltä. Saadaan
+  Koska \(f\) suppenee pisteessä \(x=1\), sen suppenemissäde
+  \(R\) toteuttaa ehdon \(R\geq 1\). Täten \(x < R\) kaikilla \(x \in (0, 1)\).
+  Täten potenssisarjaa voidaan derivoida tällä välillä termi termiltä. Saadaan
   \[
     \begin{aligned}
       f'(x)&=\sum_{n=1}^{\infty}na_nx^{n-1},\\
@@ -183,55 +180,17 @@
   sillä \(a_n\geq 0\) ja \(x>0\), joten jälkimmäisen sarjan kaikki
   termit ovat epänegatiivisia.
 
-  Tarkistetaan vielä jatkuvuus koko välillä \([0,1]\).
-  Pisteessä \(x=1\) suppenemisen perusteella
+  Kun \(x \in [0, 1]\), niin
   \[
-    \sum_{n=0}^{\infty}a_n=f(1)<\infty.
+    f(x) = \sum_{n=1}^{\infty} a_n x^n \leq \sum_{n=1}^{\infty} a_n =
+    f(1) < \infty.
   \]
-  Olkoot \(x_0\in[0,1]\) ja \(\varepsilon>0\) mielivaltaisia.
-  Koska sarja \(\sum_{n=0}^{\infty}a_n\) suppenee, voidaan valita
-  \(N\geq 0\) siten, että
-  \[
-    \sum_{n=N+1}^{\infty}a_n<\frac{\varepsilon}{3}.
-  \]
-  Merkitään \(S_N(x)=\sum_{n=0}^{N}a_nx^n\). Koska
-  \(0\leq x^n\leq 1\) kaikilla \(x\in[0,1]\), saadaan
-  \[
-    |f(x)-S_N(x)|
-    =\sum_{n=N+1}^{\infty}a_nx^n
-    \leq\sum_{n=N+1}^{\infty}a_n
-    <\frac{\varepsilon}{3}
-    \qquad\text{kaikilla }x\in[0,1].
-  \]
-  Sama osasumma \(S_N\) siis approksimoi funktiota \(f\) näin tarkasti
-  koko välillä \([0,1]\). Tämä on tasaisen suppenemisen ydin.
-
-  Koska \(S_N\) on polynomina jatkuva pisteessä \(x_0\), on olemassa
-  \(\delta>0\) siten, että
-  \[
-    |S_N(x)-S_N(x_0)|<\frac{\varepsilon}{3},
-    \qquad\text{kun }|x-x_0|<\delta.
-  \]
-  Kun \(x\in[0,1]\) ja \(|x-x_0|<\delta\), kolmioepäyhtälö antaa
-  \[
-    \begin{aligned}
-      |f(x)-f(x_0)|
-      &\leq |f(x)-S_N(x)|+|S_N(x)-S_N(x_0)|\\
-      &\quad+|S_N(x_0)-f(x_0)|\\
-      &<\frac{\varepsilon}{3}+\frac{\varepsilon}{3}
-      +\frac{\varepsilon}{3}=\varepsilon.
-    \end{aligned}
-  \]
-  Siis \(f\) on jatkuva pisteessä \(x_0\). Koska \(x_0\in[0,1]\)
-  oli mielivaltainen, \(f\) on jatkuva koko välillä \([0,1]\),
-  myös päätepisteissä.
-
-  Siis \(f\) on jatkuva välillä \([0,1]\), kahdesti derivoituva
-  välillä \((0,1)\) ja \(f''(x)\geq 0\) kaikilla \(x\in(0,1)\).
-  Tehtävän 3 nojalla \(f\) on siten konveksi välillä \([0,1]\).
+  Weierstrass M-testin nojalla \(f\) suppenee tasaisesti välillä \([0, 1]\).
+  Täten \(f\) on jatkuva välillä \([0, 1]\). Tehtävän 3 nojalla \(f\) on
+  konveksi välillä \([0, 1]\).
 \end{solution}
 
-\begin{exercise}[Aritmeettis-geometrinen epäyhtälö]
+\begin{exercise}
   Olkoot \(n\in\NNone\) ja \(x_1,\ldots,x_n\geq 0\).
   Todista, että
   \[
@@ -257,18 +216,16 @@
     \quad\text{kaikilla }x\in(0,\infty).
   \]
   Tehtävän 3 nojalla \(f\) on konveksi jokaisella suljetulla välillä
-  \([a,b]\subset(0,\infty)\), missä \(a<b\). Koska mitkä tahansa kaksi
-  positiivista lukua sisältyvät tällaiseen väliin, \(f\) on konveksi
-  koko välillä \((0,\infty)\).
+  \([a,b]\subset(0,\infty)\). Tästä seuraa, että \(f\) on konveksi välillä
+  \((0,\infty)\).
 
   Logaritmin laskusääntöjä soveltamalla saadaan
   \[
     f\left((x_1\cdots x_n)^{1/n}\right)
     =-\frac{1}{n}\left(\ln x_1+\cdots+\ln x_n\right).
   \]
-  Valitaan painot \(\lambda_i=1/n\) kaikilla \(i=1,\ldots,n\).
-  Ne ovat epänegatiivisia ja niiden summa on \(1\), joten Jensenin
-  epäyhtälön (tehtävä 2) nojalla
+  Olkoon \(\lambda_i=1/n > 0\) kaikilla \(i=1,\ldots,n\). Tällöin selvästi
+  \(\sum_{i = 1}^{n} \lambda_i = 1\), joten tehtävän 2 nojalla
   \[
     -\frac{1}{n}\left(\ln(x_1) + \cdots + \ln(x_n)\right) \geq
     -\ln\left(\frac{1}{n}(x_1 + \cdots + x_n)\right).
@@ -278,8 +235,8 @@
     \ln\left((x_1 \cdots x_n)^{1/n}\right) \leq
     \ln\left(\frac{1}{n}(x_1 + \cdots + x_n)\right).
   \]
-  Koska eksponenttifunktio on aidosti kasvava, sen soveltaminen
-  epäyhtälön molemmille puolille säilyttää epäyhtälön suunnan. Näin saadaan
+  Koska \(x \mapsto \exp(x)\) on aidosti kasvava, sen soveltaminen
+  epäyhtälön molemmille puolille säilyttää epäyhtälön suunnan. Näin ollen
   \[
     (x_1 \cdots x_n)^{1/n} \leq
     \frac{1}{n}(x_1 + \cdots + x_n).
