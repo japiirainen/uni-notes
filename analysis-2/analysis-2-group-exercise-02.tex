@@ -30,6 +30,41 @@
   todistuksen vaiheet suullisesti.
 \end{exercise}
 
+\begin{solution}
+  Kun \(m=1\), väite on yhtäsuuruus, ja kun \(m=2\), se seuraa
+  suoraan funktion \(f\) konveksiudesta.
+
+  Olkoon \(m\geq3\) ja oletetaan väite oikeaksi \(m-1\) pisteelle.
+  Jos \(\lambda_m=1\), muut painot ovat nollia ja väite on yhtäsuuruus.
+  Oletetaan siis \(\lambda_m<1\) ja asetetaan
+  \[
+    \mu_i=\frac{\lambda_i}{1-\lambda_m}\geq0,
+    \qquad i=1,\ldots,m-1.
+  \]
+  Tällöin
+  \[
+    \sum_{i=1}^{m-1}\mu_i
+    =\frac{\sum_{i=1}^{m-1}\lambda_i}{1-\lambda_m}
+    =\frac{1-\lambda_m}{1-\lambda_m}=1.
+  \]
+  Siis \(y=\sum_{i=1}^{m-1}\mu_i x_i\in S\), sillä konveksi joukko on suljettu
+  äärellisten konveksien yhdistelmien suhteen. Nyt
+  \[
+    \begin{aligned}
+      f\!\left(\sum_{i=1}^m\lambda_i x_i\right)
+      &=f\bigl((1-\lambda_m)y+\lambda_m x_m\bigr)\\
+      &\leq(1-\lambda_m)f(y)+\lambda_m f(x_m)\\
+      &\leq(1-\lambda_m)\sum_{i=1}^{m-1}\mu_i f(x_i)
+      +\lambda_m f(x_m)\\
+      &=\sum_{i=1}^m\lambda_i f(x_i).
+    \end{aligned}
+  \]
+  Ensimmäinen epäyhtälö seuraa konveksiudesta, sillä
+  \(\lambda_m,1-\lambda_m\geq0\) ja niiden summa on \(1\).
+  Toinen seuraa induktio-oletuksesta ja ehdosta \(1-\lambda_m>0\).
+  Muut vaiheet ovat yhtäsuuruuksia, joten induktio on valmis.
+\end{solution}
+
 \begin{exercise}[Konveksisuus ja toinen derivaatta]
   Olkoot \(a,b\in\RR\), \(a<b\), ja \(f\colon[a,b]\to\RR\) jatkuva
   välillä \([a,b]\) ja kahdesti derivoituva välillä \((a,b)\).
