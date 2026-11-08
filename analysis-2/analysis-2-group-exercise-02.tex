@@ -167,9 +167,9 @@
 \end{exercise}
 
 \begin{solution}
-  Koska \(f\) suppenee pisteessä \(x=1\), sen suppenemissäde
-  \(R\) toteuttaa ehdon \(R\geq 1\). Täten \(x < R\) kaikilla \(x \in (0, 1)\).
-  Täten potenssisarjaa voidaan derivoida tällä välillä termi termiltä. Saadaan
+  Koska potenssisarja suppenee pisteessä \(x=1\), sen suppenemissäde
+  on vähintään \(1\). Sarjaa voidaan siis derivoida välillä \((0,1)\)
+  kahdesti termi termiltä. Saadaan
   \[
     \begin{aligned}
       f'(x)&=\sum_{n=1}^{\infty}na_nx^{n-1},\\
@@ -180,14 +180,15 @@
   sillä \(a_n\geq 0\) ja \(x>0\), joten jälkimmäisen sarjan kaikki
   termit ovat epänegatiivisia.
 
-  Kun \(x \in [0, 1]\), niin
+  Kun \(x\in[0,1]\) ja \(n\geq0\), pätee
   \[
-    f(x) = \sum_{n=1}^{\infty} a_n x^n \leq \sum_{n=1}^{\infty} a_n =
-    f(1) < \infty.
+    |a_nx^n|\leq a_n,
+    \qquad \sum_{n=0}^{\infty}a_n=f(1)<\infty.
   \]
-  Weierstrass M-testin nojalla \(f\) suppenee tasaisesti välillä \([0, 1]\).
-  Täten \(f\) on jatkuva välillä \([0, 1]\). Tehtävän 3 nojalla \(f\) on
-  konveksi välillä \([0, 1]\).
+  Weierstrassin M-testin nojalla potenssisarja suppenee tasaisesti
+  välillä \([0,1]\). Koska osasummat ovat jatkuvia, myös \(f\) on
+  jatkuva tällä välillä. Tehtävän 3 nojalla \(f\) on konveksi
+  välillä \([0,1]\).
 \end{solution}
 
 \begin{exercise}
