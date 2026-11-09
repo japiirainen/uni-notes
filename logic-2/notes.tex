@@ -945,4 +945,434 @@ yhdessä mallissa yhdellä tulkinnalla ei riitä ekvivalenssiin.
   (\exists x A)\land(\exists x B)$ kuitenkin pätee.
 \end{example}
 
+\clearpage
+\subsection{9.11.2026: Kvanttorien järjestys sekä vapaat ja sidotut muuttujat}
+
+Kvanttori muuttaa tulkintafunktion arvoa vain oman muuttujansa kohdalla.
+Tästä seuraa kaksi keskeistä havaintoa: sisäkkäisten kvanttorien järjestys
+voi muuttaa väitteen merkityksen, ja kaavan totuus riippuu alkuperäisen
+tulkintafunktion arvoista vain niiden muuttujien kohdalla, jotka jäävät
+vapaiksi. Tarkastellaan edelleen aakkostoja ilman funktiosymboleita.
+
+\subsubsection{Yhteinen todistaja vai tilanteesta riippuva todistaja?}
+
+Olkoon $R$ kaksipaikkainen relaatiosymboli ja $x,y$ eri muuttujia.
+Verrataan lauseita
+\[
+  \exists x\forall y\,R(x,y)
+  \qquad\text{ja}\qquad
+  \forall y\exists x\,R(x,y).
+\]
+Ensimmäinen vaatii yhden alkion $a$, jolle $R(a,b)$ pätee kaikilla
+$b$. Jälkimmäisessä kullekin $b$:lle saa valita oman todistajan $a$.
+Jos $R(x,y)$ luetaan ``$x$ auttaa $y$:tä'', väitteet ovat
+``joku auttaa kaikkia'' ja ``jokaista auttaa joku''.
+
+\begin{proposition}[Yhteinen todistaja riittää]
+  \[
+    \exists x\forall y\,R(x,y)
+    \ \Rightarrow\ \forall y\exists x\,R(x,y).
+  \]
+\end{proposition}
+
+\begin{proof}
+  Olkoot $\mathcal M$ ja $s$ mielivaltaisia, ja oletetaan
+  $\mathcal M\models_s\exists x\forall y\,R(x,y)$.
+  Merkitään $M=\dom(\mathcal M)$. On olemassa $a\in M$, jolla
+  \[
+    \mathcal M\models_{s(a/x)}\forall y\,R(x,y).
+  \]
+  Siis jokaisella $b\in M$ pätee
+  \[
+    \mathcal M\models_{s(a/x)(b/y)}R(x,y).
+  \]
+  Koska $x\ne y$, eri muuttujien arvojen muutokset voidaan vaihtaa:
+  \[
+    s(a/x)(b/y)=s(b/y)(a/x).
+  \]
+  Kiinnitetään nyt mielivaltainen $b\in M$. Sama alkio $a$ käy
+  eksistenssikvanttorin todistajaksi, joten
+  \[
+    \mathcal M\models_{s(b/y)}\exists x\,R(x,y).
+  \]
+  Koska tämä pätee jokaisella $b\in M$, saadaan
+  $\mathcal M\models_s\forall y\exists x\,R(x,y)$.
+\end{proof}
+
+Oleellista on, että etujäsenen antama $a$ valittiin ennen $b$:tä:
+se toimii kaikille $b$:n arvoille. Eri muuttujien arvojen muutokset
+voi vaihtaa keskenään, mutta tämä ei anna lupaa vaihtaa kvanttorien
+järjestystä. Väitteet ``jokin $a$, jokaisella $b$'' ja
+``jokaisella $b$, jokin $a$'' asettavat eri vaatimukset.
+
+\clearpage
+\subsubsection{Käänteisen seurauksen vastaesimerkki}
+
+\begin{example}[Jokaista auttaa joku, mutta kukaan ei auta kaikkia]
+  Valitaan malli $\mathcal M$, jossa
+  \[
+    M=\{1,2,3\},\qquad
+    R^{\mathcal M}=\{(1,2),(1,3),(3,1)\}.
+  \]
+  Relaatio voidaan piirtää suunnattuna verkkona:
+  \begin{center}
+    \begin{tikzpicture}[>=stealth, every
+      node/.style={circle,draw,inner sep=4pt}]
+      \node (one) at (0,0) {$1$};
+      \node (two) at (2,0) {$2$};
+      \node (three) at (1,-1.3) {$3$};
+      \draw[->] (one) -- (two);
+      \draw[->,bend right=18] (one) to (three);
+      \draw[->,bend right=18] (three) to (one);
+    \end{tikzpicture}
+  \end{center}
+  Nuoli $a\to b$ tarkoittaa paria $(a,b)\in R^{\mathcal M}$.
+  Jokaiselle $y$:n arvolle löytyy sopiva $x$:n arvo:
+  \[
+    \begin{array}{c|ccc}
+      y\text{:n arvo }b & 1 & 2 & 3\\ \hline
+      x\text{:n todistaja }a & 3 & 1 & 1
+    \end{array}
+  \]
+  Jos $s$ on mikä tahansa tulkintafunktio, taulukon valinnoilla
+  $\mathcal M\models_{s(b/y)(a/x)}R(x,y)$. Siten
+  \[
+    \mathcal M\models\forall y\exists x\,R(x,y).
+  \]
+  Sen sijaan millään $a\in M$ ei ole nuolta itseensä:
+  $(a,a)\notin R^{\mathcal M}$. Kun $x$:n arvoksi on valittu $a$,
+  valinta $y=a$ kumoaa universaaliväitteen. Jokaisella $a\in M$ siis
+  \[
+    \mathcal M\not\models_{s(a/x)}\forall y\,R(x,y),
+  \]
+  joten $\mathcal M\not\models_s\exists x\forall y\,R(x,y)$.
+  Näin ollen
+  \[
+    \forall y\exists x\,R(x,y)
+    \ \not\Rightarrow\ \exists x\forall y\,R(x,y).
+  \]
+\end{example}
+
+\paragraph{Todistamisen ja kumoamisen muistikuva.}
+Väitteen $\forall y\exists x\,R(x,y)$ todistamisessa $b$ annetaan
+ensin ja $a$ valitaan sen perusteella. Väitteen
+$\exists x\forall y\,R(x,y)$ kumoamisessa taas $a$ annetaan ensin
+ja sille etsitään sopiva vastaesimerkki $b$. Tässä vastaesimerkki
+oli aina $b=a$.
+
+\clearpage
+\subsubsection{Vaikutusalue ja muuttujan esiintymän sitoutuminen}
+
+Kvanttorin vaikutusalue luetaan kaavan rakenteesta: se on se alikaava,
+jonka pääoperaattori kyseinen kvanttori on. Kaavassa $QxB$,
+missä $Q$ on $\forall$ tai $\exists$, vaikutusalue on siis $QxB$
+ja kvanttorin runko on $B$. Muuttujien sitoutumista tutkitaan
+rungon $B$ sisältä.
+
+\begin{example}[Sulkeet ratkaisevat]
+  Verrataan kaavoja
+  \[
+    \forall x\,\underbrace{\bigl(P(x)\land R(x,y)\bigr)}_{\text{runko}}
+    \qquad\text{ja}\qquad
+    \bigl(\forall x\,\underbrace{P(x)}_{\text{runko}}\bigr)\land R(x,y).
+  \]
+  Ensimmäisessä $\forall x$ koskee koko konjunktiota, toisessa vain
+  kaavaa $P(x)$. Jälkimmäisen kaavan osassa $R(x,y)$ oleva $x$
+  jää vapaaksi.
+\end{example}
+
+\begin{definition}[Vapaa ja sidottu esiintymä]
+  Muuttujan $x$ esiintymä termin paikalla on \emph{sidottu}, jos se
+  on kvanttorin $\forall x$ tai $\exists x$ vaikutusalassa.
+  Muussa tapauksessa esiintymä on \emph{vapaa}.
+  Esiintymän sitoo lähin sitä ympäröivä saman muuttujan kvanttori.
+
+  Kun kaavan $B$ eteen lisätään kvanttori $\forall x$ tai $\exists x$,
+  se sitoo ne $x$:n esiintymät, jotka olivat vapaita kaavassa $B$.
+  Jo sidottujen esiintymien sitoja ei vaihdu.
+\end{definition}
+
+Kvanttorimerkinnän $\forall x$ kirjain $x$ kertoo, mitä muuttujaa
+sidotaan. Vapaita ja sidottuja esiintymiä etsitään kaavan termeistä.
+Muuttuja on \emph{vapaa kaavassa}, jos sillä on siinä ainakin yksi
+vapaa esiintymä, ja \emph{sidottu kaavassa}, jos sillä on ainakin yksi
+sidottu esiintymä. Sama muuttuja voi siis olla kaavassa sekä vapaa
+että sidottu. Yksittäinen esiintymä kuuluu aina vain toiseen luokkaan.
+
+\begin{example}[Esiintymät erotetaan toisistaan]
+  \begin{enumerate}
+    \item $R(x,y)$: sekä $x$ että $y$ esiintyvät vapaina.
+    \item $\exists x\,R(x,y)$: $x$ on sidottu ja $y$ vapaa.
+    \item $\forall y\bigl(R(x,y)\to\exists x\,R(x,y)\bigr)$:
+      ensimmäinen $x$ on vapaa, jälkimmäinen on sisemmän $\exists x$:n
+      sitoma. Molemmat $y$:n esiintymät ovat ulomman $\forall y$:n sitomia.
+    \item $\forall x\forall y\bigl(R(x,y)\to\exists x\,R(x,y)\bigr)$:
+      ensimmäinen $x$ on ulomman $\forall x$:n sitoma, jälkimmäinen
+      sisemmän $\exists x$:n sitoma. Vapaita esiintymiä ei ole.
+  \end{enumerate}
+\end{example}
+
+\clearpage
+\subsubsection{Vapaiden muuttujien joukko ja lauseet}
+
+Merkitään kaavan $A$ vapaiden muuttujien joukkoa
+$\operatorname{FV}(A)$. Koska termit ovat tässä muuttujia tai vakioita,
+asetetaan $\operatorname{Var}(x)=\{x\}$ ja
+$\operatorname{Var}(c)=\varnothing$. Vapaiden muuttujien joukko
+voidaan laskea suoraan muodostussäännöistä:
+\begin{align*}
+  \operatorname{FV}(t=u)
+  &=\operatorname{Var}(t)\cup\operatorname{Var}(u),\\
+  \operatorname{FV}\bigl(R(t_1,\ldots,t_n)\bigr)
+  &=\bigcup_{i=1}^n\operatorname{Var}(t_i),\\
+  \operatorname{FV}(\neg B)&=\operatorname{FV}(B),\\
+  \operatorname{FV}(B\mathbin{\circ}C)
+  &=\operatorname{FV}(B)\cup\operatorname{FV}(C),\\
+  \operatorname{FV}(\forall xB)
+  &=\operatorname{FV}(B)\setminus\{x\},\\
+  \operatorname{FV}(\exists xB)
+  &=\operatorname{FV}(B)\setminus\{x\}.
+\end{align*}
+Tässä $\circ$ on mikä tahansa kaksipaikkainen konnektiivi
+$\land,\lor,\to,\leftrightarrow$.
+
+\begin{definition}[Lause]
+  Kaava $A$ on \emph{lause}, jos siinä ei esiinny vapaita muuttujia,
+  eli $\operatorname{FV}(A)=\varnothing$. Kaavaa, jossa on vapaita
+  muuttujia, kutsutaan \emph{avoimeksi kaavaksi}.
+\end{definition}
+
+\begin{example}
+  Kaavat $P(c)$, $R(c,d)\to c=d$ ja $\forall x\,R(x,x)$ ovat
+  lauseita, kun $c,d$ ovat aakkoston vakioita. Lauseessa ei siis
+  tarvitse esiintyä yhtään kvanttoria. Sen sijaan
+  $\forall x\,(P(x)\to R(x,y))$ ei ole lause: $y$ jää vapaaksi.
+\end{example}
+
+\paragraph{Miksi vain vapaat muuttujat merkitsevät?}
+Kaavan $R(x,y)$ totuus voi riippua molemmista arvoista $s(x)$ ja
+$s(y)$. Kaavassa $\exists x\,R(x,y)$ alkuperäinen $s(x)$ ei enää
+ratkaise mitään: kvanttori kokeilee kaikki mahdolliset $x$:n arvot.
+Arvolla $s(y)$ voi silti olla merkitystä. Seuraava lause täsmentää
+tämän havainnon kaikille kaavoille.
+
+\begin{lemma}[Termin arvo riippuu vain sen muuttujista]
+  \label{lem:logic2-term-agreement}
+  Olkoot $s,s'$ saman mallin $\mathcal M$ tulkintafunktioita.
+  Jos $s(x)=s'(x)$ jokaisella $x\in\operatorname{Var}(t)$, niin
+  \[
+    t^{\mathcal M}\langle s\rangle
+    =t^{\mathcal M}\langle s'\rangle.
+  \]
+\end{lemma}
+
+\begin{proof}
+  Jos $t=x$, väite on oletus $s(x)=s'(x)$. Jos $t=c$, molemmat
+  arvot ovat $c^{\mathcal M}$ riippumatta tulkintafunktiosta.
+\end{proof}
+
+\clearpage
+\subsubsection{Totuus riippuu vain vapaista muuttujista}
+
+\begin{theorem}[Tulkintafunktioiden yhtäpitävyys]
+  \label{thm:logic2-free-variable-agreement}
+  Olkoon $A$ $L$-kaava ja $\mathcal M$ $L$-malli. Jos
+  $\mathcal M$-tulkintafunktiot $s,s'$ antavat samat arvot kaikille
+  $A$:n vapaille muuttujille, niin
+  \[
+    \mathcal M\models_s A
+    \quad\Longleftrightarrow\quad
+    \mathcal M\models_{s'}A.
+  \]
+\end{theorem}
+
+\begin{proof}
+  Todistetaan väite induktiolla kaavan rakenteen suhteen.
+  Induktio-oletus koskee tarkasteltavan kaavan välittömiä alikaavoja
+  ja kaikkia tulkintafunktiopareja, jotka yhtyvät niiden vapailla
+  muuttujilla.
+
+  \paragraph{Atomikaava $A=(t=u)$.}
+  Kaikki termien $t,u$ muuttujat ovat vapaita kaavassa $A$.
+  Lemman~\ref{lem:logic2-term-agreement} nojalla
+  \begin{align*}
+    \mathcal M\models_s t=u
+    &\iff t^{\mathcal M}\langle s\rangle
+    =u^{\mathcal M}\langle s\rangle\\
+    &\iff t^{\mathcal M}\langle s'\rangle
+    =u^{\mathcal M}\langle s'\rangle\\
+    &\iff\mathcal M\models_{s'}t=u.
+  \end{align*}
+
+  \paragraph{Atomikaava $A=R(t_1,\ldots,t_n)$.}
+  Jokainen argumenttitermi saa saman arvon tulkinnoilla $s,s'$.
+  Siksi molemmilla tarkistetaan saman järjestetyn jonon kuulumista
+  samaan relaatioon $R^{\mathcal M}$, ja totuusarvot ovat samat.
+
+  \paragraph{Negaatio $A=\neg B$.}
+  Koska $\operatorname{FV}(A)=\operatorname{FV}(B)$,
+  induktio-oletusta voi soveltaa kaavaan $B$. Tällöin
+  \begin{align*}
+    \mathcal M\models_s\neg B
+    &\iff\mathcal M\not\models_s B\\
+    &\iff\mathcal M\not\models_{s'}B\\
+    &\iff\mathcal M\models_{s'}\neg B.
+  \end{align*}
+
+  \paragraph{Kaksipaikkaiset konnektiivit $A=(B\mathbin{\circ}C)$.}
+  Molempien alikaavojen vapaat muuttujat kuuluvat joukkoon
+  $\operatorname{FV}(A)$. Induktio-oletuksen nojalla $B$:n
+  totuusarvo on sama tulkinnoilla $s,s'$, samoin $C$:n totuusarvo.
+  Konnektiivin totuustaulukko antaa siten saman arvon koko kaavalle.
+  Tämä kattaa konjunktion, disjunktion, implikaation ja ekvivalenssin.
+
+  \paragraph{Eksistenssikvanttori $A=\exists xB$.}
+  Oletetaan ensin $\mathcal M\models_s\exists xB$. Silloin on
+  $a\in M=\dom(\mathcal M)$, jolla
+  $\mathcal M\models_{s(a/x)}B$. Verrataan tulkintoja
+  $s(a/x)$ ja $s'(a/x)$ kaavan $B$ vapailla muuttujilla:
+  \begin{itemize}
+    \item Muuttujalle $x$ molemmat antavat arvon $a$.
+    \item Jos $z\in\operatorname{FV}(B)$ ja $z\ne x$, niin
+      $z\in\operatorname{FV}(\exists xB)$. Siksi $s(z)=s'(z)$,
+      eikä $x$:n arvon muuttaminen muuta $z$:n arvoa.
+  \end{itemize}
+  Muutetut tulkinnat siis yhtyvät kaikilla $B$:n vapailla muuttujilla.
+  Induktio-oletuksesta seuraa
+  \[
+    \mathcal M\models_{s'(a/x)}B,
+  \]
+  joten sama $a$ todistaa väitteen
+  $\mathcal M\models_{s'}\exists xB$. Käänteinen suunta saadaan
+  vaihtamalla $s$:n ja $s'$:n roolit.
+
+  \paragraph{Universaalikvanttori $A=\forall xB$.}
+  Jokaisella $a\in M$ tulkinnat $s(a/x),s'(a/x)$ yhtyvät $B$:n
+  vapailla muuttujilla täsmälleen edellisen kohdan perustelulla.
+  Induktio-oletus antaa jokaiselle $a$:lle yhtäpitävyyden
+  \[
+    \mathcal M\models_{s(a/x)}B
+    \iff\mathcal M\models_{s'(a/x)}B.
+  \]
+  Vaatimus toteutumisesta kaikilla $a\in M$ on siis sama molemmilla
+  puolilla. Tämä on juuri
+  $\mathcal M\models_s\forall xB\iff
+  \mathcal M\models_{s'}\forall xB$.
+  Kaikki muodostussäännöt on käsitelty.
+\end{proof}
+
+\paragraph{Kvanttoriaskeleen ydin.}
+Alkuperäiset tulkinnat eivät välttämättä yhtyneet muuttujalla $x$,
+koska se ei ole vapaa kaavassa $QxB$. Kun molemmissa asetetaan
+$x$:n arvoksi sama $a$, tulkinnat yhtyvät myös niillä $B$:n vapailla
+esiintymillä, jotka uusi kvanttori sitoo.
+
+\clearpage
+\subsubsection{Seurauksia: lauseen totuus ja tarpeettomat kvanttorit}
+
+\begin{corollary}[Lauseen totuus ei riipu tulkintafunktiosta]
+  Jos $A$ on lause, niin jokaisella mallilla $\mathcal M$ seuraavat
+  ehdot ovat yhtäpitävät:
+  \begin{enumerate}[label=(\roman*)]
+    \item $\mathcal M\models_s A$ jollakin tulkintafunktiolla $s$;
+    \item $\mathcal M\models_s A$ kaikilla tulkintafunktioilla $s$;
+    \item $\mathcal M\models A$.
+  \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+  Koska $\operatorname{FV}(A)=\varnothing$, mitkä tahansa kaksi
+  tulkintafunktiota täyttävät lauseen~\ref{thm:logic2-free-variable-agreement}
+  oletuksen. Jos yksi toteuttaa $A$:n, kaikki toteuttavat sen.
+  Tulkintafunktioita on olemassa, koska mallin universumi on epätyhjä.
+  Viimeinen ehto on toisen ehdon merkintätapa.
+\end{proof}
+
+Lause ilmaisee siis mallin ominaisuuden. Avoin kaava voi lisäksi
+ilmaista jotain tulkintafunktion valitsemista alkioista. Myös avoimelle
+kaavalle merkintä $\mathcal M\models A$ on käytössä, mutta silloin
+vaaditaan toteutuminen \emph{kaikilla} tulkintafunktioilla.
+
+\begin{corollary}[Kvantifiointi muuttujalla, joka ei ole vapaa]
+  Jos $x\notin\operatorname{FV}(A)$, niin
+  \[
+    \forall xA\ \Leftrightarrow\ A
+    \qquad\text{ja}\qquad
+    \exists xA\ \Leftrightarrow\ A.
+  \]
+\end{corollary}
+
+\begin{proof}
+  Tulkinnat $s$ ja $s(a/x)$ yhtyvät $A$:n vapailla muuttujilla.
+  Siksi $\mathcal M\models_{s(a/x)}A$ on yhtäpitävä ehdon
+  $\mathcal M\models_s A$ kanssa jokaisella $a\in M$.
+  Koska $M\ne\varnothing$, sekä ``kaikilla $a$'' että ``jollakin $a$''
+  antavat saman totuusarvon kuin $A$.
+\end{proof}
+
+\begin{example}
+  $\forall xP(c)\Leftrightarrow P(c)$ ja
+  $\exists xR(y,c)\Leftrightarrow R(y,c)$, kun $x\ne y$.
+  Ehto ei vaadi, ettei $x$ esiintyisi lainkaan: myös
+  $\forall x\exists xP(x)\Leftrightarrow\exists xP(x)$,
+  koska sisempi kvanttori on jo sitonut $x$:n.
+\end{example}
+
+\paragraph{Vapaat muuttujat kertovat mahdollisesta riippuvuudesta.}
+Lauseen~\ref{thm:logic2-free-variable-agreement} käänteinen väite ei
+yleisesti päde: kaavan totuus voi olla riippumaton myös jonkin vapaan
+muuttujan arvosta. Esimerkiksi $x=x$ on tosi jokaisella tulkinnalla,
+vaikka $\operatorname{FV}(x=x)=\{x\}$. Vapaus on kaavan rakenteen
+ominaisuus; se ei lupaa, että arvon vaihtaminen todella vaihtaisi totuusarvoa.
+
+\clearpage
+\subsubsection{Oma tarkistus}
+
+\begin{exercise}[Esiintymät ja lauseet]
+  Selvitä seuraavien kaavojen vapaat muuttujat ja kunkin sidotun
+  esiintymän sitoja. Mitkä kaavoista ovat lauseita?
+  \begin{align*}
+    A&=\bigl(\forall x\,R(x,y)\bigr)\land P(x),\\
+    B&=\forall x\bigl(R(x,y)\land\exists y\,R(x,y)\bigr),\\
+    C&=\exists y\forall x\bigl(R(x,y)\land\exists y\,R(x,y)\bigr),\\
+    D&=P(c)\lor\neg P(c).
+  \end{align*}
+\end{exercise}
+
+\begin{solution}
+  $\operatorname{FV}(A)=\{x,y\}$: ensimmäisen relaatioatomin $x$
+  on sidottu, mutta $P(x)$:n $x$ on vapaa.
+  $\operatorname{FV}(B)=\{y\}$: molemmat relaatioatomien $x$:t
+  ovat ulomman $\forall x$:n sitomia. Ensimmäinen $y$ on vapaa,
+  jälkimmäinen sisemmän $\exists y$:n sitoma.
+  Kaavassa $C$ ulompi $\exists y$ sitoo ensimmäisen relaatioatomin
+  $y$:n, sisempi $\exists y$ jälkimmäisen. Kaikki $x$:t ovat
+  $\forall x$:n sitomia. Siis $\operatorname{FV}(C)=\varnothing$.
+  Myös $\operatorname{FV}(D)=\varnothing$, koska $c$ on vakio.
+  Täsmälleen $C$ ja $D$ ovat lauseita.
+\end{solution}
+
+\begin{exercise}[Mitä arvoja saa muuttaa?]
+  Olkoon $A=\exists x\,(R(x,y)\land P(z))$. Tulkintafunktiot $s,s'$
+  yhtyvät muuttujilla $y,z$, mutta voivat erota kaikilla muilla
+  muuttujilla. Voiko $A$:n totuusarvo muuttua?
+  Entä jos ne yhtyvät vain muuttujalla $z$?
+\end{exercise}
+
+\begin{solution}
+  $\operatorname{FV}(A)=\{y,z\}$, joten ensimmäisessä tapauksessa
+  totuusarvo ei muutu. Toisessa se voi muuttua. Valitaan
+  $M=\{0,1\}$, $R^{\mathcal M}=\{(0,0)\}$ ja
+  $P^{\mathcal M}=M$. Kun $s(y)=0$, $A$ toteutuu todistajalla $x=0$;
+  kun $s'(y)=1$, todistajaa ei ole. Arvoilla $s(z),s'(z)$ ei tässä
+  mallissa ole merkitystä, joten ne voidaan valita samoiksi.
+\end{solution}
+
+\paragraph{Kertauksen ydinkohdat.}
+Etsi ensin kvanttorien vaikutusalat ja tarkastele muuttujien
+esiintymiä yksitellen. Laske sitten vapaiden muuttujien joukko.
+Vain sen arvojen yhtyminen tarvitaan totuuden säilymiseen.
+Kvanttorijärjestystä lukiessa kysy aina, missä vaiheessa todistaja
+valitaan ja mistä aiemmin annetuista arvoista se saa riippua.
+
 \end{document}
