@@ -1,0 +1,147 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Lineaarialgebra ja matriisilaskenta I\\Harjoitus 3}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Lineaarialgebra ja matriisilaskenta I}{Harjoitus 3}
+
+\begin{exercise}
+  Olkoon \(A =
+    \begin{bmatrix}
+      1 & 0 \\
+      -5 & 2
+  \end{bmatrix}\).
+  \begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Määritä sellaiset alkeismatriisit \(E_1\) ja \(E_2\), että
+      \(E_2E_1A = I\).
+    \item Kirjoita \(A^{-1}\) kahden alkeismatriisin tulona.
+    \item Kirjoita \(A\) kahden alkeismatriisin tulona.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Olkoon
+  \[
+    A =
+    \begin{bmatrix}
+      2 & 3 & -1 \\
+      1 & -1 & 2 \\
+      1 & 2 & -1
+    \end{bmatrix}.
+  \]
+  Jos \(
+    \begin{bmatrix} 2 \\ -2 \\ 3
+  \end{bmatrix}\) on yhtälöryhmän
+  \(Ax = b\) eräs ratkaisu, niin mikä on sen yleinen ratkaisu? Sovella
+  ratkaisussasi Lemmaa 3.1.1. Mitä voit päätellä matriisin \(A\)
+  säännöllisyydestä neliömatriisien kääntyvyyslauseen 2.5.1 tai Lauseen
+  3.10.1 perusteella?
+\end{exercise}
+
+\begin{exercise}
+  Osoita, että avaruuden \(\RR^{2\times 1}\) joukko
+  \[
+    V_0 = \left\{
+      \begin{bmatrix} x_1 \\ x_2
+      \end{bmatrix}
+      \in \RR^{2\times 1}
+      \colon x_1 \in \RR \text{ ja } x_2 = 0
+    \right\}
+  \]
+  on avaruuden \(\RR^{2\times 1}\) aliavaruus. Miksi avaruuden
+  \(\RR^{2\times 1}\) joukot
+  \[
+    \begin{aligned}
+      V_1 &= \left\{
+        \begin{bmatrix} x_1 \\ x_2
+        \end{bmatrix}
+        \in \RR^{2\times 1}
+        \colon x_1 \in \RR \text{ ja } x_2 = 1
+      \right\}
+      \\[1ex]
+      \text{ja}\qquad
+      V_2 &= \left\{
+        \begin{bmatrix} x_1 \\ x_2
+        \end{bmatrix}
+        \in \RR^{2\times 1}
+        \colon x_1 \in \RR \text{ ja } x_2 = x_1^2
+      \right\}
+    \end{aligned}
+  \]
+  eivät ole avaruuden \(\RR^{2\times 1}\) aliavaruuksia?
+\end{exercise}
+
+\begin{exercise}
+  Määritä avaruuden \(\RR^{2\times 4}\) matriisin
+  \[
+    A =
+    \begin{bmatrix}
+      1 & 1 & 1 & 0 \\
+      2 & 1 & 0 & 1
+    \end{bmatrix}
+  \]
+  nolla-avaruus \(\operatorname{Null}(A)\). Tutki lisäksi, onko
+  \(\operatorname{Col}(A) = \RR^{2\times 1}\).
+\end{exercise}
+
+\begin{exercise}
+  Olkoot
+  \[
+    v_1 =
+    \begin{bmatrix} 0 \\ -2 \\ 2
+    \end{bmatrix},
+    \quad
+    v_2 =
+    \begin{bmatrix} 1 \\ 3 \\ -1
+    \end{bmatrix},
+    \quad
+    w_1 =
+    \begin{bmatrix} 3 \\ 1 \\ 5
+    \end{bmatrix},
+    \quad
+    w_2 =
+    \begin{bmatrix} 0 \\ 4 \\ 5
+    \end{bmatrix},
+    \quad
+    w_3 =
+    \begin{bmatrix} 0 \\ 0 \\ 0
+    \end{bmatrix}
+    \in \RR^{3\times 1}.
+  \]
+  Tutki, mitkä vektoreista \(w_1\), \(w_2\) ja \(w_3\) ovat vektoreiden
+  \(v_1\) ja \(v_2\) lineaarikombinaatioita. Toisin sanoen, mitkä
+  vektoreista \(w_1\), \(w_2\) ja \(w_3\) kuuluvat joukkoon
+  \(\operatorname{Sp}(v_1,v_2)\)?
+\end{exercise}
+
+\begin{exercise}
+  Tutki, ovatko
+  \begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item \(v_1 =
+        \begin{bmatrix} 2 \\ 1
+      \end{bmatrix}\) ja
+      \(v_2 =
+        \begin{bmatrix} 3 \\ 2
+      \end{bmatrix}\) lineaarisesti
+      riippumattomia \(\RR^{2\times 1}\):ssa,
+    \item \(w_1 =
+        \begin{bmatrix} 2 \\ 1 \\ -2
+      \end{bmatrix}\),
+      \(w_2 =
+        \begin{bmatrix} 3 \\ 2 \\ -2
+      \end{bmatrix}\) ja
+      \(w_3 =
+        \begin{bmatrix} 2 \\ 2 \\ 0
+      \end{bmatrix}\) lineaarisesti
+      riippumattomia \(\RR^{3\times 1}\):ssa.
+  \end{enumerate}
+\end{exercise}
+
+\end{document}
