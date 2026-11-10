@@ -157,6 +157,46 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  Muuttujan esiintymä on sidottu, jos se on kyseistä muuttujaa sitovan
+  kvanttorin vaikutusalassa, ja muuten vapaa. Kaava on lause, jos siinä
+  ei ole vapaita muuttujien esiintymiä.
+  \begin{enumerate}[label=(\alph*)]
+    \item Kaavassa \(P_0(x)\) muuttujan \(x\) esiintymä on sidottu
+      kvanttorilla \(\forall x\). Kaavassa \(P_1(y)\) muuttujan \(y\)
+      esiintymä on vapaa, joten koko kaava ei ole lause.
+
+    \item Kaavassa \(E(x,y)\) muuttujan \(x\) esiintymä on sidottu
+      ulommalla kvanttorilla \(\forall x\) ja muuttujan \(y\) esiintymä
+      kvanttorilla \(\forall y\). Kaavassa \(E(y,z)\) muuttujan \(z\)
+      esiintymä on sidottu kvanttorilla \(\forall z\), mutta muuttujan
+      \(y\) esiintymä on vapaa: kvanttorin \(\forall y\) vaikutusala
+      rajoittuu vasempaan disjunktiin. Koko kaava ei siis ole lause.
+
+    \item Muuttujan \(y\) molemmat esiintymät atomikaavoissa ovat sidottuja
+      ulommalla kvanttorilla \(\forall y\). Kummankin atomikaavan
+      \(x\)-esiintymä on sidottu oman disjunktinsa kvanttorilla
+      \(\exists x\). Vapaita esiintymiä ei ole, joten kaava on lause.
+
+    \item Muuttujan \(x\) esiintymät kaavoissa \(P(x)\) ja \(R(x,y)\)
+      ovat sidottuja kvanttorilla \(\forall x\). Muuttujan \(y\) esiintymä
+      kaavassa \(R(x,y)\) on sidottu kvanttorilla \(\exists y\).
+      Vapaita esiintymiä ei ole, joten kaava on lause.
+
+    \item Muuttujan \(y\) esiintymä kaavassa \(P_0(y)\) on vapaa.
+      Kvanttori \(\forall x\) ei sido sitä, eikä sen vaikutusalassa ole
+      yhtään muuttujan \(x\) esiintymää. Kaava ei siis ole lause.
+
+    \item Yhtälössä \(x = y\) muuttujan \(x\) esiintymä on sidottu
+      kvanttorilla \(\exists x\). Muuttujan \(y\) esiintymät sekä yhtälössä
+      että kaavassa \(R(y,x)\) ovat sidottuja kvanttorilla \(\forall y\).
+      Sen sijaan kaavassa \(R(y,x)\) muuttujan \(x\) esiintymä on vapaa,
+      sillä kvanttorin \(\exists x\) vaikutusala on vain yhtälö \(x = y\).
+      Koko kaava ei siis ole lause.
+  \end{enumerate}
+  Lauseita ovat siis täsmälleen kohtien \textbf{(c) ja (d)} kaavat.\qedhere
+\end{solution}
+
 \begin{exercise}
   Osoita, että sidotun muuttujan uudelleenkvantifiointi ei tuo kaavaan mitään
   uutta, eli osoita
