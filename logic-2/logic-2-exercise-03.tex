@@ -18,6 +18,89 @@
   ekvivalentteja. Onko jompi kumpi toisen looginen seuraus?
 \end{exercise}
 
+\begin{solution}
+  Merkitään
+  \[
+    \begin{aligned}
+      A &= \forall x\exists y(R(x,y) \land R(y,x)), \\
+      B &= \forall x(\exists yR(x,y) \land \exists yR(y,x)).
+    \end{aligned}
+  \]
+  Osoitetaan, että \(B\) on kaavan \(A\) looginen seuraus.
+  Olkoon \(\mathcal M\) mielivaltainen malli ja \(s\) sen tulkintafunktio.
+  Oletetaan, että \(\mathcal M \models_s A\).
+
+  Olkoon \(b \in \dom(\mathcal M)\) mielivaltainen. Universaali- ja
+  eksistenssikvanttorin totuusmääritelmien nojalla on olemassa
+  \(a \in \dom(\mathcal M)\), jolla
+  \[
+    \mathcal M \models_{s(b/x)(a/y)}
+    \bigl(R(x,y) \land R(y,x)\bigr).
+  \]
+  Tässä alkio \(a\) saa riippua valitusta alkiosta \(b\).
+  Konjunktion totuusmääritelmän nojalla
+  \[
+    \mathcal M \models_{s(b/x)(a/y)} R(x,y)
+    \quad\text{ja}\quad
+    \mathcal M \models_{s(b/x)(a/y)} R(y,x).
+  \]
+  Sama alkio \(a\) kelpaa siis todistajaksi kumpaankin
+  eksistenssikvantifioituun kaavaan, joten
+  \[
+    \mathcal M \models_{s(b/x)} \exists yR(x,y)
+    \quad\text{ja}\quad
+    \mathcal M \models_{s(b/x)} \exists yR(y,x).
+  \]
+  Näin ollen
+  \[
+    \mathcal M \models_{s(b/x)}
+    \bigl(\exists yR(x,y) \land \exists yR(y,x)\bigr).
+  \]
+  Koska \(b\) oli mielivaltainen, universaalikvanttorin totuusmääritelmästä
+  seuraa \(\mathcal M \models_s B\). Mallin \(\mathcal M\) ja
+  tulkintafunktion \(s\) mielivaltaisuuden nojalla siis \(A \models B\).
+
+  Käänteinen seuraussuhde ei päde. Tarkastellaan mallia \(\mathcal M\), jossa
+  \[
+    \dom(\mathcal M) = \{1,2,3\},
+    \qquad
+    R^{\mathcal M} = \{(1,3),(3,2),(2,1)\}.
+  \]
+  Olkoon \(s\) mielivaltainen \(\mathcal M\)-tulkintafunktio.
+  Jokaiselle alkiolle \(b \in \dom(\mathcal M)\) voidaan valita alkiot
+  \(a,c \in \dom(\mathcal M)\) seuraavasti:
+  \[
+    \begin{array}{c|cc}
+      b & a & c \\
+      \hline
+      1 & 3 & 2 \\
+      2 & 1 & 3 \\
+      3 & 2 & 1
+    \end{array}
+  \]
+  Tällöin \((b,a) \in R^{\mathcal M}\) ja \((c,b) \in R^{\mathcal M}\),
+  joten
+  \[
+    \mathcal M \models_{s(b/x)}
+    \bigl(\exists yR(x,y) \land \exists yR(y,x)\bigr).
+  \]
+  Koska tämä pätee jokaiselle \(b\), saadaan \(\mathcal M \models_s B\).
+
+  Kaava \(A\) ei sen sijaan ole tosi tässä mallissa. Kun \(x\):n arvoksi
+  valitaan \(1\), ainoa mahdollinen todistaja kaavalle \(R(x,y)\) on
+  \(y = 3\). Koska \((3,1) \notin R^{\mathcal M}\), tämä alkio ei kuitenkaan
+  toteuta kaavaa \(R(y,x)\). Siten mikään \(y\):n arvo ei toteuta molempia
+  kaavoja yhtä aikaa, eli
+  \[
+    \mathcal M \not\models_{s(1/x)}
+    \exists y\bigl(R(x,y) \land R(y,x)\bigr).
+  \]
+  Siis \(\mathcal M \not\models_s A\), joten \(B \not\models A\).
+  Näin ollen kaavat \(A\) ja \(B\) eivät ole loogisesti ekvivalentteja:
+  \(B\) on kaavan \(A\) looginen seuraus, mutta \(A\) ei ole kaavan \(B\)
+  looginen seuraus.
+\end{solution}
+
 \begin{exercise}
   Osoita, että kaava \(\forall y\exists xA\) on kaavan
   \(\exists x\forall yA\) looginen seuraus (huomaa, että ei ole väliä,
