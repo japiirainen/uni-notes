@@ -1,0 +1,99 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Johdatus logiikkaan II\\Harjoituksen 3 ratkaisut}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Johdatus logiikkaan II}{Harjoituksen 3 ratkaisut}
+
+\begin{exercise}
+  Osoita, että kaavat \(\forall x\exists y(R(x,y) \land R(y,x))\) ja
+  \(\forall x(\exists yR(x,y) \land \exists yR(y,x))\) eivät ole loogisesti
+  ekvivalentteja. Onko jompi kumpi toisen looginen seuraus?
+\end{exercise}
+
+\begin{exercise}
+  Osoita, että kaava \(\forall y\exists xA\) on kaavan
+  \(\exists x\forall yA\) looginen seuraus (huomaa, että ei ole väliä,
+  mikä kaava \(A\) on).
+\end{exercise}
+
+\begin{exercise}
+  Mitkä muuttujien esiintymistä seuraavissa kaavoissa ovat vapaita ja mitkä
+  sidottuja? Mitkä kaavoista ovat lauseita?
+  \begin{enumerate}[label=(\alph*)]
+    \item \(\forall x(P_0(x) \to P_1(y))\)
+    \item \(\forall x(\forall yE(x,y) \lor \forall zE(y,z))\)
+    \item \(\forall y(\exists x\,R(x,y) \lor \exists x\,R(y,x))\)
+    \item \(\forall x(P(x) \to \exists yR(x,y))\)
+    \item \(\forall xP_0(y)\)
+    \item \(\forall y(\exists x\,x = y \lor R(y,x))\)
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Osoita, että sidotun muuttujan uudelleenkvantifiointi ei tuo kaavaan mitään
+  uutta, eli osoita
+  \begin{enumerate}[label=(\alph*)]
+    \item \(\forall x_i\exists x_iA \Leftrightarrow \exists x_iA\),
+    \item \(\exists x_i\forall x_iA \Leftrightarrow \forall x_iA\).
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Jos \(A\) on \(L\)-kaava, niin \(A\):n \emph{universaalisulkeuma} on
+  lause, joka saadaan, kun \(A\):n kaikki vapaat muuttujat kvaintifioidaan
+  universaalikvanttoreilla. Esim. kaavan \(R(x_0,x_1) \land P(x_0)\)
+  universaalisulkeuma on lause
+  \(\forall x_0\forall x_1(R(x_0,x_1) \land P(x_0))\).
+  \begin{enumerate}[label=(\alph*)]
+    \item Osoita, että mielivaltaisessa \(L\)-mallissa \(\mathcal M\),
+      \(A\) on tosi jos ja vain jos \(A\):n universaalisulkeuma on tosi.
+    \item Anna esimerkki kaavasta \(A\), joka ei ole loogisesti ekvivalentti
+      universaalisulkeumansa kanssa. Perustele.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Todista materiaalin lause 4.7: Jos \(s\) ja \(s'\) ovat kaksi
+  \(\mathcal M\)-tulkintafunktiota, joilla \(s(x_i) = s'(x_i)\) kaikilla
+  kaavan \(A\) vapailla muuttujilla \(x_i\), niin
+  \[
+    \mathcal M \models_s A
+    \quad\text{jos ja vain jos}\quad
+    \mathcal M \models_{s'} A.
+  \]
+  Voit käyttää todistuksessasi seuraavaa aputulosta, joka on triviaali
+  aakkostoille ilman funktiosymboleita, ja jonka voi myöhemmin yleistää
+  kaikille aakkostoille:
+  \begin{quote}
+    Lemma. Jos \(s\) ja \(s'\) ovat kaksi \(\mathcal M\)-tulkintafunktiota,
+    joilla \(s(x_i) = s'(x_i)\) kaikilla termissä \(t\) esiintyvillä
+    muuttujilla \(x_i\), niin
+    \(t^{\mathcal M}\langle s\rangle = t^{\mathcal M}\langle s'\rangle\).
+  \end{quote}
+\end{exercise}
+
+\begin{exercise}
+  Minkä joukon kaava
+  \(\exists x_1\exists x_2((E(x_0,x_1) \land E(x_1,x_2)) \land \neg x_0 = x_2)\)
+  määrittelee allaolevassa verkossa?
+  \begin{center}
+    \includegraphics[width=0.4\linewidth]{figures/exercise-03-graph.pdf}
+  \end{center}
+\end{exercise}
+
+\begin{exercise}
+  Alkio \(a\) on määriteltävä mallissa \(\mathcal M\) jos joukko \(\{a\}\)
+  on määriteltävä \(\mathcal M\):ssä. Osoita, että \(2\) on määriteltävä
+  mallissa \((\NN,<)\), missä \(<\) on luonnollisten lukujen luonnollinen
+  järjestys.
+\end{exercise}
+
+\end{document}
