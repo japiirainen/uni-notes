@@ -101,11 +101,48 @@
   looginen seuraus.
 \end{solution}
 
+\newpage
+
 \begin{exercise}
   Osoita, että kaava \(\forall y\exists xA\) on kaavan
   \(\exists x\forall yA\) looginen seuraus (huomaa, että ei ole väliä,
   mikä kaava \(A\) on).
 \end{exercise}
+
+\begin{solution}
+  Olkoon \(\mathcal M\) mielivaltainen malli ja \(s\) sen tulkintafunktio.
+  Oletetaan, että
+  \[
+    \mathcal M \models_s \exists x\forall yA.
+  \]
+  Eksistenssi- ja universaalikvanttorin totuusmääritelmien nojalla on
+  olemassa \(b \in \dom(\mathcal M)\), jolla kaikilla
+  \(a \in \dom(\mathcal M)\) pätee
+  \[
+    \mathcal M \models_{s(b/x)(a/y)} A.
+  \]
+  Tässä sama alkio \(b\) toimii jokaisella \(a\):n arvolla.
+
+  Olkoon nyt \(a \in \dom(\mathcal M)\) mielivaltainen. Koska \(x\) ja
+  \(y\) ovat eri muuttujia, tulkintafunktion päivitykset voidaan tehdä
+  kummassa tahansa järjestyksessä:
+  \[
+    s(b/x)(a/y) = s(a/y)(b/x).
+  \]
+  Siis \(\mathcal M \models_{s(a/y)(b/x)} A\), joten alkio \(b\)
+  kelpaa eksistenssikvanttorin todistajaksi ja saadaan
+  \[
+    \mathcal M \models_{s(a/y)} \exists xA.
+  \]
+  Koska \(a\) oli mielivaltainen, universaalikvanttorin totuusmääritelmän
+  nojalla \(\mathcal M \models_s \forall y\exists xA\).
+  Mallin \(\mathcal M\) ja tulkintafunktion \(s\) mielivaltaisuudesta seuraa
+  \[
+    \exists x\forall yA \models \forall y\exists xA.
+  \]
+  Todistuksessa ei käytetty mitään oletuksia kaavan \(A\) rakenteesta,
+  joten väite pätee kaikilla kaavoilla \(A\).\qedhere
+\end{solution}
 
 \begin{exercise}
   Mitkä muuttujien esiintymistä seuraavissa kaavoissa ovat vapaita ja mitkä
