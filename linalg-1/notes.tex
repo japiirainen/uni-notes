@@ -70,7 +70,6 @@ joukon $L\cap L'$. Ne saadaan ratkaisemalla molemmat yhtälöt yhtä aikaa.
   \]
 \end{example}
 
-\newpage
 \subsubsection*{Kahden suoran yhteiset pisteet}
 \begin{center}
   \renewcommand{\arraystretch}{1.35}
@@ -148,7 +147,6 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
   Jos $L_i$ on yhtälön $i$ ratkaisujoukko, koko ryhmän ratkaisujoukko on
   $R=L_1\cap\cdots\cap L_m$.
 
-  \newpage
   \subsubsection*{Avaruuden \texorpdfstring{$\RR^n$}{Rⁿ} laskutoimitukset}
 
   Avaruuden $\RR^n$ alkiot ovat vektoreita $(x_1,\ldots,x_n)$.
@@ -203,7 +201,6 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
       ei ole ratkaisuja: $\boxed{R=\varnothing}$.
   \end{description}
 
-  \newpage
   \subsection{29.10.2026: rivioperaatiot ja Gauss--Jordanin menetelmä}
 
   Rivioperaatioilla yhtälöryhmä muutetaan helpommin luettavaan muotoon
@@ -273,7 +270,6 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
   ehdoksi $0=0$. Myöskään kahden yhtälön korvaaminen pelkällä niiden
   summalla ei yleensä säilytä ratkaisujoukkoa.
 
-  \newpage
   \subsubsection*{Matriisimerkintä ja porrasmuodot}
 
   Laskemista tiivistää \emph{laajennettu matriisi}
@@ -335,7 +331,6 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
     oikean puolen sarakkeessa, eikä se vastaa mitään muuttujaa.
   \end{remark}
 
-  \newpage
   \subsubsection*{Miksi eliminointi onnistuu aina?}
 
   \begin{theorem}[Gauss--Jordan]
@@ -404,7 +399,6 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
     äärettömän monta eri ratkaisua.
   \end{proof}
 
-  \newpage
   \subsubsection*{Esimerkkejä rivioperaatioiden käytöstä}
 
   \begin{example}[Yksi ratkaisu: kaikki kolme rivioperaatiota]
@@ -490,7 +484,6 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
     supistettua porrasmuotoa ei tarvitse laskea loppuun.
   \end{example}
 
-  \newpage
   \begin{example}[Äärettömän monta ratkaisua: kaksi vapaata muuttujaa]
     Ratkaistaan neljän muuttujan yhtälöryhmä
     \[
@@ -568,7 +561,6 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
       ratkaisevaa on vapaiden muuttujien olemassaolo.
   \end{enumerate}
 
-  \newpage
   \subsection{3.11.2026: matriisit ja matriisikertolasku}
 
   % Lähdekuvat: IMG_1999.HEIC ja IMG_2001.HEIC--IMG_2005.HEIC.
@@ -630,7 +622,6 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
     koot ovat erilaiset.
   \end{remark}
 
-  \newpage
   \subsubsection*{Yhteenlasku ja skalaarilla kertominen}
 
   \begin{definition}
@@ -698,7 +689,6 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
     $\ell$ pistetulona: vastinalkiot kerrotaan ja tulot lasketaan yhteen.
   \end{definition}
 
-  \newpage
   Tulon määrittely edellyttää, että vasemman matriisin sarakkeita on
   yhtä monta kuin oikean matriisin rivejä. Tuloksen koon määräävät
   ulommat luvut:
@@ -771,7 +761,6 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
   tämä matriisiyhtälö ja alkuperäinen yhtälöryhmä ovat täsmälleen sama
   ehto. Sen \emph{laajennettu matriisi} on $[A\mid b]$.
 
-  \newpage
   \subsubsection*{Tulon sarakkeet ja rivit}
 
   \begin{lemma}[Matriisitulo sarakkeittain ja riveittäin]
@@ -860,7 +849,6 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
     \]
   \end{definition}
 
-  \newpage
   \subsubsection*{Matriisi kuvauksena}
 
   Matriisi $A\in\RR^{m\times n}$ määrittää kuvauksen
@@ -926,7 +914,6 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
     koordinaattipareina.
   \end{example}
 
-  \newpage
   \subsection{5.11.2026: käänteismatriisit ja kääntyvyyslause}
 
   % Lähdekuvat: IMG_2025.HEIC--IMG_2029.HEIC.
@@ -977,11 +964,19 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
   Se sallii laskujärjestyksen valinnan, mutta ei tekijöiden vaihtamista.
   Esimerkiksi matriiseille
   \[
-    P=\begin{bmatrix}1&1\\0&1\end{bmatrix},\qquad
-    Q=\begin{bmatrix}1&0\\1&1\end{bmatrix}
+    P=
+    \begin{bmatrix}1&1\\0&1
+    \end{bmatrix},\qquad
+    Q=
+    \begin{bmatrix}1&0\\1&1
+    \end{bmatrix}
   \]
-  saadaan $PQ=\left[\begin{smallmatrix}2&1\\1&1\end{smallmatrix}\right]$
-  ja $QP=\left[\begin{smallmatrix}1&1\\1&2\end{smallmatrix}\right]$.
+  saadaan $PQ=\left[
+    \begin{smallmatrix}2&1\\1&1
+  \end{smallmatrix}\right]$
+  ja $QP=\left[
+    \begin{smallmatrix}1&1\\1&2
+  \end{smallmatrix}\right]$.
   Matriisitulo ei siis yleensä ole vaihdannainen.
 
   \subsubsection*{Matriisitulo kuvausten yhdistämisenä}
@@ -995,7 +990,6 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
   Siis $\boxed{f_{AB}=f_A\circ f_B}$: tulossa $AB$ matriisi $B$
   vaikuttaa vektoriin ensin.
 
-  \newpage
   \subsubsection*{Neliömatriisi ja identiteettimatriisi}
 
   \begin{definition}
@@ -1004,10 +998,14 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
     eli \emph{yksikkömatriisi} on
     \[
       I_n=[e_1\ \cdots\ e_n],\qquad
-      (I_n)_{ij}=\begin{cases}1,&i=j,\\0,&i\ne j.\end{cases}
+      (I_n)_{ij}=
+      \begin{cases}1,&i=j,\\0,&i\ne j.
+      \end{cases}
     \]
-    Esimerkiksi $I_3=\left[\begin{smallmatrix}
-      1&0&0\\0&1&0\\0&0&1\end{smallmatrix}\right]$.
+    Esimerkiksi $I_3=\left[
+      \begin{smallmatrix}
+        1&0&0\\0&1&0\\0&0&1
+    \end{smallmatrix}\right]$.
     Alaindeksi jätetään pois, kun koko selviää asiayhteydestä.
   \end{definition}
 
@@ -1064,7 +1062,6 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
     käänteismatriisi.
   \end{proof}
 
-  \newpage
   \subsubsection*{Alkeismatriisit: rivioperaatiot matriisituloina}
 
   \begin{definition}[Alkeismatriisi]
@@ -1084,9 +1081,15 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
   \end{itemize}
   Esimerkiksi koossa $3\times3$
   \[
-    D_{2,\lambda}=\begin{bmatrix}1&0&0\\0&\lambda&0\\0&0&1\end{bmatrix},
-    \quad S_{12}=\begin{bmatrix}0&1&0\\1&0&0\\0&0&1\end{bmatrix},
-    \quad T_{13}(c)=\begin{bmatrix}1&0&c\\0&1&0\\0&0&1\end{bmatrix}.
+    D_{2,\lambda}=
+    \begin{bmatrix}1&0&0\\0&\lambda&0\\0&0&1
+    \end{bmatrix},
+    \quad S_{12}=
+    \begin{bmatrix}0&1&0\\1&0&0\\0&0&1
+    \end{bmatrix},
+    \quad T_{13}(c)=
+    \begin{bmatrix}1&0&c\\0&1&0\\0&0&1
+    \end{bmatrix}.
   \]
 
   \begin{lemma}\label{lem:elementary-rows}
@@ -1125,7 +1128,6 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
     \end{enumerate}
   \end{theorem}
 
-  \newpage
   \begin{proof}
     $(1)\Rightarrow(2)$: Nollavektori on aina ratkaisu. Jos $Ax=0$,
     niin $x=A^{-1}Ax=A^{-1}0=0$.
@@ -1171,10 +1173,16 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
   \end{proof}
 
   Neliömatriisiolettamus on olennainen: esimerkiksi
-  $U=\left[\begin{smallmatrix}1&0\end{smallmatrix}\right]$ ja
-  $V=\left[\begin{smallmatrix}1\\0\end{smallmatrix}\right]$
+  $U=\left[
+    \begin{smallmatrix}1&0
+  \end{smallmatrix}\right]$ ja
+  $V=\left[
+    \begin{smallmatrix}1\\0
+  \end{smallmatrix}\right]$
   toteuttavat $UV=I_1$, mutta
-  $VU=\left[\begin{smallmatrix}1&0\\0&0\end{smallmatrix}\right]\ne I_2$.
+  $VU=\left[
+    \begin{smallmatrix}1&0\\0&0
+  \end{smallmatrix}\right]\ne I_2$.
 
   \begin{corollary}[Yhtälön ratkaiseminen käänteismatriisilla]
     Jos $A\in\RR^{n\times n}$ on kääntyvä, niin jokaisella
@@ -1186,7 +1194,6 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
     Tämä vektori on myös ratkaisu, sillä $A(A^{-1}b)=b$.
   \end{proof}
 
-  \newpage
   \subsubsection*{Käänteismatriisin laskeminen}
 
   Kirjoitetaan tuntematon matriisi $B=[b_1\ \cdots\ b_n]$.
@@ -1221,13 +1228,20 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
   \end{proof}
 
   \begin{example}[Neliömatriisi, joka ei ole kääntyvä]
-    Olkoon $A=\left[\begin{smallmatrix}1&2\\1&2\end{smallmatrix}\right]$.
+    Olkoon $A=\left[
+      \begin{smallmatrix}1&2\\1&2
+    \end{smallmatrix}\right]$.
     Tällöin
     \[
-      \left[\begin{array}{cc|cc}1&2&1&0\\1&2&0&1\end{array}\right]
-      \begin{array}{@{}l@{}}\vphantom{0}\\\rowop{-R_1}\end{array}
+      \left[
+        \begin{array}{cc|cc}1&2&1&0\\1&2&0&1
+      \end{array}\right]
+      \begin{array}{@{}l@{}}\vphantom{0}\\\rowop{-R_1}
+      \end{array}
       \sim
-      \left[\begin{array}{cc|cc}1&2&1&0\\0&0&-1&1\end{array}\right].
+      \left[
+        \begin{array}{cc|cc}1&2&1&0\\0&0&-1&1
+      \end{array}\right].
     \]
     Vasempaan lohkoon ei saada kahta johtavaa alkiota. Esimerkiksi
     yhtälö $Ab_1=e_1$ vaatisi viimeisellä rivillä $0=-1$.
@@ -1235,52 +1249,269 @@ Vastaavasti avaruuden $\RR^3$ tason yleinen yhtälö on
     $A(-2,1)=0$, vaikka $(-2,1)\ne0$.
   \end{example}
 
-  \newpage
-  \subsubsection*{Luennon laskutehtävä: käänteismatriisi ja neliön käänteismatriisi}
+  \subsubsection*{Luennon laskutehtävä: käänteismatriisi ja neliön
+  käänteismatriisi}
 
   \begin{example}
     Osoitetaan, että
     \[
-      A=\begin{bmatrix}1&1&1\\2&3&2\\3&8&2\end{bmatrix}
+      A=
+      \begin{bmatrix}1&1&1\\2&3&2\\3&8&2
+      \end{bmatrix}
     \]
     on kääntyvä, ja määritetään $(A^2)^{-1}$.
     Aloitetaan lohkomatriisista $[A\mid I_3]$:
     \begin{align*}
-      &\left[\begin{array}{rrr|rrr}
-        1&1&1&1&0&0\\2&3&2&0&1&0\\3&8&2&0&0&1
+      &\left[
+        \begin{array}{rrr|rrr}
+          1&1&1&1&0&0\\2&3&2&0&1&0\\3&8&2&0&0&1
       \end{array}\right]
       \begin{array}{@{}l@{}}\vphantom{0}\\\rowop{-2R_1}\\\rowop{-3R_1}
       \end{array}\\[3pt]
       &\quad\sim
-      \left[\begin{array}{rrr|rrr}
-        1&1&1&1&0&0\\0&1&0&-2&1&0\\0&5&-1&-3&0&1
+      \left[
+        \begin{array}{rrr|rrr}
+          1&1&1&1&0&0\\0&1&0&-2&1&0\\0&5&-1&-3&0&1
       \end{array}\right]
       \begin{array}{@{}l@{}}\rowop{-R_2}\\\vphantom{0}\\\rowop{-5R_2}
       \end{array}\\[3pt]
       &\quad\sim
-      \left[\begin{array}{rrr|rrr}
-        1&0&1&3&-1&0\\0&1&0&-2&1&0\\0&0&-1&7&-5&1
+      \left[
+        \begin{array}{rrr|rrr}
+          1&0&1&3&-1&0\\0&1&0&-2&1&0\\0&0&-1&7&-5&1
       \end{array}\right]
       \begin{array}{@{}l@{}}\rowop{+R_3}\\\vphantom{0}\\\rowop{\cdot(-1)}
       \end{array}\\[3pt]
       &\quad\sim
-      \left[\begin{array}{rrr|rrr}
-        1&0&0&10&-6&1\\0&1&0&-2&1&0\\0&0&1&-7&5&-1
+      \left[
+        \begin{array}{rrr|rrr}
+          1&0&0&10&-6&1\\0&1&0&-2&1&0\\0&0&1&-7&5&-1
       \end{array}\right].
     \end{align*}
     Viimeisen siirtymän molemmat operaatiot käyttävät edellisen
     matriisin kolmatta riviä. Vasen lohko on $I_3$, joten
     \[
-      \boxed{A^{-1}=\begin{bmatrix}10&-6&1\\-2&1&0\\-7&5&-1\end{bmatrix}.}
+      \boxed{A^{-1}=
+        \begin{bmatrix}10&-6&1\\-2&1&0\\-7&5&-1
+      \end{bmatrix}.}
     \]
     Suora tarkistus antaa $AA^{-1}=A^{-1}A=I_3$.
     Tulon käänteismatriisin kaavalla
     \[
       (A^2)^{-1}=(AA)^{-1}=A^{-1}A^{-1}
-      =\begin{bmatrix}10&-6&1\\-2&1&0\\-7&5&-1\end{bmatrix}^{\!2}
-      =\boxed{\begin{bmatrix}105&-61&9\\-22&13&-2\\-73&42&-6\end{bmatrix}.}
+      =
+      \begin{bmatrix}10&-6&1\\-2&1&0\\-7&5&-1
+      \end{bmatrix}^{\!2}
+      =\boxed{
+        \begin{bmatrix}105&-61&9\\-22&13&-2\\-73&42&-6
+      \end{bmatrix}.}
     \]
     Tässä $A^2$ tarkoittaa matriisituloa $AA$.
   \end{example}
+
+  \subsection{10.11.2026: alkeismatriisit, homogeeniset yhtälöryhmät
+  ja aliavaruudet}
+
+  % Lähdekuvat: IMG_2054.HEIC--IMG_2058.HEIC.
+  Luennon aluksi täydennettiin kääntyvyyslauseen todistusta.
+  Sen jälkeen siirryttiin homogeenisten yhtälöryhmien ratkaisujoukkoihin
+  ja avaruuden $\RR^n$ aliavaruuksiin. Vektorit ajatellaan seuraavassa
+  sarakevektoreina: $\RR^n=\RR^{n\times1}$.
+
+  \subsubsection*{Kertaus: alkeismatriisit ja kääntyvyyslauseen
+  todistuksen loppu}
+
+  Alkeismatriisi saadaan identiteettimatriisista yhdellä sallitulla
+  rivioperaatiolla. Jos $E\in\RR^{m\times m}$ vastaa tiettyä
+  rivioperaatiota, niin $EA$ saadaan tekemällä sama operaatio
+  matriisille $A\in\RR^{m\times n}$
+  (lemma \ref{lem:elementary-rows}).
+
+  \begin{corollary}[Riviekvivalenssi alkeismatriisien avulla]
+    Matriisit $A,B\in\RR^{m\times n}$ ovat \emph{riviekvivalentit},
+    eli ne saadaan toisistaan sallituilla rivioperaatioilla,
+    täsmälleen silloin, kun on olemassa alkeismatriisit
+    $E_1,\ldots,E_k\in\RR^{m\times m}$, joille
+    \[
+      B=E_k\cdots E_1A.
+    \]
+    Jos operaatioita ei tarvita, tulo tulkitaan identiteettimatriisiksi.
+  \end{corollary}
+  \begin{proof}
+    Jokainen rivioperaatio on vasemmalta kertominen sitä vastaavalla
+    alkeismatriisilla. Peräkkäiset operaatiot antavat esitetyn tulon.
+    Kääntäen tulon tekijät määräävät rivioperaatiot, joilla $A$
+    muuttuu matriisiksi $B$.
+  \end{proof}
+
+  Alkeismatriisi on kääntyvä, ja sen käänteismatriisi on samaa
+  operaatiotyyppiä: rivin kertominen luvulla $\lambda\ne0$ perutaan
+  kertoimella $1/\lambda$, rivinvaihto samalla rivinvaihdolla ja
+  operaatio $R_p\leftarrow R_p+cR_r$ operaatiolla
+  $R_p\leftarrow R_p-cR_r$.
+
+  \noindent\textbf{Kääntyvyyslauseen \ref{thm:invertibility}
+  suunnat $(3)\Rightarrow(4)\Rightarrow(1)$.}
+  Jos $[A\mid0]$:n supistettu porrasmuoto on $[I_n\mid0]$, niin
+  eliminoinnin alkeismatriiseille pätee
+  \[
+    E_k\cdots E_1A=I_n
+    \quad\Longrightarrow\quad
+    A=(E_k\cdots E_1)^{-1}=E_1^{-1}\cdots E_k^{-1}.
+  \]
+  Koska myös $E_i^{-1}$ ovat alkeismatriiseja, $A$ on
+  alkeismatriisien tulo. Jos taas $A=F_1\cdots F_k$ on tällainen
+  tulo, asetetaan $G=F_k^{-1}\cdots F_1^{-1}$. Tällöin
+  \[
+    AG=(F_1\cdots F_k)(F_k^{-1}\cdots F_1^{-1})=I_n,
+    \qquad
+    GA=(F_k^{-1}\cdots F_1^{-1})(F_1\cdots F_k)=I_n.
+  \]
+  Siis $G=A^{-1}$ ja $A$ on kääntyvä.
+
+  \subsubsection*{Homogeeniset yhtälöryhmät}
+
+  \begin{definition}
+    Olkoot $A\in\RR^{m\times n}$ ja $b\in\RR^m$.
+    Yhtälöryhmä $Ax=b$ on \emph{homogeeninen}, jos $b=0$.
+    Homogeeninen ryhmä on siis muotoa $Ax=0$.
+  \end{definition}
+
+  Homogeenisella yhtälöryhmällä on aina ainakin ratkaisu $x=0$.
+  Sen ratkaisujen avulla voidaan kuvata myös epähomogeenisen
+  yhtälöryhmän kaikki ratkaisut, kun yksi ratkaisu tunnetaan.
+
+  \begin{lemma}[Yksittäisratkaisu ja homogeeninen
+    ratkaisu]\label{lem:particular-homogeneous}
+    Olkoot $A\in\RR^{m\times n}$ ja $b\in\RR^m$, ja olkoon
+    $y\in\RR^n$ jokin yhtälön $Ax=b$ ratkaisu. Tällöin
+    $x\in\RR^n$ on yhtälön $Ax=b$ ratkaisu täsmälleen silloin,
+    kun
+    \[
+      \boxed{x=y+z,\qquad Az=0.}
+    \]
+  \end{lemma}
+  \begin{proof}
+    Jos $x=y+z$ ja $Az=0$, niin
+    \[
+      Ax=A(y+z)=Ay+Az=b+0=b.
+    \]
+    Kääntäen, jos $Ax=b$, asetetaan $z=x-y$. Tällöin
+    \[
+      Az=A(x-y)=Ax-Ay=b-b=0,
+    \]
+    ja $x=y+z$.
+  \end{proof}
+
+  \begin{lemma}[Homogeenisten ratkaisujen lineaarikombinaatiot]
+    Olkoon $A\in\RR^{m\times n}$. Jos $y,y'\in\RR^n$ toteuttavat
+    $Ay=Ay'=0$, niin myös $ay+by'$ on yhtälön $Ax=0$ ratkaisu
+    kaikilla $a,b\in\RR$.
+  \end{lemma}
+  \begin{proof}
+    Matriisikuvauksen lineaarisuudesta saadaan suoraan
+    \[
+      A(ay+by')=aAy+bAy'=a\cdot0+b\cdot0=0.
+    \]
+  \end{proof}
+
+  Ratkaisujoukko on siis suljettu yhteenlaskun ja skalaarilla
+  kertomisen suhteen. Tämä johtaa aliavaruuden käsitteeseen.
+
+  \subsubsection*{Aliavaruus ja aliavaruuskriteeri}
+
+  \begin{definition}[Aliavaruus]
+    Osajoukko $V\subseteq\RR^n$ on avaruuden $\RR^n$
+    \emph{aliavaruus}, jos
+    \begin{enumerate}
+      \item $0\in V$;
+      \item $u+v\in V$ kaikilla $u,v\in V$;
+      \item $cv\in V$ kaikilla $c\in\RR$ ja $v\in V$.
+    \end{enumerate}
+  \end{definition}
+
+  \begin{example}
+    Joukot $\{0\}$ ja $\RR^n$ ovat avaruuden $\RR^n$ aliavaruuksia.
+    Myös homogeenisen yhtälöryhmän $Ax=0$ ratkaisujoukko on
+    aliavaruus: nollavektori on ratkaisu, ja edellisen lemman mukaan
+    ratkaisujen summat ja skalaarimonikerrat ovat ratkaisuja.
+  \end{example}
+
+  \begin{example}[Nollavektorin puuttuminen estää aliavaruuden]
+    Joukko
+    \[
+      V=\left\{
+        \begin{bmatrix}x_1\\x_2\\x_3
+        \end{bmatrix}\in\RR^3:
+        x_1+x_2+1=0
+      \right\}
+    \]
+    ei ole avaruuden $\RR^3$ aliavaruus. Nollavektorille
+    $0+0+1\ne0$, joten $0\notin V$.
+  \end{example}
+
+  \begin{lemma}[Aliavaruuskriteeri]\label{lem:subspace-criterion}
+    Epätyhjä osajoukko $V\subseteq\RR^n$ on aliavaruus täsmälleen
+    silloin, kun
+    \[
+      av+w\in V\qquad
+      \text{kaikilla }v,w\in V\text{ ja }a\in\RR.
+    \]
+  \end{lemma}
+  \begin{proof}
+    Jos $V$ on aliavaruus, niin $av\in V$ ja siten myös
+    $av+w\in V$.
+
+    Oletetaan kääntäen, että $V\ne\varnothing$ ja esitetty ehto
+    pätee. Valitaan $v_0\in V$. Valinnoilla $v=w=v_0$ ja $a=-1$
+    saadaan $0=-v_0+v_0\in V$. Kaikilla $v,w\in V$ pätee
+    $v+w=1\cdot v+w\in V$. Koska $0\in V$, myös
+    $av=av+0\in V$ kaikilla $a\in\RR$ ja $v\in V$.
+    Siis kaikki aliavaruuden ehdot toteutuvat.
+  \end{proof}
+
+  \subsubsection*{Nolla-avaruus ja koko ratkaisujoukon rakenne}
+
+  \begin{definition}[Nolla-avaruus]
+    Matriisin $A\in\RR^{m\times n}$ \emph{nolla-avaruus} on
+    homogeenisen yhtälöryhmän $Ax=0$ ratkaisujoukko:
+    \[
+      \boxed{\operatorname{Null}(A)=\{x\in\RR^n:Ax=0\}.}
+    \]
+  \end{definition}
+
+  \begin{lemma}
+    $\operatorname{Null}(A)$ on avaruuden $\RR^n$ aliavaruus.
+  \end{lemma}
+  \begin{proof}
+    Koska $A0=0$, on $0\in\operatorname{Null}(A)$ ja joukko on
+    epätyhjä. Jos $u,v\in\operatorname{Null}(A)$ ja $c\in\RR$, niin
+    \[
+      A(cu+v)=cAu+Av=c\cdot0+0=0.
+    \]
+    Siis $cu+v\in\operatorname{Null}(A)$, joten
+    aliavaruuskriteerin nojalla $\operatorname{Null}(A)$ on aliavaruus.
+  \end{proof}
+
+  \begin{theorem}[Yhtälöryhmän koko ratkaisujoukko]
+    Olkoot $A\in\RR^{m\times n}$ ja $b\in\RR^m$. Jos yhtälöllä
+    $Ax=b$ on jokin ratkaisu $y\in\RR^n$, niin sen koko
+    ratkaisujoukko on
+    \[
+      \boxed{y+\operatorname{Null}(A)
+      =\{y+z:z\in\operatorname{Null}(A)\}.}
+    \]
+  \end{theorem}
+  \begin{proof}
+    Lemman \ref{lem:particular-homogeneous} mukaan $Ax=b$
+    täsmälleen silloin, kun $x=y+z$ jollakin $z$, jolle $Az=0$.
+    Ehto $Az=0$ tarkoittaa juuri $z\in\operatorname{Null}(A)$.
+  \end{proof}
+
+  Homogeenisen ryhmän ratkaisujoukko on siis aliavaruus.
+  Kun $Ax=b$ on ratkeava, sen ratkaisujoukko saadaan siirtämällä
+  nolla-avaruutta yhden ratkaisun $y$ verran. Jos $b\ne0$,
+  nollavektori ei ole ratkaisu, joten tämä siirretty joukko ei ole
+  aliavaruus.
 
   \end{document}
