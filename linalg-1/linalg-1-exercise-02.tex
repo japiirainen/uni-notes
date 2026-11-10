@@ -144,6 +144,7 @@
     \end{bmatrix},
     \qquad\text{kun } n \in \ZZ_+.
   \]
+  \textit{Vihje:} Induktio.
 \end{exercise}
 
 \begin{solution}
@@ -261,14 +262,28 @@
   Täten \(x_1 = 10x_3 + 13\) ja \(x_2 = -8x_3 - 8\).
   Muuttuja \(x_3\) on vapaa. Valitsemalla \(x_3 = t \in \RR\) saadaan
   \[
-    (x_1,x_2,x_3) = (10t+13,-8t-8,t)
-    = (13,-8,0) + t(10,-8,1).
+    x =
+    \begin{bmatrix} x_1 \\ x_2 \\ x_3
+    \end{bmatrix}
+    =
+    \begin{bmatrix} 10t+13 \\ -8t-8 \\ t
+    \end{bmatrix}
+    =
+    \begin{bmatrix} 13 \\ -8 \\ 0
+    \end{bmatrix}
+    + t
+    \begin{bmatrix} 10 \\ -8 \\ 1
+    \end{bmatrix}.
   \]
   Koska rivioperaatiot säilyttävät ratkaisujoukon, matriisiyhtälön
   \(Ax = b\) ratkaisujoukko on
   \[
     \left\{
-      (13,-8,0) + t(10,-8,1)
+      \begin{bmatrix} 13 \\ -8 \\ 0
+      \end{bmatrix}
+      + t
+      \begin{bmatrix} 10 \\ -8 \\ 1
+      \end{bmatrix}
       \colon t \in \RR
     \right\}.
   \]
@@ -288,6 +303,8 @@
     L_A(\lambda x) = \lambda L_A(x)
   \]
   kaikilla \(x,y \in \RR^{n\times 1}\) ja \(\lambda \in \RR\).
+  (Tehtävän tarkoituksena on tarkistaa monisteen Lemman 2.3.15
+  todistuksen laskut kirjoittamalla matriisitulot auki.)
 \end{exercise}
 
 \begin{solution}
@@ -402,58 +419,42 @@
   kääntyvä, ja myönteisessä tapauksessa määritä matriisin käänteismatriisi.
 \end{exercise}
 
+\newpage
 \begin{solution}
   \leavevmode\par
   \begin{enumerate}[label=(\alph*), leftmargin=*]
-    \item Merkitään annettua matriisia kirjaimella \(A\). Jos \(A\)
-      olisi kääntyvä, yhtälöllä \(AX=I\) olisi ratkaisu
-      \(X=A^{-1}\). Tehdään liitetylle matriisille rivioperaatiot:
+    \item Merkitään annettua matriisia kirjaimella \(A\).
+      Neliömatriisien kääntyvyyslauseen (Lause 2.5.1)
+      mukaan \(A\) on kääntyvä täsmälleen silloin, kun yhtälön
+      \(Ax=0\) ainoa ratkaisu on nollavektori. Etsitään nollasta
+      poikkeava ratkaisu. Ensimmäiseltä riviltä saadaan
+      \(-x_1+3x_2-4x_3=0\), eli \(x_1=3x_2-4x_3\).
+      Sijoittamalla tämä kahteen muuhun yhtälöön saadaan
       \[
         \begin{aligned}
-          [A\mid I] &={}
-          \left[
-            \begin{array}{rrr|rrr}
-              -1 & 3 & -4 & 1 & 0 & 0 \\
-              2 & 4 & 1 & 0 & 1 & 0 \\
-              -4 & 2 & -9 & 0 & 0 & 1
-            \end{array}
-          \right]
-          \quad
-          \begin{array}{@{}l@{}}
-            {} \\
-            \smash{\rowop{+2R_1}} \\
-            \smash{\rowop{-4R_1}}
-          \end{array}
-          \\[1ex]
-          &\sim{}
-          \left[
-            \begin{array}{rrr|rrr}
-              -1 & 3 & -4 & 1 & 0 & 0 \\
-              0 & 10 & -7 & 2 & 1 & 0 \\
-              0 & -10 & 7 & -4 & 0 & 1
-            \end{array}
-          \right]
-          \quad
-          \begin{array}{@{}l@{}}
-            {} \\
-            {} \\
-            \smash{\rowop{+R_2}}
-          \end{array}
-          \\[1ex]
-          &\sim{}
-          \left[
-            \begin{array}{rrr|rrr}
-              -1 & 3 & -4 & 1 & 0 & 0 \\
-              0 & 10 & -7 & 2 & 1 & 0 \\
-              0 & 0 & 0 & -2 & 1 & 1
-            \end{array}
-          \right].
+          2(3x_2-4x_3)+4x_2+x_3 &= 10x_2-7x_3=0, \\
+          -4(3x_2-4x_3)+2x_2-9x_3 &= -10x_2+7x_3=0.
         \end{aligned}
       \]
-      Yhtälön \(AX=I\) ensimmäistä saraketta vastaavassa
-      yhtälöryhmässä viimeinen rivi antaa ristiriidan \(0=-2\).
-      Yhtälöllä \(AX=I\) ei siis ole ratkaisua, joten \(A\) ei ole
-      kääntyvä.
+      Molemmat ehdot toteutuvat, kun \(x_2=\frac7{10}x_3\).
+      Valitaan \(x_3=10\), jolloin \(x_2=7\) ja
+      \(x_1=3\cdot7-4\cdot10=-19\). Tarkistetaan vielä sijoittamalla:
+      \[
+        A
+        \begin{bmatrix} -19 \\ 7 \\ 10
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+          19+21-40 \\
+          -38+28+10 \\
+          76+14-90
+        \end{bmatrix}
+        =
+        \begin{bmatrix} 0 \\ 0 \\ 0
+        \end{bmatrix}.
+      \]
+      Yhtälöllä \(Ax=0\) on siis nollasta poikkeava ratkaisu, joten
+      kääntyvyyslauseen nojalla \(A\) ei ole kääntyvä.
 
     \item Merkitään tämän kohdan matriisia kirjaimella \(B\).
       Muokataan liitettyä matriisia \([B\mid I]\) rivioperaatioilla:
@@ -564,16 +565,26 @@
           \right].
         \end{aligned}
       \]
-      Vasen lohko on nyt \(I\), joten \(B\) on kääntyvä ja oikea
-      lohko on sen käänteismatriisi. Siis
+      Oikeasta lohkosta saadaan käänteismatriisiehdokas
       \[
-        B^{-1} =
+        C =
         \begin{bmatrix}
           1 & 3 & 1 \\
           0 & 1 & -1 \\
           -2 & 2 & 0
-        \end{bmatrix}.\qedhere
+        \end{bmatrix}.
       \]
+      Suoralla matriisikertolaskulla saadaan
+      \[
+        BC=CB=
+        \begin{bmatrix}
+          1 & 0 & 0 \\
+          0 & 1 & 0 \\
+          0 & 0 & 1
+        \end{bmatrix}.
+      \]
+      Siis \(BC=CB=I\), joten käänteismatriisin määritelmän nojalla
+      \(B\) on kääntyvä ja \(B^{-1}=C\).
   \end{enumerate}
 \end{solution}
 
@@ -593,7 +604,7 @@
 \end{exercise}
 
 \begin{solution}
-  Lauseen 2.5.1 kohdan (2) mukaan \(A\) on kääntyvä täsmälleen silloin,
+  Lauseen 2.5.1 mukaan \(A\) on kääntyvä täsmälleen silloin,
   kun yhtälön \(Ax=0\) ainoa ratkaisu on nollavektori.
   Tutkitaan homogeenista yhtälöryhmää rivioperaatioilla:
   \[
@@ -663,15 +674,28 @@
   Täten \(x_1=-x_4\), \(x_2=x_4\) ja \(x_3=0\), ja muuttuja
   \(x_4\) on vapaa. Valitsemalla \(x_4=t\in\RR\) saadaan
   \[
-    (x_1,x_2,x_3,x_4)=(-t,t,0,t)=t(-1,1,0,1).
+    x =
+    \begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4
+    \end{bmatrix}
+    =
+    \begin{bmatrix} -t \\ t \\ 0 \\ t
+    \end{bmatrix}
+    = t
+    \begin{bmatrix} -1 \\ 1 \\ 0 \\ 1
+    \end{bmatrix}.
   \]
   Koska rivioperaatiot säilyttävät ratkaisujoukon, yhtälön \(Ax=0\)
   ratkaisujoukko on
   \[
-    \left\{t(-1,1,0,1)\colon t\in\RR\right\}.
+    \left\{
+      t
+      \begin{bmatrix} -1 \\ 1 \\ 0 \\ 1
+      \end{bmatrix}
+      \colon t\in\RR
+    \right\}.
   \]
-  Esimerkiksi valinnalla \(t=1\) saadaan nollasta poikkeava ratkaisu
-  \((-1,1,0,1)\). Lauseen 2.5.1 kohdan (2) nojalla \(A\) ei siis ole
+  Esimerkiksi valinnalla \(t=1\) saadaan nollasta poikkeava ratkaisu.
+  Lauseen 2.5.1 nojalla \(A\) ei siis ole
   kääntyvä.
 \end{solution}
 
