@@ -26,6 +26,92 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Valitaan
+      \[
+        E_1 =
+        \begin{bmatrix}
+          1 & 0 \\
+          5 & 1
+        \end{bmatrix}
+        \qquad\text{ja}\qquad
+        E_2 =
+        \begin{bmatrix}
+          1 & 0 \\
+          0 & \frac12
+        \end{bmatrix}.
+      \]
+      Matriisit \(E_1\) ja \(E_2\) saadaan yksikkömatriisista
+      rivioperaatioilla \(R_2 \leftarrow R_2+5R_1\) ja
+      \(R_2 \leftarrow \frac12 R_2\), joten ne ovat alkeismatriiseja.
+      Vasemmalta kertominen näillä matriiseilla tekee samat
+      rivioperaatiot matriisille \(A\). Siis
+      \[
+        E_1A =
+        \begin{bmatrix}
+          1 & 0 \\
+          0 & 2
+        \end{bmatrix}
+        \qquad\text{ja}\qquad
+        E_2E_1A =
+        \begin{bmatrix}
+          1 & 0 \\
+          0 & 1
+        \end{bmatrix}
+        = I.
+      \]
+
+    \item Koska matriisi \(A\) voidaan muuntaa yksikkömatriisiksi
+      alkeisrivioperaatioilla, se on kääntyvä. Kerrotaan yhtälö
+      \(E_2E_1A=I\) puolittain oikealta matriisilla \(A^{-1}\).
+      Saadaan \(E_2E_1=A^{-1}\), joten
+      \[
+        A^{-1} = E_2E_1 =
+        \begin{bmatrix}
+          1 & 0 \\
+          0 & \frac12
+        \end{bmatrix}
+        \begin{bmatrix}
+          1 & 0 \\
+          5 & 1
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+          1 & 0 \\
+          \frac52 & \frac12
+        \end{bmatrix}.
+      \]
+
+    \item Tulon käänteismatriisin laskusäännön nojalla
+      \[
+        A = (A^{-1})^{-1} = (E_2E_1)^{-1}
+        = E_1^{-1}E_2^{-1}.
+      \]
+      Käänteismatriisit \(E_1^{-1}\) ja \(E_2^{-1}\) vastaavat
+      rivioperaatioita \(R_2 \leftarrow R_2-5R_1\) ja
+      \(R_2 \leftarrow 2R_2\), joten nekin ovat alkeismatriiseja.
+      Täten saadaan vaadittu esitys
+      \[
+        A =
+        \begin{bmatrix}
+          1 & 0 \\
+          -5 & 1
+        \end{bmatrix}
+        \begin{bmatrix}
+          1 & 0 \\
+          0 & 2
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+          1 & 0 \\
+          -5 & 2
+        \end{bmatrix}.\qedhere
+      \]
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}
   Olkoon
   \[
@@ -44,6 +130,119 @@
   säännöllisyydestä neliömatriisien kääntyvyyslauseen 2.5.1 tai Lauseen
   3.10.1 perusteella?
 \end{exercise}
+
+\begin{solution}
+  Merkitään annettua yhtälön \(Ax=b\) ratkaisua
+  \[
+    y=
+    \begin{bmatrix}2 \\ -2 \\ 3
+    \end{bmatrix}.
+  \]
+  Lemman 3.1.1 mukaan yhtälön \(Ax=b\) kaikki ratkaisut ovat
+  muotoa \(x=y+z\), missä \(Az=0\). Ratkaistaan siis ensin
+  homogeeninen yhtälöryhmä \(Az=0\) muokkaamalla sen liitetty
+  matriisi supistettuun porrasmuotoon:
+  \[
+    \begin{aligned}
+      [A\mid 0] &={}
+      \left[
+        \begin{array}{rrr|r}
+          2 & 3 & -1 & 0 \\
+          1 & -1 & 2 & 0 \\
+          1 & 2 & -1 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        \smash{\rowop{R_1\leftrightarrow R_2}} \\
+        {} \\
+        {}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrr|r}
+          1 & -1 & 2 & 0 \\
+          2 & 3 & -1 & 0 \\
+          1 & 2 & -1 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        \smash{\rowop{-2R_1}} \\
+        \smash{\rowop{-R_1}}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrr|r}
+          1 & -1 & 2 & 0 \\
+          0 & 5 & -5 & 0 \\
+          0 & 3 & -3 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        \smash{\rowop{\cdot(1/5)}} \\
+        {}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrr|r}
+          1 & -1 & 2 & 0 \\
+          0 & 1 & -1 & 0 \\
+          0 & 3 & -3 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        \smash{\rowop{+R_2}} \\
+        {} \\
+        \smash{\rowop{-3R_2}}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrr|r}
+          1 & 0 & 1 & 0 \\
+          0 & 1 & -1 & 0 \\
+          0 & 0 & 0 & 0
+        \end{array}
+      \right].
+    \end{aligned}
+  \]
+  Täten \(z_1=-z_3\) ja \(z_2=z_3\), ja muuttuja \(z_3\) on
+  vapaa. Koska rivioperaatiot säilyttävät ratkaisujoukon,
+  valitsemalla \(z_3=t\in\RR\) saadaan kaikki homogeenisen
+  yhtälön ratkaisut:
+  \[
+    z=t
+    \begin{bmatrix}-1 \\ 1 \\ 1
+    \end{bmatrix}.
+  \]
+  Lemman 3.1.1 nojalla alkuperäisen yhtälön yleinen ratkaisu on siten
+  \[
+    x=
+    \begin{bmatrix}2 \\ -2 \\ 3
+    \end{bmatrix}
+    +t
+    \begin{bmatrix}-1 \\ 1 \\ 1
+    \end{bmatrix},
+    \qquad t\in\RR.
+  \]
+  Ratkaisuja on äärettömän monta.
+
+  Valinnalla \(t=1\) saadaan homogeeniselle yhtälölle \(Az=0\)
+  nollasta poikkeava ratkaisu
+  \(z=
+    \begin{bmatrix}-1 \\ 1 \\ 1
+  \end{bmatrix}\).
+  Neliömatriisien kääntyvyyslauseen 2.5.1 nojalla \(A\) ei siis
+  ole kääntyvä eli säännöllinen.
+\end{solution}
 
 \begin{exercise}
   Osoita, että avaruuden \(\RR^{2\times 1}\) joukko
@@ -78,6 +277,68 @@
   eivät ole avaruuden \(\RR^{2\times 1}\) aliavaruuksia?
 \end{exercise}
 
+\begin{solution}
+  Koska \(
+    \begin{bmatrix}0 \\ 0
+  \end{bmatrix}\in V_0\), joukko
+  \(V_0\) on epätyhjä. Olkoot
+  \[
+    u =
+    \begin{bmatrix}x_1 \\ 0
+    \end{bmatrix},
+    \qquad
+    v =
+    \begin{bmatrix}y_1 \\ 0
+    \end{bmatrix}
+    \in V_0
+    \qquad\text{ja}\qquad c\in\RR
+  \]
+  mielivaltaisia. Tällöin
+  \[
+    cu+v
+    = c
+    \begin{bmatrix}x_1 \\ 0
+    \end{bmatrix}
+    +
+    \begin{bmatrix}y_1 \\ 0
+    \end{bmatrix}
+    =
+    \begin{bmatrix}cx_1+y_1 \\ 0
+    \end{bmatrix}
+    \in V_0,
+  \]
+  sillä \(cx_1+y_1\in\RR\). Aliavaruuskriteerin nojalla \(V_0\)
+  on siis avaruuden \(\RR^{2\times 1}\) aliavaruus.
+
+  Joukko \(V_1\) ei ole suljettu skalaarikertolaskun suhteen.
+  Jos \(u=
+    \begin{bmatrix}x_1 \\ 1
+  \end{bmatrix}\in V_1\), niin
+  \[
+    2u =
+    \begin{bmatrix}2x_1 \\ 2
+    \end{bmatrix}\notin V_1,
+  \]
+  sillä toinen koordinaatti on \(2\neq 1\). Täten \(V_1\) ei ole
+  avaruuden \(\RR^{2\times 1}\) aliavaruus.
+
+  Myöskään joukko \(V_2\) ei ole suljettu skalaarikertolaskun
+  suhteen. Nimittäin
+  \[
+    \begin{bmatrix}2 \\ 4
+    \end{bmatrix}\in V_2,
+    \qquad\text{mutta}\qquad
+    2
+    \begin{bmatrix}2 \\ 4
+    \end{bmatrix}
+    =
+    \begin{bmatrix}4 \\ 8
+    \end{bmatrix}\notin V_2,
+  \]
+  sillä \(4=2^2\), mutta \(8\neq 4^2=16\). Siis \(V_2\) ei ole
+  avaruuden \(\RR^{2\times 1}\) aliavaruus.
+\end{solution}
+
 \begin{exercise}
   Määritä avaruuden \(\RR^{2\times 4}\) matriisin
   \[
@@ -90,6 +351,111 @@
   nolla-avaruus \(\operatorname{Null}(A)\). Tutki lisäksi, onko
   \(\operatorname{Col}(A) = \RR^{2\times 1}\).
 \end{exercise}
+
+\begin{solution}
+  Ratkaistaan homogeeninen yhtälö \(Ax=0\) muokkaamalla liitetty
+  matriisi supistettuun porrasmuotoon:
+  \[
+    \begin{aligned}
+      [A\mid 0] &={}
+      \left[
+        \begin{array}{rrrr|r}
+          1 & 1 & 1 & 0 & 0 \\
+          2 & 1 & 0 & 1 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        \smash{\rowop{-2R_1}}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrrr|r}
+          1 & 1 & 1 & 0 & 0 \\
+          0 & -1 & -2 & 1 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        \smash{\rowop{+R_2}} \\
+        {}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrrr|r}
+          1 & 0 & -1 & 1 & 0 \\
+          0 & -1 & -2 & 1 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        \smash{\rowop{\cdot(-1)}}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrrr|r}
+          1 & 0 & -1 & 1 & 0 \\
+          0 & 1 & 2 & -1 & 0
+        \end{array}
+      \right].
+    \end{aligned}
+  \]
+  Täten \(x_1=x_3-x_4\) ja \(x_2=-2x_3+x_4\). Muuttujat
+  \(x_3\) ja \(x_4\) ovat vapaita. Valitsemalla \(x_3=t\in\RR\)
+  ja \(x_4=k\in\RR\) saadaan
+  \[
+    x=
+    \begin{bmatrix}t-k \\ -2t+k \\ t \\ k
+    \end{bmatrix}
+    =t
+    \begin{bmatrix}1 \\ -2 \\ 1 \\ 0
+    \end{bmatrix}
+    +k
+    \begin{bmatrix}-1 \\ 1 \\ 0 \\ 1
+    \end{bmatrix}.
+  \]
+  Koska rivioperaatiot säilyttävät ratkaisujoukon, nolla-avaruus on
+  \[
+    \operatorname{Null}(A)=
+    \left\{
+      t
+      \begin{bmatrix}1 \\ -2 \\ 1 \\ 0
+      \end{bmatrix}
+      +k
+      \begin{bmatrix}-1 \\ 1 \\ 0 \\ 1
+      \end{bmatrix}
+      \colon t,k\in\RR
+    \right\}.
+  \]
+
+  Matriisin \(A\) kolmas ja neljäs sarake ovat standardikannan
+  vektorit
+  \[
+    e_1=
+    \begin{bmatrix}1 \\ 0
+    \end{bmatrix}
+    \qquad\text{ja}\qquad
+    e_2=
+    \begin{bmatrix}0 \\ 1
+    \end{bmatrix}.
+  \]
+  Jokainen \(b=
+    \begin{bmatrix}b_1 \\ b_2
+    \end{bmatrix}
+  \in\RR^{2\times 1}\) voidaan esittää muodossa
+  \(b=b_1e_1+b_2e_2\), joten \(b\in\operatorname{Col}(A)\).
+  Siis \(\RR^{2\times 1}\subseteq\operatorname{Col}(A)\).
+  Koska myös \(\operatorname{Col}(A)\subseteq\RR^{2\times 1}\),
+  saadaan
+  \[
+    \operatorname{Col}(A)=\RR^{2\times 1}.\qedhere
+  \]
+\end{solution}
 
 \begin{exercise}
   Olkoot
@@ -121,6 +487,157 @@
   \(\operatorname{Sp}(v_1,v_2)\)?
 \end{exercise}
 
+\begin{solution}
+  Vektori \(w\) kuuluu joukkoon \(\operatorname{Sp}(v_1,v_2)\)
+  täsmälleen silloin, kun yhtälöllä \(tv_1+kv_2=w\) on ratkaisu
+  \(t,k\in\RR\). Tutkitaan tätä liitettyjen matriisien avulla.
+
+  Vektorin \(w_1\) tapauksessa saadaan rivioperaatioilla
+  \[
+    \begin{aligned}
+      [v_1\ v_2\mid w_1] &={}
+      \left[
+        \begin{array}{rr|r}
+          0 & 1 & 3 \\
+          -2 & 3 & 1 \\
+          2 & -1 & 5
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        \smash{\rowop{R_1\leftrightarrow R_3}} \\
+        {} \\
+        {}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rr|r}
+          2 & -1 & 5 \\
+          -2 & 3 & 1 \\
+          0 & 1 & 3
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        \smash{\rowop{+R_1}} \\
+        {}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rr|r}
+          2 & -1 & 5 \\
+          0 & 2 & 6 \\
+          0 & 1 & 3
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        \smash{\rowop{+(1/2)R_2}} \\
+        \smash{\rowop{\cdot(1/2)}} \\
+        \smash{\rowop{-(1/2)R_2}}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rr|r}
+          2 & 0 & 8 \\
+          0 & 1 & 3 \\
+          0 & 0 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        \smash{\rowop{\cdot(1/2)}} \\
+        {} \\
+        {}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rr|r}
+          1 & 0 & 4 \\
+          0 & 1 & 3 \\
+          0 & 0 & 0
+        \end{array}
+      \right].
+    \end{aligned}
+  \]
+  Siis \(t=4\) ja \(k=3\), joten
+  \[
+    w_1=4v_1+3v_2\in\operatorname{Sp}(v_1,v_2).
+  \]
+
+  Vektorin \(w_2\) tapauksessa vastaavat rivioperaatiot antavat
+  \[
+    \begin{aligned}
+      [v_1\ v_2\mid w_2] &={}
+      \left[
+        \begin{array}{rr|r}
+          0 & 1 & 0 \\
+          -2 & 3 & 4 \\
+          2 & -1 & 5
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        \smash{\rowop{R_1\leftrightarrow R_3}} \\
+        {} \\
+        {}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rr|r}
+          2 & -1 & 5 \\
+          -2 & 3 & 4 \\
+          0 & 1 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        \smash{\rowop{+R_1}} \\
+        {}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rr|r}
+          2 & -1 & 5 \\
+          0 & 2 & 9 \\
+          0 & 1 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        {} \\
+        \smash{\rowop{-(1/2)R_2}}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rr|r}
+          2 & -1 & 5 \\
+          0 & 2 & 9 \\
+          0 & 0 & -\frac92
+        \end{array}
+      \right].
+    \end{aligned}
+  \]
+  Viimeinen rivi antaa ristiriidan \(0=-\frac92\), joten yhtälöllä
+  \(tv_1+kv_2=w_2\) ei ole ratkaisua. Täten
+  \(w_2\notin\operatorname{Sp}(v_1,v_2)\).
+
+  Nollavektorille pätee \(w_3=0v_1+0v_2\), joten
+  \(w_3\in\operatorname{Sp}(v_1,v_2)\). Siis annetuista vektoreista
+  täsmälleen \(w_1\) ja \(w_3\) kuuluvat joukkoon
+  \(\operatorname{Sp}(v_1,v_2)\).
+\end{solution}
+
 \begin{exercise}
   Tutki, ovatko
   \begin{enumerate}[label=(\alph*), leftmargin=*]
@@ -143,5 +660,171 @@
       riippumattomia \(\RR^{3\times 1}\):ssa.
   \end{enumerate}
 \end{exercise}
+
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Merkitään \(A=[v_1\ v_2]\). Vektorit \(v_1\) ja
+      \(v_2\) ovat lineaarisesti riippumattomia täsmälleen silloin,
+      kun homogeenisen yhtälön \(Ax=0\) ainoa ratkaisu on \(x=0\).
+      Tehdään liitetylle matriisille rivioperaatiot:
+      \[
+        \begin{aligned}
+          [A\mid 0] &={}
+          \left[
+            \begin{array}{rr|r}
+              2 & 3 & 0 \\
+              1 & 2 & 0
+            \end{array}
+          \right]
+          \quad
+          \begin{array}{@{}l@{}}
+            \smash{\rowop{R_1\leftrightarrow R_2}} \\
+            {}
+          \end{array}
+          \\[1ex]
+          &\sim{}
+          \left[
+            \begin{array}{rr|r}
+              1 & 2 & 0 \\
+              2 & 3 & 0
+            \end{array}
+          \right]
+          \quad
+          \begin{array}{@{}l@{}}
+            {} \\
+            \smash{\rowop{-2R_1}}
+          \end{array}
+          \\[1ex]
+          &\sim{}
+          \left[
+            \begin{array}{rr|r}
+              1 & 2 & 0 \\
+              0 & -1 & 0
+            \end{array}
+          \right]
+          \quad
+          \begin{array}{@{}l@{}}
+            \smash{\rowop{+2R_2}} \\
+            {}
+          \end{array}
+          \\[1ex]
+          &\sim{}
+          \left[
+            \begin{array}{rr|r}
+              1 & 0 & 0 \\
+              0 & -1 & 0
+            \end{array}
+          \right]
+          \quad
+          \begin{array}{@{}l@{}}
+            {} \\
+            \smash{\rowop{\cdot(-1)}}
+          \end{array}
+          \\[1ex]
+          &\sim{}
+          \left[
+            \begin{array}{rr|r}
+              1 & 0 & 0 \\
+              0 & 1 & 0
+            \end{array}
+          \right].
+        \end{aligned}
+      \]
+      Koska rivioperaatiot säilyttävät ratkaisujoukon, yhtälön
+      \(Ax=0\) ainoa ratkaisu on \(x_1=x_2=0\). Siis \(v_1\)
+      ja \(v_2\) ovat lineaarisesti riippumattomia.
+
+    \item Merkitään \(B=[w_1\ w_2\ w_3]\) ja tutkitaan vastaavasti
+      homogeenista yhtälöä \(Bx=0\). Rivioperaatioilla saadaan
+      \[
+        \begin{aligned}
+          [B\mid 0] &={}
+          \left[
+            \begin{array}{rrr|r}
+              2 & 3 & 2 & 0 \\
+              1 & 2 & 2 & 0 \\
+              -2 & -2 & 0 & 0
+            \end{array}
+          \right]
+          \quad
+          \begin{array}{@{}l@{}}
+            \smash{\rowop{R_1\leftrightarrow R_2}} \\
+            {} \\
+            {}
+          \end{array}
+          \\[1ex]
+          &\sim{}
+          \left[
+            \begin{array}{rrr|r}
+              1 & 2 & 2 & 0 \\
+              2 & 3 & 2 & 0 \\
+              -2 & -2 & 0 & 0
+            \end{array}
+          \right]
+          \quad
+          \begin{array}{@{}l@{}}
+            {} \\
+            \smash{\rowop{-2R_1}} \\
+            \smash{\rowop{+2R_1}}
+          \end{array}
+          \\[1ex]
+          &\sim{}
+          \left[
+            \begin{array}{rrr|r}
+              1 & 2 & 2 & 0 \\
+              0 & -1 & -2 & 0 \\
+              0 & 2 & 4 & 0
+            \end{array}
+          \right]
+          \quad
+          \begin{array}{@{}l@{}}
+            \smash{\rowop{+2R_2}} \\
+            {} \\
+            \smash{\rowop{+2R_2}}
+          \end{array}
+          \\[1ex]
+          &\sim{}
+          \left[
+            \begin{array}{rrr|r}
+              1 & 0 & -2 & 0 \\
+              0 & -1 & -2 & 0 \\
+              0 & 0 & 0 & 0
+            \end{array}
+          \right]
+          \quad
+          \begin{array}{@{}l@{}}
+            {} \\
+            \smash{\rowop{\cdot(-1)}} \\
+            {}
+          \end{array}
+          \\[1ex]
+          &\sim{}
+          \left[
+            \begin{array}{rrr|r}
+              1 & 0 & -2 & 0 \\
+              0 & 1 & 2 & 0 \\
+              0 & 0 & 0 & 0
+            \end{array}
+          \right].
+        \end{aligned}
+      \]
+      Täten \(x_1=2x_3\) ja \(x_2=-2x_3\), ja \(x_3\) on vapaa.
+      Yhtälön \(Bx=0\) kaikki ratkaisut ovat siis
+      \[
+        x=t
+        \begin{bmatrix}2 \\ -2 \\ 1
+        \end{bmatrix},
+        \qquad t\in\RR.
+      \]
+      Valitsemalla \(t=1\) saadaan nollasta poikkeava ratkaisu eli
+      riippuvuusrelaatio
+      \[
+        2w_1-2w_2+w_3=0.
+      \]
+      Koska kertoimet eivät kaikki ole nollia, vektorit \(w_1\),
+      \(w_2\) ja \(w_3\) ovat lineaarisesti riippuvia.
+  \end{enumerate}
+\end{solution}
 
 \end{document}
