@@ -1,0 +1,332 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+\usepackage{tikz}
+\usepackage{needspace}
+
+\title{Analyysi II\\Harjoitus 3}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Analyysi II}{Harjoitus 3}
+
+\begin{exercise}
+  Olkoon \(f \colon A \to \RR\) aidosti kasvava funktio. Osoita, että \(f\)
+  on injektio.
+\end{exercise}
+
+\begin{solution}
+  Olkoot \(x, y \in A\) mielivaltaisia siten, että \(x \neq y\).
+  Tällöin joko \(x < y\) tai \(y < x\). Funktion \(f\) aidon kasvavuuden
+  nojalla ensimmäisessä tapauksessa \(f(x) < f(y)\) ja toisessa
+  \(f(y) < f(x)\). Molemmissa tapauksissa siis \(f(x) \neq f(y)\),
+  joten \(f\) on injektio.
+\end{solution}
+
+\begin{exercise}
+  Perustele kuvien avulla, että \(\cos(-x) = \cos x\),
+  \(\sin(-x) = -\sin x\) ja \(\cos(\pi/2 - x) = \sin x\).
+\end{exercise}
+
+\begin{solution}
+  Olkoon \(x \in \RR\). Yksikköympyrällä kulmaa \(x\) vastaava piste on
+  \(P_x = (\cos x, \sin x)\), kun kulma mitataan positiivisesta
+  vaaka-akselista vastapäivään.
+
+  Peilaus vaaka-akselin suhteen muuttaa kulman \(x\) kulmaksi \(-x\),
+  säilyttää vaakakoordinaatin ja vaihtaa pystykoordinaatin vastaluvukseen
+  (vasen kuva). Siksi
+  \[
+    P_{-x} = (\cos x, -\sin x).
+  \]
+  Toisaalta \(P_{-x} = (\cos(-x), \sin(-x))\), joten koordinaatteja
+  vertaamalla saadaan
+  \[
+    \cos(-x) = \cos x
+    \qquad\text{ja}\qquad
+    \sin(-x) = -\sin x.
+  \]
+
+  Peilaus suoran \(v = u\) suhteen vaihtaa pisteen koordinaatit keskenään
+  ja muuttaa kulman \(x\) kulmaksi \(\pi/2 - x\) (oikea kuva). Näin ollen
+  \[
+    P_{\pi/2-x} = (\sin x, \cos x).
+  \]
+  Tämän pisteen vaakakoordinaatti on määritelmän mukaan
+  \(\cos(\pi/2 - x)\), joten
+  \[
+    \cos(\pi/2 - x) = \sin x.
+  \]
+
+  \begin{center}
+    \begin{minipage}[t]{0.48\linewidth}
+      \centering
+      \begin{tikzpicture}[scale=1.8,>=stealth,
+        every node/.style={font=\small}]
+        \draw[->] (-1.2,0) -- (1.3,0) node[right] {\(u\)};
+        \draw[->] (0,-1.2) -- (0,1.25) node[above] {\(v\)};
+        \draw (0,0) circle (1);
+        \coordinate (P) at (35:1);
+        \coordinate (Q) at (-35:1);
+        \draw[thick] (P) -- (0,0) -- (Q);
+        \draw[dashed] (0,0.574) -- (P) -- (Q) -- (0,-0.574);
+        \draw[->] (0.4,0) arc[start angle=0,end angle=35,radius=0.4];
+        \node at (18:0.58) {\(x\)};
+        \draw[->] (0.4,0) arc[start angle=0,end angle=-35,radius=0.4];
+        \node at (-18:0.61) {\(-x\)};
+        \fill (P) circle (1pt) node[above right] {\(P_x\)};
+        \fill (Q) circle (1pt) node[below right] {\(P_{-x}\)};
+        \node[below left] at (0,0) {\(0\)};
+      \end{tikzpicture}
+
+      \small Peilaus vaaka-akselin suhteen.
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.48\linewidth}
+      \centering
+      \begin{tikzpicture}[scale=1.8,>=stealth,
+        every node/.style={font=\small}]
+        \draw[->] (-1.2,0) -- (1.3,0) node[right] {\(u\)};
+        \draw[->] (0,-1.2) -- (0,1.25) node[above] {\(v\)};
+        \draw (0,0) circle (1);
+        \draw[dashed] (-0.85,-0.85) -- (1.05,1.05)
+        node[above right] {\(v=u\)};
+        \coordinate (P) at (25:1);
+        \coordinate (Q) at (65:1);
+        \draw[thick] (P) -- (0,0) -- (Q);
+        \draw[dotted] (P) -- (Q);
+        \draw[->] (0.36,0) arc[start angle=0,end angle=25,radius=0.36];
+        \node at (12:0.53) {\(x\)};
+        \draw[->] (0.7,0) arc[start angle=0,end angle=65,radius=0.7];
+        \node[fill=white,inner sep=1pt] at (46:0.7)
+        {\(\frac{\pi}{2}-x\)};
+        \fill (P) circle (1pt) node[right] {\(P_x\)};
+        \fill (Q) circle (1pt) node[above,xshift=8pt] {\(P_{\pi/2-x}\)};
+        \node[below left] at (0,0) {\(0\)};
+      \end{tikzpicture}
+
+      \small Peilaus suoran \(v=u\) suhteen.
+    \end{minipage}
+  \end{center}
+
+  Kuvissa \(0 < x < \pi/2\), mutta samat peilaukset toimivat kaikissa
+  neljänneksissä ja myös koordinaattiakseleilla. Kulmat ymmärretään
+  täysien kierrosten tarkkuudella, joten perustelut pätevät kaikilla
+  \(x \in \RR\).
+\end{solution}
+
+\begin{exercise}
+  Tarkastellaan funktiota \(f \colon (1, 4) \to \RR\),
+  \[
+    f(x) = \frac{1}{x - 1} + \frac{1}{x - 4}.
+  \]
+  \begin{enumerate}[label=(\alph*)]
+    \item Osoita, että on olemassa sellainen piste \(z \in (1, 4)\), jolle
+      \(f(z) = \frac{1}{\pi}\).
+    \item Tutki, saavuttaako funktio \(f\) avoimella välillä \((1, 4)\)
+      pienimmän tai suurimman arvonsa.
+  \end{enumerate}
+\end{exercise}
+
+\Needspace{5\baselineskip}
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Vakiofunktio \(x \mapsto 1\) sekä funktiot \(x \mapsto x-1\)
+      ja \(x \mapsto x-4\) ovat polynomifunktioina jatkuvia (lause 4.1.14).
+      Koska \(x-1 \neq 0\) ja \(x-4 \neq 0\) kaikilla \(x \in (1, 4)\),
+      osamäärän ja summan jatkuvuuden nojalla \(f\) on jatkuva välillä
+      \((1, 4)\) (lause 4.1.12). Erityisesti \(f\) on jatkuva suljetulla
+      välillä \([2, 3] \subset (1, 4)\).
+
+      Huomataan, että
+      \[
+        f(2) = 1 - \frac{1}{2} = \frac{1}{2}
+        \qquad\text{ja}\qquad
+        f(3) = \frac{1}{2} - 1 = -\frac{1}{2}.
+      \]
+      Koska \(0 < 2 < \pi\), saadaan
+      \[
+        f(3) < \frac{1}{\pi} < f(2).
+      \]
+      Täten väliarvolauseen (Bolzanon lauseen korollaari) nojalla
+      on olemassa \(z \in (2, 3) \subset (1, 4)\) siten, että
+      \[
+        f(z) = \frac{1}{\pi}.
+      \]
+    \item Olkoon \(M \in \RR\) mielivaltainen ja valitaan
+      \(\delta = 1/(\abs{M}+1)\). Tällöin \(0 < \delta \leq 1\).
+      Kun \(1 < x < 1+\delta \leq 2\), on \(1/(x-4) > -1/2\), joten
+      \[
+        f(x) > \frac{1}{x-1} - \frac12
+        > \frac{1}{\delta} - \frac12
+        = \abs{M} + \frac12 > M.
+      \]
+      Siis \(\lim_{x \to 1^+} f(x) = \infty\).
+
+      Vastaavasti, kun \(3 \leq 4-\delta < x < 4\), on
+      \(1/(x-1) < 1/2\), joten
+      \[
+        f(x) < \frac12 + \frac{1}{x-4}
+        < \frac12 - \frac{1}{\delta}
+        = -\abs{M} - \frac12 < M.
+      \]
+      Siis \(\lim_{x \to 4^-} f(x) = -\infty\).
+
+      Oletetaan, että \(f\) saavuttaa suurimman arvonsa pisteessä
+      \(t \in (1, 4)\). Ensimmäisen raja-arvon nojalla on kuitenkin olemassa
+      \(x \in (1, 4)\), jolle \(f(x) > f(t)\). Tämä on ristiriita.
+
+      Oletetaan sitten, että \(f\) saavuttaa pienimmän arvonsa pisteessä
+      \(s \in (1, 4)\). Jälkimmäisen raja-arvon nojalla on kuitenkin olemassa
+      \(x \in (1, 4)\), jolle \(f(x) < f(s)\).
+      Tämäkin on ristiriita. Siis \(f\) ei saavuta suurinta eikä pienintä
+      arvoaan välillä \((1, 4)\).
+  \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+  Olkoon \(f \colon \RR \to \RR\),
+  \[
+    f(x) = \frac{\cos x}{1 + \abs{x}}.
+  \]
+  Osoita, että funktio \(f\) saavuttaa suurimman ja pienimmän arvonsa
+  joukossa \(\RR\).
+\end{exercise}
+
+\begin{solution}
+  Kosinifunktio on jatkuva joukossa \(\RR\). Epäyhtälö
+  \[
+    \bigl|\abs{x}-\abs{y}\bigr| \leq \abs{x-y}
+    \qquad (x,y \in \RR)
+  \]
+  osoittaa, että myös itseisarvofunktio on jatkuva. Näin ollen
+  \(x \mapsto 1+\abs{x}\) on jatkuva ja kaikkialla positiivinen,
+  joten osamäärän jatkuvuuden nojalla \(f\) on jatkuva joukossa \(\RR\).
+
+  Olkoon \(\varepsilon > 0\) ja valitaan
+  \(H = \maxset{1,1/\varepsilon}\). Kun \(\abs{x} > H\), saadaan
+  \[
+    \abs{f(x)} = \frac{\abs{\cos x}}{1+\abs{x}}
+    \leq \frac{1}{1+\abs{x}}
+    < \frac{1}{\abs{x}} < \varepsilon.
+  \]
+  Täten \(\lim_{x \to \infty} f(x) = \lim_{x \to -\infty} f(x) = 0\).
+
+  Huomataan, että
+  \[
+    f(0) = 1
+    \qquad\text{ja}\qquad
+    f(\pi) = -\frac{1}{1+\pi} < 0.
+  \]
+  Edellisten raja-arvojen nojalla voidaan valita \(m < 0\) ja \(M > \pi\)
+  siten, että \(\abs{f(x)} < 1/(1+\pi)\), kun \(x < m\) tai \(x > M\).
+  Näillä \(x\):n arvoilla siis
+  \[
+    f(\pi) = -\frac{1}{1+\pi}
+    < f(x) < \frac{1}{1+\pi} < f(0).
+  \]
+
+  Koska \(f\) on jatkuva suljetulla ja rajoitetulla välillä \([m,M]\),
+  Weierstrassin min-max-lauseen nojalla on olemassa \(a,b \in [m,M]\)
+  siten, että
+  \[
+    f(a) \leq f(x) \leq f(b)
+    \qquad\text{kaikilla } x \in [m,M].
+  \]
+  Lisäksi \(0,\pi \in [m,M]\), joten välin ulkopuolella pätee
+  \[
+    f(a) \leq f(\pi) < f(x) < f(0) \leq f(b).
+  \]
+  Siis \(f\) saavuttaa pienimmän arvonsa pisteessä \(a\) ja suurimman
+  arvonsa pisteessä \(b\) koko joukossa \(\RR\).
+\end{solution}
+
+\begin{exercise}
+  Olkoon \(f \colon (0, \infty) \to \RR\), \(f(x) = \frac{1}{x}\).
+  Osoita, että funktio \(f\) on tasaisesti jatkuva jokaisella välillä
+  \([r, \infty)\), \(r > 0\), mutta se ei ole tasaisesti jatkuva välillä
+  \((0, \infty)\).
+\end{exercise}
+
+\begin{solution}
+  Olkoon \(r > 0\) ja \(\varepsilon > 0\) mielivaltaisia.
+  Valitaan \(\delta = r^2\varepsilon > 0\).
+  Kun \(x,y \in [r, \infty)\), niin selvästi \(x,y \geq r\), joten
+  \(xy \geq r^2\). Täten
+  \[
+    \abs{f(x) - f(y)} = \frac{\abs{x - y}}{xy} \leq \frac{\abs{x -
+    y}}{r^2} < \varepsilon,
+  \]
+  kaikilla \(x,y \in [r, \infty)\), joilla \(\abs{x - y} < \delta\). Täten
+  \(f\) on tasaisesti jatkuva välillä \([r, \infty)\).
+  Koska \(r\) oli mielivaltainen, \(f\) on tasaisesti jatkuva välillä
+  \([r, \infty)\) kaikilla \(r > 0\).
+
+  Oletetaan, että \(f\) on tasaisesti jatkuva välillä \((0, \infty)\).
+  Tällöin on olemassa \(\delta > 0\) siten, että
+  \[
+    \abs{f(x) - f(y)} < \delta
+  \]
+  kaikilla \(x,y \in (0, \infty)\) joilla \(\abs{x - y} < \delta\).
+  Valitaan \(n > 1/\delta\) ja asetetaan
+  \[
+    x = \frac{1}{n} \quad \text{ja} \quad y = \frac{1}{n + 1}.
+  \]
+  Tällöin
+  \[
+    \abs{x - y} = \frac{1}{n(n + 1)} < \frac{1}{n} < \delta,
+  \]
+  mutta
+  \[
+    \abs{f(x) - f(y)} = \abs{n - (n + 1)} = 1 \geq \frac{1}{2}.
+  \]
+  Olemme löytäneet halutin ristiriidan, joten on todettava, että
+  \(f\) ei ole tasaisesti jatkuva välillä \((0, \infty)\).
+\end{solution}
+
+\begin{exercise}
+  Olkoon \(f \colon \RR \to \RR\) jatkuva funktio, jolle \(0 < f(x) < 1\)
+  kaikilla \(x \in \RR\). Määritellään funktio \(g \colon \RR \to \RR\)
+  asettamalla
+  \[
+    g(x) = \frac{f(x)}{1 + x^2}.
+  \]
+  Osoita, että funktio \(g\) saavuttaa joukossa \(\RR\) suurimman arvonsa.
+\end{exercise}
+
+\begin{solution}
+  Funktio \(x \mapsto 1+x^2\) on polynomifunktiona jatkuva ja
+  kaikkialla positiivinen. Koska myös \(f\) on jatkuva, osamäärän
+  jatkuvuuden nojalla \(g\) on jatkuva joukossa \(\RR\).
+
+  Olkoon \(\varepsilon > 0\) ja valitaan
+  \(H = \maxset{1,1/\varepsilon}\). Kun \(\abs{x} > H\), saadaan
+  \[
+    \abs{g(x)} = \frac{f(x)}{1+x^2}
+    < \frac{1}{1+x^2} < \frac{1}{\abs{x}} < \varepsilon.
+  \]
+  Täten \(\lim_{x \to \infty} g(x) = \lim_{x \to -\infty} g(x) = 0\).
+
+  Huomataan, että \(g(0) = f(0) > 0\). Edellisten raja-arvojen nojalla
+  voidaan valita \(m < 0\) ja \(M > 0\) siten, että \(\abs{g(x)} < g(0)\),
+  kun \(x < m\) tai \(x > M\). Tällöin erityisesti \(g(x) < g(0)\).
+
+  Koska \(g\) on jatkuva suljetulla ja rajoitetulla välillä \([m,M]\),
+  Weierstrassin min-max-lauseen nojalla on olemassa \(s \in [m,M]\)
+  siten, että
+  \[
+    g(s) \geq g(x) \qquad \text{kaikilla } x \in [m, M].
+  \]
+  Lisäksi \(0 \in [m,M]\), joten välin ulkopuolella pätee
+  \[
+    g(s) \geq g(0) > g(x).
+  \]
+  Siis \(g\) saavuttaa suurimman arvonsa pisteessä \(s\) koko joukossa
+  \(\RR\).
+\end{solution}
+
+\end{document}
