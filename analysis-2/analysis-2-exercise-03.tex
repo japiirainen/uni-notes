@@ -253,38 +253,38 @@
 \end{exercise}
 
 \begin{solution}
-  Olkoon \(r > 0\) ja \(\varepsilon > 0\) mielivaltaisia.
+  Olkoot \(r > 0\) ja \(\varepsilon > 0\) mielivaltaisia.
   Valitaan \(\delta = r^2\varepsilon > 0\).
-  Kun \(x,y \in [r, \infty)\), niin selvästi \(x,y \geq r\), joten
-  \(xy \geq r^2\). Täten
+  Kun \(x,y \in [r,\infty)\) ja \(\abs{x-y} < \delta\), on
+  \(xy \geq r^2\), joten
   \[
-    \abs{f(x) - f(y)} = \frac{\abs{x - y}}{xy} \leq \frac{\abs{x -
-    y}}{r^2} < \varepsilon,
+    \abs{f(x)-f(y)} = \frac{\abs{x-y}}{xy}
+    \leq \frac{\abs{x-y}}{r^2}
+    < \frac{\delta}{r^2} = \varepsilon.
   \]
-  kaikilla \(x,y \in [r, \infty)\), joilla \(\abs{x - y} < \delta\). Täten
-  \(f\) on tasaisesti jatkuva välillä \([r, \infty)\).
-  Koska \(r\) oli mielivaltainen, \(f\) on tasaisesti jatkuva välillä
-  \([r, \infty)\) kaikilla \(r > 0\).
+  Siis \(f\) on tasaisesti jatkuva välillä \([r,\infty)\) kaikilla
+  \(r > 0\).
 
   Oletetaan, että \(f\) on tasaisesti jatkuva välillä \((0, \infty)\).
-  Tällöin on olemassa \(\delta > 0\) siten, että
+  Valitaan \(\varepsilon_0 = 1/2\). Tällöin on olemassa \(\delta > 0\)
+  siten, että
   \[
-    \abs{f(x) - f(y)} < \delta
+    \abs{f(x)-f(y)} < \varepsilon_0
   \]
-  kaikilla \(x,y \in (0, \infty)\) joilla \(\abs{x - y} < \delta\).
-  Valitaan \(n > 1/\delta\) ja asetetaan
+  kaikilla \(x,y \in (0,\infty)\), joilla \(\abs{x-y} < \delta\).
+  Valitaan \(n \in \NNone\) siten, että \(n > 1/\delta\), ja asetetaan
   \[
     x = \frac{1}{n} \quad \text{ja} \quad y = \frac{1}{n + 1}.
   \]
-  Tällöin
+  Tällöin \(x,y > 0\) ja
   \[
     \abs{x - y} = \frac{1}{n(n + 1)} < \frac{1}{n} < \delta,
   \]
   mutta
   \[
-    \abs{f(x) - f(y)} = \abs{n - (n + 1)} = 1 \geq \frac{1}{2}.
+    \abs{f(x)-f(y)} = \abs{n-(n+1)} = 1 > \varepsilon_0.
   \]
-  Olemme löytäneet halutin ristiriidan, joten on todettava, että
+  Tämä on ristiriita. Siis
   \(f\) ei ole tasaisesti jatkuva välillä \((0, \infty)\).
 \end{solution}
 
