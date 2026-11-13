@@ -1,0 +1,78 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\usepackage{tikz}
+
+\title{Analyysi II\\Ryhmätyö 3 ratkaisut}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Analyysi II}{Ryhmätyö 3 ratkaisut}
+
+\begin{exercise}[Protter--Morrey, lause 13.2 reaaliluvuilla]
+  Käy huolellisesti läpi kiintopistelauseen 13.2 todistus ja kirjoita
+  siitä mahdollisimman selkeä esitys avaruudessa \(\RR\), jossa etäisyys
+  on \(d(x,y)=\lvert x-y\rvert\). Lisää tarpeelliset selitykset;
+  voit myös muokata kirjan todistusta. Todistettava väite on seuraava:
+
+  Olkoon \(f\colon\RR\to\RR\) kuvaus ja olkoon \(k\in(0,1)\) siten, että
+  \[
+    \lvert f(x)-f(y)\rvert\leq k\lvert x-y\rvert
+    \qquad\text{kaikilla }x,y\in\RR.
+  \]
+  Tällöin on olemassa täsmälleen yksi \(x_*\in\RR\), jolle
+  \(f(x_*)=x_*\). Lisäksi jokaisella alkuarvolla \(x_1\in\RR\) jono,
+  joka määritellään asettamalla
+  \[
+    x_{n+1}=f(x_n),\qquad n=1,2,\ldots,
+  \]
+  suppenee pisteeseen \(x_*\).
+\end{exercise}
+
+\begin{exercise}[Protter--Morrey, luku 13.1, tehtävä 8]
+  Olkoon \(I=[0,\infty)\) ja \(f\colon I\to I\),
+  \[
+    f(x)=\sqrt{1+x^2}.
+  \]
+  Osoita, että
+  \[
+    \lvert f(x)-f(y)\rvert<\lvert x-y\rvert
+    \qquad\text{kaikilla }x,y\in I,\ x\neq y,
+  \]
+  mutta funktiolla \(f\) ei ole kiintopistettä välillä \(I\).
+  Päättele, ettei lause 13.2 päde, jos sen oletus \(0<k<1\)
+  korvataan ehdolla \(k=1\).
+\end{exercise}
+
+\begin{exercise}[Protter--Morrey, luku 13.1, tehtävä 9]
+  Todista lauseen 13.2 seuraus seuraavassa täsmällisessä muodossa:
+
+  Olkoot \(a,b\in\RR\), \(a<b\), ja \(I=[a,b]\).
+  Olkoon \(f\colon I\to I\) jatkuva välillä \(I\) ja derivoituva
+  välillä \((a,b)\). Oletetaan, että on olemassa vakio \(k\in(0,1)\),
+  jolle
+  \[
+    \lvert f'(x)\rvert\leq k
+    \qquad\text{kaikilla }x\in(a,b).
+  \]
+  Tällöin on olemassa täsmälleen yksi \(x_*\in I\), jolle
+  \(f(x_*)=x_*\).
+\end{exercise}
+
+\begin{exercise}[Protter--Morrey, luku 13.1, tehtävä 10]
+  Olkoon \(f\colon\RR^2\to\RR^2\) kuvaus, joka määritellään asettamalla
+  \[
+    f(x,y)=\left(\frac14x+\frac13y-2,\;
+    \frac15x-\frac13y+3\right).
+  \]
+  Osoita lauseen 13.2 avulla, että kuvauksella \(f\) on kiintopiste,
+  eli on olemassa \((x_*,y_*)\in\RR^2\), jolle
+  \(f(x_*,y_*)=(x_*,y_*)\).
+\end{exercise}
+
+\end{document}
