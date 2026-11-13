@@ -34,6 +34,43 @@
   suppenee pisteeseen \(x_*\).
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(x_0 \in \RR\) ja asetetaan \(x_{n + 1} = f(x_n)\), missä
+  \(n \in \NN\). Tällöin, kun \(n \geq 1\) saadaan
+  \[
+    \abs{x_n - x_{n + 1}} = \abs{f(x_n) - f(x_{n + 1})} \leq
+    k\abs{x_n - x_{n - 1}}.
+  \]
+  Yleisemmin, induktiolla saamme
+  \[
+    \abs{x_{n + 1} - x_n} \leq k^{n}\abs{x_1 - x_0}, \quad
+    \text{kakilla } n \in \NN.
+  \]
+  Nyt, jos \(n < m\) saadaan
+  \[
+    \begin{aligned}
+      \abs{x_n - x_m} &\leq \sum_{i = n + 1}^{m} \abs{x_i - x_{i - 1}} \\
+      &\leq (k^n + k^{n + 1} \cdots + k^{m - 1})\abs{x_1 - x_0}.
+    \end{aligned}
+  \]
+  Saadaan termille \(k^n + k^{n + 1} \cdots + k^{m - 1}\) yläraja geometrisesta
+  sarjasta \(\sum_{t = 0}^{\infty} k^t = (1 - k)^{-1}\).
+  Täten
+  \[
+    \abs{x_n - x_m} \leq (1 - k)^{-1}\abs{x_1 - x_0}k^n.
+  \]
+  Täten \((x_n)\) on Cauchy jono, joten saadaan \(\lim_{n \to \infty}
+  x_n = x_0\)
+  jollekkin \(x_ \in \RR\). Ehdosta
+  \[
+    \abs{f(x) - f(y)} \leq k\abs{x - y}
+  \]
+  seuraa, että \(f\) on tasaisesti jatkuva. Täten
+  \[
+    f(x_0) = \lim_{n \to \infty} f(x_n) = \lim_{n \to \infty} x_{n + 1} = x_0.
+  \]
+\end{solution}
+
 \begin{exercise}[Protter--Morrey, luku 13.1, tehtävä 8]
   Olkoon \(I=[0,\infty)\) ja \(f\colon I\to I\),
   \[
