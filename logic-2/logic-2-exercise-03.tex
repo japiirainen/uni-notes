@@ -206,9 +206,53 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(\mathcal M\) mielivaltainen malli, \(D = \dom(\mathcal M)\)
+  ja \(s\) sen tulkintafunktio. Mallin perusjoukko \(D\) on epätyhjä.
+  Kaikilla \(a,b \in D\) pätee
+  \[
+    s(a/x_i)(b/x_i) = s(b/x_i),
+  \]
+  sillä jälkimmäinen päivitys korvaa muuttujan \(x_i\) aiemman arvon.
+  Kvanttorien totuusmääritelmistä saadaan siis:
+  \begin{enumerate}[label=(\alph*)]
+    \item
+      \[
+        \begin{aligned}
+          &\mathcal M \models_s \forall x_i\exists x_iA \\
+          &\iff (\forall a \in D)(\exists b \in D)\;
+          \mathcal M \models_{s(a/x_i)(b/x_i)} A \\
+          &\iff (\forall a \in D)(\exists b \in D)\;
+          \mathcal M \models_{s(b/x_i)} A \\
+          &\iff (\exists b \in D)\;
+          \mathcal M \models_{s(b/x_i)} A \\
+          &\iff \mathcal M \models_s \exists x_iA.
+        \end{aligned}
+      \]
+
+    \item
+      \[
+        \begin{aligned}
+          &\mathcal M \models_s \exists x_i\forall x_iA \\
+          &\iff (\exists a \in D)(\forall b \in D)\;
+          \mathcal M \models_{s(a/x_i)(b/x_i)} A \\
+          &\iff (\exists a \in D)(\forall b \in D)\;
+          \mathcal M \models_{s(b/x_i)} A \\
+          &\iff (\forall b \in D)\;
+          \mathcal M \models_{s(b/x_i)} A \\
+          &\iff \mathcal M \models_s \forall x_iA.
+        \end{aligned}
+      \]
+  \end{enumerate}
+  Kummassakin kohdassa ehto \(\mathcal M \models_{s(b/x_i)} A\) on
+  riippumaton alkiosta \(a\), joten ulompi kvanttori voidaan poistaa,
+  koska \(D \ne \varnothing\). Näin molemmat loogiset ekvivalenssit
+  pätevät.\qedhere
+\end{solution}
+
 \begin{exercise}
   Jos \(A\) on \(L\)-kaava, niin \(A\):n \emph{universaalisulkeuma} on
-  lause, joka saadaan, kun \(A\):n kaikki vapaat muuttujat kvaintifioidaan
+  lause, joka saadaan, kun \(A\):n kaikki vapaat muuttujat kvantifioidaan
   universaalikvanttoreilla. Esim. kaavan \(R(x_0,x_1) \land P(x_0)\)
   universaalisulkeuma on lause
   \(\forall x_0\forall x_1(R(x_0,x_1) \land P(x_0))\).
@@ -219,6 +263,52 @@
       universaalisulkeumansa kanssa. Perustele.
   \end{enumerate}
 \end{exercise}
+
+\begin{solution}
+  \textbf{(a)} Olkoon \(\mathcal M\) mielivaltainen \(L\)-malli.
+  Merkitään kaavan \(A\) kaikkia vapaita muuttujia
+  \(x_1,\ldots,x_k\) ja sen universaalisulkeumaa
+  \(\overline A = \forall x_1\cdots\forall x_k A\).
+  Jos vapaita muuttujia ei ole, niin \(\overline A = A\) ja väite on selvä.
+
+  Oletetaan ensin, että \(\mathcal M \models A\), eli jokainen
+  \(\mathcal M\)-tulkintafunktio toteuttaa kaavan \(A\).
+  Olkoon \(s\) mielivaltainen tulkintafunktio. Kaikilla
+  \(a_1,\ldots,a_k \in \dom(\mathcal M)\) myös
+  \(s(a_1/x_1)\cdots(a_k/x_k)\) on tulkintafunktio, joten
+  \[
+    \mathcal M \models_{s(a_1/x_1)\cdots(a_k/x_k)} A.
+  \]
+  Universaalikvanttorin totuusmääritelmän nojalla
+  \(\mathcal M \models_s \overline A\). Koska \(s\) oli mielivaltainen,
+  saadaan \(\mathcal M \models \overline A\).
+
+  Oletetaan kääntäen, että \(\mathcal M \models \overline A\), ja olkoon
+  \(s\) mielivaltainen tulkintafunktio. Tällöin
+  \(\mathcal M \models_s \forall x_1\cdots\forall x_k A\), joten
+  valitsemalla \(a_j = s(x_j)\) kaikilla \(j=1,\ldots,k\) saadaan
+  \[
+    \mathcal M \models_{s(a_1/x_1)\cdots(a_k/x_k)} A.
+  \]
+  Koska \(s(a_1/x_1)\cdots(a_k/x_k) = s\), tästä seuraa
+  \(\mathcal M \models_s A\). Tulkintafunktion \(s\) mielivaltaisuuden
+  nojalla \(\mathcal M \models A\). Siis
+  \(\mathcal M \models A \iff \mathcal M \models \overline A\).
+
+  \medskip
+  \textbf{(b)} Valitaan \(A = P(x)\), jonka universaalisulkeuma on
+  \(\overline A = \forall xP(x)\). Tarkastellaan mallia \(\mathcal M\), jossa
+  \[
+    \dom(\mathcal M) = \{0,1\},
+    \qquad P^{\mathcal M} = \{0\},
+  \]
+  ja tulkintafunktiota \(s\), jolla \(s(x)=0\). Tällöin
+  \(\mathcal M \models_s P(x)\), koska \(0 \in P^{\mathcal M}\), mutta
+  \(\mathcal M \not\models_s \forall xP(x)\), koska
+  \(1 \notin P^{\mathcal M}\). Kaavoilla on siis eri totuusarvot samassa
+  mallissa samalla tulkintafunktiolla, joten ne eivät ole loogisesti
+  ekvivalentteja.\qedhere
+\end{solution}
 
 \begin{exercise}
   Todista materiaalin lause 4.7: Jos \(s\) ja \(s'\) ovat kaksi
@@ -240,6 +330,65 @@
   \end{quote}
 \end{exercise}
 
+\begin{solution}
+  Todistetaan väite rakenneinduktiolla. Kiinnitetään malli \(\mathcal M\),
+  merkitään \(D=\dom(\mathcal M)\) ja oletetaan, että
+  \(s|_{\operatorname{FV}(A)}=s'|_{\operatorname{FV}(A)}\).
+  Induktioväite koskee kaikkia tällaisia tulkintafunktiopareja.
+
+  \textbf{Atomikaavat.} Jos \(A=R(t_1,\ldots,t_n)\), niin kaikki termien
+  \(t_j\) muuttujat ovat vapaita kaavassa \(A\). Annetun lemman nojalla
+  \(t_j^{\mathcal M}\langle s\rangle=t_j^{\mathcal M}\langle s'\rangle\)
+  kaikilla \(j\). Sama alkiojono siis kuuluu relaatioon
+  \(R^{\mathcal M}\) kummallakin tulkinnalla tai ei kummallakaan.
+  Yhtälön \(t_1=t_2\) tapauksessa samat termiarvot antavat vastaavasti
+  saman totuusarvon yhtäsuuruudelle.
+
+  \textbf{Konnektiivit.} Esimerkiksi tapauksessa \(A=B\land C\)
+  kaavojen \(B,C\) vapaat muuttujat ovat vapaita myös kaavassa \(A\).
+  Induktio-oletuksen nojalla sekä \(B\):n että \(C\):n totuusarvo on
+  sama tulkinnoilla \(s,s'\), joten myös niiden konjunktion totuusarvo
+  on sama. Negaation ja muiden konnektiivien tapaukset seuraavat
+  samalla tavalla induktio-oletuksesta ja totuustaulukoista.
+
+  \textbf{Kvanttorit.} Olkoon \(A=QxB\), missä
+  \(Q\in\{\exists,\forall\}\). Tällöin
+  \(\operatorname{FV}(A)=\operatorname{FV}(B)\setminus\{x\}\).
+  Siksi kaikilla \(a\in D\) pätee
+  \[
+    s(a/x)|_{\operatorname{FV}(B)}
+    =s'(a/x)|_{\operatorname{FV}(B)}:
+  \]
+  molemmat antavat \(x\):lle arvon \(a\), ja muiden vapaiden muuttujien
+  arvot yhtyvät oletuksen nojalla.
+  Siten induktio-oletuksen nojalla kaikilla \(a\in D\)
+  \[
+    \mathcal M\models_{s(a/x)}B
+    \iff\mathcal M\models_{s'(a/x)}B.
+  \]
+  Kvanttorien totuusmääritelmistä saadaan
+  \[
+    \begin{aligned}
+      \mathcal M\models_s\exists xB
+      &\iff (\exists a\in D)\;\mathcal M\models_{s(a/x)}B \\
+      &\iff (\exists a\in D)\;\mathcal M\models_{s'(a/x)}B \\
+      &\iff\mathcal M\models_{s'}\exists xB,
+    \end{aligned}
+  \]
+  sekä
+  \[
+    \begin{aligned}
+      \mathcal M\models_s\forall xB
+      &\iff (\forall a\in D)\;\mathcal M\models_{s(a/x)}B \\
+      &\iff (\forall a\in D)\;\mathcal M\models_{s'(a/x)}B \\
+      &\iff\mathcal M\models_{s'}\forall xB.
+    \end{aligned}
+  \]
+  Väite pätee siis rakenneinduktion nojalla kaikilla kaavoilla.\qedhere
+\end{solution}
+
+\newpage
+
 \begin{exercise}
   Minkä joukon kaava
   \(\exists x_1\exists x_2((E(x_0,x_1) \land E(x_1,x_2)) \land \neg x_0 = x_2)\)
@@ -249,11 +398,44 @@
   \end{center}
 \end{exercise}
 
+\begin{solution}
+  Merkitään kaavaa \(\varphi(x_0)\), vasemman komponentin päätekärkiä
+  \(u,w\) ja niiden yhteistä naapuria \(v\). Kaava toteutuu kärjellä,
+  jos siitä on kahden särmän kulku eri kärkeen. Kärjille \(u,w\)
+  todistajiksi kelpaavat vastaavasti \((x_1,x_2)=(v,w)\) ja \((v,u)\).
+  Kaikista muista kärjistä jokainen kahden särmän kulku palaa
+  lähtökärkeen. Kaavan määrittelemä joukko on siis
+  \[
+    \boxed{\varphi^{\mathcal M}=\{u,w\}},
+  \]
+  eli vasemman komponentin kaksi päätekärkeä.\qedhere
+\end{solution}
+
 \begin{exercise}
   Alkio \(a\) on määriteltävä mallissa \(\mathcal M\) jos joukko \(\{a\}\)
   on määriteltävä \(\mathcal M\):ssä. Osoita, että \(2\) on määriteltävä
   mallissa \((\NN,<)\), missä \(<\) on luonnollisten lukujen luonnollinen
   järjestys.
 \end{exercise}
+
+\begin{solution}
+  Olkoon \(\mathcal M=(\NN,<)\), missä \(\NN=\{0,1,2,\ldots\}\).
+  Tarkastellaan kaavaa
+  \[
+    \varphi(x)=\exists y\exists z\Bigl(
+      y<z\land z<x\land
+      \forall w\bigl(w<x\to(w=y\lor w=z)\bigr)
+    \Bigr).
+  \]
+  Ehto \(y<z<x\) takaa, että \(x\):ää pienempiä alkioita on vähintään
+  kaksi, ja universaalikvantifioitu ehto, että muita ei ole. Siten
+  \[
+    \mathcal M\models_s\varphi(x)
+    \iff \bigl|\{n\in\NN:n<s(x)\}\bigr|=2
+    \iff s(x)=2.
+  \]
+  Siis \(\varphi\) määrittelee joukon \(\{2\}\), joten \(2\) on
+  määriteltävä mallissa \(\mathcal M\).\qedhere
+\end{solution}
 
 \end{document}
