@@ -22,6 +22,35 @@
   ensimmäinen numero. Selvitä omistajan syntymävuosi.
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(x \in \{0,\ldots,9\}\) puuttuva numero ja
+  \(N = 220707314 + 10^4x\). Laskemalla saadaan, että
+  \[
+    \begin{aligned}
+      N &\equiv 220707314 + 10^4x \\
+      &\equiv 220\cdot 1000^2 + 707\cdot 1000 + 314 + 10^4x \\
+      &\equiv 440 + 8\cdot 707 + 314 + 10^4x \\
+      &\equiv 10 + 200 + 10^4x \\
+      &\equiv 24 + 10^4x \pod{31}.
+    \end{aligned}
+  \]
+  Lisäksi tiedetään, että \(N \equiv 29 \pod{31}\). Saadaan
+  \[
+    24 + 10^4x \equiv 29 \pod{31} \iff 10^4x \equiv 5 \pod{31} \iff
+    2000x \equiv 1 \pod{31}.
+  \]
+  Viimeisessä vaiheessa jaettiin luvulla \(5\), mikä on sallittua, koska
+  \(\syt(5,31)=1\). Koska \(2000 = 31\cdot 64 + 16\) ja
+  \(2\cdot 16 = 32 \equiv 1 \pod{31}\), luvun \(2000\) käänteisluku
+  modulo \(31\) on \(2\). Kertomalla kongruenssi puolittain luvulla
+  \(2\) saadaan
+  \[
+    x \equiv 2 \pod{31}.
+  \]
+  Koska \(x\) on numero, saadaan \(x=2\). Täten henkilötunnus on
+  \texttt{220727-314X}, joten omistajan syntymävuosi on \(1927\).
+\end{solution}
+
 \begin{exercise}
   \leavevmode\par
   \begin{enumerate}[label=(\alph*), nosep]
