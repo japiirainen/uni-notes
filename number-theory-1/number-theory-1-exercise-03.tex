@@ -1,0 +1,95 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Lukuteoria I\\Harjoitus 3}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Lukuteoria I}{Harjoitus 3}
+
+\begin{exercise}
+  Henkilötunnuksen kuusi ensimmäistä numeroa ilmaisevat syntymäajan muodossa
+  ppkkvv, ja välimerkki \texttt{-} tarkoittaa 1900-lukua. Tarkistusmerkki
+  määräytyy syntymäajan ja kolminumeroisen yksilönumeron muodostaman
+  yhdeksännumeroisen luvun jakojäännöksestä modulo \(31\); merkkiä
+  \texttt{X} vastaa jakojäännös \(29\).
+  Henkilötunnuksesta \texttt{2207x7-314X} on pyyhkiytynyt vuosiluvun
+  ensimmäinen numero. Selvitä omistajan syntymävuosi.
+\end{exercise}
+
+\begin{exercise}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Olkoon luvun \(n\) alkutekijähajotelma
+      \(n = p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_k^{\alpha_k}\).
+      Osoita, että
+      \[
+        d(n) = \prod_{j=1}^{k}(\alpha_j + 1).
+      \]
+    \item Keksi esimerkki kokonaisluvusta \(n\), jolla on tasan \(20\)
+      positiivista tekijää, ja laske \(\sigma(n)\).
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Olkoot positiiviset kokonaisluvut \(m_1, m_2, \ldots, m_k\)
+      pareittain yhteistekijättömiä eli \(\syt(m_i, m_j) = 1\) aina, kun
+      \(i \ne j\). Olkoon
+      \[
+        x_0 = a_1M_1y_1 + a_2M_2y_2 + \cdots + a_kM_ky_k,
+      \]
+      missä \(M = m_1m_2\cdots m_k\), \(M_j = M/m_j\) ja \(y_j\)
+      on luvun \(M_j\) käänteisluku modulo \(m_j\) eli
+      \(y_jM_j \equiv 1 \pmod{m_j}\). Osoita, että \(x_0\) on
+      kongruenssiyhtälöryhmän
+      \[
+        \begin{cases}
+          x \equiv a_1 \pmod{m_1} \\
+          x \equiv a_2 \pmod{m_2} \\
+          \vdots \\
+          x \equiv a_k \pmod{m_k}
+        \end{cases}
+      \]
+      ratkaisu.
+    \item Ratkaise kongruenssiyhtälöryhmä
+      \[
+        \begin{cases}
+          x \equiv 3 \pmod{6} \\
+          2x \equiv 3 \pmod{5} \\
+          x \equiv -2 \pmod{7}.
+        \end{cases}
+      \]
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Määritä luvun \(100!\) jakojäännös jaettaessa luvulla \(103\).
+\end{exercise}
+
+\begin{exercise}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Tutki, ovatko luvut \(2016\), \(4675\) ja \(8128\) täydellisiä
+      lukuja.
+    \item Anna esimerkki sellaisesta parittomasta luvusta \(n\), että
+      luentokalvojen (12.11.) lauseiden 4 ja 5 avulla ei voi suoraan
+      todistaa, että \(n\) ei ole täydellinen luku.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Olkoon \(n\) pariton täydellinen luku. Osoita, että \(n\) ei ole
+  jaollinen luvulla \(105\).
+
+  \emph{Vinkki:} Luentomonisteen lauseesta 60 ja lausekkeen
+  \(\sigma(n)/n\) arvioimisesta voisi olla hyötyä.
+\end{exercise}
+
+\end{document}
