@@ -24,4 +24,40 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Funktio \(g\) on polynomifunktiona jatkuvasti derivoituva välillä
+      \(I\). Kun \(x \in I\), niin \(0 \leq x^4 \leq 1\), joten
+      \[
+        \frac{5}{8} \leq g^{\prime}(x)
+        = \frac{3}{4} - \frac{1}{8}x^4 \leq \frac{3}{4} < 1.
+      \]
+      Siis \(g\) on kasvava. Koska \(g(0) = \frac{1}{4}\) ja
+      \(g(1) = \frac{39}{40}\), saadaan
+      \[
+        g(I) \subseteq \left[\frac{1}{4}, \frac{39}{40}\right] \subseteq I.
+      \]
+      Lisäksi \(\abs{g^{\prime}(x)} \leq \frac{3}{4} < 1\) kaikilla
+      \(x \in I\). Täten kiintopistelauseen korollaarin nojalla
+      on olemassa sellainen \(x_* \in I\), että \(g(x_*) = x_*\). Täten
+      \(x_* = f(x_*) + x_*\), eli \(f(x_*) = 0\). On osoitettu, että
+      funktiolla \(f\) on nollakohta (nimittäin \(x_*\)) välillä \(I\).
+    \item Valitaan alkuarvoksi \(x_0 = 0\) ja määritellään iteraatio
+      \[
+        x_{n+1} = g(x_n)
+        = \frac{1}{4} + \frac{3}{4}x_n - \frac{1}{40}x_n^5,
+        \qquad n = 0, 1, 2, \ldots.
+      \]
+      Kohdan (a) ja kiintopistelauseen nojalla jono \((x_n)\) suppenee
+      kohti kiintopistettä \(x_*\), joka on funktion \(f\) nollakohta.
+      Kolme ensimmäistä iteraatiolla saatavaa termiä ovat
+      \begin{align*}
+        x_1 &= g(0) = \frac{1}{4}, \\
+        x_2 &= g(x_1) = \frac{17919}{40960} \approx 0{,}437475586, \\
+        x_3 &= g(x_2) \approx 0{,}577706091.
+      \end{align*}
+  \end{enumerate}
+\end{solution}
+
 \end{document}
