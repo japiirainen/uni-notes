@@ -254,9 +254,32 @@
 \begin{exercise}
   Olkoon \(n\) pariton täydellinen luku. Osoita, että \(n\) ei ole
   jaollinen luvulla \(105\).
-
-  \emph{Vinkki:} Luentomonisteen lauseesta 60 ja lausekkeen
-  \(\sigma(n)/n\) arvioimisesta voisi olla hyötyä.
 \end{exercise}
+
+\begin{solution}
+  Oletetaan, että \(105 \mid n\). Merkitään
+  \[
+    n = 3^a5^b7^cm, \quad (105, m) = 1.
+  \]
+  Huomataan, että \(3, 7 \equiv 3 \pod{4}\), joten lauseen 60 nojalla luvut
+  \(a\) ja \(c\) ovat parillisia. Täten \(a,c \geq 2\) ja \(b \geq 1\).
+  Käytetään kaavaa
+  \[
+    \frac{\sigma(p^\alpha)}{p^\alpha} = \frac{1}{p^\alpha} + \cdots
+    + \frac{1}{p} + 1.
+  \]
+  Lisäksi \(\sigma(m)/m \geq 1\), sillä \(m\) on yksi summan
+  \(\sigma(m)\) termeistä. Saadaan
+  \[
+    \begin{aligned}
+      \frac{\sigma(n)}{n} &=
+      \frac{\sigma(3^a)}{3^a}\frac{\sigma(5^b)}{5^b}\frac{\sigma(7^c)}{7^c}\frac{\sigma(m)}{m}
+      \\ &\geq \left(1 + \frac{1}{3} + \frac{1}{9}\right)
+      \left(1 + \frac{1}{5}\right)\left(1 + \frac{1}{7} + \frac{1}{49}\right) \\
+      &> 2.
+    \end{aligned}
+  \]
+  Tämä on ristiriita, sillä \(\sigma(n) = 2n\).
+\end{solution}
 
 \end{document}
