@@ -123,6 +123,65 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Olkoon \(i \in \set{1,\dots,k}\) mielivaltainen. Koska
+      \(M_i=\prod_{j\ne i}m_j\) ja \(\syt(m_j,m_i)=1\) kaikilla
+      \(j\ne i\), saadaan \(\syt(M_i,m_i)=1\). Täten käänteisluku
+      \(y_i\) on olemassa ja
+      \[
+        a_iM_iy_i \equiv a_i \pod{m_i}.
+      \]
+      Kun \(j \neq i\), niin \(m_i \mid M_j\), joten
+      \[
+        a_jM_jy_j \equiv 0 \pod{m_i}.
+      \]
+      Saadaan
+      \[
+        \begin{aligned}
+          x_0 &= \sum_{j=1}^{k} a_jM_jy_j \\
+          &\equiv 0 + \cdots + a_i + \cdots + 0 \\
+          &\equiv a_i \pod{m_i}.
+        \end{aligned}
+      \]
+      Koska \(i\) oli mielivaltainen, \(x_0\) toteuttaa kaikki
+      kongruenssit ja on siten kongruenssiyhtälöryhmän ratkaisu.
+    \item Koska \(2\cdot 3\equiv 1\pod{5}\) ja
+      \(-2\equiv 5\pod{7}\), yhtälöryhmä on yhtäpitävä ryhmän
+      \[
+        \begin{cases}
+          x\equiv 3\pmod{6},\\
+          x\equiv 4\pmod{5},\\
+          x\equiv 5\pmod{7}
+        \end{cases}
+      \]
+      kanssa. Luvut \(6,5,7\) ovat pareittain yhteistekijättömiä.
+      Kohdan (a) merkinnöin
+      \[
+        M=210,\qquad M_1=35,\quad M_2=42,\quad M_3=30.
+      \]
+      Eukleideen algoritmilla saadaan
+      \[
+        \begin{aligned}
+          1&=6\cdot 6-35,\\
+          1&=17\cdot 5-2\cdot 42,\\
+          1&=13\cdot 7-3\cdot 30.
+        \end{aligned}
+      \]
+      Voidaan siis valita \(y_1=5\), \(y_2=3\) ja \(y_3=4\).
+      Kohdan (a) nojalla yksi ratkaisu on
+      \[
+        x_0=3\cdot 35\cdot 5+4\cdot 42\cdot 3+5\cdot 30\cdot 4
+        =1629\equiv 159\pod{210}.
+      \]
+      Kiinalaisen jäännöslauseen nojalla kaikki ratkaisut ovat
+      \[
+        x=159+210t,\qquad t\in\ZZ.
+      \]
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}
   Määritä luvun \(100!\) jakojäännös jaettaessa luvulla \(103\).
 \end{exercise}
