@@ -218,6 +218,39 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), nosep]
+    \item Parillinen luku on täydellinen täsmälleen silloin, kun se on muotoa
+      \[
+        2^{p-1}(2^p-1),
+      \]
+      missä \(2^p-1\) on alkuluku. Koska \(2016=2^5\cdot 63\),
+      luvun \(2016\) täydellisyydestä seuraisi \(p=6\). Kuitenkin
+      \(2^6-1=63\) on yhdistetty luku, joten \(2016\) ei ole täydellinen.
+      Toisaalta
+      \[
+        8128=2^6(2^7-1),
+      \]
+      ja \(2^7-1=127\) on alkuluku, joten \(8128\) on täydellinen.
+
+      Parittoman luvun \(4675\) alkutekijähajotelma on
+      \[
+        4675=5^2\cdot 11\cdot 17.
+      \]
+      Erisuuria alkutekijöitä on \(k=3\) ja pienin niistä on \(p_1=5\).
+      Koska \(k<p_1\), luentokalvojen lauseen 5 nojalla \(4675\) ei ole
+      täydellinen.
+    \item Valitaan \(n=3^2\cdot 5\cdot 7^2\). Ainoa pariton eksponentti
+      on \(\beta=1\), ja sitä vastaava alkuluku on \(q=5\).
+      Siis \(q\equiv\beta\equiv 1\pod{4}\), ja muut eksponentit ovat
+      parillisia, joten lauseen 4 ehdot toteutuvat. Lisäksi erisuuria
+      alkutekijöitä on \(k=3\) ja pienin niistä on \(p_1=3\), joten myös
+      lauseen 5 ehto \(k\geq p_1\) toteutuu. Näin ollen kummallakaan
+      lauseella ei voi suoraan osoittaa, ettei \(n\) ole täydellinen.
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}
   Olkoon \(n\) pariton täydellinen luku. Osoita, että \(n\) ei ole
   jaollinen luvulla \(105\).
