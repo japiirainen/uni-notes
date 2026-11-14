@@ -35,40 +35,68 @@
 \end{exercise}
 
 \begin{solution}
-  Olkoon \(x_0 \in \RR\) ja asetetaan \(x_{n + 1} = f(x_n)\), missä
-  \(n \in \NN\). Tällöin, kun \(n \geq 1\) saadaan
+  Olkoon \(x_0 \in \RR\) mielivaltainen ja asetetaan
+  \(x_{n + 1} = f(x_n)\), kun \(n = 0, 1, 2, \ldots\).
+  Tällöin, kun \(n \geq 1\), saadaan
   \[
-    \abs{x_n - x_{n + 1}} = \abs{f(x_n) - f(x_{n + 1})} \leq
+    \abs{x_{n + 1} - x_n} = \abs{f(x_n) - f(x_{n - 1})} \leq
     k\abs{x_n - x_{n - 1}}.
   \]
-  Yleisemmin, induktiolla saamme
+  Induktiolla saamme siis
   \[
     \abs{x_{n + 1} - x_n} \leq k^{n}\abs{x_1 - x_0}, \quad
-    \text{kakilla } n \in \NN.
+    \text{kaikilla } n = 0, 1, 2, \ldots.
   \]
-  Nyt, jos \(n < m\) saadaan
+  Nyt, jos \(0 \leq n < m\), saadaan kolmioepäyhtälöstä
   \[
     \begin{aligned}
       \abs{x_n - x_m} &\leq \sum_{i = n + 1}^{m} \abs{x_i - x_{i - 1}} \\
-      &\leq (k^n + k^{n + 1} \cdots + k^{m - 1})\abs{x_1 - x_0}.
+      &\leq \left(\sum_{i = n}^{m - 1} k^i\right)\abs{x_1 - x_0}.
     \end{aligned}
   \]
-  Saadaan termille \(k^n + k^{n + 1} \cdots + k^{m - 1}\) yläraja geometrisesta
-  sarjasta \(\sum_{t = 0}^{\infty} k^t = (1 - k)^{-1}\).
+  Koska \(0 < k < 1\), geometrisen sarjan summan avulla saadaan
+  \[
+    \sum_{i = n}^{m - 1} k^i \leq \sum_{i = n}^{\infty} k^i
+    = \frac{k^n}{1 - k}.
+  \]
   Täten
   \[
     \abs{x_n - x_m} \leq (1 - k)^{-1}\abs{x_1 - x_0}k^n.
   \]
-  Täten \((x_n)\) on Cauchy jono, joten saadaan \(\lim_{n \to \infty}
-  x_n = x_*\)
-  jollekkin \(x_* \in \RR\). Ehdosta
+  Olkoon \(\varepsilon > 0\). Koska \(k^n \to 0\), voidaan valita
+  \(N \in \NN\) siten, että
+  \[
+    \frac{\abs{x_1 - x_0}}{1 - k}k^N < \varepsilon.
+  \]
+  Tällöin kaikilla \(m > n \geq N\) pätee
+  \[
+    \abs{x_n - x_m}
+    \leq \frac{\abs{x_1 - x_0}}{1 - k}k^n
+    \leq \frac{\abs{x_1 - x_0}}{1 - k}k^N
+    < \varepsilon.
+  \]
+  Symmetrian nojalla sama pätee, kun \(n > m \geq N\), ja tapauksessa
+  \(n = m\) erotus on nolla. Siis \((x_n)\) on Cauchy-jono.
+  Reaalilukujen täydellisyyden nojalla on siis olemassa \(x_* \in \RR\), jolle
+  \(\lim_{n \to \infty} x_n = x_*\). Ehdosta
   \[
     \abs{f(x) - f(y)} \leq k\abs{x - y}
   \]
-  seuraa, että \(f\) on tasaisesti jatkuva. Täten
+  seuraa, että \(f\) on jatkuva. Täten
   \[
     f(x_*) = \lim_{n \to \infty} f(x_n) = \lim_{n \to \infty} x_{n + 1} = x_*.
   \]
+  Siis \(x_*\) on funktion \(f\) kiintopiste.
+
+  Osoitetaan vielä kiintopisteen yksikäsitteisyys. Jos myös \(y_* \in \RR\)
+  on funktion \(f\) kiintopiste, niin
+  \[
+    \abs{x_* - y_*} = \abs{f(x_*) - f(y_*)} \leq k\abs{x_* - y_*}.
+  \]
+  Siis \((1 - k)\abs{x_* - y_*} \leq 0\). Koska \(1 - k > 0\), tästä
+  seuraa \(x_* = y_*\). Kiintopiste on siis yksikäsitteinen, ja koska
+  alkuarvo \(x_0\) oli mielivaltainen, iterointijono suppenee tähän samaan
+  kiintopisteeseen jokaisella alkuarvolla.
 \end{solution}
 
 \begin{exercise}[Protter--Morrey, luku 13.1, tehtävä 8]
