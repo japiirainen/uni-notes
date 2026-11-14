@@ -130,21 +130,31 @@
 \end{exercise}
 
 \begin{solution}
-  Olkoon \(x, y \in \RR\) siten, että \(a \leq x < y \leq b\).
-  Väliarvolauseen nojalla on olemassa \(u \in (x, y)\) siten, että
+  Olkoot \(x, y \in I\) siten, että \(x < y\). Koska \(f\) on jatkuva
+  välillä \([x,y]\) ja derivoituva välillä \((x,y)\), väliarvolauseen
+  nojalla on olemassa \(u \in (x,y)\) siten, että
   \[
     f^{\prime}(u) = \frac{f(y) - f(x)}{y - x}.
   \]
-  Tiedetään, että
+  Koska \(u \in (a,b)\), oletuksen nojalla
   \[
-    \abs{f^{\prime}(y)} = \frac{\abs{f(y) - f(x)}}{\abs{y - x}} \leq k.
+    \abs{f^{\prime}(u)} = \frac{\abs{f(y) - f(x)}}{\abs{y - x}} \leq k.
   \]
-  Saadaan
+  Siis
   \[
     \abs{f(y) - f(x)} \leq k\abs{y - x}.
   \]
-  Nyt, kiintopistelauseen korollaarin nojalla on olemassa \(x_* \in I\)
-  siten, että \(f(x_*) = x_*\).
+  Symmetrian nojalla sama epäyhtälö pätee, kun \(x > y\), ja tapauksessa
+  \(x = y\) molemmat puolet ovat nollia. Täten \(f\) on kontraktio
+  välillä \(I\).
+
+  Koska \(I=[a,b]\) on suljettu reaalilukujen osajoukko, se on täydellinen.
+  Tehtävän 1 kiintopistetodistus soveltuu siis myös välille \(I\): ehdon
+  \(f(I) \subseteq I\) nojalla kaikki iteraatiojonon termit kuuluvat
+  välille \(I\), ja sulkeutuneisuuden nojalla myös jonon raja-arvo kuuluu
+  välille \(I\). Kiintopisteominaisuus ja yksikäsitteisyys seuraavat
+  samoin kuin tehtävässä 1. Näin ollen on olemassa täsmälleen yksi
+  \(x_* \in I\), jolle \(f(x_*) = x_*\).
 \end{solution}
 
 \begin{exercise}[Protter--Morrey, luku 13.1, tehtävä 10]
