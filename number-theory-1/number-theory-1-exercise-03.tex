@@ -186,6 +186,27 @@
   Määritä luvun \(100!\) jakojäännös jaettaessa luvulla \(103\).
 \end{exercise}
 
+\begin{solution}
+  Koska \(103\) on alkuluku, Wilsonin lauseen nojalla
+  \[
+    101\cdot 102\cdot 100!=102!\equiv -1\pod{103}.
+  \]
+  Lukujen \(101\) ja \(102\) käänteisluvut modulo \(103\) ovat
+  vastaavasti \(51\) ja \(102\), sillä
+  \[
+    \begin{aligned}
+      101\cdot 51&\equiv -2\cdot 51=-102\equiv 1\pod{103},\\
+      102\cdot 102&\equiv (-1)^2=1\pod{103}.
+    \end{aligned}
+  \]
+  Kertomalla Wilsonin lauseesta saatu kongruenssi puolittain näillä
+  käänteisluvuilla saadaan
+  \[
+    100!\equiv -51\cdot 102\equiv -51\cdot(-1)=51\pod{103}.
+  \]
+  Kysytty jakojäännös on siis \(51\).
+\end{solution}
+
 \begin{exercise}
   \leavevmode\par
   \begin{enumerate}[label=(\alph*), nosep]
