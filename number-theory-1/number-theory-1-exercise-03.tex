@@ -68,7 +68,25 @@
 \begin{solution}
   \leavevmode\par
   \begin{enumerate}[label=(\alph*), nosep]
-    \item
+    \item Alkutekijähajotelman yksikäsitteisyyden nojalla positiivinen
+      kokonaisluku \(\ell\) on luvun \(n\) jakaja täsmälleen silloin, kun
+      se on muotoa
+      \[
+        \ell = p_1^{\beta_1}p_2^{\beta_2}\cdots p_k^{\beta_k},
+      \]
+      missä \(\beta_j \in \set{0,\dots,\alpha_j}\) kaikilla
+      \(j=1,\dots,k\). Eri eksponenttien valinnat antavat eri jakajat.
+      Kullekin eksponentille \(\beta_j\) on \(\alpha_j+1\) vaihtoehtoa,
+      ja valinnat voidaan tehdä toisistaan riippumatta. Tuloperiaatteen
+      nojalla positiivisten jakajien lukumäärä on siis
+      \[
+        d(n) = \prod_{j=1}^{k}(\alpha_j + 1).
+      \]
+    \item Esimerkki tällaisesta luvusta on kohdan (a) nojalla \(n = 2^{19}\).
+      Tällöin
+      \[
+        \sigma(n) = \frac{2^{20} - 1}{2 - 1} = 2^{20} - 1.
+      \]
   \end{enumerate}
 \end{solution}
 
