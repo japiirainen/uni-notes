@@ -185,4 +185,51 @@
   \(f(x_*,y_*)=(x_*,y_*)\).
 \end{exercise}
 
+\begin{solution}
+  Merkitään \(\maxnorm{z}=\maxset{\abs{z_1},\abs{z_2}}\), kun
+  \(z\in\RR^2\), ja määritellään etäisyys
+  \[
+    d(p,q)=\maxnorm{p-q}.
+  \]
+  Tämä on epänegatiivinen ja symmetrinen, ja \(d(p,q)=0\) täsmälleen
+  silloin, kun \(p=q\). Lisäksi kaikilla \(p,q,r\in\RR^2\) ja \(i=1,2\)
+  pätee
+  \[
+    \abs{p_i-r_i}\leq\abs{p_i-q_i}+\abs{q_i-r_i}
+    \leq d(p,q)+d(q,r).
+  \]
+  Ottamalla maksimi saadaan kolmioepäyhtälö, joten \(d\) on metriikka.
+
+  Jos \((p_k)\) on Cauchy-jono tässä metriikassa, sen molemmat
+  koordinaattijonot ovat Cauchy-jonoja, sillä
+  \(\abs{p_{k,i}-p_{\ell,i}}\leq d(p_k,p_\ell)\).
+  Reaalilukujen täydellisyyden nojalla \(p_{k,i}\to p_i\), missä
+  \(p_i\in\RR\), kun \(i=1,2\). Siten
+  \[
+    d(p_k,p)=\maxnorm{p_k-p}
+    =\maxset{\abs{p_{k,1}-p_1},\abs{p_{k,2}-p_2}}\to0,
+    \qquad p=(p_1,p_2).
+  \]
+  Siis \((\RR^2,d)\) on täydellinen.
+
+  Kirjoitetaan \(f=(f_1,f_2)\). Olkoot \(p,q\in\RR^2\) ja
+  \(M=\maxnorm{p-q}\). Funktion \(f\) määritelmästä ja kolmioepäyhtälöstä seuraa
+  \[
+    \begin{aligned}
+      \abs{f_1(p)-f_1(q)}
+      &\leq\frac14\abs{p_1-q_1}+\frac13\abs{p_2-q_2}
+      \leq\frac7{12}M,\\
+      \abs{f_2(p)-f_2(q)}
+      &\leq\frac15\abs{p_1-q_1}+\frac13\abs{p_2-q_2}
+      \leq\frac8{15}M.
+    \end{aligned}
+  \]
+  Ottamalla maksimi saadaan
+  \[
+    \maxnorm{f(p)-f(q)}\leq\frac7{12}\maxnorm{p-q}.
+  \]
+  Koska \(0<7/12<1\), lauseen 13.2 nojalla kuvauksella \(f\) on
+  täsmälleen yksi kiintopiste avaruudessa \(\RR^2\).
+\end{solution}
+
 \end{document}
