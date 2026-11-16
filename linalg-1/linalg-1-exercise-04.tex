@@ -1,0 +1,275 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Lineaarialgebra ja matriisilaskenta I\\Harjoitus 4}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Lineaarialgebra ja matriisilaskenta I}{Harjoitus 4}
+
+\begin{exercise}
+  Olkoot
+  \[
+    v_1 =
+    \begin{bmatrix}1 \\ 2 \\ 1
+    \end{bmatrix},\quad
+    v_2 =
+    \begin{bmatrix}2 \\ 9 \\ 0
+    \end{bmatrix},\quad
+    v_3 =
+    \begin{bmatrix}3 \\ 3 \\ 4
+    \end{bmatrix},\quad
+    u =
+    \begin{bmatrix}5 \\ -1 \\ 9
+    \end{bmatrix},\quad
+    w =
+    \begin{bmatrix}-1 \\ 3 \\ 2
+    \end{bmatrix}
+    \in\RR^{3\times 1}.
+  \]
+  \begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Osoita, että jono \((v_1,v_2,v_3)\) on avaruuden
+      \(\RR^{3\times 1}\) kanta.
+    \item Määritä vektorin \(u\) koordinaattivektori kannassa
+      \((v_1,v_2,v_3)\).
+    \item Määritä vektori \(v\in\RR^{3\times 1}\), jonka
+      koordinaattivektori kannassa \((v_1,v_2,v_3)\) on \(w\).
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+  Merkitään \(A=[v_1\ v_2\ v_3]\). Muokataan liitetty matriisi
+  \([A\mid 0\ u]\) supistettuun porrasmuotoon:
+  \begingroup
+  \setlength{\arraycolsep}{4pt}
+  \renewcommand{\arraystretch}{1.1}
+  \[
+    \begin{alignedat}{2}
+      [A\mid 0\ u] &={}
+      \left[
+        \begin{array}{rrr|rr}
+          1 & 2 & 3 & 0 & 5 \\
+          2 & 9 & 3 & 0 & -1 \\
+          1 & 0 & 4 & 0 & 9
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        \smash{\rowop{R_1\leftrightarrow R_3}} \\
+        {} \\
+        {}
+      \end{array}
+      &\qquad\sim{}&
+      \left[
+        \begin{array}{rrr|rr}
+          1 & 0 & 4 & 0 & 9 \\
+          2 & 9 & 3 & 0 & -1 \\
+          1 & 2 & 3 & 0 & 5
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        \smash{\rowop{-2R_1}} \\
+        \smash{\rowop{-R_1}}
+      \end{array}
+      \\[1.5ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrr|rr}
+          1 & 0 & 4 & 0 & 9 \\
+          0 & 9 & -5 & 0 & -19 \\
+          0 & 2 & -1 & 0 & -4
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        \smash{\rowop{\cdot 2}} \\
+        {}
+      \end{array}
+      &\qquad\sim{}&
+      \left[
+        \begin{array}{rrr|rr}
+          1 & 0 & 4 & 0 & 9 \\
+          0 & 18 & -10 & 0 & -38 \\
+          0 & 2 & -1 & 0 & -4
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        \smash{\rowop{-9R_3}} \\
+        {}
+      \end{array}
+      \\[1.5ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrr|rr}
+          1 & 0 & 4 & 0 & 9 \\
+          0 & 0 & -1 & 0 & -2 \\
+          0 & 2 & -1 & 0 & -4
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        \smash{\rowop{+4R_2}} \\
+        {} \\
+        \smash{\rowop{-R_2}}
+      \end{array}
+      &\qquad\sim{}&
+      \left[
+        \begin{array}{rrr|rr}
+          1 & 0 & 0 & 0 & 1 \\
+          0 & 0 & -1 & 0 & -2 \\
+          0 & 2 & 0 & 0 & -2
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        \smash{\rowop{\cdot(-1)}} \\
+        \smash{\rowop{\cdot(1/2)}}
+      \end{array}
+      \\[1.5ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrr|rr}
+          1 & 0 & 0 & 0 & 1 \\
+          0 & 0 & 1 & 0 & 2 \\
+          0 & 1 & 0 & 0 & -1
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        \smash{\rowop{R_2\leftrightarrow R_3}} \\
+        {}
+      \end{array}
+      &\qquad\sim{}&
+      \left[
+        \begin{array}{rrr|rr}
+          1 & 0 & 0 & 0 & 1 \\
+          0 & 1 & 0 & 0 & -1 \\
+          0 & 0 & 1 & 0 & 2
+        \end{array}
+      \right].
+    \end{alignedat}
+  \]
+  \endgroup
+  \begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Nollasaraketta vastaavasta yhtälöstä nähdään, että
+      \(Ax=0\) toteutuu vain, kun \(x=0\). Lemman 3.6.3 nojalla
+      jono \((v_1,v_2,v_3)\) on siis vapaa. Korollaarin 3.10.3
+      perusteella se on avaruuden \(\RR^{3\times 1}\) kanta.
+
+    \item Viimeisestä sarakkeesta saadaan yhtälön \(Ac=u\) ratkaisu
+      \(c_1=1\), \(c_2=-1\) ja \(c_3=2\), eli \(u=v_1-v_2+2v_3\).
+      Määritelmän 3.7.4 mukaan koordinaattivektori on siis
+      \[
+        c=
+        \begin{bmatrix}1 \\ -1 \\ 2\end{bmatrix}.
+      \]
+      Kertoimet ovat yksikäsitteiset Lemman 3.7.3 perusteella.
+
+    \item Koska vektorin \(v\) koordinaattivektori kannassa
+      \((v_1,v_2,v_3)\) on \(w\), määritelmän 3.7.4 mukaan
+      \[
+        \begin{aligned}
+          v &=-v_1+3v_2+2v_3=Aw \\
+            &=\begin{bmatrix}
+              1 & 2 & 3 \\
+              2 & 9 & 3 \\
+              1 & 0 & 4
+            \end{bmatrix}
+            \begin{bmatrix}-1 \\ 3 \\ 2\end{bmatrix}
+            =\begin{bmatrix}11 \\ 31 \\ 7\end{bmatrix}.
+        \end{aligned}
+        \qedhere
+      \]
+  \end{enumerate}
+\end{solution}
+
+\newpage
+
+\begin{exercise}
+  Määritä matriisin
+  \[
+    A =
+    \begin{bmatrix}
+      1 & 4 & 5 & 2 \\
+      2 & 1 & 3 & 0 \\
+      -1 & 3 & 2 & 2
+    \end{bmatrix}
+  \]
+  nolla-avaruuden kanta. Mikä on matriisin \(A\) aste?
+\end{exercise}
+
+\begin{exercise}
+  Määritä matriisin
+  \[
+    A =
+    \begin{bmatrix}
+      1 & -3 & 4 & -2 & 5 & 4 \\
+      2 & -6 & 9 & -1 & 8 & 2 \\
+      2 & -6 & 9 & -1 & 9 & 7 \\
+      -1 & 3 & -4 & 2 & -5 & -4
+    \end{bmatrix}
+  \]
+  sarakeavaruuden kanta. Mikä on matriisin \(A\) aste?
+\end{exercise}
+
+\begin{exercise}
+  Olkoot \(v=
+    \begin{bmatrix}2 \\ k
+  \end{bmatrix}\in\RR^{2\times 1}\)
+  ja \(w=
+    \begin{bmatrix}3 \\ 5
+  \end{bmatrix}\in\RR^{2\times 1}\).
+  Määritä \(k\in\RR\) siten, että
+  \begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item \(v\) ja \(w\) ovat yhdensuuntaiset,
+    \item \(v\) ja \(w\) ovat kohtisuorassa toisiaan vastaan,
+    \item \(v\):n ja \(w\):n välinen kulma on \(\frac{\pi}{3}\).
+  \end{enumerate}
+  Piirrä kuva jokaisesta tapauksesta (a), (b) ja (c).
+\end{exercise}
+
+\begin{exercise}
+  Olkoot
+  \[
+    v_1 =
+    \begin{bmatrix}1 \\ 0 \\ 1 \\ 0
+    \end{bmatrix},\quad
+    v_2 =
+    \begin{bmatrix}1 \\ 1 \\ 3 \\ 0
+    \end{bmatrix},\quad
+    v_3 =
+    \begin{bmatrix}1 \\ 2 \\ 0 \\ 0
+    \end{bmatrix}
+    \in\RR^{4\times 1},
+  \]
+  ja olkoon \(V\) avaruuden \(\RR^{4\times 1}\) aliavaruus, jonka
+  virittää jono \((v_1,v_2,v_3)\), siis
+  \(V=\operatorname{Sp}(v_1,v_2,v_3)\).
+  \begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Osoita, että jono \((v_1,v_2,v_3)\) on vapaa, jolloin
+      \((v_1,v_2,v_3)\) on \(V\):n kanta.
+    \item Määritä \(V\):n ortonormaali kanta \((u_1,u_2,u_3)\)
+      soveltamalla Gramin--Schmidtin menetelmää jonoon
+      \((v_1,v_2,v_3)\).
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Jatkoa edelliseen tehtävään. Täydennä ortonormaali jono
+  \((u_1,u_2,u_3)\) avaruuden \(\RR^{4\times 1}\) ortonormaaliksi
+  kannaksi.
+\end{exercise}
+
+\end{document}
