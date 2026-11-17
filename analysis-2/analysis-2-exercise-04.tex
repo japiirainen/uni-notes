@@ -129,6 +129,16 @@
   \(f(x) < 0\), yläraja on \(0\), joten \(f(y) < 0\). Siis \(f(y)\)
   on samanmerkkinen kuin \(f(x)\) aina, kun \(\abs{y - x} < \delta\).
 
+  Olkoon \(\varepsilon > 0\). Funktion \(f\) derivoituvuuden nojalla on
+  olemassa \(\eta > 0\) siten, että
+  \[
+    \left|\frac{f(y) - f(x)}{y - x} - f'(x)\right| < \varepsilon,
+    \qquad 0 < \abs{y - x} < \eta.
+  \]
+  Valitaan \(\rho = \min\{\delta, \eta\} > 0\). Kun
+  \(0 < \abs{y - x} < \rho\), sekä merkin säilyminen että edellinen
+  arvio ovat voimassa.
+
   Oletetaan ensin, että \(f(x) > 0\). Tällöin \(g(x) = f(x)\) ja
   \(g(y) = f(y)\), kun \(\abs{y - x} < \delta\). Näin ollen
   \[
@@ -136,10 +146,11 @@
     = \frac{f(y) - f(x)}{y - x},
     \qquad 0 < \abs{y - x} < \delta.
   \]
-  Edellisen yhtälön ja funktion \(f\) derivoituvuuden nojalla
+  Kun \(0 < \abs{y - x} < \rho\), saadaan siis
   \[
-    \lim_{y \to x} \frac{g(y) - g(x)}{y - x} = \lim_{y \to x}
-    \frac{f(y) - f(x)}{y - x} = f^{\prime}(x).
+    \left|\frac{g(y) - g(x)}{y - x} - f'(x)\right|
+    = \left|\frac{f(y) - f(x)}{y - x} - f'(x)\right|
+    < \varepsilon.
   \]
   Täten \(g\) on derivoituva pisteessä \(x\) ja \(g'(x) = f'(x)\).
 
@@ -150,11 +161,11 @@
     \frac{-f(y) + f(x)}{y - x} = -\frac{f(y) - f(x)}{y - x},
     \qquad 0 < \abs{y - x} < \delta.
   \]
-  Edellisen yhtälön ja funktion \(f\) derivoituvuuden nojalla
+  Kun \(0 < \abs{y - x} < \rho\), saadaan nyt
   \[
-    \lim_{y \to x} \frac{g(y) - g(x)}{y - x}
-    = -\lim_{y \to x} \frac{f(y) - f(x)}{y - x}
-    = -f'(x).
+    \left|\frac{g(y) - g(x)}{y - x} - (-f'(x))\right|
+    = \left|\frac{f(y) - f(x)}{y - x} - f'(x)\right|
+    < \varepsilon.
   \]
   Täten \(g\) on derivoituva pisteessä \(x\) ja \(g^{\prime}(x) =
   -f^{\prime}(x)\).
