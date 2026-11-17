@@ -115,9 +115,9 @@
 
 \begin{solution}
   Olkoon \(x \in \RR\) siten, että \(f(x) \neq 0\).
-  Koska \(f\) on derivoituva pisteessä \(x\), se on myös jatkuva tässä
-  pisteessä. Koska \(\abs{f(x)} > 0\), jatkuvuuden nojalla on olemassa
-  \(\delta > 0\) siten, että
+  Derivoituvana \(f\) on jatkuva pisteessä \(x\). Koska
+  \(\abs{f(x)} > 0\), jatkuvuuden nojalla on olemassa \(\delta > 0\)
+  siten, että
   \[
     \abs{f(y) - f(x)} < \abs{f(x)},
   \]
@@ -152,23 +152,34 @@
     = \left|\frac{f(y) - f(x)}{y - x} - f'(x)\right|
     < \varepsilon.
   \]
+  Koska \(\varepsilon > 0\) oli mielivaltainen, tämä osoittaa, että
+  \[
+    \lim_{y \to x} \frac{g(y) - g(x)}{y - x}
+    = \lim_{y \to x} \frac{f(y) - f(x)}{y - x}
+    = f'(x).
+  \]
   Täten \(g\) on derivoituva pisteessä \(x\) ja \(g'(x) = f'(x)\).
 
   Oletetaan sitten, että \(f(x) < 0\). Tällöin \(g(x) = -f(x)\) ja
   \(g(y) = -f(y)\), kun \(\abs{y - x} < \delta\). Näin ollen
   \[
     \frac{g(y) - g(x)}{y - x} =
-    \frac{-f(y) + f(x)}{y - x} = -\frac{f(y) - f(x)}{y - x},
+    -\frac{f(y) - f(x)}{y - x},
     \qquad 0 < \abs{y - x} < \delta.
   \]
-  Kun \(0 < \abs{y - x} < \rho\), saadaan nyt
+  Kun \(0 < \abs{y - x} < \rho\), saadaan vastaavasti
   \[
     \left|\frac{g(y) - g(x)}{y - x} - (-f'(x))\right|
     = \left|\frac{f(y) - f(x)}{y - x} - f'(x)\right|
     < \varepsilon.
   \]
-  Täten \(g\) on derivoituva pisteessä \(x\) ja \(g^{\prime}(x) =
-  -f^{\prime}(x)\).
+  Koska \(\varepsilon > 0\) oli mielivaltainen, saadaan
+  \[
+    \lim_{y \to x} \frac{g(y) - g(x)}{y - x}
+    = -\lim_{y \to x} \frac{f(y) - f(x)}{y - x}
+    = -f'(x).
+  \]
+  Täten \(g\) on derivoituva pisteessä \(x\) ja \(g'(x) = -f'(x)\).
 
   Siis \(g\) on derivoituva kaikissa pisteissä \(x\), joissa
   \(f(x) \neq 0\), ja näissä pisteissä
