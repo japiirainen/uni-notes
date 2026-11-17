@@ -44,6 +44,28 @@
   \]
 \end{exercise}
 
+\begin{solution}
+  Kun \(x \in A\) ja \(x \neq x_0\), saadaan
+  \[
+    \frac{(f + g)(x) - (f + g)(x_0)}{x - x_0}
+    = \frac{f(x) - f(x_0)}{x - x_0}
+    + \frac{g(x) - g(x_0)}{x - x_0}.
+  \]
+  Koska \(f\) ja \(g\) ovat derivoituvia pisteessä \(x_0\), oikean puolen
+  erotusosamäärillä on äärelliset raja-arvot \(f'(x_0)\) ja \(g'(x_0)\),
+  kun \(x \to x_0\). Raja-arvojen summasäännön nojalla siis
+  \[
+    \begin{aligned}
+      \lim_{x \to x_0} \frac{(f + g)(x) - (f + g)(x_0)}{x - x_0}
+      &= \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}
+      + \lim_{x \to x_0} \frac{g(x) - g(x_0)}{x - x_0} \\
+      &= f'(x_0) + g'(x_0).
+    \end{aligned}
+  \]
+  Siis \(f + g\) on derivaatan määritelmän nojalla derivoituva pisteessä
+  \(x_0\) ja \((f + g)'(x_0) = f'(x_0) + g'(x_0)\).
+\end{solution}
+
 \begin{exercise}
   Olkoon \(f \colon \RR \to \RR\),
   \(f(x) = \sqrt{\abs{x}}\). Tutki määritelmän nojalla, onko funktio
