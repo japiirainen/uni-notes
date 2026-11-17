@@ -3,6 +3,8 @@
 
 \newcommand{\notelanguage}{finnish}
 \input{../preamble.tex}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 
 \title{Lineaarialgebra ja matriisilaskenta I\\Harjoitus 4}
 \author{}
@@ -163,8 +165,8 @@
   \]
   \endgroup
   \begin{enumerate}[label=(\alph*), leftmargin=*]
-    \item Nollasaraketta vastaavasta yhtälöstä nähdään, että
-      \(Ax=0\) toteutuu vain, kun \(x=0\). Lemman 3.6.3 nojalla
+    \item Matriisin \(A\) supistettu porrasmuoto on \(I_3\), joten
+      yhtälön \(Ax=0\) ainoa ratkaisu on \(x=0\). Lemman 3.6.3 nojalla
       jono \((v_1,v_2,v_3)\) on siis vapaa. Korollaarin 3.10.3
       perusteella se on avaruuden \(\RR^{3\times 1}\) kanta.
 
@@ -173,7 +175,8 @@
       Määritelmän 3.7.4 mukaan koordinaattivektori on siis
       \[
         c=
-        \begin{bmatrix}1 \\ -1 \\ 2\end{bmatrix}.
+        \begin{bmatrix}1 \\ -1 \\ 2
+        \end{bmatrix}.
       \]
       Kertoimet ovat yksikäsitteiset Lemman 3.7.3 perusteella.
 
@@ -182,13 +185,17 @@
       \[
         \begin{aligned}
           v &=-v_1+3v_2+2v_3=Aw \\
-            &=\begin{bmatrix}
-              1 & 2 & 3 \\
-              2 & 9 & 3 \\
-              1 & 0 & 4
-            \end{bmatrix}
-            \begin{bmatrix}-1 \\ 3 \\ 2\end{bmatrix}
-            =\begin{bmatrix}11 \\ 31 \\ 7\end{bmatrix}.
+          &=
+          \begin{bmatrix}
+            1 & 2 & 3 \\
+            2 & 9 & 3 \\
+            1 & 0 & 4
+          \end{bmatrix}
+          \begin{bmatrix}-1 \\ 3 \\ 2
+          \end{bmatrix}
+          =
+          \begin{bmatrix}11 \\ 31 \\ 7
+          \end{bmatrix}.
         \end{aligned}
         \qedhere
       \]
@@ -210,6 +217,125 @@
   nolla-avaruuden kanta. Mikä on matriisin \(A\) aste?
 \end{exercise}
 
+\begin{solution}
+  Ratkaistaan homogeeninen yhtälö \(Ax=0\):
+  \[
+    \begin{aligned}
+      [A\mid 0] &={}
+      \left[
+        \begin{array}{rrrr|r}
+          1 & 4 & 5 & 2 & 0 \\
+          2 & 1 & 3 & 0 & 0 \\
+          -1 & 3 & 2 & 2 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        \smash{\rowop{-2R_1}} \\
+        \smash{\rowop{+R_1}}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrrr|r}
+          1 & 4 & 5 & 2 & 0 \\
+          0 & -7 & -7 & -4 & 0 \\
+          0 & 7 & 7 & 4 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        {} \\
+        \smash{\rowop{+R_2}}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrrr|r}
+          1 & 4 & 5 & 2 & 0 \\
+          0 & -7 & -7 & -4 & 0 \\
+          0 & 0 & 0 & 0 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        \smash{\rowop{\cdot(-1/7)}} \\
+        {}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrrr|r}
+          1 & 4 & 5 & 2 & 0 \\
+          0 & 1 & 1 & \frac47 & 0 \\
+          0 & 0 & 0 & 0 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        \smash{\rowop{-4R_2}} \\
+        \vphantom{\frac47}{} \\
+        {}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrrr|r}
+          1 & 0 & 1 & -\frac27 & 0 \\
+          0 & 1 & 1 & \frac47 & 0 \\
+          0 & 0 & 0 & 0 & 0
+        \end{array}
+      \right].
+    \end{aligned}
+  \]
+  Vapaat muuttujat ovat \(x_3=t\) ja \(x_4=s\), missä
+  \(t,s\in\RR\). Tällöin \(x_1=-t+\frac27s\) ja
+  \(x_2=-t-\frac47s\), joten yhtälön kaikki ratkaisut ovat
+  \[
+    x=
+    \begin{bmatrix}
+      -t+\frac27s \\ -t-\frac47s \\ t \\ s
+    \end{bmatrix}
+    =t
+    \begin{bmatrix}-1 \\ -1 \\ 1 \\ 0
+    \end{bmatrix}
+    +s
+    \begin{bmatrix}\frac27 \\ -\frac47 \\ 0 \\ 1
+    \end{bmatrix}.
+  \]
+  Merkitään
+  \[
+    b_1=
+    \begin{bmatrix}-1 \\ -1 \\ 1 \\ 0
+    \end{bmatrix}
+    \qquad\text{ja}\qquad
+    b_2=
+    \begin{bmatrix}\frac27 \\ -\frac47 \\ 0 \\ 1
+    \end{bmatrix}.
+  \]
+  Siis \(\operatorname{Null}(A)=\operatorname{Sp}(b_1,b_2)\).
+  Jos \(ab_1+bb_2=0\), kolmannesta koordinaatista saadaan \(a=0\)
+  ja neljännestä \(b=0\). Jono \((b_1,b_2)\) on siis vapaa ja
+  virittää nolla-avaruuden, joten se on nolla-avaruuden kanta
+  Määritelmän 3.7.1 nojalla. Kannassa on kaksi vektoria, joten
+  \[
+    \dim\operatorname{Null}(A)=2.
+  \]
+
+  Supistetun porrasmuodon sidotut muuttujat ovat \(x_1\) ja \(x_2\).
+  Lauseen 3.8.5 nojalla matriisin \(A\) kaksi ensimmäistä saraketta
+  muodostavat sarakeavaruuden kannan. Matriisin aste on sarakeavaruuden
+  dimensio Määritelmän 3.11.4 mukaan, joten
+  \[
+    \rank(A)=\dim\operatorname{Col}(A)=2.\qedhere
+  \]
+\end{solution}
+
+\newpage
+
 \begin{exercise}
   Määritä matriisin
   \[
@@ -223,6 +349,95 @@
   \]
   sarakeavaruuden kanta. Mikä on matriisin \(A\) aste?
 \end{exercise}
+
+\begin{solution}
+  Muokataan matriisi \(A\) supistettuun porrasmuotoon:
+  \[
+    \begin{aligned}
+      A &={}
+      \left[
+        \begin{array}{rrrrrr}
+          1 & -3 & 4 & -2 & 5 & 4 \\
+          2 & -6 & 9 & -1 & 8 & 2 \\
+          2 & -6 & 9 & -1 & 9 & 7 \\
+          -1 & 3 & -4 & 2 & -5 & -4
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        {} \\
+        \smash{\rowop{-2R_1}} \\
+        \smash{\rowop{-2R_1}} \\
+        \smash{\rowop{+R_1}}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrrrrr}
+          1 & -3 & 4 & -2 & 5 & 4 \\
+          0 & 0 & 1 & 3 & -2 & -6 \\
+          0 & 0 & 1 & 3 & -1 & -1 \\
+          0 & 0 & 0 & 0 & 0 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        \smash{\rowop{-4R_2}} \\
+        {} \\
+        \smash{\rowop{-R_2}} \\
+        {}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrrrrr}
+          1 & -3 & 0 & -14 & 13 & 28 \\
+          0 & 0 & 1 & 3 & -2 & -6 \\
+          0 & 0 & 0 & 0 & 1 & 5 \\
+          0 & 0 & 0 & 0 & 0 & 0
+        \end{array}
+      \right]
+      \quad
+      \begin{array}{@{}l@{}}
+        \smash{\rowop{-13R_3}} \\
+        \smash{\rowop{+2R_3}} \\
+        {} \\
+        {}
+      \end{array}
+      \\[1ex]
+      &\sim{}
+      \left[
+        \begin{array}{rrrrrr}
+          1 & -3 & 0 & -14 & 0 & -37 \\
+          0 & 0 & 1 & 3 & 0 & 4 \\
+          0 & 0 & 0 & 0 & 1 & 5 \\
+          0 & 0 & 0 & 0 & 0 & 0
+        \end{array}
+      \right].
+    \end{aligned}
+  \]
+  Supistetun porrasmuodon sidotut muuttujat ovat \(x_1\), \(x_3\)
+  ja \(x_5\). Lauseen 3.8.5 nojalla alkuperäisen matriisin \(A\)
+  vastaavat sarakkeet muodostavat sarakeavaruuden kannan. Siis jono
+  \[
+    (b_1,b_2,b_3)=
+    \left(
+      \begin{bmatrix}1 \\ 2 \\ 2 \\ -1
+      \end{bmatrix},
+      \begin{bmatrix}4 \\ 9 \\ 9 \\ -4
+      \end{bmatrix},
+      \begin{bmatrix}5 \\ 8 \\ 9 \\ -5
+      \end{bmatrix}
+    \right)
+  \]
+  on aliavaruuden \(\operatorname{Col}(A)\) kanta. Kannassa on kolme
+  vektoria, joten Määritelmän 3.11.4 mukaan matriisin aste on
+  \[
+    \rank(A)=\dim\operatorname{Col}(A)=3.\qedhere
+  \]
+\end{solution}
+
+\newpage
 
 \begin{exercise}
   Olkoot \(v=
@@ -239,6 +454,110 @@
   \end{enumerate}
   Piirrä kuva jokaisesta tapauksesta (a), (b) ja (c).
 \end{exercise}
+
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Vektorit ovat yhdensuuntaiset täsmälleen silloin, kun
+      \(v=\lambda w\) jollakin \(\lambda\in\RR\). Koordinaateista saadaan
+      \[
+        2=3\lambda,\qquad k=5\lambda.
+      \]
+      Siis \(\lambda=\frac23\) ja \(k=\frac{10}{3}\), jolloin
+      \(v=\frac23w\).
+
+    \item Määritelmän 4.2.13 mukaan vektorit ovat kohtisuorassa
+      täsmälleen silloin, kun niiden pistetulo on nolla. Siis
+      \[
+        v\cdot w=6+5k=0
+        \quad\Longleftrightarrow\quad k=-\frac65.
+      \]
+
+    \item Esimerkin 4.1.2 kosinikaavan mukaan vektoreiden välinen
+      kulma \(\theta\) toteuttaa
+      \[
+        \cos\theta=\frac{v\cdot w}{|v|\,|w|}
+        =\frac{6+5k}{\sqrt{4+k^2}\sqrt{34}}.
+      \]
+      Koska \(\cos\frac\pi3=\frac12\), vaadittu ehto on
+      \[
+        2(6+5k)=\sqrt{34}\sqrt{4+k^2}.
+      \]
+      Oikea puoli on positiivinen, joten \(6+5k>0\).
+      Neliöimällä ja ratkaisemalla saadaan
+      \[
+        \begin{aligned}
+          4(6+5k)^2&=34(4+k^2) \\
+          33k^2+120k+4&=0 \\[0.5ex]
+          k&=\frac{-60\pm34\sqrt3}{33}.
+        \end{aligned}
+      \]
+      Miinusmerkkinen juuri ei toteuta ehtoa \(6+5k>0\).
+      Plusmerkkisellä juurella molemmat puolet ovat positiivisia,
+      joten se toteuttaa myös alkuperäisen yhtälön. Näin ollen
+      \[
+        k=\frac{34\sqrt3-60}{33}.
+      \]
+  \end{enumerate}
+
+  \begin{center}
+    \pgfplotsset{vectorpicture/.style={
+        width=4.6cm, height=5.6cm,
+        axis lines=middle, axis equal image,
+        axis line style={thin, gray},
+        xmin=-0.7, xmax=3.8, ymin=-1.8, ymax=5.8,
+        xlabel={$x_1$}, ylabel={$x_2$},
+        xtick=\empty, ytick=\empty,
+        clip=false,
+    }}
+    \begin{minipage}[t]{0.32\linewidth}
+      \centering
+      (a) \(k=\frac{10}{3}\)\par\smallskip
+      \begin{tikzpicture}
+        \begin{axis}[vectorpicture]
+          \addplot[->, black, semithick] coordinates {(0,0) (3,5)};
+          \addplot[->, black, thick] coordinates {(0,0) (2,3.333333)};
+          \node[anchor=south west] at (axis cs:3,5) {$w$};
+          \node[anchor=east] at (axis cs:2,3.333333) {$v$};
+          \node[anchor=north east, font=\small] at (axis cs:0,0) {$0$};
+        \end{axis}
+      \end{tikzpicture}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.32\linewidth}
+      \centering
+      (b) \(k=-\frac65\)\par\smallskip
+      \begin{tikzpicture}
+        \begin{axis}[vectorpicture]
+          \addplot[->, black, semithick] coordinates {(0,0) (3,5)};
+          \addplot[->, black, thick] coordinates {(0,0) (2,-1.2)};
+          \node[anchor=south west] at (axis cs:3,5) {$w$};
+          \node[anchor=north west] at (axis cs:2,-1.2) {$v$};
+          \node[anchor=north east, font=\small] at (axis cs:0,0) {$0$};
+          \draw[thin] (axis cs:0.3,-0.18) -- (axis cs:0.48,0.12)
+          -- (axis cs:0.18,0.3);
+        \end{axis}
+      \end{tikzpicture}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.32\linewidth}
+      \centering
+      (c) \(k=\frac{34\sqrt3-60}{33}\)\par\smallskip
+      \begin{tikzpicture}
+        \begin{axis}[vectorpicture]
+          \addplot[->, black, semithick] coordinates {(0,0) (3,5)};
+          \addplot[->, black, thick] coordinates {(0,0) (2,-0.03364462)};
+          \node[anchor=south west] at (axis cs:3,5) {$w$};
+          \node[anchor=north] at (axis cs:2,-0.03364462) {$v$};
+          \node[anchor=north east, font=\small] at (axis cs:0,0) {$0$};
+          \addplot[thin, domain=-0.963757:59.036243, samples=30]
+          ({0.8*cos(x)},{0.8*sin(x)});
+          \node[font=\small] at (axis cs:1.1,0.65) {$\frac\pi3$};
+        \end{axis}
+      \end{tikzpicture}
+    \end{minipage}
+  \end{center}
+\end{solution}
+
+\newpage
 
 \begin{exercise}
   Olkoot
@@ -266,10 +585,250 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Merkitään \(A=[v_1\ v_2\ v_3]\) ja ratkaistaan
+      homogeeninen yhtälö \(Ax=0\):
+      \[
+        \begin{aligned}
+          [A\mid 0] &={}
+          \left[
+            \begin{array}{rrr|r}
+              1 & 1 & 1 & 0 \\
+              0 & 1 & 2 & 0 \\
+              1 & 3 & 0 & 0 \\
+              0 & 0 & 0 & 0
+            \end{array}
+          \right]
+          \quad
+          \begin{array}{@{}l@{}}
+            {} \\
+            {} \\
+            \smash{\rowop{-R_1}} \\
+            {}
+          \end{array}
+          \\[1ex]
+          &\sim{}
+          \left[
+            \begin{array}{rrr|r}
+              1 & 1 & 1 & 0 \\
+              0 & 1 & 2 & 0 \\
+              0 & 2 & -1 & 0 \\
+              0 & 0 & 0 & 0
+            \end{array}
+          \right]
+          \quad
+          \begin{array}{@{}l@{}}
+            \smash{\rowop{-R_2}} \\
+            {} \\
+            \smash{\rowop{-2R_2}} \\
+            {}
+          \end{array}
+          \\[1ex]
+          &\sim{}
+          \left[
+            \begin{array}{rrr|r}
+              1 & 0 & -1 & 0 \\
+              0 & 1 & 2 & 0 \\
+              0 & 0 & -5 & 0 \\
+              0 & 0 & 0 & 0
+            \end{array}
+          \right]
+          \quad
+          \begin{array}{@{}l@{}}
+            {} \\
+            {} \\
+            \smash{\rowop{\cdot(-1/5)}} \\
+            {}
+          \end{array}
+          \\[1ex]
+          &\sim{}
+          \left[
+            \begin{array}{rrr|r}
+              1 & 0 & -1 & 0 \\
+              0 & 1 & 2 & 0 \\
+              0 & 0 & 1 & 0 \\
+              0 & 0 & 0 & 0
+            \end{array}
+          \right]
+          \quad
+          \begin{array}{@{}l@{}}
+            \smash{\rowop{+R_3}} \\
+            \smash{\rowop{-2R_3}} \\
+            {} \\
+            {}
+          \end{array}
+          \\[1ex]
+          &\sim{}
+          \left[
+            \begin{array}{rrr|r}
+              1 & 0 & 0 & 0 \\
+              0 & 1 & 0 & 0 \\
+              0 & 0 & 1 & 0 \\
+              0 & 0 & 0 & 0
+            \end{array}
+          \right].
+        \end{aligned}
+      \]
+      Yhtälön \(Ax=0\) ainoa ratkaisu on siis \(x=0\).
+      Lemman 3.6.3 nojalla jono \((v_1,v_2,v_3)\) on vapaa.
+      Koska \(V=\operatorname{Sp}(v_1,v_2,v_3)\), jono myös
+      virittää aliavaruuden \(V\). Siten se on \(V\):n kanta
+      Määritelmän 3.7.1 perusteella.
+
+      \newpage
+
+    \item Sovelletaan Huomautuksen 4.3.13 Gramin--Schmidtin
+      algoritmia. Koska \(|v_1|=\sqrt2\), saadaan ensin
+      \[
+        u_1=\frac{v_1}{|v_1|}
+        =\frac1{\sqrt2}
+        \begin{bmatrix}1 \\ 0 \\ 1 \\ 0
+        \end{bmatrix}.
+      \]
+      Toista vektoria varten lasketaan
+      \[
+        v_2\cdot u_1=\frac{1+3}{\sqrt2}=2\sqrt2,
+        \qquad
+        w_2=(v_2\cdot u_1)u_1
+        =
+        \begin{bmatrix}2 \\ 0 \\ 2 \\ 0
+        \end{bmatrix}.
+      \]
+      Tällöin
+      \[
+        v_2-w_2=
+        \begin{bmatrix}-1 \\ 1 \\ 1 \\ 0
+        \end{bmatrix},
+        \qquad |v_2-w_2|=\sqrt3,
+      \]
+      joten
+      \[
+        u_2=\frac{v_2-w_2}{|v_2-w_2|}
+        =\frac1{\sqrt3}
+        \begin{bmatrix}-1 \\ 1 \\ 1 \\ 0
+        \end{bmatrix}.
+      \]
+      Kolmatta vektoria varten tarvitaan pistetulot
+      \[
+        v_3\cdot u_1=\frac1{\sqrt2},
+        \qquad
+        v_3\cdot u_2=\frac{-1+2}{\sqrt3}=\frac1{\sqrt3}.
+      \]
+      Siis
+      \[
+        \begin{aligned}
+          w_3&=(v_3\cdot u_1)u_1+(v_3\cdot u_2)u_2 \\[0.5ex]
+          &=\frac12
+          \begin{bmatrix}1 \\ 0 \\ 1 \\ 0
+          \end{bmatrix}
+          +\frac13
+          \begin{bmatrix}-1 \\ 1 \\ 1 \\ 0
+          \end{bmatrix}
+          =
+          \begin{bmatrix}\frac16 \\ \frac13 \\ \frac56 \\ 0
+          \end{bmatrix}.
+        \end{aligned}
+      \]
+      Näin saadaan
+      \[
+        v_3-w_3=\frac56
+        \begin{bmatrix}1 \\ 2 \\ -1 \\ 0
+        \end{bmatrix},
+        \qquad
+        |v_3-w_3|=\frac56\sqrt{1+4+1}=\frac{5\sqrt6}{6}.
+      \]
+      Kolmas yksikkövektori on siis
+      \[
+        u_3=\frac{v_3-w_3}{|v_3-w_3|}
+        =\frac1{\sqrt6}
+        \begin{bmatrix}1 \\ 2 \\ -1 \\ 0
+        \end{bmatrix}.
+      \]
+      Lauseen 4.3.9 perusteella aliavaruuden \(V\) ortonormaali kanta on
+      \begingroup
+      \renewcommand{\arraystretch}{1.35}
+      \[
+        (u_1,u_2,u_3)=
+        \left(
+          \begin{bmatrix}\frac1{\sqrt2} \\ 0 \\ \frac1{\sqrt2} \\ 0
+          \end{bmatrix},
+          \begin{bmatrix}-\frac1{\sqrt3} \\ \frac1{\sqrt3}
+            \\ \frac1{\sqrt3} \\ 0
+          \end{bmatrix},
+          \begin{bmatrix}\frac1{\sqrt6} \\ \frac2{\sqrt6}
+            \\ -\frac1{\sqrt6} \\ 0
+          \end{bmatrix}
+        \right).\qedhere
+      \]
+      \endgroup
+  \end{enumerate}
+\end{solution}
+
+\newpage
+
 \begin{exercise}
   Jatkoa edelliseen tehtävään. Täydennä ortonormaali jono
   \((u_1,u_2,u_3)\) avaruuden \(\RR^{4\times 1}\) ortonormaaliksi
   kannaksi.
 \end{exercise}
+
+\begin{solution}
+  Valitaan
+  \[
+    v_4=e_4=
+    \begin{bmatrix}0 \\ 0 \\ 0 \\ 1
+    \end{bmatrix}.
+  \]
+  Edellisen tehtävän vektoreiden \(u_1,u_2,u_3\) neljäs koordinaatti
+  on nolla, joten myös jokaisen niiden lineaarikombinaation neljäs
+  koordinaatti on nolla. Koska vektorin \(v_4\) neljäs koordinaatti
+  on \(1\), pätee
+  \[
+    v_4\notin\operatorname{Sp}(u_1,u_2,u_3).
+  \]
+  Voidaan siis soveltaa Lemmaa 4.3.12 avaruudessa \(\RR^{4\times 1}\)
+  ja jatkaa Gramin--Schmidtin algoritmia yhdellä askeleella.
+
+  Koska \(v_4\cdot u_i=0\) jokaisella \(i\in\{1,2,3\}\), saadaan
+  \[
+    w_4=(v_4\cdot u_1)u_1+(v_4\cdot u_2)u_2+(v_4\cdot u_3)u_3=0.
+  \]
+  Lisäksi \(|v_4|=1\), joten uusi vektori on
+  \[
+    u_4=\frac{v_4-w_4}{|v_4-w_4|}
+    =\frac{v_4}{|v_4|}
+    =
+    \begin{bmatrix}0 \\ 0 \\ 0 \\ 1
+    \end{bmatrix}.
+  \]
+  Näin \(u_4\) on yksikkövektori ja kohtisuorassa vektoreita
+  \(u_1,u_2,u_3\) vastaan. Edellisen tehtävän perusteella myös
+  \(u_1,u_2,u_3\) ovat keskenään kohtisuoria yksikkövektoreita.
+  Lauseen 4.2.15 nojalla jono \((u_1,u_2,u_3,u_4)\) on siis vapaa.
+  Koska jonossa on neljä avaruuden \(\RR^{4\times 1}\) vektoria,
+  se on koko avaruuden kanta Korollaarin 3.10.3 perusteella.
+  Kaikkien kantavektoreiden pituus on \(1\), joten kanta on
+  ortonormaali Määritelmän 4.3.1 nojalla.
+
+  Vaadittu ortonormaali kanta on siten
+  \begingroup
+  \renewcommand{\arraystretch}{1.35}
+  \[
+    (u_1,u_2,u_3,u_4)=
+    \left(
+      \begin{bmatrix}\frac1{\sqrt2} \\ 0 \\ \frac1{\sqrt2} \\ 0
+      \end{bmatrix},
+      \begin{bmatrix}-\frac1{\sqrt3} \\ \frac1{\sqrt3} \\ \frac1{\sqrt3} \\ 0
+      \end{bmatrix},
+      \begin{bmatrix}\frac1{\sqrt6} \\ \frac2{\sqrt6} \\ -\frac1{\sqrt6} \\ 0
+      \end{bmatrix},
+      \begin{bmatrix}0 \\ 0 \\ 0 \\ 1
+      \end{bmatrix}
+    \right).\qedhere
+  \]
+  \endgroup
+\end{solution}
 
 \end{document}
