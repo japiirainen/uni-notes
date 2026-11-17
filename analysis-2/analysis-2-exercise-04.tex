@@ -1,0 +1,79 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+\usepackage{tikz}
+\usepackage{needspace}
+
+\title{Analyysi II\\Harjoitus 4}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Analyysi II}{Harjoitus 4}
+
+\begin{exercise}
+  Osoita määritelmän perusteella, että funktion
+  \(f \colon \RR \to \RR\), \(f(x) = x^2\), derivaatta pisteessä \(2\)
+  on \(4\).
+\end{exercise}
+
+\begin{solution}
+  Suoraan derivaatan määritelmästä saadaan
+  \[
+    \begin{aligned}
+      f^{\prime}(2) &= \lim_{x \to 2} \frac{f(x) - f(2)}{x - 2} \\
+      &= \lim_{x \to 2} \frac{x^2 - 4}{x - 2} \\
+      &= \lim_{x \to 2} \frac{(x - 2)(x + 2)}{x - 2} \\
+      &= \lim_{x \to 2} (x + 2) \\
+      &= 4.
+    \end{aligned}
+  \]
+  Siis \(f\) on derivoituva pisteessä \(2\) ja \(f^{\prime}(2) = 4\).
+\end{solution}
+
+\begin{exercise}
+  Olkoon \(A \subset \RR\) avoin väli ja olkoot
+  \(f, g \colon A \to \RR\) funktioita, jotka ovat derivoituvia pisteessä
+  \(x_0 \in A\). Osoita, että funktio \(f + g \colon A \to \RR\) on
+  derivoituva pisteessä \(x_0\) ja
+  \[
+    (f + g)'(x_0) = f'(x_0) + g'(x_0).
+  \]
+\end{exercise}
+
+\begin{exercise}
+  Olkoon \(f \colon \RR \to \RR\),
+  \(f(x) = \sqrt{\abs{x}}\). Tutki määritelmän nojalla, onko funktio
+  \(f\) derivoituva origossa.
+\end{exercise}
+
+\begin{exercise}
+  Olkoon \(f \colon \RR \to \RR\) derivoituva.
+  Määritellään funktio \(g \colon \RR \to \RR\) asettamalla
+  \(g(x) = \abs{f(x)}\). Osoita, että funktio \(g\) on derivoituva
+  kaikissa niissä pisteissä \(x \in \RR\), joille \(f(x) \neq 0\).
+  Määrää funktion \(g\) derivaatan arvo näissä pisteissä.
+\end{exercise}
+
+\begin{exercise}
+  Olkoon \(f \colon [0, \infty) \to \RR\),
+  \(f(x) = \sqrt{x}\). Laske määritelmän perusteella funktion \(f\)
+  derivaatta \(f'\) pisteessä \(x_0 \in (0, \infty)\). Laske
+  \(\lim_{x_0 \to 0^+} f'(x_0)\). Onko funktio \(f\) oikealta
+  derivoituva origossa? Selitä havaitsemasi ilmiö geometrisesti.
+\end{exercise}
+
+\begin{exercise}
+  Olkoot \(r > 0\) ja \(f \colon (-r, r) \to \RR\) sellainen funktio,
+  että
+  \[
+    \abs{f(x)} \leq x^2 \qquad\text{kaikilla } x \in (-r, r).
+  \]
+  Osoita, että funktio \(f\) on derivoituva origossa ja määrää derivaatta
+  \(f'(0)\).
+\end{exercise}
+
+\end{document}
