@@ -72,6 +72,39 @@
   \(f\) derivoituva origossa.
 \end{exercise}
 
+\begin{solution}
+  Kun \(x \neq 0\), funktion \(f\) erotusosamäärä origossa on
+  \[
+    \frac{f(x) - f(0)}{x} = \frac{\sqrt{\abs{x}}}{x}.
+  \]
+  Olkoon \(M \in \RR\) mielivaltainen ja valitaan
+  \(\delta = 1/(M^2 + 1) > 0\). Kun \(0 < x < \delta\), saadaan
+  \[
+    \frac{f(x) - f(0)}{x}
+    = \frac{1}{\sqrt{x}}
+    > \frac{1}{\sqrt{\delta}}
+    = \sqrt{M^2 + 1} > \abs{M} \geq M.
+  \]
+  Täten
+  \[
+    \lim_{x \to 0^+} \frac{f(x) - f(0)}{x} = +\infty.
+  \]
+  Samalla valinnalla \(\delta = 1/(M^2 + 1)\) saadaan, kun
+  \(-\delta < x < 0\),
+  \[
+    \frac{f(x) - f(0)}{x}
+    = -\frac{1}{\sqrt{-x}}
+    < -\frac{1}{\sqrt{\delta}}
+    = -\sqrt{M^2 + 1} < -\abs{M} \leq M.
+  \]
+  Siis
+  \[
+    \lim_{x \to 0^-} \frac{f(x) - f(0)}{x} = -\infty.
+  \]
+  Erotusosamäärällä ei siis ole äärellistä raja-arvoa origossa, joten
+  \(f\) ei ole derivaatan määritelmän nojalla derivoituva origossa.
+\end{solution}
+
 \begin{exercise}
   Olkoon \(f \colon \RR \to \RR\) derivoituva.
   Määritellään funktio \(g \colon \RR \to \RR\) asettamalla
