@@ -1,5 +1,5 @@
 {
-  description = "LaTeX environment for university mathematics notes";
+  description = "LaTeX and Lean environment for university mathematics notes";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
@@ -14,6 +14,7 @@
       {
         devShells.default = pkgs.mkShellNoCC {
           packages = [
+            pkgs.elan
             pkgs.gnumake
             pkgs.texliveFull
           ];

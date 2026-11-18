@@ -1,6 +1,7 @@
 .direnv/
 .latex-build/
 result
+.lake/
 
 # LaTeX auxiliary files. Final PDFs are intentionally tracked.
 *.acn
