@@ -200,6 +200,44 @@
   derivoituva origossa? Selitä havaitsemasi ilmiö geometrisesti.
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(x_0 \in (0, \infty)\). Suoraan derivaatan määritelmästä saadaan
+  \[
+    \begin{aligned}
+      \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}
+      &= \lim_{x \to x_0} \frac{\sqrt{x} - \sqrt{x_0}}{x - x_0} \\
+      &= \lim_{x \to x_0} \frac{\sqrt{x} - \sqrt{x_0}}{x - x_0}
+      \frac{\sqrt{x} + \sqrt{x_0}}{\sqrt{x} + \sqrt{x_0}} \\
+      &= \lim_{x \to x_0} \frac{x - x_0}{(x - x_0)(\sqrt{x} + \sqrt{x_0})} \\
+      &= \lim_{x \to x_0} \frac{1}{\sqrt{x} + \sqrt{x_0}} \\
+      &= \frac{1}{2\sqrt{x_0}}.
+    \end{aligned}
+  \]
+  Siis \(f\) on derivoituva jokaisessa pisteessä \(x_0 > 0\) ja
+  \(f'(x_0) = 1/(2\sqrt{x_0})\). Kun \(x_0 \to 0^+\), myös
+  \(\sqrt{x_0} \to 0^+\), joten
+  \[
+    \lim_{x_0 \to 0^+} f'(x_0)
+    = \lim_{x_0 \to 0^+} \frac{1}{2\sqrt{x_0}}
+    = +\infty.
+  \]
+  Origossa oikeanpuoleiselle erotusosamäärälle saadaan
+  \[
+    \lim_{x \to 0^+} \frac{f(x) - f(0)}{x - 0} =
+    \lim_{x \to 0^+} \frac{\sqrt{x}}{x} =
+    \lim_{x \to 0^+} \frac{1}{\sqrt{x}} = +\infty.
+  \]
+  Koska erotusosamäärällä ei ole äärellistä raja-arvoa, \(f\) ei ole
+  oikealta derivoituva origossa.
+
+  Geometrisesti \(f'(x_0) \to +\infty\) tarkoittaa, että kuvaajan
+  tangenttien kulmakertoimet kasvavat rajatta, kun \(x_0 \to 0^+\).
+  Myös origon ja kuvaajan pisteen \((x, \sqrt{x})\) kautta kulkevien
+  sekanttien kulmakertoimet \(1/\sqrt{x}\) kasvavat rajatta, kun
+  \(x \to 0^+\). Sekantit lähestyvät siis pystysuoraa suoraa \(x = 0\),
+  joka on kuvaajan tangentti origossa.
+\end{solution}
+
 \begin{exercise}
   Olkoot \(r > 0\) ja \(f \colon (-r, r) \to \RR\) sellainen funktio,
   että
@@ -209,5 +247,21 @@
   Osoita, että funktio \(f\) on derivoituva origossa ja määrää derivaatta
   \(f'(0)\).
 \end{exercise}
+
+\begin{solution}
+  Huomataan ensin, että
+  \[
+    0 \leq \abs{f(0)} \leq 0^2 = 0.
+  \]
+  Täten \(f(0) = 0\). Olkoon \(\varepsilon > 0\) ja valitaan \(\delta
+  = \minset{r, \varepsilon} > 0\). Tällöin
+  \[
+    \abs*{\frac{f(x) - f(0)}{x - 0}} = \abs*{\frac{f(x)}{x}}
+    \leq \frac{x^2}{\abs{x}} = \frac{\abs{x}^2}{\abs{x}} = \abs{x} <
+    \varepsilon,
+  \]
+  kun \(0 < \abs{x - 0} = \abs{x} < \delta\). Täten \(f\) on derivoituva
+  origossa ja \(f^{\prime}(0) = 0\).
+\end{solution}
 
 \end{document}
