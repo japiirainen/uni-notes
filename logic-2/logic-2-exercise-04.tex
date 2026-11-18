@@ -1,0 +1,101 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Johdatus logiikkaan II\\Harjoituksen 4 ratkaisut}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Johdatus logiikkaan II}{Harjoituksen 4 ratkaisut}
+
+\begin{exercise}
+  Merkitään
+  \[
+    \begin{aligned}
+      2\NN &= \text{parillisten luonnollisten lukujen joukko} \\
+      < &= \{(a,b) \in \NN^2 : a < b\} \\
+      \mid &= \{(a,b) \in \NN^2 : a \text{ jakaa } b\text{:n}\}
+    \end{aligned}
+  \]
+  Miten voit määritellä parittomien luonnollisten lukujen joukon
+  \begin{enumerate}[label=(\alph*)]
+    \item \(\{P\}\)-mallissa \(\mathcal M_1 = (\NN,2\NN)\),
+    \item \(\{R_0,R_1\}\)-mallissa \(\mathcal M_2 = (\NN,<,\mid)\)?
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Mitkä annetuista termeistä ovat vapaita muuttujalle \(x\) kaavassa
+  \[
+    (R(x,y) \land \exists zR(x,z)) \to \forall x\exists yR(x,y)?
+  \]
+  \begin{enumerate}[label=(\alph*)]
+    \item \(y\)
+    \item \(z\)
+    \item \(x\)
+    \item \(c\)
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Mikä annetuista muuttujista voidaan vaihtaa sidotun muuttujan \(y\) tilalle
+  kaavassa \(\exists yR_0(x,y) \lor \exists zR_1(x,z)\) ilman että kaavan
+  merkitys muuttuu:
+  \begin{enumerate}[label=(\alph*)]
+    \item \(x\)
+    \item \(y\)
+    \item \(z\)
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Onko termi \(t\) vapaa muuttujalle \(x\) kaavassa \(A\), kun
+  \begin{enumerate}[label=(\alph*)]
+    \item \(t = y\) ja \(A = \exists yR(x,y)\)
+    \item \(t = y\) ja \(A = \exists xR(x,y)\)
+    \item \(t = x\) ja \(A = \exists yR(x,y)\)
+    \item \(t = z\) ja \(A = \exists zP(z) \land R(x,y)\)
+    \item \(t = z\) ja \(A = \exists zP(z) \land R(x,z)\)
+  \end{enumerate}
+  Jos sijoitus on sallittu, mikä on \(A(t/x)\)?
+\end{exercise}
+
+\begin{exercise}
+  Todista seuraava erikoistapaus sijoituslemmasta suoraan Tarskin
+  totuusmääritelmää käyttäen (huom. ei siis induktiota rakenteen suhteen):
+  Olkoon \(A\) kaava \(\exists x(P(x) \land R(x,y))\). Valitaan termiksi
+  \(t\) muuttuja \(z\). Tällöin seuraavat ehdot ovat ekvivalentteja kaikilla
+  \(\mathcal M\) ja \(s\):
+  \begin{enumerate}[label=(\alph*)]
+    \item \(\mathcal M \models_s A(t/y)\)
+    \item \(\mathcal M \models_{s(a/y)} A\), missä
+      \(a = t^{\mathcal M}\langle s\rangle\).
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Todista sijoituslemma: Olkoon \(A\) mielivaltainen kaava ja \(t\) termi,
+  joka on vapaa muuttujalle \(y\) kaavassa \(A\). Tällöin seuraavat ehdot
+  ovat ekvivalentteja kaikilla \(\mathcal M\) ja \(s\):
+  \begin{enumerate}[label=(\alph*)]
+    \item \(\mathcal M \models_s A(t/y)\)
+    \item \(\mathcal M \models_{s(a/y)} A\), missä
+      \(a = t^{\mathcal M}\langle s\rangle\).
+  \end{enumerate}
+  Koska kurssilla ei vielä ole käsitelty funktiosymboleita, voit olettaa,
+  ettei niitä esiinny aakkostossa.
+\end{exercise}
+
+\begin{exercise}
+  Päättele lause \(\forall xR(x,x)\) lauseesta \(\forall x\forall yR(x,y)\).
+\end{exercise}
+
+\begin{exercise}
+  Päättele lause \(\neg\forall xP(x)\) lauseesta \(\forall x\neg P(x)\).
+\end{exercise}
+
+\end{document}
