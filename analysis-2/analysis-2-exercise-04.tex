@@ -67,6 +67,7 @@
 \end{solution}
 
 \begin{exercise}
+  \label{ex:sqrt-abs-origin}
   Olkoon \(f \colon \RR \to \RR\),
   \(f(x) = \sqrt{\abs{x}}\). Tutki määritelmän nojalla, onko funktio
   \(f\) derivoituva origossa.
@@ -192,6 +193,28 @@
   \]
 \end{solution}
 
+\begin{lemma}[Neliöjuuren jatkuvuus]
+  \label{lem:sqrt-continuity}
+  Funktio \(x \mapsto \sqrt{x}\) on jatkuva joukossa \([0, \infty)\).
+\end{lemma}
+
+\begin{proof}
+  Kun \(x, a \geq 0\), saadaan
+  \[
+    \abs*{\sqrt{x} - \sqrt{a}}^2
+    \leq \abs*{\sqrt{x} - \sqrt{a}}(\sqrt{x} + \sqrt{a})
+    = \abs{x - a}.
+  \]
+  Olkoon \(a \geq 0\) ja \(\varepsilon > 0\). Valitaan
+  \(\delta = \varepsilon^2 > 0\). Jos \(x \geq 0\) ja
+  \(\abs{x - a} < \delta\), niin
+  \[
+    \abs{\sqrt{x} - \sqrt{a}}
+    \leq \sqrt{\abs{x - a}} < \sqrt{\delta} = \varepsilon.
+  \]
+  Siis neliöjuurifunktio on jatkuva jokaisessa pisteessä \(a \geq 0\).
+\end{proof}
+
 \begin{exercise}
   Olkoon \(f \colon [0, \infty) \to \RR\),
   \(f(x) = \sqrt{x}\). Laske määritelmän perusteella funktion \(f\)
@@ -201,7 +224,9 @@
 \end{exercise}
 
 \begin{solution}
-  Olkoon \(x_0 \in (0, \infty)\). Suoraan derivaatan määritelmästä saadaan
+  Olkoon \(x_0 \in (0, \infty)\). Lemman~\ref{lem:sqrt-continuity}
+  nojalla \(\sqrt{x} \to \sqrt{x_0}\), kun \(x \to x_0\).
+  Derivaatan määritelmän ja raja-arvojen laskusääntöjen nojalla saadaan
   \[
     \begin{aligned}
       \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}
@@ -214,14 +239,16 @@
     \end{aligned}
   \]
   Siis \(f\) on derivoituva jokaisessa pisteessä \(x_0 > 0\) ja
-  \(f'(x_0) = 1/(2\sqrt{x_0})\). Kun \(x_0 \to 0^+\), myös
-  \(\sqrt{x_0} \to 0^+\), joten
+  \(f'(x_0) = 1/(2\sqrt{x_0})\). Tehtävässä~\ref{ex:sqrt-abs-origin}
+  osoitettiin, että \(1/\sqrt{x} \to +\infty\), kun \(x \to 0^+\).
+  Siksi myös
   \[
     \lim_{x_0 \to 0^+} f'(x_0)
     = \lim_{x_0 \to 0^+} \frac{1}{2\sqrt{x_0}}
     = +\infty.
   \]
-  Origossa oikeanpuoleiselle erotusosamäärälle saadaan
+  Saman tehtävässä~\ref{ex:sqrt-abs-origin} todistetun raja-arvon nojalla
+  origossa saadaan
   \[
     \lim_{x \to 0^+} \frac{f(x) - f(0)}{x - 0} =
     \lim_{x \to 0^+} \frac{\sqrt{x}}{x} =
