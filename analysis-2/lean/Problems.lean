@@ -37,7 +37,7 @@ compile without errors. If your definition is right but a proof fails,
 read the error message: it shows what the proof expected.
 -/
 def IsLipschitz (K : ℝ) (f : ℝ → ℝ) : Prop :=
-  sorry
+  ∀ (x y : ℝ), |f x - f y| ≤ K * |x - y|
 
 theorem isLipschitz_linear : IsLipschitz 3 (fun x => 3 * x - 7) := by
   intro x y
@@ -98,7 +98,15 @@ theorem not_badContAt₁_id : ¬ BadContAt₁ (fun x => x) 0 := by
 Show that `BadContAt₁` implies continuity.
 -/
 theorem BadContAt₁.contAt {f : ℝ → ℝ} {a : ℝ} (hf : BadContAt₁ f a) : ContAt f a := by
-  sorry
+  intro ε hε
+  obtain ⟨δ, hδ, h'⟩ := BadContAt₁.meaning.mp hf
+  use δ
+  constructor
+  . exact hδ
+  . intro x x_close
+    rw [h' x x_close, sub_self, abs_zero]
+    exact hε
+
 /-
 
 ## Problem 3 (warm-up): read and judge
