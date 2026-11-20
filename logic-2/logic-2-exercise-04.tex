@@ -22,17 +22,50 @@
     \end{aligned}
   \]
   Miten voit määritellä parittomien luonnollisten lukujen joukon
+  \leavevmode\par
   \begin{enumerate}[label=(\alph*)]
     \item \(\{P\}\)-mallissa \(\mathcal M_1 = (\NN,2\NN)\),
     \item \(\{R_0,R_1\}\)-mallissa \(\mathcal M_2 = (\NN,<,\mid)\)?
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*)]
+    \item Parittomien luonnollisten lukujen joukon määrittelee kaava
+      \(\neg P(x)\). Koska \(P^{\mathcal M_1}=2\NN\), jokaisella
+      tulkintafunktiolla \(s\) pätee
+      \[
+        \mathcal M_1\models_s\neg P(x)
+        \iff s(x)\notin 2\NN
+        \iff s(x)\text{ on pariton}.
+      \]
+
+    \item Määritellään ensin apukaava
+      \[
+        \varphi(x)=\exists y\exists z\bigl(
+          R_0(y,z)\land R_0(z,x)\land
+        \forall w(R_0(w,x)\to(w=y\lor w=z))\bigr).
+      \]
+      Se ilmaisee, että luvun \(x\) alapuolella on täsmälleen kaksi
+      luonnollista lukua. Koska \(\NN=\{0,1,2,\ldots\}\), kaava
+      \(\varphi(x)\) määrittelee joukon \(\{2\}\) mallissa
+      \(\mathcal M_2\). Siten kaava
+      \[
+        \psi(x)=\exists u\bigl(\varphi(u)\land\neg R_1(u,x)\bigr)
+      \]
+      määrittelee parittomien luonnollisten lukujen joukon mallissa
+      \(\mathcal M_2\): se ilmaisee, ettei \(2\) jaa lukua \(x\).
+      Tässä \(\varphi(u)\) on yllä määritellyn kaavan lyhenne.
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}
   Mitkä annetuista termeistä ovat vapaita muuttujalle \(x\) kaavassa
   \[
     (R(x,y) \land \exists zR(x,z)) \to \forall x\exists yR(x,y)?
   \]
+  \leavevmode\par
   \begin{enumerate}[label=(\alph*)]
     \item \(y\)
     \item \(z\)
@@ -41,10 +74,29 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  Termi on vapaa muuttujalle \(x\), jos sen sijoittaminen \(x\):n
+  vapaiden esiintymien tilalle ei sido termin muuttujia.
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*)]
+    \item \(y\) on vapaa muuttujalle \(x\), sillä kumpikaan \(x\):n
+      vapaa esiintymä ei ole kvanttorin \(\exists y\) vaikutusalassa.
+    \item \(z\) ei ole vapaa muuttujalle \(x\): alikaavassa
+      \(\exists zR(x,z)\) sijoitettu \(z\) tulisi sidotuksi.
+    \item \(x\) on vapaa muuttujalle \(x\), sillä sijoitus ei muuta kaavaa.
+    \item Vakio \(c\) on vapaa muuttujalle \(x\), sillä siinä ei ole
+      muuttujia, jotka voisivat tulla sidotuiksi.
+  \end{enumerate}
+  Siis vastaus on kyllä kohdissa \textbf{(a), (c) ja (d)} ja ei kohdassa
+  \textbf{(b)}. Implikaation oikean puolen \(x\)-esiintymät ovat sidottuja,
+  joten niitä ei korvata sijoituksessa.
+\end{solution}
+
 \begin{exercise}
   Mikä annetuista muuttujista voidaan vaihtaa sidotun muuttujan \(y\) tilalle
   kaavassa \(\exists yR_0(x,y) \lor \exists zR_1(x,z)\) ilman että kaavan
   merkitys muuttuu:
+  \leavevmode\par
   \begin{enumerate}[label=(\alph*)]
     \item \(x\)
     \item \(y\)
@@ -52,8 +104,26 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*)]
+    \item \(x\) ei kelpaa, sillä ensimmäisestä disjunktista tulisi
+      \(\exists xR_0(x,x)\). Tällöin alun perin vapaa \(x\) tulisi
+      sidotuksi, eikä merkitys säilyisi.
+    \item \(y\) kelpaa, sillä kaava ei muutu.
+    \item \(z\) kelpaa: uudelleennimeäminen antaa kaavan
+      \[
+        \exists zR_0(x,z)\lor\exists zR_1(x,z).
+      \]
+      Kvanttorien vaikutusalat ovat erilliset, joten sama muuttujanimi
+      ei aiheuta ristiriitaa eikä kaavan merkitys muutu.
+  \end{enumerate}
+  Siis sallitut muuttujat ovat \textbf{\(y\) ja \(z\)}.
+\end{solution}
+
 \begin{exercise}
   Onko termi \(t\) vapaa muuttujalle \(x\) kaavassa \(A\), kun
+  \leavevmode\par
   \begin{enumerate}[label=(\alph*)]
     \item \(t = y\) ja \(A = \exists yR(x,y)\)
     \item \(t = y\) ja \(A = \exists xR(x,y)\)
@@ -64,12 +134,35 @@
   Jos sijoitus on sallittu, mikä on \(A(t/x)\)?
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*)]
+    \item Ei: sijoitettu \(y\) tulisi kvanttorin \(\exists y\) sitomaksi.
+    \item Kyllä: kaavassa ei ole vapaita \(x\):n esiintymiä, joten
+      \(A(y/x)=\exists xR(x,y)\).
+    \item Kyllä: \(x\):n korvaaminen itsellään ei muuta kaavaa, joten
+      \(A(x/x)=\exists yR(x,y)\).
+    \item Kyllä: \(\exists z\) sitoo vain alikaavan \(P(z)\)
+      muuttujan, joten
+      \[
+        A(z/x)=(\exists zP(z))\land R(z,y).
+      \]
+    \item Kyllä: tässäkin \(R(x,z)\) on kvanttorin \(\exists z\)
+      vaikutusalan ulkopuolella, joten
+      \[
+        A(z/x)=(\exists zP(z))\land R(z,z).
+      \]
+      Oikean konjunktin molemmat \(z\)-esiintymät ovat vapaita.
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}
   Todista seuraava erikoistapaus sijoituslemmasta suoraan Tarskin
   totuusmääritelmää käyttäen (huom. ei siis induktiota rakenteen suhteen):
   Olkoon \(A\) kaava \(\exists x(P(x) \land R(x,y))\). Valitaan termiksi
   \(t\) muuttuja \(z\). Tällöin seuraavat ehdot ovat ekvivalentteja kaikilla
   \(\mathcal M\) ja \(s\):
+  \leavevmode\par
   \begin{enumerate}[label=(\alph*)]
     \item \(\mathcal M \models_s A(t/y)\)
     \item \(\mathcal M \models_{s(a/y)} A\), missä
@@ -77,10 +170,76 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(\mathcal M\) mielivaltainen malli, \(D=\dom(\mathcal M)\)
+  ja \(s\) tulkintafunktio. Koska \(t=z\), termin arvon määritelmästä
+  saadaan
+  \[
+    a=t^{\mathcal M}\langle s\rangle=s(z),
+    \qquad A(t/y)=\exists x(P(x)\land R(x,z)).
+  \]
+  Koska \(x,y,z\) ovat eri muuttujia, muuttujan arvon ja päivitysten
+  määritelmien nojalla jokaisella \(b\in D\) pätee
+  \[
+    \begin{aligned}
+      x^{\mathcal M}\langle s(b/x)\rangle
+      &=s(b/x)(x)=b,\\
+      z^{\mathcal M}\langle s(b/x)\rangle
+      &=s(b/x)(z)=s(z)=a,\\
+      x^{\mathcal M}\langle s(a/y)(b/x)\rangle
+      &=s(a/y)(b/x)(x)=b,\\
+      y^{\mathcal M}\langle s(a/y)(b/x)\rangle
+      &=s(a/y)(b/x)(y)=a.
+    \end{aligned}
+  \]
+  Eksistenssikvanttorin, konjunktion ja atomikaavojen Tarskin
+  totuusehtoja soveltamalla saadaan
+  \[
+    \begin{aligned}
+      &\mathcal M\models_s A(t/y)\\
+      &\iff \exists b\in D\;\bigl(
+      \mathcal M\models_{s(b/x)}(P(x)\land R(x,z))\bigr)\\
+      &\iff \exists b\in D\;\bigl(
+        \mathcal M\models_{s(b/x)}P(x)\ \text{ja}\
+      \mathcal M\models_{s(b/x)}R(x,z)\bigr)\\
+      &\iff \exists b\in D\;\bigl(
+        x^{\mathcal M}\langle s(b/x)\rangle\in P^{\mathcal M}\\
+        &\qquad\qquad\text{ja}\
+        (x^{\mathcal M}\langle s(b/x)\rangle,
+      z^{\mathcal M}\langle s(b/x)\rangle)\in R^{\mathcal M}\bigr)\\
+      &\iff \exists b\in D\;\bigl(
+      b\in P^{\mathcal M}\ \text{ja}\ (b,a)\in R^{\mathcal M}\bigr).
+    \end{aligned}
+  \]
+  Samoin toisen ehdon totuusehdot ovat
+  \[
+    \begin{aligned}
+      &\mathcal M\models_{s(a/y)} A\\
+      &\iff \exists b\in D\;\bigl(
+      \mathcal M\models_{s(a/y)(b/x)}(P(x)\land R(x,y))\bigr)\\
+      &\iff \exists b\in D\;\bigl(
+        \mathcal M\models_{s(a/y)(b/x)}P(x)\\
+        &\qquad\qquad\text{ja}\
+      \mathcal M\models_{s(a/y)(b/x)}R(x,y)\bigr)\\
+      &\iff \exists b\in D\;\bigl(
+        x^{\mathcal M}\langle s(a/y)(b/x)\rangle\in P^{\mathcal M}\\
+        &\qquad\qquad\text{ja}\
+        (x^{\mathcal M}\langle s(a/y)(b/x)\rangle,
+        y^{\mathcal M}\langle s(a/y)(b/x)\rangle)
+      \in R^{\mathcal M}\bigr)\\
+      &\iff \exists b\in D\;\bigl(
+      b\in P^{\mathcal M}\ \text{ja}\ (b,a)\in R^{\mathcal M}\bigr).
+    \end{aligned}
+  \]
+  Molemmat ehdot palautuvat siis samaan joukko-opilliseen ehtoon,
+  joten ne ovat ekvivalentteja.\qedhere
+\end{solution}
+
 \begin{exercise}
   Todista sijoituslemma: Olkoon \(A\) mielivaltainen kaava ja \(t\) termi,
   joka on vapaa muuttujalle \(y\) kaavassa \(A\). Tällöin seuraavat ehdot
   ovat ekvivalentteja kaikilla \(\mathcal M\) ja \(s\):
+  \leavevmode\par
   \begin{enumerate}[label=(\alph*)]
     \item \(\mathcal M \models_s A(t/y)\)
     \item \(\mathcal M \models_{s(a/y)} A\), missä
@@ -90,12 +249,164 @@
   ettei niitä esiinny aakkostossa.
 \end{exercise}
 
+\begin{solution}
+  Todistetaan väite induktiolla kaavan \(A\) rakenteen suhteen kaikille
+  malleille \(\mathcal M\), tulkintafunktioille \(s\) ja termeille
+  \(t\), jotka ovat vapaita muuttujalle \(y\) kaavassa \(A\).
+  Tämä tarkoittaa, ettei \(t\):n sijoittaminen \(y\):n vapaiden
+  esiintymien tilalle sido yhtään termissä \(t\) esiintyvää muuttujaa.
+  Merkitään \(D=\dom(\mathcal M)\) ja
+  \(a=t^{\mathcal M}\langle s\rangle\).
+
+  \textbf{Induktio-oletus.} Induktioaskeleessa oletetaan, että väite
+  pätee kaavan \(A\) välittömille osakaavoille \(E\): kaikilla
+  malleilla \(\mathcal M\), tulkintafunktioilla \(s'\) ja termeillä
+  \(u\), jotka ovat vapaita muuttujalle \(y\) kaavassa \(E\), pätee
+  \[
+    \mathcal M\models_{s'}E(u/y)
+    \iff \mathcal M\models_{s'(c/y)}E,
+    \qquad c=u^{\mathcal M}\langle s'\rangle.
+  \]
+  Oletusta saa siis käyttää myös muilla tulkintafunktioilla kuin \(s\).
+
+  Jos \(y\) ei esiinny vapaana kaavassa \(A\), niin \(A(t/y)=A\).
+  Tällöin väite seuraa siitä, että kaavan totuus riippuu vain sen
+  vapaiden muuttujien arvoista. Voidaan siis olettaa, että \(y\)
+  esiintyy vapaana kaavassa \(A\).
+
+  \textbf{Atomikaavat.} Jokaiselle termille \(u\) pätee
+  \[
+    u(t/y)^{\mathcal M}\langle s\rangle
+    =u^{\mathcal M}\langle s(a/y)\rangle.
+  \]
+  Jos \(u=y\), molemmat puolet ovat \(a\). Muussa tapauksessa \(u\)
+  on toinen muuttuja tai vakio, joten sijoitus ja \(y\):n arvon päivitys
+  eivät muuta sen arvoa. Tarskin atomikaavojen totuusehdoista saadaan
+  \[
+    \begin{aligned}
+      &\mathcal M\models_s R(u_1,\ldots,u_n)(t/y)\\
+      &\iff \bigl(u_1(t/y)^{\mathcal M}\langle s\rangle,\ldots,
+      u_n(t/y)^{\mathcal M}\langle s\rangle\bigr)\in R^{\mathcal M}\\
+      &\iff \bigl(u_1^{\mathcal M}\langle s(a/y)\rangle,\ldots,
+      u_n^{\mathcal M}\langle s(a/y)\rangle\bigr)\in R^{\mathcal M}\\
+      &\iff \mathcal M\models_{s(a/y)}R(u_1,\ldots,u_n).
+    \end{aligned}
+  \]
+  Yhtälöatomille \(u=v\) sama termien arvojen yhtäsuuruus ja Tarskin
+  yhtälön totuusehto antavat väitteen.
+
+  \textbf{Konnektiivit.} Kun \(A=\neg B\), termi \(t\) on vapaa
+  muuttujalle \(y\) myös kaavassa \(B\). Käytetään induktio-oletusta
+  kaavalle \(B\) termillä \(t\) ja tulkintafunktiolla \(s\).
+  Tarskin totuusehdoista seuraa
+  \[
+    \begin{aligned}
+      \mathcal M\models_s(\neg B)(t/y)
+      &\iff \mathcal M\not\models_s B(t/y)\\
+      &\overset{\text{IO}}{\iff} \mathcal M\not\models_{s(a/y)}B\\
+      &\iff \mathcal M\models_{s(a/y)}\neg B.
+    \end{aligned}
+  \]
+  Jos \(A=B\land C\), termi \(t\) on vapaa muuttujalle \(y\)
+  sekä kaavassa \(B\) että kaavassa \(C\). Käytetään kummankin
+  kaavan induktio-oletusta termillä \(t\) ja tulkintafunktiolla \(s\):
+  \[
+    \begin{aligned}
+      &\mathcal M\models_s(B\land C)(t/y)\\
+      &\iff \mathcal M\models_s B(t/y)\ \text{ja}\
+      \mathcal M\models_s C(t/y)\\
+      &\overset{\text{IO}}{\iff} \mathcal M\models_{s(a/y)}B\ \text{ja}\
+      \mathcal M\models_{s(a/y)}C\\
+      &\iff \mathcal M\models_{s(a/y)}(B\land C).
+    \end{aligned}
+  \]
+  Merkintä IO osoittaa induktio-oletuksen käyttökohdan.
+  Muut konnektiivit käsitellään samoin: induktio-oletus säilyttää
+  osakaavojen totuusarvot, joten myös konnektiivin totuusehto säilyy.
+
+  \textbf{Kvanttorit.} Olkoon \(A=\exists xB\) tai \(A=\forall xB\).
+  Koska \(y\) esiintyy vapaana kaavassa \(A\), on \(x\ne y\) ja
+  \(y\) esiintyy vapaana kaavassa \(B\). Oletus, että \(t\) on vapaa
+  muuttujalle \(y\) kaavassa \(A\), takaa, ettei \(x\) esiinny
+  termissä \(t\), ja että \(t\) on vapaa muuttujalle \(y\) myös
+  kaavassa \(B\).
+  Siksi jokaisella \(b\in D\)
+  \[
+    t^{\mathcal M}\langle s(b/x)\rangle=a,
+    \qquad s(b/x)(a/y)=s(a/y)(b/x).
+  \]
+  Sovelletaan induktio-oletusta kaavaan \(B\) termillä \(t\) ja
+  tulkintafunktiolla \(s(b/x)\) jokaiselle \(b\in D\). Koska termin
+  \(t\) arvo tälläkin tulkintafunktiolla on \(a\), induktio-oletuksen
+  antama päivitetty tulkintafunktio on \(s(b/x)(a/y)\).
+  Tarskin eksistenssikvanttorin totuusehdon nojalla
+  \[
+    \begin{aligned}
+      &\mathcal M\models_s(\exists xB)(t/y)\\
+      &\iff \exists b\in D:\ \mathcal M\models_{s(b/x)}B(t/y)\\
+      &\overset{\text{IO}}{\iff} \exists b\in D:\
+      \mathcal M\models_{s(b/x)(a/y)}B\\
+      &\iff \exists b\in D:\ \mathcal M\models_{s(a/y)(b/x)}B\\
+      &\iff \mathcal M\models_{s(a/y)}\exists xB.
+    \end{aligned}
+  \]
+  Universaalikvanttorin totuusehdosta saadaan samoin
+  \[
+    \begin{aligned}
+      &\mathcal M\models_s(\forall xB)(t/y)\\
+      &\iff \forall b\in D:\ \mathcal M\models_{s(b/x)}B(t/y)\\
+      &\overset{\text{IO}}{\iff} \forall b\in D:\
+      \mathcal M\models_{s(b/x)(a/y)}B\\
+      &\iff \forall b\in D:\ \mathcal M\models_{s(a/y)(b/x)}B\\
+      &\iff \mathcal M\models_{s(a/y)}\forall xB.
+    \end{aligned}
+  \]
+  Väite pätee siis kaikille kaavoille rakenteellisen induktion nojalla.\qedhere
+\end{solution}
+
 \begin{exercise}
   Päättele lause \(\forall xR(x,x)\) lauseesta \(\forall x\forall yR(x,y)\).
 \end{exercise}
 
+\begin{solution}
+  Saadaan seuraava päättely:
+  \[
+    \dfrac{
+      \dfrac{
+        \dfrac{\forall x\forall yR(x,y)}{\forall yR(x,y)}
+        \;\forall E,\,h_1
+      }{R(x,x)}\;\forall E,\,h_2
+    }{\forall xR(x,x)}\;\forall T,\,h_3
+  \]
+  Sääntöjen ehdot:
+  \leavevmode\par
+  \begin{enumerate}[label={h\arabic*:}]
+    \item \(x\) on vapaa muuttujalle \(x\) kaavassa \(\forall yR(x,y)\),
+      ja sijoitus \(x/x\) ei muuta kaavaa.
+    \item \(x\) on vapaa muuttujalle \(y\) kaavassa \(R(x,y)\),
+      ja \(R(x,y)(x/y)=R(x,x)\).
+    \item \(x\) ei esiinny vapaana ainoassa oletuksessa
+      \(\forall x\forall yR(x,y)\).
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}
   Päättele lause \(\neg\forall xP(x)\) lauseesta \(\forall x\neg P(x)\).
 \end{exercise}
+
+\begin{solution}
+  Oletetaan tilapäisesti \(\forall xP(x)\) ja johdetaan ristiriita:
+  \[
+    \dfrac{
+      \dfrac{
+        \dfrac{[\forall xP(x)]^1}{P(x)}\;\forall E
+        \qquad
+        \dfrac{\forall x\neg P(x)}{\neg P(x)}\;\forall E
+      }{P(x)\land\neg P(x)}\;\land T
+    }{\neg\forall xP(x)}\;\neg T,\,1
+  \]
+  Molemmissa \(\forall E\) -askelissa sijoitus on \(x/x\), joka on
+  sallittu ja jättää kaavan ennalleen.
+\end{solution}
 
 \end{document}
