@@ -1,0 +1,227 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Lukuteoria I\\Harjoitus 4}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Lukuteoria I}{Harjoitus 4}
+
+\begin{exercise}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), topsep=0.35em]
+    \item Määrää rationaaliluvun \(\frac{71}{15}\) desimaaliesitys.
+    \item Määrää luvun \(7{,}\overline{12} = 7{,}121212\ldots\)
+      esitys murtolukuna.
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), topsep=0.35em]
+    \item
+      \[
+        \renewcommand{\arraystretch}{1.05}
+        \begin{array}{r@{\;}r@{\mkern3mu}r@{\mkern3mu}r@{\mkern3mu}r@{\mkern3mu}r@{\mkern3mu}l}
+          & & 4\mathrlap{{,}} & 7 & 3 & 3 & \ldots \\
+          \cline{2-7}
+        15\,\big) & 7 & 1\mathrlap{{,}} & 0 & 0 & 0 & \ldots \\
+        & 6 & 0 & & & & \\
+        \cline{2-3}
+        & 1 & 1 & 0 & & & \\
+        & 1 & 0 & 5 & & & \\
+        \cline{2-4}
+        & & & 5 & 0 & & \\
+        & & & 4 & 5 & & \\
+        \cline{4-5}
+        & & & & 5 & 0 & \\
+        & & & & 4 & 5 & \\
+        \cline{5-6}
+        & & & & & 5 & \ldots
+      \end{array}
+    \]
+    \[
+      \boxed{\frac{71}{15}=4{,}73333\ldots=4{,}7\overline{3}.}
+    \]
+  \item Olkoon \(x=7{,}121212\ldots\). Tällöin
+    \[
+      \begin{aligned}
+        100x-x
+        &=712{,}121212\ldots-7{,}121212\ldots\\
+        &=705.
+      \end{aligned}
+    \]
+    Siis \(99x=705\), joten
+    \[
+      \boxed{x=\frac{705}{99}=\frac{235}{33}.}\qedhere
+    \]
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+\leavevmode\par
+\begin{enumerate}[label=(\alph*), topsep=0.35em]
+  \item Osoita, että \(\sqrt{2} + \sqrt{5}\) on irrationaaliluku.
+  \item Osoita, että \(\sqrt[3]{2} + \sqrt{3}\) on algebrallinen luku.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=(\alph*), topsep=0.35em]
+  \item Oletetaan, että \(\sqrt{2} + \sqrt{5} = r \in \QQ\). Tällöin
+    \((r - \sqrt{2})^2 = 5\), eli
+    \[
+      r^2 - 2r\sqrt{2} + 2 = 5.
+    \]
+    Koska \(r>0\), saadaan
+    \[
+      \sqrt{2} = \frac{r^2 - 3}{2r} \in \QQ.
+    \]
+    Tämä on ristiriita, sillä \(\sqrt{2}\) on irrationaalinen.
+    Siis \(\sqrt{2} + \sqrt{5}\) on irrationaalinen.
+  \item Olkoon \(x=\sqrt[3]{2}+\sqrt{3}\). Tällöin
+    \((x-\sqrt{3})^3=2\), joten
+    \[
+      x^3-3x^2\sqrt{3}+9x-3\sqrt{3}=2.
+    \]
+    Ryhmittelemällä saadaan
+    \[
+      x^3+9x-2=3(x^2+1)\sqrt{3}.
+    \]
+    Korottamalla puolittain neliöön saadaan
+    \[
+      (x^3+9x-2)^2-27(x^2+1)^2=0.
+    \]
+    Siis \(x\) on kokonaislukukertoimisen polynomin
+    \[
+      P(T)=(T^3+9T-2)^2-27(T^2+1)^2
+    \]
+    nollakohta. Täten ollen \(\sqrt[3]{2}+\sqrt{3}\) on
+    algebrallinen luku.
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+Perustele ovatko seuraavat väitteet tosia vai epätosia.
+\begin{enumerate}[label=(\alph*), topsep=0.35em]
+  \item Rationaaliluvun ja irrationaaliluvun summa on aina
+    irrationaaliluku.
+  \item Kahden irrationaaliluvun tulo on aina irrationaaliluku.
+  \item Jos \(z\) on transkendenttinen luku, niin myös \(z^2\) on
+    transkendenttinen luku.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode\par
+\begin{enumerate}[label=(\alph*), topsep=0.35em]
+  \item Väite on tosi. Olkoon \(a \in \QQ\) ja
+    \(r \in \RR \setminus \QQ\). Oletetaan vastoin väitettä, että
+    \(a+r=q\in\QQ\). Tällöin \(r=q-a\in\QQ\), sillä
+    rationaalilukujen erotus on rationaalinen. Tämä on ristiriidassa
+    oletuksen \(r\notin\QQ\) kanssa. Siis \(a+r\) on irrationaalinen.
+  \item Väite on epätosi. Tiedetään, että \(\sqrt{2} \in \RR \setminus \QQ\),
+    mutta \(\sqrt{2}\sqrt{2} = 2 \in \QQ\).
+  \item Väite on tosi. Olkoon \(z\) transkendenttinen. Oletetaan vastoin
+    väitettä, että \(z^2\) on algebrallinen. Tällöin on olemassa
+    polynomi \(P \in \ZZ[T]\),
+    \[
+      P(T) = a_dT^d + \cdots + a_1T + a_0, \quad a_d \neq 0
+    \]
+    siten, että \(P(z^2) = 0\). Määritellään
+    \[
+      Q(T) = P(T^2) = a_dT^{2d} + \cdots + a_1T^2 + a_0.
+    \]
+    Tällöin \(Q \in \ZZ[T]\), ja sen johtokerroin on \(a_d\neq0\),
+    joten \(Q\) ei ole nollapolynomi. Lisäksi \(Q(z)=P(z^2)=0\),
+    joten \(z\) on algebrallinen. Tämä on ristiriidassa oletuksen
+    kanssa, että \(z\) on transkendenttinen. Siis \(z^2\) on
+    transkendenttinen.
+
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+Oletetaan tunnetuksi, että luvut \(e\) ja \(\pi\) ovat
+transkendenttisia. Osoita, että ainakin toinen luvuista \(e + \pi\)
+ja \(e\pi\) on irrationaalinen.
+\end{exercise}
+
+\begin{solution}
+Oletetaan vastoin väitettä, että luvut \(e+\pi\) ja \(e\pi\) ovat
+rationaalisia. Kirjoitetaan
+\[
+  e+\pi=\frac{a}{b},\qquad e\pi=\frac{c}{d},
+  \qquad a,c\in\ZZ,\quad b,d\in\ZZ_+.
+\]
+Olkoon
+\[
+  P(T) = T^2 - (e + \pi)T + e\pi = (T - e)(T - \pi).
+\]
+Kertomalla nimittäjien tulolla saadaan polynomi
+\[
+  Q(T)=bdP(T)\in\ZZ[T].
+\]
+Koska \(bd\neq0\), polynomi \(Q\) ei ole nollapolynomi. Lisäksi
+\(Q(e)=bdP(e)=0\), joten \(e\) on algebrallinen. Tämä on ristiriidassa
+luvun \(e\) transkendenttisuuden kanssa.
+Täten ainakin toisen luvuista \(e + \pi\) ja \(e\pi\) on oltava
+irrationaalinen.
+\end{solution}
+
+\begin{exercise}
+Osoita, että Liouvillen luku
+\[
+  \ell = \sum_{n=1}^{\infty} 10^{-n!}
+  = 0{,}1100010000000000000000010000\ldots
+\]
+on irrationaalinen käyttämättä tietoa siitä, että \(\ell\) on
+transkendenttinen.
+\end{exercise}
+
+\begin{solution}
+Oletetaan, että \(\ell = p/q\), missä \(p,q\in\ZZ\) ja \(q>0\).
+Olkoon \(N\in\NNone\). Kerrotaan yhtälö \(\ell=p/q\) luvulla \(q10^{N!}\)
+ja siirretään sarjan \(N\) ensimmäistä termiä oikealle puolelle. Saadaan
+\[
+  R_N := q10^{N!}\sum_{n=N+1}^{\infty} 10^{-n!}
+  = p10^{N!} - q\sum_{n=1}^{N} 10^{N!-n!}.
+\]
+Koska \(N!-n!\) on epänegatiivinen kokonaisluku, kun \(1\le n\le N\),
+yhtälön oikea puoli on kokonaisluku. Siis \(R_N\in\ZZ\).
+
+Luvut \(n!-N!\), kun \(n\ge N+1\), muodostavat aidosti kasvavan
+kokonaislukujonon, jonka ensimmäinen jäsen on \((N+1)!-N!=N\cdot N!\).
+Täydentämällä summaa puuttuvilla positiivisilla termeillä saadaan
+geometrinen yläraja
+\[
+  \begin{aligned}
+    0 < R_N &= q\sum_{n=N+1}^{\infty} 10^{-(n!-N!)} \\
+    &\le q\sum_{k=N\cdot N!}^{\infty} 10^{-k} \\
+    &= q10^{-N\cdot N!}\sum_{j=0}^{\infty} \left(\frac{1}{10}\right)^j \\
+    &= q10^{-N\cdot N!}\frac{1}{1-\frac{1}{10}}
+    = \frac{10q}{9}10^{-N\cdot N!}.
+  \end{aligned}
+\]
+Koska \(q\) on kiinteä, yläraja lähestyy nollaa, kun \(N\to\infty\).
+Valitaan \(N\) niin suureksi, että yläraja on pienempi kuin \(1\).
+Tällöin \(0<R_N<1\), mikä on ristiriidassa sen kanssa, että \(R_N\)
+on kokonaisluku. Siis \(\ell\) on irrationaalinen.
+\end{solution}
+
+\begin{exercise}
+Tarkastele todistusta Liouvillen luvun transkendenttisuudelle.
+Miten todistusta pitäisi muuttaa, jotta saataisiin osoitettua, että
+\[
+  3\sum_{i=1}^{\infty} 7^{-i!}
+\]
+on transkendenttinen?
+\end{exercise}
+
+\end{document}
