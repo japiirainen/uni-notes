@@ -219,9 +219,61 @@ on kokonaisluku. Siis \(\ell\) on irrationaalinen.
 Tarkastele todistusta Liouvillen luvun transkendenttisuudelle.
 Miten todistusta pitäisi muuttaa, jotta saataisiin osoitettua, että
 \[
-  3\sum_{i=1}^{\infty} 7^{-i!}
+  \alpha = 3\sum_{i=1}^{\infty} 7^{-i!}
 \]
 on transkendenttinen?
 \end{exercise}
+
+\begin{solution}
+Oletetaan, että \(\alpha\) on algebrallinen. Olkoon \(P\in\ZZ[T]\)
+nollasta poikkeava polynomi, jolle \(P(\alpha)=0\), ja olkoon \(d\ge 1\)
+sen aste. Merkitään
+\[
+  M=\max_{x\in[\alpha-1,\alpha+1]}\abs{P'(x)}>0.
+\]
+Olkoon \(r/s\) rationaaliluku, missä \(r,s\in\ZZ\) ja \(s>0\).
+Oletetaan, että \(\abs{\alpha-r/s}\le 1\) ja \(P(r/s)\ne 0\).
+Koska \(s^dP(r/s)\) on nollasta poikkeava kokonaisluku, saadaan
+väliarvolauseen nojalla
+\[
+  \frac{1}{s^d}
+  \le \abs*{P(\alpha)-P\left(\frac{r}{s}\right)}
+  = \abs{P'(\xi)}\abs*{\alpha-\frac{r}{s}}
+  \le M\abs*{\alpha-\frac{r}{s}},
+\]
+missä \(\xi\) on lukujen \(\alpha\) ja \(r/s\) välissä.
+
+Kirjoitetaan sarjan \(N\):s osasumma muodossa \(r_N/s_N\), missä
+\[
+  r_N=3\sum_{n=1}^{N}7^{N!-n!}, \qquad s_N=7^{N!}.
+\]
+Kuten tehtävässä 5, loppuosaa voidaan arvioida geometrisella sarjalla.
+Koska \((N+1)!=(N+1)N!\), saadaan
+\[
+  \begin{aligned}
+    0<\alpha-\frac{r_N}{s_N} &= 3\sum_{n=N+1}^{\infty}7^{-n!} \\
+    &\le 3\cdot 7^{-(N+1)!}\sum_{k=0}^{\infty}7^{-k} \\
+    &= 3\cdot 7^{-(N+1)!}\frac{1}{1-\frac{1}{7}}
+    = \frac{7}{2s_N^{N+1}}.
+  \end{aligned}
+\]
+Osasummat ovat aidosti kasvavia ja \(P\):llä on vain äärellisen monta
+nollakohtaa. Siksi \(P(r_N/s_N)\ne 0\) kaikilla riittävän suurilla \(N\).
+
+Koska yläraja lähestyy nollaa, myös ehto \(\abs{\alpha-r_N/s_N}\le 1\)
+toteutuu, kun \(N\) on riittävän suuri. Valitaan \(N\ge d\) niin suureksi,
+että molemmat ehdot toteutuvat ja \(s_N>7M/2\). Tämä on mahdollista,
+sillä \(s_N=7^{N!}\to\infty\).
+
+Kerrotaan virheen ala- ja yläraja luvulla \(Ms_N^d\). Koska
+\(N+1-d\ge 1\), saadaan
+\[
+  1\le Ms_N^d\abs*{\alpha-\frac{r_N}{s_N}}
+  \le \frac{7M}{2s_N^{N+1-d}}
+  \le \frac{7M}{2s_N}
+  <1.
+\]
+Tämä on ristiriita, joten \(\alpha\) on transkendenttinen.
+\end{solution}
 
 \end{document}
