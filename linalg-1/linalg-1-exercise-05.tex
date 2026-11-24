@@ -1,0 +1,304 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\title{Lineaarialgebra ja matriisilaskenta I\\Harjoitus 5}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Lineaarialgebra ja matriisilaskenta I}{Harjoitus 5}
+
+\begin{exercise}
+  Olkoon \(A\in\RR^{n\times n}\) kääntyvä matriisi. Osoita, että myös
+  \(A^t\) on kääntyvä ja \((A^{-1})^t=(A^t)^{-1}\).
+\end{exercise}
+
+\begin{solution}
+  Koska \(A\) on kääntyvä, sen käänteismatriisille pätee
+  \(AA^{-1}=A^{-1}A=I\). Tulon transponointisäännön nojalla
+  \[
+    \begin{aligned}
+      (A^{-1})^t A^t &= (AA^{-1})^t = I^t = I, \\
+      A^t (A^{-1})^t &= (A^{-1}A)^t = I^t = I.
+    \end{aligned}
+  \]
+  Siis \(A^t\) on kääntyvä ja sen käänteismatriisi on
+  \((A^t)^{-1}=(A^{-1})^t\).
+\end{solution}
+
+\begin{exercise}
+  Olkoon \(\theta\in\RR\). Osoita, että matriisi
+  \[
+    A=
+    \begin{bmatrix}
+      \cos\theta & -\sin\theta \\
+      \sin\theta & \cos\theta
+    \end{bmatrix}\in\RR^{2\times 2}
+  \]
+  on ortogonaalinen ja määritä \(A\):n käänteismatriisi \(A^{-1}\).
+\end{exercise}
+
+\begin{solution}
+  Lasketaan
+  \[
+    \begin{aligned}
+      A^tA
+      &=
+      \begin{bmatrix}
+        \cos\theta & \sin\theta \\
+        -\sin\theta & \cos\theta
+      \end{bmatrix}
+      \begin{bmatrix}
+        \cos\theta & -\sin\theta \\
+        \sin\theta & \cos\theta
+      \end{bmatrix} \\
+      &=
+      \begin{bmatrix}
+        \cos^2\theta+\sin^2\theta &
+        -\cos\theta\sin\theta+\sin\theta\cos\theta \\
+        -\sin\theta\cos\theta+\cos\theta\sin\theta &
+        \sin^2\theta+\cos^2\theta
+      \end{bmatrix}
+      = I.
+    \end{aligned}
+  \]
+  Siis \(A\) on ortogonaalinen. Korollaarin 4.5.4 nojalla
+  \[
+    A^{-1}=A^t=
+    \begin{bmatrix}
+      \cos\theta & \sin\theta \\
+      -\sin\theta & \cos\theta
+    \end{bmatrix}.\qedhere
+  \]
+\end{solution}
+
+\begin{exercise}
+  Etsi sellaiset matriisit \(A,B\in\RR^{2\times 2}\), että
+  \(\det(A+B)\ne\det(A)+\det(B)\).
+\end{exercise}
+
+\begin{solution}
+  Valitaan
+  \[
+    A=
+    \begin{bmatrix}
+      1 & 2 \\
+      2 & 4
+    \end{bmatrix},\qquad
+    B=
+    \begin{bmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{bmatrix}.
+  \]
+  Tällöin
+  \[
+    \det A=1\cdot 4-2\cdot 2=0,\qquad
+    \det B=1\cdot 1-0\cdot 0=1.
+  \]
+  Siis
+  \[
+    \det(A+B)=
+    \begin{vmatrix}
+      2 & 2 \\
+      2 & 5
+    \end{vmatrix}
+    =2\cdot 5-2\cdot 2=6\ne 0+1=\det A+\det B.\qedhere
+  \]
+\end{solution}
+
+\begin{exercise}
+  Olkoot
+  \[
+    A=
+    \begin{bmatrix}
+      a-3 & 5 \\
+      -3 & a-2
+    \end{bmatrix},\quad a\in\RR,\quad
+    B=
+    \begin{bmatrix}
+      -2 & 7 & 6 \\
+      5 & 1 & -2 \\
+      3 & 8 & 4
+    \end{bmatrix},\quad
+    C=
+    \begin{bmatrix}
+      1 & -3 & 0 \\
+      -2 & 4 & 1 \\
+      5 & -2 & 2
+    \end{bmatrix}.
+  \]
+  Laske determinantit \(\det A\), \(\det B\) ja \(\det C\).
+  Ovatko matriisit \(A\), \(B\) ja \(C\) kääntyviä?
+\end{exercise}
+
+\begin{solution}
+  Matriisin \(A\) determinantti on
+  \[
+    \det A=(a-3)(a-2)-5\cdot(-3)=a^2-5a+21.
+  \]
+  Yhtälön \(a^2-5a+21=0\) diskriminantti on
+  \[
+    (-5)^2-4\cdot 1\cdot 21=-59<0.
+  \]
+  Yhtälöllä ei siis ole reaalisia ratkaisuja. Siten \(\det A\ne 0\)
+  kaikilla \(a\in\RR\).
+
+  Kehitetään matriisin \(B\) determinantti ensimmäisen sarakkeen
+  suhteen eli valitaan \(\ell=1\). Lauseen 5.9.4 nojalla
+  \[
+    \begin{aligned}
+      \det B
+      &= (-1)^2(-2)
+      \begin{vmatrix}1 & -2 \\ 8 & 4
+      \end{vmatrix}
+      + (-1)^3\cdot 5
+      \begin{vmatrix}7 & 6 \\ 8 & 4
+      \end{vmatrix}
+      + (-1)^4\cdot 3
+      \begin{vmatrix}7 & 6 \\ 1 & -2
+      \end{vmatrix} \\
+      &= (-2)(4+16)-5(28-48)+3(-14-6) \\
+      &= -40+100-60=0.
+    \end{aligned}
+  \]
+  Kehitetään matriisin \(C\) determinantti kolmannen sarakkeen
+  suhteen eli valitaan \(\ell=3\). Sarakkeen ensimmäinen alkio on
+  nolla, joten Lauseen 5.9.4 nojalla
+  \[
+    \begin{aligned}
+      \det C
+      &= (-1)^5\cdot 1
+      \begin{vmatrix}1 & -3 \\ 5 & -2
+      \end{vmatrix}
+      + (-1)^6\cdot 2
+      \begin{vmatrix}1 & -3 \\ -2 & 4
+      \end{vmatrix} \\
+      &= -(-2+15)+2(4-6) \\
+      &= -13-4=-17.
+    \end{aligned}
+  \]
+  Lauseen 5.8.2 nojalla \(A\) on kääntyvä kaikilla \(a\in\RR\),
+  \(C\) on kääntyvä ja \(B\) on singulaarinen.
+\end{solution}
+
+\begin{exercise}
+  \begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Olkoon \(A\in\RR^{n\times n}\). Osoita, että
+      \(\det(kA)=k^n\det A\), missä \(k\in\RR\).
+    \item Olkoot \(A,B\in\RR^{3\times 3}\) matriiseja, joille
+      \(\det A=4\) ja \(\det B=5\). Määritä
+      \[
+        \text{(i)}\quad \det(AB),\qquad
+        \text{(ii)}\quad \det(3A),\qquad
+        \text{(iii)}\quad \det(2AB),\qquad
+        \text{(iv)}\quad \det(A^{-1}B).
+      \]
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Olkoon \(A_j\) matriisi, joka saadaan kertomalla \(A\):n
+      \(j\) ensimmäistä saraketta luvulla \(k\). Osoitetaan
+      induktiolla, että \(\det A_j=k^j\det A\) kaikilla
+      \(1\le j\le n\).
+
+      Kun \(j=1\), sarakelineaarisuuden (Lause 5.5.1) nojalla
+      \(\det A_1=k\det A\).
+
+      Oletetaan, että \(\det A_j=k^j\det A\) jollakin
+      \(1\le j<n\). Matriisi \(A_{j+1}\) saadaan kertomalla
+      \(A_j\):n \((j+1)\):s sarake luvulla \(k\). Sarakelineaarisuuden
+      ja induktio-oletuksen nojalla
+      \[
+        \det A_{j+1}=k\det A_j=k(k^j\det A)=k^{j+1}\det A.
+      \]
+      Induktioperiaatteen nojalla väite pätee myös, kun \(j=n\).
+      Koska \(A_n=kA\), saadaan \(\det(kA)=k^n\det A\).
+
+    \item Kohdan (a) ja determinantin tulokaavan (Lause 5.6.1) nojalla
+      \[
+        \begin{aligned}
+          \text{(i)}\quad \det(AB)
+          &= \det A\det B=4\cdot 5=20, \\
+          \text{(ii)}\quad \det(3A)
+          &= 3^3\det A=27\cdot 4=108, \\
+          \text{(iii)}\quad \det(2AB)
+          &= 2^3\det(AB)=8\cdot 20=160, \\
+          \text{(iv)}\quad \det(A^{-1}B)
+          &= \frac{\det B}{\det A}=\frac54.
+        \end{aligned}
+      \]
+      Viimeisessä kohdassa käytettiin yhtälöä
+      \(\det A\det(A^{-1})=\det I=1\).
+  \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+  Olkoon
+  \[
+    V=
+    \begin{bmatrix}
+      1 & x_1 & x_1^2 \\
+      1 & x_2 & x_2^2 \\
+      1 & x_3 & x_3^2
+    \end{bmatrix}\in\RR^{3\times 3}
+  \]
+  \emph{Vandermonden matriisi}.
+  \begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Osoita, että \(\det V=(x_2-x_1)(x_3-x_1)(x_3-x_2)\).
+    \item Mitkä ehdot lukujen \(x_1,x_2,x_3\) tulee täyttää, jotta
+      \(V\) on kääntyvä?
+  \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), leftmargin=*]
+    \item Kehitetään determinantti ensimmäisen sarakkeen suhteen
+      eli valitaan \(\ell=1\). Ensimmäisen sarakkeen kaikki alkiot
+      ovat ykkösiä, joten Lauseen 5.9.4 nojalla
+      \[
+        \begin{aligned}
+          \det V
+          &=
+          \begin{vmatrix}x_2 & x_2^2 \\ x_3 & x_3^2
+          \end{vmatrix}
+          -
+          \begin{vmatrix}x_1 & x_1^2 \\ x_3 & x_3^2
+          \end{vmatrix}
+          +
+          \begin{vmatrix}x_1 & x_1^2 \\ x_2 & x_2^2
+          \end{vmatrix} \\
+          &= (x_2x_3^2-x_2^2x_3)-(x_1x_3^2-x_1^2x_3)
+            +(x_1x_2^2-x_1^2x_2) \\
+          &= x_2x_3^2-x_2^2x_3-x_1x_3^2+x_1^2x_3+x_1x_2^2-x_1^2x_2 \\
+          &= (x_2-x_1)x_3^2-(x_2^2-x_1^2)x_3+x_1x_2(x_2-x_1) \\
+          &= (x_2-x_1)\bigl[x_3^2-(x_1+x_2)x_3+x_1x_2\bigr] \\
+          &= (x_2-x_1)\bigl[x_3(x_3-x_2)-x_1(x_3-x_2)\bigr] \\
+          &= (x_2-x_1)(x_3-x_1)(x_3-x_2).
+        \end{aligned}
+      \]
+
+    \item Lauseen 5.8.2 nojalla \(V\) on kääntyvä täsmälleen silloin,
+      kun \(\det V\ne 0\). Kohdan (a) perusteella tämä pätee
+      täsmälleen silloin, kun erotukset \(x_2-x_1\), \(x_3-x_1\)
+      ja \(x_3-x_2\) ovat kaikki nollasta poikkeavia. Ehto voidaan
+      kirjoittaa muodossa
+      \[
+        x_i\ne x_j
+        \quad\text{kaikilla } i,j\in\{1,2,3\},\ \text{joilla } i\ne j.
+        \qedhere
+      \]
+  \end{enumerate}
+\end{solution}
+
+\end{document}
