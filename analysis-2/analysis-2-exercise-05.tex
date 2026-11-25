@@ -1,0 +1,192 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\theoremstyle{definition}
+\newtheorem{groupexercise}{Ryhmätyö}
+
+\title{Analyysi II\\Harjoitus 5}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Analyysi II}{Harjoitus 5}
+
+\begin{exercise}
+  Osoita, että \(\diffop{x} \cos x = -\sin x\) kaikilla \(x \in \RR\).
+\end{exercise}
+
+\begin{solution}
+  Käytetään tunnettua raja-arvoa \(\lim_{h \to 0} \frac{\sin h}{h} = 1\).
+  Kosinin jatkuvuuden nojalla \(\lim_{h \to 0}(1 + \cos h) = 2\).
+  Nimittäjä \(1 + \cos h\) on siis nollasta poikkeava nollan lähellä, joten
+  \[
+    \lim_{h \to 0} \frac{1 - \cos h}{h}
+    = \lim_{h \to 0} \frac{1 - \cos^2 h}{h(1 + \cos h)}
+    = \lim_{h \to 0} \frac{h}{1 + \cos h}\left(\frac{\sin h}{h}\right)^2
+    = 0.
+  \]
+
+  Olkoon \(x \in \RR\) mielivaltainen. Kosinin yhteenlaskukaavan nojalla
+  saadaan, kun \(h \neq 0\),
+  \[
+    \frac{\cos(x + h) - \cos x}{h}
+    = -\cos x\,\frac{1 - \cos h}{h} - \sin x\,\frac{\sin h}{h}.
+  \]
+  Raja-arvojen laskusääntöjen nojalla
+  \[
+    \lim_{h \to 0} \frac{\cos(x + h) - \cos x}{h}
+    = -\cos x \cdot 0 - \sin x \cdot 1
+    = -\sin x.
+  \]
+  Derivaatan määritelmän nojalla siis \(\diffop{x} \cos x = -\sin x\)
+  kaikilla \(x \in \RR\).
+\end{solution}
+
+\begin{exercise}
+  Laske \(\diffop{x} \tan x\) kaikilla
+  \(x \in \RR \setminus \bigl\{\frac{\pi}{2} + n\pi : n \in \ZZ\bigr\}\)
+  eli pisteissä, joissa \(\tan x = \frac{\sin x}{\cos x}\) on määritelty.
+\end{exercise}
+
+\begin{solution}
+  Olkoon \(x\) tangentin määrittelyjoukon mielivaltainen piste.
+  Koska sini ja kosini ovat derivoituvia ja \(\cos x \neq 0\),
+  saadaan osamäärän derivointisäännöllä
+  \[
+    \begin{aligned}
+      \diffop{x} \tan x &= \diffop{x}\left(\frac{\sin x}{\cos x}\right) \\
+      &= \frac{\cos x \cdot \diffop{x} \sin x - \sin x \cdot
+      \diffop{x} \cos x}{\cos^2 x} \\
+      &= \frac{\cos^2 x + \sin^2 x}{\cos^2 x} \\
+      &= \frac{1}{\cos^2 x}.
+    \end{aligned}
+  \]
+  Koska \(x\) oli mielivaltainen, kaava pätee koko tangentin määrittelyjoukossa.
+\end{solution}
+
+\begin{exercise}
+  Olkoon \(f \colon \RR \to \RR\) derivoituva ja \(n \in \NNone\).
+  Osoita, että
+  \[
+    \diffop{x}\bigl(f^n(x)\bigr) = n f^{n-1}(x) \cdot f'(x)
+  \]
+  kaikilla \(x \in \RR\).
+\end{exercise}
+
+\begin{solution}
+  Kun \(n = 1\), väite palautuu yhtälöön \(\diffop{x} f(x) = f'(x)\).
+  Olkoon siis \(n \geq 2\) ja määritellään
+  \(g \colon \RR \to \RR\), \(g(t) = t^n\). Potenssisäännön mukaan
+  \(g'(t) = n t^{n-1}\) kaikilla \(t \in \RR\).
+
+  Olkoon \(x \in \RR\) mielivaltainen. Koska \(f^n(x) = (g \circ f)(x)\)
+  ja molemmat funktiot ovat derivoituvia, saadaan ketjusäännöllä
+  \[
+    \begin{aligned}
+      \diffop{x}\bigl(f^n(x)\bigr) &= (g \circ f)'(x) \\
+      &= g'(f(x)) \cdot f'(x) \\
+      &= n f^{n-1}(x) \cdot f'(x).
+    \end{aligned}
+  \]
+  Koska \(x\) oli mielivaltainen, kaava pätee kaikilla \(x \in \RR\).
+\end{solution}
+
+\newpage
+
+\begin{exercise}
+  Jatkoa harjoituksen~2 tehtävään~3. Tarkastellaan funktion
+  \(f(x) = (x^3 - 1)^2\) rajoittumaa välille \((-\infty, 1]\),
+  jonka käänteisfunktioksi johdettiin
+  \[
+    g_1 \colon [0, \infty) \to (-\infty, 1],
+    \qquad g_1(y) = \sqrt[3]{1 - \sqrt{y}}.
+  \]
+  Laske derivaatta \(g_1'(4)\) kahdella eri tavalla: Ensin käyttämällä
+  käänteisfunktion derivointikaavaa (Lause~5.2.13) ja sitten
+  derivoimalla käänteisfunktio \(g_1\).
+\end{exercise}
+
+\begin{solution}
+  \emph{Käänteisfunktion derivointikaava.}
+  Polynomina \(f\) on derivoituva, ja
+  \[
+    f'(x) = 6x^2(x^3 - 1),
+    \qquad f'(-1) = -12 \neq 0.
+  \]
+  Käänteisfunktio \(g_1\) on määritelty pisteen \(4\) ympäristössä
+  ja on siinä jatkuva juurifunktioiden jatkuvuuden nojalla.
+  Koska \(g_1(4) = -1 \in (-\infty, 1)\), käänteisfunktion
+  derivointikaavasta saadaan
+  \[
+    g_1'(4) = \frac{1}{f'(g_1(4))} = \frac{1}{f'(-1)} = -\frac{1}{12}.
+  \]
+
+  \emph{Suora derivointi.}
+  Kun \(y > 1\), voidaan kirjoittaa \(g_1(y) = -(\sqrt{y} - 1)^{1/3}\).
+  Ketjusäännöllä saadaan
+  \[
+    \begin{aligned}
+      g_1'(y) &= -\frac{1}{3}(\sqrt{y} - 1)^{-2/3} \cdot \frac{1}{2\sqrt{y}} \\
+      &= -\frac{1}{6\sqrt{y}(\sqrt{y} - 1)^{2/3}}.
+    \end{aligned}
+  \]
+  Sijoittamalla \(y = 4\) saadaan
+  \[
+    g_1'(4) = -\frac{1}{6 \cdot 2 \cdot 1^{2/3}} = -\frac{1}{12}.
+    \qedhere
+  \]
+\end{solution}
+
+\begin{exercise}
+  Olkoon \(f \colon (0, \infty) \to (0, \infty)\), \(f(x) = x^x\).\newline
+  Derivoi funktio \(f\).
+\end{exercise}
+
+\begin{solution}
+  Kun \(x > 0\), voidaan kirjoittaa \(f(x) = x^x = e^{x\ln x}\).
+  Ketju- ja tulosäännöllä saadaan
+  \begin{align*}
+    f'(x) &= e^{x\ln x} \cdot \diffop{x}(x\ln x) \\
+    &= e^{x\ln x} \left(\ln x + x \cdot \frac{1}{x}\right) \\
+    &= x^x(\ln x + 1). \qedhere
+  \end{align*}
+\end{solution}
+
+\begin{exercise}
+  Osoita, että funktio \(f \colon \RR \to \RR\),
+  \[
+    f(x) =
+    \begin{cases}
+      x\sin\frac{1}{x}, & \text{jos } x \neq 0, \\
+      0, & \text{jos } x = 0,
+    \end{cases}
+  \]
+  on origossa jatkuva mutta ei derivoituva.
+\end{exercise}
+
+\begin{solution}
+  Olkoon \(\varepsilon > 0\) ja valitaan \(\delta = \varepsilon\).
+  Kun \(0 < \abs{x} < \delta\), saadaan \(\abs{f(x) - f(0)} \leq \abs{x}
+  < \varepsilon\), koska \(\abs{\sin(1/x)} \leq 1\).
+  Kun \(x = 0\), erotus on nolla. Siis \(f\) on jatkuva origossa.
+
+  Olkoon \(g \colon \RR \setminus \set{0} \to \RR\), \(g(x) = \sin(1/x)\).
+  Kun \(x \neq 0\), erotusosamäärä origossa on \(\frac{f(x)-f(0)}{x} = g(x)\).
+  Määritellään lukujonot \((x_n)\) ja \((y_n)\) asettamalla kaikilla
+  \(n \in \NNone\)
+  \[
+    x_n = \frac{1}{2\pi n + \pi/2}, \qquad
+    y_n = \frac{1}{2\pi n + 3\pi/2}.
+  \]
+  Tällöin \(\lim_{n \to \infty} x_n = \lim_{n \to \infty} y_n = 0\).
+  Sinin jaksollisuuden nojalla \(g(x_n) = 1\) ja \(g(y_n) = -1\) kaikilla
+  \(n \in \NNone\). Raja-arvon jonokriteerin nojalla \(\lim_{x \to 0} g(x)\)
+  ei ole olemassa. Siis erotusosamäärällä ei ole raja-arvoa ja \(f\) ei ole
+  derivoituva origossa.
+\end{solution}
+
+\end{document}
