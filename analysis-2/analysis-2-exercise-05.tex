@@ -78,7 +78,8 @@
 \end{exercise}
 
 \begin{solution}
-  Kun \(n = 1\), väite palautuu yhtälöön \(\diffop{x} f(x) = f'(x)\).
+  Kun \(n = 1\), määritellään \(f^0(x) = 1\) kaikilla \(x \in \RR\),
+  jolloin väite palautuu yhtälöön \(\diffop{x} f(x) = f'(x)\).
   Olkoon siis \(n \geq 2\) ja määritellään
   \(g \colon \RR \to \RR\), \(g(t) = t^n\). Potenssisäännön mukaan
   \(g'(t) = n t^{n-1}\) kaikilla \(t \in \RR\).
@@ -119,8 +120,9 @@
   \]
   Käänteisfunktio \(g_1\) on määritelty pisteen \(4\) ympäristössä
   ja on siinä jatkuva juurifunktioiden jatkuvuuden nojalla.
-  Koska \(g_1(4) = -1 \in (-\infty, 1)\), käänteisfunktion
-  derivointikaavasta saadaan
+  Sovelletaan lausetta~5.2.13 rajoittumaan \(f|_{(-\infty, 1)}\),
+  jonka käänteisfunktio on \(g_1|_{(0, \infty)}\).
+  Koska \(g_1(4) = -1\), saadaan
   \[
     g_1'(4) = \frac{1}{f'(g_1(4))} = \frac{1}{f'(-1)} = -\frac{1}{12}.
   \]
