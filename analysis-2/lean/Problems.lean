@@ -99,13 +99,9 @@ Show that `BadContAt₁` implies continuity.
 -/
 theorem BadContAt₁.contAt {f : ℝ → ℝ} {a : ℝ} (hf : BadContAt₁ f a) : ContAt f a := by
   intro ε hε
-  obtain ⟨δ, hδ, h'⟩ := BadContAt₁.meaning.mp hf
+  obtain ⟨δ, hδ, h'⟩ := hf
   use δ
-  constructor
-  . exact hδ
-  . intro x x_close
-    rw [h' x x_close, sub_self, abs_zero]
-    exact hε
+  grind
 
 /-
 
@@ -132,13 +128,39 @@ def P3d : Prop :=
 Answer (in words):
 Your answers here.
 -/
-theorem p3a : P3a := sorry
+theorem p3a : ¬ P3a := by
+  intro h
+  have := h 0
+  grind
 
-theorem p3b : P3b := sorry
+theorem p3b : P3b := by
+  exact deriv_abs_zero
 
-theorem p3c : P3c := sorry
+theorem p3c : ¬ P3c := by
+  simp [P3c, one_div, NormedField.continuousAt_inv]
 
-theorem p3d : P3d := sorry
+theorem p3d : ¬ P3d := by
+  intro h
+  let f (x : ℝ) : ℝ := if x = 0 then 1 else 0
+  have hf : ∀ x, deriv f x = 0 := by
+    intro x
+    by_cases hx : x = 0
+    · subst x
+      apply deriv_zero_of_not_differentiableAt
+      intro hd
+      obtain ⟨δ, hδ, hclose⟩ := Metric.continuousAt_iff.mp hd.continuousAt 1 zero_lt_one
+      have hhalf : 0 < δ / 2 := by positivity
+      have hnear : dist (δ / 2) 0 < δ := by
+        rw [Real.dist_eq, sub_zero, abs_of_pos hhalf]
+        linarith
+      have hfar := hclose hnear
+      norm_num [f, hhalf.ne', Real.dist_eq] at hfar
+    · apply HasDerivAt.deriv
+      apply (hasDerivAt_const x (0 : ℝ)).congr_of_eventuallyEq
+      filter_upwards [eventually_ne_nhds hx] with y hy
+      simp [f, hy]
+  have heq := h f hf 0 1
+  norm_num [f] at heq
 /-
 
 ## Problem 4: sequential continuity
@@ -159,7 +181,7 @@ def ConvergesTo (x : ℕ → ℝ) (L : ℝ) : Prop :=
 `f` is sequentially continuous at `a`.
 -/
 def SeqContAt (f : ℝ → ℝ) (a : ℝ) : Prop :=
-  sorry
+  ∀ (x : ℕ →  ℝ), ConvergesTo x a →  ConvergesTo (f ∘ x) (f a)
 
 theorem ContAt.seqContAt {f : ℝ → ℝ} {a : ℝ} (hf : ContAt f a) : SeqContAt f a := by
   intro x hx ε hε
@@ -196,7 +218,7 @@ compile. The last one says that `x ↦ x²` is not uniformly continuous:
 think about why it fails.
 -/
 def UnifCont (f : ℝ → ℝ) : Prop :=
-  sorry
+  ∀ ε > 0, ∃ δ > 0, ∀ (x y : ℝ), |x - y| < δ →  |f x - f y| < ε
 
 theorem unifCont_linear : UnifCont (fun x => 3 * x - 7) := by
   intro ε hε
@@ -256,12 +278,16 @@ theorem badContAt₂ (f : ℝ → ℝ) (a : ℝ) : BadContAt₂ f a := by
   intro ε hε x
   by_cases h : x = a
   ·
-    sorry
+    grind
   ·
-    sorry
+    use |x - a|
+    grind
 
 theorem badContAt₃ (f : ℝ → ℝ) (a : ℝ) : BadContAt₃ f a := by
-  sorry
+  intro ε hε
+  use 0
+  grind
+
 /-
 
 ## Problem 7: read and judge, harder
@@ -281,11 +307,29 @@ def P7d : Prop := ∀ f : ℝ → ℝ, StrictMono f → ∀ x, 0 < deriv f x
 Answer (in words):
 Your answers here.
 -/
-theorem p7a : P7a := sorry
+theorem p7a : P7a := by
+  intro f a h
+  exact differentiableAt_of_deriv_ne_zero h
 
-theorem p7b : P7b := sorry
+theorem p7b : ¬ P7b := by
+  intro h
+  have hsum : ¬ DifferentiableAt ℝ (fun x : ℝ => |x| + id x) 0 := by
+    intro hd
+    have hsub := hd.sub (differentiableAt_id (x := (0 : ℝ)))
+    apply not_differentiableAt_abs_zero
+    simpa [Pi.sub_def] using hsub
+  have heq := h (fun x => |x|) id 0
+  rw [deriv_zero_of_not_differentiableAt hsum, deriv_abs_zero, deriv_id] at heq
+  norm_num at heq
 
-theorem p7c : P7c := sorry
+theorem p7c : P7c := by
+  intro f hf
+  exact strictMono_of_deriv_pos hf
 
-theorem p7d : P7d := sorry
+theorem p7d : ¬ P7d := by
+  intro h
+  have hmono : StrictMono (fun x : ℝ => x ^ 3) :=
+    (show Odd (3 : ℕ) by decide).strictMono_pow
+  have hpos := h _ hmono 0
+  norm_num [deriv_pow_field] at hpos
 end Problems
