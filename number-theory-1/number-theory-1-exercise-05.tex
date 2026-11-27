@@ -1,0 +1,61 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Lukuteoria I\\Harjoitus 5}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Lukuteoria I}{Harjoitus 5}
+
+\begin{exercise}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), topsep=0.35em]
+    \item Laske \(\varphi(23)\), \(\varphi(105)\), \(\varphi(125)\) ja
+      \(\varphi(700)\).
+    \item Määritä lukujen 2, 3 ja 7 kertaluvut modulo 31.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Olkoot \(m\), \(n\) ja \(k\) kokonaislukuja. Osoita, että
+  \(\syt(k,mn) = 1\) jos ja vain jos \(\syt(k,m) = 1\) ja
+  \(\syt(k,n) = 1\).
+\end{exercise}
+
+\begin{exercise}
+  Olkoon kokonaisluvun \(n \ge 2\) alkutekijähajotelma on
+  \(n = p_1^{\alpha_1} p_2^{\alpha_2} \cdots p_k^{\alpha_k}\).
+  Todista, että
+  \[
+    \varphi(n) = \prod_{j=1}^{k} p_j^{\alpha_j-1}(p_j-1).
+  \]
+\end{exercise}
+
+\begin{exercise}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), topsep=0.35em]
+    \item Määritä kaikki primitiiviset juuret \(g\) modulo 19, kun
+      \(1 \le g \le 18\).
+    \item Määritä kaikki kokonaisluvut \(a\), joille \(1 \le a \le 30\) ja
+      \(\operatorname{ord}_{31}(a) = 5\).
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Olkoon \(g\) primitiivinen juuri modulo \(p\), missä \(p\) on alkuluku.
+  Osoita, että \(g^j \equiv g^i \pmod{p}\) jos ja vain jos
+  \(j \equiv i \pmod{p-1}\).
+\end{exercise}
+
+\begin{exercise}
+  Olkoot \(p\) ja \(q\) parittomia alkulukuja, \(p = 2q + 1\) sekä \(a\)
+  kokonaisluku, jolle \(1 < a < p - 1\). Osoita, että \(p - a^2\) on
+  primitiivinen juuri modulo \(p\).
+\end{exercise}
+
+\end{document}
