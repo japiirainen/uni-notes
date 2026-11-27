@@ -9,6 +9,7 @@
 \date{}
 
 \begin{document}
+\raggedbottom
 
 \exerciseheading{Johdatus logiikkaan II}{Harjoituksen 5 ratkaisut}
 
@@ -80,42 +81,43 @@
   \end{itemize}
 \end{solution}
 
-\pagebreak[3]
-\begin{exercise}
-  Päättele lause
-  \[
-    \neg(\forall xP(x) \land \exists x\neg P(x)).
-  \]
-\end{exercise}
+\begin{samepage}
+  \begin{exercise}
+    Päättele lause
+    \[
+      \neg(\forall xP(x) \land \exists x\neg P(x)).
+    \]
+  \end{exercise}
 
-\begin{solution}
-  Merkitään \(C=\forall xP(x)\land\exists x\neg P(x)\).
-  \[
-    \dfrac{
+  \begin{solution}
+    Merkitään \(C=\forall xP(x)\land\exists x\neg P(x)\).
+    \[
       \dfrac{
-        \dfrac{[C]^3}{\forall xP(x)}\;\land E
-        \quad
         \dfrac{
-          \dfrac{[C]^3}{\exists x\neg P(x)}\;\land E
+          \dfrac{[C]^3}{\forall xP(x)}\;\land E
           \quad
           \dfrac{
+            \dfrac{[C]^3}{\exists x\neg P(x)}\;\land E
+            \quad
             \dfrac{
-              \dfrac{[\forall xP(x)]^1}{P(x)}\;\forall E
-              \quad [\neg P(x)]^2
-            }{P(x)\land\neg P(x)}\;\land T
-          }{\neg\forall xP(x)}\;\neg T,\,1
-        }{\neg\forall xP(x)}\;\exists E,\,2
-      }{\forall xP(x)\land\neg\forall xP(x)}\;\land T
-    }{\neg C}\;\neg T,\,3
-  \]
-  \begin{itemize}
-    \item Säännössä \(\forall E\) muuttuja \(x\) on vapaa itselleen
-      kaavassa \(P(x)\).
-    \item Säännössä \(\exists E\) muuttuja \(x\) ei esiinny vapaana
-      johtopäätöksessä \(\neg\forall xP(x)\) eikä muissa avoimissa
-      oletuksissa kuin oletuksessa \(2\).\qedhere
-  \end{itemize}
-\end{solution}
+              \dfrac{
+                \dfrac{[\forall xP(x)]^1}{P(x)}\;\forall E
+                \quad [\neg P(x)]^2
+              }{P(x)\land\neg P(x)}\;\land T
+            }{\neg\forall xP(x)}\;\neg T,\,1
+          }{\neg\forall xP(x)}\;\exists E,\,2
+        }{\forall xP(x)\land\neg\forall xP(x)}\;\land T
+      }{\neg C}\;\neg T,\,3
+    \]
+    \begin{itemize}
+      \item Säännössä \(\forall E\) muuttuja \(x\) on vapaa itselleen
+        kaavassa \(P(x)\).
+      \item Säännössä \(\exists E\) muuttuja \(x\) ei esiinny vapaana
+        johtopäätöksessä \(\neg\forall xP(x)\) eikä muissa avoimissa
+        oletuksissa kuin oletuksessa \(2\).\qedhere
+    \end{itemize}
+  \end{solution}
+\end{samepage}
 
 \begin{exercise}
   Osoita, että seuraavaa lausetta ei voi päätellä luonnollisella päättelyllä:
@@ -124,10 +126,73 @@
   \]
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(\mathcal M\) sellainen \(\{R\}\)-malli, että
+  \(\dom(\mathcal M)=\{0,1\}\) ja \(R^{\mathcal M}=\{(0,0),(1,1)\}\).
+  Kaavan \(R(x,y)\) totuusarvot ovat
+  \[
+    \begin{array}{c|cc}
+      R(x,y) & y=0 & y=1 \\
+      \hline
+      x=0 & \text{tosi} & \text{epätosi} \\
+      x=1 & \text{epätosi} & \text{tosi}
+    \end{array}
+  \]
+  Olkoon \(s\) mielivaltainen \(\mathcal M\)-tulkintafunktio.
+  Tarkastellaan implikaation osia Tarskin totuusmääritelmän avulla.
+  \begin{itemize}
+    \item Valitaan jokaiselle \(a\in\dom(\mathcal M)\) alkio \(b=1-a\).
+      Tällöin \(s(a/x)(b/y)\) antaa muuttujille
+      \(x\) ja \(y\) arvot \(a\) ja \(b\). Koska \((a,b)\notin R^{\mathcal M}\),
+      atomi- ja negaatioehdoista saadaan
+      \[
+        \mathcal M\models_{s(a/x)(b/y)}\neg R(x,y).
+      \]
+      Eksistenssikvanttorin ehdon nojalla
+      \(\mathcal M\models_{s(a/x)}\exists y\neg R(x,y)\).
+      Tämä pätee jokaisella \(a\), joten universaalikvanttorin ehdon nojalla
+      \(\mathcal M\models_s\forall x\exists y\neg R(x,y)\).
+    \item Koska \((0,0)\in R^{\mathcal M}\), atomiehdon nojalla
+      \(\mathcal M\models_{s(0/x)(0/y)}R(x,y)\). Eksistenssikvanttorin
+      ehdon nojalla \(\mathcal M\models_{s(0/x)}\exists yR(x,y)\), joten
+      negaatioehdon nojalla \(\mathcal
+      M\not\models_{s(0/x)}\neg\exists yR(x,y)\).
+      Siten universaalikvanttorin ehdon nojalla
+      \(\mathcal M\not\models_s\forall x\neg\exists yR(x,y)\).
+  \end{itemize}
+  Implikaation etujäsen on tosi ja jälkijäsen epätosi, joten implikaatio
+  on epätosi mallissa \(\mathcal M\). Eheyslauseen nojalla lausetta ei voi
+  päätellä luonnollisella päättelyllä ilman oletuksia.
+\end{solution}
+
 \begin{exercise}
   Osoita, että kaavaa \(\exists xR(x,y)\) ei voi päätellä kaavasta
   \(\exists yR(x,y)\).
 \end{exercise}
+
+\begin{solution}
+  Olkoon \(\mathcal M\) sellainen \(\{R\}\)-malli, että
+  \(\dom(\mathcal M)=\{0,1\}\) ja \(R^{\mathcal M}=\{(0,1)\}\).
+  Valitaan \(\mathcal M\)-tulkintafunktio \(s\), jolla \(s(x)=s(y)=0\).
+  \begin{itemize}
+    \item Tulkintafunktiolla \(s(1/y)\) muuttujien \(x\) ja \(y\) arvot ovat
+      \(0\) ja \(1\). Koska \((0,1)\in R^{\mathcal M}\), Tarskin
+      atomiehto antaa \(\mathcal M\models_{s(1/y)}R(x,y)\). Siis
+      eksistenssikvanttorin ehdon nojalla
+      \(\mathcal M\models_s\exists yR(x,y)\).
+    \item Jokaisella \(a\in\dom(\mathcal M)\) tulkintafunktio \(s(a/x)\)
+      antaa muuttujille \(x\) ja \(y\) arvot \(a\) ja \(0\). Koska
+      \((a,0)\notin R^{\mathcal M}\), Tarskin atomiehdon nojalla
+      \(\mathcal M\not\models_{s(a/x)}R(x,y)\) jokaisella \(a\). Siis
+      eksistenssikvanttorin ehdon nojalla
+      \(\mathcal M\not\models_s\exists xR(x,y)\).
+  \end{itemize}
+  Oletus on tosi ja johtopäätös epätosi samalla tulkintafunktiolla \(s\).
+  Eheyslauseen nojalla
+  \[
+    \{\exists yR(x,y)\}\nvdash\exists xR(x,y).\qedhere
+  \]
+\end{solution}
 
 \begin{exercise}
   Osoita, että seuraavaa lausetta ei voi päätellä luonnollisella päättelyllä:
@@ -136,10 +201,87 @@
   \]
 \end{exercise}
 
+\begin{solution}
+  Olkoon \(\mathcal M\) sellainen \(\{P_0\}\)-malli, että
+  \(\dom(\mathcal M)=\{0,1\}\) ja \(P_0^{\mathcal M}=\{0\}\).
+  Olkoon \(s\) mielivaltainen \(\mathcal M\)-tulkintafunktio.
+  Tarkastellaan implikaation osia tulkintafunktiolla \(s(0/x)\).
+  \begin{itemize}
+    \item Koska \(s(0/x)(x)=0\in P_0^{\mathcal M}\), Tarskin atomiehdon
+      nojalla \(\mathcal M\models_{s(0/x)}P_0(x)\).
+    \item Koska \(s(0/x)(1/y)(y)=1\notin P_0^{\mathcal M}\), atomiehdon
+      nojalla \(\mathcal M\not\models_{s(0/x)(1/y)}P_0(y)\). Siis
+      universaalikvanttorin ehdon nojalla
+      \(\mathcal M\not\models_{s(0/x)}\forall yP_0(y)\).
+  \end{itemize}
+  Implikaation ehdon nojalla
+  \(\mathcal M\not\models_{s(0/x)}(P_0(x)\to\forall yP_0(y))\).
+  Koska implikaatio on epätosi arvolla \(x=0\), universaalikvanttorin
+  ehdon nojalla
+  \[
+    \mathcal M\not\models_s\forall x(P_0(x)\to\forall yP_0(y)).
+  \]
+  Eheyslauseen nojalla lausetta ei voi päätellä luonnollisella päättelyllä
+  ilman oletuksia.
+\end{solution}
+
 \begin{exercise}
   Päättele \(\exists xP(x) \to \forall xP(x)\) lauseesta
   \(\forall x\forall y x = y\). Käytä identiteettiaksioomia.
 \end{exercise}
+
+\begin{solution}
+  Käytetään predikaattia \(P\) koskevaa identiteettiaksioomaa
+  \(\forall x\forall y((x=y\land P(x))\to P(y))\).
+  Johdetaan ensin \(P(y)\) tilapäisestä oletuksesta \(2\).
+  \[
+    \dfrac{
+      \dfrac{
+        \dfrac{\forall x\forall y((x=y\land P(x))\to P(y))}
+        {\forall y((x=y\land P(x))\to P(y))}\;\forall E
+      }{(x=y\land P(x))\to P(y)}\;\forall E
+      \quad
+      \dfrac{
+        \dfrac{
+          \dfrac{\forall x\forall y\,x=y}{\forall y\,x=y}\;\forall E
+        }{x=y}\;\forall E
+        \quad [P(x)]^2
+      }{x=y\land P(x)}\;\land T
+    }{P(y)}\;\to E
+  \]
+  Käytetään tätä osapäättelyä eksistenssikvanttorin eliminoinnissa.
+  \[
+    \dfrac{
+      \dfrac{
+        \dfrac{
+          \dfrac{
+            \dfrac{
+              [\exists xP(x)]^1
+              \qquad
+              \begin{gathered}
+                [P(x)]^2 \\
+                \vdots \\
+                P(y)
+              \end{gathered}
+            }{P(y)}\;\exists E,\,2
+          }{\forall yP(y)}\;\forall T
+        }{P(x)}\;\forall E
+      }{\forall xP(x)}\;\forall T
+    }{\exists xP(x)\to\forall xP(x)}\;\to T,\,1
+  \]
+  \begin{itemize}
+    \item Ensimmäisessä osapäättelyssä \(\forall E\) -askelten
+      sijoitukset ovat \(x/x\) ja \(y/y\) kummassakin haarassa.
+      Muuttuja on vapaa itselleen. Toisen osapäättelyn \(\forall E\)
+      -askeleessa \(x\) on vapaa muuttujalle \(y\) kaavassa \(P(y)\).
+    \item Säännössä \(\exists E\) muuttuja \(x\) ei esiinny vapaana
+      johtopäätöksessä \(P(y)\) eikä muissa avoimissa oletuksissa kuin
+      oletuksessa \(2\).
+    \item Kummassakin \(\forall T\) -askeleessa avoimina ovat vain
+      lauseet \(\exists xP(x)\), \(\forall x\forall y\,x=y\) ja
+      identiteettiaksiooma. Niissä ei ole vapaita muuttujia.\qedhere
+  \end{itemize}
+\end{solution}
 
 \begin{exercise}
   Päättele verkkojen aksioomeista
