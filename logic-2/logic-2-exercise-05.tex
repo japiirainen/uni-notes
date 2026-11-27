@@ -1,0 +1,62 @@
+% !TeX program = pdflatex
+\documentclass[11pt,a4paper]{amsart}
+
+\newcommand{\notelanguage}{finnish}
+\input{../preamble.tex}
+
+\title{Johdatus logiikkaan II\\Harjoituksen 5 ratkaisut}
+\author{}
+\date{}
+
+\begin{document}
+
+\exerciseheading{Johdatus logiikkaan II}{Harjoituksen 5 ratkaisut}
+
+\begin{exercise}
+  Päättele lause \(\neg\exists yP(y) \to \neg P(c)\).
+\end{exercise}
+
+\begin{exercise}
+  Päättele lause \(\forall x(\exists yR(x,y) \lor \exists yP(y))\)
+  lauseesta \(\forall x\exists y(R(x,y) \lor P(y))\).
+\end{exercise}
+
+\begin{exercise}
+  Päättele lause
+  \[
+    \neg(\forall xP(x) \land \exists x\neg P(x)).
+  \]
+\end{exercise}
+
+\begin{exercise}
+  Osoita, että seuraavaa lausetta ei voi päätellä luonnollisella päättelyllä:
+  \[
+    \forall x\exists y\neg R(x,y) \to \forall x\neg\exists yR(x,y).
+  \]
+\end{exercise}
+
+\begin{exercise}
+  Osoita, että kaavaa \(\exists xR(x,y)\) ei voi päätellä kaavasta
+  \(\exists yR(x,y)\).
+\end{exercise}
+
+\begin{exercise}
+  Osoita, että seuraavaa lausetta ei voi päätellä luonnollisella päättelyllä:
+  \[
+    \forall x(P_0(x) \to \forall yP_0(y))
+  \]
+\end{exercise}
+
+\begin{exercise}
+  Päättele \(\exists xP(x) \to \forall xP(x)\) lauseesta
+  \(\forall x\forall y x = y\). Käytä identiteettiaksioomia.
+\end{exercise}
+
+\begin{exercise}
+  Päättele verkkojen aksioomeista
+  \[
+    \forall x\forall y(E(x,y) \to \neg x = y)
+  \]
+\end{exercise}
+
+\end{document}
