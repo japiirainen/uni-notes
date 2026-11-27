@@ -16,17 +16,106 @@
   Päättele lause \(\neg\exists yP(y) \to \neg P(c)\).
 \end{exercise}
 
+\begin{solution}
+  \[
+    \dfrac{
+      \dfrac{
+        \dfrac{
+          \dfrac{[P(c)]^1}{\exists yP(y)}\;\exists T
+          \qquad [\neg\exists yP(y)]^2
+        }{\exists yP(y)\land\neg\exists yP(y)}\;\land T
+      }{\neg P(c)}\;\neg T,\,1
+    }{\neg\exists yP(y)\to\neg P(c)}\;\to T,\,2
+  \]
+  \begin{itemize}
+    \item Säännössä \(\exists T\) vakio \(c\) on vapaa muuttujalle \(y\)
+      kaavassa \(P(y)\), ja \(P(y)(c/y)=P(c)\).\qedhere
+  \end{itemize}
+\end{solution}
+
 \begin{exercise}
   Päättele lause \(\forall x(\exists yR(x,y) \lor \exists yP(y))\)
   lauseesta \(\forall x\exists y(R(x,y) \lor P(y))\).
 \end{exercise}
 
+\begin{solution}
+  Merkitään \(D(x)=\exists yR(x,y)\lor\exists yP(y)\).
+  Johdetaan ensin \(D(x)\) tilapäisestä oletuksesta \(1\).
+  \[
+    \dfrac{
+      [R(x,y)\lor P(y)]^1
+      \quad
+      \dfrac{\dfrac{[R(x,y)]^2}{\exists yR(x,y)}\;\exists T}
+      {D(x)}\;\lor T
+      \quad
+      \dfrac{\dfrac{[P(y)]^2}{\exists yP(y)}\;\exists T}
+      {D(x)}\;\lor T
+    }{D(x)}\;\lor E,\,2
+  \]
+  Käytetään tätä osapäättelyä eksistenssikvanttorin eliminoinnissa.
+  \[
+    \dfrac{
+      \dfrac{
+        \dfrac{\forall x\exists y(R(x,y)\lor P(y))}
+        {\exists y(R(x,y)\lor P(y))}\;\forall E
+        \qquad
+        \begin{gathered}
+          [R(x,y)\lor P(y)]^1 \\
+          \vdots \\
+          D(x)
+        \end{gathered}
+      }{D(x)}\;\exists E,\,1
+    }{\forall xD(x)}\;\forall T
+  \]
+  \begin{itemize}
+    \item Kummassakin \(\exists T\) -askeleessa \(y\) on vapaa itselleen
+      vastaavassa kaavassa \(R(x,y)\) tai \(P(y)\).
+    \item Säännössä \(\forall E\) muuttuja \(x\) on vapaa itselleen
+      kaavassa \(\exists y(R(x,y)\lor P(y))\).
+    \item Säännössä \(\exists E\) muuttuja \(y\) ei esiinny vapaana
+      johtopäätöksessä \(D(x)\) eikä muissa avoimissa oletuksissa kuin
+      oletuksessa \(1\).
+    \item Säännössä \(\forall T\) muuttuja \(x\) on sidottu ainoassa
+      avoimessa oletuksessa \(\forall x\exists y(R(x,y)\lor P(y))\).\qedhere
+  \end{itemize}
+\end{solution}
+
+\pagebreak[3]
 \begin{exercise}
   Päättele lause
   \[
     \neg(\forall xP(x) \land \exists x\neg P(x)).
   \]
 \end{exercise}
+
+\begin{solution}
+  Merkitään \(C=\forall xP(x)\land\exists x\neg P(x)\).
+  \[
+    \dfrac{
+      \dfrac{
+        \dfrac{[C]^3}{\forall xP(x)}\;\land E
+        \quad
+        \dfrac{
+          \dfrac{[C]^3}{\exists x\neg P(x)}\;\land E
+          \quad
+          \dfrac{
+            \dfrac{
+              \dfrac{[\forall xP(x)]^1}{P(x)}\;\forall E
+              \quad [\neg P(x)]^2
+            }{P(x)\land\neg P(x)}\;\land T
+          }{\neg\forall xP(x)}\;\neg T,\,1
+        }{\neg\forall xP(x)}\;\exists E,\,2
+      }{\forall xP(x)\land\neg\forall xP(x)}\;\land T
+    }{\neg C}\;\neg T,\,3
+  \]
+  \begin{itemize}
+    \item Säännössä \(\forall E\) muuttuja \(x\) on vapaa itselleen
+      kaavassa \(P(x)\).
+    \item Säännössä \(\exists E\) muuttuja \(x\) ei esiinny vapaana
+      johtopäätöksessä \(\neg\forall xP(x)\) eikä muissa avoimissa
+      oletuksissa kuin oletuksessa \(2\).\qedhere
+  \end{itemize}
+\end{solution}
 
 \begin{exercise}
   Osoita, että seuraavaa lausetta ei voi päätellä luonnollisella päättelyllä:
