@@ -283,11 +283,76 @@
   \end{itemize}
 \end{solution}
 
-\begin{exercise}
-  Päättele verkkojen aksioomeista
-  \[
-    \forall x\forall y(E(x,y) \to \neg x = y)
-  \]
-\end{exercise}
+\begin{samepage}
+  \begin{exercise}
+    Päättele verkkojen aksioomeista
+    \[
+      \forall x\forall y(E(x,y) \to \neg x = y)
+    \]
+  \end{exercise}
+
+  \begin{solution}
+    Merkitään
+    \[
+      A(u,v,w,z)=((u=w\land v=z)\land E(u,v))\to E(w,z).
+    \]
+    Erikoistetaan relaatiota \(E\) koskeva identiteettiaksiooma 5.
+    \[
+      \dfrac{
+        \dfrac{
+          \dfrac{
+            \dfrac{\forall u\forall v\forall w\forall z\,A(u,v,w,z)}
+            {\forall v\forall w\forall z\,A(x,v,w,z)}\;\forall E
+          }{\forall w\forall z\,A(x,y,w,z)}\;\forall E
+        }{\forall z\,A(x,y,y,z)}\;\forall E
+      }{A(x,y,y,y)}\;\forall E
+    \]
+    Kaavasta \(A(x,y,y,y)\) ja refleksiivisyysaksioomasta johdetaan
+    \(E(y,y)\) tilapäisten oletusten \(1\) ja \(2\) avulla.
+    \[
+      \dfrac{
+        A(x,y,y,y)
+        \quad
+        \dfrac{
+          \dfrac{[x=y]^1\quad\dfrac{\forall x\, x=x}{y=y}\;\forall E}
+          {x=y\land y=y}\;\land T
+          \quad [E(x,y)]^2
+        }{(x=y\land y=y)\land E(x,y)}\;\land T
+      }{E(y,y)}\;\to E
+    \]
+    Verkkoaksiooma V2 antaa ristiriidan edellisen osapäättelyn kanssa.
+    \[
+      \dfrac{
+        \dfrac{
+          \dfrac{
+            \dfrac{
+              \dfrac{
+                \begin{gathered}
+                  [x=y]^1\quad [E(x,y)]^2 \\
+                  \vdots \\
+                  E(y,y)
+                \end{gathered}
+                \qquad
+                \dfrac{\forall x\neg E(x,x)}{\neg E(y,y)}\;\forall E
+              }{E(y,y)\land\neg E(y,y)}\;\land T
+            }{\neg(x=y)}\;\neg T,\,1
+          }{E(x,y)\to\neg(x=y)}\;\to T,\,2
+        }{\forall y(E(x,y)\to\neg(x=y))}\;\forall T
+      }{\forall x\forall y(E(x,y)\to\neg(x=y))}\;\forall T
+    \]
+    \begin{itemize}
+      \item Identiteettiaksiooman 5 \(\forall E\) -askelissa käytetään
+        sijoituksia \(x/u\), \(y/v\), \(y/w\) ja \(y/z\).
+        Jäljellä olevat kvanttorit sitovat vain muuttujia \(v,w,z\),
+        joten ne eivät sido sijoitettuja muuttujia \(x\) ja \(y\).
+      \item Refleksiivisyysaksiooman ja verkkoaksiooman V2 \(\forall E\)
+        -askelissa \(y\) on vapaa muuttujalle \(x\) kaavoissa
+        \(x=x\) ja \(\neg E(x,x)\).
+      \item Kummassakin \(\forall T\) -askeleessa avoimina ovat vain
+        suljetut aksioomat, sillä oletukset \(1\) ja \(2\) on jo
+        hylätty.\qedhere
+    \end{itemize}
+  \end{solution}
+\end{samepage}
 
 \end{document}
