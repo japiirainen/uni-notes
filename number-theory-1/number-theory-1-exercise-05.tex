@@ -84,13 +84,37 @@
 \end{solution}
 
 \begin{exercise}
-  Olkoon kokonaisluvun \(n \ge 2\) alkutekijähajotelma on
+  Olkoon kokonaisluvun \(n \ge 2\) alkutekijähajotelma
   \(n = p_1^{\alpha_1} p_2^{\alpha_2} \cdots p_k^{\alpha_k}\).
   Todista, että
   \[
     \varphi(n) = \prod_{j=1}^{k} p_j^{\alpha_j-1}(p_j-1).
   \]
 \end{exercise}
+
+\begin{solution}
+  Olkoon \(p\) alkuluku ja \(\alpha\ge 1\) kokonaisluku. Jos
+  \((a,p^\alpha)>1\), luvuilla \(a\) ja \(p^\alpha\) on yhteinen
+  alkulukujakaja. Luvun \(p^\alpha\) ainoa alkutekijä on \(p\), joten
+  \(p\mid a\). Kääntäen, jos \(p\mid a\), niin \(p\) jakaa molemmat
+  luvut ja siten \((a,p^\alpha)>1\).
+
+  Välillä \([1,p^\alpha]\) luvun \(p\) monikerrat ovat täsmälleen
+  luvut \(pj\), missä \(j=1,\dots,p^{\alpha-1}\). Niitä on siis
+  \(p^{\alpha-1}\), joten
+  \[
+    \varphi(p^\alpha) = p^\alpha - p^{\alpha-1} = p^{\alpha-1}(p-1).
+  \]
+
+  Koska \(p_1,\dots,p_k\) ovat eri alkulukuja, niiden potenssit
+  \(p_1^{\alpha_1},\dots,p_k^{\alpha_k}\) ovat pareittain keskenään
+  jaottomia. Soveltamalla \(\varphi\):n multiplikatiivisuutta toistuvasti
+  saadaan
+  \[
+    \varphi(n) = \prod_{j=1}^k \varphi(p_j^{\alpha_j})
+    = \prod_{j=1}^k p_j^{\alpha_j-1}(p_j-1).
+  \]
+\end{solution}
 
 \begin{exercise}
   \leavevmode\par
