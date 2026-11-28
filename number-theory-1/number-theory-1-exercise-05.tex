@@ -67,9 +67,21 @@
 
 \begin{exercise}
   Olkoot \(m\), \(n\) ja \(k\) kokonaislukuja. Osoita, että
-  \(\syt(k,mn) = 1\) jos ja vain jos \(\syt(k,m) = 1\) ja
-  \(\syt(k,n) = 1\).
+  \((k,mn) = 1\) jos ja vain jos \((k,m) = 1\) ja
+  \((k,n) = 1\).
 \end{exercise}
+
+\begin{solution}
+  \(\Rightarrow\) Oletetaan, että \((k,mn)=1\). Jokainen lukujen
+  \(k\) ja \(m\) yhteinen jakaja on myös lukujen \(k\) ja \(mn\) yhteinen
+  jakaja. Siis \((k,m)=1\). Samoin \((k,n)=1\).
+
+  \(\Leftarrow\) Oletetaan, että \((k,m)=(k,n)=1\). Jos
+  \((k,mn)\ne 1\), luvuilla \(k\) ja \(mn\) on yhteinen
+  alkulukujakaja \(p\). Eukleideen lemman nojalla \(p\) jakaa joko luvun
+  \(m\) tai luvun \(n\). Koska \(p\mid k\), tämä on ristiriidassa
+  oletuksen \((k,m)=(k,n)=1\) kanssa. Siis \((k,mn)=1\).
+\end{solution}
 
 \begin{exercise}
   Olkoon kokonaisluvun \(n \ge 2\) alkutekijähajotelma on
