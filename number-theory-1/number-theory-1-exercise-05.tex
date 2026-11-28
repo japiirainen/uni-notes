@@ -21,6 +21,50 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), topsep=0.35em]
+    \item Koska \(23\) on alkuluku, \(\varphi(23) = 23 - 1 = 22\).
+      Koska \(105 = 3 \cdot 5 \cdot 7\) ja tekijät ovat pareittain
+      keskenään jaottomia, funktion \(\varphi\) multiplikatiivisuudesta seuraa
+      \[
+        \varphi(105) = \varphi(3)\varphi(5)\varphi(7)
+        = 2 \cdot 4 \cdot 6 = 48.
+      \]
+      Koska \(125 = 5^3\) ja \(700 = 2^2 \cdot 5^2 \cdot 7\), saadaan
+      tehtävän 3 kaavalla
+      \begin{align*}
+        \varphi(125) &= 5^2(5 - 1) = 100, \\
+        \varphi(700) &= 2(2 - 1) \cdot 5(5 - 1) \cdot (7 - 1) = 240.
+      \end{align*}
+    \item Lasketaan modulo \(31\). Olkoon \(d=\ord_{31}(a)\).
+      Aloitetaan luvusta \(D=30=2\cdot 3\cdot 5\), joka on \(d\):n monikerta.
+      Luvusta \(D\) voi poistaa alkutekijän \(q\), jos
+      \(a^{D/q}\equiv 1\), eli jos \(D/q\) on edelleen \(d\):n monikerta.
+      Kun \(q\) poistetaan, jatketaan luvulla \(D/q\). Saman alkutekijän
+      voi poistaa uudelleen, jos se jakaa uutta lukua ja ehto yhä pätee.
+
+      Jos \(D>d\), luvulla \(D/d>1\) on alkutekijä \(q\), jonka voi
+      poistaa, sillä \(d\mid D/q\). Menettely päättyy siis, kun \(D=d\).
+      \begin{itemize}
+        \item \(2^5=32\equiv 1\). Koska \(5\) on alkuluku ja
+          \(2\not\equiv 1\), saadaan \(\ord_{31}(2)=5\).
+        \item Koska \(3^5=243\equiv -5\), eksponenteilla \(30/2\),
+          \(30/3\) ja \(30/5\) saadaan
+          \[
+            3^{15}\equiv(-5)^3\equiv -1, \qquad
+            3^{10}\equiv(-5)^2=25, \qquad
+            3^6\equiv 3\cdot(-5)\equiv 16.
+          \]
+          Mikään näistä ei anna jäännöstä \(1\), joten \(\ord_{31}(3)=30\).
+        \item Koska \(7^3=343\equiv 2\), saadaan \(7^{15}\equiv 2^5\equiv 1\).
+          Eksponenteilla \(15/5\) ja \(15/3\) saadaan \(7^3\equiv 2\)
+          ja \(7^5\equiv 2\cdot 18\equiv 5\), sillä \(7^2\equiv 18\).
+          Siis \(\ord_{31}(7)=15\).
+      \end{itemize}
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}
   Olkoot \(m\), \(n\) ja \(k\) kokonaislukuja. Osoita, että
   \(\syt(k,mn) = 1\) jos ja vain jos \(\syt(k,m) = 1\) ja
