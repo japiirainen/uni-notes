@@ -126,6 +126,36 @@
   \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+  \leavevmode\par
+  \begin{enumerate}[label=(\alph*), topsep=0.35em]
+    \item Luvun \(2\) kertaluku modulo \(19\) jakaa luvun \(18=2\cdot 3^2\).
+      Tehtävän 1(b) tapaan tarkastellaan eksponentteja \(18/2\) ja \(18/3\).
+      Koska \(2^9\equiv -1\) ja \(2^6\equiv 7\pmod{19}\), luvun \(2\)
+      kertaluku on \(18\).
+
+      Lauseen 71 mukaan potenssit \(2^0,\dots,2^{17}\)
+      kattavat kaikki nollasta poikkeavat jäännösluokat modulo \(19\).
+      Lemman 79 mukaan \(\ord_{19}(2^j)=18/(j,18)\), joten \(2^j\) on
+      primitiivinen juuri, jos ja vain jos \((j,18)=1\).
+      Sopivat eksponentit ovat \(1,5,7,11,13,17\), ja
+      \[
+        (2^1,2^5,2^7,2^{11},2^{13},2^{17})
+        \equiv (2,13,14,15,3,10)\pmod{19}.
+      \]
+      Primitiiviset juuret ovat siis \(2,3,10,13,14,15\).
+
+    \item Tehtävän 1(b) mukaan \(\ord_{31}(2)=5\). Lemman 79 mukaan
+      \(\ord_{31}(2^j)=5/(j,5)\). Kun \(j=1,2,3,4\), saadaan siis
+      luvut \(2,4,8,16\), joiden kertaluku on \(5\).
+
+      Polynomilla \(X^5-1\in\mathbb{F}_{31}[X]\) on asteen nojalla enintään
+      viisi juurta, ja \(1,2,4,8,16\) ovat sen juuria. Juurten kertaluvut
+      jakavat alkuluvun \(5\), joten ratkaisut ovat täsmälleen juuret
+      \(a\ne 1\).
+  \end{enumerate}
+\end{solution}
+
 \begin{exercise}
   Olkoon \(g\) primitiivinen juuri modulo \(p\), missä \(p\) on alkuluku.
   Osoita, että \(g^j \equiv g^i \pmod{p}\) jos ja vain jos
